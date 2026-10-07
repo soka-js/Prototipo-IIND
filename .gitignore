@@ -1,0 +1,23 @@
+﻿# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Variables de entorno / secretos
+.env
+
+# IDE / SO
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# Vercel
+.vercel

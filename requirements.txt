@@ -1,0 +1,3 @@
+# Producción (Vercel instala esto)
+fastapi>=0.115
+jinja2>=3.1
