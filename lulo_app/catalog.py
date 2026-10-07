@@ -1,121 +1,45 @@
-"""Catálogo del prototipo: eventos, ofertas y estado inicial del cliente.
-
-Todos los datos (nombres, placas, precios, cifras) son ilustrativos.
-"""
+"""Catálogo común: tipos de evento, prioridades y precios. Los datos de cada cliente viven en simulator.py."""
 
 from __future__ import annotations
 
-# Eventos que el motor sabe leer. `prio`: 1 = mayor prioridad.
-EVENTS: dict[str, dict] = {
-    "credito": {
-        "label": "Desembolso de Lulo Crédito",
-        "habit": "Nueva obligación mensual",
-        "offer": "Pago protegido",
-        "prio": 1,
-        "mov": {"n": "Desembolso Lulo Crédito", "c": "Crédito", "a": 9_000_000, "ic": "💳"},
-    },
-    "vehiculo": {
-        "label": "Peajes, combustible y parqueaderos",
-        "habit": "Uso frecuente de vehículo propio",
-        "offer": "SOAT y seguros del carro",
-        "prio": 2,
-        "mov": {"n": "Peaje Andes · Autopista Norte", "c": "Transporte", "a": -12_800, "ic": "🛣️"},
-    },
-    "nomina": {
-        "label": "Tercer abono de nómina de ACME S.A.S.",
-        "habit": "Ingreso laboral estable",
-        "offer": "Seguro de nómina",
-        "prio": 3,
-        "mov": {"n": "Nómina ACME S.A.S.", "c": "Abono recurrente", "a": 3_200_000, "ic": "💼"},
-    },
-    "viaje": {
-        "label": "Abono a la cajita «Viajes»",
-        "habit": "Hay un viaje en preparación",
-        "offer": "Seguro de viaje",
-        "prio": 4,
-        "mov": {"n": "Cajita Viajes · abono 4", "c": "Cajitas", "a": -300_000, "ic": "✈️"},
-    },
-    "vida": {
-        "label": "Transferencia fija a Laura M. (mes 4)",
-        "habit": "Hay dependientes económicos",
-        "offer": "Vida voluntario",
-        "prio": 5,
-        "mov": {"n": "Transferencia a Laura M.", "c": "Bre-B", "a": -450_000, "ic": "↗"},
-    },
+from .simulator import CATEGORIES, TODAY, Persona
+
+# Tipos de evento que el motor sabe leer. `prio`: 1 = mayor prioridad.
+EVENT_META: dict[str, dict] = {
+    "credito": {"habit": "Nueva obligación mensual", "offer": "Pago protegido", "offer_key": "pago", "prio": 1},
+    "vehiculo": {"habit": "Uso frecuente de vehículo propio", "offer": "SOAT y seguros del carro", "offer_key": "soat",
+                 "prio": 2},
+    "nomina": {"habit": "Ingreso laboral estable", "offer": "Seguro de nómina", "offer_key": "nomina", "prio": 3},
+    "viaje": {"habit": "Hay un viaje en preparación", "offer": "Seguro de viaje", "offer_key": "viaje", "prio": 4},
+    "vida": {"habit": "Hay dependientes económicos", "offer": "Vida voluntario", "offer_key": "vida", "prio": 5},
 }
 
-OFFERS: dict[str, dict] = {
-    "nomina": {
-        "title": "Seguro de nómina",
-        "aliado": "Chubb",
-        "price": "$14.500 al mes",
-        "why": "Recibiste tu <b>tercer abono seguido de ACME S.A.S.</b> en Lulo. Tu ingreso ya tiene un respaldo.",
-        "figure": "3 meses",
-        "figLabel": "de tu ingreso cubiertos si pierdes el empleo",
-        "covers": [
-            "Hasta 3 cuotas de $1.200.000 si pierdes tu empleo",
-            "Incapacidad total temporal",
-            "Se cobra desde tu cuenta Lulo, sin papeles",
-        ],
-        "sub": "3 meses de ingreso cubiertos",
-        "notif": "Tu ingreso llega a Lulo. Protégelo desde $14.500 al mes.",
-    },
-    "viaje": {
-        "title": "Seguro de viaje",
-        "aliado": "IGS Asistencias",
-        "price": "$18.900 por viaje",
-        "why": "Llevas <b>4 abonos a tu cajita «Viajes»</b>. Parece que estás preparando un viaje.",
-        "figure": "USD 30.000",
-        "figLabel": "en asistencia médica en el exterior",
-        "covers": [
-            "Asistencia médica y odontológica en el exterior",
-            "Pérdida o demora de equipaje",
-            "Cancelación del viaje por causa médica",
-        ],
-        "sub": "Activo para tu próximo viaje",
-        "notif": "Tu cajita «Viajes» va bien. Viaja con asistencia médica.",
-    },
-    "vida": {
-        "title": "Vida voluntario",
-        "aliado": "AXA Colpatria",
-        "price": "$22.000 al mes",
-        "concept": True,
-        "why": "Cada mes <b>envías dinero a la misma persona</b>. Si alguien depende de ti, este seguro la protege.",
-        "figure": "$50.000.000",
-        "figLabel": "de suma asegurada",
-        "covers": [
-            "Tú eliges quién es el beneficiario",
-            "Cubre muerte e incapacidad total permanente",
-            "Independiente de cualquier crédito",
-        ],
-        "sub": "Beneficiaria: Laura M.",
-        "notif": "Protege a quien depende de ti desde $22.000 al mes.",
-    },
-}
-
-INITIAL_POLICIES: list[dict] = [
-    {"id": "soat", "title": "SOAT · WGY-482", "aliado": "Seguros Mundial", "status": "due",
-     "sub": "vence el 14 de octubre", "days": 27},
-    {"id": "pago", "title": "Pago protegido", "aliado": "SBS Seguros", "status": "ok",
-     "sub": "ligado a tu Lulo Crédito", "hint": "Nunca has revisado qué cubre"},
-    {"id": "vida", "title": "Vida grupo deudor", "aliado": "AXA Colpatria", "status": "ok",
-     "sub": "beneficiario: el banco"},
-    {"id": "asis", "title": "Asistencias", "aliado": "IGS", "status": "ok",
-     "sub": "renovación automática en enero"},
-]
-
-INITIAL_MOVS: list[dict] = [
-    {"n": "Terpel · Calle 80", "c": "Combustible", "a": -98_000, "ic": "⛽", "d": "Hoy"},
-    {"n": "Nómina ACME S.A.S.", "c": "Abono recurrente", "a": 3_200_000, "ic": "💼", "d": "15 sep"},
-    {"n": "Parqueadero Andino", "c": "Transporte", "a": -14_000, "ic": "🅿️", "d": "14 sep"},
-    {"n": "Transferencia a Laura M.", "c": "Bre-B", "a": -450_000, "ic": "↗", "d": "1 sep"},
-    {"n": "Cuota Lulo Crédito 3/18", "c": "Crédito", "a": -275_192, "ic": "💳", "d": "30 ago"},
-    {"n": "Spotify", "c": "Suscripción", "a": -26_900, "ic": "♫", "d": "28 ago"},
-]
-
-INITIAL_BALANCE = 1_742_300
-
-# SOAT del vehículo del cliente
-SOAT_BASE_PRICE = 745_300
 SOAT_MAX_DISCOUNT = 0.05  # con aviso a 30 días; se escala con la anticipación
 ALERT_DAYS_OPTIONS = (30, 15, 7)
+
+
+def movement(spec: dict, persona: Persona, **extra) -> dict:
+    """Completa un movimiento nuevo (categoría, grupo, ícono y medio de pago) a partir de un spec corto."""
+    label, group, icon = CATEGORIES[spec["cat"]]
+    return {
+        "n": spec["n"], "c": label, "cat": spec["cat"], "g": group, "a": int(spec["a"]),
+        "ic": spec.get("ic", icon), "ch": spec.get("ch", f"Tarjeta débito ••{persona.card_last4}"),
+        "date": TODAY.isoformat(), **extra,
+    }
+
+
+def events_for(p: Persona) -> dict[str, dict]:
+    out = {}
+    for key, meta in EVENT_META.items():
+        e = p.events[key]
+        out[key] = {"key": key, "label": e["label"], "habit": meta["habit"], "offer": meta["offer"],
+                    "prio": meta["prio"], "strong": e.get("strong", False), "mov": movement(e["mov"], p)}
+    return out
+
+
+def soat_quote(price: int, alert_days: int) -> dict:
+    """Precio de renovación con descuento proporcional a la anticipación del aviso."""
+    if alert_days not in ALERT_DAYS_OPTIONS:
+        raise ValueError(f"alert_days debe ser uno de {ALERT_DAYS_OPTIONS}")
+    discount = round(price * SOAT_MAX_DISCOUNT * (alert_days / 30))
+    return {"days": alert_days, "base": price, "discount": discount, "total": price - discount}

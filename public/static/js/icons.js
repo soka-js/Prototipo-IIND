@@ -1,0 +1,31 @@
+// Íconos SVG de la app (trazo, heredan el color del texto salvo que se indique).
+const s = (d, w = 22, extra = "") => `<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${d}</svg>`;
+
+export const I = {
+  home: s('<path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M10 20v-5h4v5"/>'),
+  movs: s('<path d="M5 8h14M5 12h14M5 16h9"/>'),
+  year: s('<path d="M12 3l2.2 5.3L20 9l-4.4 3.8L17 18.5 12 15.6 7 18.5l1.4-5.7L4 9l5.8-.7z"/>'),
+  user: s('<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>'),
+  back: s('<path d="M15 5l-7 7 7 7"/>', 22, 'stroke-width="2.2"'),
+  close: s('<path d="M6 6l12 12M18 6 6 18"/>'),
+  send: s('<path d="M5 12h13M13 6l6 6-6 6"/>'),
+  bre: s('<path d="M13 3 6 13h6l-1 8 7-10h-6z"/>'),
+  box: s('<path d="M4 8h16v11H4zM3 5h18v3H3zM10 12h4"/>'),
+  coin: s('<circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10.5h4a1.5 1.5 0 0 1 0 3h-3"/>'),
+  bell: s('<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/>'),
+  eye: s('<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>', 18),
+  eyeOff: s('<path d="M3 3l18 18M10.6 6.1A9 9 0 0 1 12 6c6 0 9.5 6 9.5 6a16 16 0 0 1-3 3.6M6.3 7.8A16 16 0 0 0 2.5 12S6 18 12 18a8.6 8.6 0 0 0 4-1"/><path d="M9.9 10a2.8 2.8 0 0 0 4 4"/>', 18),
+  search: s('<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>', 18),
+  chev: s('<path d="m9 6 6 6-6 6"/>', 18),
+  card: s('<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/>'),
+  lock: s('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'),
+  face: s('<path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M9 10v1M15 10v1M12 10v3h-1M9.5 15.5a3.5 3.5 0 0 0 5 0"/>', 26),
+  del: s('<path d="M20 6H9l-6 6 6 6h11z"/><path d="m16 10-4 4M12 10l4 4"/>', 24),
+  share: s('<path d="M12 4v11M8 8l4-4 4 4"/><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/>', 18),
+  plus: s('<path d="M12 5v14M5 12h14"/>', 18),
+  shield: s('<path d="M12 3 5 6v5.5c0 4.2 3 7.8 7 9.5 4-1.7 7-5.3 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/>', 18),
+  snow: s('<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/>', 18),
+  info: s('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>', 16),
+  check: '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#061232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7.5"/></svg>',
+  logo: '<span class="lulo-word">lulo<sup>®</sup><small>bank</small></span>',
+};

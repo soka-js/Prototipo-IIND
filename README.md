@@ -1,16 +1,32 @@
 # Prototipo Lulo Bank · Grupo 14
 
-**Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank.** Este prototipo interactivo de fidelidad media tiene tres ideas que comparten un mismo mecanismo:
+**Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank.** Es una app navegable con datos simulados. Muestra tres ideas que comparten un mismo mecanismo:
 
 | Idea | Qué es |
 |---|---|
-| **Pasado**: Tu año en Lulo | Un resumen tipo historia de 12 meses, con un momento de protección en cada capítulo. |
-| **Presente**: Motor de disparadores | Lee eventos de la cuenta, decide qué ofrecer y registra la respuesta. |
-| **Futuro**: Recordatorio del SOAT | Aviso de vencimiento, renovación con descuento y pago desde la cuenta Lulo. |
+| **Pasado**: Tu año en Lulo | Un resumen tipo historia de 12 meses, armado con los movimientos del cliente, con un momento de protección por capítulo. |
+| **Presente**: Motor de disparadores | Lee lo que el cliente hace (transferir, abonar, pedir crédito), decide qué ofrecer y registra la respuesta. |
+| **Futuro**: Recordatorio del SOAT | Aviso de vencimiento, renovación con descuento por anticipación y pago desde la cuenta Lulo. |
 
-La interfaz (teléfono, panel de funcionalidades, motor en vivo y demo guiada de 12 pasos) es HTML, CSS y JS. **El motor de decisiones, el catálogo, la cotización del SOAT y la exportación del registro corren en Python** (FastAPI).
+## Qué trae
 
-Todos los datos, precios, placas y nombres son ilustrativos.
+- **App completa en el teléfono:** ingreso con clave o Face ID, saldo, tarjeta, notificaciones, un extracto de todo el año con búsqueda, filtros y carga por páginas, el detalle de cada movimiento, transferencias Bre-B con teclado, cajitas, crédito (pagar una cuota o pedir más) y perfil con preferencias y autorización de datos.
+- **Tres clientes simulados** con un año de movimientos generado con una semilla fija:
+  - **Sebastián:** carro, nómina nueva y crédito. Son los datos de la presentación: 1.284 movimientos y $33 M de ingresos.
+  - **Valentina:** freelance, sin carro ni crédito.
+  - **Andrés:** familia, SOAT a 9 días y nómina ya protegida.
+- **Motor en Python:**
+  1. Detecta señales con reglas explícitas, con umbral y evidencia.
+  2. Arma los capítulos de Tu año. Un capítulo solo aparece si la señal que lo sostiene existe.
+  3. Decide aplicando, en orden, la autorización de datos, el grupo de control, las preferencias, la fuerza de la señal, la elegibilidad y la cola por prioridad.
+- **Lo que haces en la app lo lee el motor.** Por ejemplo, una transferencia a la persona que el cliente apoya cada mes dispara la oferta de vida voluntario unos segundos después.
+- **Panel de presentación:**
+  - Selector de cliente.
+  - Desplegables de funcionalidades.
+  - Motor en vivo: señales, los cuatro pasos, eventos, cola, grupo de control, métricas y registro exportable a CSV.
+  - Demo guiada de 15 pasos.
+- **En el celular** la app ocupa toda la pantalla y el panel se abre como una hoja. Se puede instalar en la pantalla de inicio (PWA).
+- **Navegación real:** funcionan el botón atrás del navegador y del celular, y los enlaces directos como `/#/tu-ano`, `/#/movimientos` o `/?cliente=valentina`.
 
 ## Correr en local
 
@@ -23,7 +39,7 @@ pip install -r requirements-dev.txt
 python run.py                          # abre http://127.0.0.1:8000
 ```
 
-`python run.py --reload` recarga el servidor al editar el código, y `--port 9000` cambia el puerto.
+`python run.py --reload` recarga el servidor al editar el código.
 
 Pruebas:
 
@@ -31,37 +47,48 @@ Pruebas:
 python -m pytest
 ```
 
-## Publicar gratis en Vercel
+## Publicar en Vercel (gratis)
 
-Con el plan Hobby es gratis y no hace falta tarjeta.
+El repositorio ya trae lo que Vercel necesita:
+- `api/index.py`: la función de Python.
+- `vercel.json`: rutas y caché.
+- `public/`: los estáticos, servidos por la CDN.
+- `requirements.txt`: dependencias de producción.
 
-1. Sube este repositorio a GitHub.
-2. Entra a [vercel.com/new](https://vercel.com/new), importa el repositorio y deja **Framework Preset: Other**. No hay que configurar comandos.
-3. Pulsa **Deploy**. Vercel te da una URL `https://<proyecto>.vercel.app` que puedes compartir.
+Opción 1, desde la web:
+1. En [vercel.com/new](https://vercel.com/new), importa el repositorio y deja **Framework Preset: Other**.
+2. Pulsa **Deploy**.
 
-Cada `git push` a `main` vuelve a publicar la app automáticamente.
+Cada `git push` a `main` vuelve a publicar la app.
 
-También se puede publicar desde la terminal con `npx vercel` (vista previa) y `npx vercel --prod` (producción).
+Opción 2, desde la terminal:
 
-Cómo lo resuelve Vercel:
-- `public/` se sirve desde la CDN: CSS, JS, fuentes Sora e imágenes.
-- `api/index.py` es una función serverless de Python que expone la app FastAPI. `vercel.json` le redirige todas las demás rutas.
-- `requirements.txt` solo contiene lo que necesita producción.
+```bash
+npx vercel login
+npx vercel --prod
+```
 
 ## Estructura
 
 ```
-api/index.py            entrada serverless para Vercel
+api/index.py              entrada serverless para Vercel
 lulo_app/
-  catalog.py            eventos, ofertas, pólizas, movimientos y precios
-  engine.py             motor: control, preferencias, elegibilidad y cola por prioridad
-  report.py             métricas y CSV del registro de respuestas
-  main.py               app FastAPI: página y API
-  templates/index.html  estructura de la página
-public/static/          css, js, fuentes e imágenes
-tests/                  pruebas del motor y del API
-run.py                  servidor local
-vercel.json             configuración del despliegue
+  simulator.py            clientes simulados y su año de movimientos
+  signals.py              paso 1: reglas de detección con umbral y evidencia
+  year.py                 capítulos de Tu año según las señales
+  offers.py               ofertas con «Por qué lo ves» personalizado
+  engine.py               paso 2: decisión del motor
+  clients.py              vista por cliente, extracto, detalle y acciones
+  catalog.py              tipos de evento, prioridades y precio del SOAT
+  report.py               métricas y CSV del registro
+  main.py                 app FastAPI: página y API
+  templates/index.html    estructura de la página
+public/static/
+  js/app.js               navegación, flujos, motor, panel y demo
+  js/screens.js           pantallas del teléfono
+  js/content.js           desplegables y ficha «Estás viendo»
+  css, fuentes e imágenes
+tests/                    pruebas del simulador, el motor y el API
 ```
 
 ## API
@@ -70,21 +97,18 @@ La documentación interactiva está en `/docs`.
 
 | Método | Ruta | Qué hace |
 |---|---|---|
-| GET | `/api/health` | Estado y versión |
-| GET | `/api/catalog` | Catálogo y estado inicial |
-| POST | `/api/engine/event` | Decide qué hacer con un evento (`shown`, `queued`, `ineligible`, `control`, `optout`) |
-| GET | `/api/soat/quote?days=30` | Cotización del SOAT según la anticipación |
-| POST | `/api/report/metrics` | Métricas del registro, por oferta |
-| POST | `/api/report/csv` | Descarga el registro en CSV (listo para Excel) |
+| GET | `/api/clients` | Clientes simulados |
+| GET | `/api/clients/{id}` | Todo lo que la app necesita para un cliente |
+| GET | `/api/clients/{id}/movements?q=&group=&offset=&limit=` | Extracto con búsqueda, filtro y páginas |
+| GET | `/api/clients/{id}/movements/{tx}` | Detalle de un movimiento y la señal que alimenta |
+| GET | `/api/clients/{id}/signals` | Señales detectadas, con regla y evidencia |
+| GET | `/api/clients/{id}/year` | Capítulos de Tu año |
+| POST | `/api/clients/{id}/actions` | Transferencia, abono, cuota o desembolso → movimiento y evento |
+| POST | `/api/engine/event` | Decisión del motor (`shown`, `queued`, `ineligible`, `weak`, `control`, `optout`, `noconsent`) |
+| GET | `/api/soat/quote?days=30&cliente=sebastian` | Cotización del SOAT según la anticipación |
+| POST | `/api/report/metrics` · `/api/report/csv` | Métricas y CSV del registro |
 
-Ejemplo:
-
-```bash
-curl -X POST http://127.0.0.1:8000/api/engine/event \
-  -H "Content-Type: application/json" \
-  -d '{"event":"nomina","active":["nomina"]}'
-# → {"outcome":"ineligible", ...}
-```
+Todos los datos, precios, placas, nombres y reglas son ilustrativos.
 
 ## Equipo
 

@@ -13,6 +13,7 @@ LABELS = {"ok": "Acepta", "no": "Rechaza", "hold": "Cola", "ctrl": "Sin contacto
 
 class LoggedResponse(BaseModel):
     t: str
+    client: str = ""
     ev: str
     offer: str
     res: str
@@ -45,7 +46,7 @@ def to_csv(log: list[LoggedResponse]) -> str:
     """CSV con BOM y separador ';' para que Excel en español lo abra directo."""
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";", quoting=csv.QUOTE_ALL, lineterminator="\n")
-    w.writerow(["hora", "evento", "oferta", "resultado", "tipo", "etiqueta"])
+    w.writerow(["hora", "cliente", "evento", "oferta", "resultado", "tipo", "etiqueta"])
     for r in log:
-        w.writerow([r.t, r.ev, r.offer, r.res, r.tipo, LABELS.get(r.tipo, r.tipo)])
+        w.writerow([r.t, r.client, r.ev, r.offer, r.res, r.tipo, LABELS.get(r.tipo, r.tipo)])
     return "﻿" + buf.getvalue()

@@ -4,9 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tu año en Lulo · Prototipo Lulo Bank · Grupo 14</title>
-<meta name="description" content="Prototipo interactivo: Tu año en Lulo, motor de disparadores y recordatorio del SOAT. Grupo 14.">
+<meta name="description" content="Prototipo navegable con datos simulados: Tu año en Lulo, motor de disparadores y recordatorio del SOAT. Grupo 14.">
 <meta name="theme-color" content="#1F2739">
-<link rel="icon" type="image/png" href="/static/img/logo-lulo.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="Tu año en Lulo · Prototipo Grupo 14">
+<meta property="og:description" content="App navegable con datos simulados y motor de recomendaciones de seguros en Python.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/static/img/icon-192.png">
+<link rel="apple-touch-icon" href="/static/img/icon-192.png">
 <link rel="preload" href="/static/fonts/sora-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/static/fonts/sora-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/static/css/app.css?v={{ version }}">
@@ -17,7 +23,7 @@
   <div class="brand"><img src="/static/img/logo-lulo.png" alt="Lulo Bank"></div>
   <div class="top-t">
     <h1>Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank</h1>
-    <p>Prototipo interactivo de fidelidad media · Grupo 14 · Julián Ordoñez, Nicolás Ramírez, Sebastián Socarrás y Tomás Carrillo</p>
+    <p>Prototipo navegable con datos simulados · Grupo 14 · Julián Ordoñez, Nicolás Ramírez, Sebastián Socarrás y Tomás Carrillo</p>
   </div>
   <div class="ideas">
     <button class="idea-chip" data-goto="anio" data-acc="acc-idea1"><b>Pasado</b>Tu año en Lulo</button>
@@ -27,12 +33,12 @@
 </header>
 <div class="page">
   <section class="stage" aria-label="Prototipo móvil">
-    <p class="how">Toca la app como si fuera tu celular. Usa el panel de la derecha para disparar eventos, leer las funcionalidades o seguir la demo guiada.</p>
+    <p class="how">Úsala como tu celular: ingresa, transfiere, abona a una cajita o abre Tu año. El motor en Python lee lo que haces y decide qué ofrecer.</p>
     <div class="phone">
       <div class="phone-in" id="phone">
         <div class="status"><span>9:41</span><span class="notch"></span><span class="sig"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:13px"></i></span></div>
         <div class="scroll" id="scroll"></div>
-        <nav class="tabbar" id="tabbar" aria-label="Navegación principal"></nav>
+        <nav class="tabbar" id="tabbar" aria-label="Navegación principal" hidden></nav>
         <button class="notif" id="notif" aria-live="polite"></button>
         <button class="notif-x" id="notifX" aria-label="Descartar notificación">✕</button>
         <div class="toast" id="toast" role="status"></div>
@@ -40,12 +46,17 @@
       </div>
     </div>
     <details class="now" id="nowCard" open>
-      <summary><span class="now-k">Estás viendo</span><span class="now-n" id="nowName"></span></summary>
+      <summary><span class="now-k">Estás viendo · <span id="nowWho"></span></span><span class="now-n" id="nowName"></span></summary>
       <div class="now-body" id="nowBody"></div>
     </details>
   </section>
 
   <aside class="panel" aria-label="Panel de funcionalidades y motor">
+    <div class="sheet-head"><b>Panel de la demo</b><button class="pbtn sm" id="sheetClose">Cerrar</button></div>
+    <div class="clients-w">
+      <div class="clients-k">Cliente simulado</div>
+      <div class="clients" id="clients" role="group" aria-label="Elegir cliente simulado"></div>
+    </div>
     <div class="ptabs" role="tablist">
       <button role="tab" data-tab="func" aria-selected="true">Funcionalidades</button>
       <button role="tab" data-tab="motor" aria-selected="false">Motor en vivo</button>
@@ -62,8 +73,13 @@
     <div class="pview" id="view-motor" hidden>
       <div>
         <h3>Motor de disparadores</h3>
-        <p class="lead">Simula lo que el cliente hace en la app. Cada evento recorre los cuatro pasos del núcleo común y termina en la pantalla del teléfono.</p>
+        <p class="lead">Cada evento, venga del panel o de lo que haces en la app, recorre los cuatro pasos del núcleo común y termina en la pantalla del teléfono.</p>
         <p class="api-status" id="apiStatus"><i></i><span>Conectando con el motor en Python…</span></p>
+      </div>
+      <div>
+        <h4 id="sigTitle">Lo que el motor ve</h4>
+        <p class="lead" style="margin:-4px 0 10px">Paso 1: señales detectadas en 12 meses de movimientos, con su regla y evidencia.</p>
+        <div class="sigs" id="signals"></div>
       </div>
       <div>
         <h4>Recorrido de la señal</h4>
@@ -73,7 +89,7 @@
           <div class="step" data-step="2"><b>Paso 3</b>Mostrarlo en la app</div>
           <div class="step missing" data-step="3"><b>Paso 4</b>Registrar la respuesta</div>
         </div>
-        <p class="lead" id="chainMsg" style="margin-top:10px;min-height:20px">Dispara un evento para ver cómo decide el motor.</p>
+        <p class="lead" id="chainMsg" style="margin-top:10px;min-height:20px">Dispara un evento o usa la app para ver cómo decide el motor.</p>
       </div>
       <div>
         <h4>Dispara un evento</h4>
@@ -103,19 +119,19 @@
     <div class="pview" id="view-demo" hidden>
       <div>
         <h3>Demo guiada</h3>
-        <p class="lead">Doce pasos para contar la propuesta de principio a fin. Cada botón ejecuta el paso en el teléfono. También puedes hacerlo a mano.</p>
+        <p class="lead" id="demoLead"></p>
       </div>
       <div class="box" id="demoLast" style="font-size:12px;color:#D6DCE8"></div>
       <ol class="demo" id="demo"></ol>
       <div class="ctrls"><button class="pbtn" id="resetBtn2">Reiniciar demo</button></div>
     </div>
 
-    <p class="foot">Datos, precios, placas y reglas son ilustrativos. Las señales son hipótesis del equipo: la fase de exploración debe confirmar qué eventos están instrumentados y con qué latencia.</p>
+    <p class="foot">Clientes, movimientos, precios, placas y reglas son simulados con fines ilustrativos. Las señales son hipótesis del equipo: la fase de exploración debe confirmar qué eventos están instrumentados y con qué latencia.</p>
   </aside>
 </div>
-
+<button class="fab" id="panelFab" aria-label="Abrir el panel de la demo">Panel</button>
 
 <script id="bootstrap" type="application/json">{{ bootstrap | safe }}</script>
-<script src="/static/js/app.js?v={{ version }}"></script>
+<script type="module" src="/static/js/app.js?v={{ version }}"></script>
 </body>
 </html>
