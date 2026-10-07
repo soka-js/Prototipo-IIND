@@ -1,5 +1,7 @@
 # Prototipo Lulo Bank · Grupo 14
 
+**🔗 App en línea: https://prototipo-iind.vercel.app**
+
 **Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank.** Es una app navegable con datos simulados. Muestra tres ideas que comparten un mismo mecanismo:
 
 | Idea | Qué es |
@@ -59,7 +61,7 @@ Opción 1, desde la web:
 1. En [vercel.com/new](https://vercel.com/new), importa el repositorio y deja **Framework Preset: Other**.
 2. Pulsa **Deploy**.
 
-Cada `git push` a `main` vuelve a publicar la app.
+El proyecto `prototipo-iind` ya está conectado a este repositorio: cada `git push` a `main` publica la app en la misma URL.
 
 Opción 2, desde la terminal:
 
