@@ -1,0 +1,7 @@
+tema,supuesto_simulado,nota
+Naturaleza de la base,100% sintética / simulada,"No contiene información oficial, real ni seudonimizada del banco."
+Ley 2300 / contacto,Supuesto académico,"Para el ejercicio, una recomendación in-app se trata como contacto comercial cuando genera push, SMS, llamada o correo. Un banner pasivo se modela por separado. Validar jurídicamente en un caso real."
+Formato,XLSX / convertible a CSV,Cada pestaña tabular puede exportarse a CSV.
+Periodo simulado,2025-11 a 2026-10,Aproximadamente 12 meses de comportamiento.
+Fecha de corte,2026-10-08,Fecha ficticia de corte del dataset.
+Uso permitido,Académico,No usar cifras para inferir métricas reales de Lulo Bank ni presentarlas como benchmark oficial.

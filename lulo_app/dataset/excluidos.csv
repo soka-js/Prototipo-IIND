@@ -1,0 +1,563 @@
+pestana,fila_excel,cliente_id,fecha,razon,detalle
+Cajitas,16,C00004,2026-10-14,fecha posterior al corte 2026-10-08,Otras
+Cajitas,44,C00011,2026-10-23,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,61,C00016,2026-10-20,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,63,C00017,2026-10-15,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,69,C00019,2026-10-10,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,74,C00020,2026-10-13,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,105,C00027,2026-10-14,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,127,C00033,2026-10-13,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,136,C00036,2026-10-09,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,139,C00037,2026-10-14,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,152,C00039,2026-10-09,fecha posterior al corte 2026-10-08,Otras
+Cajitas,163,C00043,2026-10-20,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,209,C00061,2026-10-11,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,222,C00065,2026-10-25,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,226,C00069,2026-10-09,fecha posterior al corte 2026-10-08,Otras
+Cajitas,241,C00073,2026-10-19,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,256,C00080,2026-10-25,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,283,C00090,2026-10-23,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,287,C00092,2026-10-23,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,312,C00102,2026-10-16,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,377,C00122,2026-10-21,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,387,C00123,2026-10-18,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,411,C00133,2026-10-13,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,420,C00135,2026-10-22,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,441,C00141,2026-10-17,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,461,C00146,2026-10-19,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,474,C00150,2026-10-09,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,477,C00154,2026-10-19,fecha posterior al corte 2026-10-08,Otras
+Cajitas,510,C00165,2026-10-20,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,543,C00176,2026-10-25,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,548,C00178,2026-10-13,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,553,C00179,2026-10-09,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,560,C00180,2026-10-17,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,564,C00183,2026-10-21,fecha posterior al corte 2026-10-08,Otras
+Cajitas,570,C00184,2026-10-20,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,598,C00196,2026-10-17,fecha posterior al corte 2026-10-08,Otras
+Cajitas,640,C00203,2026-10-10,fecha posterior al corte 2026-10-08,Otras
+Cajitas,668,C00217,2026-10-20,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,676,C00218,2026-10-13,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,687,C00222,2026-10-19,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,697,C00228,2026-10-19,fecha posterior al corte 2026-10-08,Otras
+Cajitas,702,C00229,2026-10-16,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,704,C00230,2026-10-13,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,708,C00232,2026-10-22,fecha posterior al corte 2026-10-08,Otras
+Cajitas,731,C00236,2026-10-19,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,777,C00251,2026-10-17,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,793,C00257,2026-10-18,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,807,C00263,2026-10-16,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,818,C00265,2026-10-25,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,819,C00266,2026-10-22,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,829,C00270,2026-10-23,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,841,C00273,2026-10-15,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,847,C00275,2026-10-14,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,875,C00285,2026-10-18,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,891,C00288,2026-10-19,fecha posterior al corte 2026-10-08,Otras
+Cajitas,906,C00294,2026-10-20,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,937,C00307,2026-10-15,fecha posterior al corte 2026-10-08,Otras
+Cajitas,947,C00310,2026-10-17,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,962,C00316,2026-10-10,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,976,C00320,2026-10-14,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1004,C00325,2026-10-23,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1050,C00335,2026-10-13,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1055,C00336,2026-10-25,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1058,C00339,2026-10-17,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1062,C00341,2026-10-24,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1076,C00345,2026-10-14,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1084,C00348,2026-10-24,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1106,C00354,2026-10-13,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1134,C00360,2026-10-17,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1139,C00361,2026-10-17,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1173,C00372,2026-10-09,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1184,C00375,2026-10-15,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1198,C00378,2026-10-22,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1205,C00381,2026-10-11,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1207,C00383,2026-10-13,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1236,C00393,2026-10-20,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1258,C00400,2026-10-11,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1275,C00406,2026-10-25,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1277,C00407,2026-10-15,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1287,C00412,2026-10-21,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1293,C00413,2026-10-17,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1298,C00416,2026-10-12,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1305,C00417,2026-10-13,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1316,C00420,2026-10-14,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1331,C00425,2026-10-25,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1344,C00427,2026-10-09,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1350,C00428,2026-10-09,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1353,C00429,2026-10-09,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1362,C00432,2026-10-13,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1365,C00435,2026-10-25,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1378,C00440,2026-10-13,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1394,C00443,2026-10-16,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1402,C00449,2026-10-11,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1429,C00454,2026-10-14,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1468,C00465,2026-10-12,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1483,C00469,2026-10-18,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1487,C00470,2026-10-19,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1506,C00478,2026-10-11,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1517,C00482,2026-10-24,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1527,C00486,2026-10-17,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1546,C00491,2026-10-24,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1558,C00503,2026-10-14,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1568,C00507,2026-10-20,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1579,C00510,2026-10-16,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1581,C00512,2026-10-11,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1588,C00513,2026-10-10,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1603,C00521,2026-10-13,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1619,C00533,2026-10-14,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1621,C00535,2026-10-21,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1655,C00545,2026-10-16,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1683,C00553,2026-10-10,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1706,C00563,2026-10-19,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1719,C00567,2026-10-22,fecha posterior al corte 2026-10-08,Mascotas
+Cajitas,1749,C00578,2026-10-13,fecha posterior al corte 2026-10-08,Emergencias
+Cajitas,1769,C00585,2026-10-21,fecha posterior al corte 2026-10-08,Otras
+Cajitas,1777,C00586,2026-10-20,fecha posterior al corte 2026-10-08,Vivienda
+Cajitas,1822,C00598,2026-10-18,fecha posterior al corte 2026-10-08,Viajes
+Cajitas,1826,C00599,2026-10-25,fecha posterior al corte 2026-10-08,Emergencias
+Movimientos,47,C00002,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,94,C00003,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,124,C00004,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,157,C00005,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,254,C00009,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,281,C00010,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,343,C00012,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,383,C00013,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,434,C00015,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,511,C00017,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,591,C00019,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,624,C00020,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,808,C00025,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,847,C00026,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,873,C00027,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,985,C00031,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1047,C00033,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1052,C00033,2026-10-20,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,1101,C00034,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1199,C00037,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1234,C00038,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1278,C00039,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1306,C00040,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1308,C00040,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,1341,C00041,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1375,C00042,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1414,C00043,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1490,C00045,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1523,C00046,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1582,C00048,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1654,C00050,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1696,C00051,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1766,C00053,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1840,C00055,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1843,C00055,2026-10-15,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,1918,C00057,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1955,C00058,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,1987,C00059,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2045,C00061,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2090,C00062,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2146,C00063,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2222,C00066,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2224,C00066,2026-10-12,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,2319,C00069,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2326,C00069,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,2412,C00071,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2555,C00076,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2596,C00077,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2707,C00081,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2746,C00082,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2776,C00083,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2822,C00084,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2866,C00085,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2915,C00086,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,2957,C00087,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3064,C00090,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3108,C00091,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3144,C00092,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3190,C00093,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3255,C00095,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3286,C00096,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3313,C00097,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3343,C00098,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3377,C00099,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3404,C00100,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3459,C00101,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3588,C00106,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3657,C00108,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3745,C00111,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,3775,C00112,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3800,C00113,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3842,C00114,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3878,C00115,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3945,C00117,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,3982,C00118,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4017,C00119,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4019,C00119,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4053,C00120,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4107,C00122,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4160,C00123,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4279,C00127,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4337,C00128,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4344,C00128,2026-10-09,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4381,C00129,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4440,C00131,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4483,C00132,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4536,C00134,2026-10-16,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4590,C00135,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4637,C00136,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4640,C00136,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4672,C00137,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4700,C00138,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4752,C00140,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4821,C00142,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4900,C00144,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,4950,C00146,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,4982,C00147,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5031,C00148,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5057,C00149,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5169,C00152,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5176,C00152,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,5222,C00153,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5286,C00155,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5356,C00157,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5358,C00157,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,5408,C00158,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5454,C00159,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5543,C00162,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5580,C00163,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5623,C00165,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5681,C00167,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5682,C00167,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,5722,C00168,2026-10-09,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,5840,C00172,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5888,C00173,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,5987,C00177,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6024,C00178,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6063,C00179,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6128,C00181,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6158,C00182,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6211,C00184,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6248,C00185,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6297,C00186,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6372,C00189,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6419,C00190,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6458,C00191,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6513,C00193,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6567,C00195,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6609,C00196,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6616,C00196,2026-10-12,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,6653,C00197,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6753,C00200,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6795,C00202,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6824,C00203,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6830,C00203,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,6879,C00204,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,6924,C00205,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7016,C00208,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7046,C00209,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7072,C00210,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7091,C00211,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,7126,C00212,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7211,C00215,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7269,C00217,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7319,C00218,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7388,C00220,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7420,C00221,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7494,C00223,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7495,C00223,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,7539,C00224,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7590,C00226,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7680,C00228,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7684,C00228,2026-10-20,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,7769,C00230,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7795,C00231,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7845,C00232,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7891,C00233,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7936,C00234,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,7966,C00235,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8020,C00236,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8050,C00237,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8054,C00237,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,8125,C00239,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8128,C00239,2026-10-13,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,8176,C00240,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8224,C00241,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8273,C00242,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8321,C00243,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8324,C00243,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,8366,C00244,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8390,C00245,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8424,C00246,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8468,C00247,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8517,C00248,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8567,C00249,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8635,C00251,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8667,C00252,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8783,C00256,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8834,C00257,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8865,C00258,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8926,C00261,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,8954,C00262,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9003,C00263,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9068,C00265,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9213,C00269,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9246,C00270,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9329,C00272,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9357,C00273,2026-10-10,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,9464,C00277,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9498,C00278,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9543,C00279,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9580,C00280,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9607,C00281,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9610,C00281,2026-10-09,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,9675,C00283,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9725,C00284,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9767,C00285,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9846,C00287,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,9877,C00288,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,9968,C00290,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10003,C00291,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10104,C00294,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10147,C00295,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10194,C00296,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10211,C00297,2026-10-15,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,10280,C00299,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10308,C00300,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10377,C00302,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10421,C00304,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10450,C00305,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10485,C00306,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10519,C00307,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10610,C00309,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10651,C00310,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10687,C00311,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10771,C00314,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10775,C00314,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,10815,C00315,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10863,C00316,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10902,C00317,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,10955,C00319,2026-10-13,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,11015,C00321,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11052,C00322,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11053,C00322,2026-10-12,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,11153,C00325,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11200,C00326,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11280,C00328,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11327,C00329,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11435,C00332,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11477,C00333,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11502,C00334,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11505,C00334,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,11543,C00335,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11592,C00336,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11644,C00337,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11676,C00338,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11677,C00338,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,11726,C00339,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11764,C00340,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11797,C00341,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11849,C00342,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11895,C00343,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,11922,C00344,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12007,C00347,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12050,C00348,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12052,C00348,2026-10-19,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,12107,C00349,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12131,C00350,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12179,C00351,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12207,C00352,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12253,C00353,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12292,C00354,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12338,C00355,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12377,C00356,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12408,C00357,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12470,C00359,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12502,C00360,2026-10-15,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,12547,C00361,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12571,C00362,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12615,C00363,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12653,C00364,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12705,C00365,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12770,C00367,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12801,C00368,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12859,C00370,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12897,C00371,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12970,C00374,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,12995,C00375,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13020,C00376,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13069,C00377,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13135,C00379,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13176,C00380,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13231,C00382,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13270,C00383,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13304,C00384,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13310,C00384,2026-10-19,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,13349,C00385,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13419,C00387,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13447,C00388,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13476,C00389,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13518,C00390,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13522,C00390,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,13565,C00391,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13592,C00392,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,13627,C00393,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13666,C00394,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13680,C00395,2026-10-15,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,13720,C00396,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13721,C00396,2026-10-19,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,13760,C00397,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13818,C00399,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13887,C00401,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,13967,C00404,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14038,C00406,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14110,C00408,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14148,C00409,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14178,C00410,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14203,C00411,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14258,C00413,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14295,C00414,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14354,C00416,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14396,C00418,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14492,C00420,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14517,C00421,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14551,C00422,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14598,C00423,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14662,C00425,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14667,C00425,2026-10-09,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,14708,C00426,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14749,C00428,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14796,C00429,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14800,C00429,2026-10-13,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,14848,C00430,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14877,C00431,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,14911,C00432,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15032,C00436,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15035,C00436,2026-10-19,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,15093,C00438,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15162,C00440,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15190,C00441,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15259,C00443,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15298,C00444,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,15366,C00446,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15394,C00447,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15433,C00448,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15457,C00449,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15499,C00450,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15547,C00451,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15595,C00452,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15644,C00453,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15686,C00454,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15715,C00455,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15717,C00455,2026-10-10,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,15757,C00456,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15804,C00457,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15836,C00458,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15877,C00459,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15925,C00461,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15967,C00462,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,15971,C00462,2026-10-14,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,16007,C00463,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16009,C00463,2026-10-12,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,16053,C00464,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16097,C00465,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16124,C00466,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16148,C00467,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16211,C00469,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16236,C00470,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16239,C00470,2026-10-13,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,16280,C00471,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16313,C00472,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16366,C00474,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16391,C00475,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16430,C00476,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16478,C00477,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16481,C00477,2026-10-11,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,16510,C00478,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16574,C00480,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16624,C00481,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16676,C00483,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16679,C00483,2026-10-19,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,16715,C00484,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16825,C00487,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16871,C00488,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,16931,C00490,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17002,C00492,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17095,C00495,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17163,C00497,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17214,C00498,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17273,C00500,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17319,C00501,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17397,C00503,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17436,C00504,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17502,C00506,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17548,C00507,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17597,C00509,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17642,C00510,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17677,C00511,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17702,C00512,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17747,C00513,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17751,C00513,2026-10-13,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,17796,C00514,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17917,C00517,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,17965,C00519,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18013,C00520,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18046,C00521,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18080,C00522,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18085,C00522,2026-10-18,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,18110,C00523,2026-10-09,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,18157,C00524,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18207,C00525,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18281,C00527,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18376,C00530,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18381,C00530,2026-10-20,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,18407,C00531,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18456,C00532,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18587,C00536,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18634,C00537,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18672,C00538,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18758,C00540,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18762,C00540,2026-10-12,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,18793,C00541,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18859,C00543,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18929,C00545,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,18977,C00546,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19032,C00548,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19071,C00549,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19107,C00550,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19132,C00551,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19176,C00552,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19220,C00553,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19268,C00554,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19297,C00555,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19349,C00556,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19383,C00557,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19427,C00558,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19553,C00562,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19651,C00565,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19695,C00566,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19746,C00567,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19801,C00569,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19849,C00570,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19920,C00572,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19955,C00573,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,19986,C00574,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20041,C00575,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20078,C00576,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20085,C00576,2026-10-17,fecha posterior al corte 2026-10-08,Transferencia fija tercero
+Movimientos,20125,C00577,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20149,C00578,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20231,C00581,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20275,C00582,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20309,C00583,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20351,C00584,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20377,C00585,2026-10-26,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20491,C00588,2026-10-28,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20559,C00590,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20605,C00591,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20651,C00592,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20684,C00593,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20736,C00594,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20774,C00595,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20834,C00597,2026-10-25,fecha posterior al corte 2026-10-08,Abono recurrente
+Movimientos,20867,C00598,2026-10-27,fecha posterior al corte 2026-10-08,Abono recurrente

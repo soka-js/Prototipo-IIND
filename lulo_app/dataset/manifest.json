@@ -1,0 +1,152 @@
+{
+  "fuente": {
+    "archivo": "Base_Datos_Reto_Universidad.xlsx",
+    "sha256": "5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c",
+    "bytes": 775551
+  },
+  "ingesta_version": "1.0.0",
+  "periodo": {
+    "inicio": "2025-11-01",
+    "corte": "2026-10-08"
+  },
+  "uso": "Académico / prototipado",
+  "restriccion": "No citar cifras como datos, métricas o benchmarks oficiales del banco.",
+  "filas": {
+    "clientes": 600,
+    "movimientos": 20473,
+    "pagos_seguros": 113,
+    "cajitas": 1708,
+    "uso_app": 600,
+    "seguros_mensual": 72,
+    "elegibilidad": 6,
+    "campanas_previas": 5,
+    "excluidos": 562
+  },
+  "chequeos": [
+    {
+      "pestana": "LEEME/Juridico_Entrega",
+      "chequeo": "fecha de corte",
+      "estado": "ok",
+      "detalle": "Periodo 2025-11-01 a 2026-10-08; ambas pestañas coinciden"
+    },
+    {
+      "pestana": "Clientes",
+      "chequeo": "conteo vs LEEME",
+      "estado": "ok",
+      "detalle": "600 filas; LEEME declara 600",
+      "conteo": 600
+    },
+    {
+      "pestana": "Movimientos",
+      "chequeo": "categoría ↔ MCC 1:1",
+      "estado": "ok",
+      "detalle": "cada categoría tiene un solo MCC"
+    },
+    {
+      "pestana": "Movimientos",
+      "chequeo": "créditos (ingresos) por categoría",
+      "estado": "ok",
+      "detalle": "Abono recurrente: 4656",
+      "conteo": 4656
+    },
+    {
+      "pestana": "Movimientos",
+      "chequeo": "fechas posteriores al corte",
+      "estado": "aviso",
+      "detalle": "444 movimientos después de 2026-10-08 excluidos (Abono recurrente: 388, Transferencia fija tercero: 56)",
+      "conteo": 444
+    },
+    {
+      "pestana": "Movimientos",
+      "chequeo": "combustible",
+      "estado": "aviso",
+      "detalle": "no existe categoría de combustible (MCC 5541/5542); la señal de vehículo solo cuenta con peajes y SOAT"
+    },
+    {
+      "pestana": "Pagos_Seguros",
+      "chequeo": "coincidencia con seguros_vigentes",
+      "estado": "aviso",
+      "detalle": "porcentaje de pagos cuyo ramo aparece en seguros_vigentes del cliente: Hogar 1/24 (4%), Mascotas 0/12 (0%), SOAT 12/50 (24%), Vida 0/27 (0%). Lectura propuesta: vigentes = con Lulo; pagos = con aseguradora externa."
+    },
+    {
+      "pestana": "Cajitas",
+      "chequeo": "fechas posteriores al corte",
+      "estado": "aviso",
+      "detalle": "118 abonos después de 2026-10-08 excluidos",
+      "conteo": 118
+    },
+    {
+      "pestana": "Cajitas",
+      "chequeo": "consistencia con Clientes.cajitas_activas",
+      "estado": "ok",
+      "detalle": "0 clientes con la bandera distinta a la tabla",
+      "conteo": 0
+    },
+    {
+      "pestana": "Uso_App",
+      "chequeo": "un registro por cliente",
+      "estado": "ok",
+      "detalle": "600 registros; faltan 0",
+      "conteo": 600
+    },
+    {
+      "pestana": "Uso_App",
+      "chequeo": "tope de contactos",
+      "estado": "ok",
+      "detalle": "max_contactos_mes: {4: 600}; 202 clientes ya enviaron ≥ tope en 30 días",
+      "conteo": 202
+    },
+    {
+      "pestana": "Seguros_Mensual",
+      "chequeo": "cobertura",
+      "estado": "ok",
+      "detalle": "12 meses (2025-11 a 2026-10) × 6 ramos",
+      "conteo": 72
+    },
+    {
+      "pestana": "Seguros_Mensual",
+      "chequeo": "persistencia vacía",
+      "estado": "aviso",
+      "detalle": "sin persistencia_12m: SOAT (12 meses), Viajes (12 meses)"
+    },
+    {
+      "pestana": "Elegibilidad",
+      "chequeo": "ramos",
+      "estado": "ok",
+      "detalle": "SOAT (18+, Cualquier ocupación), Vida (18-65, Cualquier ocupación), Desempleo (18-60, Empleado), Hogar (18+, Cualquier ocupación), Mascotas (18+, Cualquier ocupación), Viajes (18+, Cualquier ocupación)",
+      "conteo": 6
+    },
+    {
+      "pestana": "Elegibilidad",
+      "chequeo": "rangos de edad",
+      "estado": "aviso",
+      "detalle": "Clientes trae la edad en rangos; «56+» no se puede comparar con los topes de 60 (Desempleo) y 65 (Vida)"
+    },
+    {
+      "pestana": "Campanas_Previas",
+      "chequeo": "conversion_impactados",
+      "estado": "aviso",
+      "detalle": "5 de 5 filas: la columna es ventas/elegibles. Se conserva como «conversion_reportada» y se agregan los cocientes recalculados.",
+      "conteo": 5
+    },
+    {
+      "pestana": "Diccionario",
+      "chequeo": "campos documentados",
+      "estado": "aviso",
+      "detalle": "no existen en la pestaña: Clientes.saldo_promedio, Clientes.ingreso_mensual",
+      "conteo": 2
+    }
+  ],
+  "archivos": {
+    "cajitas.csv": "aeb9dd052600b3982fe6878ca98ba7e17561070f7b50a6ea73f0349f4432abe8",
+    "campanas_previas.csv": "c420677af9e729dfb86ad0be57a529cd579de5dbd98b791adc7e3bb0c6b67b62",
+    "clientes.csv": "daff0a2600596d377889aff48b5ecbeb7daad46130227b075fa2fe280dcf7483",
+    "elegibilidad.csv": "c30e87bcc581c7d76008cd5e827e132c49cce43cc8e0af9218fc8c6974c4f3d0",
+    "excluidos.csv": "a452ce7df40e70a48c2df2538b8319ec503646f62313541f588c4d42506f99e7",
+    "juridico.csv": "0dfe4a13c3c841760ff32b00f2e6a3b6af7805847a564b0f799957ee0e8efaff",
+    "movimientos.csv": "e79f995457ee87cc979398f9188d8bfcc84720d4d4b6a1cac3ab46dcc835740c",
+    "pagos_seguros.csv": "e81ab44851adaeb9d6b15c885d142fc6a4038335e653a1110751277771145ea2",
+    "seguros_mensual.csv": "cec0333872d3617e244d854d302249a0f5003de179ec990b0865ba6d3025e3fb",
+    "uso_app.csv": "7c35822c4ad5d7557343e0d3029a5bd1cc5dfb90c3cc014d2aedd53510fc3c29"
+  }
+}

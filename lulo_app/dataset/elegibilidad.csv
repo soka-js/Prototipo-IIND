@@ -1,0 +1,7 @@
+ramo,edad,ocupacion,requisito_simulado,periodicidad
+SOAT,18+,Cualquier ocupación,Vehículo asegurable; datos mínimos del vehículo,Anual
+Vida,18-65,Cualquier ocupación,Aceptación de declaración simplificada,Mensual
+Desempleo,18-60,Empleado,Antigüedad laboral simulada >= 6 meses,Mensual
+Hogar,18+,Cualquier ocupación,Dirección de inmueble en Colombia,Mensual
+Mascotas,18+,Cualquier ocupación,Mascota entre 3 meses y 9 años,Mensual
+Viajes,18+,Cualquier ocupación,Fecha de viaje futura,Por viaje
