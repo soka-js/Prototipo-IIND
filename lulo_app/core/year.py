@@ -19,6 +19,9 @@ from .text import MONTHS, MONTHS_LONG, cop, date_long, millions, num, plural
 
 THEMES = {"intro": "lime", "dinero": "navy", "ingreso": "ink", "carro": "lime", "viajes": "navy", "gente": "pink",
           "mascotas": "lime", "hogar": "navy", "credito": "navy", "gustos": "ink", "cierre": "lime"}
+OFFER_TITLES = {"Desempleo": "Si un mes no llega, que no se note", "Viajes": "Que el viaje sea solo de buenos recuerdos",
+                "Mascotas": "Que tu mascota también esté protegida", "Hogar": "Protege lo que estás construyendo",
+                "Vida": "Que quien depende de ti siga contando contigo"}
 DISCRETIONARY = {"Supermercados", "Restaurantes", "E-commerce", "Transporte", "Salud", "Otros", "Mascotas", "Hoteles",
                  "Aerolineas"}
 CATEGORY_NAME = {"Supermercados": "supermercados", "Restaurantes": "restaurantes", "E-commerce": "compras en línea",
@@ -58,7 +61,7 @@ def _protect(cand: dict | None, up: list[dict], exp_group: str | None) -> dict |
         return None
     if exp_group == "control":
         return {**base, "state": "control"}
-    return {**base, "state": "offer", "ev": cand["ev"]}
+    return {**base, "state": "offer", "ev": cand["ev"], "t": OFFER_TITLES.get(ramo, cand["title"])}
 
 
 def chapters(cid: str, ctx: Context | None = None) -> list[dict]:

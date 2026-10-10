@@ -169,5 +169,5 @@ def summary() -> list[dict]:
                     "ev_fuerte": round(p.expected_value("fuerte")) if p.expected_value("fuerte") is not None else None,
                     "age": f"{p.age_min}+" if p.age_max is None else f"{p.age_min}-{p.age_max}",
                     "occupations": p.occupations, "requirement": p.requirement, "source": p.source,
-                    "concept": p.concept})
+                    "concept": p.concept, "covers": list(p.covers), "icon": p.icon})
     return out

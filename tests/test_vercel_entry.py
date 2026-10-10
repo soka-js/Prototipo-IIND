@@ -13,6 +13,8 @@ def test_restores_original_path_and_query():
     assert r.status_code == 200 and len(r.json()["items"]) == 2
     home = client.get("/api/index", params={"__path": "/", "cliente": "valentina"})
     assert home.status_code == 200 and '"id": "valentina"' in home.text
+    old = client.get("/api/index", params={"__path": "/v2", "cliente": "andres"})
+    assert old.status_code == 200 and "/static/js/app.js" in old.text
 
 
 def test_post_through_rewrite():

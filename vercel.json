@@ -7,16 +7,38 @@
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index?__path=/$1" }
+    {
+      "source": "/(.*)",
+      "destination": "/api/index?__path=/$1"
+    }
   ],
   "headers": [
     {
+      "source": "/static/v3/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/static/(js|css)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/static/(img|fonts)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
     }
   ]
 }

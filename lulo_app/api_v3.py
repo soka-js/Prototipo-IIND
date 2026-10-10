@@ -77,11 +77,11 @@ def movement(cid: str, rid: str):
 
 
 @router.post("/clients/{cid}/evaluate")
-def evaluate(cid: str, ctx: engine.Context):
-    """Evalúa al cliente con el contexto de la sesión (modo lote o tiempo real)."""
+def evaluate(cid: str, ctx: engine.Context, focus: str | None = None):
+    """Evalúa al cliente con el contexto de la sesión. `focus` restringe la decisión a un ramo (siguiente ventana)."""
     _client(cid)
     try:
-        return engine.evaluate(cid, ctx)
+        return engine.evaluate(cid, ctx, focus=focus)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e)) from e
 

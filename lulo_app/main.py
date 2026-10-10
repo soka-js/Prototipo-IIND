@@ -25,7 +25,7 @@ from .year import chapters
 
 ROOT = Path(__file__).resolve().parent.parent
 STATIC_DIR = ROOT / "public" / "static"
-VERSION = "2.0.0"
+VERSION = "3.0.0"
 
 app = FastAPI(
     title="Prototipo Lulo Bank · Grupo 14",
@@ -48,19 +48,39 @@ def _persona(client_id: str):
 
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
-def index(request: Request, cliente: str = DEFAULT_ID):
+def index(request: Request, cliente: str = DEFAULT_ID, fecha: str | None = None):
+    """App v3: look real, motor real sobre la base del reto."""
+    from datetime import date
+    from .api_v3 import meta
+    from .core import view
+    from .core.store import store
+    if store().client(cliente) is None:
+        cliente = DEFAULT_ID
+    try:
+        as_of = date.fromisoformat(fecha) if fecha else None
+    except ValueError:
+        as_of = None
+    boot = {"version": VERSION, "meta": meta(), "personas": [view.client_card(p) for p in store().ids("persona")],
+            "current": view.bootstrap(cliente, as_of)}
+    data = json.dumps(boot, ensure_ascii=False).replace("</", "<\\/")
+    return templates.TemplateResponse(request, "app.html", {"bootstrap": data, "version": VERSION})
+
+
+@app.get("/v2", response_class=HTMLResponse, include_in_schema=False)
+def index_v2(request: Request, cliente: str = DEFAULT_ID):
+    """La versión que vio el cliente (2026-10-07), intacta."""
     if get(cliente) is None:
         cliente = DEFAULT_ID
-    boot = {"version": VERSION, "clients": cl.clients(), "current": cl.bootstrap(cliente)}
+    boot = {"version": "2.0.0", "clients": cl.clients(), "current": cl.bootstrap(cliente)}
     data = json.dumps(boot, ensure_ascii=False).replace("</", "<\\/")
-    return templates.TemplateResponse(request, "index.html", {"bootstrap": data, "version": VERSION})
+    return templates.TemplateResponse(request, "index.html", {"bootstrap": data, "version": "2.0.0"})
 
 
 @app.get("/manifest.webmanifest", include_in_schema=False)
 def manifest():
     return Response(content=json.dumps({
-        "name": "Tu año en Lulo · Prototipo Grupo 14", "short_name": "Lulo Demo", "lang": "es-CO",
-        "start_url": "/", "display": "standalone", "background_color": "#1F2739", "theme_color": "#1F2739",
+        "name": "Prototipo Lulo Bank · Grupo 14", "short_name": "Lulo Demo", "lang": "es-CO",
+        "start_url": "/", "display": "standalone", "background_color": "#202539", "theme_color": "#202539",
         "icons": [{"src": "/static/img/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "/static/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}],
     }, ensure_ascii=False), media_type="application/manifest+json")
