@@ -15,6 +15,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from . import clients as cl
+from .api_v3 import router as v3_router
 from .catalog import soat_quote
 from .engine import EngineResult, EventRequest, UnknownClient, handle_event
 from .report import LoggedResponse, metrics, to_csv
@@ -32,6 +33,7 @@ app = FastAPI(
     version=VERSION,
 )
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+app.include_router(v3_router)
 
 # En Vercel la CDN sirve public/ antes de llegar a la función; en local lo sirve FastAPI.
 if STATIC_DIR.is_dir():

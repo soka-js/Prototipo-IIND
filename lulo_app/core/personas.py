@@ -72,9 +72,9 @@ def translate(p: simulator.Persona, cutoff: date) -> History:
             continue
         if t["cat"] == "nomina":
             # Solo el abono mensual del empleador es ingreso recurrente; la prima es un ingreso ocasional.
-            cat, mcc = ("Abono recurrente", "0") if t["n"].startswith("Nómina") else ("Ingreso ocasional", "")
+            cat, mcc = ("Abono recurrente", "0000") if t["n"].startswith("Nómina") else ("Ingreso ocasional", "")
         elif t.get("tag") == "vida" and t["a"] < 0:
-            cat, mcc = "Transferencia fija tercero", "1"
+            cat, mcc = "Transferencia fija tercero", "0001"
         else:
             cat, mcc = _CAT[t["cat"]]
         movs.append(Movement(id=t["id"], client_id=p.id, date=d, amount=t["a"], channel=_channel(t["ch"]),

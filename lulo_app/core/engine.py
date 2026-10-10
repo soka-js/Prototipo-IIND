@@ -109,8 +109,8 @@ EVENT_TYPES: dict[str, dict] = {
                    "label": "Desembolso de Lulo Crédito"},
     "cuota": {"category": "Cuota crédito", "sign": -1, "ramo": None, "label": "Pago de cuota"},
 }
-MCC = {"Aerolineas": "4511", "Hoteles": "7011", "Mascotas": "5995", "Peajes": "4784", "Abono recurrente": "0",
-       "Transferencia fija tercero": "1"}
+MCC = {"Aerolineas": "4511", "Hoteles": "7011", "Mascotas": "5995", "Peajes": "4784", "Abono recurrente": "0000",
+       "Transferencia fija tercero": "0001"}
 
 
 class Event(BaseModel):
@@ -459,13 +459,14 @@ def upcoming(cid: str, ctx: Context | None = None) -> list[dict]:
         when = _add_months(f.income_last, missing)
         out.append({"ramo": "Desempleo", "date": when.isoformat(), "days": (when - as_of).days,
                     "title": "Seguro de desempleo", "missing": missing,
+                    "missing_label": plural(missing, "abono", "abonos"),
                     "reason": f"Lleva {f.income_streak} de {rules.DESEMPLEO_MIN_STREAK} abonos seguidos; con "
                               f"{plural(missing, 'abono más', 'abonos más')} acredita la antigüedad laboral"})
     if 0 < f.fixed_months < rules.VIDA_MIN_MONTHS and not c.holds("Vida") and "Vida" not in ctx.accepted:
         missing = rules.VIDA_MIN_MONTHS - f.fixed_months
         when = _add_months(f.fixed_last, missing)
         out.append({"ramo": "Vida", "date": when.isoformat(), "days": (when - as_of).days, "title": "Seguro de vida",
-                    "missing": missing, "reason": f"Lleva {f.fixed_months} de {rules.VIDA_MIN_MONTHS} meses con "
+                    "missing": missing, "missing_label": plural(missing, "mes", "meses"), "reason": f"Lleva {f.fixed_months} de {rules.VIDA_MIN_MONTHS} meses con "
                                                   f"transferencias fijas"})
     for e in f.external:
         if e["status"] == "vigente" and e["ramo"] != "SOAT" and not c.holds(e["ramo"]):
