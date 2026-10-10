@@ -245,14 +245,17 @@ def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, a
     elif cool:
         status, reason = "cooldown", f"Se le mostró el {date_long(cool[-1].date, False)}; espera {rules.COOLDOWN_DAYS} días"
     ev = p.expected_value(sig.strength) if sig.actionable else None
+    deadline = sig.kind == "momento" or (renewal and sig.metrics.get("days") is not None)
     return {"ramo": sig.ramo, "title": p.title, "partner": p.partner, "price": p.price_label(), "status": status,
             "reason": reason, "strength": sig.strength, "kind": sig.kind,
-            "ev": round(ev) if ev is not None else None, "momento": sig.kind == "momento",
+            "ev": round(ev) if ev is not None else None, "momento": sig.kind == "momento", "deadline": deadline,
             "eligibility": el.to_dict(), "signal": sig.to_dict()}
 
 
 def _rank_key(c: dict) -> tuple:
-    return (0 if c["momento"] else 1, -(c["ev"] or 0), rules.TIEBREAK.index(c["ramo"]))
+    """Fecha límite primero (v1.1), luego valor esperado, luego el orden fijo de desempate."""
+    first = c["deadline"] if rules.DEADLINE_FIRST else c["momento"]
+    return (0 if first else 1, -(c["ev"] or 0), rules.TIEBREAK.index(c["ramo"]))
 
 
 def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
@@ -305,13 +308,14 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     p = product(top["ramo"])
     decision = {"ramo": top["ramo"], "title": p.title, "partner": p.partner, "price": p.price_label(),
                 "covers": list(p.covers), "concept": p.concept, "kind": top["kind"], "strength": top["strength"],
-                "ev": top["ev"], "why": why(sig, f), "notif": notification(sig, p),
+                "ev": top["ev"], "deadline": top["deadline"], "why": why(sig, f), "notif": notification(sig, p),
                 "prio": [x["ramo"] for x in offer].index(top["ramo"]) + 1}
     if top["ramo"] == "SOAT":
         decision["soat"] = {"expiry": sig.metrics.get("expiry"), "days": sig.metrics.get("days"),
                             "source": sig.metrics.get("source"), "price": f.soat_price or p.premium}
     steps.append({"step": "decidir", "ok": True,
-                  "detail": f"{p.title}: señal {top['strength']}, elegible, valor esperado "
+                  "detail": f"{p.title}: señal {top['strength']}, elegible, "
+                            + ("con fecha límite, " if top["deadline"] else "") + "valor esperado "
                             + (f"{cop(top['ev'])}" if top["ev"] is not None else "n/d (momento único)")})
 
     exp = experiment.group(cid, c.source, ctx.control)
@@ -323,15 +327,16 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
         steps.append({"step": "preferencias", "ok": False, "detail": "El cliente apagó las sugerencias de seguros"})
         return _final(base, "optout", steps, f, sigs, cands, decision, ctx, exp, None, top)
 
-    pushes = [o.date for o in ctx.history if o.channel == "push" and o.result != "control"]
+    pushes = sorted(o.date for o in ctx.history if o.channel == "push" and o.result != "control" and o.date <= as_of)
     valid = contact.usage_snapshot_valid(as_of, s.cutoff)
     snap = c.usage.notifs_sent_30d if valid else 0
-    ch = contact.choose(c.usage, snap + contact.contacts_in_window(pushes, as_of), ctx.mode, valid)
+    ch = contact.choose(c.usage, snap + contact.contacts_in_window(pushes, as_of), ctx.mode, valid,
+                        (as_of - pushes[-1]).days if pushes else None)
     steps.append({"step": "canal", "ok": True, "detail": f"{'Push' if ch.channel == 'push' else 'Banner pasivo'}: {ch.reason}"
                   + (" (uso de la app supuesto)" if c.usage.assumed else "")})
     if ctx.mode == "tiempo_real" and ctx.window is not None:
         queue = [q for q in ctx.queue if q.get("ramo") != decision["ramo"]] + [decision]
-        queue.sort(key=lambda d: (0 if d.get("kind") == "momento" else 1, -(d.get("ev") or 0)))
+        queue.sort(key=lambda d: (0 if d.get("deadline") else 1, -(d.get("ev") or 0)))
         steps.append({"step": "ventana", "ok": False, "detail": f"Ventana ocupada por {ctx.window.get('title', 'otra oferta')}"})
         out = _final(base, "queued", steps, f, sigs, cands, decision, ctx, exp, ch, top)
         out["queue"] = queue
@@ -419,3 +424,53 @@ def summarize(rows: list[dict]) -> dict:
             "ev_total": round(sum(r["ev"] or 0 for r in shown)),
             "reasons_banner": dict(Counter((r["channel_reason"] or "").split(":")[0] for r in shown
                                            if r["outcome"] == "banner").most_common())}
+
+
+# --------------------------------------------------------------------------- próximos disparos
+def _add_months(d: date, n: int) -> date:
+    y, m = divmod(d.month - 1 + n, 12)
+    y, m = d.year + y, m + 1
+    for day in (d.day, 30, 29, 28):
+        try:
+            return date(y, m, day)
+        except ValueError:
+            continue
+    raise ValueError(d)
+
+
+def upcoming(cid: str, ctx: Context | None = None) -> list[dict]:
+    """Disparos que el motor ya sabe que vendrán, con fecha y razón (el motor también agenda)."""
+    ctx = ctx or Context()
+    s = store()
+    h0 = _history(cid)
+    as_of = ctx.as_of or s.cutoff
+    h = _overlay(h0, ctx, as_of)
+    c = h.client
+    f = compute(h, as_of, s.cutoff)
+    out = []
+    if f.soat_expiry and f.soat_days is not None and f.soat_days > ctx.alert_days and "SOAT" not in ctx.renewed:
+        when = date.fromordinal(f.soat_expiry.toordinal() - ctx.alert_days)
+        out.append({"ramo": "SOAT", "date": when.isoformat(), "days": (when - as_of).days,
+                    "title": "Recordatorio de renovación del SOAT",
+                    "reason": f"Vence el {date_long(f.soat_expiry)}; el aviso sale {ctx.alert_days} días antes"})
+    if (c.occupation == "Empleado" and not c.holds("Desempleo") and "Desempleo" not in ctx.accepted
+            and f.income_current and 0 < f.income_streak < rules.DESEMPLEO_MIN_STREAK):
+        missing = rules.DESEMPLEO_MIN_STREAK - f.income_streak
+        when = _add_months(f.income_last, missing)
+        out.append({"ramo": "Desempleo", "date": when.isoformat(), "days": (when - as_of).days,
+                    "title": "Seguro de desempleo", "missing": missing,
+                    "reason": f"Lleva {f.income_streak} de {rules.DESEMPLEO_MIN_STREAK} abonos seguidos; con "
+                              f"{plural(missing, 'abono más', 'abonos más')} acredita la antigüedad laboral"})
+    if 0 < f.fixed_months < rules.VIDA_MIN_MONTHS and not c.holds("Vida") and "Vida" not in ctx.accepted:
+        missing = rules.VIDA_MIN_MONTHS - f.fixed_months
+        when = _add_months(f.fixed_last, missing)
+        out.append({"ramo": "Vida", "date": when.isoformat(), "days": (when - as_of).days, "title": "Seguro de vida",
+                    "missing": missing, "reason": f"Lleva {f.fixed_months} de {rules.VIDA_MIN_MONTHS} meses con "
+                                                  f"transferencias fijas"})
+    for e in f.external:
+        if e["status"] == "vigente" and e["ramo"] != "SOAT" and not c.holds(e["ramo"]):
+            when = date.fromisoformat(e["expires_on"])
+            out.append({"ramo": e["ramo"], "date": when.isoformat(), "days": (when - as_of).days,
+                        "title": f"Seguro de {e['ramo'].lower()}",
+                        "reason": "Vence su póliza con otra aseguradora: desde ese día cuenta como interés"})
+    return sorted(out, key=lambda x: x["date"])

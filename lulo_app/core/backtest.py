@@ -11,6 +11,7 @@ Invariantes que deben dar cero violaciones:
   · nadie recibe un ramo para el que no es elegible
   · el grupo de control nunca ve una oferta
   · el mismo ramo no se repite antes de la espera
+  · entre dos push al mismo cliente pasan al menos MIN_DAYS_BETWEEN_PUSH días
 """
 
 from __future__ import annotations
@@ -66,6 +67,9 @@ def run(start: date | None = None, end: date | None = None, every: int = 7, incl
     for cid, led in ledgers.items():
         pushes = sorted(o.date for o in led if o.channel == "push")
         cap = s.client(cid).usage.max_contacts_month
+        for a, b in zip(pushes, pushes[1:]):
+            if (b - a).days < rules.MIN_DAYS_BETWEEN_PUSH:
+                violations.append(f"{cid}: dos push con {(b - a).days} días de diferencia")
         for i, d0 in enumerate(pushes):
             n = sum(1 for d in pushes[i:] if d < d0 + timedelta(days=30))
             max_push = max(max_push, n)

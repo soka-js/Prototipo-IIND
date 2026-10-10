@@ -152,6 +152,23 @@ def test_contact_cap_moves_to_banner():
     assert r["outcome"] == "banner" and "Tope de contactos" in r["evaluation"]["channel"]["reason"]
 
 
+def test_deadline_first_and_push_spacing():
+    # v1.1: el SOAT de Andrés vence en 9 días y gana la ventana aunque Vida tenga más valor esperado.
+    r = evaluate("andres", Context(mode="lote"))
+    assert r["decision"]["ramo"] == "SOAT" and r["decision"]["deadline"]
+    assert cand(r, "Vida")["ev"] > cand(r, "SOAT")["ev"]
+    # Un push hace 3 días: el siguiente va como banner aunque queden contactos.
+    recent = Context(history=[OfferLog(ramo="Viajes", date=date(2026, 10, 5), result="mostrada", channel="push")])
+    out = on_event("sebastian", Event(type="transferencia_fija", amount=450_000), recent)
+    assert out["outcome"] == "banner" and "Espaciado" in out["evaluation"]["channel"]["reason"]
+
+
+def test_upcoming_triggers():
+    seb = engine.upcoming("sebastian")
+    assert seb[0]["ramo"] == "Desempleo" and seb[0]["missing"] == 3
+    assert engine.upcoming("andres") == []                      # SOAT dentro de la ventana: ya es un disparo de hoy
+
+
 def test_renewed_soat_is_not_offered_again():
     assert cand(evaluate("andres", Context(mode="lote", renewed=["SOAT"])), "SOAT")["status"] == "has"
 

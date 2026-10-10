@@ -11,8 +11,12 @@ Origen de cada parámetro:
 
 from __future__ import annotations
 
-VERSION = "v1"
+VERSION = "v1.1"
 APPROVED_ON = "2026-10-10"
+CHANGELOG = {
+    "v1": "Umbrales de la tabla de cobertura, valor esperado, control 10 %, banner al tope, 56+ excluido.",
+    "v1.1": "Ofertas con fecha límite primero; mínimo 7 días entre push.",
+}
 
 # Ventana de historia que leen las señales.
 LOOKBACK_DAYS = 365
@@ -56,6 +60,12 @@ HOGAR_PRIOR_RULE = "min"
 FATIGUE_MIN_IGNORED = 3             # ignoradas ≥ 3 y ≥ 2 × abiertas → banner [aprobado]
 FATIGUE_RATIO = 2
 REALTIME_LATENCIES = ("<1 min", "1-5 min", "5-30 min")   # «Mismo día» no sirve para disparo inmediato [base]
+
+# Mínimo de días entre dos push al mismo cliente; antes de eso, la oferta va como banner. [aprobado v1.1]
+MIN_DAYS_BETWEEN_PUSH = 7
+
+# Ofertas con fecha límite (SOAT por vencer y desembolso) ganan la ventana antes que el valor esperado. [aprobado v1.1]
+DEADLINE_FIRST = True
 
 # Una oferta mostrada o rechazada no se repite antes de 30 días. [aprobado]
 COOLDOWN_DAYS = 30

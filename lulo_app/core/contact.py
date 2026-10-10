@@ -31,11 +31,17 @@ def contacts_in_window(contact_dates: list[date], as_of: date) -> int:
     return sum(1 for d in contact_dates if as_of - timedelta(days=30) < d <= as_of)
 
 
-def choose(usage: AppUsage, contacts_30d: int, mode: str, snapshot_valid: bool = True) -> Channel:
-    """`snapshot_valid`: la fatiga sale de Uso_App, que solo describe los 30 días previos al corte."""
+def choose(usage: AppUsage, contacts_30d: int, mode: str, snapshot_valid: bool = True,
+           days_since_push: int | None = None) -> Channel:
+    """`snapshot_valid`: la fatiga sale de Uso_App, que solo describe los 30 días previos al corte.
+    `days_since_push`: días desde el último push que registró el motor (None si no hay)."""
     cap = usage.max_contacts_month
     if contacts_30d >= cap:
         return Channel("banner", f"Tope de contactos: {contacts_30d} de {cap} en 30 días", contacts_30d, cap)
+    if days_since_push is not None and days_since_push < rules.MIN_DAYS_BETWEEN_PUSH:
+        return Channel("banner", f"Espaciado: el último push fue hace {days_since_push} "
+                                 f"{'día' if days_since_push == 1 else 'días'} (mínimo {rules.MIN_DAYS_BETWEEN_PUSH})",
+                       contacts_30d, cap)
     if snapshot_valid and usage.ignored_30d >= rules.FATIGUE_MIN_IGNORED \
             and usage.ignored_30d >= rules.FATIGUE_RATIO * usage.opened_30d:
         return Channel("banner", f"Fatiga: ignoró {usage.ignored_30d} de {usage.notifs_sent_30d} notificaciones",
