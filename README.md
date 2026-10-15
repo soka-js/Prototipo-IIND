@@ -24,6 +24,10 @@
 - **Base del reto validada** (`scripts/ingest_reto.py`): lo posterior al corte (444 movimientos y 118 abonos) se excluye con su razón; `conversion_impactados` es en realidad ventas/elegibles y se recalcula; todo queda en `lulo_app/dataset/manifest.json` y `CALIDAD.md`.
 - **Backtest**: recorre el año y verifica las invariantes (tope, autorización, elegibilidad, control, espera y espaciado). Resultado: 0 violaciones.
 
+## Cómo colaborar
+
+Antes de tocar el código, lee [`CLAUDE.md`](CLAUDE.md): define el modelo de Claude permitido, qué se puede hacer sin consultar, qué cambios hay que consultar con SOKA y cómo se documentan. Todo cambio se anota en [`CAMBIOS.md`](CAMBIOS.md). Se trabaja en ramas `feat/<nombre>-<tema>` desde `v3`, con pull request hacia `v3`; nunca se hace push a `main` (producción) ni a `v2-cliente`.
+
 ## Correr en local
 
 Se necesita Python 3.12 o superior.
