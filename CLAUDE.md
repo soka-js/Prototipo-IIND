@@ -30,7 +30,7 @@ Un cambio es **grande** si cumple al menos una de estas condiciones (si dudas, e
 - cambia cifras que ve el cliente en la app o en la presentación;
 - toca la autorización de datos (Ley 1581), la política de contacto (Ley 2300), el grupo de control o el registro;
 - agrega dependencias, frameworks, bases de datos o servicios externos;
-- toca el despliegue: `vercel.json`, `api/index.py`, `requirements*.txt`, las ramas `main` o `v2-cliente`;
+- toca el despliegue: `vercel.json`, `api/index.py`, `requirements*.txt`, o las ramas `main`, `backup-main` o `v2-cliente`;
 - reescribe un módulo completo o mueve archivos entre carpetas.
 
 Para un cambio grande: escribe la propuesta (qué, por qué, archivos afectados, riesgos y cómo se verificaría), **detente** y pide al usuario que la consulte con SOKA. Solo se implementa con su aprobación explícita, y esa aprobación se anota en `CAMBIOS.md`.
@@ -61,12 +61,14 @@ Todo cambio, por pequeño que sea, deja rastro:
 
 | Etapa | Estado |
 |---|---|
-| E0 Red de seguridad (rama congelada `v2-cliente`, rama de trabajo `v3`, Previews de Vercel) | Hecha |
+| E0 Red de seguridad (ramas congeladas `v2-cliente` y `backup-main`, Previews de Vercel) | Hecha |
 | E1 Ingesta y validación de la base | Hecha |
 | E2 Motor v3 sobre el esquema canónico; reglas v1.1 | Hecha |
 | E3 API v3 y Tu año calculado con el motor | Hecha |
 | E4 y E5 Frontend con el look real y panel | Hechas |
-| E6 Paso a producción (merge de `v3` a `main`) | **Pendiente: solo la hace SOKA** |
+| E6 Paso a producción (merge de `v3` a `main`) | Hecha el 2026-10-14 por decisión de SOKA |
+
+Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
 Decisiones aprobadas por SOKA (no se reabren sin consultarle):
 - La base va dentro del repo, aunque el repo es público.
@@ -86,10 +88,12 @@ Límites conocidos (cambiarlos es un cambio grande):
 
 ## 7. Git y despliegue
 
-- **Nunca hagas push a `main` ni a `v2-cliente`**: `main` es producción en Vercel y `v2-cliente` es la copia congelada de lo que vio el cliente.
-- Trabaja en una rama `feat/<tu-nombre>-<tema>` creada desde `v3` y abre un pull request hacia `v3`. SOKA revisa y aprueba.
+- **`main` es producción**: cada merge a `main` publica la app en https://prototipo-iind.vercel.app. Nunca hagas push directo a `main`.
+- **`backup-main` y `v2-cliente` están congeladas** en `04f1b26`, la versión que vio el cliente. No se tocan nunca.
+- Trabaja en una rama `feat/<tu-nombre>-<tema>` creada desde `main` actualizado (`git switch main && git pull && git switch -c feat/...`) y abre un pull request hacia `main`. SOKA revisa y aprueba el merge.
+- Cada push a tu rama crea un Preview en Vercel: revísalo antes de pedir el merge.
 - Nada de `push --force`, `reset --hard` sobre ramas compartidas ni reescribir la historia.
-- Cada push crea un Preview en Vercel; producción solo cambia cuando SOKA hace el merge a `main`.
+- La rama `v3` quedó como historial de la construcción; no se trabaja en ella.
 
 ## 8. Cómo correr y verificar
 

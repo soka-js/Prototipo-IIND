@@ -1,6 +1,6 @@
 # Prototipo Lulo Bank · Grupo 14 · Reto 19
 
-**🔗 App en línea: https://prototipo-iind.vercel.app** · versión que vio el cliente: [`/v2`](https://prototipo-iind.vercel.app/v2)
+**🔗 App en línea: https://prototipo-iind.vercel.app** · versión que vio el cliente: [`/v2`](https://prototipo-iind.vercel.app/v2) y rama `backup-main`
 
 **Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank.** Prototipo académico con datos simulados: una app con el look de la app real y un **motor de disparadores que corre de verdad** sobre la base sintética del reto (600 clientes, 20.473 movimientos) y sobre los tres personajes de la presentación.
 
@@ -10,7 +10,7 @@
 | **Presente**: Motor de disparadores | Lee lo que el cliente hace (nómina, transferencia fija, bolsillo, aerolínea, mascotas, peaje, desembolso), decide qué ofrecer, por qué canal y cuándo, y registra la respuesta. |
 | **Futuro**: SOAT y disparos agendados | Flujo real del SOAT con Seguros Mundial, captura de canal para SOAT externos y disparos agendados (desempleo al sexto abono, vida al tercer mes). |
 
-## Versión 3 (rama `v3`)
+## Versión 3 (en `main` desde el 2026-10-14)
 
 - **Look de la app real**: Home · Explora · (+) · Tu año · Protección; Explora con Ahorro, Inversión, Crédito y Seguros; Alertas, Ayuda, mapa de cajeros, Lulo Cuenta y el flujo real del SOAT. Colores tomados de capturas de la app.
 - **Motor real** (`lulo_app/core`), reglas versionadas `v1.1`:
@@ -26,7 +26,7 @@
 
 ## Cómo colaborar
 
-Antes de tocar el código, lee [`CLAUDE.md`](CLAUDE.md): define el modelo de Claude permitido, qué se puede hacer sin consultar, qué cambios hay que consultar con SOKA y cómo se documentan. Todo cambio se anota en [`CAMBIOS.md`](CAMBIOS.md). Se trabaja en ramas `feat/<nombre>-<tema>` desde `v3`, con pull request hacia `v3`; nunca se hace push a `main` (producción) ni a `v2-cliente`.
+Antes de tocar el código, lee [`CLAUDE.md`](CLAUDE.md): define el modelo de Claude permitido, qué se puede hacer sin consultar, qué cambios hay que consultar con SOKA y cómo se documentan. Todo cambio se anota en [`CAMBIOS.md`](CAMBIOS.md). Se trabaja en ramas `feat/<nombre>-<tema>` creadas desde `main`, con pull request hacia `main` que aprueba SOKA. Nunca se hace push directo a `main` (es producción) ni a las ramas congeladas `backup-main` y `v2-cliente`.
 
 ## Correr en local
 
@@ -54,8 +54,8 @@ python scripts/ingest_reto.py                    # vuelve a ingerir el Excel (da
 ## Volver a la versión del cliente
 
 - La versión que vio el cliente sigue en `/v2` dentro de esta misma app.
-- La rama `v2-cliente` congela el commit `04f1b26`, que es el que está en producción.
-- En Vercel, el despliegue de producción anterior se puede volver a promover con *Instant Rollback*.
+- Las ramas `backup-main` y `v2-cliente` congelan el commit `04f1b26`, que estuvo en producción hasta el 2026-10-14.
+- En Vercel, ese despliegue de producción se puede volver a promover con *Instant Rollback* (URL fija: `prototipo-iind-4q3q7hpqv-proyects-soka.vercel.app`).
 
 ## Estructura
 

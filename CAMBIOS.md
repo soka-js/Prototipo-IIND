@@ -17,6 +17,15 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-14 · Claude con SOKA · rama main · versión 3 en producción
+- Qué cambió: la versión 3 pasó a `main` (avance rápido desde `04f1b26`, sin reescribir historia) y quedó en producción en https://prototipo-iind.vercel.app. Antes se creó la rama `backup-main` en `04f1b26`, el `main` anterior, que queda congelada junto con `v2-cliente`. `CLAUDE.md`, `README.md` y `.claude/settings.json` se ajustaron al nuevo flujo: ramas `feat/<nombre>-<tema>` desde `main` y pull request hacia `main` que aprueba SOKA. Además, se bloquea el push a `backup-main`.
+- Por qué: SOKA pidió que todo el equipo trabaje sobre la versión más completa y que las reglas de colaboración estén en `main`.
+- Archivos: `CLAUDE.md` (secciones 3, 6 y 7), `README.md`, `.claude/settings.json`, `CAMBIOS.md`.
+- Cómo se verificó: `python -m pytest` → 58 passed; `python -m lulo_app.core backtest` → 0 violaciones; `04f1b26` es ancestro de la rama `v3` (avance rápido posible); el Preview de Vercel del commit quedó en `success` antes de mover `main`.
+- Consultado con SOKA: sí, lo pidió el 2026-10-14.
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-14 · Claude con SOKA · rama v3 · commit 5c928da
 - Qué cambió: reglas de colaboración para compartir el repo con el equipo. `CLAUDE.md` con el modelo permitido, el alcance, qué es un cambio grande, la documentación obligatoria, las invariantes, el plan y el flujo de git. Además `.claude/settings.json`, que fija el modelo `best` y bloquea push a `main` y `v2-cliente`, push forzado y la edición manual de la base. También este registro, `.github/CODEOWNERS` y la plantilla de pull request.
 - Por qué: SOKA va a compartir el repo con compañeros y pidió que sus instancias de Claude sigan solo lo planeado, usen el modelo más capaz, consulten los cambios grandes y documenten todo.
