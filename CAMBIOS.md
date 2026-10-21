@@ -17,7 +17,7 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
-## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commits 527da5e, ac41307 y el de documentación · reglas v2.0
+## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commits 527da5e, ac41307 y 3cbeb29 · reglas v2.0
 - Qué cambió:
   - (0) A pedido de SOKA se creó y se hizo merge del pull request soka-js/Prototipo-IIND#1 (`feat/equipo-modelos-v1.3` → `main`, commit d9c95e6) con 72 passed, backtest con 0 violaciones, `--check` y el Preview de Vercel en `success`.
   - (1) **Motor bayesiano (reglas v2.0).** El valor esperado pasa a ser P(acepta | ve) × comisión a 12 meses. P sale de una regresión probit bayesiana con actualización en línea (`lulo_app/ml/bayes.py`, `lulo_app/ml/motor.py`). Sus creencias previas vienen de la base: la conversión de cada ramo, con un Beta-Binomial jerárquico con Bayes completo sobre Campanas_Previas; el efecto del momento (el evento pasó hace menos de 30 días), con una serie de casos autocontrolada sobre las 113 compras externas de Pagos_Seguros, jerárquica por ramo y con la exposición medida para no inflar el promedio; y la señal media (× 0,6 con duda). 38 rasgos se descubren de los datos (`lulo_app/ml/rasgos.py`), empiezan con peso 0 y la duda total se reparte entre todos (0,45/√D). El motor aprende el apetito del cliente con las respuestas de la sesión y explora con muestreo de Thompson en el 10 % del tratamiento (buckets 10 a 19; el control no cambia). Las compuertas de v1.3 no cambian. `MOTOR = "regla"` (o `Context.motor`) reproduce v1.3, y cada evaluación dice qué habría elegido la regla.
