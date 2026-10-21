@@ -119,23 +119,37 @@ def test_guided_tour_runs_to_the_end_and_leaves_the_scenarios_open(base, browser
     ctx.close()
 
 
-def test_automatic_tour_plays_by_itself_and_can_pause(base, browser, tmp_path):
-    """Opción automática: nadie toca el teléfono; se puede pausar y seguir (?ritmo=0.1 lo acelera para la prueba)."""
+def test_automatic_tour_is_the_prototype_explaining_itself(base, browser, tmp_path):
+    """Recorrido automático como un video: un cursor usa la app de verdad, con subtítulos y globos; se pausa, se
+    cambia de capítulo y termina solo (?ritmo=0.1 lo acelera para la prueba)."""
     ctx, page, errors = _page(browser, viewport={"width": 1440, "height": 900})
     page.goto(base + "?ritmo=0.1", wait_until="networkidle")
     page.click('[data-w="auto"]')
-    page.wait_for_selector('#guide [data-tour="pause"]')
-    page.click('#guide [data-tour="pause"]')
-    n = _step(page)
-    page.wait_for_timeout(2000)                                   # a este ritmo un paso dura menos de 1 s
-    assert _step(page) == n and "En pausa" in page.inner_text("#guide .tour-hint")
-    page.click('#guide [data-tour="resume"]')
-    page.wait_for_selector("#guide .scen", timeout=120000)        # llega solo al final y abre los escenarios
-    with page.expect_download() as dl:
+    page.wait_for_selector("body.filming #fSubs:not(:empty)")
+    assert page.locator(".f-tag").is_visible()                    # la etiqueta del prototipo sigue a la vista
+    page.click('[data-f="toggle"]')                               # pausa: el subtítulo no cambia
+    sub = page.inner_text("#fSubs")
+    page.wait_for_timeout(2000)
+    assert page.inner_text("#fSubs") == sub and page.locator("#film.paused").count() == 1
+    page.click('[data-f="toggle"]')
+    page.wait_for_selector(".f-end", timeout=150000)              # llega solo al final, con los clics del cursor
+    assert page.locator("#fChaps button.done").count() == 11
+    page.click('.f-end [data-f="scen"]')                          # al salir, los escenarios rápidos
+    page.wait_for_selector("#guide .scen")
+    assert page.locator("body.filming").count() == 0
+    with page.expect_download() as dl:                            # el cursor aceptó Vida en la app: queda en el CSV
         page.click("#csvBtn")
     f = tmp_path / "respuestas.csv"
     dl.value.save_as(f)
     assert "sebastian,2026-10-08,Vida,push,aceptada,tratamiento," in f.read_text(encoding="utf-8")
+    # desde el recorrido paso a paso se puede pasar a la película y volver
+    page.click('header [data-tour="start"]')
+    page.wait_for_selector('#guide .tour-card[aria-busy="false"]')
+    page.click("#guide [data-film]")
+    page.wait_for_selector("body.filming")
+    page.click('[data-f="manual"]')
+    page.wait_for_selector("#guide .tour-card")
+    assert page.locator("body.filming").count() == 0
     assert not errors
     ctx.close()
 

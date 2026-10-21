@@ -104,7 +104,7 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
   - Descarga de respuestas en el formato de datos reales.
   - Pruebas de punta a punta con Playwright (dependencia de desarrollo).
   - Resumen de una página para la entrega.
-  - Recorrido automático como opción: se reproduce solo, sin que el cliente toque nada, y se puede pausar. Paso a paso sigue igual.
+  - Recorrido automático como opción, en forma de video: el prototipo se explica solo. Un cursor usa la app de verdad, con subtítulos y globos junto a lo nuevo; se pausa y se cambia de capítulo (`film.js`). Paso a paso sigue igual.
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
@@ -162,7 +162,8 @@ lulo_app/main.py           / (v3), /v2 (versión del cliente), API v2
 lulo_app/templates/app.html   página v3   ·   index.html   página v2 (no tocar)
 public/static/v3/          app v3: app.js (estado, flujos, guía y escenarios), screens.js (pantallas),
                            console.js (consola de Lulo: en vivo, campaña, piloto y clientes),
-                           content.js (lo nuevo), tour.js (recorrido), aprende.js (probabilidad por pasos y
+                           content.js (lo nuevo), tour.js (recorrido paso a paso), film.js (recorrido
+                           automático como video: cursor, subtítulos y globos), aprende.js (probabilidad por pasos y
                            decisión en lenguaje claro), icons.js, util.js, app.css
 tests/                     ingesta, motor, API v2 y v3, entrada de Vercel, de punta a punta (test_e2e.py)
 CAMBIOS.md                 registro obligatorio de cambios

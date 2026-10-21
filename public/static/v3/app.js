@@ -7,6 +7,7 @@ import { NEW, NEW_LIST } from "./content.js";
 import { decisionHTML } from "./aprende.js";
 import { createTour } from "./tour.js";
 import { createConsole } from "./console.js";
+import { createFilm } from "./film.js";
 
 const BOOT = JSON.parse($("#bootstrap").textContent);
 const META = BOOT.meta;
@@ -16,6 +17,7 @@ const KEY = "lulo:v3";
 const IMG_LOGO = "/static/img/logo-lulo.png";
 let S;
 let TOUR = null;   // recorrido guiado: se crea al final, antes de boot()
+let FILM = null;   // recorrido automático (el prototipo explicándose solo)
 
 /* =================== API =================== */
 async function call(path, body) {
@@ -285,7 +287,7 @@ function show(d, src) {
     const n = $("#notif");
     n.innerHTML = `<span class="ic"><img src="${IMG_LOGO}" alt=""></span><span style="flex:1"><span class="t"><span>Lulo Bank</span><span>ahora</span></span><span class="b"><b>${esc(d.notif.t)}</b>${esc(d.notif.b)}</span></span>`;
     n.classList.add("show"); $("#notifX").classList.add("show");
-    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo && !(TOUR && TOUR.active())) hideNotif(); }, 9000);
+    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo && !(TOUR && TOUR.active()) && !(FILM && FILM.active())) hideNotif(); }, 9000);
     addNotif({t: d.notif.t, b: d.notif.b, go: d.ramo === "SOAT" && ["renovacion", "captura"].includes(d.kind) ? "renew" : `offer:${d.ramo}`, ramo: d.ramo});
     if (["home", "alertas"].includes(S.screen)) render("none");
     addLog(src, d.title, "Mostrada por push", "info", d.ramo);
@@ -678,12 +680,14 @@ async function switchClient(id, asOf = S.asOf) {
   flashPhone();
 }
 document.addEventListener("click", e => {
+  const f = e.target.closest("[data-film]");
+  if (f) { closeWelcome(); if (TOUR.active()) TOUR.finish(false, true); FILM.start(+f.dataset.film || 0); return; }
   if (TOUR && TOUR.onClick(e)) return;
   const w = e.target.closest("[data-w]");
   if (w) {
     const a = w.dataset.w; closeWelcome();
     if (a === "tour") TOUR.start();
-    else if (a === "auto") TOUR.autoplay();
+    else if (a === "auto") FILM.start(0);
     else if (a === "free") { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
     else if (a === "scen") openGuide("scen");
     else if (a === "console") document.body.classList.add("console-open");
@@ -766,10 +770,26 @@ TOUR = createTour({
   openRenew, pay, pickContact, setAmount, confirmFlow,
   openDecision, acceptOffer, refreshEval, setHighlight, motor: () => MOTOR,
   fresh: freshClient, title: r => product(S, r).title,
-  openStory: i => openStory(i), storyNext: () => { if (S.screen === "story") storyStep(1); },
+  openStory: i => openStory(i),
   card: () => GUIDE === "tour" ? $("#guide") : null,
   showTour(sheet) { openGuide("tour", !!sheet); if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {}); },
   endTour(next) { if (next) openGuide("scen", false); else closeGuide(); },
+});
+
+/* =================== recorrido automático: la película =================== */
+FILM = createFilm({
+  S: () => S, META, toast, go, gotoTarget, pickContact, setAmount, confirmFlow, openDecision, acceptOffer, refreshEval,
+  setHighlight, openRenew, fresh: freshClient, title: r => product(S, r).title, motor: () => MOTOR,
+  onStart() {
+    closeWelcome(); closeGuide(); document.body.classList.remove("console-open");
+    if (TOUR.active()) TOUR.finish(false, true);
+    if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {});
+  },
+  onEnd(d = {}) {
+    if (d.manual !== undefined) TOUR.start(d.manual);
+    else if (d.scen) openGuide("scen");
+    else if (d.libre) { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
+  },
 });
 
 /* =================== inicio =================== */

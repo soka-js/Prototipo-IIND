@@ -28,7 +28,7 @@ Los enlaces de A y B siempre muestran el último push de su rama. Cuando SOKA ap
 - **Laboratorio con verdad simulada**: con efectos que la regla no ve, el motor gana +10 % de comisión por oferta frente a la regla v1.3; si la regla tenía razón, queda a −1,0 %; con 20 variables de ruido, igual; con una columna nueva que sí predice, la aprende solo y gana +0,8 % frente al mismo motor sin ella.
 - **Listo para datos reales**: `scripts/validar_datos.py` y `scripts/train_motor.py --datos` corren en el equipo de Lulo sin subir nada ([`docs/DATOS_REALES.md`](docs/DATOS_REALES.md)).
 - **Consola de Lulo** (esta rama, `feat/claude-consola-lulo`): al lado del teléfono, herramientas para el banco en vez de explicaciones. **En vivo**: cada decisión del motor con su probabilidad y lo que hizo el cliente, y eventos para disparar. **Campaña**: el plan de los 600 a una fecha, con el motor o con la regla v1.3, ventas y comisión esperadas, y el año recorrido. **Piloto**: cuántos clientes hacen falta para medir el efecto contra el control (el cálculo de M6). **Clientes**: buscar en la base y abrir la app como cualquiera. En el celular se abre desde la bienvenida.
-- **Solo la app, con guía**: la página es el teléfono. Hay una bienvenida que explica qué es el prototipo y un recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo), paso a paso con «Hazlo por mí» o **en automático**: se reproduce solo, sin tocar nada, con pausa (unos 3 minutos; `?ritmo=0.5` lo acelera y `?ritmo=1.5` lo hace más lento). Los escenarios rápidos dicen qué decidió el motor y por qué. Están también «Resaltar lo nuevo», el cambio de personaje y «Descargar respuestas (CSV)», con las ofertas de la sesión en el formato de datos reales. La guía aparece al lado del teléfono solo cuando se pide; en el celular se abre como hoja desde «Guía».
+- **Solo la app, con guía**: la página es el teléfono. Hay una bienvenida que explica qué es el prototipo y un recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo), paso a paso con «Hazlo por mí» o **en automático, como un video**: el prototipo se explica solo. Un cursor usa la app de verdad, los subtítulos cuentan lo que pasa y un globo señala lo nuevo. Se pausa (barra, espacio o tocando la pantalla), se cambia de capítulo, tiene voz opcional y «Paso a paso» para seguir a mano. `?ritmo=0.5` lo acelera y `?ritmo=1.5` lo hace más lento. Los escenarios rápidos dicen qué decidió el motor y por qué. Están también «Resaltar lo nuevo», el cambio de personaje y «Descargar respuestas (CSV)», con las ofertas de la sesión en el formato de datos reales. La guía aparece al lado del teléfono solo cuando se pide; en el celular se abre como hoja desde «Guía».
 
 ## Versión 3 (en `main` desde el 2026-10-14)
 
@@ -111,7 +111,8 @@ lulo_app/
   simulator.py … engine.py   prototipo v2 (personajes y motor anterior)
 public/static/v3/            app v3 (JS sin framework y CSS): app.js (estado, flujos, guía y escenarios), console.js
                              (consola de Lulo), screens.js,
-                             content.js (lo nuevo), tour.js (recorrido guiado), aprende.js (probabilidad por pasos y
+                             content.js (lo nuevo), tour.js (recorrido guiado), film.js (recorrido automático como
+                             video), aprende.js (probabilidad por pasos y
                              decisión en lenguaje claro), util.js, icons.js
 public/static/js|css         app v2
 tests/                       ingesta, motor, API v2 y v3, entrada de Vercel y de punta a punta (test_e2e.py, Playwright)

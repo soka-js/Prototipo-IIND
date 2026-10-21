@@ -17,6 +17,27 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático como video
+- Qué cambió: el recorrido automático es ahora una «película» del prototipo, que se explica solo (`public/static/v3/film.js`). Reemplaza la versión de la entrada anterior (tarjeta que avanzaba sola); el recorrido paso a paso no cambia.
+  - **Cursor:** se mueve por la pantalla y hace los clics de verdad en la app, con un efecto de toque: avisos, pago del SOAT, la transferencia a Laura (+, Transferir, contacto, monto, confirmar), la notificación, «Activar», las pestañas y Tu año.
+  - **Subtítulos:** abajo cuentan lo que pasa, con las cifras del motor: días al vencimiento, P(acepta), el paso del momento, valor esperado, apetito antes y después, resultado del laboratorio y tamaño del piloto.
+  - **Globos:** junto a cada cosa nueva, unidos al elemento con una línea; usan los textos de lo nuevo de `content.js`.
+  - **Capítulos:** son los mismos 11 del recorrido paso a paso. El escritorio deja solo el teléfono, achicado para que quepan los subtítulos. La etiqueta «Prototipo académico · datos simulados» sigue a la vista; en el celular va debajo de los subtítulos.
+  - **Controles de video:** pausar y seguir (barra, espacio o tocar la pantalla), capítulo anterior o siguiente (← →), saltar a cualquier capítulo (prepara el estado que necesita), voz opcional con la síntesis del navegador (apagada por defecto), «Paso a paso» (pasa al recorrido manual en el mismo capítulo) y Salir (Esc). Al final ofrece ver de nuevo, explorar o escenarios.
+  - **Desde el recorrido manual:** cada tarjeta tiene «Verlo en automático desde aquí».
+  - **Otros:** `tour.js` vuelve a ser solo el recorrido paso a paso; la notificación no se esconde mientras corre la película; `?ritmo=` sigue sirviendo para acelerar o frenar.
+- Por qué: SOKA pidió que el recorrido automático fuera «más tipo video animado», con el cursor a la vista y la explicación integrada en la app, «como si fuera el propio prototipo autoexplicándose», solo para la parte automática.
+- Archivos: `public/static/v3/film.js` (nuevo), `public/static/v3/tour.js`, `public/static/v3/app.js`, `public/static/v3/app.css`, `lulo_app/templates/app.html`, `tests/test_e2e.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 105 passed.
+  - La prueba de punta a punta `test_automatic_tour_is_the_prototype_explaining_itself` comprueba la pausa, el final solo con los 11 capítulos, Vida aceptada en el CSV por los clics del cursor y el paso de manual a película y de vuelta. Estable en 3 corridas.
+  - Con Playwright, la película completa a `?ritmo=0.35` duró 78 s en escritorio (1440 × 900) y 81 s en celular (390 × 844), sin errores de consola.
+  - Los controles (pausa, siguiente, salto al capítulo 5, «Paso a paso», «Verlo en automático desde aquí» y Esc) funcionan.
+  - Se corrigió un error encontrado al probar: la capa que bloquea los clics seguía activa después de salir.
+- Consultado con SOKA: sí, el 2026-10-21 (su pedido).
+- Cifras nuevas y su origen: las de los subtítulos salen del motor en vivo (evaluación y registro de la sesión), de `laboratorio.json` y de `modelos.json`; las duraciones, de la medición con Playwright.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático
 - Qué cambió: el recorrido guiado tiene una opción automática. Se reproduce solo: lee cada paso, lo hace en el teléfono (lo que antes era «Hazlo por mí») y sigue, sin que nadie toque nada.
   - **Tiempo de lectura:** unos 35 ms por carácter del texto, entre 5,5 y 15 s por paso; el recorrido completo dura unos 3 minutos. Una barra lima muestra cuánto falta para seguir.
