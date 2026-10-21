@@ -204,7 +204,9 @@ def alcance(canal: str, push_p: float | None, sp: dict | None = None) -> dict:
     sp = sp or spec()
     if canal == "push" and push_p is not None:
         return {"p": push_p, "fuente": "M3: apertura de notificaciones del cliente (Bayes empírico)"}
-    b = sp["embudo"]["alcance"]["banner"]
+    b = sp["embudo"]["alcance"].get("banner")
+    if b is None:   # datos sin una campaña solo de banner: el alcance promedio de las campañas
+        return {"p": round(sp["embudo"]["hiper"]["alcance"]["mu"], 4), "fuente": "Campanas_Previas: alcance promedio"}
     return {"p": round(b["media"], 4), "fuente": b["fuente"]}
 
 

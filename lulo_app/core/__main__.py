@@ -62,7 +62,7 @@ def cmd_cliente(a) -> int:
     return 0
 
 
-PASO = {"base": "Base del ramo (campaña previa)", "senal_media": "Señal media frente a fuerte",
+PASO = {"base": "Base fuera del momento (campaña previa)", "senal_media": "Señal media frente a fuerte",
         "momento": "Momento: el evento pasó hace poco", "afinidad": "Afinidad del modelo M1",
         "rasgos": "Rasgos aprendidos de respuestas", "cliente": "Apetito del cliente (sus respuestas)"}
 

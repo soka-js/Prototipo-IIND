@@ -48,7 +48,8 @@ Todo cambio, por pequeño que sea, deja rastro:
 ## 5. Lo construido: invariantes que no se rompen
 
 - **Un solo motor** (`lulo_app/core`) para los 600 clientes de la base y los 3 personajes. Las decisiones solo usan campos canónicos (fecha, monto, canal, categoría y MCC), nunca nombres de comercio o de terceros: la prueba `test_decisions_never_read_merchant_names` debe seguir pasando.
-- **Reglas versionadas** en `rules.py` (hoy `v1.3`). Cada decisión guarda la versión con la que se tomó.
+- **Reglas versionadas** en `rules.py` (hoy `v2.0`). Cada decisión guarda la versión con la que se tomó.
+- **Motor bayesiano reproducible y acotado** (`lulo_app/ml/motor.py`, `docs/MOTOR.md`): `lulo_app/ml/motor.json` solo cambia con `scripts/train_motor.py` y `lulo_app/ml/laboratorio.json` con `scripts/laboratorio.py`; los dos `--check` deben pasar. El modelo solo ordena lo que las compuertas permiten: autorización, elegibilidad, capacidad de pago, exclusiones, espera, control y política de contacto no dependen de él. Una variable nueva entra con peso 0 y la duda total de los rasgos se reparte entre todas. Lo aprendido de respuestas solo se usa si gana el campeón/retador. Producción es Python puro (sin numpy). Los datos reales de Lulo nunca entran a este repositorio (`docs/DATOS_REALES.md`).
 - **Modelos reproducibles**: `lulo_app/ml/modelos.json` solo cambia con `scripts/train_models.py` y `python scripts/train_models.py --check` debe pasar. Un ramo usa el modelo solo si le gana al azar (p < 0,05 y AUC ≥ 0,55). Las variables que son consecuencia de tener un seguro (hoy «visitas a Seguros») no entran a M1. El entrenamiento usa las versiones fijas de `requirements-dev.txt`. En producción no se usa scikit-learn.
 - **La base solo cambia con `scripts/ingest_reto.py`.** Nunca se editan a mano los CSV de `lulo_app/dataset/`. Nada se corrige en silencio: lo excluido queda en `excluidos.csv` y `manifest.json` guarda los hashes.
 - **El motor no guarda estado**: el contexto de la sesión viaja en cada llamada.
@@ -71,6 +72,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E7 Modelos entrenados con la base (reglas v1.2) e imágenes de la app real | Hecha el 2026-10-16, aprobada por SOKA |
 | E8 Datos de la solicitud sin uso: renovaciones y cancelación, capacidad de pago y momento por evento (reglas v1.3) | Hecha el 2026-10-20, aprobada por SOKA según Tomás Carrillo; la valida todo el grupo |
 | E9 Integración de E7 y E8 a `main` con revisión: «visitas a Seguros» fuera de M1 (modelos `ml-1.1`) y versiones fijas | Hecha el 2026-10-20 por decisión de SOKA |
+| E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Implementada el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq` a pedido de SOKA; pendiente de su revisión para pasar a `main` |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -87,11 +89,19 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
 - Reglas v1.3: capacidad de pago en la elegibilidad (prima mensual ≤ 5 % del ingreso; prima de pago único ≤ saldo promedio) y comisión de pago único × (1 − cancelación).
 - «Visitas a Seguros» no entra a M1 porque es consecuencia de tener una póliza Lulo (2026-10-20). Con la base del reto ningún ramo pasa la compuerta y la afinidad vale 1; el plan de campaña ofrece lo mismo que con v1.1.
 
+Pendiente de que SOKA lo confirme al revisar E10 (hasta entonces no se reabre ni se amplía):
+- Valor esperado v2.0 = P(acepta | ve) × comisión, con la regla v1.3 disponible como `MOTOR = "regla"`.
+- Hogar usa la predictiva de una campaña nueva (10,7 %, de 5,2 % a 17,6 %) en vez de la menor conversión observada.
+- Efecto del momento estimado con las compras externas y trasladado a la aceptación de ofertas (ventana de 30 días).
+- 10 % del tratamiento explora con muestreo de Thompson (buckets 10 a 19); el control no cambia.
+- Previas: señal media × 0,6 con duda; duda total de los rasgos 0,45 repartida; apetito del cliente 0,25.
+
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
 - «Seguro Nómina Protegida» no está en el motor porque la base no trae sus datos.
 - El uso de la app de los personajes es un supuesto.
-- El registro de respuestas vive en el navegador; persistirlo en un servidor es un paso pendiente.
+- El registro de respuestas vive en el navegador; persistirlo en un servidor es un paso pendiente. El motor aprende de él solo dentro de la sesión; la población aprende con `train_motor.py --respuestas`.
+- La duda del apetito de cada cliente (0,25) es fija; estimarla con respuestas reales (Bayes empírico) es el siguiente paso (`docs/MOTOR.md`, sección 4).
 
 ## 7. Git y despliegue
 
@@ -114,6 +124,9 @@ python -m lulo_app.core backtest         # debe terminar con 0 violaciones
 python -m lulo_app.core cliente C00002   # traza completa de una decisión
 python -m lulo_app.core campana          # plan de campaña de los 600
 python scripts/train_models.py --check   # si tocaste el vector o los modelos: debe coincidir
+python scripts/train_motor.py --check    # si tocaste reglas, rasgos o el motor bayesiano: debe coincidir
+python scripts/laboratorio.py --check    # ídem para el laboratorio
+python -m lulo_app.core explicar C00002  # de dónde sale cada probabilidad
 ```
 
 Antes de proponer un commit, pega en la conversación la salida de `pytest` y, si tocaste el motor, la del backtest.
@@ -122,16 +135,22 @@ Antes de proponer un commit, pega en la conversación la salida de `pytest` y, s
 
 ```
 scripts/ingest_reto.py     Excel del reto → lulo_app/dataset (valida y documenta)
-scripts/train_models.py    entrena y valida los modelos → lulo_app/ml/modelos.json
-lulo_app/ml/               vector de variables y cálculo de los modelos en producción
-docs/MODELOS.md            método, resultados y límites de los modelos
+scripts/train_models.py    entrena y valida los modelos M1 a M6 → lulo_app/ml/modelos.json
+scripts/train_motor.py     entrena el motor bayesiano → lulo_app/ml/motor.json (Python puro)
+scripts/laboratorio.py     laboratorio con verdad simulada → lulo_app/ml/laboratorio.json
+scripts/validar_datos.py   valida otra base con el mismo esquema y escribe su manifiesto (datos reales)
+lulo_app/ml/               M1 a M6 (vector, models) y motor bayesiano (bayes, rasgos, motor) en producción
+docs/MODELOS.md            método, resultados y límites de los modelos M1 a M6
+docs/MOTOR.md              motor bayesiano: método, resultados, supuestos y preguntas difíciles
+docs/DATOS_REALES.md       cómo correr el motor con datos reales de Lulo
 lulo_app/core/             motor v3: schema, store, personas, catalog, rules, features, signals,
                            eligibility, contact, experiment, engine, year, view, backtest, CLI (__main__)
 lulo_app/api_v3.py         rutas /api/v3
 lulo_app/main.py           / (v3), /v2 (versión del cliente), API v2
 lulo_app/templates/app.html   página v3   ·   index.html   página v2 (no tocar)
 public/static/v3/          app v3: app.js (estado, flujos, panel), screens.js (pantallas),
-                           content.js (textos del panel), icons.js, util.js, app.css
+                           content.js (textos del panel y lo nuevo), tour.js (bienvenida y recorrido),
+                           aprende.js (pestaña Aprendizaje y gráficos), icons.js, util.js, app.css
 tests/                     ingesta, motor, API v2 y v3, entrada de Vercel
 CAMBIOS.md                 registro obligatorio de cambios
 ```

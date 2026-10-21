@@ -3,7 +3,7 @@
     python scripts/train_motor.py                         # entrena con la base del reto y escribe motor.json
     python scripts/train_motor.py --check                 # falla si motor.json no coincide con el entrenamiento
     python scripts/train_motor.py --respuestas r.csv      # además aprende de respuestas reales a ofertas
-    python scripts/train_motor.py --datos CARPETA --salida motor-lulo.json --reporte reporte.md
+    python scripts/train_motor.py --datos CARPETA --salida motor-lulo.json --reporte reporte.md [--sin-clientes]
                                                           # otra base con el mismo esquema (docs/DATOS_REALES.md)
 
 Python puro, sin numpy ni scikit-learn, y determinista: dos corridas dan el mismo archivo.
@@ -56,22 +56,44 @@ def rb(d: dict, n=6) -> dict:
 
 
 # ------------------------------------------------------------------ B1 embudo
+def _por_ramo(rows: list[dict]) -> list[dict]:
+    """Una fila por ramo: si Lulo trae varias campañas del mismo ramo, se suman sus conteos."""
+    from lulo_app.core.catalog import campaign_ramo
+
+    out: dict[str, dict] = {}
+    for c in rows:
+        ramo = campaign_ramo(c)
+        if not ramo:
+            continue
+        o = out.setdefault(ramo, {"ramo": ramo, "campana": [], "canal": [], "elegibles": 0, "impactados": 0,
+                                  "interesados": 0, "ventas": 0})
+        o["campana"].append(c["campana"])
+        o["canal"].append(c["canal"])
+        for k in ("elegibles", "impactados", "interesados", "ventas"):
+            o[k] += int(c[k])
+    for o in out.values():
+        o["campana"], o["canal"] = " + ".join(o["campana"]), " + ".join(sorted(set(o["canal"])))
+    return list(out.values())
+
+
+def _canal(c: dict, tipo: str) -> bool:
+    """Campaña de un solo canal: solo banner o solo push (para estimar el alcance de cada uno)."""
+    k = c["canal"].lower()
+    return tipo in k and ("push" if tipo == "banner" else "banner") not in k
+
+
 def embudo(dataset: Path) -> dict:
-    from lulo_app.core.catalog import CAMPAIGN_FOR
     from lulo_app.core.schema import RAMOS
     from lulo_app.ml import bayes
 
     with open(dataset / "campanas_previas.csv", encoding="utf-8", newline="") as f:
-        camp = list(csv.DictReader(f))
-    for c in camp:
-        for k in ("elegibles", "impactados", "interesados", "ventas"):
-            c[k] = int(c[k])
+        camp = _por_ramo(list(csv.DictReader(f)))
     # Cuatro tasas del embudo, cada una con su modelo jerárquico (Bayes completo en rejilla, BDA3 5.3).
     conv = bayes.beta_binomial_bayes([(c["ventas"], c["impactados"]) for c in camp])
     inter = bayes.beta_binomial_bayes([(c["interesados"], c["impactados"]) for c in camp])
     cierre = bayes.beta_binomial_bayes([(c["ventas"], c["interesados"]) for c in camp])
     alc = bayes.beta_binomial_bayes([(c["impactados"], c["elegibles"]) for c in camp])
-    idx = {CAMPAIGN_FOR[c["campana"]]: i for i, c in enumerate(camp) if c["campana"] in CAMPAIGN_FOR}
+    idx = {c["ramo"]: i for i, c in enumerate(camp)}
     por_ramo = {}
     for ramo in RAMOS:
         i = idx.get(ramo)
@@ -88,11 +110,12 @@ def embudo(dataset: Path) -> dict:
                               "fuente": "Sin campaña previa: predictiva de una campaña nueva (promedio de las demás, "
                                         "con más duda)"}
     alcance = {}
-    for canal, nombre in (("banner", "Banner in-app"), ("push", "Push")):
-        i = next((j for j, x in enumerate(camp) if x["canal"] == nombre), None)
+    for canal in ("banner", "push"):
+        i = next((j for j, x in enumerate(camp) if _canal(x, canal)), None)
         if i is not None:
             alcance[canal] = {**rb(alc["grupos"][i]), "campana": camp[i]["campana"],
-                              "fuente": f"Campanas_Previas: impactados / elegibles de «{camp[i]['campana']}» ({nombre})"}
+                              "fuente": f"Campanas_Previas: impactados / elegibles de «{camp[i]['campana']}» "
+                                        f"({camp[i]['canal']})"}
     hiper = {k: {"mu": r(v["mu"]), "kappa": r(v["kappa_mediana_geom"], 2), "kappa_eb": r(v["eb"]["kappa"], 2)}
              for k, v in (("conversion", conv), ("interes", inter), ("cierre", cierre), ("alcance", alc))}
     m = hiper["conversion"]["mu"]
@@ -495,12 +518,17 @@ def main():
     ap.add_argument("--datos", type=Path, help="carpeta con la base en el esquema canónico (por defecto, la del reto)")
     ap.add_argument("--salida", type=Path, help="dónde escribir el JSON (por defecto, lulo_app/ml/motor.json)")
     ap.add_argument("--reporte", type=Path, help="escribe además un resumen en Markdown")
+    ap.add_argument("--sin-clientes", action="store_true",
+                    help="no guarda el apetito aprendido por cliente (para compartir el JSON sin datos por cliente)")
     a = ap.parse_args()
     if a.datos:
         os.environ["LULO_DATASET"] = str(a.datos.resolve())
     sys.path.insert(0, str(ROOT))
     out = a.salida or OUT
-    text = dump(build(a.respuestas))
+    model = build(a.respuestas)
+    if a.sin_clientes:
+        model["clientes"] = {}
+    text = dump(model)
     if a.check:
         cur = out.read_text(encoding="utf-8") if out.exists() else ""
         if cur != text:

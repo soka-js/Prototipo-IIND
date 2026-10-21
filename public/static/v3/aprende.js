@@ -8,7 +8,7 @@ const sgn = (x, d = 0) => (x >= 0 ? "+" : "−") + `${Math.abs(x * 100).toFixed(
 
 /* =================== probabilidad por pasos =================== */
 export const PASO = {
-  base: ["Base del ramo", "Campañas previas de Lulo (Campanas_Previas)"],
+  base: ["Base fuera del momento", "Campañas previas de Lulo (Campanas_Previas), sin el empujón del momento"],
   senal_media: ["Señal media", "Hipótesis del equipo: × 0,6 frente a una señal fuerte"],
   momento: ["Momento", "El evento pasó hace poco: estimado con las compras externas (Pagos_Seguros)"],
   afinidad: ["Afinidad", "Modelo M1 de parecido con quien ya tiene el seguro"],

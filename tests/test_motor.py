@@ -248,3 +248,23 @@ def test_page_keeps_prototype_label_and_guides_the_visitor():
     assert 'data-new="push"' in html and "/static/v3/tour.js" not in html          # los módulos los importa app.js
     v2 = TestClient(app).get("/v2").text
     assert 'id="welcome"' not in v2                                                 # /v2 no se toca
+
+
+def test_real_data_path_validates_and_trains_outside_the_repo(tmp_path):
+    """El camino para datos reales: validar la carpeta, escribir su manifiesto y entrenar sin tocar el repo."""
+    import shutil
+    import subprocess
+
+    for f in (ROOT / "lulo_app/dataset").glob("*.csv"):
+        shutil.copy(f, tmp_path / f.name)
+    run = lambda *a: subprocess.run([sys.executable, *a], cwd=ROOT, capture_output=True, text=True)  # noqa: E731
+    ok = run("scripts/validar_datos.py", str(tmp_path), "--inicio", "2025-11-01", "--corte", "2026-10-08")
+    assert ok.returncode == 0, ok.stderr
+    out = run("scripts/train_motor.py", "--datos", str(tmp_path), "--salida", str(tmp_path / "m.json"), "--sin-clientes")
+    assert out.returncode == 0, out.stderr
+    m = json.loads((tmp_path / "m.json").read_text(encoding="utf-8"))
+    assert m["embudo"] == SP["embudo"] and m["momento"] == SP["momento"] and m["clientes"] == {}
+    rows = (tmp_path / "clientes.csv").read_text(encoding="utf-8").replace("autoriza_ofertas", "autoriza")
+    (tmp_path / "clientes.csv").write_text(rows, encoding="utf-8")
+    bad = run("scripts/validar_datos.py", str(tmp_path))
+    assert bad.returncode == 1 and "autoriza_ofertas" in bad.stderr

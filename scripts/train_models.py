@@ -346,7 +346,9 @@ def _trend(rr, col):
 
 def demand():
     import csv
-    rows = list(csv.DictReader(open(ROOT / "lulo_app/dataset/seguros_mensual.csv", encoding="utf-8")))
+    from lulo_app.core.store import DATASET  # respeta LULO_DATASET (docs/DATOS_REALES.md)
+    with open(DATASET / "seguros_mensual.csv", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
     out = {}
     for ramo in RAMOS:
         rr = sorted([x for x in rows if x["ramo"] == ramo], key=lambda x: x["mes"])

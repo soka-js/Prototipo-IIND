@@ -96,8 +96,41 @@ def _rows(name: str) -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def campaign_ramo(r: dict) -> str | None:
+    """Ramo de una fila de Campanas_Previas: la columna «ramo» si existe (datos reales), o el nombre de la campaña."""
+    return (r.get("ramo") or "").strip() or CAMPAIGN_FOR.get(r["campana"])
+
+
+def campaign_priors(rows: list[dict]) -> dict[str, float]:
+    """Conversión previa por ramo. Con una campaña por ramo (la base) es su ventas / impactados; con varias
+    (datos reales), la suma de ventas sobre la suma de impactados."""
+    by: dict[str, list[dict]] = {}
+    for r in rows:
+        ramo = campaign_ramo(r)
+        if ramo:
+            by.setdefault(ramo, []).append(r)
+    out = {}
+    for ramo, rr in by.items():
+        if len(rr) == 1 and rr[0].get("conv_ventas_impactados"):
+            out[ramo] = float(rr[0]["conv_ventas_impactados"])
+        else:
+            out[ramo] = sum(int(x["ventas"]) for x in rr) / sum(int(x["impactados"]) for x in rr)
+    return out
+
+
 def _f(v: str) -> float | None:
     return float(v) if v != "" else None
+
+
+def _wavg(rows: list[dict], col: str) -> float | None:
+    """Promedio de una columna de Seguros_Mensual ponderado por pólizas emitidas; None si viene vacía."""
+    vals = [(float(r[col]), int(r["polizas_emitidas"])) for r in rows if r[col] != ""]
+    if not vals:
+        return None
+    if len({v for v, _ in vals}) == 1:
+        return vals[0][0]
+    w = sum(n for _, n in vals) or len(vals)
+    return sum(v * (n or 1) for v, n in vals) / w
 
 
 def _age(spec: str) -> tuple[int, int | None]:
@@ -115,20 +148,19 @@ def products() -> dict[str, Product]:
     sm: dict[str, list[dict]] = {}
     for r in _rows("seguros_mensual.csv"):
         sm.setdefault(r["ramo"], []).append(r)
-    priors = {CAMPAIGN_FOR[r["campana"]]: float(r["conv_ventas_impactados"]) for r in _rows("campanas_previas.csv")}
+    priors = campaign_priors(_rows("campanas_previas.csv"))
     eleg = {r["ramo"]: r for r in _rows("elegibilidad.csv")}
     out: dict[str, Product] = {}
     for ramo in RAMOS:
         rows = sm[ramo]
-        # La prima, la comisión y la persistencia deben ser constantes en los 12 meses; si no, fallar.
-        for col in ("prima_promedio_cop", "comision_pct", "persistencia_6m", "persistencia_12m", "cancelacion_pct"):
-            vals = {r[col] for r in rows}
-            if len(vals) != 1:
-                raise ValueError(f"{ramo}: {col} cambia entre meses {sorted(vals)}; el catálogo supone un valor único")
-        r0 = rows[0]
-        premium, com = int(r0["prima_promedio_cop"]), float(r0["comision_pct"])
-        p6, p12 = _f(r0["persistencia_6m"]), _f(r0["persistencia_12m"])
-        cancel = _f(r0["cancelacion_pct"])
+        # En la base del reto la prima, la comisión, la persistencia y la cancelación son constantes en los 12
+        # meses. Con datos reales cambian mes a mes: se usa el promedio ponderado por pólizas emitidas (con la
+        # base da exactamente el mismo valor).
+        r0 = {col: _wavg(rows, col) for col in ("prima_promedio_cop", "comision_pct", "persistencia_6m",
+                                                  "persistencia_12m", "cancelacion_pct")}
+        premium, com = round(r0["prima_promedio_cop"]), r0["comision_pct"]
+        p6, p12 = r0["persistencia_6m"], r0["persistencia_12m"]
+        cancel = r0["cancelacion_pct"]
         e = eleg[ramo]
         if e["periodicidad"] == "Mensual":
             if p6 is None or p12 is None:
