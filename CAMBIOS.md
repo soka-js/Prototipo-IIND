@@ -31,7 +31,7 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 - Cómo se verificó:
   - `python -m pytest` → 105 passed.
   - La prueba de punta a punta `test_automatic_tour_is_the_prototype_explaining_itself` comprueba la pausa, el final solo con los 11 capítulos, Vida aceptada en el CSV por los clics del cursor y el paso de manual a película y de vuelta. Estable en 3 corridas.
-  - Con Playwright, la película completa a `?ritmo=0.35` duró 78 s en escritorio (1440 × 900) y 81 s en celular (390 × 844), sin errores de consola.
+  - Con Playwright, la película completa duró 218 s (3 min 38 s) a ritmo normal y 78 s a `?ritmo=0.35` en escritorio (1440 × 900), y 81 s a `?ritmo=0.35` en celular (390 × 844), sin errores de consola.
   - Los controles (pausa, siguiente, salto al capítulo 5, «Paso a paso», «Verlo en automático desde aquí» y Esc) funcionan.
   - Se corrigió un error encontrado al probar: la capa que bloquea los clics seguía activa después de salir.
 - Consultado con SOKA: sí, el 2026-10-21 (su pedido).
