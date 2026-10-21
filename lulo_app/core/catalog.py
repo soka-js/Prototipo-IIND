@@ -12,6 +12,7 @@ Valor esperado por contacto = conversión previa × comisión esperada a 12 mese
 from __future__ import annotations
 
 import csv
+import os
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -20,7 +21,9 @@ from pathlib import Path
 from . import rules
 from .schema import PAGO_PROTEGIDO, RAMOS
 
-DATASET = Path(__file__).resolve().parent.parent / "dataset"
+# LULO_DATASET permite correr el motor sobre otra carpeta con el mismo esquema (pruebas internas con datos
+# reales, fuera de este repositorio: docs/DATOS_REALES.md). Por defecto, la base del reto.
+DATASET = Path(os.environ.get("LULO_DATASET") or Path(__file__).resolve().parent.parent / "dataset")
 
 CAMPAIGN_FOR = {"SOAT renovación": "SOAT", "Seguro vida": "Vida", "Seguro desempleo": "Desempleo",
                 "Seguro mascotas": "Mascotas", "Seguro viaje": "Viajes"}

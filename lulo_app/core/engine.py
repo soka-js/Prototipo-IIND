@@ -2,7 +2,7 @@
 
 El motor no guarda estado. Cada llamada recibe el contexto de la sesión (lo que el cliente hizo,
 lo que ya aceptó o rechazó, sus preferencias, la ventana de contacto) y devuelve la decisión con
-toda su traza: rasgos, señales, elegibilidad, valor esperado, grupo experimental y canal.
+toda su traza: rasgos, señales, elegibilidad, probabilidad, valor esperado, grupo experimental y canal.
 
 Orden de las compuertas (cada una deja rastro en `steps`):
   0. autorización de datos (Ley 1581): sin ella no se leen los movimientos
@@ -12,6 +12,11 @@ Orden de las compuertas (cada una deja rastro en `steps`):
   4. preferencias: si el cliente apagó las sugerencias no se muestra nada
   5. canal: push si quedan contactos y no hay fatiga ni latencia; si no, banner pasivo
   6. ventana: en tiempo real, si hay una oferta abierta, la nueva espera en cola
+
+Desde las reglas v2.0 el valor esperado del paso 2 es P(acepta | ve) × comisión a 12 meses, con la
+probabilidad del motor bayesiano (lulo_app/ml/motor.py, docs/MOTOR.md). Las compuertas no cambian:
+el modelo solo ordena lo que las reglas ya permiten. Con `rules.MOTOR = "regla"` (o `Context.motor`)
+se ordena como en v1.3, y cada evaluación dice qué habría decidido la regla.
 """
 
 from __future__ import annotations
@@ -32,8 +37,11 @@ from .features import Features, compute
 from .schema import PAGO_PROTEGIDO, History, LuloPolicy, Movement, PocketDeposit
 from .signals import Signal, detect
 from .store import store
-from .text import cop, date_long, plural
+from .schema import RAMOS
+from .text import cop, date_long, pct, plural
 from ..ml import models as ml
+from ..ml import motor as mot
+from ..ml import rasgos
 
 Outcome = Literal["shown", "banner", "queued", "control", "optout", "noconsent", "ineligible", "weak", "has",
                   "cooldown", "external", "none"]
@@ -94,6 +102,9 @@ class Context(BaseModel):
     session_deposits: list[SessionDeposit] = Field(default_factory=list)
     window: dict | None = Field(None, description="Oferta que ocupa la ventana de contacto")
     queue: list[dict] = Field(default_factory=list)
+    motor: Literal["bayesiano", "regla"] | None = Field(None, description="None: rules.MOTOR; «regla» ordena como v1.3")
+    policy: Literal["explotar", "explorar"] | None = Field(
+        None, description="None: la que asigna el hash; «explorar» decide con un sorteo de las creencias (Thompson)")
 
 
 EVENT_TYPES: dict[str, dict] = {
@@ -223,7 +234,7 @@ def notification(sig: Signal, p: Product) -> dict:
 
 # --------------------------------------------------------------------------- evaluación
 def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, as_of: date,
-               prop: dict | None = None) -> dict:
+               prop: dict | None = None, bay: dict | None = None) -> dict:
     c = h.client
     held = c.holds(sig.ramo) or sig.ramo in ctx.accepted
     ext_vig = [e for e in f.external if e["ramo"] == sig.ramo and e["status"] == "vigente"]
@@ -246,22 +257,85 @@ def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, a
         status, reason = "ineligible", "; ".join(el.reasons)
     elif cool:
         status, reason = "cooldown", f"Se le mostró el {date_long(cool[-1].date, False)}; espera {rules.COOLDOWN_DAYS} días"
-    ev = p.expected_value(sig.strength) if sig.actionable else None
+    # v1.3: conversión previa × comisión × fuerza × afinidad. Se conserva para comparar y para MOTOR = "regla".
+    ev_regla = p.expected_value(sig.strength) if sig.actionable else None
     m = (prop or {}).get(sig.ramo)
     aff = m["afinidad"] if (m and rules.ML_PROPENSITY) else 1.0
-    if ev is not None:
-        ev *= aff
+    if ev_regla is not None:
+        ev_regla *= aff
+    prob = (bay or {}).get("prob", {}).get(sig.ramo) if sig.actionable else None
+    kind = (bay or {}).get("kind", "regla")
+    ev = ev_regla
+    if kind == "bayesiano" and prob is not None and p.commission_12m is not None:
+        ev = prob["p"] * p.commission_12m
+    ev_rank = ev
+    sample = (bay or {}).get("muestra", {}).get(sig.ramo)
+    if sample is not None and p.commission_12m is not None:
+        ev_rank = sample * p.commission_12m
     deadline = sig.kind == "momento" or (renewal and sig.metrics.get("days") is not None)
     return {"ramo": sig.ramo, "title": p.title, "partner": p.partner, "price": p.price_label(), "status": status,
             "reason": reason, "strength": sig.strength, "kind": sig.kind,
             "ev": round(ev) if ev is not None else None, "momento": sig.kind == "momento", "deadline": deadline,
-            "afinidad": aff, "ml": m, "eligibility": el.to_dict(), "signal": sig.to_dict()}
+            "afinidad": aff, "ml": m, "eligibility": el.to_dict(), "signal": sig.to_dict(),
+            "prob": prob, "valor": p.commission_12m, "ev_regla": round(ev_regla) if ev_regla is not None else None,
+            "ev_rank": round(ev_rank) if ev_rank is not None else None, "muestra": sample,
+            "momento_dias": (bay or {}).get("momento", {}).get(sig.ramo)}
 
 
 def _rank_key(c: dict) -> tuple:
-    """Fecha límite primero (v1.1), luego valor esperado, luego el orden fijo de desempate."""
+    """Fecha límite primero (v1.1), luego valor esperado (o su sorteo si se explora), luego el desempate fijo."""
+    first = c["deadline"] if rules.DEADLINE_FIRST else c["momento"]
+    return (0 if first else 1, -(c["ev_rank"] or 0), rules.TIEBREAK.index(c["ramo"]))
+
+
+def _rank_key_media(c: dict) -> tuple:
+    """El orden con la mejor estimación (sin sorteo): para saber si la exploración cambió la decisión."""
     first = c["deadline"] if rules.DEADLINE_FIRST else c["momento"]
     return (0 if first else 1, -(c["ev"] or 0), rules.TIEBREAK.index(c["ramo"]))
+
+
+def _rank_key_regla(c: dict) -> tuple:
+    """El orden de v1.3: fecha límite, valor esperado de la regla y desempate."""
+    first = c["deadline"] if rules.DEADLINE_FIRST else c["momento"]
+    return (0 if first else 1, -(c["ev_regla"] or 0), rules.TIEBREAK.index(c["ramo"]))
+
+
+_POBLACION: list = []
+
+
+def _poblacion():
+    """Creencias de la población (motor.json), una vez por proceso; cada evaluación trabaja sobre una copia."""
+    if not _POBLACION:
+        _POBLACION.append(mot.creencias())
+    return _POBLACION[0].copia()
+
+
+RESPUESTA = {"aceptada": 1, "rechazada": 0}
+
+
+def _bayes(cid: str, h: History, sigs: dict[str, Signal], mlc: dict, ctx: Context, as_of: date, cutoff: date,
+           exp: dict, kind: str) -> dict:
+    """Probabilidad de aceptar cada ramo ofrecible, aprendizaje de la sesión y sorteo si el cliente explora."""
+    sp = mot.spec()
+    z = rasgos.estandarizar(rasgos.crudos(h, as_of, cutoff), sp["rasgos"])
+    cr = _poblacion()
+    ventana = sp["momento"]["ventana_dias"]
+    xs, mom = {}, {}
+    for ramo in RAMOS:
+        mom[ramo] = mot.momento(h, ramo, as_of, ventana)
+        aff = mot.afinidad_probit(ramo, mlc["propension"][ramo]["afinidad_cruda"], sp)
+        xs[ramo] = mot.vector(ramo, z, sigs[ramo].strength, mom[ramo] is not None, aff, cid)
+    resp = [(xs[o.ramo], RESPUESTA[o.result]) for o in ctx.history
+            if o.result in RESPUESTA and o.ramo in xs and o.date <= as_of]
+    ses = mot.aprender_sesion(cr, cid, resp)
+    act = [r for r in RAMOS if sigs[r].actionable]
+    prob = {r: mot.puntuar(cr, xs[r], r, sp) for r in act}
+    muestra = {}
+    if kind == "bayesiano" and exp.get("policy") == "explorar" and act:
+        muestra = mot.muestra(cr, {r: xs[r] for r in act}, (cid, as_of.isoformat(), sp["version"], len(ctx.history)))
+    return {"kind": kind, "prob": prob, "muestra": muestra, "momento": mom, "sesion": ses,
+            "info": {"version": sp["version"], "tipo": kind, "politica": exp.get("policy"), "sesion": ses,
+                     "rasgos": len(z), "rasgos_en_espera": next(iter(prob.values()))["rasgos_en_espera"] if prob else None}}
 
 
 def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
@@ -292,8 +366,14 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     mlc = ml.for_client(h, min(as_of, s.cutoff))
     base["ml"] = {"version": mlc["version"], "segmento": mlc["segmento"], "push": mlc["push"]}
     sigs = detect(f, ctx.alert_days, disbursement)
-    cands = [_candidate(sig, product(r), f, h, ctx, as_of, mlc["propension"]) for r, sig in sigs.items()]
+    exp = experiment.group(cid, c.source, ctx.control, ctx.policy)
+    kind = ctx.motor or rules.MOTOR
+    bay = _bayes(cid, h, sigs, mlc, ctx, as_of, s.cutoff, exp, kind)
+    base["motor"] = bay["info"]
+    cands = [_candidate(sig, product(r), f, h, ctx, as_of, mlc["propension"], bay) for r, sig in sigs.items()]
     offer = sorted([x for x in cands if x["status"] == "ofrecer"], key=_rank_key)
+    pool_r = sorted([x for x in cands if x["status"] == "ofrecer" and (not focus or x["ramo"] == focus)], key=_rank_key_regla)
+    base["regla"] = {"version": "v1.3", "ramo": pool_r[0]["ramo"] if pool_r else None}
     steps.append({"step": "detectar", "ok": True,
                   "detail": f"{sum(sig.actionable for sig in sigs.values())} señales con fuerza suficiente de {len(sigs)} ramos"})
     pool = [x for x in offer if x["ramo"] == focus] if focus else offer
@@ -317,22 +397,33 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     decision = {"ramo": top["ramo"], "title": p.title, "partner": p.partner, "price": p.price_label(),
                 "covers": list(p.covers), "concept": p.concept, "kind": top["kind"], "strength": top["strength"],
                 "ev": top["ev"], "deadline": top["deadline"], "why": why(sig, f), "notif": notification(sig, p),
-                "afinidad": top["afinidad"], "ml": top["ml"],
+                "afinidad": top["afinidad"], "ml": top["ml"], "prob": top["prob"], "valor": top["valor"],
+                "ev_regla": top["ev_regla"], "momento_dias": top["momento_dias"], "policy": exp.get("policy"),
+                "explora": bool(top["muestra"] is not None and top["ramo"] != (sorted(pool, key=_rank_key_media)[0]["ramo"])),
                 "prio": [x["ramo"] for x in offer].index(top["ramo"]) + 1}
+    base["regla"]["coincide"] = base["regla"]["ramo"] == top["ramo"]
     if top["ramo"] == "SOAT":
         decision["soat"] = {"expiry": sig.metrics.get("expiry"), "days": sig.metrics.get("days"),
                             "source": sig.metrics.get("source"), "price": f.soat_price or p.premium}
+    pr = top["prob"]
     steps.append({"step": "decidir", "ok": True,
                   "detail": f"{p.title}: señal {top['strength']}, elegible, "
-                            + ("con fecha límite, " if top["deadline"] else "") + "valor esperado "
+                            + ("con fecha límite, " if top["deadline"] else "")
+                            + (f"P(acepta) {pct(pr['p'])} (90 %: {pct(pr['ic90'][0])} a {pct(pr['ic90'][1])}), "
+                               if pr and kind == "bayesiano" else "")
+                            + "valor esperado "
                             + (f"{cop(top['ev'])}" if top["ev"] is not None else "n/d (momento único)")
-                            + (f" (afinidad del modelo × {top['afinidad']:.2f})" if top["ml"] and top["ml"]["usable"] else "")})
+                            + (f" (afinidad del modelo × {top['afinidad']:.2f})" if top["ml"] and top["ml"]["usable"] else "")
+                            + (" · exploración: el sorteo eligió una opción en la que el motor todavía duda"
+                               if decision["explora"] else "")
+                            + ("" if base["regla"]["coincide"] else
+                               f" · la regla v1.3 habría elegido {product(base['regla']['ramo']).title}")})
 
-    exp = experiment.group(cid, c.source, ctx.control)
     if exp["group"] == "control":
         steps.append({"step": "experimento", "ok": False, "detail": f"Grupo de control ({exp['via']})"})
         return _final(base, "control", steps, f, sigs, cands, decision, ctx, exp, None, top)
-    steps.append({"step": "experimento", "ok": True, "detail": f"Tratamiento ({exp['via']})"})
+    steps.append({"step": "experimento", "ok": True, "detail": f"Tratamiento ({exp['via']})"
+                  + (" · explora con muestreo de Thompson" if exp.get("policy") == "explorar" and kind == "bayesiano" else "")})
     if not ctx.suggestions:
         steps.append({"step": "preferencias", "ok": False, "detail": "El cliente apagó las sugerencias de seguros"})
         return _final(base, "optout", steps, f, sigs, cands, decision, ctx, exp, None, top)
@@ -344,6 +435,9 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
                         (as_of - pushes[-1]).days if pushes else None, mlc["push"])
     steps.append({"step": "canal", "ok": True, "detail": f"{'Push' if ch.channel == 'push' else 'Banner pasivo'}: {ch.reason}"
                   + (" (uso de la app supuesto)" if c.usage.assumed else "")})
+    al = mot.alcance(ch.channel, mlc["push"]["p"] if valid else None)
+    decision["alcance"] = al
+    decision["ev_contacto"] = round(al["p"] * decision["ev"]) if decision["ev"] is not None else None
     if ctx.mode == "tiempo_real" and ctx.window is not None:
         queue = [q for q in ctx.queue if q.get("ramo") != decision["ramo"]] + [decision]
         queue.sort(key=lambda d: (0 if d.get("deadline") else 1, -(d.get("ev") or 0)))
@@ -359,14 +453,17 @@ def _final(base, outcome, steps, f, sigs, cands, decision, ctx, exp, ch, top) ->
             "steps": steps, "features": f.to_dict(), "signals": {k: v.to_dict() for k, v in sigs.items()},
             "candidates": cands, "decision": decision, "queue": list(ctx.queue), "experiment": exp,
             "channel": ch.__dict__ if ch else None, "message": steps[-1]["detail"],
-            "record": _record(base, outcome, top["ramo"], top["strength"], top["ev"], f, exp, ch)}
+            "record": _record(base, outcome, top["ramo"], top["strength"], top["ev"], f, exp, ch, top["prob"])}
 
 
-def _record(base, outcome, ramo, strength, ev, f, exp=None, ch=None) -> dict:
+def _record(base, outcome, ramo, strength, ev, f, exp=None, ch=None, prob=None) -> dict:
     """Lo que se guarda en el registro: suficiente para auditar y reproducir la decisión."""
+    mo = base.get("motor") or {}
     return {"client_id": base["client_id"], "as_of": base["as_of"], "rules_version": base["rules_version"],
             "mode": base["mode"], "ramo": ramo, "outcome": outcome, "strength": strength, "ev": ev,
-            "group": exp["group"] if exp else None, "channel": ch.channel if ch else None,
+            "p": prob["p"] if prob else None, "group": exp["group"] if exp else None,
+            "policy": exp.get("policy") if exp else None, "channel": ch.channel if ch else None,
+            "motor": mo.get("tipo"), "motor_version": mo.get("version"),
             "ml_version": (base.get("ml") or {}).get("version"),
             "inputs_sha": _sha(f.to_dict()) if f else None}
 
@@ -404,10 +501,11 @@ def on_event(cid: str, ev: Event, ctx: Context | None = None) -> dict:
 
 
 # --------------------------------------------------------------------------- lote
-def campaign(as_of: date | None = None, *, include_personas: bool = False, alert_days: int = rules.SOAT_REMINDER_DAYS) -> dict:
+def campaign(as_of: date | None = None, *, include_personas: bool = False, alert_days: int = rules.SOAT_REMINDER_DAYS,
+             motor: str | None = None) -> dict:
     """Plan de campaña: qué se le ofrece a cada cliente a una fecha, por qué canal y con qué valor esperado."""
     s = store()
-    ctx = Context(as_of=as_of, mode="lote", alert_days=alert_days)
+    ctx = Context(as_of=as_of, mode="lote", alert_days=alert_days, motor=motor)
     rows = []
     for cid in s.ids(None if include_personas else "reto"):
         r = evaluate(cid, ctx)
@@ -417,10 +515,13 @@ def campaign(as_of: date | None = None, *, include_personas: bool = False, alert
                      "afinidad": d.get("afinidad"), "segmento": ((r.get("ml") or {}).get("segmento") or {}).get("nombre"),
                      "channel": (r["channel"] or {}).get("channel"), "channel_reason": (r["channel"] or {}).get("reason"),
                      "group": (r["experiment"] or {}).get("group"),
+                     "policy": (r["experiment"] or {}).get("policy"),
+                     "p": ((d.get("prob") or {}).get("p")), "ev_regla": d.get("ev_regla"),
+                     "ramo_regla": (r.get("regla") or {}).get("ramo"),
                      "offerable": [x["ramo"] for x in r["candidates"] if x["status"] == "ofrecer"],
                      "message": r.get("message")})
     return {"as_of": (as_of or s.cutoff).isoformat(), "data_until": min(as_of or s.cutoff, s.cutoff).isoformat(),
-            "rules_version": rules.VERSION, "rows": rows, "summary": summarize(rows)}
+            "rules_version": rules.VERSION, "motor": motor or rules.MOTOR, "rows": rows, "summary": summarize(rows)}
 
 
 def summarize(rows: list[dict]) -> dict:
@@ -430,7 +531,17 @@ def summarize(rows: list[dict]) -> dict:
     by_ramo = Counter(r["ramo"] for r in shown)
     by_channel = Counter(r["outcome"] for r in shown)
     ctrl = [r for r in rows if r["outcome"] == "control"]
+    decided = [r for r in rows if r["ramo"]]
+    same = sum(1 for r in decided if r.get("ramo_regla") == r["ramo"])
+    expl = [r for r in decided if r.get("policy") == "explorar"]
     return {"clients": len(rows), "by_outcome": dict(by_outcome.most_common()),
+            "regla": {"decisiones": len(decided), "coinciden": same, "cambian": len(decided) - same,
+                      "cambian_por_exploracion": sum(1 for r in expl if r.get("ramo_regla") != r["ramo"]),
+                      "cambios": dict(Counter(f"{r['ramo_regla']} → {r['ramo']}" for r in decided
+                                              if r.get("ramo_regla") != r["ramo"]).most_common()),
+                      "ev_regla_total": round(sum(r.get("ev_regla") or 0 for r in shown))},
+            "exploran": len(expl),
+            "p_media": round(sum(r["p"] for r in shown if r.get("p")) / max(1, sum(1 for r in shown if r.get("p"))), 4),
             "shown_by_ramo": dict(by_ramo.most_common()), "shown_by_channel": dict(by_channel),
             "control": len(ctrl), "control_by_ramo": dict(Counter(r["ramo"] for r in ctrl).most_common()),
             "ev_total": round(sum(r["ev"] or 0 for r in shown)),

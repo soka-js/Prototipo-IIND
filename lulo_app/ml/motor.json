@@ -1,0 +1,819 @@
+{
+ "version": "motor-1.0",
+ "entrenado_con": {
+  "sha256_base": "5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c",
+  "clientes": 600,
+  "corte": "2026-10-08",
+  "reglas": "v2.0",
+  "semilla": 19,
+  "respuestas": 0,
+  "archivo": null
+ },
+ "datos": {
+  "Clientes": {
+   "filas": 600,
+   "usa": "Elegibilidad, capacidad de pago, rasgos de perfil, consentimiento"
+  },
+  "Movimientos": {
+   "filas": 20473,
+   "usa": "Señales, momento (B2) y rasgos de conducta y canal"
+  },
+  "Cajitas": {
+   "filas": 1708,
+   "usa": "Señales de viaje, mascotas y hogar, momento (B2) y rasgos"
+  },
+  "Pagos_Seguros": {
+   "filas": 113,
+   "usa": "Compras externas con fecha: efecto del momento (B2), exclusiones"
+  },
+  "Uso_App": {
+   "filas": 600,
+   "usa": "Canal (tope, fatiga, latencia, apertura M3) y rasgos de uso"
+  },
+  "Seguros_Mensual": {
+   "filas": 72,
+   "usa": "Valor: prima, comisión, persistencia y cancelación"
+  },
+  "Campanas_Previas": {
+   "filas": 5,
+   "usa": "Conversión, interés, cierre y alcance (B1)"
+  },
+  "Elegibilidad": {
+   "filas": 6,
+   "usa": "Edad, ocupación y requisito de cada ramo"
+  },
+  "Juridico_Entrega": {
+   "filas": null,
+   "usa": "Qué cuenta como contacto (Ley 2300): push frente a banner"
+  }
+ },
+ "embudo": {
+  "metodo": "Beta-Binomial jerárquico con Bayes completo en rejilla (Gelman et al., BDA3, 5.3), previa p(μ, κ) ∝ κ^(−3/2)",
+  "hiper": {
+   "conversion": {
+    "mu": 0.106791,
+    "kappa": 202.5,
+    "kappa_eb": 479.37
+   },
+   "interes": {
+    "mu": 0.30781,
+    "kappa": 64.58,
+    "kappa_eb": 147.91
+   },
+   "cierre": {
+    "mu": 0.337492,
+    "kappa": 962.59,
+    "kappa_eb": 100000.0
+   },
+   "alcance": {
+    "mu": 0.320956,
+    "kappa": 46.71,
+    "kappa_eb": 105.2
+   }
+  },
+  "por_ramo": {
+   "SOAT": {
+    "campana": "SOAT renovación",
+    "canal": "Push + banner",
+    "elegibles": 4200,
+    "impactados": 1380,
+    "interesados": 520,
+    "ventas": 178,
+    "cruda": 0.128986,
+    "interes": 0.372358,
+    "cierre": 0.3392,
+    "alcance": 0.328391,
+    "posterior": {
+     "a": 161.059093,
+     "b": 1131.821245,
+     "media": 0.124574,
+     "sd": 0.009181,
+     "ic90": [
+      0.10981,
+      0.139999
+     ],
+     "logit_media": -1.952478,
+     "logit_var": 0.007112
+    },
+    "fuente": "Campanas_Previas: ventas / impactados, encogida hacia el promedio de las campañas"
+   },
+   "Vida": {
+    "campana": "Seguro vida",
+    "canal": "Banner in-app",
+    "elegibles": 3600,
+    "impactados": 910,
+    "interesados": 260,
+    "ventas": 84,
+    "cruda": 0.092308,
+    "interes": 0.287426,
+    "cierre": 0.332707,
+    "alcance": 0.253916,
+    "posterior": {
+     "a": 100.755149,
+     "b": 959.466909,
+     "media": 0.095032,
+     "sd": 0.009002,
+     "ic90": [
+      0.080671,
+      0.110262
+     ],
+     "logit_media": -2.258134,
+     "logit_var": 0.011017
+    },
+    "fuente": "Campanas_Previas: ventas / impactados, encogida hacia el promedio de las campañas"
+   },
+   "Desempleo": {
+    "campana": "Seguro desempleo",
+    "canal": "Push",
+    "elegibles": 2800,
+    "impactados": 760,
+    "interesados": 195,
+    "ventas": 61,
+    "cruda": 0.080263,
+    "interes": 0.261602,
+    "cierre": 0.330504,
+    "alcance": 0.272457,
+    "posterior": {
+     "a": 67.469759,
+     "b": 713.122359,
+     "media": 0.086434,
+     "sd": 0.010051,
+     "ic90": [
+      0.070524,
+      0.103549
+     ],
+     "logit_media": -2.364701,
+     "logit_var": 0.016335
+    },
+    "fuente": "Campanas_Previas: ventas / impactados, encogida hacia el promedio de las campañas"
+   },
+   "Hogar": {
+    "campana": null,
+    "cruda": null,
+    "posterior": {
+     "a": 6.830659,
+     "b": 57.132018,
+     "media": 0.106791,
+     "sd": 0.038319,
+     "ic90": [
+      0.051455,
+      0.176139
+     ],
+     "logit_media": -2.190148,
+     "logit_var": 0.175293
+    },
+    "fuente": "Sin campaña previa: predictiva de una campaña nueva (promedio de las demás, con más duda)"
+   },
+   "Mascotas": {
+    "campana": "Seguro mascotas",
+    "canal": "Push + cajita",
+    "elegibles": 1900,
+    "impactados": 690,
+    "interesados": 205,
+    "ventas": 73,
+    "cruda": 0.105797,
+    "interes": 0.297982,
+    "cierre": 0.342327,
+    "alcance": 0.361638,
+    "posterior": {
+     "a": 93.297498,
+     "b": 792.496304,
+     "media": 0.105326,
+     "sd": 0.010308,
+     "ic90": [
+      0.088891,
+      0.122775
+     ],
+     "logit_media": -2.144132,
+     "logit_var": 0.012039
+    },
+    "fuente": "Campanas_Previas: ventas / impactados, encogida hacia el promedio de las campañas"
+   },
+   "Viajes": {
+    "campana": "Seguro viaje",
+    "canal": "Banner + cajita",
+    "elegibles": 1600,
+    "impactados": 580,
+    "interesados": 171,
+    "ventas": 59,
+    "cruda": 0.101724,
+    "interes": 0.29614,
+    "cierre": 0.339078,
+    "alcance": 0.360738,
+    "posterior": {
+     "a": 79.243175,
+     "b": 694.254694,
+     "media": 0.102448,
+     "sd": 0.010896,
+     "ic90": [
+      0.085127,
+      0.120938
+     ],
+     "logit_media": -2.17592,
+     "logit_var": 0.014141
+    },
+    "fuente": "Campanas_Previas: ventas / impactados, encogida hacia el promedio de las campañas"
+   }
+  },
+  "alcance": {
+   "banner": {
+    "a": 913.956209,
+    "b": 2685.488308,
+    "media": 0.253916,
+    "sd": 0.007254,
+    "ic90": [
+     0.242063,
+     0.265925
+    ],
+    "logit_media": -1.078196,
+    "logit_var": 0.001467,
+    "campana": "Seguro vida",
+    "fuente": "Campanas_Previas: impactados / elegibles de «Seguro vida» (Banner in-app)"
+   },
+   "push": {
+    "a": 770.550688,
+    "b": 2057.600279,
+    "media": 0.272457,
+    "sd": 0.00837,
+    "ic90": [
+     0.258781,
+     0.286317
+    ],
+    "logit_media": -0.982596,
+    "logit_var": 0.001785,
+    "campana": "Seguro desempleo",
+    "fuente": "Campanas_Previas: impactados / elegibles de «Seguro desempleo» (Push)"
+   }
+  },
+  "lectura": "De cada 100 clientes que ven una oferta de seguro, cerca de 31 se interesan y 11 compran. Cada ramo conserva su evidencia, encogida un poco hacia el promedio de las campañas; Hogar, sin campaña, recibe ese promedio con mucha más duda."
+ },
+ "momento": {
+  "ventana_dias": 30,
+  "metodo": "Serie de casos autocontrolada (Farrington, 1995): cada pago externo se compara con el resto del periodo del mismo cliente; el efecto de cada ramo se encoge hacia el promedio de los ramos (modelo jerárquico resuelto en rejilla).",
+  "periodo": [
+   "2025-11-01",
+   "2026-10-08"
+  ],
+  "por_ramo": {
+   "SOAT": {
+    "evento": "un peaje",
+    "pagos": 50,
+    "sin_evento": 16,
+    "informativos": 34,
+    "en_ventana": 7,
+    "esperados": 4.29,
+    "con_datos": true,
+    "theta": {
+     "media": 0.4922,
+     "sd": 0.3695,
+     "q05": -0.125,
+     "q95": 1.075,
+     "p_positivo": 0.9012
+    },
+    "rr": {
+     "media": 1.636,
+     "ic90": [
+      0.882,
+      2.93
+     ]
+    }
+   },
+   "Vida": {
+    "evento": "una transferencia fija a un tercero",
+    "pagos": 27,
+    "sin_evento": 20,
+    "informativos": 7,
+    "en_ventana": 4,
+    "esperados": 2.82,
+    "con_datos": true,
+    "theta": {
+     "media": 0.4899,
+     "sd": 0.4542,
+     "q05": -0.25,
+     "q95": 1.225,
+     "p_positivo": 0.8621
+    },
+    "rr": {
+     "media": 1.632,
+     "ic90": [
+      0.779,
+      3.404
+     ]
+    }
+   },
+   "Desempleo": {
+    "evento": "un abono de nómina",
+    "pagos": 0,
+    "sin_evento": 0,
+    "informativos": 0,
+    "en_ventana": 0,
+    "esperados": 0.0,
+    "con_datos": false,
+    "theta": {
+     "media": 0.4339,
+     "sd": 0.5701,
+     "q05": -0.5,
+     "q95": 1.3,
+     "p_positivo": 0.8075
+    },
+    "rr": {
+     "media": 1.543,
+     "ic90": [
+      0.607,
+      3.669
+     ]
+    }
+   },
+   "Hogar": {
+    "evento": "un abono al bolsillo de vivienda",
+    "pagos": 24,
+    "sin_evento": 23,
+    "informativos": 1,
+    "en_ventana": 0,
+    "esperados": 0.32,
+    "con_datos": true,
+    "theta": {
+     "media": 0.3721,
+     "sd": 0.5612,
+     "q05": -0.6,
+     "q95": 1.2,
+     "p_positivo": 0.7818
+    },
+    "rr": {
+     "media": 1.451,
+     "ic90": [
+      0.549,
+      3.32
+     ]
+    }
+   },
+   "Mascotas": {
+    "evento": "una compra o un abono para la mascota",
+    "pagos": 12,
+    "sin_evento": 6,
+    "informativos": 6,
+    "en_ventana": 1,
+    "esperados": 0.62,
+    "con_datos": true,
+    "theta": {
+     "media": 0.4445,
+     "sd": 0.5053,
+     "q05": -0.4,
+     "q95": 1.225,
+     "p_positivo": 0.8256
+    },
+    "rr": {
+     "media": 1.56,
+     "ic90": [
+      0.67,
+      3.404
+     ]
+    }
+   },
+   "Viajes": {
+    "evento": "una compra de viaje o un abono al bolsillo de viajes",
+    "pagos": 0,
+    "sin_evento": 0,
+    "informativos": 0,
+    "en_ventana": 0,
+    "esperados": 0.0,
+    "con_datos": false,
+    "theta": {
+     "media": 0.4339,
+     "sd": 0.5701,
+     "q05": -0.5,
+     "q95": 1.3,
+     "p_positivo": 0.8075
+    },
+    "rr": {
+     "media": 1.543,
+     "ic90": [
+      0.607,
+      3.669
+     ]
+    }
+   }
+  },
+  "promedio": {
+   "theta": {
+    "media": 0.434,
+    "sd": 0.4034,
+    "q05": -0.25,
+    "q95": 1.05,
+    "p_positivo": 0.849
+   },
+   "rr": 1.543,
+   "ic90": [
+    0.779,
+    2.858
+   ]
+  },
+  "tau": {
+   "media": 0.3183,
+   "sd": 0.2483,
+   "q05": 0.02,
+   "q95": 0.82,
+   "p_positivo": 1.0
+  },
+  "sensibilidad": {
+   "7": {
+    "en_ventana": 1,
+    "esperados": 2.04,
+    "rr": 0.604,
+    "ic90": [
+     0.192,
+     1.69
+    ],
+    "p_positivo": 0.223
+   },
+   "15": {
+    "en_ventana": 4,
+    "esperados": 4.24,
+    "rr": 0.889,
+    "ic90": [
+     0.387,
+     1.868
+    ],
+    "p_positivo": 0.409
+   },
+   "30": {
+    "en_ventana": 12,
+    "esperados": 8.06,
+    "rr": 1.626,
+    "ic90": [
+     0.905,
+     2.858
+    ],
+    "p_positivo": 0.913
+   },
+   "60": {
+    "en_ventana": 22,
+    "esperados": 14.26,
+    "rr": 2.179,
+    "ic90": [
+     1.317,
+     3.579
+    ],
+    "p_positivo": 0.993
+   },
+   "90": {
+    "en_ventana": 24,
+    "esperados": 18.64,
+    "rr": 1.713,
+    "ic90": [
+     1.025,
+     2.858
+    ],
+    "p_positivo": 0.952
+   }
+  },
+  "total": {
+   "en_ventana": 12,
+   "esperados": 8.05
+  },
+  "exposicion": {
+   "SOAT": {
+    "evaluaciones": 321,
+    "en_momento": 98,
+    "fraccion": 0.3053
+   },
+   "Vida": {
+    "evaluaciones": 1048,
+    "en_momento": 429,
+    "fraccion": 0.4094
+   },
+   "Desempleo": {
+    "evaluaciones": 2328,
+    "en_momento": 2328,
+    "fraccion": 1.0
+   },
+   "Hogar": {
+    "evaluaciones": 484,
+    "en_momento": 146,
+    "fraccion": 0.3017
+   },
+   "Mascotas": {
+    "evaluaciones": 672,
+    "en_momento": 194,
+    "fraccion": 0.2887
+   },
+   "Viajes": {
+    "evaluaciones": 1181,
+    "en_momento": 464,
+    "fraccion": 0.3929
+   }
+  }
+ },
+ "rasgos": {
+  "vocabulario": [
+   "bolsillo:Emergencias",
+   "bolsillo:Mascotas",
+   "bolsillo:Otras",
+   "bolsillo:Viajes",
+   "bolsillo:Vivienda",
+   "canal:PSE",
+   "canal:QR",
+   "canal:Tarjeta débito",
+   "canal:Transferencia",
+   "gasto:ingreso",
+   "mov:Abono recurrente",
+   "mov:Aerolineas",
+   "mov:E-commerce",
+   "mov:Hoteles",
+   "mov:Mascotas",
+   "mov:Otros",
+   "mov:Peajes",
+   "mov:Restaurantes",
+   "mov:Salud",
+   "mov:Servicios",
+   "mov:Supermercados",
+   "mov:Transferencia fija tercero",
+   "mov:Transporte",
+   "ocupacion:Empleado",
+   "ocupacion:Estudiante",
+   "ocupacion:Independiente",
+   "ocupacion:Pensionado",
+   "perfil:antiguedad",
+   "perfil:bolsillos",
+   "perfil:cdt",
+   "perfil:credito",
+   "perfil:edad",
+   "perfil:ingreso",
+   "perfil:pro",
+   "perfil:saldo",
+   "seguros:n",
+   "uso:apertura",
+   "uso:sesiones"
+  ],
+  "media": {
+   "bolsillo:Emergencias": 0.309148,
+   "bolsillo:Mascotas": 0.144916,
+   "bolsillo:Otras": 0.21339,
+   "bolsillo:Viajes": 0.215622,
+   "bolsillo:Vivienda": 0.201487,
+   "canal:PSE": 0.131552,
+   "canal:QR": 0.05417,
+   "canal:Tarjeta débito": 0.417278,
+   "canal:Transferencia": 0.397,
+   "gasto:ingreso": 0.146132,
+   "mov:Abono recurrente": 0.89647,
+   "mov:Aerolineas": 0.122565,
+   "mov:E-commerce": 0.412585,
+   "mov:Hoteles": 0.084529,
+   "mov:Mascotas": 0.109182,
+   "mov:Otros": 0.607371,
+   "mov:Peajes": 0.218083,
+   "mov:Restaurantes": 0.51401,
+   "mov:Salud": 0.296858,
+   "mov:Servicios": 0.365609,
+   "mov:Supermercados": 0.772114,
+   "mov:Transferencia fija tercero": 0.228657,
+   "mov:Transporte": 0.366071,
+   "ocupacion:Empleado": 0.565,
+   "ocupacion:Estudiante": 0.093333,
+   "ocupacion:Independiente": 0.26,
+   "ocupacion:Pensionado": 0.081667,
+   "perfil:antiguedad": 30.47,
+   "perfil:bolsillos": 0.686667,
+   "perfil:cdt": 0.158333,
+   "perfil:credito": 0.35,
+   "perfil:edad": 1.675,
+   "perfil:ingreso": 15.35389,
+   "perfil:pro": 0.26,
+   "perfil:saldo": 15.810369,
+   "seguros:n": 0.616667,
+   "uso:apertura": 0.253694,
+   "uso:sesiones": 14.555
+  },
+  "escala": {
+   "bolsillo:Emergencias": 0.64673,
+   "bolsillo:Mascotas": 0.481573,
+   "bolsillo:Otras": 0.551513,
+   "bolsillo:Viajes": 0.552014,
+   "bolsillo:Vivienda": 0.538871,
+   "canal:PSE": 0.063316,
+   "canal:QR": 0.040955,
+   "canal:Tarjeta débito": 0.118109,
+   "canal:Transferencia": 0.142039,
+   "gasto:ingreso": 0.05205,
+   "mov:Abono recurrente": 0.662656,
+   "mov:Aerolineas": 0.274099,
+   "mov:E-commerce": 0.44315,
+   "mov:Hoteles": 0.230067,
+   "mov:Mascotas": 0.261176,
+   "mov:Otros": 0.502378,
+   "mov:Peajes": 0.355443,
+   "mov:Restaurantes": 0.473819,
+   "mov:Salud": 0.400476,
+   "mov:Servicios": 0.44109,
+   "mov:Supermercados": 0.541402,
+   "mov:Transferencia fija tercero": 0.420576,
+   "mov:Transporte": 0.447742,
+   "ocupacion:Empleado": 0.495757,
+   "ocupacion:Estudiante": 0.290899,
+   "ocupacion:Independiente": 0.438634,
+   "ocupacion:Pensionado": 0.273856,
+   "perfil:antiguedad": 17.317306,
+   "perfil:bolsillos": 0.463849,
+   "perfil:cdt": 0.365053,
+   "perfil:credito": 0.47697,
+   "perfil:edad": 1.151539,
+   "perfil:ingreso": 0.518223,
+   "perfil:pro": 0.438634,
+   "perfil:saldo": 0.847228,
+   "seguros:n": 0.702179,
+   "uso:apertura": 0.309717,
+   "uso:sesiones": 7.88714
+  },
+  "etiquetas": {
+   "bolsillo:Emergencias": "Abonos al bolsillo emergencias",
+   "bolsillo:Mascotas": "Abonos al bolsillo mascotas",
+   "bolsillo:Otras": "Abonos al bolsillo otras",
+   "bolsillo:Viajes": "Abonos al bolsillo viajes",
+   "bolsillo:Vivienda": "Abonos al bolsillo vivienda",
+   "canal:PSE": "Paga por PSE",
+   "canal:QR": "Paga por QR",
+   "canal:Tarjeta débito": "Paga por Tarjeta débito",
+   "canal:Transferencia": "Paga por Transferencia",
+   "gasto:ingreso": "Gasto frente a ingreso",
+   "mov:Abono recurrente": "Movimientos recientes: abono recurrente",
+   "mov:Aerolineas": "Movimientos recientes: aerolineas",
+   "mov:E-commerce": "Movimientos recientes: e-commerce",
+   "mov:Hoteles": "Movimientos recientes: hoteles",
+   "mov:Mascotas": "Movimientos recientes: mascotas",
+   "mov:Otros": "Movimientos recientes: otros",
+   "mov:Peajes": "Movimientos recientes: peajes",
+   "mov:Restaurantes": "Movimientos recientes: restaurantes",
+   "mov:Salud": "Movimientos recientes: salud",
+   "mov:Servicios": "Movimientos recientes: servicios",
+   "mov:Supermercados": "Movimientos recientes: supermercados",
+   "mov:Transferencia fija tercero": "Movimientos recientes: transferencia fija tercero",
+   "mov:Transporte": "Movimientos recientes: transporte",
+   "ocupacion:Empleado": "Ocupación: empleado",
+   "ocupacion:Estudiante": "Ocupación: estudiante",
+   "ocupacion:Independiente": "Ocupación: independiente",
+   "ocupacion:Pensionado": "Ocupación: pensionado",
+   "perfil:antiguedad": "Antigüedad en Lulo",
+   "perfil:bolsillos": "Usa bolsillos",
+   "perfil:cdt": "CDT activo",
+   "perfil:credito": "Crédito activo",
+   "perfil:edad": "Rango de edad",
+   "perfil:ingreso": "Ingreso mensual",
+   "perfil:pro": "Segmento Pro",
+   "perfil:saldo": "Saldo promedio",
+   "seguros:n": "Seguros que ya tiene",
+   "uso:apertura": "Abre notificaciones",
+   "uso:sesiones": "Sesiones en la app"
+  },
+  "familias": {
+   "perfil": 8,
+   "ocupacion": 4,
+   "mov": 13,
+   "canal": 4,
+   "gasto": 1,
+   "bolsillo": 5,
+   "seguros": 1,
+   "uso": 2
+  }
+ },
+ "previas": {
+  "base": {
+   "SOAT": [
+    -1.25731,
+    0.042481
+   ],
+   "Vida": [
+    -1.436051,
+    0.050267
+   ],
+   "Desempleo": [
+    -1.589203,
+    0.057714
+   ],
+   "Hogar": [
+    -1.316482,
+    0.201126
+   ],
+   "Mascotas": [
+    -1.336615,
+    0.054344
+   ],
+   "Viajes": [
+    -1.375895,
+    0.057998
+   ]
+  },
+  "senal_media": {
+   "SOAT": [
+    -0.27606,
+    0.188094
+   ],
+   "Vida": [
+    -0.256228,
+    0.175883
+   ],
+   "Desempleo": [
+    -0.241073,
+    0.166384
+   ],
+   "Hogar": [
+    -0.269218,
+    0.183909
+   ],
+   "Mascotas": [
+    -0.266954,
+    0.182518
+   ],
+   "Viajes": [
+    -0.262629,
+    0.179851
+   ]
+  },
+  "momento": {
+   "SOAT": [
+    0.305747,
+    0.248574
+   ],
+   "Vida": [
+    0.277,
+    0.274616
+   ],
+   "Desempleo": [
+    0.226157,
+    0.312725
+   ],
+   "Hogar": [
+    0.219763,
+    0.350065
+   ],
+   "Mascotas": [
+    0.262678,
+    0.318868
+   ],
+   "Viajes": [
+    0.250889,
+    0.350585
+   ]
+  },
+  "afinidad": {
+   "SOAT": [
+    0.0,
+    0.1
+   ],
+   "Vida": [
+    0.0,
+    0.1
+   ],
+   "Desempleo": [
+    0.0,
+    0.1
+   ],
+   "Hogar": [
+    0.0,
+    0.1
+   ],
+   "Mascotas": [
+    0.0,
+    0.1
+   ],
+   "Viajes": [
+    0.0,
+    0.1
+   ]
+  },
+  "global_sd": 0.056545,
+  "ramo_sd": 0.046169,
+  "cliente_sd": 0.25,
+  "origen": {
+   "base": "B1: conversión de la campaña previa del ramo (Beta-Binomial jerárquico), llevada a «fuera del momento» con la exposición de B2 para que el promedio siga siendo el de la campaña",
+   "senal_media": "Hipótesis aprobada en v1: × 0,6 frente a la señal fuerte, con duda (de × 0,3 a × 1,0 al 90 %)",
+   "momento": "B2: compras externas en los 30 días después del evento",
+   "afinidad": "M1: media 1 si M1 le gana al azar en el ramo; 0 si no",
+   "rasgos": "Sin datos de respuesta: media 0; la duda total de los rasgos (0,45) se reparte entre las 38 variables: 0,056545 el peso común y 0,046169 el del ramo",
+   "cliente": "Media 0 y desviación 0,25; aprende con las respuestas del cliente"
+  },
+  "chequeo": {
+   "ofertas": 969,
+   "sorteos": 19380,
+   "p_sorteada": {
+    "p05": 0.0069,
+    "p25": 0.0296,
+    "p50": 0.0686,
+    "p75": 0.1401,
+    "p95": 0.3158
+   },
+   "p_media": {
+    "p05": 0.0507,
+    "p50": 0.0626,
+    "p95": 0.1232
+   }
+  }
+ },
+ "validacion": {
+  "respuestas": 0,
+  "promovido": false,
+  "motivo": "La base del reto no trae respuestas a ofertas por cliente: el motor decide con las creencias previas y aprende en línea de las respuestas de cada sesión"
+ },
+ "pesos": {},
+ "clientes": {}
+}

@@ -52,6 +52,13 @@ def models():
     return ml.summary()
 
 
+@router.get("/motor")
+def motor():
+    """Motor bayesiano: piezas (embudo, momento, rasgos, previas), datos que usa, validación y laboratorio."""
+    from .ml import motor as mot
+    return mot.resumen()
+
+
 @router.get("/clients")
 def clients(q: str = "", outcome: str = "", ramo: str = "", source: str = "",
             offset: int = Query(0, ge=0), limit: int = Query(50, ge=1, le=200)):
@@ -136,8 +143,8 @@ def campaign_csv(as_of: str | None = None, personas: bool = False):
     out = view.campaign_cached(d.isoformat(), personas)
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";", lineterminator="\n")
-    cols = ["client_id", "outcome", "ramo", "kind", "strength", "ev", "channel", "channel_reason", "group", "offerable",
-            "message"]
+    cols = ["client_id", "outcome", "ramo", "kind", "strength", "p", "ev", "ev_regla", "ramo_regla", "channel",
+            "channel_reason", "group", "policy", "offerable", "message"]
     w.writerow(cols)
     for r in out["rows"]:
         w.writerow([("|".join(r[c]) if c == "offerable" else r[c]) for c in cols])

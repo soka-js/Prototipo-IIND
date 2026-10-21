@@ -11,8 +11,8 @@ Origen de cada parámetro:
 
 from __future__ import annotations
 
-VERSION = "v1.3"
-APPROVED_ON = "2026-10-20"
+VERSION = "v2.0"
+APPROVED_ON = "2026-10-21"
 CHANGELOG = {
     "v1": "Umbrales de la tabla de cobertura, valor esperado, control 10 %, banner al tope, 56+ excluido.",
     "v1.1": "Ofertas con fecha límite primero; mínimo 7 días entre push.",
@@ -20,7 +20,17 @@ CHANGELOG = {
             "ramos donde el modelo le gana al azar; el modelo de respuesta al push puede mandar la oferta a banner.",
     "v1.3": "Capacidad de pago en la elegibilidad (prima frente a ingreso mensual y saldo); la comisión de los "
             "ramos de pago único descuenta la cancelación de la base.",
+    "v2.0": "Motor bayesiano: el valor esperado es P(acepta | ve) × comisión, con P de una regresión probit "
+            "bayesiana cuyas creencias previas salen de la base (embudo jerárquico de campañas y efecto del "
+            "momento con las compras externas) y de las hipótesis aprobadas (señal media × 0,6); aprende de las "
+            "respuestas (de la sesión y de la población) y explora con muestreo de Thompson en un 10 % de los "
+            "clientes. Las compuertas de v1.3 (autorización, elegibilidad, exclusiones, espera, control, canal) "
+            "no cambian. MOTOR = \"regla\" reproduce v1.3.",
 }
+
+# Motor de decisión. "bayesiano" (v2.0) o "regla" (reproduce v1.3: conversión previa × comisión × fuerza ×
+# afinidad). Las compuertas son las mismas en los dos; solo cambia cómo se ordenan las ofertas permitidas.
+MOTOR = "bayesiano"
 
 # Ventana de historia que leen las señales.
 LOOKBACK_DAYS = 365
@@ -103,6 +113,38 @@ CAPACITY_SINGLE_PAY_VS_BALANCE = True
 # multiplica por (1 − cancelación): se supone que una póliza cancelada devuelve la comisión. El diccionario
 # de la base no define el campo; se valida con Lulo.
 CANCEL_SINGLE_PAY = True
+
+# ---------------------------------------------------------------- motor bayesiano (v2.0, docs/MOTOR.md)
+# Lo usa scripts/train_motor.py para escribir las creencias previas de lulo_app/ml/motor.json: cambiar un
+# valor exige reentrenar (python scripts/train_motor.py) y subir VERSION.
+
+# Exploración: dentro del tratamiento, los clientes con bucket en [CONTROL_PCT, CONTROL_PCT + EXPLORE_PCT)
+# deciden con un sorteo de las creencias (muestreo de Thompson) en vez de con la media: así el motor prueba
+# opciones de las que todavía duda y aprende de sus respuestas. El grupo de control no cambia. [hipótesis v2.0]
+EXPLORE_PCT = 10
+
+# Ventana del momento: el evento que dispara el ramo pasó hace menos de estos días. Igual a la espera entre
+# ofertas y a la anticipación del recordatorio del SOAT. [aprobado v1 + base: M5b]
+MOMENTO_VENTANA_DIAS = 30
+
+# Señal media frente a fuerte: P(acepta) × 0,6, como STRENGTH_MULT de v1, con una duda que cubre de × 0,3 a
+# × 1,0 al 90 % (desviación del logaritmo de la razón). [hipótesis v1 con su duda]
+PRIOR_SENAL_MEDIA_RATIO = 0.6
+PRIOR_SENAL_LOGSD = 0.37
+
+# Duda previa de los rasgos genéricos (escala probit). Se fija la duda TOTAL que pueden aportar juntos para un
+# cliente típico y se reparte entre las D variables del vocabulario (cada una recibe TOTAL/√D): así, sumar
+# tipos de datos no agranda la duda ni el ruido de la exploración. Con 0,45 y el apetito del cliente (0,25),
+# antes de ver respuestas la probabilidad de un cliente típico queda entre 2 % y 35 % cuando la base es 10 %
+# (chequeo predictivo previo en motor.json). El 60 % de la varianza va al peso común a todos los ramos y el
+# 40 % a la desviación propia del ramo. [hipótesis v2.0]
+PRIOR_SD_RASGOS_TOTAL = 0.45
+PRIOR_FRACCION_COMUN = 0.6
+PRIOR_SD_CLIENTE = 0.25
+
+# Peso de la afinidad de M1: media 1 si M1 pasa la compuerta del ramo (se cree a M1), 0 si no (no se cree
+# hasta que las respuestas lo confirmen). [aprobado v1.2]
+PRIOR_AFINIDAD = {"usable": (1.0, 0.25), "no_usable": (0.0, 0.10)}
 
 # Desempate entre ramos con el mismo valor esperado (orden fijo, no se usa para decidir otra cosa).
 TIEBREAK = ("Pago protegido", "SOAT", "Desempleo", "Vida", "Viajes", "Mascotas", "Hogar")
