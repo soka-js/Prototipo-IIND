@@ -89,11 +89,28 @@ function promos(S) {
   const out = [];
   const B = S.banner;
   if (B) out.push(`<button class="promo offer" data-a="banner-open"><span class="tagp">Para ti</span><span><b>${esc(B.title)}</b><p>${esc(strip(B.why)).slice(0, 92)}${strip(B.why).length > 92 ? "…" : ""}</p></span><span class="cta">Ver por qué</span></button>`);
-  out.push(`<button class="promo" data-a="tab" data-t="proteccion"><span><b>¡Estar protegido es un estilo de vida!</b><p>Asegura lo que más te importa</p></span><span class="cta">Ver Seguros</span>${art("shield")}</button>`);
+  out.push(`<button class="promo photo" data-a="tab" data-t="proteccion"><span><b>¡Estar protegido es un estilo de vida!</b><p>Asegura lo que más te importa</p></span><span class="cta">Ver Seguros</span></button>`);
   if (chapters(S).length) out.push(`<button class="promo lime" data-a="tab" data-t="anio"><span><b>Tu año en Lulo ya está listo</b><p>${num(S.B.movCount)} movimientos contados en ${chapters(S).length} capítulos</p></span><span class="cta">Ver mi año</span>${art("star")}</button>`);
-  out.push(`<button class="promo" data-a="go" data-s="credito"><span><b>¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.</p></span><span class="cta">Saber más</span>${art("coin")}</button>`);
+  out.push(`<button class="promo" data-a="go" data-s="credito"><span><b>¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.</p></span><span class="cta">Saber más</span>${ILUS.credito}</button>`);
   return `<div class="carousel" id="carousel">${out.join("")}</div><div class="dots">${out.map((_, i) => `<i class="${i === 0 ? "on" : ""}"></i>`).join("")}</div>`;
 }
+// Modelos (lulo_app/ml): una línea en lenguaje claro solo cuando el modelo le gana al azar y sube la afinidad.
+function mlWhy(C) {
+  const m = C && C.ml;
+  if (!m || !m.usable || C.afinidad < 1.1 || !m.drivers.length) return "";
+  const x = C.afinidad.toFixed(1).replace(".", ",");
+  return `<div class="why ml"><b>Clientes como tú:</b> quienes tienen hábitos parecidos a los tuyos (${esc(m.drivers.map(d => d.label.toLowerCase()).join(", "))}) tienen este seguro ${x} veces más que el promedio.</div>`;
+}
+function segCard(S) {
+  const g = S.evaluation && S.evaluation.ml && S.evaluation.ml.segmento;
+  if (!g) return "";
+  return `<div class="yr-seg"><span class="k">Tu forma de usar Lulo este año</span><b>${esc(g.nombre)}</b>${esc(g.rasgos.join(" · "))}</div>`;
+}
+// Ilustraciones y foto tomadas de capturas de la app real (public/static/img).
+const ILUS = {
+  credito: `<img class="ilus" src="/static/img/ilus-credito.png" alt="" width="170" height="212">`,
+  tarjeta: `<img class="ilus" src="/static/img/ilus-tarjeta.png" alt="" width="201" height="216">`,
+};
 const art = k => `<svg class="art" viewBox="0 0 100 100"><circle cx="60" cy="60" r="44" fill="${k === "star" ? "#101500" : "#B9E3FF"}" opacity=".35"/><g transform="translate(36 36) scale(2)" stroke="${k === "star" ? "#101500" : "#061232"}" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${{shield: '<path d="M12 3 5 6v5.5c0 4.2 3 7.8 7 9.5 4-1.7 7-5.3 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/>', star: '<path d="M12 3.5l2.4 5 5.4.6-4 3.7 1.1 5.4L12 15.5l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z"/>', coin: '<circle cx="12" cy="12" r="8"/><path d="M10 9.5h3a1.5 1.5 0 0 1 0 3h-2a1.5 1.5 0 0 0 0 3h3M12 8v1.5M12 15.5V17"/>'}[k]}</g></svg>`;
 
 /* ---------- Tu año: momento de protección ---------- */
@@ -387,7 +404,7 @@ export const SCREENS = {
   credito(S) {
     const C = S.credit, pre = S.B.client.preapproved;
     if (!C) {
-      return `${hdr("Crédito")}<div class="light-hero"><b style="max-width:14ch">¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.${pre ? ` Tienes ${money(pre)} preaprobados.` : ""}</p><button class="go" data-a="go" data-s="creditReq">Saber más</button>${art("coin")}</div>
+      return `${hdr("Crédito")}<div class="light-hero"><b style="max-width:14ch">¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.${pre ? ` Tienes ${money(pre)} preaprobados.` : ""}</p><button class="go" data-a="go" data-s="creditReq">Saber más</button>${ILUS.credito}</div>
         <div class="pad" style="margin-top:16px">${anno("Lo que lee el motor", "<div>Un desembolso es un momento único: el motor revisa si el crédito tiene pago protegido y, si no, lo ofrece en ese instante (fecha límite primero, reglas v1.1).</div>")}</div>`;
     }
     if (!C.details) {
@@ -420,13 +437,13 @@ export const SCREENS = {
   },
 
   tcredito(S) {
-    return `${hdr("Tarjeta de crédito")}<div class="light-hero"><div class="k">Tarjeta de Crédito Lulo</div><b>Pide tu Tarjeta de Crédito Lulo</b><p>Sin cuota de manejo y con beneficios para todos los días.</p><button class="go" data-a="toast" data-m="La tarjeta de crédito queda fuera de este prototipo">Empezar</button>${art("coin")}</div>`;
+    return `${hdr("Tarjeta de crédito")}<div class="light-hero"><div class="k">Tarjeta de Crédito Lulo</div><b>Pide tu Tarjeta de Crédito Lulo</b><p>Sin cuota de manejo y con beneficios para todos los días.</p><button class="go" data-a="toast" data-m="La tarjeta de crédito queda fuera de este prototipo">Empezar</button>${ILUS.tarjeta}</div>`;
   },
 
   cdt(S) {
     const rows = [["payout", "Abre tu CDT desde $100,000 de forma 100% digital y sin papeleo."], ["gauge", "Gana rendimientos de hasta 13% E.A."], ["clock", "Aprovecha y activa la renovación automática mientras creas tu CDT."], ["lock", "Tu CDT está protegido por el Seguro de Depósitos de Fogafin."]];
     return `${hdr("Beneficios del CDT Lulo")}
-      <svg viewBox="0 0 390 180" style="width:100%;display:block"><polygon points="195,20 265,60 265,140 195,180 125,140 125,60" fill="#2B3550"/><rect x="165" y="70" width="60" height="70" rx="10" fill="#C8B6FF" opacity=".5"/><rect x="160" y="60" width="70" height="14" rx="5" fill="#C8B6FF"/><rect x="175" y="105" width="40" height="8" rx="3" fill="#FFB547"/><rect x="175" y="118" width="40" height="8" rx="3" fill="#FFB547"/><circle cx="240" cy="62" r="10" fill="#FFB547"/><path d="M110 120V80l-8 10M110 80l8 10" stroke="#62E3A0" stroke-width="5" fill="none"/></svg>
+      <div class="ilus-cdt"><img src="/static/img/ilus-cdt.png" alt="" width="184" height="160"></div>
       <h2 class="h-big" style="text-align:center;font-size:21px;padding:0 30px;margin-bottom:22px">Aquí tu plata crece libre de tentaciones</h2>
       <div class="bullets">${rows.map(([i, t]) => `<div><span class="bi">${I[i]}</span><span>${t}</span></div>`).join("")}</div>
       <div class="sticky" style="margin-top:20px"><button class="btn primary" data-a="toast" data-m="Abrir un CDT queda fuera de este prototipo">Abrir CDT</button></div>`;
@@ -448,7 +465,7 @@ export const SCREENS = {
 
   soatIntro(S) {
     return `${hdr("", {})}
-      <div class="insurer"><span class="vig">VIGILADO · SUPERINTENDENCIA FINANCIERA DE COLOMBIA</span><span class="wm"><span><small>seguros</small>mundial</span></span></div>
+      <div class="insurer"><span class="vig">VIGILADO · SUPERINTENDENCIA FINANCIERA DE COLOMBIA</span><img class="wm-img" src="/static/img/logo-mundial.png" alt="Seguros Mundial" width="312" height="72"></div>
       <h2 class="h-big" style="text-align:center;font-size:20px;margin-bottom:26px">¡Viaja tranqui con el SOAT al día!</h2>
       <div class="bullets"><div><span class="bi">${I.stopwatch}</span><span>Compra o renueva el SOAT en minutos, sin filas ni papeleo.</span></div><div><span class="bi">${I.payout}</span><span>Paga al toque desde tu Lulo cuenta.</span></div><div><span class="bi">${I.carsDoc}</span><span>Recibe la póliza directo en tu correo o teléfono en un parpadeo.</span></div></div>
       <div class="disclaimer">Este es un producto ofrecido por Seguros Mundial, una compañía de seguros independiente de Lulo bank.</div>
@@ -512,7 +529,7 @@ export const SCREENS = {
     return `${hdr(dec ? "Recomendado para ti" : esc(P.title))}
       <div class="pad"><div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">${dec ? `<span class="pill new">Sugerencia</span>` : ""}${P.concept ? `<span class="pill hyp">Producto por negociar con la aseguradora</span>` : ""}${P.source === "prototipo" ? `<span class="pill mut">Fuera de la base: parámetros del prototipo</span>` : ""}${has ? `<span class="pill ok">Activo</span>` : ""}</div>
         <h2 class="h-big" style="margin-top:12px">${esc(P.title)}</h2><p class="sub">${P.partner ? `Con ${esc(P.partner)}` : "Aliado por definir"}</p></div>
-      ${why ? `<div class="pad" style="margin-top:16px"><div class="why"><b>Por qué lo ves:</b> ${why}</div></div>` : ""}
+      ${why ? `<div class="pad" style="margin-top:16px"><div class="why"><b>Por qué lo ves:</b> ${why}</div>${elig ? mlWhy(C) : ""}</div>` : ""}
       <div class="sec-sm">Qué cubre</div>
       <div class="pad"><ul class="list-check">${(P.covers || []).map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>
       <div class="pad" style="margin-top:18px"><div class="card" style="padding:4px 16px"><div class="kv"><span>Valor</span><span style="font-weight:700">${esc(P.price)}</span></div><div class="kv"><span>Se paga desde</span><span>Lulo Cuenta</span></div>${P.requirement ? `<div class="kv"><span>Requisito</span><span>${esc(P.requirement)}</span></div>` : ""}</div></div>
@@ -565,6 +582,7 @@ export const SCREENS = {
     const kind = c => c.protect ? "Incluye un momento de protección" : c.ask ? "Incluye una pregunta" : c.id === "cierre" ? "Lo que tienes cubierto" : "Resumen";
     const chs = chapters(S);
     return `<div class="hdr-title">Tu año en Lulo</div><div class="yr-hero"><div class="k">Tus últimos 12 meses</div><div class="y">${S.B.as_of.slice(0, 4)}</div><p>Lo que viviste con Lulo, contado con tus movimientos.</p><button class="btn" data-a="st-open" data-i="0">Ver mi año</button></div>
+      ${segCard(S)}
       <div class="sec-sm">${chs.length - 1} capítulos</div>
       ${chs.slice(1).map((c, i) => { const [t, cl] = st(c); return `<button class="chap" data-a="st-open" data-i="${i + 1}"><span class="sw" style="${sw[c.theme]}">${i + 1}</span><span class="tx"><b>${c.name}</b><span>${kind(c)}</span></span><span class="st ${cl}">${t}</span></button>`; }).join("")}
       <div class="pad" style="margin-top:14px"><div class="card" style="font-size:12.5px;color:#C9D0DE;line-height:1.5">Lo armamos solo con tus movimientos en Lulo. Puedes apagar las sugerencias de seguros en Perfil.</div></div><div style="height:20px"></div>`;

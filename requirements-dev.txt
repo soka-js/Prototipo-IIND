@@ -4,3 +4,5 @@ uvicorn[standard]>=0.30
 pytest>=8
 httpx>=0.27
 openpyxl>=3.1           # solo para scripts/ingest_reto.py
+numpy==2.4.6            # solo para scripts/train_models.py; versión fija para que --check sea reproducible
+scikit-learn==1.8.0     # solo para scripts/train_models.py (producción lee el JSON con Python puro)

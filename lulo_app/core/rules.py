@@ -11,11 +11,15 @@ Origen de cada parámetro:
 
 from __future__ import annotations
 
-VERSION = "v1.1"
-APPROVED_ON = "2026-10-10"
+VERSION = "v1.3"
+APPROVED_ON = "2026-10-20"
 CHANGELOG = {
     "v1": "Umbrales de la tabla de cobertura, valor esperado, control 10 %, banner al tope, 56+ excluido.",
     "v1.1": "Ofertas con fecha límite primero; mínimo 7 días entre push.",
+    "v1.2": "Modelos entrenados con la base: la afinidad del modelo de propensión ajusta el valor esperado en los "
+            "ramos donde el modelo le gana al azar; el modelo de respuesta al push puede mandar la oferta a banner.",
+    "v1.3": "Capacidad de pago en la elegibilidad (prima frente a ingreso mensual y saldo); la comisión de los "
+            "ramos de pago único descuenta la cancelación de la base.",
 }
 
 # Ventana de historia que leen las señales.
@@ -76,6 +80,29 @@ CONTROL_SALT = "reto19-v1"
 
 # Rango «56+»: se excluye de los ramos con tope de edad. [aprobado]
 EXCLUDE_OPEN_AGE_BAND = True
+
+# Modelos entrenados (lulo_app/ml/modelos.json, scripts/train_models.py). [base + aprobado v1.2]
+# Valor esperado = conversión previa × comisión a 12 meses × fuerza × afinidad. La afinidad es la
+# probabilidad del modelo dividida por la tasa base del ramo, acotada a [0,5; 2]; vale 1 en los ramos
+# donde el modelo no le gana al azar (prueba de permutación p < 0,05 y AUC ≥ 0,55).
+ML_PROPENSITY = True
+# Si la probabilidad de abrir un push (Bayes empírico) queda bajo el umbral del modelo, la oferta va como banner.
+ML_PUSH_RESPONSE = True
+
+# Capacidad de pago (dato 2.2 de la solicitud a Lulo: saldo e ingreso «para medir capacidad de pago»). [hipótesis v1.3]
+# Pólizas mensuales: la prima no puede pasar de esta fracción del ingreso mensual (Clientes.ingreso_mensual_cop).
+# Pólizas de pago único (SOAT anual, Viajes por viaje): la prima no puede pasar del saldo promedio
+# (Clientes.saldo_promedio_cop). El umbral no se puede estimar con la base (no hay rechazos por precio):
+# es un supuesto de trabajo que se valida con Lulo.
+CAPACITY_MAX_SHARE = 0.05
+CAPACITY_SINGLE_PAY_VS_BALANCE = True
+
+# Cancelación (Seguros_Mensual.cancelacion_pct, dato 1.3). [base + hipótesis v1.3]
+# En las pólizas mensuales la persistencia a 6 y 12 meses ya descuenta las salidas, así que la cancelación
+# no se aplica otra vez. En las de pago único (SOAT, Viajes), que no traen persistencia, la comisión se
+# multiplica por (1 − cancelación): se supone que una póliza cancelada devuelve la comisión. El diccionario
+# de la base no define el campo; se valida con Lulo.
+CANCEL_SINGLE_PAY = True
 
 # Desempate entre ramos con el mismo valor esperado (orden fijo, no se usa para decidir otra cosa).
 TIEBREAK = ("Pago protegido", "SOAT", "Desempleo", "Vida", "Viajes", "Mascotas", "Hogar")

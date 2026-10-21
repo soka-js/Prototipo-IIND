@@ -5,7 +5,7 @@ Valor esperado por contacto = conversión previa × comisión esperada a 12 mese
   comisión esperada a 12 meses
     · pólizas mensuales: prima × comisión × meses esperados, con meses esperados por interpolación
       lineal de la persistencia: 6·(1+p6)/2 + 6·(p6+p12)/2
-    · SOAT (anual) y Viajes (por viaje): prima × comisión, un solo pago
+    · SOAT (anual) y Viajes (por viaje): prima × comisión × (1 − cancelación), un solo pago (reglas v1.3)
   conversión previa = ventas / impactados de la campaña previa del ramo (hoja Campanas_Previas)
 """
 
@@ -65,6 +65,7 @@ class Product:
     commission_pct: float | None
     persistence_6m: float | None
     persistence_12m: float | None
+    cancellation: float | None     # Seguros_Mensual.cancelacion_pct
     expected_months: float | None
     commission_12m: int | None
     prior: float | None            # conversión previa (ventas / impactados)
@@ -117,13 +118,14 @@ def products() -> dict[str, Product]:
     for ramo in RAMOS:
         rows = sm[ramo]
         # La prima, la comisión y la persistencia deben ser constantes en los 12 meses; si no, fallar.
-        for col in ("prima_promedio_cop", "comision_pct", "persistencia_6m", "persistencia_12m"):
+        for col in ("prima_promedio_cop", "comision_pct", "persistencia_6m", "persistencia_12m", "cancelacion_pct"):
             vals = {r[col] for r in rows}
             if len(vals) != 1:
                 raise ValueError(f"{ramo}: {col} cambia entre meses {sorted(vals)}; el catálogo supone un valor único")
         r0 = rows[0]
         premium, com = int(r0["prima_promedio_cop"]), float(r0["comision_pct"])
         p6, p12 = _f(r0["persistencia_6m"]), _f(r0["persistencia_12m"])
+        cancel = _f(r0["cancelacion_pct"])
         e = eleg[ramo]
         if e["periodicidad"] == "Mensual":
             if p6 is None or p12 is None:
@@ -131,7 +133,8 @@ def products() -> dict[str, Product]:
             months = 6 * (1 + p6) / 2 + 6 * (p6 + p12) / 2
             c12 = round(premium * com * months)
         else:
-            months, c12 = None, round(premium * com)
+            keep = 1 - cancel if (rules.CANCEL_SINGLE_PAY and cancel is not None) else 1
+            months, c12 = None, round(premium * com * keep)
         if ramo in priors:
             prior, src = priors[ramo], "ventas / impactados de la campaña previa"
         else:
@@ -141,14 +144,15 @@ def products() -> dict[str, Product]:
         d = DISPLAY[ramo]
         out[ramo] = Product(ramo=ramo, title=d["title"], partner=d["partner"], icon=d["icon"], covers=tuple(d["covers"]),
                             concept=d.get("concept", False), periodicity=e["periodicidad"], premium=premium,
-                            commission_pct=com, persistence_6m=p6, persistence_12m=p12, expected_months=months,
+                            commission_pct=com, persistence_6m=p6, persistence_12m=p12, cancellation=cancel,
+                            expected_months=months,
                             commission_12m=c12, prior=prior, prior_source=src, age_min=lo, age_max=hi,
                             occupations=occ, requirement=e["requisito_simulado"], source="reto")
     d = DISPLAY[PAGO_PROTEGIDO]
     out[PAGO_PROTEGIDO] = Product(
         ramo=PAGO_PROTEGIDO, title=d["title"], partner=d["partner"], icon=d["icon"], covers=tuple(d["covers"]),
         concept=False, periodicity="Mensual", premium=None, commission_pct=None, persistence_6m=None,
-        persistence_12m=None, expected_months=None, commission_12m=None, prior=None,
+        persistence_12m=None, cancellation=None, expected_months=None, commission_12m=None, prior=None,
         prior_source="no está en la base: se ofrece solo en el momento del desembolso", age_min=18, age_max=None,
         occupations=None, requirement="Crédito Lulo desembolsado", source="prototipo")
     return out
@@ -165,7 +169,7 @@ def summary() -> list[dict]:
         out.append({"ramo": p.ramo, "title": p.title, "partner": p.partner, "periodicity": p.periodicity,
                     "premium": p.premium, "price": p.price_label(), "commission_pct": p.commission_pct,
                     "expected_months": round(p.expected_months, 2) if p.expected_months else None,
-                    "commission_12m": p.commission_12m, "prior": p.prior, "prior_source": p.prior_source,
+                    "cancellation": p.cancellation, "commission_12m": p.commission_12m, "prior": p.prior, "prior_source": p.prior_source,
                     "ev_fuerte": round(p.expected_value("fuerte")) if p.expected_value("fuerte") is not None else None,
                     "age": f"{p.age_min}+" if p.age_max is None else f"{p.age_min}-{p.age_max}",
                     "occupations": p.occupations, "requirement": p.requirement, "source": p.source,

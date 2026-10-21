@@ -643,3 +643,31 @@ button.mov:hover{background:rgba(255,255,255,.03)}
 }
 .pstack{display:flex;flex-direction:column;gap:12px}
 .who .tag{display:inline-block;margin-left:6px;vertical-align:2px}
+
+/* Imágenes de la app real (capturas del 2026-10-09): banner con foto, ilustraciones y logo del aliado */
+.promo.photo{background:#1C2131 url(/static/img/banner-proteccion.jpg) right center/auto 100% no-repeat;color:#fff}
+.promo.photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1C2131 0%,#1C2131 40%,rgba(28,33,49,.7) 55%,rgba(28,33,49,0) 72%);pointer-events:none}
+.promo.photo b{max-width:12ch}.promo.photo p{max-width:15ch}
+.promo.photo>*{position:relative}
+.promo.photo .cta{color:var(--lime)}
+.promo .ilus{position:absolute;right:-4px;bottom:-12px;height:118px;width:auto}
+.light-hero .ilus{position:absolute;right:-10px;bottom:-12px;height:122px;width:auto}
+.light-hero p{max-width:19ch}
+.ilus-cdt{display:flex;justify-content:center;padding:8px 0 14px}
+.ilus-cdt img{width:150px;height:auto}
+.insurer .wm-img{width:200px;height:auto}
+
+/* Panel · Modelos */
+.dems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dem{background:var(--panel-2);border-radius:12px;padding:10px 12px}
+.dem-h{display:flex;flex-direction:column;gap:2px;font-size:12px}.dem-h span{color:#9AA6C4;font-size:11px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:46px;margin:8px 0 6px}
+.spark i{flex:1;background:var(--lime);border-radius:2px 2px 0 0;min-height:2px}
+.spark i.fc{background:transparent;border:1.5px dashed var(--lime)}
+.dem-f{font-size:10.5px;color:#C9D0DE;line-height:1.5}
+@media (max-width:560px){.dems{grid-template-columns:1fr}}
+.why.ml{margin-top:8px;background:rgba(232,255,0,.08);border-color:rgba(232,255,0,.35)}
+.yr-seg{margin:14px 22px 0;background:var(--card);border-radius:16px;padding:14px 16px;font-size:12.5px;color:#C9D0DE;line-height:1.45}
+.yr-seg b{display:block;color:#fff;font-size:15px;margin:2px 0 4px}
+.yr-seg .k{font-size:11px;color:var(--mist)}
+.tbl small.vars{display:block;font-weight:400;color:#9AA6C4;font-size:10.5px;margin-top:3px;max-width:30ch}

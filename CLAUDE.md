@@ -48,7 +48,8 @@ Todo cambio, por pequeño que sea, deja rastro:
 ## 5. Lo construido: invariantes que no se rompen
 
 - **Un solo motor** (`lulo_app/core`) para los 600 clientes de la base y los 3 personajes. Las decisiones solo usan campos canónicos (fecha, monto, canal, categoría y MCC), nunca nombres de comercio o de terceros: la prueba `test_decisions_never_read_merchant_names` debe seguir pasando.
-- **Reglas versionadas** en `rules.py` (hoy `v1.1`). Cada decisión guarda la versión con la que se tomó.
+- **Reglas versionadas** en `rules.py` (hoy `v1.3`). Cada decisión guarda la versión con la que se tomó.
+- **Modelos reproducibles**: `lulo_app/ml/modelos.json` solo cambia con `scripts/train_models.py` y `python scripts/train_models.py --check` debe pasar. Un ramo usa el modelo solo si le gana al azar (p < 0,05 y AUC ≥ 0,55). Las variables que son consecuencia de tener un seguro (hoy «visitas a Seguros») no entran a M1. El entrenamiento usa las versiones fijas de `requirements-dev.txt`. En producción no se usa scikit-learn.
 - **La base solo cambia con `scripts/ingest_reto.py`.** Nunca se editan a mano los CSV de `lulo_app/dataset/`. Nada se corrige en silencio: lo excluido queda en `excluidos.csv` y `manifest.json` guarda los hashes.
 - **El motor no guarda estado**: el contexto de la sesión viaja en cada llamada.
 - **Vida grupo deudor (inducido por el crédito) no es Vida voluntario**: no se mezclan en ningún cálculo ni texto.
@@ -67,6 +68,9 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E3 API v3 y Tu año calculado con el motor | Hecha |
 | E4 y E5 Frontend con el look real y panel | Hechas |
 | E6 Paso a producción (merge de `v3` a `main`) | Hecha el 2026-10-14 por decisión de SOKA |
+| E7 Modelos entrenados con la base (reglas v1.2) e imágenes de la app real | Hecha el 2026-10-16, aprobada por SOKA |
+| E8 Datos de la solicitud sin uso: renovaciones y cancelación, capacidad de pago y momento por evento (reglas v1.3) | Hecha el 2026-10-20, aprobada por SOKA según Tomás Carrillo; la valida todo el grupo |
+| E9 Integración de E7 y E8 a `main` con revisión: «visitas a Seguros» fuera de M1 (modelos `ml-1.1`) y versiones fijas | Hecha el 2026-10-20 por decisión de SOKA |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -79,6 +83,9 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
 - Reglas v1: umbrales de la tabla de cobertura; valor esperado = conversión previa × comisión a 12 meses × fuerza (1,0 / 0,6 / 0); control del 10 % por hash.
 - Reglas v1.1: las ofertas con fecha límite van primero y hay mínimo 7 días entre push.
 - Sebastián conserva la regla de 6 abonos: Tu año le dice «te faltan 3 abonos».
+- Reglas v1.2: valor esperado × afinidad del modelo de propensión (acotada a [0,5; 2]) en los ramos que pasan la prueba de permutación; modelo de respuesta al push con umbral de 20 %.
+- Reglas v1.3: capacidad de pago en la elegibilidad (prima mensual ≤ 5 % del ingreso; prima de pago único ≤ saldo promedio) y comisión de pago único × (1 − cancelación).
+- «Visitas a Seguros» no entra a M1 porque es consecuencia de tener una póliza Lulo (2026-10-20). Con la base del reto ningún ramo pasa la compuerta y la afinidad vale 1; el plan de campaña ofrece lo mismo que con v1.1.
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
@@ -106,6 +113,7 @@ python run.py                            # app en http://127.0.0.1:8000 (v3 en /
 python -m lulo_app.core backtest         # debe terminar con 0 violaciones
 python -m lulo_app.core cliente C00002   # traza completa de una decisión
 python -m lulo_app.core campana          # plan de campaña de los 600
+python scripts/train_models.py --check   # si tocaste el vector o los modelos: debe coincidir
 ```
 
 Antes de proponer un commit, pega en la conversación la salida de `pytest` y, si tocaste el motor, la del backtest.
@@ -114,6 +122,9 @@ Antes de proponer un commit, pega en la conversación la salida de `pytest` y, s
 
 ```
 scripts/ingest_reto.py     Excel del reto → lulo_app/dataset (valida y documenta)
+scripts/train_models.py    entrena y valida los modelos → lulo_app/ml/modelos.json
+lulo_app/ml/               vector de variables y cálculo de los modelos en producción
+docs/MODELOS.md            método, resultados y límites de los modelos
 lulo_app/core/             motor v3: schema, store, personas, catalog, rules, features, signals,
                            eligibility, contact, experiment, engine, year, view, backtest, CLI (__main__)
 lulo_app/api_v3.py         rutas /api/v3

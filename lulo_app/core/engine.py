@@ -33,6 +33,7 @@ from .schema import PAGO_PROTEGIDO, History, LuloPolicy, Movement, PocketDeposit
 from .signals import Signal, detect
 from .store import store
 from .text import cop, date_long, plural
+from ..ml import models as ml
 
 Outcome = Literal["shown", "banner", "queued", "control", "optout", "noconsent", "ineligible", "weak", "has",
                   "cooldown", "external", "none"]
@@ -221,7 +222,8 @@ def notification(sig: Signal, p: Product) -> dict:
 
 
 # --------------------------------------------------------------------------- evaluación
-def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, as_of: date) -> dict:
+def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, as_of: date,
+               prop: dict | None = None) -> dict:
     c = h.client
     held = c.holds(sig.ramo) or sig.ramo in ctx.accepted
     ext_vig = [e for e in f.external if e["ramo"] == sig.ramo and e["status"] == "vigente"]
@@ -245,11 +247,15 @@ def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, a
     elif cool:
         status, reason = "cooldown", f"Se le mostró el {date_long(cool[-1].date, False)}; espera {rules.COOLDOWN_DAYS} días"
     ev = p.expected_value(sig.strength) if sig.actionable else None
+    m = (prop or {}).get(sig.ramo)
+    aff = m["afinidad"] if (m and rules.ML_PROPENSITY) else 1.0
+    if ev is not None:
+        ev *= aff
     deadline = sig.kind == "momento" or (renewal and sig.metrics.get("days") is not None)
     return {"ramo": sig.ramo, "title": p.title, "partner": p.partner, "price": p.price_label(), "status": status,
             "reason": reason, "strength": sig.strength, "kind": sig.kind,
             "ev": round(ev) if ev is not None else None, "momento": sig.kind == "momento", "deadline": deadline,
-            "eligibility": el.to_dict(), "signal": sig.to_dict()}
+            "afinidad": aff, "ml": m, "eligibility": el.to_dict(), "signal": sig.to_dict()}
 
 
 def _rank_key(c: dict) -> tuple:
@@ -283,8 +289,10 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     steps.append({"step": "autorización", "ok": True, "detail": "Autoriza ofertas (Ley 1581)"})
 
     f = compute(h, as_of, s.cutoff)
+    mlc = ml.for_client(h, min(as_of, s.cutoff))
+    base["ml"] = {"version": mlc["version"], "segmento": mlc["segmento"], "push": mlc["push"]}
     sigs = detect(f, ctx.alert_days, disbursement)
-    cands = [_candidate(sig, product(r), f, h, ctx, as_of) for r, sig in sigs.items()]
+    cands = [_candidate(sig, product(r), f, h, ctx, as_of, mlc["propension"]) for r, sig in sigs.items()]
     offer = sorted([x for x in cands if x["status"] == "ofrecer"], key=_rank_key)
     steps.append({"step": "detectar", "ok": True,
                   "detail": f"{sum(sig.actionable for sig in sigs.values())} señales con fuerza suficiente de {len(sigs)} ramos"})
@@ -309,6 +317,7 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     decision = {"ramo": top["ramo"], "title": p.title, "partner": p.partner, "price": p.price_label(),
                 "covers": list(p.covers), "concept": p.concept, "kind": top["kind"], "strength": top["strength"],
                 "ev": top["ev"], "deadline": top["deadline"], "why": why(sig, f), "notif": notification(sig, p),
+                "afinidad": top["afinidad"], "ml": top["ml"],
                 "prio": [x["ramo"] for x in offer].index(top["ramo"]) + 1}
     if top["ramo"] == "SOAT":
         decision["soat"] = {"expiry": sig.metrics.get("expiry"), "days": sig.metrics.get("days"),
@@ -316,7 +325,8 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     steps.append({"step": "decidir", "ok": True,
                   "detail": f"{p.title}: señal {top['strength']}, elegible, "
                             + ("con fecha límite, " if top["deadline"] else "") + "valor esperado "
-                            + (f"{cop(top['ev'])}" if top["ev"] is not None else "n/d (momento único)")})
+                            + (f"{cop(top['ev'])}" if top["ev"] is not None else "n/d (momento único)")
+                            + (f" (afinidad del modelo × {top['afinidad']:.2f})" if top["ml"] and top["ml"]["usable"] else "")})
 
     exp = experiment.group(cid, c.source, ctx.control)
     if exp["group"] == "control":
@@ -331,7 +341,7 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     valid = contact.usage_snapshot_valid(as_of, s.cutoff)
     snap = c.usage.notifs_sent_30d if valid else 0
     ch = contact.choose(c.usage, snap + contact.contacts_in_window(pushes, as_of), ctx.mode, valid,
-                        (as_of - pushes[-1]).days if pushes else None)
+                        (as_of - pushes[-1]).days if pushes else None, mlc["push"])
     steps.append({"step": "canal", "ok": True, "detail": f"{'Push' if ch.channel == 'push' else 'Banner pasivo'}: {ch.reason}"
                   + (" (uso de la app supuesto)" if c.usage.assumed else "")})
     if ctx.mode == "tiempo_real" and ctx.window is not None:
@@ -357,6 +367,7 @@ def _record(base, outcome, ramo, strength, ev, f, exp=None, ch=None) -> dict:
     return {"client_id": base["client_id"], "as_of": base["as_of"], "rules_version": base["rules_version"],
             "mode": base["mode"], "ramo": ramo, "outcome": outcome, "strength": strength, "ev": ev,
             "group": exp["group"] if exp else None, "channel": ch.channel if ch else None,
+            "ml_version": (base.get("ml") or {}).get("version"),
             "inputs_sha": _sha(f.to_dict()) if f else None}
 
 
@@ -403,6 +414,7 @@ def campaign(as_of: date | None = None, *, include_personas: bool = False, alert
         d = r["decision"] or {}
         rows.append({"client_id": cid, "outcome": r["outcome"], "ramo": d.get("ramo"), "title": d.get("title"),
                      "kind": d.get("kind"), "strength": d.get("strength"), "ev": d.get("ev"),
+                     "afinidad": d.get("afinidad"), "segmento": ((r.get("ml") or {}).get("segmento") or {}).get("nombre"),
                      "channel": (r["channel"] or {}).get("channel"), "channel_reason": (r["channel"] or {}).get("reason"),
                      "group": (r["experiment"] or {}).get("group"),
                      "offerable": [x["ramo"] for x in r["candidates"] if x["status"] == "ofrecer"],

@@ -13,16 +13,17 @@
 ## Versión 3 (en `main` desde el 2026-10-14)
 
 - **Look de la app real**: Home · Explora · (+) · Tu año · Protección; Explora con Ahorro, Inversión, Crédito y Seguros; Alertas, Ayuda, mapa de cajeros, Lulo Cuenta y el flujo real del SOAT. Colores tomados de capturas de la app.
-- **Motor real** (`lulo_app/core`), reglas versionadas `v1.1`:
+- **Motor real** (`lulo_app/core`), reglas versionadas (hoy `v1.3`):
   1. Autorización de datos (Ley 1581): sin ella no se leen los movimientos.
   2. Señales con regla, fuerza y evidencia (solo fecha, monto, canal, categoría y MCC).
-  3. Elegibilidad de la hoja Elegibilidad (el rango «56+» se excluye de Desempleo y Vida).
+  3. Elegibilidad de la hoja Elegibilidad (el rango «56+» se excluye de Desempleo y Vida) y capacidad de pago (v1.3): la prima mensual no pasa del 5 % del ingreso y la de pago único no pasa del saldo promedio.
   4. Exclusiones: ya lo tiene con Lulo; vigente con otra aseguradora (salvo renovar el SOAT); espera de 30 días.
-  5. Orden: fecha límite primero (SOAT por vencer, desembolso) y luego valor esperado = conversión previa × comisión a 12 meses × fuerza.
+  5. Orden: fecha límite primero (SOAT por vencer, desembolso) y luego valor esperado = conversión previa × comisión a 12 meses × fuerza × afinidad. En SOAT y Viajes, de pago único, la comisión descuenta la cancelación de la base (v1.3).
   6. Grupo de control del 10 % por hash del id.
   7. Canal: push si quedan contactos (tope 4 en 30 días), no hay fatiga, la latencia lo permite y pasaron 7 días desde el último push; si no, banner pasivo.
 - **Base del reto validada** (`scripts/ingest_reto.py`): lo posterior al corte (444 movimientos y 118 abonos) se excluye con su razón; `conversion_impactados` es en realidad ventas/elegibles y se recalcula; todo queda en `lulo_app/dataset/manifest.json` y `CALIDAD.md`.
 - **Backtest**: recorre el año y verifica las invariantes (tope, autorización, elegibilidad, control, espera y espaciado). Resultado: 0 violaciones.
+- **Modelos entrenados con la base (reglas v1.2 y v1.3)**: propensión por ramo, segmentos, respuesta al push, demanda (emisiones y renovaciones), momento de compra (frente a la nómina y frente al evento que dispara cada ramo) y tamaño del piloto. La afinidad del modelo ajusta el valor esperado solo en los ramos donde el modelo le gana al azar; con esta base no le gana en ninguno una vez se excluye «visitas a Seguros», que es consecuencia de tener seguro, así que el motor decide con la regla. Método y resultados en [`docs/MODELOS.md`](docs/MODELOS.md); pestaña «Modelos» en el panel.
 
 ## Cómo colaborar
 
@@ -49,6 +50,8 @@ python -m lulo_app.core cliente C00002           # traza completa de una decisi�
 python -m lulo_app.core campana --csv plan.csv   # plan de campaña de los 600
 python -m lulo_app.core backtest                 # el año completo con invariantes
 python scripts/ingest_reto.py                    # vuelve a ingerir el Excel (data/raw)
+python scripts/train_models.py                   # reentrena los modelos (lulo_app/ml/modelos.json)
+python scripts/train_models.py --check           # verifica que modelos.json coincide (scikit-learn 1.8.0, numpy 2.4.6)
 ```
 
 ## Volver a la versión del cliente
@@ -63,10 +66,13 @@ python scripts/ingest_reto.py                    # vuelve a ingerir el Excel (da
 api/index.py                 entrada serverless para Vercel
 data/raw/                    Excel original del reto (no se despliega)
 scripts/ingest_reto.py       ingesta y validación
+scripts/train_models.py      entrenamiento y validación de los modelos
+docs/MODELOS.md              método, resultados y límites de los modelos
 lulo_app/
   dataset/                   CSV normalizados, manifest.json y CALIDAD.md
   core/                      motor v3: schema, store, personas, catalog, rules, features,
                              signals, eligibility, contact, experiment, engine, year, view, backtest
+  ml/                        vector de variables, modelos.json y cálculo en Python puro
   api_v3.py                  rutas /api/v3
   main.py                    app FastAPI: / (v3), /v2 (versión del cliente) y API v2
   simulator.py … engine.py   prototipo v2 (personajes y motor anterior)
@@ -90,10 +96,11 @@ Documentación interactiva en `/docs`.
 | POST | `/api/v3/clients/{id}/year` · `/upcoming` | Tu año y disparos agendados |
 | GET | `/api/v3/campaign` · `/campaign.csv` | Plan de campaña a una fecha |
 | GET | `/api/v3/backtest?every=14` | Backtest con invariantes |
+| GET | `/api/v3/models` | Modelos entrenados: validación, uso en el motor y resultados |
 
 ## Supuestos
 
-La base es 100% sintética y académica: sus cifras no son métricas de Lulo Bank. La fuerza de la señal es una hipótesis (no hay resultados por cliente para estimarla) que se mide con el grupo de control; Hogar no tiene campaña previa y usa la menor conversión observada; Pago protegido no está en la base y se ofrece solo al desembolsar; el uso de la app de los personajes es supuesto. Clientes, montos, placas y números de cuenta son simulados.
+La base es 100% sintética y académica: sus cifras no son métricas de Lulo Bank. La fuerza de la señal es una hipótesis (no hay resultados por cliente para estimarla) que se mide con el grupo de control; desde v1.2 la puede ajustar la afinidad del modelo de propensión, que estima parecido con quienes ya tienen el seguro (no respuesta a una oferta) y que con esta base no pasa la compuerta en ningún ramo; el umbral de capacidad de pago (5 % del ingreso) y la lectura de `cancelacion_pct` como comisión devuelta en pago único son supuestos de v1.3 a validar con Lulo; Hogar no tiene campaña previa y usa la menor conversión observada; Pago protegido no está en la base y se ofrece solo al desembolsar; el uso de la app de los personajes es supuesto. Clientes, montos, placas y números de cuenta son simulados.
 
 ## Equipo
 

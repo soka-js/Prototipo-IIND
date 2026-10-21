@@ -1,7 +1,7 @@
 """Requisitos de la hoja Elegibilidad: edad, ocupación y requisito del ramo.
 
 Cada requisito se marca según cómo se verifica:
-  dato      se verifica con la base (edad, ocupación)
+  dato      se verifica con la base (edad, ocupación, capacidad de pago)
   proxy     se aproxima con la base (antigüedad laboral ≈ racha de abonos en Lulo)
   cotizacion no está en la base: se pide al cliente en la cotización (placa, dirección, mascota, fecha de viaje)
 """
@@ -14,6 +14,7 @@ from . import rules
 from .catalog import Product
 from .features import Features
 from .schema import AGE_BANDS, PAGO_PROTEGIDO, Client
+from .text import cop, pct
 
 
 @dataclass
@@ -48,6 +49,14 @@ def check(c: Client, p: Product, f: Features) -> Eligibility:
             e.ok = False
             e.reasons.append(f"Ocupación «{c.occupation}»: el ramo exige {', '.join(p.occupations)}")
 
+    cap = capacity(c, p, f)
+    if cap is not None:
+        reason = cap.pop("reason")
+        e.checks.append(cap)
+        if not cap["ok"]:
+            e.ok = False
+            e.reasons.append(reason)
+
     if p.ramo == "Desempleo":
         ok = f.income_current and f.income_streak >= rules.DESEMPLEO_MIN_STREAK
         e.checks.append({"req": p.requirement, "via": "proxy",
@@ -61,3 +70,24 @@ def check(c: Client, p: Product, f: Features) -> Eligibility:
     else:
         e.checks.append({"req": p.requirement, "via": "cotizacion", "ok": None})
     return e
+
+
+def capacity(c: Client, p: Product, f: Features) -> dict | None:
+    """Capacidad de pago de la prima (reglas v1.3). None si el producto no tiene prima en la base."""
+    if p.premium is None:
+        return None
+    if p.periodicity == "Mensual":
+        share = p.premium / c.monthly_income if c.monthly_income > 0 else None
+        ok = share is not None and share <= rules.CAPACITY_MAX_SHARE
+        detail = (f"Prima {cop(p.premium)} al mes = {pct(share)} de su ingreso mensual ({cop(c.monthly_income)})"
+                  if share is not None else "Sin ingreso mensual registrado")
+        return {"req": f"Capacidad de pago: prima ≤ {pct(rules.CAPACITY_MAX_SHARE, 0)} del ingreso mensual",
+                "via": "dato", "detail": detail, "ok": ok, "share": round(share, 4) if share is not None else None,
+                "reason": f"Capacidad de pago: la prima pasa del {pct(rules.CAPACITY_MAX_SHARE, 0)} de su ingreso mensual"}
+    if not rules.CAPACITY_SINGLE_PAY_VS_BALANCE:
+        return None
+    ok = p.premium <= c.avg_balance
+    return {"req": "Capacidad de pago: prima de pago único ≤ saldo promedio", "via": "dato",
+            "detail": f"Prima {cop(p.premium)} frente a un saldo promedio de {cop(c.avg_balance)}", "ok": ok,
+            "share": round(p.premium / c.avg_balance, 4) if c.avg_balance > 0 else None,
+            "reason": "Capacidad de pago: la prima de pago único supera su saldo promedio"}
