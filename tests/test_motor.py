@@ -250,6 +250,17 @@ def test_page_keeps_prototype_label_and_guides_the_visitor():
     assert 'id="welcome"' not in v2                                                 # /v2 no se toca
 
 
+def test_page_form_controls_have_accessible_names():
+    """Cada campo y lista del panel tiene nombre para lectores de pantalla (aria-label o <label for>)."""
+    import re
+    html = TestClient(app).get("/").text
+    def con_nombre(campo):
+        ident = re.search(r'id="([^"]+)"', campo)
+        return "aria-label=" in campo or (ident and f'for="{ident.group(1)}"' in html)
+    campos = re.findall(r"<(?:input|select)\b[^>]*>", html)
+    assert campos and all(con_nombre(c) for c in campos), [c for c in campos if not con_nombre(c)]
+
+
 def test_real_data_path_validates_and_trains_outside_the_repo(tmp_path):
     """El camino para datos reales: validar la carpeta, escribir su manifiesto y entrenar sin tocar el repo."""
     import shutil

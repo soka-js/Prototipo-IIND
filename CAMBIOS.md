@@ -17,6 +17,22 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commit ac3aac4 · accesibilidad del panel
+- Qué cambió:
+  - El buscador y las listas de filtros de la pestaña «Cliente» (`#xq`, `#xout`, `#xramo` y `#xsrc`) tienen ahora `aria-label`.
+  - En el celular, el botón flotante «Panel» se oculta mientras está abierta la bienvenida, como ya pasaba durante el recorrido.
+  - Prueba nueva `test_page_form_controls_have_accessible_names`.
+- Por qué: E10 ya estaba en `main` (soka-js/Prototipo-IIND#2, merge d9efcbb). Una auditoría con Playwright en escritorio y celular encontró dos cosas. Los cuatro filtros no tenían nombre para lectores de pantalla. El botón «Panel» se veía detrás del diálogo de bienvenida.
+- Archivos: `lulo_app/templates/app.html`, `public/static/v3/app.css`, `tests/test_motor.py`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 94 passed.
+  - Sin el cambio en `app.html`, la prueba nueva falla y lista los cuatro campos.
+  - Con Playwright a 390 × 844: el botón tiene `display: none` con la bienvenida abierta y `block` después; sin errores de consola.
+  - La auditoría recorrió las 9 pestañas del panel y Home, Tu año y Protección en escritorio: sin errores de consola y sin desborde horizontal.
+- Consultado con SOKA: no aplica (accesibilidad y ajuste visual, sección 2).
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq → main · aprobación de E10 (reglas v2.0)
 - Qué cambió: SOKA aprobó completa la etapa E10 (motor bayesiano, laboratorio, camino para datos reales y experiencia guiada) y pidió pasarla a `main`. `CLAUDE.md` mueve lo que estaba «pendiente de confirmar» a las decisiones aprobadas (reglas v2.0) y marca E10 como hecha. Sin cambios de código.
 - Por qué: queda registrada la aprobación antes del merge, como pide `CLAUDE.md` (sección 3).
