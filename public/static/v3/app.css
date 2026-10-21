@@ -721,14 +721,68 @@ span.pchip{padding:4px 11px}
   .page.solo .foot{display:none}
 }
 
-/* recorrido automático: barra del tiempo que falta para seguir */
-.tour-timer{height:4px;border-radius:2px;background:var(--panel-3);overflow:hidden}
-.tour-timer i{display:block;height:100%;width:100%;background:var(--lime);transform-origin:left;animation:tourTimer linear forwards}
-@keyframes tourTimer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){.tour-timer{display:none}}
 .tour-sub{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:-2px}
 .tour-sub button{background:none;border:0;padding:2px 0;color:#AFB8CC;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
 .tour-sub button:hover:not(:disabled){color:#fff;text-decoration:underline}
 .tour-sub button:disabled{opacity:.4}
 .pbtn svg,.tbtn svg{flex:none}
 .tbtn .ico-auto,.w-ch .ico-auto{vertical-align:-1px}
+
+/* ================= recorrido automático: el prototipo explicándose solo, como un video ================= */
+body.filming{overflow:hidden}
+body.filming .top,body.filming .how,body.filming .guide,body.filming .side,body.filming .fab,body.filming .coach,body.filming .page.solo .foot{display:none!important}
+@media (min-width:761px){
+  body.filming .page.solo{padding-top:16px}
+  body.filming .stage .phone{transform:scale(var(--fz,1));transform-origin:top center}
+}
+.film{position:fixed;inset:0;z-index:70;pointer-events:none;display:none}
+body.filming .film{display:block}
+.f-shield{position:absolute;inset:0;pointer-events:auto;cursor:pointer}
+.f-tag{position:absolute;left:16px;top:14px;background:var(--ink);color:var(--lime);font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px}
+.f-cursor{position:absolute;left:0;top:0;width:28px;height:28px;margin:-3px 0 0 -4px;opacity:0;transition-property:transform,opacity;transition-timing-function:cubic-bezier(.45,.05,.25,1);filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
+.f-cursor i{position:absolute;left:-12px;top:-12px;width:36px;height:36px;border-radius:50%;background:rgba(232,255,0,.6);transform:scale(0);opacity:0}
+.f-cursor.tap i{animation:fTap .45s ease-out}
+@keyframes fTap{0%{transform:scale(.2);opacity:.95}100%{transform:scale(1.5);opacity:0}}
+.f-bubble{position:absolute;max-width:320px;background:#fff;color:var(--ink);border-radius:16px;padding:12px 14px;box-shadow:0 14px 34px rgba(6,18,50,.25);font-size:13px;line-height:1.45;display:flex;flex-direction:column;gap:4px;border-left:4px solid var(--lime);animation:fIn .35s ease-out}
+.f-bubble b{font-size:13.5px}
+.f-bubble.card{max-width:360px;background:var(--panel);color:#fff;border-left-color:var(--pink)}
+.f-num{display:flex;align-items:center;gap:10px;margin-top:4px}
+.f-num em{font-style:normal;font-size:28px;font-weight:800;letter-spacing:-.5px}
+.f-num small{font-size:11.5px;color:#5A6680;line-height:1.35}
+.f-formula{font-size:20px;font-weight:700;margin:6px 0 2px}.f-formula em{font-style:normal;color:var(--lime)}
+.f-formula small{font-size:13px;font-weight:600;color:#AFB8CC}
+.f-src{font-size:12px;color:#AFB8CC;line-height:1.4}
+.f-end{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;pointer-events:auto}
+.f-end button{border:0;border-radius:10px;padding:9px 12px;font-size:12.5px;font-weight:700;background:var(--panel-2);color:#fff}
+.f-end button:first-child{background:var(--lime);color:var(--ink)}
+.f-link{position:absolute;height:2px;background:var(--lime);transform-origin:0 50%;opacity:0;transition:opacity .25s;box-shadow:0 0 0 1px rgba(11,20,48,.25)}
+.f-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(11,20,48,.35);opacity:0;transition:opacity .25s}
+.f-bottom{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:min(860px,calc(100% - 32px));display:flex;flex-direction:column;align-items:center;gap:8px}
+.f-subs{max-width:100%;background:rgba(11,20,48,.94);color:#fff;font-size:16px;line-height:1.45;padding:10px 18px;border-radius:12px;text-align:center}
+.f-subs:empty{display:none}
+.f-subs b{color:var(--lime)}
+.f-subs.in{animation:fIn .3s ease-out}
+.film.paused .f-subs::before{content:"En pausa · ";color:var(--pink);font-weight:700}
+.f-bar{pointer-events:auto;display:flex;align-items:center;gap:4px;background:rgba(11,20,48,.94);border-radius:999px;padding:5px 8px}
+.f-bar button{background:none;border:0;color:#fff;height:32px;min-width:32px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:700}
+.f-bar button:hover{background:var(--panel-3)}
+.f-bar .f-txt{padding:0 10px;color:#C8CFDD}
+.f-bar #fVoz[aria-pressed="true"]{color:var(--lime)}
+.f-chaps{display:flex;gap:4px;padding:0 8px}
+.f-chaps button{min-width:0;width:18px;height:6px;border-radius:3px;background:var(--panel-3);padding:0}
+.f-chaps button.done{background:#7D8A00}.f-chaps button.on{background:var(--lime)}
+#phone .film-target{outline:3px solid var(--lime)!important;outline-offset:3px;animation:tgt 1.4s ease-in-out infinite}
+@keyframes fIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  .f-tag{display:none}
+  .f-subs::after{content:"Prototipo académico · datos simulados";display:block;margin-top:4px;font-size:10px;font-weight:700;color:var(--lime)}
+  .f-desk{display:none!important}
+  .f-cursor{width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:rgba(255,255,255,.35);border:2px solid #fff;filter:none}
+  .f-cursor svg{display:none}
+  .f-cursor i{left:-3px;top:-3px}
+  .f-bottom{bottom:calc(80px + env(safe-area-inset-bottom,0px));width:calc(100% - 16px)}
+  .f-subs{font-size:13.5px;padding:8px 12px}
+  .f-bar{padding:3px 6px;max-width:100%}.f-bar .f-txt{padding:0 8px}
+  .f-chaps{padding:0 4px;gap:3px}.f-chaps button{width:9px}
+  .f-bubble,.f-bubble.card{max-width:calc(100% - 32px)}
+}
