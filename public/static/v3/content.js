@@ -6,6 +6,41 @@ export const TBL = (head, rows) => `<div class="tbl-w"><table class="tbl"><thead
 export const SUB = (t, body, open) => `<details class="acc"${open ? " open" : ""}><summary><span class="s-t">${t}</span></summary><div class="acc-b">${body}</div></details>`;
 export const UL = a => `<ul>${a.map(x => `<li>${x}</li>`).join("")}</ul>`;
 
+/* ---------- lo nuevo frente a la app real ---------- */
+// Cada elemento del teléfono con data-new="clave" es algo que la app de Lulo no tiene hoy. «Resaltar lo nuevo»
+// los marca y la ficha «Estás viendo» los lista por pantalla.
+export const NEW = {
+  "soat-aviso": {t: "Aviso del SOAT", d: "Recuerda el vencimiento con fecha y valor, también si el SOAT es con otra aseguradora (captura de canal)."},
+  "soat-renovar": {t: "Renovación con descuento", d: "Renovar antes con descuento por anticipación: hipótesis por validar (la tarifa del SOAT es regulada)."},
+  "banner-oferta": {t: "Oferta como banner", d: "Si el cliente llegó al tope de contactos, hay fatiga o la latencia no deja disparar al instante, la oferta no va por push: aparece aquí y no cuenta como contacto (Ley 2300)."},
+  "anio-promo": {t: "Tu año en Lulo", d: "El resumen de 12 meses calculado con los movimientos del cliente."},
+  "tab-anio": {t: "Pestaña Tu año", d: "Nueva en la barra inferior: el resumen del año con sus momentos de protección."},
+  "tab-proteccion": {t: "Pestaña Protección", d: "Nueva en la barra inferior: todo lo del cliente en seguros, con lo que el motor sugiere y por qué."},
+  "ramos-nuevos": {t: "Ramos de la propuesta", d: "Vida, Viajes, Mascotas y Hogar no están hoy en la app: son la propuesta del Grupo 14, con precio de la base."},
+  "chip-motor": {t: "«Para ti» y «Activo»", d: "Lo marca el motor con lo que sabe del cliente."},
+  "por-que": {t: "Por qué lo ves", d: "Cada oferta dice de dónde sale, con los datos del cliente. Si no aplica, dice por qué."},
+  "no-dano": {t: "Control del cliente", d: "«No quiero sugerencias de este tipo» apaga ese tipo de oferta y queda medido como señal de daño."},
+  "proteccion": {t: "Tu protección", d: "Seguros voluntarios separados de lo que viene con el crédito (Vida grupo deudor no es Vida voluntario)."},
+  "para-ti": {t: "Sugerencias del motor", d: "Lo que el motor ofrecería hoy, ordenado por fecha límite y valor esperado."},
+  "por-que-no": {t: "Por qué no te ofrecemos…", d: "Transparencia: señal débil, no elegible, en espera o con otra aseguradora."},
+  "agendados": {t: "Disparos agendados", d: "El motor ya sabe cuándo vendrá la próxima oferta (por ejemplo, desempleo al sexto abono de nómina)."},
+  "anio": {t: "Tu año en Lulo", d: "Una historia de 12 meses; el momento de protección de cada capítulo lo decide el motor."},
+  "segmento": {t: "Tu forma de usar Lulo", d: "Segmento de comportamiento del modelo M2 (descriptivo: no decide ofertas)."},
+  "momento-proteccion": {t: "Momento de protección", d: "Dentro de la historia: activar, «ahora no» o «te faltan N abonos»."},
+  "anotacion": {t: "Anotación del prototipo", d: "El recuadro punteado rosado no es parte de la app: explica qué lee el motor en ese momento."},
+  "control-cliente": {t: "Preferencias y autorización", d: "El cliente apaga sugerencias o retira la autorización de datos (Ley 1581): el motor deja de leer sus movimientos."},
+  "push": {t: "Push del motor", d: "Notificación que decide el motor: solo si quedan contactos, no hay fatiga y pasaron 7 días desde el último push."},
+  "pago-protegido": {t: "Pago protegido en el desembolso", d: "Momento único: al recibir el crédito, el motor revisa si tiene pago protegido y lo ofrece en ese instante."},
+};
+// Lo nuevo en una lista para la bienvenida y el recorrido: [clave, título, descripción, destino].
+export const NEW_LIST = [
+  ["soat-aviso", "Aviso y renovación del SOAT", "Antes de que venza, en dos toques y pagando desde la cuenta.", "renew"],
+  ["push", "Ofertas en el momento justo", "Una acción normal (transferir, abonar, pedir un crédito) dispara el seguro que tiene sentido, con su porqué.", "motor"],
+  ["anio", "Tu año en Lulo", "Doce meses como una historia, con un momento de protección por capítulo.", "story:intro"],
+  ["proteccion", "Tu protección", "Lo que tiene, lo que le sugerimos, lo agendado y por qué no le ofrecemos lo demás.", "proteccion"],
+  ["motor", "Un motor que aprende", "Calcula la probabilidad de aceptar con los datos y aprende de cada respuesta (pestaña Aprendizaje).", null],
+];
+
 /* ---------- ficha «Estás viendo» ---------- */
 export const NOW = {
   lock: {n: "Ingreso a la app", tag: "Navegación real", what: "La puerta de entrada. Al cambiar de cliente, la app vuelve aquí.",
@@ -47,7 +82,7 @@ export const NOW = {
   renew: {n: "Renovación o cotización", tag: "Futuro · Captura de canal", what: "Si el SOAT tiene vencimiento conocido se renueva con nueva vigencia y descuento por anticipación (hipótesis). Si es nuevo, se cotiza con la prima de referencia de la base. Si el SOAT actual es con otra aseguradora, renovarlo aquí es captura de canal.", how: ["«Pagar» descuenta el saldo y registra la renovación.", "«Recuérdamelo después» queda como pospuesto."], val: "Captura de canal: cuántos renuevan en Lulo y no por fuera."},
   paying: {n: "Procesando el pago", tag: "Futuro", what: "Estado intermedio.", how: ["Espera un segundo."], val: "Nada."},
   done: {n: "SOAT al día", tag: "Futuro", what: "Cierra el ciclo y agenda el próximo aviso.", how: ["«Ver mi protección» muestra el SOAT renovado."], val: "Nada."},
-  offer: {n: "Oferta", tag: "Presente · Motor de disparadores", what: "«Por qué lo ves» sale de la evidencia del cliente que leyó el motor. El precio es la prima promedio de la base. Si el cliente no es elegible, se dice por qué y no se puede activar.", how: ["«Activar» registra la aceptación.", "«Ahora no» registra el rechazo y activa la espera de 30 días.", "«No quiero sugerencias de este tipo» cuenta como señal de daño."], val: "Aceptación incremental frente al grupo de control."},
+  offer: {n: "Oferta", tag: "Presente · Motor de disparadores", what: "«Por qué lo ves» sale de la evidencia del cliente que leyó el motor. El precio es la prima promedio de la base. Si el cliente no es elegible, se dice por qué y no se puede activar. La probabilidad de que acepte y de dónde sale están en «Lo que acaba de decidir el motor» y en la pestaña Aprendizaje.", how: ["«Activar» registra la aceptación.", "«Ahora no» registra el rechazo y activa la espera de 30 días.", "«No quiero sugerencias de este tipo» cuenta como señal de daño."], val: "Aceptación incremental frente al grupo de control."},
   proteccion: {n: "Tu protección", tag: "Pestaña nueva", what: "Todo lo del cliente en un solo lugar: seguros con Lulo (voluntarios e inducidos por el crédito, por separado), lo que debe renovar, lo que el motor le sugiere con su porqué, lo que tiene con otra aseguradora, los próximos disparos agendados y por qué no se le ofrece lo demás.", how: ["Toca una sugerencia para ver la oferta.", "«Próximamente» muestra los disparos que el motor ya agendó."], val: "Si la transparencia («por qué no te ofrecemos…») sube la confianza."},
   anio: {n: "Tu año en Lulo", tag: "Pasado · Tu año en Lulo", what: "La portada del resumen. El backend calcula los capítulos con los datos del cliente y el estado de cada momento de protección lo decide el motor: para ti, activo, con otra aseguradora, pronto («te faltan N») o no aplica.", how: ["«Ver mi año» abre la historia.", "Cambia de cliente para ver otro año."], val: "Apertura, finalización y aceptación por capítulo frente a control."},
   yearLoading: {n: "Tu año en Lulo", tag: "Pasado", what: "La primera vez, la app muestra que está leyendo los movimientos.", how: ["Espera un segundo."], val: "Nada."},
@@ -65,8 +100,9 @@ export function buildAccs(S, meta) {
       <p>Leer lo que el cliente ya hace en la app, ofrecerle el seguro correcto en el momento en que lo necesita y <b>registrar su respuesta</b>. En esta versión el motor corre de verdad sobre la base sintética del reto (600 clientes, ${num(meta.dataset.filas.movimientos)} movimientos) y sobre los tres personajes, con las mismas reglas.</p>
       <div class="flow"><span>Algo pasa en la cuenta</span><i>→</i><span>El motor lo detecta</span><i>→</i><span>Decide (elegibilidad, valor, fecha límite)</span><i>→</i><span>Push o banner</span><i>→</i><span>Queda registrado</span></div>
       <div class="two" style="margin-top:10px"><div class="box"><b>Pasado</b>Tu año en Lulo, calculado con los datos.</div><div class="box"><b>Presente</b>Motor de disparadores en tiempo real.</div><div class="box"><b>Futuro</b>SOAT y disparos agendados.</div><div class="box"><b>Siempre</b>Registro con versión de reglas y grupo de control.</div></div>`},
-    {id: "acc-v3", k: "Novedades", t: "Qué cambió frente a la versión que vio el cliente", d: "Look real, motor real y datos reales del reto", open: true, b: `
-      ${UL(["<b>Look de la app real</b>: navegación Home · Explora · (+), colores tomados de las capturas, Explora con Ahorro, Inversión, Crédito y Seguros, Alertas, Ayuda, mapa de cajeros y el flujo real del SOAT con Seguros Mundial.",
+    {id: "acc-v3", k: "Novedades", t: "Qué cambió frente a la versión que vio el cliente", d: "Look real, motor bayesiano y una experiencia guiada", open: true, b: `
+      ${UL(["<b>Motor bayesiano (reglas v2.0)</b>: el valor esperado es la probabilidad de aceptar × la comisión, con una probabilidad que sale de la base (campañas previas, compras externas después de cada evento) y que aprende de cada respuesta. Pestaña «Aprendizaje».",
+        "<b>Recorrido guiado y «Resaltar lo nuevo»</b>: el prototipo dice qué tocar, qué es nuevo frente a la app real y por qué le sirve a Lulo.","<b>Look de la app real</b>: navegación Home · Explora · (+), colores tomados de las capturas, Explora con Ahorro, Inversión, Crédito y Seguros, Alertas, Ayuda, mapa de cajeros y el flujo real del SOAT con Seguros Mundial.",
         "<b>Pestañas que suman</b>: Tu año y Tu protección en la barra inferior.",
         "<b>Motor real</b>: lee la base del reto, valida la calidad, decide con valor esperado y fecha límite, respeta el tope de contactos, la fatiga, la latencia y 7 días entre push, y asigna un grupo de control por hash.",
         "<b>600 clientes más los 3 personajes</b>, con el mismo motor. Una prueba demuestra que el motor no usa nombres de comercios para decidir.",
@@ -83,7 +119,7 @@ export function buildAccs(S, meta) {
       ${G("home", "Ir al inicio")}${G("explora:seguros", "Ver Seguros")}`},
     {id: "acc-ramos", k: "Datos", t: "Los ramos y su valor esperado", d: "Cada cifra sale de la base; lo que no, se marca como supuesto", b: `
       ${TBL(["Ramo", "Aliado", "Prima", "Comisión 12 m", "Conv. previa", "VE fuerte", "Origen"], ramosRows)}
-      <p>Valor esperado = conversión previa (ventas / impactados de Campanas_Previas) × comisión a 12 meses (prima × comisión × meses esperados por persistencia) × fuerza de la señal (${Object.entries(R.STRENGTH_MULT).map(([k, v]) => `${k} ${String(v).replace(".", ",")}`).join(", ")}).</p>`},
+      <p>Valor esperado (reglas ${meta.rules_version}) = P(acepta | ve) × comisión a 12 meses (prima × comisión × meses esperados por persistencia). P sale del motor bayesiano: parte de la conversión previa del ramo (ventas / impactados de Campanas_Previas, encogida hacia el promedio de las campañas), la ajusta por la señal y el momento y aprende con las respuestas. La columna «VE fuerte» es la fórmula de v1.3 (conversión × comisión × fuerza: ${Object.entries(R.STRENGTH_MULT).map(([k, v]) => `${k} ${String(v).replace(".", ",")}`).join(", ")}), que sigue disponible para comparar.</p>`},
     {id: "acc-habitos", k: "Datos", t: "Las señales que lee el motor", d: "Qué movimiento anticipa cada ramo en la base", b: `
       ${TBL(["Ramo", "Señal en la base", "Regla v1.1"], [
         ["Desempleo", "Abono recurrente (MCC 0000)", `Empleado con ${R.DESEMPLEO_MIN_STREAK}+ abonos seguidos; fuerte con crédito activo`],
@@ -97,7 +133,7 @@ export function buildAccs(S, meta) {
     {id: "acc-cliente", k: "Retroalimentación", t: "Lo que dijo el cliente y cómo lo recoge esta versión", d: "Datos reales, modelos con esos datos e impacto por momento", b: `
       <div class="two"><div class="box"><b>Lo que valoraron</b>${UL(["El prototipo es interactivo.", "Las tres soluciones responden al desafío.", "Las ofertas aparecen en momentos reales del cliente."])}</div>
       <div class="box"><b>Lo que les preocupó</b>${UL(["Refinar con los datos de Lulo Bank.", "Construir los modelos con esos datos.", "Confirmar qué momentos tienen más impacto."])}</div></div>
-      <h5>Cómo lo recoge v3</h5>${UL(["El motor corre sobre la base que entregaron, con su calidad validada y documentada.", "Se probó si tener un seguro se relaciona con su señal: no (AUC de 0,435 a 0,512). Por eso el motor usa reglas explícitas y valor esperado, y el grupo de control produce las etiquetas para entrenar un modelo después.", "El registro guarda cada decisión con versión de reglas, grupo y canal: es la base para medir qué momento tiene más impacto."])}`},
+      <h5>Cómo lo recoge esta versión</h5>${UL(["El motor corre sobre la base que entregaron, con su calidad validada y documentada.", "La decisión usa un modelo de probabilidad entrenado con esa base: el embudo de las campañas previas y el efecto del momento medido con las compras externas. Lo que la base no trae (respuestas a ofertas) lo aprende en línea, y el laboratorio muestra que mejora con datos y no empeora sin ellos.", "Con los datos reales se reentrena con un comando, en el equipo de Lulo, y solo cambia lo que mejora fuera de muestra.", "El registro guarda cada decisión con su probabilidad, versión de reglas, grupo y canal: es la base para medir qué momento tiene más impacto."])}`},
     {id: "acc-problemas", k: "Contexto", t: "Dos problemáticas, no una", d: "Se parecen, pero se miden distinto", b: `
       <div class="two"><div class="box"><b>1. Ampliar la oferta de seguros</b>${UL(["Hay productos, pero nadie los ofrece: el modelo es de tirón.", "Vida solo existe atado al crédito y desempleo no tiene un momento propio.", "La comisión no consume capital regulatorio ni requiere fondeo."])}<p style="margin-top:6px"><b>Se mide en</b> pólizas por cliente y renovación.</p></div>
       <div class="box"><b>2. Ampliar el mercado de Lulo Bank</b>${UL(["650.000 clientes activos, saldo promedio de $1,7 millones: es cuenta de movimiento, no la principal.", "La tasa (7,84% E.A.) dejó de diferenciar frente a Nu, Ban100, Finandina y Contactar.", "El SOAT responde a una necesidad que el cliente ya tiene fuera del banco."])}<p style="margin-top:6px"><b>Se mide en</b> clientes nuevos y profundidad de la relación.</p></div></div>`},
@@ -110,8 +146,9 @@ export function buildAccs(S, meta) {
       ${SUB("Capítulos de este cliente", TBL(["Capítulo", "Cifra", "Momento"], (S.chapters || []).map(c => [c.name, c.stats ? c.stats.map(s => `${esc(s.big)} ${esc(s.line)}`).join(" · ") : "Se calcula en vivo", c.protect ? `${esc(c.protect.title)} · ${c.protect.state}` : c.ask ? "Pregunta" : "—"])))}
       ${SUB("Cómo se mide", UL(["Apertura y finalización.", "Aceptación por capítulo frente al grupo de control.", "Respuestas a «¿Sabías que tenías esta protección?»."]))}
       ${G("anio", "Ver Tu año")}${G("story:intro", "Abrir la historia")}`},
-    {id: "acc-idea2", k: "Presente", t: "Motor de disparadores", d: `Reglas ${meta.rules_version}: valor esperado, fecha límite y política de contacto`, b: `
-      ${SUB("Compuertas, en orden", `<div class="flow"><span>Autorización</span><i>→</i><span>Señal</span><i>→</i><span>Elegibilidad y exclusiones</span><i>→</i><span>Fecha límite y valor esperado</span><i>→</i><span>Control</span><i>→</i><span>Preferencias</span><i>→</i><span>Canal</span><i>→</i><span>Ventana</span></div>`, true)}
+    {id: "acc-idea2", k: "Presente", t: "Motor de disparadores", d: `Reglas ${meta.rules_version}: probabilidad bayesiana, fecha límite y política de contacto`, b: `
+      ${SUB("Compuertas, en orden", `<div class="flow"><span>Autorización</span><i>→</i><span>Señal</span><i>→</i><span>Elegibilidad y exclusiones</span><i>→</i><span>Fecha límite y valor esperado (P × comisión)</span><i>→</i><span>Control y exploración</span><i>→</i><span>Preferencias</span><i>→</i><span>Canal</span><i>→</i><span>Ventana</span></div>`, true)}
+      ${SUB("Probabilidad de aceptar", UL(["P = Φ(base + señal + momento + afinidad + rasgos + cliente): regresión probit bayesiana con actualización en línea (como AdPredictor de Microsoft).", "Base: campañas previas con un modelo jerárquico; momento: compras externas después de cada evento (serie de casos autocontrolada).", "Rasgos y apetito del cliente empiezan en «no sé» y aprenden con las respuestas.", "Un 10 % del tratamiento explora con muestreo de Thompson; el 10 % de control no ve ofertas."]))}
       ${SUB("Política de contacto", UL(["Tope: 4 contactos en 30 días (Uso_App).", `Mínimo ${R.MIN_DAYS_BETWEEN_PUSH} días entre dos push.`, `Fatiga: ${R.FATIGUE_MIN_IGNORED}+ notificaciones ignoradas y el doble de las abiertas.`, "Latencia «Mismo día»: no sirve para disparo inmediato.", "En cualquiera de esos casos la oferta va como banner pasivo, que según el supuesto de la hoja Jurídico no es contacto comercial."]))}
       ${SUB("Elegibilidad", UL(["Edad y ocupación de la hoja Elegibilidad; el rango «56+» se excluye de Desempleo (≤60) y Vida (≤65).", `Desempleo pide antigüedad laboral: se aproxima con ${R.DESEMPLEO_MIN_STREAK} abonos seguidos en Lulo.`, "Seguros externos vigentes no se ofrecen como nuevos; el SOAT externo por vencer se ofrece para renovar en Lulo (captura de canal). Si el externo venció, cuenta como interés fuerte.", `Lo mostrado o rechazado espera ${R.COOLDOWN_DAYS} días.`]))}
       ${SUB("Cómo se mide", `<p><b>Aceptación incremental</b>: tratamiento menos control, por ramo y por momento. El control (${R.CONTROL_PCT} %) se asigna por hash del id, así que siempre es el mismo cliente.</p>`)}
@@ -129,10 +166,12 @@ export function buildAccs(S, meta) {
         ["Reglas", `Parámetros versionados (${meta.rules_version})`, "<code>core/rules.py</code>"],
         ["Señales y elegibilidad", "Fuerza, evidencia y requisitos", "<code>core/signals.py</code> · <code>core/eligibility.py</code>"],
         ["Decisión", "Compuertas, control, canal y cola", "<code>core/engine.py</code>"],
+        ["Motor bayesiano", "Probabilidad de aceptar, aprendizaje y exploración", "<code>ml/motor.py</code> · <code>ml/bayes.py</code> · <code>ml/rasgos.py</code>"],
+        ["Entrenamiento", "Embudo, momento y previas → motor.json; laboratorio", "<code>scripts/train_motor.py</code> · <code>scripts/laboratorio.py</code>"],
         ["Backtest", "Recorre el año y verifica invariantes", "<code>core/backtest.py</code>"],
         ["API", "Rutas v3 para la app y el panel", "<code>/api/v3</code> · <a href=\"/docs\" target=\"_blank\" rel=\"noopener\">/docs</a>"]])}
-      <p>CLI: <code>python -m lulo_app.core campana</code>, <code>cliente C00002</code>, <code>backtest</code>, <code>catalogo</code>, <code>reglas</code>.</p>`},
+      <p>CLI: <code>python -m lulo_app.core campana</code>, <code>cliente C00002</code>, <code>explicar C00002</code>, <code>motor</code>, <code>backtest</code>, <code>catalogo</code>, <code>reglas</code>.</p>`},
     {id: "acc-supuestos", k: "Supuestos", kp: true, t: "Supuestos y límites", d: "Lo que es sintético o hipótesis", b: `
-      ${UL(["La base es 100% sintética y académica: sus cifras no son métricas de Lulo Bank.", "La fuerza de la señal (1,0 / 0,6 / 0) es una hipótesis: no hay resultados por cliente para estimarla; se mide con el grupo de control.", "Hogar no tiene campaña previa: se usa la menor conversión observada.", "Pago protegido no está en la base: se ofrece solo al desembolsar, sin valor esperado.", "El uso de la app de los personajes es supuesto (la base no lo trae).", "El descuento del SOAT es una hipótesis: la tarifa es regulada.", "Si una recomendación in-app es contacto bajo la Ley 2300 se tomó del supuesto de la hoja Jurídico; hay que validarlo."])}`},
+      ${UL(["La base es 100% sintética y académica: sus cifras no son métricas de Lulo Bank.", "La señal media (× 0,6 de la fuerte) es una hipótesis con su duda: la base no trae respuestas a ofertas para estimarla; el motor la corrige con las respuestas y se mide con el grupo de control.", "El efecto del momento sale de las compras externas (orgánicas), no de respuestas a ofertas: se supone que se traslada a la aceptación de una oferta.", "El laboratorio usa una verdad simulada: muestra que el método aprende, no cuánto venderá Lulo.", "Hogar no tiene campaña previa: se usa la menor conversión observada.", "Pago protegido no está en la base: se ofrece solo al desembolsar, sin valor esperado.", "El uso de la app de los personajes es supuesto (la base no lo trae).", "El descuento del SOAT es una hipótesis: la tarifa es regulada.", "Si una recomendación in-app es contacto bajo la Ley 2300 se tomó del supuesto de la hoja Jurídico; hay que validarlo."])}`},
   ];
 }

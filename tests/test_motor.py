@@ -238,3 +238,13 @@ def test_motor_api_and_campaign_csv():
     ev = c.post("/api/v3/clients/sebastian/events",
                 json={"event": {"type": "transferencia_fija", "amount": 450000}, "context": {}}).json()
     assert ev["evaluation"]["decision"]["prob"]["p"] > 0
+
+
+def test_page_keeps_prototype_label_and_guides_the_visitor():
+    """La página v3 sigue marcada como prototipo (etiqueta visible y noindex) y trae la bienvenida y el recorrido."""
+    html = TestClient(app).get("/").text
+    assert "Prototipo académico · datos simulados" in html and 'content="noindex, nofollow"' in html
+    assert 'id="welcome"' in html and 'data-tab="tour"' in html and 'data-tab="aprende"' in html
+    assert 'data-new="push"' in html and "/static/v3/tour.js" not in html          # los módulos los importa app.js
+    v2 = TestClient(app).get("/v2").text
+    assert 'id="welcome"' not in v2                                                 # /v2 no se toca

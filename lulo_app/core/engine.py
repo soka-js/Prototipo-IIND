@@ -196,7 +196,8 @@ def why(sig: Signal, f: Features) -> str:
         who = m["counterparties"][0] if m["counterparties"] else None
         amt = cop(m["amounts"][0]) if len(m["amounts"]) == 1 else "dinero"
         target = f"a <b>{who}</b>" if who else "a la misma persona"
-        return f"Hace {plural(m['months'], 'mes', 'meses')} envías {amt} {target}. Si alguien depende de ti, " \
+        fin = "" if (who or "").endswith(".") else "."   # «Laura M.» ya trae el punto
+        return f"Hace {plural(m['months'], 'mes', 'meses')} envías {amt} {target}{fin} Si alguien depende de ti, " \
                f"este seguro la protege."
     if r == "Viajes":
         recent = [t for t in f.travel_12m if t["days_ago"] <= rules.VIAJES_PURCHASE_DAYS]
