@@ -74,6 +74,14 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
     - τ̂ 0 («regla correcta») y 0,14 («señal», verdad 0,20);
     - error de calibración final de 2,14 a 1,75 puntos.
   - **`docs/RESUMEN.md`**: `motor.json`, `python -m lulo_app.core campana`, `python -m lulo_app.core backtest` y `modelos.json`, como dice su pie.
+
+## 2026-10-21 · Claude con SOKA · rama feat/claude-readme-versiones · commit de esta entrada · enlaces para comparar versiones
+- Qué cambió: `README.md` abre con la tabla «Versiones en revisión antes de pasar a `main`». Tiene el enlace de producción y las vistas previas de Vercel de las dos alternativas de E11: A (`feat/claude-solo-app`, solo la app) y B (`feat/claude-consola-lulo`, app + consola de Lulo). Sin cambios de código.
+- Por qué: SOKA pidió dejar en el README el enlace de `main` y el de las versiones que se están probando, para que él y el equipo comparen las dos antes de decidir cuál pasa a `main`.
+- Archivos: `README.md`, `CAMBIOS.md`.
+- Cómo se verificó: las URL siguen el formato de alias por rama que el bot de Vercel publicó en soka-js/Prototipo-IIND#2: `prototipo-iind-git-<rama con «/» cambiado por «-»>-proyects-soka.vercel.app`. Desde este entorno no se puede abrir vercel.app.
+- Consultado con SOKA: sí, el 2026-10-21 (es su pedido); solo documentación.
+- Cifras nuevas y su origen: ninguna.
 - Modelo de Claude usado: claude-opus-5-5.
 
 ## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commit ac3aac4 · accesibilidad del panel
