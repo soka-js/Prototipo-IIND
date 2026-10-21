@@ -2,14 +2,23 @@
 // Cada paso prepara el teléfono, resalta lo que hay que tocar, avanza solo cuando el cliente lo hace y tiene
 // «Hazlo por mí». Lo usa app.js con un objeto A que expone el estado y las acciones de la app. La tarjeta del paso
 // va en la guía al lado del teléfono (A.card) y, en el celular, una versión corta dentro del teléfono (#coach).
+// Opción automática: el recorrido se reproduce solo (lee, hace el paso y sigue), con pausa; nadie tiene que tocar
+// nada. ?ritmo=0.5 lo acelera y ?ritmo=1.5 lo hace más lento (las pruebas usan un ritmo rápido).
 import { esc, money, wait } from "./util.js";
 import { pc, probSteps } from "./aprende.js";
 
 const has = (S, ramo, results) => S.history.some(h => h.ramo === ramo && results.includes(h.result));
+const RITMO = Math.min(3, Math.max(0.05, +new URLSearchParams(location.search).get("ritmo") || 1));
+const pausa = ms => Math.max(350, ms * RITMO);
+const ICO = {
+  pausa: '<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><rect x="2" y="1.5" width="2.8" height="9" rx=".6" fill="currentColor"/><rect x="7.2" y="1.5" width="2.8" height="9" rx=".6" fill="currentColor"/></svg>',
+  play: '<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3 1.5v9l7.5-4.5z" fill="currentColor"/></svg>',
+};
 const probs = ev => Object.fromEntries(((ev && ev.candidates) || []).filter(c => c.prob).map(c => [c.ramo, c.prob.p]));
 
 export function createTour(A) {
   let i = -1, active = false, busy = false, advancing = false;
+  let play = false, paused = false, seq = 0, timer = null, sched = null;   // modo automático
   const memo = {};
   const STEPS = [
     {k: "Igual a la app de Lulo", t: "Esta es la app de Lulo, con datos simulados",
@@ -86,7 +95,9 @@ export function createTour(A) {
       hint: "Toca «Ver mi año» y avanza tocando a la derecha.",
       setup: async () => { A.tabTo("anio"); },
       target: S => S.screen === "anio" ? ".yr-hero .btn" : null, done: S => S.screen === "story" || S.screen === "yearLoading",
-      auto: async () => A.openStory(0), stay: true},
+      auto: async () => A.openStory(0), stay: true,
+      // En automático, además pasa unos capítulos para que se vea la historia.
+      play: async sigue => { for (let k = 0; k < 3; k++) { await wait(pausa(2800)); if (!sigue()) return; A.storyNext(); } await wait(pausa(2000)); }},
     {k: "Detrás de cámaras", t: "Cómo decide el motor (no es una regla fija)",
       d: () => {
         const L = A.motor()?.laboratorio, s = L && L.escenarios["señal"], b = L && L.escenarios["regla correcta"];
@@ -108,24 +119,58 @@ export function createTour(A) {
   // Un paso está pendiente mientras espera que el cliente haga algo en el teléfono.
   const pending = st => !!(st.done && st.auto && !memo[`ok${i}`] && !st.done(A.S()));
   const targetOf = st => typeof st.target === "function" ? st.target(A.S()) : st.target;
+  // En automático la pista dice qué está pasando; paso a paso, qué tocar.
+  const hintOf = st => !play ? st.hint : paused ? "En pausa: toca «Seguir» para continuar."
+    : busy ? "Automático: haciendo el paso en el teléfono…" : "Automático: sigue solo en unos segundos.";
 
   async function goTo(k) {
     if (busy) return;
-    busy = true; advancing = false;
+    busy = true; advancing = false; seq++; clearTimeout(timer); sched = null;
     i = k; const st = step();
     delete memo[`ok${i}`];
     paint();
     try { if (st.setup) await st.setup(); } catch (e) { console.error(e); }
     busy = false;
     paint(); decorate(); tick();
+    if (play && !paused && active) schedule();
   }
-  function start() { active = true; document.body.classList.add("touring"); A.showTour(); goTo(0); }
+  /** `auto`: se reproduce solo (lee, hace el paso y sigue). Sin él, el cliente avanza a su ritmo. */
+  function start(auto = false) {
+    play = auto; paused = false;
+    active = true; document.body.classList.add("touring"); A.showTour(); goTo(0);
+  }
   /** `next`: al terminar se abren los escenarios rápidos (al salir a mitad del recorrido, no). */
   function finish(next = true) {
+    play = false; paused = false; clearTimeout(timer); sched = null;
     active = false; i = -1; document.body.classList.remove("touring"); decorate(); A.setHighlight(true); paint();
     A.endTour(next);
     A.toast("Recorrido terminado: ahora explora a tu ritmo");
   }
+
+  /* ---------- modo automático ---------- */
+  // Tiempo de lectura del paso: ~35 ms por carácter del texto, entre 5,5 y 15 s (por el ritmo).
+  const lectura = st => pausa(Math.min(15000, Math.max(5500, 2500 + (st.d() + st.lulo).replace(/<[^>]+>/g, "").length * 35)));
+  function schedule() {
+    clearTimeout(timer);
+    const s = seq, ms = lectura(step());
+    sched = {start: Date.now(), ms};
+    paint();
+    timer = setTimeout(() => autoAdvance(s), ms);
+  }
+  const vigente = s => s === seq && active && play && !paused;
+  async function autoAdvance(s) {
+    if (!vigente(s)) return;
+    if (busy) { timer = setTimeout(() => autoAdvance(s), 500); return; }   // espera a que termine lo que está haciendo
+    sched = null;
+    const st = step();
+    if (pending(st)) { await doIt(); await wait(pausa(1500)); if (!vigente(s)) return; }
+    if (st.play) { await st.play(() => vigente(s)); if (!vigente(s)) return; }
+    if (!advancing) next();
+  }
+  function autoplay() { if (!active) { start(true); return; } play = true; paused = false; schedule(); }
+  function pause() { paused = true; clearTimeout(timer); sched = null; paint(); }
+  function resume() { paused = false; if (active && play) schedule(); }
+  function manual() { play = false; paused = false; clearTimeout(timer); sched = null; paint(); }
   function next() { if (!active || busy) return; if (i < STEPS.length - 1) goTo(i + 1); else finish(true); }
   function prev() { if (!active || busy || i <= 0) return; goTo(i - 1); }
   async function doIt() {
@@ -166,12 +211,15 @@ export function createTour(A) {
       <div class="tour-prog">${STEPS.map((_, k) => `<i class="${k < i ? "done" : k === i ? "on" : ""}"></i>`).join("")}</div>
       <h3>${esc(st.t)}</h3><div class="tour-d">${st.d()}</div>
       <div class="tour-lulo"><b>Por qué le sirve a Lulo</b>${esc(st.lulo)}</div>
-      <div class="tour-hint">${tgt || st.done ? "👉 " : ""}${esc(st.hint)}</div>
+      <div class="tour-hint">${!play && (tgt || st.done) ? "👉 " : ""}${esc(hintOf(st))}</div>
+      ${play && sched ? `<div class="tour-timer" aria-hidden="true"><i style="animation-duration:${sched.ms}ms;animation-delay:-${Date.now() - sched.start}ms"></i></div>` : ""}
       ${st.links ? `<div class="ctrls">${st.links.map(([h, l]) => `<a class="pbtn" href="${h}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>` : ""}
-      <div class="tour-acts"><button class="pbtn" data-tour="prev" ${i === 0 ? "disabled" : ""}>Anterior</button>
-        ${pending(st) ? `<button class="pbtn" data-tour="auto">Hazlo por mí</button>` : ""}
-        <button class="pbtn lime" data-tour="next">${i === STEPS.length - 1 ? "Terminar" : pending(st) ? "Saltar" : "Siguiente"}</button>
-        <button class="pbtn sm ghost" data-tour="stop">Salir</button></div></div>`;
+      <div class="tour-acts">${play ? `<button class="pbtn" data-tour="${paused ? "resume" : "pause"}">${paused ? `${ICO.play} Seguir` : `${ICO.pausa} Pausar`}</button>`
+          : pending(st) ? `<button class="pbtn" data-tour="auto">Hazlo por mí</button>` : ""}
+        <button class="pbtn lime" data-tour="next">${i === STEPS.length - 1 ? "Terminar" : pending(st) && !play ? "Saltar" : "Siguiente"}</button></div>
+      <div class="tour-sub"><button data-tour="prev" ${i === 0 ? "disabled" : ""}>Anterior</button>
+        ${play ? `<button data-tour="manual">Paso a paso</button>` : `<button data-tour="play">${ICO.play} Que se reproduzca solo</button>`}
+        <button data-tour="stop">Salir</button></div></div>`;
   }
   function paint() {
     const v = A.card();
@@ -182,21 +230,22 @@ export function createTour(A) {
       if (!m.hidden) {
         const st = step();
         m.innerHTML = `<div class="tour-top"><span class="tour-k">${esc(st.k)} · ${i + 1}/${STEPS.length}</span><button class="coach-x" data-tour="stop" aria-label="Salir del recorrido">✕</button></div>
-          <b>${esc(st.t)}</b><p>${esc(st.hint)}</p><div class="tour-acts"><button class="pbtn sm" data-tour="more">Ver explicación</button>${pending(st) ? `<button class="pbtn sm" data-tour="auto">Hazlo por mí</button>` : ""}<button class="pbtn sm lime" data-tour="next">${i === STEPS.length - 1 ? "Terminar" : pending(st) ? "Saltar" : "Siguiente"}</button></div>`;
+          <b>${esc(st.t)}</b><p>${esc(hintOf(st))}</p><div class="tour-acts"><button class="pbtn sm" data-tour="more">Ver explicación</button>${play ? `<button class="pbtn sm" data-tour="${paused ? "resume" : "pause"}">${paused ? `${ICO.play} Seguir` : `${ICO.pausa} Pausar`}</button>` : pending(st) ? `<button class="pbtn sm" data-tour="auto">Hazlo por mí</button>` : ""}<button class="pbtn sm lime" data-tour="next">${i === STEPS.length - 1 ? "Terminar" : pending(st) && !play ? "Saltar" : "Siguiente"}</button></div>`;
       }
     }
     const how = document.querySelector("#how");
-    if (how) how.innerHTML = active && i >= 0 ? `<b>Paso ${i + 1} de ${STEPS.length}:</b> ${esc(step().hint)}` : how.dataset.base;
+    if (how) how.innerHTML = active && i >= 0 ? `<b>Paso ${i + 1} de ${STEPS.length}:</b> ${esc(hintOf(step()))}` : how.dataset.base;
   }
   function onClick(e) {
     const b = e.target.closest("[data-tour]");
     if (b) {
       const a = b.dataset.tour;
-      if (a === "start") start(); else if (a === "next") next(); else if (a === "prev") prev();
+      if (a === "start") start(false); else if (a === "play") autoplay(); else if (a === "next") next(); else if (a === "prev") prev();
       else if (a === "auto") doIt(); else if (a === "stop") finish(false); else if (a === "more") A.showTour(true);
+      else if (a === "pause") pause(); else if (a === "resume") resume(); else if (a === "manual") manual();
       return true;
     }
     return false;
   }
-  return {start, next, prev, finish, decorate, tick, paint, onClick, active: () => active};
+  return {start, autoplay, next, prev, finish, decorate, tick, paint, onClick, active: () => active};
 }
