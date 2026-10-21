@@ -74,6 +74,7 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
     - τ̂ 0 («regla correcta») y 0,14 («señal», verdad 0,20);
     - error de calibración final de 2,14 a 1,75 puntos.
   - **`docs/RESUMEN.md`**: `motor.json`, `python -m lulo_app.core campana`, `python -m lulo_app.core backtest` y `modelos.json`, como dice su pie.
+- Modelo de Claude usado: claude-opus-5-5.
 
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-readme-versiones · commit de esta entrada · enlaces para comparar versiones
 - Qué cambió: `README.md` abre con la tabla «Versiones en revisión antes de pasar a `main`». Tiene el enlace de producción y las vistas previas de Vercel de las dos alternativas de E11: A (`feat/claude-solo-app`, solo la app) y B (`feat/claude-consola-lulo`, app + consola de Lulo). Sin cambios de código.
