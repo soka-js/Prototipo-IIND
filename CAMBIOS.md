@@ -17,6 +17,48 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app · commits bc82492, 102f17e, e9e3875, a58302e y el de esta entrada · E11 (reglas v2.1)
+- Qué cambió:
+  - (0) A pedido de SOKA («push de todo»), merge de soka-js/Prototipo-IIND#3 (accesibilidad) a `main` (dd5a95b) con el Preview de Vercel en `success`. Esta rama parte de ese `main`.
+  - (1) **Backtest y plan más rápidos con las mismas decisiones** (bc82492). `evaluate(..., lite=True)` no arma la traza. Las previas por defecto se calculan una vez por nombre y `puntuar` reutiliza la varianza.
+  - (2) **Reglas v2.1** (102f17e).
+    - Con respuestas, la dispersión del apetito entre clientes (τ) se estima con Bayes empírico (`bayes.ApetitoEB`, verosimilitud marginal en una rejilla fija) y la previa se cambia sin volver a correr las respuestas (`Creencias.cambiar_previa`).
+    - `train_motor.py --respuestas` la usa en el retador, la guarda si se promueve y la muestra en el reporte.
+    - Sin respuestas sigue en 0,25. `motor-1.0` se conserva porque su versión es la semilla del sorteo de exploración.
+    - Laboratorio `lab-1.1`: reestima τ cada 5 rondas y tiene el escenario nuevo «dato nuevo», una columna que la base no trae, comparado con el mismo motor sin ella.
+  - (3) **Solo la app** (e9e3875). Se quitan el panel de la derecha (nueve pestañas), «Estás viendo» y la tarjeta de decisión, con su código y 209 reglas de CSS que solo usaban ellos. Quedan:
+    - un encabezado con el recorrido, los escenarios, «Resaltar lo nuevo», «¿Qué es este prototipo?», el cambio de personaje y «Descargar respuestas (CSV)»;
+    - una guía al lado del teléfono que aparece solo con el recorrido o los escenarios (en el celular, una hoja desde «Guía»);
+    - escenarios que dicen qué decidió el motor y por qué;
+    - el CSV de respuestas en el formato de `docs/DATOS_REALES.md`;
+    - la cola de ofertas, que pasa sola al cerrarse una ventana;
+    - la descripción de lo nuevo al pasar el mouse.
+  - (4) **Pruebas de punta a punta** con Playwright (a58302e): `tests/test_e2e.py` y `playwright==1.56.0` en `requirements-dev.txt`. La tarjeta del recorrido marca `aria-busy`.
+  - (5) Documentación:
+    - `docs/RESUMEN.md`, el resumen de una página para la entrega;
+    - `docs/MOTOR.md`: v2.1, laboratorio actualizado, «dato nuevo» y Bayes empírico;
+    - `docs/DATOS_REALES.md`: el CSV del prototipo y τ̂ en el reporte;
+    - `README.md` y `CLAUDE.md`: v2.1, E11, invariantes y mapa del código;
+    - corrección de redondeo: el intervalo de Hogar es de 5,1 % a 17,6 % (0,051455 en `motor.json`), no de 5,2 %.
+- Por qué: SOKA aprobó todas las mejoras propuestas después de E10 («estoy de acuerdo con todo»). Pidió quitar el panel de explicación porque «no sirve» y confundía: «dejar solo la app». Pidió también, en otra rama, una versión igual con un panel de más valor (`feat/claude-consola-lulo`), para revisar las dos al final y decidir cuál pasa a `main`.
+- Archivos: `lulo_app/core/engine.py`, `lulo_app/core/backtest.py`, `lulo_app/core/rules.py`, `lulo_app/core/__main__.py`, `lulo_app/ml/bayes.py`, `lulo_app/ml/motor.py`, `lulo_app/ml/motor.json`, `lulo_app/ml/laboratorio.json`, `scripts/train_motor.py`, `scripts/laboratorio.py`, `lulo_app/templates/app.html`, `public/static/v3/` (`app.js`, `app.css`, `tour.js`, `aprende.js`, `content.js`), `tests/test_core.py`, `tests/test_motor.py`, `tests/test_api_v3.py`, `tests/test_ml.py`, `tests/test_e2e.py`, `requirements-dev.txt`, `docs/RESUMEN.md`, `docs/MOTOR.md`, `docs/DATOS_REALES.md`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 104 passed, incluidas 5 de punta a punta (estables en 4 corridas de unos 16 s).
+  - `python -m lulo_app.core backtest` → violaciones de las invariantes: 0; máximo de 4 push en 30 días.
+  - `train_motor.py --check`, `laboratorio.py --check` y `train_models.py --check` → coinciden.
+  - Contra una línea base guardada antes del cambio, la salida es idéntica en el backtest cada 14 días, en el plan de los 600 (al corte, a +30 días y con la regla v1.3) y en 40 evaluaciones completas. Tras v2.1, las filas y el resumen del plan también son idénticos; solo cambia la etiqueta `rules_version`.
+  - En el navegador (Playwright, 1440 × 900 y 390 × 844): recorrido completo, escenarios, descarga del CSV y hoja del celular, sin errores de consola y sin desborde horizontal.
+- Consultado con SOKA: sí, el 2026-10-21. Aprobó todas las mejoras y quitar el panel; la versión con consola va aparte, para que él elija.
+- Cifras nuevas y su origen:
+  - **Tiempos** (local, `time.perf_counter`): backtest de 10,7 s a 6,3 s y plan de 0,68 s a 0,39 s.
+  - **Laboratorio** (`lulo_app/ml/laboratorio.json`):
+    - +10,2 %, −1,0 %, +10,4 %, +10,5 % y +9,0 % frente a la regla;
+    - «dato nuevo» +0,8 % frente al motor sin la columna, con pesos 0,13 y 0,16 (verdad 0,10 y 0,30);
+    - τ̂ 0 («regla correcta») y 0,14 («señal», verdad 0,20);
+    - error de calibración final de 2,14 a 1,75 puntos.
+  - **`docs/RESUMEN.md`**: `motor.json`, `python -m lulo_app.core campana`, `python -m lulo_app.core backtest` y `modelos.json`, como dice su pie.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commit ac3aac4 · accesibilidad del panel
 - Qué cambió:
   - El buscador y las listas de filtros de la pestaña «Cliente» (`#xq`, `#xout`, `#xramo` y `#xsrc`) tienen ahora `aria-label`.

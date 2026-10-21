@@ -10,17 +10,17 @@
 | **Presente**: Motor de disparadores | Lee lo que el cliente hace (nómina, transferencia fija, bolsillo, aerolínea, mascotas, peaje, desembolso), decide qué ofrecer, por qué canal y cuándo, y registra la respuesta. |
 | **Futuro**: SOAT y disparos agendados | Flujo real del SOAT con Seguros Mundial, captura de canal para SOAT externos y disparos agendados (desempleo al sexto abono, vida al tercer mes). |
 
-## Motor bayesiano y experiencia guiada (reglas v2.0)
+## Motor bayesiano y experiencia guiada (reglas v2.1)
 
-- **Decide con probabilidad aprendida de los datos.** Valor esperado = P(acepta | ve la oferta) × comisión a 12 meses. P sale de una regresión probit bayesiana cuyas creencias previas vienen de la base: la conversión de cada ramo con un Beta-Binomial jerárquico sobre las campañas previas, y el efecto del momento (el evento pasó hace menos de 30 días) con las compras externas de Pagos_Seguros (serie de casos autocontrolada). 38 rasgos del cliente se descubren de los datos y empiezan en «no sé». Aprende en línea de cada respuesta (como AdPredictor), explora con muestreo de Thompson en un 10 % del tratamiento y solo promueve lo aprendido si mejora fuera de muestra. Las compuertas de v1.3 no cambian. Método, resultados, supuestos y preguntas difíciles: [`docs/MOTOR.md`](docs/MOTOR.md).
-- **Laboratorio con verdad simulada**: con efectos que la regla no ve, el motor gana +10 % de comisión por oferta frente a la regla v1.3; si la regla tenía razón, queda a −1,1 %; con 20 variables de ruido, igual.
+- **Decide con probabilidad aprendida de los datos.** Valor esperado = P(acepta | ve la oferta) × comisión a 12 meses. P sale de una regresión probit bayesiana cuyas creencias previas vienen de la base: la conversión de cada ramo con un Beta-Binomial jerárquico sobre las campañas previas, y el efecto del momento (el evento pasó hace menos de 30 días) con las compras externas de Pagos_Seguros (serie de casos autocontrolada). 38 rasgos del cliente se descubren de los datos y empiezan en «no sé». Aprende en línea de cada respuesta (como AdPredictor), estima con Bayes empírico cuánto se distinguen los clientes (v2.1), explora con muestreo de Thompson en un 10 % del tratamiento y solo promueve lo aprendido si mejora fuera de muestra. Las compuertas de v1.3 no cambian. Método, resultados, supuestos y preguntas difíciles: [`docs/MOTOR.md`](docs/MOTOR.md).
+- **Laboratorio con verdad simulada**: con efectos que la regla no ve, el motor gana +10 % de comisión por oferta frente a la regla v1.3; si la regla tenía razón, queda a −1,0 %; con 20 variables de ruido, igual; con una columna nueva que sí predice, la aprende solo y gana +0,8 % frente al mismo motor sin ella.
 - **Listo para datos reales**: `scripts/validar_datos.py` y `scripts/train_motor.py --datos` corren en el equipo de Lulo sin subir nada ([`docs/DATOS_REALES.md`](docs/DATOS_REALES.md)).
-- **Experiencia guiada**: bienvenida que explica qué es el prototipo, recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo, con «Hazlo por mí»), «Resaltar lo nuevo» en cada pantalla, «Lo que acaba de decidir el motor» en lenguaje claro y la pestaña «Aprendizaje» del panel.
+- **Solo la app, con guía**: la página es el teléfono. Hay una bienvenida que explica qué es el prototipo y un recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo, con «Hazlo por mí»). Los escenarios rápidos dicen qué decidió el motor y por qué. Están también «Resaltar lo nuevo», el cambio de personaje y «Descargar respuestas (CSV)», con las ofertas de la sesión en el formato de datos reales. La guía aparece al lado del teléfono solo cuando se pide; en el celular se abre como hoja desde «Guía».
 
 ## Versión 3 (en `main` desde el 2026-10-14)
 
 - **Look de la app real**: Home · Explora · (+) · Tu año · Protección; Explora con Ahorro, Inversión, Crédito y Seguros; Alertas, Ayuda, mapa de cajeros, Lulo Cuenta y el flujo real del SOAT. Colores tomados de capturas de la app.
-- **Motor real** (`lulo_app/core`), reglas versionadas (hoy `v2.0`):
+- **Motor real** (`lulo_app/core`), reglas versionadas (hoy `v2.1`):
   1. Autorización de datos (Ley 1581): sin ella no se leen los movimientos.
   2. Señales con regla, fuerza y evidencia (solo fecha, monto, canal, categoría y MCC).
   3. Elegibilidad de la hoja Elegibilidad (el rango «56+» se excluye de Desempleo y Vida) y capacidad de pago (v1.3): la prima mensual no pasa del 5 % del ingreso y la de pago único no pasa del saldo promedio.
@@ -29,8 +29,8 @@
   6. Grupo de control del 10 % por hash del id; otro 10 % explora con muestreo de Thompson (v2.0).
   7. Canal: push si quedan contactos (tope 4 en 30 días), no hay fatiga, la latencia lo permite y pasaron 7 días desde el último push; si no, banner pasivo.
 - **Base del reto validada** (`scripts/ingest_reto.py`): lo posterior al corte (444 movimientos y 118 abonos) se excluye con su razón; `conversion_impactados` es en realidad ventas/elegibles y se recalcula; todo queda en `lulo_app/dataset/manifest.json` y `CALIDAD.md`.
-- **Backtest**: recorre el año y verifica las invariantes (tope, autorización, elegibilidad, control, espera y espaciado). Resultado: 0 violaciones.
-- **Modelos entrenados con la base (reglas v1.2 y v1.3)**: propensión por ramo, segmentos, respuesta al push, demanda (emisiones y renovaciones), momento de compra (frente a la nómina y frente al evento que dispara cada ramo) y tamaño del piloto. La afinidad del modelo ajusta el valor esperado solo en los ramos donde el modelo le gana al azar; con esta base no le gana en ninguno una vez se excluye «visitas a Seguros», que es consecuencia de tener seguro, así que el motor decide con la regla. Método y resultados en [`docs/MODELOS.md`](docs/MODELOS.md); pestaña «Modelos» en el panel.
+- **Backtest**: recorre el año y verifica las invariantes (tope, autorización, elegibilidad, control, espera y espaciado). Resultado: 0 violaciones. Toma las mismas decisiones sin armar la traza (en local, de 10,7 s a 6,3 s).
+- **Modelos entrenados con la base (reglas v1.2 y v1.3)**: propensión por ramo, segmentos, respuesta al push, demanda (emisiones y renovaciones), momento de compra (frente a la nómina y frente al evento que dispara cada ramo) y tamaño del piloto. La afinidad del modelo ajusta el valor esperado solo en los ramos donde el modelo le gana al azar; con esta base no le gana en ninguno una vez se excluye «visitas a Seguros», que es consecuencia de tener seguro, así que el motor decide con la regla. Método y resultados en [`docs/MODELOS.md`](docs/MODELOS.md); en la app, `GET /api/v3/models`.
 
 ## Cómo colaborar
 
@@ -45,14 +45,15 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1          # en macOS/Linux: source .venv/bin/activate
 pip install -r requirements-dev.txt
 python run.py                          # abre http://127.0.0.1:8000
-python -m pytest                       # pruebas
+python -m playwright install chromium  # una vez: navegador para las pruebas de punta a punta
+python -m pytest                       # pruebas (las de punta a punta se saltan si no hay navegador)
 ```
 
 Motor desde la terminal:
 
 ```powershell
 python -m lulo_app.core catalogo                 # productos con prima, comisión y conversión
-python -m lulo_app.core reglas                   # parámetros (hoy v2.0)
+python -m lulo_app.core reglas                   # parámetros (hoy v2.1)
 python -m lulo_app.core cliente C00002           # traza completa de una decisión
 python -m lulo_app.core explicar C00002          # de dónde sale cada probabilidad
 python -m lulo_app.core motor                    # piezas del motor bayesiano y sus datos
@@ -95,10 +96,11 @@ lulo_app/
   api_v3.py                  rutas /api/v3
   main.py                    app FastAPI: / (v3), /v2 (versión del cliente) y API v2
   simulator.py … engine.py   prototipo v2 (personajes y motor anterior)
-public/static/v3/            app v3 (JS sin framework y CSS): app.js, screens.js, content.js, tour.js
-                             (recorrido guiado), aprende.js (pestaña Aprendizaje y gráficos), util.js, icons.js
+public/static/v3/            app v3 (JS sin framework y CSS): app.js (estado, flujos, guía y escenarios), screens.js,
+                             content.js (lo nuevo), tour.js (recorrido guiado), aprende.js (probabilidad por pasos y
+                             decisión en lenguaje claro), util.js, icons.js
 public/static/js|css         app v2
-tests/                       ingesta, motor, API v2 y v3, entrada de Vercel
+tests/                       ingesta, motor, API v2 y v3, entrada de Vercel y de punta a punta (test_e2e.py, Playwright)
 ```
 
 ## API v3

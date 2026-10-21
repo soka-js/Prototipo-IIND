@@ -536,6 +536,12 @@ def reporte(model: dict) -> str:
     if "logloss_campeon" in v:
         lines.append(f"- Log-pérdida: campeón {v['logloss_campeon']}, retador {v['logloss_retador']}, "
                      f"diferencia {v['diferencia']} (IC 95 % {v['ic95'][0]} a {v['ic95'][1]})")
+    ap = v.get("apetito") or v.get("apetito_entrenamiento")
+    if ap and ap.get("tau") is not None:
+        from lulo_app.core import rules
+        lines.append(f"- Dispersión del apetito entre clientes (Bayes empírico): τ̂ = {ap['tau']} "
+                     f"(IC 95 % {ap['ic95'][0]} a {ap['ic95'][1]}) con {ap['respuestas']} respuestas de {ap['clientes']} "
+                     f"clientes; sin respuestas se supone {rules.PRIOR_SD_CLIENTE}")
     return "\n".join(lines) + "\n"
 
 

@@ -242,7 +242,8 @@ def test_training_with_responses_learns_and_validates(tmp_path):
     # la verdad sembrada no tiene apetito propio por cliente: Bayes empírico baja la previa de 0,25
     assert v["apetito"]["tau"] < rules.PRIOR_SD_CLIENTE and m["previas"]["cliente_sd"] == v["apetito"]["usado"]
     assert "Bayes empírico" in m["previas"]["origen"]["cliente"]
-    assert train_motor.reporte(json.loads(train_motor.dump(m))).startswith("# Motor bayesiano")
+    rep = train_motor.reporte(json.loads(train_motor.dump(m)))
+    assert rep.startswith("# Motor bayesiano") and "Bayes empírico" in rep
 
 
 # --------------------------------------------------------------------------- laboratorio y API
