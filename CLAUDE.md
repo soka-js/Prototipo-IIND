@@ -72,7 +72,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E7 Modelos entrenados con la base (reglas v1.2) e imágenes de la app real | Hecha el 2026-10-16, aprobada por SOKA |
 | E8 Datos de la solicitud sin uso: renovaciones y cancelación, capacidad de pago y momento por evento (reglas v1.3) | Hecha el 2026-10-20, aprobada por SOKA según Tomás Carrillo; la valida todo el grupo |
 | E9 Integración de E7 y E8 a `main` con revisión: «visitas a Seguros» fuera de M1 (modelos `ml-1.1`) y versiones fijas | Hecha el 2026-10-20 por decisión de SOKA |
-| E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Implementada el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq` a pedido de SOKA; pendiente de su revisión para pasar a `main` |
+| E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Hecha el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq`; SOKA la aprobó completa y pasó a `main` el mismo día |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -88,13 +88,13 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
 - Reglas v1.2: valor esperado × afinidad del modelo de propensión (acotada a [0,5; 2]) en los ramos que pasan la prueba de permutación; modelo de respuesta al push con umbral de 20 %.
 - Reglas v1.3: capacidad de pago en la elegibilidad (prima mensual ≤ 5 % del ingreso; prima de pago único ≤ saldo promedio) y comisión de pago único × (1 − cancelación).
 - «Visitas a Seguros» no entra a M1 porque es consecuencia de tener una póliza Lulo (2026-10-20). Con la base del reto ningún ramo pasa la compuerta y la afinidad vale 1; el plan de campaña ofrece lo mismo que con v1.1.
-
-Pendiente de que SOKA lo confirme al revisar E10 (hasta entonces no se reabre ni se amplía):
-- Valor esperado v2.0 = P(acepta | ve) × comisión, con la regla v1.3 disponible como `MOTOR = "regla"`.
-- Hogar usa la predictiva de una campaña nueva (10,7 %, de 5,2 % a 17,6 %) en vez de la menor conversión observada.
-- Efecto del momento estimado con las compras externas y trasladado a la aceptación de ofertas (ventana de 30 días).
-- 10 % del tratamiento explora con muestreo de Thompson (buckets 10 a 19); el control no cambia.
-- Previas: señal media × 0,6 con duda; duda total de los rasgos 0,45 repartida; apetito del cliente 0,25.
+- Reglas v2.0 (2026-10-21, E10 aprobada completa):
+  - Valor esperado = P(acepta | ve) × comisión a 12 meses, con P del motor bayesiano; la regla v1.3 queda disponible como `MOTOR = "regla"`.
+  - Hogar usa la predictiva de una campaña nueva (10,7 %, de 5,2 % a 17,6 %) en vez de la menor conversión observada.
+  - Efecto del momento estimado con las compras externas y trasladado a la aceptación de ofertas (ventana de 30 días).
+  - 10 % del tratamiento explora con muestreo de Thompson (buckets 10 a 19); el control no cambia.
+  - Previas: señal media × 0,6 con duda; duda total de los rasgos 0,45 repartida; apetito del cliente 0,25.
+  - Experiencia guiada: bienvenida, recorrido de 11 pasos, «Resaltar lo nuevo», «Lo que acaba de decidir el motor» y pestañas «Recorrido» y «Aprendizaje» en el panel.
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.

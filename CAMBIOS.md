@@ -17,6 +17,18 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq → main · aprobación de E10 (reglas v2.0)
+- Qué cambió: SOKA aprobó completa la etapa E10 (motor bayesiano, laboratorio, camino para datos reales y experiencia guiada) y pidió pasarla a `main`. `CLAUDE.md` mueve lo que estaba «pendiente de confirmar» a las decisiones aprobadas (reglas v2.0) y marca E10 como hecha. Sin cambios de código.
+- Por qué: queda registrada la aprobación antes del merge, como pide `CLAUDE.md` (sección 3).
+- Archivos: `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó (sobre 8b221c3, antes del merge):
+  - `python -m pytest` → 93 passed.
+  - `python -m lulo_app.core backtest` → 0 violaciones; máximo de 4 push en 30 días.
+  - `python scripts/train_motor.py --check`, `python scripts/laboratorio.py --check` y `python scripts/train_models.py --check` → coinciden.
+- Consultado con SOKA: sí, el 2026-10-21: «todo aprobado, pásalo a main».
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commits 527da5e, ac41307 y 3cbeb29 · reglas v2.0
 - Qué cambió:
   - (0) A pedido de SOKA se creó y se hizo merge del pull request soka-js/Prototipo-IIND#1 (`feat/equipo-modelos-v1.3` → `main`, commit d9c95e6) con 72 passed, backtest con 0 violaciones, `--check` y el Preview de Vercel en `success`.
