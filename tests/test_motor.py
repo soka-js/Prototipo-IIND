@@ -282,21 +282,24 @@ def test_page_keeps_prototype_label_and_guides_the_visitor():
     """La página v3 sigue marcada como prototipo (etiqueta visible y noindex) y trae la bienvenida y el recorrido."""
     html = TestClient(app).get("/").text
     assert "Prototipo académico · datos simulados" in html and 'content="noindex, nofollow"' in html
-    assert 'id="welcome"' in html and 'data-tab="tour"' in html and 'data-tab="aprende"' in html
+    assert 'id="welcome"' in html and 'data-tour="start"' in html and 'id="guide"' in html
     assert 'data-new="push"' in html and "/static/v3/tour.js" not in html          # los módulos los importa app.js
+    # solo la app: sin panel de explicación al lado; la guía aparece solo con el recorrido o los escenarios
+    assert 'class="panel"' not in html and 'data-tab=' not in html and 'id="guide" hidden' in html
+    assert 'id="csvBtn"' in html and 'data-w="scen"' in html
     v2 = TestClient(app).get("/v2").text
     assert 'id="welcome"' not in v2                                                 # /v2 no se toca
 
 
 def test_page_form_controls_have_accessible_names():
-    """Cada campo y lista del panel tiene nombre para lectores de pantalla (aria-label o <label for>)."""
+    """Cada campo y lista de la página tiene nombre para lectores de pantalla (aria-label o <label for>)."""
     import re
     html = TestClient(app).get("/").text
     def con_nombre(campo):
         ident = re.search(r'id="([^"]+)"', campo)
         return "aria-label=" in campo or (ident and f'for="{ident.group(1)}"' in html)
     campos = re.findall(r"<(?:input|select)\b[^>]*>", html)
-    assert campos and all(con_nombre(c) for c in campos), [c for c in campos if not con_nombre(c)]
+    assert all(con_nombre(c) for c in campos), [c for c in campos if not con_nombre(c)]
 
 
 def test_real_data_path_validates_and_trains_outside_the_repo(tmp_path):

@@ -1,4 +1,4 @@
-"""API v3: el motor real expuesto para la app y el panel."""
+"""API v3: el motor real expuesto para la app."""
 
 from fastapi.testclient import TestClient
 

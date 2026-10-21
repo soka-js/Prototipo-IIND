@@ -1,6 +1,7 @@
 // Recorrido guiado: once pasos con Sebastián que muestran qué es nuevo, qué tocar y por qué le sirve a Lulo.
 // Cada paso prepara el teléfono, resalta lo que hay que tocar, avanza solo cuando el cliente lo hace y tiene
-// «Hazlo por mí». Lo usa app.js con un objeto A que expone el estado y las acciones de la app.
+// «Hazlo por mí». Lo usa app.js con un objeto A que expone el estado y las acciones de la app. La tarjeta del paso
+// va en la guía al lado del teléfono (A.card) y, en el celular, una versión corta dentro del teléfono (#coach).
 import { esc, money, wait } from "./util.js";
 import { pc, probSteps } from "./aprende.js";
 
@@ -70,7 +71,7 @@ export function createTour(A) {
         return yes ? `Sebastián aceptó. El motor subió su apetito por seguros ${ap}.${cambio} Aceptar enseña bastante porque casi todos rechazan.`
           : `Sebastián dijo «ahora no». El motor bajó su apetito por seguros ${ap}: un rechazo enseña poco cuando casi todos rechazan.${cambio} Y no le repetirá Vida en 30 días.`;
       },
-      lulo: "Con respuestas de miles de clientes aprende todo el modelo, no solo a la persona: el laboratorio del panel muestra cuánto mejora.",
+      lulo: "Con respuestas de miles de clientes aprende todo el modelo, no solo a la persona: el laboratorio de la documentación del motor muestra cuánto mejora.",
       hint: "Sigue cuando quieras.",
       setup: async () => { await A.refreshEval(); }},
     {k: "Nuevo", t: "Tu protección: todo en un lugar",
@@ -92,16 +93,15 @@ export function createTour(A) {
         return `Para cada seguro que las reglas permiten (autorización, elegibilidad, capacidad de pago, tope de contactos), el motor calcula P(acepta) con lo que dicen los datos de la base: campañas previas, compras externas después de cada evento y las señales del cliente. Ofrece el de mayor valor esperado y aprende de cada respuesta.${s ? ` En un laboratorio con verdad simulada sobre los clientes de la base, con respuestas el motor gana <b>${s.frente_a_regla_final >= 0 ? "+" : "−"}${Math.abs(s.frente_a_regla_final * 100).toFixed(0)} %</b> de comisión por oferta frente a la regla, y si la regla tenía razón queda a ${(b.frente_a_regla_final * 100).toFixed(1).replace(".", ",")} %.` : ""}`;
       },
       lulo: "Con los datos reales de Lulo se reentrena con un comando, en su propio equipo, y solo cambia lo que mejora fuera de muestra.",
-      hint: "Mira «Aprendizaje» y «Motor» en el panel.",
-      buttons: [["aprende", "Ver cómo aprende"], ["motor", "Ver la traza de la decisión"]]},
+      hint: "El detalle (datos, fórmulas y laboratorio) está en la documentación del motor.",
+      links: [["https://github.com/soka-js/Prototipo-IIND/blob/main/docs/MOTOR.md", "Cómo funciona el motor"]]},
     {k: "Cómo se mide", t: "Grupo de control y siguiente paso",
       d: () => {
         const p = A.META.models?.piloto?.SOAT;
-        return `El 10 % de los clientes no ve ofertas: es el grupo de control, y la diferencia con el resto es el efecto real del motor. Otro 10 % explora opciones en las que el motor todavía duda.${p ? ` Para el piloto con la base completa del banco, ${p.lift_50.toLocaleString("es-CO")} clientes por grupo bastan para detectar un aumento de 50 % en el SOAT (modelo M6).` : ""} Ahora explora tú: cambia de cliente, dispara eventos o mira el plan de los 600 clientes.`;
+        return `El 10 % de los clientes no ve ofertas: es el grupo de control, y la diferencia con el resto es el efecto real del motor. Otro 10 % explora opciones en las que el motor todavía duda.${p ? ` Para el piloto con la base completa del banco, ${p.lift_50.toLocaleString("es-CO")} clientes por grupo bastan para detectar un aumento de 50 % en el SOAT (modelo M6).` : ""} Ahora explora tú: cambia de personaje arriba o prueba un escenario rápido.`;
       },
       lulo: "Un piloto medible: si el motor no supera al control, se sabe rápido y sin riesgo.",
-      hint: "Fin del recorrido: lo resaltado en lima sigue marcando lo nuevo.",
-      buttons: [["cliente", "Ver los 600 clientes"], ["camp", "Ver el plan de campaña"]]},
+      hint: "Fin del recorrido: lo resaltado en lima sigue marcando lo nuevo."},
   ];
 
   const step = () => STEPS[i];
@@ -120,11 +120,13 @@ export function createTour(A) {
     paint(); decorate(); tick();
   }
   function start() { active = true; document.body.classList.add("touring"); A.showTour(); goTo(0); }
-  function finish() {
+  /** `next`: al terminar se abren los escenarios rápidos (al salir a mitad del recorrido, no). */
+  function finish(next = true) {
     active = false; i = -1; document.body.classList.remove("touring"); decorate(); A.setHighlight(true); paint();
+    A.endTour(next);
     A.toast("Recorrido terminado: ahora explora a tu ritmo");
   }
-  function next() { if (!active || busy) return; if (i < STEPS.length - 1) goTo(i + 1); else finish(); }
+  function next() { if (!active || busy) return; if (i < STEPS.length - 1) goTo(i + 1); else finish(true); }
   function prev() { if (!active || busy || i <= 0) return; goTo(i - 1); }
   async function doIt() {
     const st = step(); if (!st || !st.auto || busy) return;
@@ -158,30 +160,22 @@ export function createTour(A) {
     }
   }
 
-  function intro() {
-    return `<div><h3>Recorrido guiado</h3><p class="lead">Once pasos, unos tres minutos, con Sebastián: en cada uno te decimos qué tocar en el teléfono, qué es nuevo y por qué le sirve a Lulo.</p>
-        <button class="tour-go" data-tour="start">Empezar el recorrido</button></div>
-      <div><h4>Lo nuevo frente a la app de Lulo</h4><ul class="new-list">${A.NEW_LIST.map(([k, t, d, go]) => `<li><b>${esc(t)}</b><span>${esc(d)}</span>${go ? `<button class="goto" data-goto="${go}">Ver</button>` : ""}</li>`).join("")}</ul>
-        <p class="lead" style="margin-top:8px">Activa «Resaltar lo nuevo» arriba para verlo marcado en cada pantalla. Lo que no está resaltado es igual a la app real (capturas de octubre de 2026).</p></div>
-      <div><h4>Escenarios rápidos</h4><p class="lead" style="margin:-4px 0 8px">Un toque y el teléfono muestra el caso; debajo del teléfono, «Lo que acaba de decidir el motor» lo explica.</p>
-        <div class="scen">${A.SCEN.map((s, k) => `<button data-scen="${k}"><b>${esc(s.t)}</b><span>${esc(s.d)}</span></button>`).join("")}</div></div>`;
-  }
   function card(st) {
     const tgt = targetOf(st);
-    return `<div class="tour-card"><div class="tour-top"><span class="tour-k">${esc(st.k)}</span><span class="tour-n">Paso ${i + 1} de ${STEPS.length}</span></div>
+    return `<div class="tour-card"><div class="tour-top"><span class="tour-k">${esc(st.k)}</span><span class="tour-n">Paso ${i + 1} de ${STEPS.length}</span><button class="g-x g-hide" data-sheet="close" aria-label="Ocultar la explicación">✕</button></div>
       <div class="tour-prog">${STEPS.map((_, k) => `<i class="${k < i ? "done" : k === i ? "on" : ""}"></i>`).join("")}</div>
       <h3>${esc(st.t)}</h3><div class="tour-d">${st.d()}</div>
       <div class="tour-lulo"><b>Por qué le sirve a Lulo</b>${esc(st.lulo)}</div>
       <div class="tour-hint">${tgt || st.done ? "👉 " : ""}${esc(st.hint)}</div>
-      ${st.buttons ? `<div class="ctrls">${st.buttons.map(([t, l]) => `<button class="pbtn" data-tab-go="${t}">${esc(l)}</button>`).join("")}</div>` : ""}
+      ${st.links ? `<div class="ctrls">${st.links.map(([h, l]) => `<a class="pbtn" href="${h}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>` : ""}
       <div class="tour-acts"><button class="pbtn" data-tour="prev" ${i === 0 ? "disabled" : ""}>Anterior</button>
         ${pending(st) ? `<button class="pbtn" data-tour="auto">Hazlo por mí</button>` : ""}
         <button class="pbtn lime" data-tour="next">${i === STEPS.length - 1 ? "Terminar" : pending(st) ? "Saltar" : "Siguiente"}</button>
         <button class="pbtn sm ghost" data-tour="stop">Salir</button></div></div>`;
   }
   function paint() {
-    const v = document.querySelector("#view-tour");
-    if (v) v.innerHTML = active && i >= 0 ? card(step()) : intro();
+    const v = A.card();
+    if (v) v.innerHTML = active && i >= 0 ? card(step()) : "";
     const m = document.querySelector("#coach");
     if (m) {
       m.hidden = !(active && i >= 0);
@@ -199,13 +193,9 @@ export function createTour(A) {
     if (b) {
       const a = b.dataset.tour;
       if (a === "start") start(); else if (a === "next") next(); else if (a === "prev") prev();
-      else if (a === "auto") doIt(); else if (a === "stop") finish(); else if (a === "more") A.showTour(true);
+      else if (a === "auto") doIt(); else if (a === "stop") finish(false); else if (a === "more") A.showTour(true);
       return true;
     }
-    const t = e.target.closest("[data-tab-go]");
-    if (t) { A.setTab(t.dataset.tabGo); return true; }
-    const s = e.target.closest("[data-scen]");
-    if (s) { A.runScen(+s.dataset.scen); return true; }
     return false;
   }
   return {start, next, prev, finish, decorate, tick, paint, onClick, active: () => active};

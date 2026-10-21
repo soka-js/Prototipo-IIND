@@ -25,153 +25,40 @@
     <p><span class="proto-tag">Prototipo académico · datos simulados</span>Reto 19 · Grupo 14 · Julián Ordoñez, Nicolás Ramírez, Sebastián Socarrás y Tomás Carrillo · <a href="/v2">versión anterior</a></p>
     <div class="top-acts">
       <button class="tbtn go" data-tour="start">▶ Recorrido guiado · 3 min</button>
+      <button class="tbtn" data-guide="scen">Escenarios</button>
       <button class="tbtn" id="hlBtn" aria-pressed="false">Resaltar lo nuevo</button>
       <button class="tbtn" id="welcomeBtn">¿Qué es este prototipo?</button>
       <span class="legend"><i class="lg-same"></i>Igual a la app de Lulo <i class="lg-new"></i>Nuevo en el prototipo</span>
     </div>
-  </div>
-  <div class="ideas">
-    <button class="idea-chip" data-goto="anio" data-acc="acc-idea1"><b>Pasado</b>Tu año en Lulo</button>
-    <button class="idea-chip" data-goto="motor" data-acc="acc-idea2"><b>Presente</b>Motor de disparadores</button>
-    <button class="idea-chip" data-goto="renew" data-acc="acc-idea3"><b>Futuro</b>SOAT y disparos agendados</button>
+    <div class="top-acts who-acts">
+      <span class="who-l">Ver la app como</span>
+      <span class="personas-top" id="personas" role="group" aria-label="Cliente"></span>
+      <button class="tbtn sm" id="csvBtn" title="Las ofertas que el motor mostró en esta sesión y su resultado, en el formato de docs/DATOS_REALES.md">Descargar respuestas (CSV)</button>
+    </div>
   </div>
 </header>
-<div class="page">
+<main class="page solo">
   <section class="stage" aria-label="Prototipo móvil">
     <p class="how" id="how" data-base="Úsala como la app: transfiere, abona a un bolsillo, pide un crédito o renueva el SOAT. El motor lee lo que haces y decide qué ofrecer, por qué canal y cuándo.">Úsala como la app: transfiere, abona a un bolsillo, pide un crédito o renueva el SOAT. El motor lee lo que haces y decide qué ofrecer, por qué canal y cuándo.</p>
-    <div class="phone" data-proto="Prototipo · datos simulados">
-      <div class="phone-in" id="phone">
-        <div class="status"><span>18:37</span><span class="notch"></span><span class="sig"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:13px"></i><span class="bat">29</span></span></div>
-        <div class="scroll" id="scroll"></div>
-        <nav class="tabbar" id="tabbar" aria-label="Navegación principal" hidden></nav>
-        <button class="notif" id="notif" aria-live="polite" data-new="push"></button>
-        <button class="notif-x" id="notifX" aria-label="Descartar notificación">✕</button>
-        <div class="toast" id="toast" role="status"></div>
-        <div class="splash" id="splash"><img src="/static/img/logo-lulo.png" alt="Lulo Bank"></div>
-        <div class="coach" id="coach" hidden aria-live="polite"></div>
-      </div>
-    </div>
-    <section class="dec-card" id="decCard" hidden aria-live="polite">
-      <div class="dec-t"><b>Lo que acaba de decidir el motor</b><span><button class="lnk" data-tab-go="motor">Traza completa</button> · <button class="lnk" data-tab-go="aprende">Cómo aprende</button></span></div>
-      <div id="decBody"></div>
-    </section>
-    <details class="now" id="nowCard" open>
-      <summary><span class="now-k">Estás viendo · <b id="nowWho"></b></span><span class="now-n" id="nowName"></span></summary>
-      <div class="now-body" id="nowBody"></div>
-      <div class="now-new" id="nowNew"></div>
-    </details>
-  </section>
-
-  <aside class="panel" aria-label="Panel de la demo">
-    <div class="sheet-head"><b>Panel de la demo</b><button class="pbtn sm" id="sheetClose">Cerrar</button></div>
-    <div class="ptabs" role="tablist">
-      <button role="tab" data-tab="tour" aria-selected="true">Recorrido</button>
-      <button role="tab" data-tab="cliente" aria-selected="false">Cliente</button>
-      <button role="tab" data-tab="motor" aria-selected="false">Motor</button>
-      <button role="tab" data-tab="aprende" aria-selected="false">Aprendizaje</button>
-      <button role="tab" data-tab="camp" aria-selected="false">Campaña</button>
-      <button role="tab" data-tab="modelos" aria-selected="false">Modelos</button>
-      <button role="tab" data-tab="datos" aria-selected="false">Datos</button>
-      <button role="tab" data-tab="demo" aria-selected="false">Demo</button>
-      <button role="tab" data-tab="func" aria-selected="false">Propuesta</button>
-    </div>
-
-    <!-- ============ RECORRIDO ============ -->
-    <div class="pview" id="view-tour"></div>
-
-    <!-- ============ CLIENTE ============ -->
-    <div class="pview" id="view-cliente" hidden>
-      <div><h4>Personajes de la presentación</h4><div class="personas" id="personas"></div></div>
-      <div id="who"></div>
-      <div><div class="row-h"><h4>Viaje en el tiempo</h4></div>
-        <p class="lead" style="margin:-4px 0 8px">Evalúa en otra fecha. El comportamiento queda congelado en el corte de la base (2026-10-08); solo cambian los vencimientos.</p>
-        <div class="timetravel" id="timetravel"></div></div>
-      <div>
-        <div class="row-h"><h4>Los 600 clientes de la base</h4><span class="empty" id="xcount"></span></div>
-        <div class="filters">
-          <input id="xq" placeholder="Busca por id (C00002)" autocomplete="off" aria-label="Buscar cliente por id">
-          <select id="xout" aria-label="Filtrar por decisión"><option value="">Toda decisión</option><option value="shown">Push</option><option value="banner">Banner</option><option value="control">Control</option><option value="noconsent">Sin autorización</option><option value="none">Nada</option></select>
-          <select id="xramo" aria-label="Filtrar por ramo"><option value="">Todo ramo</option><option>Desempleo</option><option>Vida</option><option>Viajes</option><option>Mascotas</option><option>Hogar</option><option>SOAT</option></select>
-          <select id="xsrc" aria-label="Filtrar por origen del cliente"><option value="reto">Base del reto</option><option value="persona">Personajes</option><option value="">Todos</option></select>
+    <div class="stage-row">
+      <div class="phone" data-proto="Prototipo · datos simulados">
+        <div class="phone-in" id="phone">
+          <div class="status"><span>18:37</span><span class="notch"></span><span class="sig"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:13px"></i><span class="bat">29</span></span></div>
+          <div class="scroll" id="scroll"></div>
+          <nav class="tabbar" id="tabbar" aria-label="Navegación principal" hidden></nav>
+          <button class="notif" id="notif" aria-live="polite" data-new="push"></button>
+          <button class="notif-x" id="notifX" aria-label="Descartar notificación">✕</button>
+          <div class="toast" id="toast" role="status"></div>
+          <div class="splash" id="splash"><img src="/static/img/logo-lulo.png" alt="Lulo Bank"></div>
+          <div class="coach" id="coach" hidden aria-live="polite"></div>
         </div>
-        <div class="xlist" id="xlist" style="margin-top:8px"></div>
       </div>
+      <aside class="guide" id="guide" hidden aria-live="polite" aria-label="Guía del prototipo"></aside>
     </div>
-
-    <!-- ============ MOTOR ============ -->
-    <div class="pview" id="view-motor" hidden>
-      <div>
-        <h3>Motor de disparadores</h3>
-        <p class="lead">Cada evento, venga del panel o de la app, recorre las compuertas del motor real y termina en el teléfono como push, banner o nada.</p>
-        <p class="api-status" id="apiStatus"><i></i><span>Conectando con el motor…</span></p>
-      </div>
-      <div>
-        <div class="chain" id="chain">
-          <div class="step" data-step="0"><b>Paso 1</b>Detectar la señal</div>
-          <div class="step" data-step="1"><b>Paso 2</b>Decidir qué, a quién y por dónde</div>
-          <div class="step" data-step="2"><b>Paso 3</b>Mostrar (push o banner)</div>
-          <div class="step" data-step="3"><b>Paso 4</b>Registrar la respuesta</div>
-        </div>
-        <p class="lead" id="chainMsg" style="margin-top:10px;min-height:20px">Dispara un evento o usa la app para ver cómo decide el motor.</p>
-      </div>
-      <div><h4>Última decisión: compuertas y candidatos</h4><div id="trace"></div></div>
-      <div><h4>Dispara un evento</h4><div class="events" id="events"></div></div>
-      <div>
-        <h4>Ventana, cola y control</h4>
-        <div class="ctrls"><button class="pbtn" id="nextWin">Abrir siguiente ventana</button><button class="pbtn" id="ctrlBtn" aria-pressed="false">Forzar grupo de control</button></div>
-        <div class="queue" id="queue" style="margin-top:8px"></div>
-      </div>
-      <div><h4>Lo que se mide</h4><div class="metrics" id="metrics"></div></div>
-      <div><div class="row-h"><h4>Registro de respuestas</h4><button class="pbtn sm" id="csvBtn">Exportar CSV</button></div><div class="log" id="log"></div></div>
-      <div><h4>Señales de este cliente (paso 1)</h4><div class="sigs" id="signals"></div></div>
-      <div class="ctrls"><button class="pbtn" id="resetBtn">Reiniciar demo</button></div>
-    </div>
-
-    <!-- ============ APRENDIZAJE ============ -->
-    <div class="pview" id="view-aprende" hidden></div>
-
-    <!-- ============ CAMPAÑA ============ -->
-    <div class="pview" id="view-camp" hidden>
-      <div><div class="row-h"><h3>Plan de campaña</h3><button class="pbtn sm" id="campBtn">Recalcular</button></div>
-        <p class="lead">Lo que el motor le ofrecería hoy a cada uno de los 600 clientes, en lote y con las mismas reglas.</p></div>
-      <div id="campaign" class="pstack"></div>
-      <div><div class="row-h"><h3>Backtest</h3><button class="pbtn sm lime" id="btBtn">Correr</button></div>
-        <p class="lead">Recorre el año con el motor y verifica que ningún cliente pase el tope, que nadie sin autorización reciba ofertas y que el control nunca vea una.</p></div>
-      <div id="backtest" class="pstack"><span class="empty">Pulsa «Correr».</span></div>
-    </div>
-
-    <!-- ============ MODELOS ============ -->
-    <div class="pview" id="view-modelos" hidden>
-      <div><h3>Modelos entrenados con la base</h3><p class="lead">Seis modelos y pruebas sobre los 600 clientes. Cada uno dice si le gana al azar. M1 entra al motor bayesiano como la afinidad, con peso 0 mientras no le gane; el resto describe la base y sirve para planear (la decisión y su aprendizaje están en «Aprendizaje»).</p></div>
-      <div id="models" class="pstack"></div>
-    </div>
-
-    <!-- ============ DATOS ============ -->
-    <div class="pview" id="view-datos" hidden>
-      <div><h3>Calidad de la base</h3><p class="lead">Lo que encontró la ingesta. Nada se corrige en silencio: lo excluido queda aparte con su razón.</p></div>
-      <div id="dataQ"></div>
-      <div><h4>Catálogo y valor esperado</h4><div id="dataCat"></div></div>
-      <div><h4>Reglas vigentes</h4><div id="dataRules"></div></div>
-    </div>
-
-    <!-- ============ DEMO ============ -->
-    <div class="pview" id="view-demo" hidden>
-      <div><h3>Demo guiada</h3><p class="lead" id="demoLead"></p></div>
-      <div class="box" id="demoLast"></div>
-      <ol class="demo" id="demo"></ol>
-      <div class="ctrls"><button class="pbtn" id="resetBtn2">Reiniciar demo</button></div>
-    </div>
-
-    <!-- ============ PROPUESTA ============ -->
-    <div class="pview" id="view-func" hidden>
-      <div class="ctrls" style="justify-content:flex-end"><button class="pbtn sm" id="openAll">Abrir todo</button><button class="pbtn sm" id="closeAll">Cerrar todo</button></div>
-      <div id="accs"></div>
-    </div>
-
     <p class="foot">Prototipo académico. La base del reto es 100% sintética: sus cifras no son métricas de Lulo Bank. Clientes, montos, placas y números de cuenta son simulados; las reglas y la fuerza de las señales son hipótesis del equipo para validar con el grupo de control.</p>
-  </aside>
-</div>
-<button class="fab" id="panelFab" aria-label="Abrir el panel de la demo">Panel</button>
+  </section>
+</main>
+<button class="fab" id="guideFab" aria-label="Abrir la guía del prototipo">Guía</button>
 
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wTitle" hidden>
   <div class="w-in" tabindex="-1">
@@ -183,8 +70,9 @@
     <div class="w-choices">
       <button class="w-ch main" data-w="tour"><b>▶ Recorrido guiado</b><span>3 minutos con Sebastián: te decimos qué tocar y por qué le sirve a Lulo.</span></button>
       <button class="w-ch" data-w="free"><b>Explorar por mi cuenta</b><span>Usa la app; lo nuevo queda resaltado en lima.</span></button>
-      <button class="w-ch" data-w="motor"><b>Ver el motor por dentro</b><span>Para el equipo técnico: probabilidades, datos y laboratorio.</span></button>
+      <button class="w-ch" data-w="scen"><b>Escenarios rápidos</b><span>Un toque: crédito, SOAT por vencer, grupo de control, un cliente de la base.</span></button>
     </div>
+    <div class="w-who"><span class="who-l">Ver la app como</span><span class="personas-top" id="wPersonas" role="group" aria-label="Cliente"></span></div>
     <p class="w-foot"><span class="legend"><i class="lg-same"></i>Igual a la app de Lulo <i class="lg-new"></i>Nuevo en el prototipo</span> La base del reto es 100 % sintética: sus cifras no son métricas de Lulo Bank. Clientes, montos, placas y cuentas son simulados.</p>
     <button class="w-x" data-w="close" aria-label="Cerrar">✕</button>
   </div>
