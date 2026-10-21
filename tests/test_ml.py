@@ -34,6 +34,18 @@ def test_model_never_uses_the_variables_of_its_own_rule():
         assert not set(m["coeficientes"]) & set(m["excluidas_por_regla"]), ramo
 
 
+def test_model_never_uses_variables_that_follow_from_holding_insurance():
+    """«Visitas a Seguros» es consecuencia de tener una póliza Lulo y no entra a M1 (decisión de SOKA, 2026-10-20)."""
+    b = models.bundle()
+    q = b["consecuencia"]
+    assert "visitas_seguros" in q["variables"]
+    assert q["visitas_media_con_poliza_lulo"] > q["visitas_media_sin_poliza_lulo"]
+    for ramo, m in b["propension"].items():
+        assert set(m["excluidas_por_consecuencia"]) == set(q["variables"]), ramo
+        assert not set(m["coeficientes"]) & set(q["variables"]), ramo
+        assert not set(m["media"]) & set(q["variables"]), ramo
+
+
 def test_affinity_is_bounded_and_neutral_when_unusable():
     s = store()
     lo, hi = models.bundle()["regla_de_uso"]["afinidad_min"], models.bundle()["regla_de_uso"]["afinidad_max"]

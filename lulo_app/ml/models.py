@@ -80,14 +80,14 @@ def summary() -> dict:
     b = bundle()
     prop = {k: {kk: v[kk] for kk in ("positivos", "tasa_base", "auc_cv", "auc_sd", "p_permutacion", "auc_por_conjunto",
                                      "auc_gbm", "lift_decil_superior", "usable", "motivo", "coeficientes",
-                                     "excluidas_por_regla")}
+                                     "excluidas_por_regla", "excluidas_por_consecuencia")}
             for k, v in b["propension"].items()}
     for k, v in prop.items():
         v["coeficientes"] = [{"variable": n, "label": b["etiquetas"].get(n, n), "coef": c}
                              for n, c in sorted(v["coeficientes"].items(), key=lambda t: -abs(t[1]))]
     seg = b["segmentos"]
     return {"version": b["version"], "entrenado_con": b["entrenado_con"], "objetivo": b["objetivo"],
-            "regla_de_uso": b["regla_de_uso"], "propension": prop,
+            "regla_de_uso": b["regla_de_uso"], "consecuencia": b["consecuencia"], "propension": prop,
             "segmentos": {"k": seg["k"], "silueta": seg["silueta"],
                           "grupos": [{kk: g[kk] for kk in ("nombre", "rasgos", "clientes", "tenencia", "lift", "ramo_afin")}
                                      for g in seg["segmentos"]]},

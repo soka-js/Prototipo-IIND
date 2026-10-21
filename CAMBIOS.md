@@ -17,6 +17,30 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-20 · Claude con SOKA · rama feat/equipo-modelos-v1.3 → main · sobre 4b0fc9e
+- Qué cambió: (1) Se integró a `main` el aporte de Julián (v1.2) y Tomás (v1.3). Llegó como zip sin historial de git y entró tal cual en el commit 4b0fc9e. (2) M1 ya no usa «visitas a Seguros» en ningún ramo (`CONSEQUENCE_FEATURES` en `scripts/train_models.py`), y la evidencia queda en la llave `consecuencia` de `modelos.json`. Los modelos pasan de `ml-1.0` a `ml-1.1`. (3) El optimizador liblinear de M1 ahora usa la semilla 19. (4) `requirements-dev.txt` fija scikit-learn 1.8.0 y numpy 2.4.6. (5) La pestaña «Modelos» lee de `modelos.json` qué se excluye y qué ramos pasan la compuerta, en vez de un texto fijo. (6) Prueba nueva `test_model_never_uses_variables_that_follow_from_holding_insurance`. (7) `docs/MODELOS.md`, `README.md` y `CLAUDE.md` (decisión aprobada y etapa E9).
+- Por qué: al revisar el aporte salió que «visitas a Seguros» es consecuencia de tener una póliza Lulo y no causa, y que era lo único que hacía pasar la compuerta a SOAT, Vida y Desempleo. Con ella, la afinidad subía el valor esperado de quien ya tiene otra póliza Lulo y bajaba el de quien no tiene ninguna, y la app se lo presentaba al cliente como «Clientes como tú». Además, el entrenamiento no era determinista: liblinear usaba el azar global y `--check` dependía de la versión instalada.
+- Archivos: `scripts/train_models.py`, `lulo_app/ml/modelos.json`, `lulo_app/ml/models.py`, `public/static/v3/app.js`, `tests/test_ml.py`, `requirements-dev.txt`, `docs/MODELOS.md`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 72 passed.
+  - `python -m lulo_app.core backtest` → 0 violaciones; máximo de 4 push en 30 días.
+  - `python scripts/train_models.py --check` → coincide, dos veces seguidas.
+  - Con la semilla de liblinear, 4 entrenamientos en procesos separados dieron el mismo archivo. Con la versión final, la escritura y dos `--check` seguidos coinciden (sha256 `eab826948ab4`). Antes de fijar la semilla, 4 corridas dieron 3 archivos distintos: cambiaban la estabilidad y el valor p de Vida.
+  - Plan de campaña al corte (`engine.campaign()`): mismo ramo, canal y resultado que v1.1 en los 600 clientes (219 push, 183 banner, 84 sin autorización, 74 sin oferta y 40 de control). Cambia el valor esperado de 56 ofertas de SOAT y Viajes por la cancelación de v1.3. Total $2.394.020, frente a $2.396.652 en v1.1.
+  - Demo guiada de 16 pasos, panel, móvil y pestaña Modelos con Playwright: sin errores de consola. `/v2` sin cambios.
+- Consultado con SOKA: sí, el 2026-10-20. Aprobó sacar «visitas a Seguros» de M1 y reentrenar, fijar las versiones de scikit-learn y numpy, y pasar el resultado a `main`.
+- Cifras nuevas y su origen:
+  - Salen de `scripts/train_models.py` (llave `consecuencia` y `propension` de `modelos.json`):
+    - Visitas a Seguros en 30 días: 2,52 con alguna póliza Lulo (274 clientes) frente a 1,13 sin ninguna.
+    - AUC de las visitas para reconocer a quien ya tiene póliza Lulo: 0,731.
+    - Entre quienes no tienen pólizas Lulo, AUC de las visitas: 0,448 para SOAT y 0,598 para Vida.
+    - M1 en `ml-1.1`: SOAT AUC 0,53 (p 0,114), Vida 0,53 (p 0,229), Desempleo 0,57 (p 0,189); Hogar, Mascotas y Viajes en 0,50.
+  - De la revisión de `ml-1.0` (`models.propensity` con el `modelos.json` de 4b0fc9e, entre quienes no tienen el ramo con Lulo):
+    - Afinidad media de 1,13 en SOAT, 1,12 en Vida y 1,10 en Desempleo para quien tiene otra póliza Lulo, frente a 0,88, 0,88 y 0,82 para quien no tiene ninguna.
+    - El modelo de Desempleo que corría en producción, con la selección por estabilidad dentro de cada pliegue (5×3), daba AUC 0,563 y no el 0,638 reportado.
+    - Con la corrección de Holm por los 6 ramos, solo el SOAT pasaba.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-20 · Tomás Carrillo con Claude · rama feat/tomas-datos-solicitud · reglas v1.3
 - Qué cambió: (1) M5b en `scripts/train_models.py`: prueba si los pagos a otras aseguradoras caen en los 30 días siguientes al evento que dispara cada ramo (peaje, transferencia fija, bolsillo de vivienda, compra o bolsillo de mascotas), con lo esperado calculado por cliente y valor p por 20.000 simulaciones. (2) Reglas v1.3: capacidad de pago en la elegibilidad (prima mensual ≤ 5 % del ingreso mensual, prima de pago único ≤ saldo promedio) y comisión de pago único (SOAT, Viajes) × (1 − cancelación). (3) M4 pronostica también las renovaciones. (4) Pestaña «Modelos» del panel con renovaciones y M5b, y texto de M1 corregido (en Desempleo el perfil sí aporta). (5) Documentación: `docs/MODELOS.md`, `README.md`, `CLAUDE.md`.
 - Por qué: cuatro datos de la solicitud a Lulo (Datos_Requeridos_Lulo_Bank) llegaron en la base y no se usaban para lo que se pidieron: renovaciones (1.1), cancelación (1.3), saldo e ingreso para capacidad de pago (2.2) y pagos externos para validar el momento de la oferta.

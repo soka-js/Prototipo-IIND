@@ -652,6 +652,13 @@ function renderData() {
 /* =================== modelos =================== */
 const pc = x => x == null ? "—" : `${(x * 100).toFixed(1).replace(".", ",")} %`;
 const dec = (x, n = 2) => x == null ? "—" : Number(x).toFixed(n).replace(".", ",");
+// Lectura de M1 a partir de modelos.json: qué variables se excluyen y qué ramos pasan la compuerta.
+function modelsNote(M, P) {
+  const Q = M.consecuencia, ok = Object.entries(P).filter(([, v]) => v.usable).map(([k]) => k);
+  const why = Q ? `«Visitas a Seguros» no entra a M1: quien ya tiene una póliza Lulo entra a Seguros a gestionarla (${dec(Q.visitas_media_con_poliza_lulo)} visitas en 30 días contra ${dec(Q.visitas_media_sin_poliza_lulo)}; AUC ${dec(Q.auc_visitas_tiene_poliza_lulo, 3)} para reconocer a quien ya tiene póliza), así que es consecuencia de tener seguro y no causa. ` : "";
+  const gate = ok.length ? `Le ganan al azar y ajustan el valor esperado: ${esc(ok.join(", "))}.` : `<b>Ningún ramo le gana al azar</b>: el motor decide con la regla en todos los ramos y la afinidad vale 1.`;
+  return `${why}${gate} M1 estima parecido con quien ya tiene el seguro, no respuesta a una oferta. Las variables que la regla del ramo ya usa (por ejemplo, peajes para el SOAT) también se excluyen para no contarlas dos veces.`;
+}
 function renderModels() {
   const box = $("#models"); if (!box) return;
   const M = META.models, P = M.propension, ev = S.evaluation, me = ev && ev.ml;
@@ -670,7 +677,7 @@ function renderModels() {
   box.innerHTML = `<div><h4>Este cliente</h4>${client}</div>
     <div><h4>M1 · Propensión por ramo</h4><p class="lead" style="margin:-4px 0 8px">${esc(M.objetivo)}. Regresión logística L1, validación cruzada 5×5 y prueba de permutación con ${M.entrenado_con.permutaciones} barajadas. Solo ajusta el valor esperado si p &lt; ${dec(M.regla_de_uso.p_max)} y AUC ≥ ${dec(M.regla_de_uso.auc_min)}; la afinidad se acota entre ${dec(M.regla_de_uso.afinidad_min, 1)} y ${dec(M.regla_de_uso.afinidad_max, 1)}.</p>
       <div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo y variables</th><th>Tienen</th><th>AUC</th><th>p</th><th>AUC perfil / conducta</th><th>Uso</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <div class="box">El perfil (12 variables: edad, ocupación, ingreso, saldo, crédito…) queda en el azar en SOAT y Vida; en Desempleo aporta por el crédito activo. Lo que más predice es la conducta, sobre todo visitar la sección de Seguros. M1 estima parecido con quien ya tiene el seguro, no respuesta a una oferta. Las variables que la regla del ramo ya usa (por ejemplo, peajes para el SOAT) se excluyen para no contarlas dos veces.</div></div>
+      <div class="box">${modelsNote(M, P)}</div></div>
     <div><h4>M2 · Segmentos de comportamiento</h4><p class="lead" style="margin:-4px 0 8px">K-medias sobre ${seg.grupos.length ? "16" : ""} hábitos; k = ${seg.k} por silueta (${dec(sil, 2)}). Una silueta tan baja dice que los clientes no forman grupos marcados: los segmentos sirven para describir y redactar, no para decidir.</p>
       <div class="tbl-w"><table class="tbl"><thead><tr><th>Segmento</th><th>Clientes</th><th>Rasgos</th><th>Ramo más afín</th></tr></thead><tbody>${segRows}</tbody></table></div></div>
     <div><h4>M3 · Respuesta al push</h4><div class="box">Beta-binomial con Bayes empírico: α = ${dec(R.alfa, 1)}, β = ${dec(R.beta, 1)}, correlación entre envíos del mismo cliente ρ = ${dec(R.rho, 4)}. Tasa de apertura agregada ${pc(R.tasa_agregada)}; ${R.heterogeneo ? "hay diferencias reales entre clientes." : "<b>no hay diferencias reales entre clientes</b>: lo que parece fatiga individual es ruido de muestras pequeñas."} Ningún cliente queda bajo el umbral de ${pc(R.umbral_push)}, así que hoy el modelo no cambia ningún canal.</div></div>

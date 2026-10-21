@@ -16,7 +16,9 @@ Modelos:
                              (probabilidad esperada por cliente y valor p por simulación)
   M6 tamaño del piloto       clientes por grupo para detectar un aumento de conversión (z de dos proporciones)
 
-Todo es determinista (semilla fija): dos corridas producen el mismo archivo.
+Todo es determinista (semilla fija): dos corridas producen el mismo archivo con las versiones fijas de
+requirements-dev.txt (scikit-learn 1.8.0 y numpy 2.4.6). Con otras versiones cambian decimales del
+boosting de referencia y redondeos, y --check falla.
 """
 
 from __future__ import annotations
@@ -89,7 +91,10 @@ def cols(names):
 
 # ------------------------------------------------------------------ M1 propensión
 def lr(C):
-    return make_pipeline(StandardScaler(), LogisticRegression(penalty="l1", solver="liblinear", C=C, max_iter=5000))
+    # liblinear baraja los datos al optimizar: sin random_state usa el azar global y dos corridas dan
+    # frecuencias de estabilidad y valores p distintos (visto al integrar: 3 resultados en 4 corridas).
+    return make_pipeline(StandardScaler(), LogisticRegression(penalty="l1", solver="liblinear", C=C, max_iter=5000,
+                                                              random_state=SEED))
 
 
 def cv_auc(model, X, y, repeats=5):
@@ -115,13 +120,43 @@ RULE_FEATURES = {
     "Mascotas": ["n_Mascotas", "abonos_Mascotas"], "Viajes": ["n_Aerolineas", "n_Hoteles", "abonos_Viajes"],
 }
 
+# Variables que son consecuencia de tener un seguro y no causa: quien ya tiene una póliza Lulo entra a la sección
+# de Seguros a gestionarla. Con ellas, la afinidad mediría «ya es cliente de seguros de Lulo» y no parecido de
+# hábitos. No entran a M1 en ningún ramo; la evidencia queda en `consecuencia` de modelos.json.
+# Decisión de SOKA del 2026-10-20 al integrar v1.2 y v1.3 a main.
+CONSEQUENCE_FEATURES = ["visitas_seguros"]
+
+
+def consequence_evidence(s, ids, X, Y):
+    """Por qué «visitas a Seguros» es consecuencia de la tenencia: visitas según si el cliente ya tiene alguna
+    póliza Lulo (Clientes.seguros_vigentes), AUC de las visitas para reconocer a esos clientes y, por ramo, AUC
+    de las visitas solo entre quienes no tienen ninguna póliza Lulo (ahí no hay póliza que gestionar)."""
+    has = np.array([int(len(s.history(c).client.lulo_policies) > 0) for c in ids])
+    vis = X[:, NAMES.index("visitas_seguros")]
+    sin = has == 0
+    by_ramo = {}
+    for ramo in RAMOS:
+        y = Y[ramo][sin]
+        by_ramo[ramo] = {"positivos": int(y.sum()),
+                         "auc": r(roc_auc_score(y, vis[sin]), 3) if 0 < y.sum() < len(y) else None}
+    ev = {"variables": CONSEQUENCE_FEATURES, "clientes_con_poliza_lulo": int(has.sum()),
+          "visitas_media_con_poliza_lulo": r(vis[has == 1].mean(), 2),
+          "visitas_media_sin_poliza_lulo": r(vis[sin].mean(), 2),
+          "auc_visitas_tiene_poliza_lulo": r(roc_auc_score(has, vis), 3),
+          "auc_visitas_por_ramo_sin_poliza_lulo": by_ramo}
+    print(f"  M1 excluye {CONSEQUENCE_FEATURES}: visitas {ev['visitas_media_con_poliza_lulo']} con póliza Lulo "
+          f"vs {ev['visitas_media_sin_poliza_lulo']} sin ({ev['clientes_con_poliza_lulo']} con póliza); "
+          f"AUC {ev['auc_visitas_tiene_poliza_lulo']}; sin pólizas Lulo, AUC por ramo "
+          + ", ".join(f"{k} {v['auc']} (n+={v['positivos']})" for k, v in by_ramo.items()))
+    return ev
+
 
 def propensity(X_all, Y):
     out = {}
     rng = np.random.default_rng(SEED)
     for ramo in RAMOS:
         y = Y[ramo]
-        feats = [n for n in NAMES if n not in RULE_FEATURES[ramo]]
+        feats = [n for n in NAMES if n not in RULE_FEATURES[ramo] and n not in CONSEQUENCE_FEATURES]
         X = X_all[:, cols(feats)]
         # C por validación interna (AUC promedio de 5×3)
         best_c, best = None, -1
@@ -170,7 +205,7 @@ def propensity(X_all, Y):
             "usable": usable,
             "motivo": ("Le gana al azar: se usa para ajustar el valor esperado" if usable else
                        f"No le gana al azar (AUC {auc:.2f}, p = {pval:.2f}): el motor sigue con la regla"),
-            "excluidas_por_regla": RULE_FEATURES[ramo],
+            "excluidas_por_regla": RULE_FEATURES[ramo], "excluidas_por_consecuencia": CONSEQUENCE_FEATURES,
             "media": {n: r(v, 6) for n, v in zip(feats, sc.mean_) if n in keep},
             "escala": {n: r(v, 6) for n, v in zip(feats, sc.scale_) if n in keep},
             "intercepto": r(icpt, 5), "coeficientes": coefs,
@@ -456,12 +491,13 @@ def build():
     src = s.manifest["fuente"]["sha256"]
     print(f"Base {src[:12]}… · {len(ids)} clientes · corte {s.cutoff} · {len(NAMES)} variables")
     model = {
-        "version": "ml-1.0", "entrenado_con": {"sha256_base": src, "clientes": len(ids), "corte": s.cutoff.isoformat(),
+        "version": "ml-1.1", "entrenado_con": {"sha256_base": src, "clientes": len(ids), "corte": s.cutoff.isoformat(),
                                               "variables": len(NAMES), "semilla": SEED, "permutaciones": N_PERM},
         "etiquetas": {n: LABELS.get(n, n) for n in NAMES},
         "objetivo": "Tenencia del ramo: con Lulo (Clientes.seguros_vigentes) o pagado a otra aseguradora (Pagos_Seguros)",
         "regla_de_uso": {"p_max": GATE_P, "auc_min": GATE_AUC, "afinidad_min": AFFINITY_CLIP[0],
                          "afinidad_max": AFFINITY_CLIP[1]},
+        "consecuencia": consequence_evidence(s, ids, X, Y),
         "propension": propensity(X, Y),
         "segmentos": segments(X, Y, ids),
         "respuesta_push": push_response(s, ids),

@@ -1,6 +1,6 @@
 # Modelos predictivos y algoritmos del prototipo · Grupo 14 · Reto 19
 
-Este documento explica qué modelos se construyeron sobre la base del reto, cómo se validaron, qué encontraron y cómo guían las funcionalidades del prototipo. Todo número sale de `scripts/train_models.py` sobre `Base_Datos_Reto_Universidad.xlsx` (sha256 `5029790b7a29…`, 600 clientes, corte 2026-10-08). La base es 100 % sintética y académica: sus cifras no son métricas de Lulo Bank.
+Este documento explica qué modelos se construyeron sobre la base del reto, cómo se validaron, qué encontraron y cómo guían las funcionalidades del prototipo. Todo número sale de `scripts/train_models.py` sobre `Base_Datos_Reto_Universidad.xlsx` (sha256 `5029790b7a29…`, 600 clientes, corte 2026-10-08), versión de modelos `ml-1.1`. La base es 100 % sintética y académica: sus cifras no son métricas de Lulo Bank.
 
 ## 1. Resumen
 
@@ -8,7 +8,7 @@ El motor del prototipo decidía con reglas: una señal de comportamiento (peajes
 
 | Modelo | Pregunta | Resultado | Uso en el prototipo |
 |---|---|---|---|
-| M1 Propensión por ramo | ¿Quién se parece a los clientes que ya tienen cada seguro? | Le gana al azar en SOAT, Vida y Desempleo (AUC 0,59 a 0,64); no en Hogar, Mascotas ni Viajes | Ajusta el valor esperado de la oferta (reglas v1.2) |
+| M1 Propensión por ramo | ¿Quién se parece a los clientes que ya tienen cada seguro? | No le gana al azar en ningún ramo (AUC 0,50 a 0,57; p ≥ 0,11) una vez se excluye «visitas a Seguros», que es consecuencia de tener seguro | El motor decide con la regla: la afinidad vale 1 en todos los ramos (la compuerta de v1.2 queda lista para datos reales) |
 | M2 Segmentos | ¿Qué tipos de cliente hay según sus hábitos? | Tres grupos con estructura débil (silueta 0,11) | Tarjeta «Tu forma de usar Lulo» en Tu año; columna en el plan de campaña |
 | M3 Respuesta al push | ¿Hay clientes que abren menos las notificaciones? | No hay diferencias reales entre clientes (ρ = 0,0099) | Puede mandar la oferta a banner; hoy no cambia ningún canal |
 | M4 Demanda por ramo | ¿Cuántas pólizas se emitirán y renovarán los próximos meses? | Tendencia creciente significativa en Desempleo, Hogar y Mascotas; las renovaciones son entre 29 % y 34 % de lo emitido (Viajes no renueva) | Panel: planeación de capacidad de la campaña |
@@ -16,7 +16,7 @@ El motor del prototipo decidía con reglas: una señal de comportamiento (peajes
 | M5b Momento por evento | ¿Se compra un seguro en los 30 días después del evento que lo dispara? | 12 compras frente a 8,1 esperadas (× 1,48), p = 0,083: la dirección apoya el evento, sin significancia | Respalda la idea con la base, pero el efecto se mide en el piloto |
 | M6 Tamaño del piloto | ¿Cuántos clientes se necesitan para medir el efecto? | Entre 510 y 879 por grupo para detectar +50 % | Diseño del piloto real con el grupo de control |
 
-El hallazgo central coincide con la literatura que sostiene la propuesta (Boustani et al., 2024): **el perfil demográfico no predice la tenencia de seguros en ningún ramo** (AUC entre 0,48 y 0,60, alrededor del azar), mientras que **la conducta sí** (AUC de hasta 0,64). La variable más fuerte en los tres ramos que funcionan es la misma: visitar la sección de Seguros en la app.
+El hallazgo central es que **esta base no trae señal de propensión fuera de la tenencia previa**. El perfil demográfico no predice la tenencia en ningún ramo (AUC de 0,48 a 0,60), como sostiene la literatura de la propuesta (Boustani et al., 2024), y la conducta en el banco tampoco (AUC de 0,50 a 0,55). La primera versión de los modelos (`ml-1.0`) sí pasaba la compuerta en SOAT, Vida y Desempleo, pero solo gracias a «visitas a Seguros», que resultó ser consecuencia de tener una póliza y no causa (sección 3). Que la conducta prediga la compra lo tiene que mostrar el piloto con grupo de control (M6).
 
 ## 2. Datos y variables
 
@@ -24,7 +24,7 @@ Cada cliente se describe con 41 variables calculadas en `lulo_app/ml/vector.py`,
 
 - **Perfil (12):** rango de edad, ocupación, segmento Pro, antigüedad, saldo, ingreso, crédito, CDT y bolsillos.
 - **Conducta (26):** número de movimientos; compras por categoría (peajes, mascotas, aerolíneas, hoteles, salud, e-commerce, restaurantes, transporte, supermercados, servicios); transferencias fijas a terceros; racha y meses de nómina; gasto frente a ingreso (consumption ratio); gasto mensual; abonos por tipo de bolsillo; y participación de cada canal de pago.
-- **Uso de la app (3):** sesiones, visitas a Seguros y tasa de apertura de notificaciones.
+- **Uso de la app (3):** sesiones, visitas a Seguros y tasa de apertura de notificaciones. «Visitas a Seguros» se calcula y se usa en los segmentos (M2), pero no entra a M1 (sección 3).
 
 **Objetivo de M1.** Que el cliente tenga el ramo, sea con Lulo (Clientes.seguros_vigentes) o pagado a otra aseguradora (Pagos_Seguros). Es un modelo de parecido (*look-alike*): estima quién se parece a quienes ya compraron, no quién responderá a una oferta. Esa segunda pregunta solo la puede contestar el piloto con grupo de control (M6).
 
@@ -42,6 +42,7 @@ Cada cliente se describe con 41 variables calculadas en `lulo_app/ml/vector.py`,
 **Método.**
 1. Regresión logística con regularización L1, variables estandarizadas. La fuerza de la regularización (C) se elige por validación cruzada interna entre 0,05 y 0,5.
 2. Se excluyen las variables que la regla del ramo ya usa para su señal (por ejemplo, peajes para el SOAT o abonos al bolsillo de mascotas para Mascotas). Así el modelo aporta solo lo que la regla no ve y no contradice la hipótesis de negocio de la señal.
+   También se excluyen, en todos los ramos, las variables que son consecuencia de tener un seguro: hoy, «visitas a Seguros» (ver «Por qué se excluye» más abajo).
 3. **Validación:** AUC con validación cruzada estratificada de 5 pliegues repetida 5 veces.
 4. **Prueba de permutación:** se repite la validación con las etiquetas barajadas 200 veces. El valor p es la proporción de barajadas con AUC igual o mayor que el real.
 5. **Selección por estabilidad:** el modelo final solo conserva las variables que el L1 elige en al menos el 80 % de 100 remuestreos *bootstrap*.
@@ -51,24 +52,36 @@ Cada cliente se describe con 41 variables calculadas en `lulo_app/ml/vector.py`,
 
 | Ramo | AUC (± desv.) | p | AUC solo perfil | AUC solo conducta | Boosting | Variables estables | Uso |
 |---|---|---|---|---|---|---|---|
-| SOAT | 0,63 ± 0,05 | 0,005 | 0,50 | 0,63 | 0,60 | Visitas a Seguros (+0,44) | Ajusta el VE |
-| Vida | 0,59 ± 0,07 | 0,040 | 0,48 | 0,60 | 0,54 | Visitas a Seguros (+0,41), abonos a bolsillo de viajes (−0,36) | Ajusta el VE |
-| Desempleo | 0,64 ± 0,08 | 0,030 | 0,60 | 0,62 | 0,59 | Crédito activo (+0,48), visitas a Seguros (+0,48) | Ajusta el VE |
-| Hogar | 0,50 | 0,811 | 0,50 | 0,50 | 0,48 | ninguna | Regla |
+| SOAT | 0,53 ± 0,04 | 0,114 | 0,48 | 0,55 | 0,55 | diez, todas con coeficiente menor a 0,22 | Regla |
+| Vida | 0,53 ± 0,06 | 0,229 | 0,48 | 0,54 | 0,51 | Abonos a bolsillo de viajes (−0,36) | Regla |
+| Desempleo | 0,57 ± 0,09 | 0,189 | 0,60 | 0,52 | 0,53 | Crédito activo (+0,44) | Regla |
+| Hogar | 0,50 | 0,826 | 0,50 | 0,50 | 0,50 | ninguna | Regla |
 | Mascotas | 0,50 | 0,975 | 0,50 | 0,50 | 0,42 | ninguna | Regla |
-| Viajes | 0,51 ± 0,13 | 0,343 | 0,50 | 0,51 | 0,47 | inestable | Regla |
+| Viajes | 0,50 | 1,000 | 0,50 | 0,50 | 0,46 | ninguna | Regla |
 
 **Lectura.**
-- **La señal es modesta.** Un AUC de 0,6 ordena mejor que el azar, pero está lejos de identificar a un comprador. Por eso el modelo no decide solo: multiplica el valor esperado de una oferta que la regla ya aprobó.
-- **El *gradient boosting* no mejora a la regresión** en ningún ramo. Con 600 clientes, más complejidad solo agrega ruido; la regresión además se explica en una línea.
-- **En Hogar, Mascotas y Viajes no hay señal aprovechable.** En Viajes hay apenas 18 clientes que lo tienen. Esos ramos siguen con la regla, y eso queda registrado en cada decisión.
-- **El signo negativo de «abonos a bolsillo de viajes» en Vida es estable pero no tiene explicación de negocio clara.** Conviene revisarlo con datos reales antes de darle importancia.
+- **Ningún ramo le gana al azar.** Desempleo es el que más se acerca (AUC 0,57, casi todo por el crédito activo), pero su valor p es 0,19. El motor sigue con la regla en los seis ramos, y eso queda registrado en cada decisión.
+- **El *gradient boosting* tampoco encuentra señal** en ningún ramo, así que no es un problema de la forma del modelo.
+- **El crédito activo en Desempleo** puede venir de que el seguro de desempleo se venda junto con el crédito. La base no lo dice; si es así, es la misma situación de Vida grupo deudor y no debe usarse para ofrecer el seguro voluntario.
+- **El signo negativo de «abonos a bolsillo de viajes» en Vida es estable pero no tiene explicación de negocio clara.** Conviene revisarlo con datos reales.
+
+**Por qué se excluye «visitas a Seguros» (`ml-1.1`).** En `ml-1.0` era la variable más fuerte en SOAT, Vida y Desempleo y la única razón por la que esos tres ramos pasaban la compuerta. Pero mide sobre todo que el cliente ya tiene un seguro:
+
+| Evidencia (`consecuencia` en `modelos.json`) | Valor |
+|---|---|
+| Visitas a Seguros en 30 días, clientes con alguna póliza Lulo (274) | 2,52 |
+| Visitas a Seguros en 30 días, clientes sin ninguna póliza Lulo (326) | 1,13 |
+| AUC de las visitas para reconocer a quien ya tiene una póliza Lulo | 0,731 |
+| AUC de las visitas para el SOAT, solo entre quienes no tienen pólizas Lulo (22 lo pagan por fuera) | 0,448 |
+| AUC de las visitas para Vida, solo entre quienes no tienen pólizas Lulo (20 lo pagan por fuera) | 0,598 |
+
+Donde no hay una póliza Lulo que gestionar, las visitas no predicen el SOAT y en Vida la muestra es muy pequeña para concluir. Con esa variable, la afinidad terminaba subiendo el valor esperado de quien ya tiene otra póliza Lulo y bajando el de quien no tiene ninguna, y la app se lo explicaba al cliente como «hábitos parecidos». Por eso, desde el 2026-10-20 y por decisión de SOKA, no entra a M1. Si con datos reales se registra la visita *antes* de la compra, se puede volver a probar.
 
 **Cómo entra al motor.** `afinidad = probabilidad del modelo / tasa base del ramo`, acotada entre 0,5 y 2,0. El valor esperado pasa a ser:
 
 > conversión previa × comisión esperada a 12 meses × fuerza de la señal × afinidad
 
-En el plan de campaña a la fecha de corte, el modelo cambia el ramo ofrecido a 50 de los 600 clientes (8 %): 25 pasan de Vida a Desempleo, 16 de Desempleo a Mascotas, 8 de Desempleo a Hogar y 1 de SOAT a Viajes. Las ofertas con fecha límite (SOAT por vencer y desembolso) siguen yendo primero.
+Con `ml-1.1` la afinidad vale 1 en todos los ramos, así que el plan de campaña a la fecha de corte ofrece el mismo ramo, por el mismo canal y con el mismo resultado que con las reglas v1.1 en los 600 clientes. Con `ml-1.0` el modelo cambiaba el ramo a 50 de ellos (25 de Vida a Desempleo, 16 de Desempleo a Mascotas, 8 de Desempleo a Hogar y 1 de SOAT a Viajes).
 
 ## 4. M2 · Segmentos de comportamiento
 
@@ -164,8 +177,8 @@ M5 solo mira la nómina. La pregunta del proyecto es otra: si el cliente compra 
 
 ## 9. Cómo guían las funcionalidades
 
-- **Motor de disparadores (Presente):** la afinidad de M1 ordena las ofertas dentro de lo que la regla ya aprobó. La traza de cada decisión dice si se usó el modelo o la regla, y con qué afinidad.
-- **Pantalla de oferta:** cuando el modelo sube la afinidad (al menos 1,1) y el cliente es elegible, la app agrega una línea «Clientes como tú», con los hábitos que la explican en lenguaje claro.
+- **Motor de disparadores (Presente):** si un ramo pasa la compuerta, la afinidad de M1 ordena las ofertas dentro de lo que la regla ya aprobó. Con `ml-1.1` ninguno la pasa, así que el motor ordena con la regla. La traza de cada decisión dice si se usó el modelo o la regla, y con qué afinidad.
+- **Pantalla de oferta:** cuando un ramo pasa la compuerta y el modelo sube la afinidad (al menos 1,1), la app agrega una línea «Clientes como tú», con los hábitos que la explican en lenguaje claro. Con `ml-1.1` no aparece.
 - **Tu año en Lulo (Pasado):** muestra el segmento de M2 como «Tu forma de usar Lulo este año».
 - **Canal:** M3 puede enviar la oferta a banner si la probabilidad de abrir un push queda bajo el umbral.
 - **Panel de la demo:** nueva pestaña «Modelos» con las métricas de validación, los resultados de M1 a M6 y el detalle del cliente que se está viendo.
@@ -179,18 +192,18 @@ M5 solo mira la nómina. La pregunta del proyecto es otra: si el cliente compra 
 1. **La base es sintética.** Los modelos validan el método, no el comportamiento real de los clientes de Lulo. Con datos reales hay que volver a correr `scripts/train_models.py`, y la regla de uso decide sola qué ramos usan el modelo.
 2. **Tenencia no es respuesta.** M1 dice quién se parece a quien ya compró. El efecto de ofrecer en un momento se mide con el grupo de control; con datos reales de respuesta, el siguiente paso es un modelo *uplift*.
 3. **Las muestras son pequeñas.** Algunos ramos tienen pocos positivos (18 en Viajes, 39 en Desempleo), así que los intervalos son anchos; la prueba de permutación protege contra falsos hallazgos, no contra efectos pequeños.
-4. **Hay que revisar dos cosas con datos reales:** la regla de fatiga, dado lo que encontró M3, y el signo de «bolsillo de viajes» en Vida.
+4. **Hay que revisar tres cosas con datos reales:** la regla de fatiga, dado lo que encontró M3; el signo de «bolsillo de viajes» en Vida; y si «visitas a Seguros» registrada *antes* de la compra sí anticipa la compra.
 5. **Lo que la base no trae** (datos pedidos que llegaron incompletos): desembolsos (Pago protegido solo se simula en la sesión), la lista de eventos que registra la app (solo viene la latencia), los requisitos de cotización (vehículo, mascota, fecha de viaje) y compras de combustible. Tampoco hay respuesta a ofertas por cliente: por eso M1 mide tenencia y el efecto del momento solo lo mide el piloto.
-6. **Reentrenar en otro entorno** puede mover cifras sin cambiar el método: con scikit-learn 1.8 y numpy 2.4 el AUC del *boosting* cambia en el tercer decimal (SOAT 0,605 → 0,604) y el pronóstico de Viajes, que es exactamente 45,5, redondea a 46.
+6. **Versiones fijas.** `requirements-dev.txt` fija scikit-learn 1.8.0 y numpy 2.4.6. Con otras versiones cambian decimales del *boosting* de referencia y el redondeo del pronóstico de Viajes (exactamente 45,5), y `--check` falla aunque el método sea el mismo.
 
 ## 11. Reproducir
 
 ```bash
-pip install -r requirements-dev.txt          # incluye scikit-learn y numpy (solo desarrollo)
+pip install -r requirements-dev.txt          # scikit-learn 1.8.0 y numpy 2.4.6 (solo desarrollo)
 python scripts/train_models.py               # entrena y escribe lulo_app/ml/modelos.json (≈ 45 s)
 python scripts/train_models.py --check       # verifica que el JSON del repo coincide
-python -m pytest                             # 71 pruebas
+python -m pytest                             # 72 pruebas
 python -m lulo_app.core backtest             # 0 violaciones
 ```
 
-El entrenamiento es determinista (semilla 19): dos corridas producen el mismo archivo. En producción (Vercel) no se instala nada nuevo: `lulo_app/ml/models.py` lee el JSON y calcula con Python puro.
+El entrenamiento es determinista (semilla 19, también en el optimizador liblinear de M1): dos corridas producen el mismo archivo. En producción (Vercel) no se instala nada nuevo: `lulo_app/ml/models.py` lee el JSON y calcula con Python puro.

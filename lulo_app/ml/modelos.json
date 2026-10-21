@@ -1,5 +1,5 @@
 {
- "version": "ml-1.0",
+ "version": "ml-1.1",
  "entrenado_con": {
   "sha256_base": "5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c",
   "clientes": 600,
@@ -58,150 +58,237 @@
   "afinidad_min": 0.5,
   "afinidad_max": 2.0
  },
+ "consecuencia": {
+  "variables": [
+   "visitas_seguros"
+  ],
+  "clientes_con_poliza_lulo": 274,
+  "visitas_media_con_poliza_lulo": 2.52,
+  "visitas_media_sin_poliza_lulo": 1.13,
+  "auc_visitas_tiene_poliza_lulo": 0.731,
+  "auc_visitas_por_ramo_sin_poliza_lulo": {
+   "SOAT": {
+    "positivos": 22,
+    "auc": 0.448
+   },
+   "Vida": {
+    "positivos": 20,
+    "auc": 0.598
+   },
+   "Desempleo": {
+    "positivos": 0,
+    "auc": null
+   },
+   "Hogar": {
+    "positivos": 12,
+    "auc": 0.388
+   },
+   "Mascotas": {
+    "positivos": 10,
+    "auc": 0.404
+   },
+   "Viajes": {
+    "positivos": 0,
+    "auc": null
+   }
+  }
+ },
  "propension": {
   "SOAT": {
    "positivos": 170,
    "tasa_base": 0.2833,
-   "C": 0.05,
-   "auc_cv": 0.629,
-   "auc_sd": 0.049,
-   "auc_oof": 0.623,
-   "p_permutacion": 0.005,
+   "C": 0.2,
+   "auc_cv": 0.532,
+   "auc_sd": 0.04,
+   "auc_oof": 0.547,
+   "p_permutacion": 0.1144,
    "auc_por_conjunto": {
-    "perfil": 0.496,
-    "comportamiento": 0.625,
-    "todas": 0.624
+    "perfil": 0.484,
+    "comportamiento": 0.547,
+    "todas": 0.531
    },
-   "auc_gbm": 0.604,
-   "lift_decil_superior": 1.41,
-   "usable": true,
-   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "auc_gbm": 0.551,
+   "lift_decil_superior": 1.29,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.53, p = 0.11): el motor sigue con la regla",
    "excluidas_por_regla": [
     "n_Peajes"
    ],
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
+   ],
    "media": {
-    "visitas_seguros": 1.765
+    "credito": 0.35,
+    "cdt": 0.158333,
+    "cajitas": 0.686667,
+    "log_movs": 3.516222,
+    "n_Mascotas": 0.384989,
+    "n_Hoteles": 0.307452,
+    "n_Transferencia fija tercero": 0.547782,
+    "n_Salud": 0.907829,
+    "abonos_Viajes": 0.215622,
+    "canal_Tarjeta débito": 0.417278
    },
    "escala": {
-    "visitas_seguros": 1.69699
+    "credito": 0.47697,
+    "cdt": 0.365053,
+    "cajitas": 0.463849,
+    "log_movs": 0.304095,
+    "n_Mascotas": 0.449188,
+    "n_Hoteles": 0.401504,
+    "n_Transferencia fija tercero": 0.855288,
+    "n_Salud": 0.506535,
+    "abonos_Viajes": 0.552014,
+    "canal_Tarjeta débito": 0.118109
    },
-   "intercepto": -0.96424,
+   "intercepto": -0.98417,
    "coeficientes": {
-    "visitas_seguros": 0.43602
+    "credito": -0.12046,
+    "cdt": -0.1203,
+    "cajitas": -0.21235,
+    "log_movs": -0.21498,
+    "n_Mascotas": -0.18875,
+    "n_Hoteles": 0.13404,
+    "n_Transferencia fija tercero": 0.09685,
+    "n_Salud": -0.18762,
+    "abonos_Viajes": 0.1686,
+    "canal_Tarjeta débito": -0.19562
    },
    "estabilidad": {
-    "pro": 0.3,
-    "log_saldo": 0.35,
-    "cdt": 0.3,
-    "cajitas": 0.31,
-    "log_movs": 0.46,
-    "n_Mascotas": 0.62,
-    "n_Salud": 0.77,
-    "abonos_Viajes": 0.35,
-    "visitas_seguros": 0.99
+    "edad": 0.52,
+    "ocup_Estudiante": 0.59,
+    "ocup_Pensionado": 0.68,
+    "pro": 0.71,
+    "antiguedad": 0.77,
+    "log_saldo": 0.77,
+    "log_ingreso": 0.34,
+    "credito": 0.81,
+    "cdt": 0.8,
+    "cajitas": 0.87,
+    "log_movs": 0.9,
+    "n_Mascotas": 0.95,
+    "n_Aerolineas": 0.79,
+    "n_Hoteles": 0.81,
+    "n_Transferencia fija tercero": 0.81,
+    "n_Salud": 0.96,
+    "n_E-commerce": 0.54,
+    "n_Restaurantes": 0.54,
+    "n_Transporte": 0.61,
+    "n_Supermercados": 0.5,
+    "n_Servicios": 0.56,
+    "ratio_consumo": 0.3,
+    "abonos_Viajes": 0.83,
+    "abonos_Mascotas": 0.62,
+    "abonos_Vivienda": 0.71,
+    "abonos_Emergencias": 0.56,
+    "abonos_Otras": 0.45,
+    "canal_PSE": 0.49,
+    "canal_QR": 0.68,
+    "canal_Tarjeta débito": 0.81,
+    "sesiones": 0.58,
+    "tasa_apertura": 0.66
    }
   },
   "Vida": {
    "positivos": 93,
    "tasa_base": 0.155,
    "C": 0.1,
-   "auc_cv": 0.589,
-   "auc_sd": 0.072,
-   "auc_oof": 0.573,
-   "p_permutacion": 0.0398,
+   "auc_cv": 0.529,
+   "auc_sd": 0.058,
+   "auc_oof": 0.535,
+   "p_permutacion": 0.2289,
    "auc_por_conjunto": {
     "perfil": 0.477,
-    "comportamiento": 0.597,
-    "todas": 0.593
+    "comportamiento": 0.539,
+    "todas": 0.535
    },
-   "auc_gbm": 0.543,
-   "lift_decil_superior": 1.72,
-   "usable": true,
-   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "auc_gbm": 0.505,
+   "lift_decil_superior": 1.08,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.53, p = 0.23): el motor sigue con la regla",
    "excluidas_por_regla": [
     "meses_fija",
     "racha_ingreso",
     "meses_ingreso"
    ],
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
+   ],
    "media": {
-    "abonos_Viajes": 0.215622,
-    "visitas_seguros": 1.765
+    "abonos_Viajes": 0.215622
    },
    "escala": {
-    "abonos_Viajes": 0.552014,
-    "visitas_seguros": 1.69699
+    "abonos_Viajes": 0.552014
    },
-   "intercepto": -1.79413,
+   "intercepto": -1.73606,
    "coeficientes": {
-    "abonos_Viajes": -0.36092,
-    "visitas_seguros": 0.40624
+    "abonos_Viajes": -0.36161
    },
    "estabilidad": {
-    "edad": 0.33,
-    "ocup_Empleado": 0.31,
-    "pro": 0.48,
-    "antiguedad": 0.48,
-    "cdt": 0.31,
-    "n_Mascotas": 0.75,
-    "n_Hoteles": 0.49,
-    "n_Salud": 0.7,
-    "n_Restaurantes": 0.3,
-    "n_Supermercados": 0.47,
-    "abonos_Viajes": 0.89,
-    "abonos_Mascotas": 0.6,
-    "abonos_Otras": 0.42,
-    "canal_PSE": 0.52,
-    "canal_Transferencia": 0.5,
-    "sesiones": 0.62,
-    "visitas_seguros": 0.99
+    "edad": 0.32,
+    "pro": 0.41,
+    "antiguedad": 0.46,
+    "cdt": 0.33,
+    "n_Mascotas": 0.76,
+    "n_Hoteles": 0.41,
+    "n_Salud": 0.71,
+    "n_Restaurantes": 0.34,
+    "n_Supermercados": 0.51,
+    "abonos_Viajes": 0.92,
+    "abonos_Mascotas": 0.64,
+    "abonos_Otras": 0.43,
+    "canal_PSE": 0.53,
+    "canal_Transferencia": 0.53,
+    "sesiones": 0.54
    }
   },
   "Desempleo": {
    "positivos": 39,
    "tasa_base": 0.065,
    "C": 0.1,
-   "auc_cv": 0.638,
-   "auc_sd": 0.08,
-   "auc_oof": 0.623,
-   "p_permutacion": 0.0299,
+   "auc_cv": 0.568,
+   "auc_sd": 0.087,
+   "auc_oof": 0.543,
+   "p_permutacion": 0.1891,
    "auc_por_conjunto": {
     "perfil": 0.602,
-    "comportamiento": 0.62,
-    "todas": 0.651
+    "comportamiento": 0.519,
+    "todas": 0.583
    },
-   "auc_gbm": 0.585,
-   "lift_decil_superior": 0.77,
-   "usable": true,
-   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "auc_gbm": 0.532,
+   "lift_decil_superior": 0.26,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.57, p = 0.19): el motor sigue con la regla",
    "excluidas_por_regla": [
     "racha_ingreso",
     "meses_ingreso"
    ],
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
+   ],
    "media": {
-    "credito": 0.35,
-    "visitas_seguros": 1.765
+    "credito": 0.35
    },
    "escala": {
-    "credito": 0.47697,
-    "visitas_seguros": 1.69699
+    "credito": 0.47697
    },
-   "intercepto": -2.86221,
+   "intercepto": -2.75346,
    "coeficientes": {
-    "credito": 0.4829,
-    "visitas_seguros": 0.47703
+    "credito": 0.43968
    },
    "estabilidad": {
-    "pro": 0.4,
-    "credito": 0.89,
-    "cajitas": 0.4,
-    "n_Hoteles": 0.36,
-    "n_Salud": 0.53,
-    "n_E-commerce": 0.66,
-    "n_Supermercados": 0.43,
-    "n_Servicios": 0.33,
-    "ratio_consumo": 0.33,
-    "canal_QR": 0.39,
-    "visitas_seguros": 0.91
+    "ocup_Pensionado": 0.31,
+    "pro": 0.44,
+    "credito": 0.86,
+    "cajitas": 0.43,
+    "n_Hoteles": 0.41,
+    "n_Salud": 0.51,
+    "n_E-commerce": 0.69,
+    "n_Supermercados": 0.47,
+    "n_Servicios": 0.35,
+    "ratio_consumo": 0.36,
+    "abonos_Viajes": 0.33,
+    "canal_QR": 0.4
    }
   },
   "Hogar": {
@@ -211,18 +298,21 @@
    "auc_cv": 0.5,
    "auc_sd": 0.0,
    "auc_oof": 0.493,
-   "p_permutacion": 0.8109,
+   "p_permutacion": 0.8259,
    "auc_por_conjunto": {
     "perfil": 0.5,
     "comportamiento": 0.5,
     "todas": 0.5
    },
-   "auc_gbm": 0.488,
+   "auc_gbm": 0.496,
    "lift_decil_superior": 0.61,
    "usable": false,
-   "motivo": "No le gana al azar (AUC 0.50, p = 0.81): el motor sigue con la regla",
+   "motivo": "No le gana al azar (AUC 0.50, p = 0.83): el motor sigue con la regla",
    "excluidas_por_regla": [
     "abonos_Vivienda"
+   ],
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
    ],
    "media": {},
    "escala": {},
@@ -243,13 +333,16 @@
     "comportamiento": 0.5,
     "todas": 0.5
    },
-   "auc_gbm": 0.421,
+   "auc_gbm": 0.416,
    "lift_decil_superior": 0.26,
    "usable": false,
    "motivo": "No le gana al azar (AUC 0.50, p = 0.98): el motor sigue con la regla",
    "excluidas_por_regla": [
     "n_Mascotas",
     "abonos_Mascotas"
+   ],
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
    ],
    "media": {},
    "escala": {},
@@ -260,81 +353,33 @@
   "Viajes": {
    "positivos": 18,
    "tasa_base": 0.03,
-   "C": 0.5,
-   "auc_cv": 0.509,
-   "auc_sd": 0.133,
-   "auc_oof": 0.544,
-   "p_permutacion": 0.3433,
+   "C": 0.05,
+   "auc_cv": 0.5,
+   "auc_sd": 0.0,
+   "auc_oof": 0.466,
+   "p_permutacion": 1.0,
    "auc_por_conjunto": {
-    "perfil": 0.503,
-    "comportamiento": 0.506,
-    "todas": 0.52
+    "perfil": 0.5,
+    "comportamiento": 0.5,
+    "todas": 0.5
    },
-   "auc_gbm": 0.47,
-   "lift_decil_superior": 1.11,
+   "auc_gbm": 0.46,
+   "lift_decil_superior": 0.56,
    "usable": false,
-   "motivo": "No le gana al azar (AUC 0.51, p = 0.34): el motor sigue con la regla",
+   "motivo": "No le gana al azar (AUC 0.50, p = 1.00): el motor sigue con la regla",
    "excluidas_por_regla": [
     "n_Aerolineas",
     "n_Hoteles",
     "abonos_Viajes"
    ],
-   "media": {
-    "pro": 0.26,
-    "antiguedad": 30.47,
-    "n_Peajes": 0.701334,
-    "n_E-commerce": 1.175958,
-    "visitas_seguros": 1.765
-   },
-   "escala": {
-    "pro": 0.438634,
-    "antiguedad": 17.317306,
-    "n_Peajes": 0.514443,
-    "n_E-commerce": 0.504782,
-    "visitas_seguros": 1.69699
-   },
-   "intercepto": -3.87471,
-   "coeficientes": {
-    "pro": 0.42821,
-    "antiguedad": -0.56382,
-    "n_Peajes": -0.47022,
-    "n_E-commerce": 0.16485,
-    "visitas_seguros": 0.51223
-   },
-   "estabilidad": {
-    "edad": 0.55,
-    "ocup_Empleado": 0.52,
-    "ocup_Independiente": 0.34,
-    "ocup_Estudiante": 0.35,
-    "ocup_Pensionado": 0.64,
-    "pro": 0.83,
-    "antiguedad": 0.94,
-    "log_saldo": 0.77,
-    "log_ingreso": 0.5,
-    "credito": 0.75,
-    "cdt": 0.73,
-    "cajitas": 0.44,
-    "n_Peajes": 0.85,
-    "n_Mascotas": 0.58,
-    "n_Salud": 0.71,
-    "n_E-commerce": 0.88,
-    "n_Restaurantes": 0.65,
-    "n_Transporte": 0.56,
-    "n_Supermercados": 0.65,
-    "n_Servicios": 0.45,
-    "meses_fija": 0.74,
-    "ratio_consumo": 0.52,
-    "abonos_Mascotas": 0.75,
-    "abonos_Vivienda": 0.78,
-    "abonos_Emergencias": 0.48,
-    "abonos_Otras": 0.36,
-    "canal_PSE": 0.54,
-    "canal_QR": 0.35,
-    "canal_Transferencia": 0.33,
-    "sesiones": 0.54,
-    "visitas_seguros": 0.98,
-    "tasa_apertura": 0.54
-   }
+   "excluidas_por_consecuencia": [
+    "visitas_seguros"
+   ],
+   "media": {},
+   "escala": {},
+   "intercepto": -3.4761,
+   "coeficientes": {},
+   "estabilidad": {}
   }
  },
  "segmentos": {
