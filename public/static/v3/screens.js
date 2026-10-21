@@ -34,7 +34,7 @@ export const ramoIcon = r => I[ICON_OF[r]] || I.shield;
 
 /* ---------- piezas ---------- */
 const hdr = (title, opts = {}) => `<div class="hdr">${opts.noBack ? "" : `<button class="back" data-a="back" aria-label="Volver">${opts.close ? I.close : I.back}</button>`}<h2>${title}</h2>${opts.right || ""}</div>`;
-const anno = (title, body) => `<div class="anno"><div class="anno-k">${I.info.replace(/width="24" height="24"/, 'width="14" height="14"')} ${title}</div>${body}</div>`;
+const anno = (title, body) => `<div class="anno" data-new="anotacion"><div class="anno-k">${I.info.replace(/width="24" height="24"/, 'width="14" height="14"')} ${title}</div>${body}</div>`;
 export const av = (S, cls = "") => `<span class="av ${cls}">${esc(initials(S.B.client.name.replace(/^Cliente /, "")))}</span>`;
 const wordmark = (cls = "") => `<span class="wordmark ${cls}">lulo<sup>®</sup></span>`;
 
@@ -79,7 +79,7 @@ function soatReminder(S) {
   const car = S.B.car;
   if (!soatDue(S)) return "";
   const urgent = car.days <= 10;
-  return `<button class="reminder${urgent ? " urgent" : ""}" data-a="go" data-s="renew">
+  return `<button class="reminder${urgent ? " urgent" : ""}" data-a="go" data-s="renew" data-new="soat-aviso">
     <span class="cal"><b>${dayOf(car.expiry)}</b><small>${monthShortUpper(car.expiry)}</small></span>
     <span style="flex:1"><span class="rm-t">Tu SOAT vence en ${car.days} días</span><span class="rm-d">${car.plate || "Tu vehículo"} · ${urgent ? "Evita la multa: renuévalo hoy aquí" : "Renuévalo aquí y págalo desde tu Lulo cuenta"}</span></span>${I.chev}
   </button>`;
@@ -88,9 +88,9 @@ function soatReminder(S) {
 function promos(S) {
   const out = [];
   const B = S.banner;
-  if (B) out.push(`<button class="promo offer" data-a="banner-open"><span class="tagp">Para ti</span><span><b>${esc(B.title)}</b><p>${esc(strip(B.why)).slice(0, 92)}${strip(B.why).length > 92 ? "…" : ""}</p></span><span class="cta">Ver por qué</span></button>`);
+  if (B) out.push(`<button class="promo offer" data-a="banner-open" data-new="banner-oferta"><span class="tagp">Para ti</span><span><b>${esc(B.title)}</b><p>${esc(strip(B.why)).slice(0, 92)}${strip(B.why).length > 92 ? "…" : ""}</p></span><span class="cta">Ver por qué</span></button>`);
   out.push(`<button class="promo photo" data-a="tab" data-t="proteccion"><span><b>¡Estar protegido es un estilo de vida!</b><p>Asegura lo que más te importa</p></span><span class="cta">Ver Seguros</span></button>`);
-  if (chapters(S).length) out.push(`<button class="promo lime" data-a="tab" data-t="anio"><span><b>Tu año en Lulo ya está listo</b><p>${num(S.B.movCount)} movimientos contados en ${chapters(S).length} capítulos</p></span><span class="cta">Ver mi año</span>${art("star")}</button>`);
+  if (chapters(S).length) out.push(`<button class="promo lime" data-a="tab" data-t="anio" data-new="anio-promo"><span><b>Tu año en Lulo ya está listo</b><p>${num(S.B.movCount)} movimientos contados en ${chapters(S).length} capítulos</p></span><span class="cta">Ver mi año</span>${art("star")}</button>`);
   out.push(`<button class="promo" data-a="go" data-s="credito"><span><b>¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.</p></span><span class="cta">Saber más</span>${ILUS.credito}</button>`);
   return `<div class="carousel" id="carousel">${out.join("")}</div><div class="dots">${out.map((_, i) => `<i class="${i === 0 ? "on" : ""}"></i>`).join("")}</div>`;
 }
@@ -104,7 +104,7 @@ function mlWhy(C) {
 function segCard(S) {
   const g = S.evaluation && S.evaluation.ml && S.evaluation.ml.segmento;
   if (!g) return "";
-  return `<div class="yr-seg"><span class="k">Tu forma de usar Lulo este año</span><b>${esc(g.nombre)}</b>${esc(g.rasgos.join(" · "))}</div>`;
+  return `<div class="yr-seg" data-new="segmento"><span class="k">Tu forma de usar Lulo este año</span><b>${esc(g.nombre)}</b>${esc(g.rasgos.join(" · "))}</div>`;
 }
 // Ilustraciones y foto tomadas de capturas de la app real (public/static/img).
 const ILUS = {
@@ -116,8 +116,8 @@ const art = k => `<svg class="art" viewBox="0 0 100 100"><circle cx="60" cy="60"
 /* ---------- Tu año: momento de protección ---------- */
 function protectBlock(S, c) {
   if (c.ask) {
-    if (S.known[c.ask]) return `<div class="st-protect"><div class="st-pd">Gracias por responder.</div></div>`;
-    return `<div class="st-protect"><div class="st-pt">¿Sabías que tenías esta protección?</div><div class="q-btns"><button data-a="known" data-v="Sí">Sí, lo sabía</button><button data-a="known" data-v="No">No sabía</button></div></div>`;
+    if (S.known[c.ask]) return `<div class="st-protect" data-new="momento-proteccion"><div class="st-pd">Gracias por responder.</div></div>`;
+    return `<div class="st-protect" data-new="momento-proteccion"><div class="st-pt">¿Sabías que tenías esta protección?</div><div class="q-btns"><button data-a="known" data-v="Sí">Sí, lo sabía</button><button data-a="known" data-v="No">No sabía</button></div></div>`;
   }
   const p = c.protect;
   if (!p) return "";
@@ -125,17 +125,17 @@ function protectBlock(S, c) {
   const soatRenewal = k === "SOAT" && ["renovacion", "captura"].includes(p.kind) && p.state === "offer" && !S.renewed.includes("SOAT");
   if (!soatRenewal && (hasRamo(S, k) || p.state === "has")) {
     const renewed = k === "SOAT" && S.renewed.includes("SOAT");
-    return `<div class="st-protect">${pk}<div class="st-pt">${renewed ? "Tu SOAT ya está al día" : "Ya lo tienes activo"}</div><div class="st-pd">${esc(p.title)}${p.partner ? ` con ${esc(p.partner)}` : ""}.</div></div>`;
+    return `<div class="st-protect" data-new="momento-proteccion">${pk}<div class="st-pt">${renewed ? "Tu SOAT ya está al día" : "Ya lo tienes activo"}</div><div class="st-pd">${esc(p.title)}${p.partner ? ` con ${esc(p.partner)}` : ""}.</div></div>`;
   }
-  if (["external", "soon", "ineligible"].includes(p.state)) return `<div class="st-protect">${pk}<div class="st-pt">${esc(p.t)}</div><div class="st-pd">${esc(p.d)}</div></div>`;
+  if (["external", "soon", "ineligible"].includes(p.state)) return `<div class="st-protect" data-new="momento-proteccion">${pk}<div class="st-pt">${esc(p.t)}</div><div class="st-pd">${esc(p.d)}</div></div>`;
   if (p.state === "control" || S.control === true || !S.sugg) return "";
-  if (S.declined[k]) return `<div class="st-protect"><div class="st-pd">Entendido. No te lo mostraremos en este resumen.</div></div>`;
+  if (S.declined[k]) return `<div class="st-protect" data-new="momento-proteccion"><div class="st-pd">Entendido. No te lo mostraremos en este resumen.</div></div>`;
   const P = product(S, k);
   if (k === "SOAT") {
     const renew = p.kind === "renovacion" || p.kind === "captura";
-    return `<div class="st-protect">${pk}<div class="st-pt">${renew ? `Tu SOAT vence el ${dateShort(S.B.car.expiry)}` : "¿Tu carro es tuyo? Cotiza aquí el SOAT"}</div><div class="st-pd">${renew ? "Renuévalo aquí sin salir de Lulo y págalo desde tu cuenta." : "Compra o renueva el SOAT en minutos, sin filas ni papeleo."}</div><div class="st-pb"><button class="btn primary" data-a="st-soat">${renew ? "Renovar ahora" : "Cotizar SOAT"}</button></div></div>`;
+    return `<div class="st-protect" data-new="momento-proteccion">${pk}<div class="st-pt">${renew ? `Tu SOAT vence el ${dateShort(S.B.car.expiry)}` : "¿Tu carro es tuyo? Cotiza aquí el SOAT"}</div><div class="st-pd">${renew ? "Renuévalo aquí sin salir de Lulo y págalo desde tu cuenta." : "Compra o renueva el SOAT en minutos, sin filas ni papeleo."}</div><div class="st-pb"><button class="btn primary" data-a="st-soat">${renew ? "Renovar ahora" : "Cotizar SOAT"}</button></div></div>`;
   }
-  return `<div class="st-protect"><div class="st-pk">Momento de protección${c.concept || P.concept ? ` <span class="pill hyp">Producto por negociar</span>` : ""}</div><div class="st-pt">${esc(p.t || P.title)}</div><div class="st-pd">${esc(P.title)}${P.partner ? ` con ${esc(P.partner)}` : ""}: ${esc(P.price)}.</div><div class="st-pb"><button class="btn primary" data-a="st-yes" data-k="${k}">Activar</button><button class="btn ghost" data-a="st-no" data-k="${k}">Ahora no</button></div></div>`;
+  return `<div class="st-protect" data-new="momento-proteccion"><div class="st-pk">Momento de protección${c.concept || P.concept ? ` <span class="pill hyp">Producto por negociar</span>` : ""}</div><div class="st-pt">${esc(p.t || P.title)}</div><div class="st-pd">${esc(P.title)}${P.partner ? ` con ${esc(P.partner)}` : ""}: ${esc(P.price)}.</div><div class="st-pb"><button class="btn primary" data-a="st-yes" data-k="${k}">Activar</button><button class="btn ghost" data-a="st-no" data-k="${k}">Ahora no</button></div></div>`;
 }
 
 function storyBody(S, c) {
@@ -205,7 +205,7 @@ export const SCREENS = {
   explora(S) {
     const t = S.xt || "ahorro", C = cands(S);
     const item = (icon, title, act, opts = {}) => `<button class="prod${opts.dim ? " dim" : ""}" ${act}><span class="r"><span class="ic">${icon}</span><span class="nb">${opts.chip || ""}${opts.nuevo ? `<span class="nuevo">Nuevo</span>` : ""}${I.chev}</span></span><b>${title}</b>${opts.sub ? `<small>${opts.sub}</small>` : ""}</button>`;
-    const chip = r => r === "SOAT" && soatDue(S) ? `<span class="chip-ev due">Por renovar</span>` : hasRamo(S, r) ? `<span class="chip-ev">Activo</span>` : C[r] && C[r].status === "ofrecer" && S.sugg && S.consent ? `<span class="chip-ev pti">Para ti</span>` : "";
+    const chip = r => r === "SOAT" && soatDue(S) ? `<span class="chip-ev due" data-new="chip-motor">Por renovar</span>` : hasRamo(S, r) ? `<span class="chip-ev" data-new="chip-motor">Activo</span>` : C[r] && C[r].status === "ofrecer" && S.sugg && S.consent ? `<span class="chip-ev pti" data-new="chip-motor">Para ti</span>` : "";
     const lists = {
       ahorro: [item(I.account, "Lulo Cuenta", 'data-a="go" data-s="cuenta"'), item(I.card, "Tarjeta de débito", 'data-a="go" data-s="card"'),
         item(I.pocket, "Bolsillos Flex", 'data-a="go" data-s="bolsillos"'), item(I.pocketClock, "Bolsillo Programados", 'data-a="toast" data-m="Bolsillos programados queda fuera de este prototipo"')],
@@ -216,7 +216,7 @@ export const SCREENS = {
         item(I.shieldStar, "Seguro Pago Protegido", 'data-a="offer" data-r="Pago protegido"', {nuevo: true, chip: chip("Pago protegido")}),
         item(I.shieldDollar, "Seguro Nómina Protegida", 'data-a="go" data-s="info" data-p="nomina"', {nuevo: true, sub: "Respaldo para tu Familia"}),
         item(I.shieldPerson, "Seguro de desempleo", 'data-a="offer" data-r="Desempleo"', {nuevo: true, sub: "Lulo paga tu Vida", chip: chip("Desempleo")}),
-        `<div class="sec-sm" style="margin:10px 0 0">Propuesta del Grupo 14 · ramos de la base del reto</div>`,
+        `<div class="sec-sm" style="margin:10px 0 0" data-new="ramos-nuevos">Propuesta del Grupo 14 · ramos de la base del reto</div>`,
         ...["Vida", "Viajes", "Mascotas", "Hogar"].map(r => item(ramoIcon(r), product(S, r).title, `data-a="offer" data-r="${r}"`, {chip: chip(r), sub: `${product(S, r).price}${product(S, r).concept ? " · producto por negociar" : ""}`, dim: C[r] && C[r].status === "ineligible"})),
       ],
     };
@@ -277,7 +277,7 @@ export const SCREENS = {
     const dates = Object.keys(groups).sort().reverse();
     const B = S.banner;
     const top = S.topBannerClosed ? "" : B
-      ? `<div class="banner-top" role="button" data-a="banner-open"><b>Recomendado para ti: ${esc(B.title)}</b><p>${esc(strip(B.why))}</p><span class="src">Banner pasivo · no cuenta como contacto</span><button class="x" data-a="top-close" aria-label="Cerrar">${I.close}</button></div>`
+      ? `<div class="banner-top" role="button" data-a="banner-open" data-new="banner-oferta"><b>Recomendado para ti: ${esc(B.title)}</b><p>${esc(strip(B.why))}</p><span class="src">Banner pasivo · no cuenta como contacto</span><button class="x" data-a="top-close" aria-label="Cerrar">${I.close}</button></div>`
       : `<div class="banner-top" role="button" data-a="go" data-s="credito"><b>¡Pide tu Lulo crédito cuando quieras!</b><p>Un crédito libre destino desde 2 hasta 50 millones.</p><button class="x" data-a="top-close" aria-label="Cerrar">${I.close}</button></div>`;
     return `${hdr("Alertas", {right: `<button class="act" data-a="read-all" aria-label="Buscar y marcar como leído">${I.search}</button>`})}${top}
       <div class="alist">${dates.map(d => `<div class="dh">${dateHeader(d)}</div>${groups[d].map(n => `<button class="arow${n.unread ? " unread" : ""}" data-a="notif" data-id="${n.id}"><i class="rd"></i><span class="ci">${I[n.icon] || I.shield}</span><span class="tx"><b>${esc(n.t)}</b><span>${esc(n.b)}</span></span><time>${esc(n.time)}</time></button>`).join("")}`).join("")}</div>
@@ -298,13 +298,13 @@ export const SCREENS = {
       <div class="pad row" style="justify-content:flex-start;gap:14px">${av(S, "lg")}<div><div class="ttl" style="font-size:17px">${esc(c.name)}</div><div class="meta" style="margin-top:2px">${c.source === "persona" ? `Cliente Lulo desde ${c.since} · ${esc(c.city)}` : `${esc(c.occupation)} · ${esc(c.age_band)} años · ${esc(c.segment)}`}</div></div></div>
       <div class="sec-sm">Notificaciones</div>
       <div class="stack">
-        <div class="card"><div class="row"><div><div class="ttl">Sugerencias de seguros</div><div class="meta">Según lo que haces en la app</div></div><button class="switch" role="switch" aria-checked="${S.sugg}" aria-label="Sugerencias de seguros" data-a="sugg"></button></div></div>
+        <div class="card" data-new="control-cliente"><div class="row"><div><div class="ttl">Sugerencias de seguros</div><div class="meta">Según lo que haces en la app</div></div><button class="switch" role="switch" aria-checked="${S.sugg}" aria-label="Sugerencias de seguros" data-a="sugg"></button></div></div>
         <div class="card"><div class="row"><div><div class="ttl">Avisos de vencimiento</div><div class="meta">SOAT y pólizas</div></div><button class="switch" role="switch" aria-checked="${S.remind}" aria-label="Avisos de vencimiento" data-a="remind"></button></div>
           <div class="meta" style="margin:14px 0 8px">Avísame con</div>
           <div class="seg">${[30, 15, 7].map(d => `<button aria-pressed="${S.alertDays === d}" data-a="days" data-d="${d}">${d} días</button>`).join("")}</div></div>
       </div>
       <div class="sec-sm">Privacidad</div>
-      <div class="stack"><div class="card"><div class="row"><div><div class="ttl">Usar mis movimientos para ofertas</div><div class="meta">Tu año en Lulo y sugerencias · Ley 1581 de 2012</div></div><button class="switch" role="switch" aria-checked="${S.consent}" aria-label="Usar mis movimientos" data-a="consent"></button></div></div></div>
+      <div class="stack"><div class="card" data-new="control-cliente"><div class="row"><div><div class="ttl">Usar mis movimientos para ofertas</div><div class="meta">Tu año en Lulo y sugerencias · Ley 1581 de 2012</div></div><button class="switch" role="switch" aria-checked="${S.consent}" aria-label="Usar mis movimientos" data-a="consent"></button></div></div></div>
       <div class="sec-sm">Mis productos</div>
       <div class="settings">
         <button class="srow" data-a="go" data-s="cuenta">${I.account}<span>Lulo Cuenta</span>${I.chev}</button>
@@ -381,7 +381,7 @@ export const SCREENS = {
     return `${hdr("Revisa y confirma")}
       <div class="det"><div class="sub" style="margin:0">${{transfer: "Vas a transferir", cajita: "Vas a abonar", cuota: "Vas a pagar", desembolso: "Vas a recibir"}[F.kind]}</div><div class="amt">${money(F.amount)}</div></div>
       <div class="pad"><div class="card" style="padding:4px 16px">${rows.map(([k, v]) => `<div class="kv"><span>${k}</span><span>${esc(v)}</span></div>`).join("")}</div></div>
-      ${F.kind === "desembolso" && !hasRamo(S, "Pago protegido") ? `<div class="pad" style="margin-top:12px"><div class="why">Este crédito todavía no tiene pago protegido.</div></div>` : ""}
+      ${F.kind === "desembolso" && !hasRamo(S, "Pago protegido") ? `<div class="pad" style="margin-top:12px"><div class="why" data-new="pago-protegido">Este crédito todavía no tiene pago protegido.</div></div>` : ""}
       <div class="actions"><button class="btn primary" data-a="confirm">${verb} ${money(F.amount)}</button><button class="btn ghost" data-a="back">Cambiar</button></div>`;
   },
 
@@ -393,7 +393,7 @@ export const SCREENS = {
   success(S) {
     const F = S.flow, R = F.result || {};
     const title = {transfer: `Transferiste ${money(F.amount)}`, cajita: `Abonaste ${money(F.amount)}`, cuota: "Pagaste tu cuota", desembolso: "Tu crédito ya está en tu cuenta"}[F.kind];
-    const sub = {transfer: `A ${esc(F.contact?.name)}. Le llega en segundos.`, cajita: `Tu bolsillo «${esc(F.cajita?.name)}» ya lleva ${money(F.cajita?.saved || 0)}.`,
+    const sub = {transfer: `A ${esc(F.contact?.name)}${(F.contact?.name || "").endsWith(".") ? "" : "."} Le llega en segundos.`, cajita: `Tu bolsillo «${esc(F.cajita?.name)}» ya lleva ${money(F.cajita?.saved || 0)}.`,
       cuota: "Cuota de Lulo Crédito pagada.", desembolso: `${money(F.amount)} a ${F.cuotas} cuotas de ${money(F.cuota)}.`}[F.kind];
     return `<div class="success"><div class="ring">${I.check}</div><h2 class="h-big" style="margin-top:22px">${title}</h2><p class="sub">${sub}</p></div>
       <div class="pad" style="margin-top:18px"><div class="card" style="padding:4px 16px"><div class="kv"><span>Referencia</span><span>${esc(R.ref || "—")}</span></div><div class="kv"><span>Fecha</span><span>${dateLong(S.B.as_of)}</span></div></div></div>
@@ -507,7 +507,7 @@ export const SCREENS = {
         <div class="kv"><span>Descuento por renovar antes</span><span style="color:var(--lime)">${money(-Q.discount)}</span></div>
         <div class="kv"><span style="color:#fff;font-weight:600">Total</span><span style="font-weight:700;font-size:16px">${money(Q.total)}</span></div>
         <div class="kv"><span>Se paga desde</span><span>Lulo Cuenta · ${money(S.balance)}</span></div></div></div>
-      <div class="pad" style="margin-top:12px"><div class="why">${car.source === "externa" ? "Tu SOAT actual es con otra aseguradora: renovarlo aquí es captura de canal. " : ""}El descuento por anticipación es una hipótesis a validar con Jurídico (la tarifa del SOAT es regulada).</div></div>
+      <div class="pad" style="margin-top:12px"><div class="why" data-new="soat-renovar">${car.source === "externa" ? "Tu SOAT actual es con otra aseguradora: renovarlo aquí es captura de canal. " : ""}El descuento por anticipación es una hipótesis a validar con Jurídico (la tarifa del SOAT es regulada).</div></div>
       <div class="actions"><button class="btn primary" data-a="pay" ${S.balance < Q.total ? "disabled" : ""}>Pagar ${money(Q.total)}</button><button class="btn ghost" data-a="postpone">Recuérdamelo después</button></div>`;
   },
 
@@ -529,7 +529,7 @@ export const SCREENS = {
     return `${hdr(dec ? "Recomendado para ti" : esc(P.title))}
       <div class="pad"><div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">${dec ? `<span class="pill new">Sugerencia</span>` : ""}${P.concept ? `<span class="pill hyp">Producto por negociar con la aseguradora</span>` : ""}${P.source === "prototipo" ? `<span class="pill mut">Fuera de la base: parámetros del prototipo</span>` : ""}${has ? `<span class="pill ok">Activo</span>` : ""}</div>
         <h2 class="h-big" style="margin-top:12px">${esc(P.title)}</h2><p class="sub">${P.partner ? `Con ${esc(P.partner)}` : "Aliado por definir"}</p></div>
-      ${why ? `<div class="pad" style="margin-top:16px"><div class="why"><b>Por qué lo ves:</b> ${why}</div>${elig ? mlWhy(C) : ""}</div>` : ""}
+      ${why ? `<div class="pad" style="margin-top:16px"><div class="why" data-new="por-que"><b>Por qué lo ves:</b> ${why}</div>${elig ? mlWhy(C) : ""}</div>` : ""}
       <div class="sec-sm">Qué cubre</div>
       <div class="pad"><ul class="list-check">${(P.covers || []).map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>
       <div class="pad" style="margin-top:18px"><div class="card" style="padding:4px 16px"><div class="kv"><span>Valor</span><span style="font-weight:700">${esc(P.price)}</span></div><div class="kv"><span>Se paga desde</span><span>Lulo Cuenta</span></div>${P.requirement ? `<div class="kv"><span>Requisito</span><span>${esc(P.requirement)}</span></div>` : ""}</div></div>
@@ -537,7 +537,7 @@ export const SCREENS = {
       <div class="actions">
         ${has ? `<button class="btn ghost" data-a="back">Ya lo tienes activo</button>` : `<button class="btn primary" data-a="accept" ${elig ? "" : "disabled"}>Activar seguro</button>
         <button class="btn ghost" data-a="later">Ahora no</button>
-        ${dec ? `<button class="btn text" data-a="optout">No quiero sugerencias de este tipo</button>` : ""}`}
+        ${dec ? `<button class="btn text" data-a="optout" data-new="no-dano">No quiero sugerencias de este tipo</button>` : ""}`}
       </div>`;
   },
 
@@ -552,14 +552,14 @@ export const SCREENS = {
     const up = S.upcoming || [];
     const suggOff = !S.sugg || !S.consent;
     return `<div class="hdr-title">Tu protección</div>
-      <div class="p-hero"><span class="n">${vol.length}</span><p>${vol.length === 1 ? "seguro voluntario activo" : "seguros voluntarios activos"}${prot.length > vol.length ? `, más ${prot.length - vol.length} ${prot.length - vol.length === 1 ? "protección incluida" : "protecciones incluidas"} con tus productos` : ""}.</p></div>
+      <div class="p-hero" data-new="proteccion"><span class="n">${vol.length}</span><p>${vol.length === 1 ? "seguro voluntario activo" : "seguros voluntarios activos"}${prot.length > vol.length ? `, más ${prot.length - vol.length} ${prot.length - vol.length === 1 ? "protección incluida" : "protecciones incluidas"} con tus productos` : ""}.</p></div>
       ${prot.length ? `<div class="sec-sm">Con Lulo</div><div class="stack">${prot.map(p => `<div class="pcard${p.fresh ? " sug" : ""}"><span class="pi">${ramoIcon(p.ramo)}</span><span class="pt"><b>${esc(p.title)}</b><span>${p.partner ? esc(p.partner) + " · " : ""}${esc(p.sub)}${p.voluntary ? "" : " · no es un seguro voluntario"}</span></span></div>`).join("")}</div>` : ""}
       ${soatDue(S) ? `<div class="sec-sm">Por renovar</div><div class="stack"><button class="pcard sug" data-a="go" data-s="renew"><span class="pi">${I.car}</span><span class="pt"><b>SOAT ${esc(S.B.car.plate || "")}</b><span>Vence en ${S.B.car.days} días · ${S.B.car.source === "externa" ? "con otra aseguradora" : "con Lulo"}</span><span class="go">Renovar aquí</span></span></button></div>` : ""}
       ${suggOff ? `<div class="pad" style="margin-top:18px"><div class="why">${!S.consent ? "No autorizaste usar tus movimientos: no te sugerimos seguros. Puedes cambiarlo en Perfil." : "Apagaste las sugerencias de seguros en Perfil."}</div></div>` :
-        ofr.length ? `<div class="sec-sm">Para ti</div><div class="stack">${ofr.map(c => `<button class="pcard sug" data-a="offer" data-r="${c.ramo}"><span class="pi">${ramoIcon(c.ramo)}</span><span class="pt"><b>${esc(c.title)}</b><span>${esc(c.price)}${c.deadline ? " · tiene fecha límite" : ""}</span><span class="why-s">${dec && dec.ramo === c.ramo ? dec.why : esc(c.signal.headline)}</span><span class="go">Ver más</span></span></button>`).join("")}</div>` : ""}
+        ofr.length ? `<div class="sec-sm" data-new="para-ti">Para ti</div><div class="stack">${ofr.map(c => `<button class="pcard sug" data-a="offer" data-r="${c.ramo}"><span class="pi">${ramoIcon(c.ramo)}</span><span class="pt"><b>${esc(c.title)}</b><span>${esc(c.price)}${c.deadline ? " · tiene fecha límite" : ""}</span><span class="why-s">${dec && dec.ramo === c.ramo ? dec.why : esc(c.signal.headline)}</span><span class="go">Ver más</span></span></button>`).join("")}</div>` : ""}
       ${ext.length ? `<div class="sec-sm">Con otra aseguradora</div><div class="stack">${ext.map(e => `<div class="pcard out"><span class="pi">${ramoIcon(e.ramo)}</span><span class="pt"><b>${esc(e.ramo)}</b><span>${e.status === "vigente" ? `Vigente hasta el ${dateShort(e.expires_on)} ${e.expires_on.slice(0, 4)}` : `Venció el ${dateShort(e.expires_on)} ${e.expires_on.slice(0, 4)}`} · ${money(e.amount)}</span></span></div>`).join("")}</div>` : ""}
-      ${up.length ? `<div class="sec-sm">Próximamente</div><div class="stack">${up.map(u => `<div class="pcard"><span class="pi" style="color:var(--pink)">${I.clock}</span><span class="pt"><b>${esc(u.title)}</b><span>${esc(u.reason)}. Te avisamos el ${dateShort(u.date)} ${u.date.slice(0, 4)}.</span></span></div>`).join("")}</div>` : ""}
-      ${no.length && !suggOff ? `<div class="sec-sm">Por qué no te ofrecemos…</div><div class="stack">${no.map(c => `<div class="pcard out"><span class="pi" style="color:var(--mist)">${ramoIcon(c.ramo)}</span><span class="pt"><b>${esc(c.title)} · ${STATUS_TXT[c.status]}</b><span>${esc(c.reason)}</span></span></div>`).join("")}</div>` : ""}
+      ${up.length ? `<div class="sec-sm" data-new="agendados">Próximamente</div><div class="stack">${up.map(u => `<div class="pcard"><span class="pi" style="color:var(--pink)">${I.clock}</span><span class="pt"><b>${esc(u.title)}</b><span>${esc(u.reason)}. Te avisamos el ${dateShort(u.date)} ${u.date.slice(0, 4)}.</span></span></div>`).join("")}</div>` : ""}
+      ${no.length && !suggOff ? `<div class="sec-sm" data-new="por-que-no">Por qué no te ofrecemos…</div><div class="stack">${no.map(c => `<div class="pcard out"><span class="pi" style="color:var(--mist)">${ramoIcon(c.ramo)}</span><span class="pt"><b>${esc(c.title)} · ${STATUS_TXT[c.status]}</b><span>${esc(c.reason)}</span></span></div>`).join("")}</div>` : ""}
       <div style="height:24px"></div>`;
   },
 
@@ -581,7 +581,7 @@ export const SCREENS = {
     };
     const kind = c => c.protect ? "Incluye un momento de protección" : c.ask ? "Incluye una pregunta" : c.id === "cierre" ? "Lo que tienes cubierto" : "Resumen";
     const chs = chapters(S);
-    return `<div class="hdr-title">Tu año en Lulo</div><div class="yr-hero"><div class="k">Tus últimos 12 meses</div><div class="y">${S.B.as_of.slice(0, 4)}</div><p>Lo que viviste con Lulo, contado con tus movimientos.</p><button class="btn" data-a="st-open" data-i="0">Ver mi año</button></div>
+    return `<div class="hdr-title">Tu año en Lulo</div><div class="yr-hero" data-new="anio"><div class="k">Tus últimos 12 meses</div><div class="y">${S.B.as_of.slice(0, 4)}</div><p>Lo que viviste con Lulo, contado con tus movimientos.</p><button class="btn" data-a="st-open" data-i="0">Ver mi año</button></div>
       ${segCard(S)}
       <div class="sec-sm">${chs.length - 1} capítulos</div>
       ${chs.slice(1).map((c, i) => { const [t, cl] = st(c); return `<button class="chap" data-a="st-open" data-i="${i + 1}"><span class="sw" style="${sw[c.theme]}">${i + 1}</span><span class="tx"><b>${c.name}</b><span>${kind(c)}</span></span><span class="st ${cl}">${t}</span></button>`; }).join("")}

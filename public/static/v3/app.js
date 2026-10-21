@@ -1,8 +1,10 @@
-// Orquestador v3: estado, navegación, flujos, llamadas al motor real, panel y demo guiada.
+// Orquestador v3: estado, navegación, flujos, llamadas al motor real, panel, recorrido guiado y demo.
 import { $, $$, addDays, clone, debounce, esc, money, num, nowTime, pct, store, strip, wait } from "./util.js";
 import { I } from "./icons.js";
 import { PLUS_SHEET, ROOTS, SCREENS, cands, chapters, creditCuota, hasRamo, movListHTML, product, quote, skeletonRows } from "./screens.js";
-import { NOW, buildAccs } from "./content.js";
+import { NEW, NEW_LIST, NOW, buildAccs } from "./content.js";
+import { aprendeHTML, decisionHTML, mountAprende, pc as pcp, probSteps } from "./aprende.js";
+import { createTour } from "./tour.js";
 
 const BOOT = JSON.parse($("#bootstrap").textContent);
 const META = BOOT.meta;
@@ -11,6 +13,7 @@ const CACHE = {[`${BOOT.current.client.id}|${BOOT.current.as_of}`]: BOOT.current
 const KEY = "lulo:v3";
 const IMG_LOGO = "/static/img/logo-lulo.png";
 let S;
+let TOUR = null;   // recorrido guiado: se crea al final, antes de boot()
 
 /* =================== API =================== */
 async function call(path, body) {
@@ -30,6 +33,7 @@ const API = {
   upcoming: (id, ctx) => call(`${V3}/clients/${id}/upcoming`, ctx).then(r => r.json()),
   campaign: asOf => call(`${V3}/campaign?as_of=${asOf}`).then(r => r.json()),
   backtest: every => call(`${V3}/backtest?every=${every}`).then(r => r.json()),
+  motor: () => call(`${V3}/motor`).then(r => r.json()),
   csv: log => call("/api/report/csv", log).then(r => r.blob()),
 };
 function apiStatus(state, html) { const el = $("#apiStatus"); if (!el) return; el.className = "api-status " + state; el.querySelector("span").innerHTML = html; }
@@ -129,7 +133,7 @@ function render(anim = "none") {
   if (showTabs) {
     const sugg = Object.values(cands(S)).some(c => c.status === "ofrecer" && !hasRamo(S, c.ramo)) && S.sugg && S.consent;
     tb.innerHTML = TABS.map(([k, l, ic]) => k === "plus" ? `<button class="tab-plus" data-a="plus" aria-label="Acciones de la cuenta">${I.plus}</button>`
-      : `<button class="tab" data-a="tab" data-t="${k}" ${S.screen === k ? 'aria-current="page"' : ""}>${I[ic]}${l}${k === "proteccion" && sugg ? `<i class="dot"></i>` : ""}</button>`).join("");
+      : `<button class="tab" data-a="tab" data-t="${k}" ${S.screen === k ? 'aria-current="page"' : ""}${k === "anio" ? ' data-new="tab-anio"' : k === "proteccion" ? ' data-new="tab-proteccion"' : ""}>${I[ic]}${l}${k === "proteccion" && sugg ? `<i class="dot"></i>` : ""}</button>`).join("");
   }
   S.sessionRows.forEach(m => m.flash = false);
   MOUNT[S.screen]?.();
@@ -137,6 +141,7 @@ function render(anim = "none") {
   const h = S.unlocked && hashFor();
   if (h && location.hash !== h) history.replaceState(history.state, "", h);
   persist();
+  if (TOUR) { TOUR.decorate(); TOUR.tick(); }
 }
 function toast(m) { const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2400); }
 function flashPhone() { const p = $(".phone"); p.classList.remove("flashbox"); void p.offsetWidth; p.classList.add("flashbox"); }
@@ -267,6 +272,7 @@ async function fireNow(type, extra = {}, src) {
 }
 async function handleOutcome(outcome, d, src, message, ev) {
   const title = d ? d.title : "";
+  showDecision(ev || {outcome, message, label: message, decision: null}, src);
   if (outcome === "shown") { show(d, src); await wait(3 * 360 + 400); return; }
   if (outcome === "banner") { runChain(2); setBanner(d, src, ev && ev.channel ? ev.channel.reason : ""); return; }
   runChain(outcome === "noconsent" ? 0 : 1);
@@ -286,7 +292,7 @@ function show(d, src) {
     const n = $("#notif");
     n.innerHTML = `<span class="ic"><img src="${IMG_LOGO}" alt=""></span><span style="flex:1"><span class="t"><span>Lulo Bank</span><span>ahora</span></span><span class="b"><b>${esc(d.notif.t)}</b>${esc(d.notif.b)}</span></span>`;
     n.classList.add("show"); $("#notifX").classList.add("show");
-    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo) hideNotif(); }, 9000);
+    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo && !(TOUR && TOUR.active())) hideNotif(); }, 9000);
     addNotif({t: d.notif.t, b: d.notif.b, go: d.ramo === "SOAT" && ["renovacion", "captura"].includes(d.kind) ? "renew" : `offer:${d.ramo}`, ramo: d.ramo});
     if (["home", "alertas"].includes(S.screen)) render("none");
     addLog(src, d.title, "Mostrada por push", "info", d.ramo);
@@ -319,6 +325,8 @@ async function refreshEval() {
     S.evaluation = ev; S.upcoming = up; if (!S.lastTrace) S.lastTrace = ev;
     if (S.screen === "proteccion" || S.screen === "explora") render("none"); else if (ROOTS.includes(S.screen)) render("none");
     renderMotor(); persist();
+    if (!$("#view-aprende").hidden) renderAprende();
+    if (TOUR) TOUR.tick();
   } catch (e) { console.error(e); }
 }
 async function refreshYear() {
@@ -592,7 +600,7 @@ function candTable(ev) {
   if (!ev || !ev.candidates || !ev.candidates.length) return "";
   const top = ev.decision && ev.decision.ramo;
   const ST = {ofrecer: "ofrecer", has: "ya tiene", weak: "débil", none: "sin señal", ineligible: "no elegible", cooldown: "en espera", external: "externo"};
-  return `<div class="tbl-w"><table class="ctable"><thead><tr><th>Ramo</th><th>Estado</th><th>Fuerza</th><th title="Probabilidad del modelo / tasa base del ramo; 1,00 si el modelo no le gana al azar">Afinidad</th><th>VE</th><th>Por qué</th></tr></thead><tbody>${ev.candidates.map(c => `<tr class="${c.ramo === top ? "win" : ""}"><td><b>${esc(c.ramo)}</b>${c.deadline ? " ⏱" : ""}</td><td><span class="st-k ${c.status}">${ST[c.status]}</span></td><td>${c.strength}</td><td class="num">${c.ml ? `${c.afinidad.toFixed(2).replace(".", ",")}${c.ml.usable ? "" : " <small>regla</small>"}` : "—"}</td><td class="num">${c.ev != null ? money(c.ev) : "—"}</td><td>${esc(c.status === "ofrecer" ? c.signal.headline : c.reason)}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="tbl-w"><table class="ctable"><thead><tr><th>Ramo</th><th>Estado</th><th>Fuerza</th><th title="Probabilidad de aceptar si ve la oferta (motor bayesiano) y su intervalo al 90 %">P(acepta)</th><th title="P × comisión a 12 meses; debajo, el de la regla v1.3">VE</th><th>Por qué</th></tr></thead><tbody>${ev.candidates.map(c => `<tr class="${c.ramo === top ? "win" : ""}"><td><b>${esc(c.ramo)}</b>${c.deadline ? " ⏱" : ""}</td><td><span class="st-k ${c.status}">${ST[c.status]}</span></td><td>${c.strength}${c.momento_dias != null ? `<small class="mom">evento hace ${c.momento_dias} d</small>` : ""}</td><td class="num">${c.prob ? `${pcp(c.prob.p)}<small>${pcp(c.prob.ic90[0], 0)} a ${pcp(c.prob.ic90[1], 0)}</small>` : "—"}</td><td class="num">${c.ev != null ? money(c.ev) : "—"}${c.ev_regla != null && c.ev_regla !== c.ev ? `<small>v1.3 ${money(c.ev_regla)}</small>` : ""}</td><td>${esc(c.status === "ofrecer" ? c.signal.headline : c.reason)}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function signalsHTML(ev) {
   const sig = ev && ev.signals ? Object.values(ev.signals) : [];
@@ -610,7 +618,8 @@ function renderMotor() {
   $("#ctrlBtn").setAttribute("aria-pressed", S.control === true);
   $("#log").innerHTML = L.length ? L.map(l => `<div class="log-row"><time>${l.t}</time><span class="e"><b>${esc(l.offer)}</b><br>${esc(l.ev)} · ${esc(l.res)}</span><span class="tag ${l.tipo}">${LABEL[l.tipo]}</span></div>`).join("") : `<span class="empty">Todavía no hay respuestas. Es el paso que hoy no existe en Lulo Bank.</span>`;
   const ev = S.lastTrace || S.evaluation;
-  $("#trace").innerHTML = gatesHTML(ev) + candTable(ev);
+  const dd = ev && ev.decision;
+  $("#trace").innerHTML = gatesHTML(ev) + (dd && dd.prob ? `<div class="box" style="margin:8px 0"><b>Probabilidad de ${esc(dd.title)}</b>${probSteps(dd.prob)}</div>` : "") + candTable(ev);
   $("#signals").innerHTML = signalsHTML(S.evaluation);
   $("#events").innerHTML = S.B.events.map(e => `<button class="ev" data-ev="${e.type}"><span class="n">${esc(e.label)}</span><span class="h">${e.ramo ? `→ ${esc(e.ramo)}` : e.type === "abono_bolsillo" ? `→ según el bolsillo (${esc(e.pocket_type)})` : "→ ningún ramo"} · ${money(e.amount)}</span></button>`).join("");
   const dl = $("#demoLast"); if (dl) dl.innerHTML = L.length ? `<b>Último registro · ${esc(L[0].client)}</b><br>${esc(L[0].offer)}: ${esc(L[0].res)}` : `<b>Último registro</b><br>Todavía no hay respuestas.`;
@@ -692,7 +701,7 @@ function renderAccs() {
   $("#accs").innerHTML = buildAccs(S, META).map(a => a.g ? `<div class="grp-t">${a.g}</div>` :
     `<details class="acc" id="${a.id}"${(open.size ? open.has(a.id) : a.open) ? " open" : ""}><summary><span class="s-k${a.kp ? " pk" : ""}">${a.k}</span><span class="s-t">${a.t}</span><span class="s-d">${a.d}</span></summary><div class="acc-b">${a.b}</div></details>`).join("");
 }
-function renderAllPanel() { renderClientTab(); renderMotor(); renderAccs(); renderDemo(); if (!$("#view-camp").hidden) renderCampaign(); if (!$("#view-modelos").hidden) renderModels(); }
+function renderAllPanel() { renderClientTab(); renderMotor(); renderAccs(); renderDemo(); if (!$("#view-camp").hidden) renderCampaign(); if (!$("#view-modelos").hidden) renderModels(); if (!$("#view-aprende").hidden) renderAprende(); if (TOUR) TOUR.paint(); }
 function updateNow() {
   const N = NOW[S.screen]; if (!N) return;
   let name = N.n, what = N.what;
@@ -701,6 +710,9 @@ function updateNow() {
   $("#nowName").textContent = name;
   $("#nowWho").textContent = S.B.client.name;
   $("#nowBody").innerHTML = `<span class="idea-tag">${N.tag}</span><div>${what}</div><h5>Qué puedes hacer aquí</h5><ul>${N.how.map(h => `<li>${h}</li>`).join("")}</ul><h5>Qué valida o mide</h5><div>${N.val}</div>`;
+  const keys = newOnScreen();
+  $("#nowNew").innerHTML = keys.length ? `<h5>Lo nuevo en esta pantalla</h5><div class="nn">${keys.map(k => `<button class="nn-c" data-nn="${k}">${esc(NEW[k].t)}</button>`).join("")}</div><p class="nn-d" id="nnD">Toca uno para ubicarlo en el teléfono.</p>`
+    : `<h5>Lo nuevo en esta pantalla</h5><p class="nn-d">Nada: esta pantalla es igual a la app de Lulo.</p>`;
 }
 function setTab(t) {
   $$(".ptabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
@@ -709,7 +721,47 @@ function setTab(t) {
   if (t === "datos") renderData();
   if (t === "modelos") renderModels();
   if (t === "cliente") renderExplorer();
+  if (t === "aprende") renderAprende();
+  if (t === "tour" && TOUR) TOUR.paint();
 }
+
+/* =================== aprendizaje, decisión explicada y lo nuevo =================== */
+let MOTOR = null;
+async function renderAprende() {
+  const box = $("#view-aprende"); if (!box) return;
+  if (!MOTOR) { box.innerHTML = aprendeHTML(null); try { MOTOR = await API.motor(); } catch { box.innerHTML = `<span class="empty">No se pudo cargar el motor.</span>`; return; } }
+  box.innerHTML = aprendeHTML(MOTOR, S.evaluation, S.B.client.name);
+  mountAprende(box, MOTOR, renderAprende);
+}
+function showDecision(ev, src) {
+  const card = $("#decCard"); if (!card) return;
+  card.hidden = false;
+  $("#decBody").innerHTML = decisionHTML(ev, src, r => product(S, r).title);
+  card.classList.remove("flashbox"); void card.offsetWidth; card.classList.add("flashbox");
+}
+const UI = "lulo:ui";
+function setHighlight(on) {
+  document.body.classList.toggle("show-new", on);
+  $("#hlBtn").setAttribute("aria-pressed", on);
+  store.set(`${UI}:resaltar`, on);
+  updateNow();
+}
+function newOnScreen() {
+  return [...new Set($$("#phone [data-new]").filter(e => e.getClientRects().length && getComputedStyle(e).visibility !== "hidden")
+    .map(e => e.dataset.new))].filter(k => NEW[k]);
+}
+function pulseNew(k) {
+  const el = $(`#phone [data-new="${k}"]`); if (!el) return;
+  el.classList.remove("nn-pulse"); void el.offsetWidth; el.classList.add("nn-pulse");
+  const sc = $("#scroll");
+  if (sc.contains(el)) { const r = el.getBoundingClientRect(), b = sc.getBoundingClientRect(); if (r.top < b.top || r.bottom > b.bottom) sc.scrollTo({top: sc.scrollTop + r.top - b.top - 80, behavior: "smooth"}); }
+  const d = $("#nnD"); if (d) d.innerHTML = `<b>${esc(NEW[k].t)}:</b> ${esc(NEW[k].d)}`;
+}
+function openWelcome() {
+  const w = $("#welcome"); w.hidden = false; document.body.classList.add("welcome-open");
+  setTimeout(() => { w.scrollTop = 0; w.querySelector(".w-in").focus({preventScroll: true}); }, 30);
+}
+function closeWelcome() { $("#welcome").hidden = true; document.body.classList.remove("welcome-open"); store.set(`${UI}:bienvenida`, true); }
 $(".ptabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
 $("#openAll").addEventListener("click", () => $$("#accs details").forEach(d => d.open = true));
 $("#closeAll").addEventListener("click", () => $$("#accs details").forEach(d => d.open = false));
@@ -745,7 +797,22 @@ function resetAll() {
   hideNotif(); busy = Promise.resolve(); chainTimer.forEach(clearTimeout);
   loadState(S.B); S.unlocked = true; S.screen = "home"; S.lastTrace = null;
   demoDone.clear(); msg("Dispara un evento o usa la app para ver cómo decide el motor.");
+  $("#decCard").hidden = true;
   render("fade"); renderAllPanel(); toast("Demo reiniciada");
+}
+/** Deja a un cliente como recién abierto en la fecha de corte (lo usa el recorrido guiado). */
+async function freshClient(id) {
+  try { sessionStorage.removeItem(`${KEY}:state:${id}:${META.cutoff}`); } catch { /* sin almacenamiento */ }
+  if (S.cid !== id || S.asOf !== META.cutoff) { await switchClient(id, META.cutoff); await wait(400); }
+  else {
+    Object.keys(MC).forEach(k => delete MC[k]);
+    hideNotif(); busy = Promise.resolve(); chainTimer.forEach(clearTimeout);
+    loadState(S.B); S.lastTrace = null; render("fade"); renderAllPanel();
+  }
+  try { sessionStorage.removeItem(`${KEY}:state:${id}:${META.cutoff}`); } catch { /* sin almacenamiento */ }
+  loadState(S.B); S.lastTrace = null;
+  $("#decCard").hidden = true;
+  unlock();
 }
 $("#resetBtn").addEventListener("click", resetAll); $("#resetBtn2").addEventListener("click", resetAll);
 
@@ -771,6 +838,16 @@ async function switchClient(id, asOf = S.asOf) {
   flashPhone();
 }
 document.addEventListener("click", e => {
+  if (TOUR && TOUR.onClick(e)) return;
+  const w = e.target.closest("[data-w]");
+  if (w) {
+    const a = w.dataset.w; closeWelcome();
+    if (a === "tour") TOUR.start();
+    else if (a === "free") { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
+    else if (a === "motor") { setTab("aprende"); if (mobile()) document.body.classList.add("sheet-open"); else $(".panel").scrollTop = 0; }
+    return;
+  }
+  const nn = e.target.closest("[data-nn]"); if (nn) { pulseNew(nn.dataset.nn); return; }
   const c = e.target.closest("[data-client]");
   if (c) { switchClient(c.dataset.client); closeSheet(); return; }
   const b = e.target.closest("[data-goto]"); if (!b) return;
@@ -800,6 +877,10 @@ const mobile = () => matchMedia("(max-width: 760px)").matches;
 function closeSheet() { document.body.classList.remove("sheet-open"); }
 $("#panelFab").addEventListener("click", () => document.body.classList.toggle("sheet-open"));
 $("#sheetClose").addEventListener("click", closeSheet);
+$("#hlBtn").addEventListener("click", () => setHighlight(!document.body.classList.contains("show-new")));
+$("#welcomeBtn").addEventListener("click", openWelcome);
+$("#welcome").addEventListener("click", e => { if (e.target.id === "welcome") closeWelcome(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#welcome").hidden) closeWelcome(); });
 
 /* =================== demo guiada =================== */
 const waitFor = async (fn, ms = 5000) => { const t0 = Date.now(); while (!fn() && Date.now() - t0 < ms) await wait(60); };
@@ -826,6 +907,19 @@ const DEMO = [
   {k: "Campaña", t: "Plan de los 600 y backtest", d: "Qué se le ofrece a cada cliente hoy y el año recorrido con cero violaciones.", run: async () => { setTab("camp"); await renderCampaign(); await runBacktest(); }},
   {k: "Viaje en el tiempo", t: "+30 días: se abren ventanas de SOAT", d: "Los vencimientos de la base entran en la ventana de 30 días; el comportamiento queda congelado en el corte.", run: async () => { await switchClient("C00210", addDays(META.cutoff, 30)); if (!S.unlocked) unlock(); setTab("cliente"); }},
 ];
+// Escenarios rápidos del recorrido: los mismos pasos de la demo, contados para quien llega por primera vez.
+const SCEN = [
+  {t: "Valentina pide un crédito", d: "Sin pago protegido, el desembolso dispara la oferta en ese instante.", run: DEMO[11].run},
+  {t: "Andrés: el SOAT vence en 9 días", d: "Gana la ventana aunque el seguro de vida valga más: tiene fecha límite.", run: DEMO[10].run},
+  {t: "Grupo de control", d: "El motor detecta y decide, pero no muestra: así se mide el efecto real.", run: DEMO[9].run},
+  {t: "Un cliente de la base: C00002", d: "11 abonos de nómina y crédito activo: desempleo, con su probabilidad.", run: DEMO[13].run},
+  {t: "Viaje en el tiempo: +30 días", d: "Se abren las ventanas de SOAT de los clientes de la base.", run: DEMO[15].run},
+];
+async function runScen(k) {
+  if (mobile()) closeSheet();
+  try { await SCEN[k].run(); } catch (err) { console.error(err); toast("No se pudo ejecutar el escenario"); }
+  renderMotor();
+}
 const demoDone = new Set();
 function renderDemo() {
   $("#demoLead").textContent = `${DEMO.length} pasos para contar la propuesta con el motor real. Cada botón ejecuta el paso en el teléfono; también puedes hacerlo a mano.`;
@@ -836,6 +930,16 @@ $("#demo").addEventListener("click", async e => {
   const i = +b.dataset.demo; b.disabled = true;
   if (mobile()) closeSheet();
   try { await DEMO[i].run(); demoDone.add(i); } catch (err) { console.error(err); toast("No se pudo ejecutar el paso"); } finally { renderDemo(); renderMotor(); }
+});
+
+/* =================== recorrido guiado =================== */
+TOUR = createTour({
+  S: () => S, META, NEW_LIST, SCEN, go, tabTo, gotoTarget, toast,
+  setTab(t) { setTab(t); if (mobile()) document.body.classList.add("sheet-open"); }, openRenew, pay, pickContact, setAmount, confirmFlow,
+  openDecision, acceptOffer, refreshEval, setHighlight, runScen, motor: () => MOTOR,
+  fresh: freshClient, title: r => product(S, r).title,
+  openStory: i => openStory(i),
+  showTour(open) { setTab("tour"); if (mobile()) document.body.classList.toggle("sheet-open", !!open); else $(".panel").scrollTop = 0; if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {}); },
 });
 
 /* =================== inicio =================== */
@@ -852,5 +956,9 @@ async function boot() {
   if (route) gotoTarget(route); else if (S.unlocked) armHistory();
   setTimeout(() => $("#splash").classList.add("hide"), 1000);
   apiStatus("ok", `<b>Motor v3 conectado</b> · reglas ${META.rules_version} · ${META.clients.reto} clientes de la base + ${META.clients.persona} personajes`);
+  $("#wGrid").innerHTML = NEW_LIST.slice(0, 4).map(([k, t, d], i) => `<div class="w-c"><span class="w-n">${i + 1}</span><b>${esc(t)}</b><span>${esc(d)}</span></div>`).join("");
+  if (store.get(`${UI}:resaltar`)) setHighlight(true);
+  if (!store.get(`${UI}:bienvenida`) && !url.searchParams.get("cliente") && !route) openWelcome();
+  TOUR.paint();
 }
 boot();

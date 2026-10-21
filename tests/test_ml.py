@@ -61,7 +61,7 @@ def test_expected_value_uses_affinity():
     r = evaluate("C00002", Context(mode="lote"))
     d = r["decision"]
     assert d["ml"] is not None and d["afinidad"] == d["ml"]["afinidad"]
-    assert r["rules_version"] == rules.VERSION == "v1.3"
+    assert r["rules_version"] == rules.VERSION == "v2.0"
 
 
 def test_no_consent_means_no_model():

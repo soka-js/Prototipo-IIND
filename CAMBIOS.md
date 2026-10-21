@@ -17,6 +17,48 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq → main · aprobación de E10 (reglas v2.0)
+- Qué cambió: SOKA aprobó completa la etapa E10 (motor bayesiano, laboratorio, camino para datos reales y experiencia guiada) y pidió pasarla a `main`. `CLAUDE.md` mueve lo que estaba «pendiente de confirmar» a las decisiones aprobadas (reglas v2.0) y marca E10 como hecha. Sin cambios de código.
+- Por qué: queda registrada la aprobación antes del merge, como pide `CLAUDE.md` (sección 3).
+- Archivos: `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó (sobre 8b221c3, antes del merge):
+  - `python -m pytest` → 93 passed.
+  - `python -m lulo_app.core backtest` → 0 violaciones; máximo de 4 push en 30 días.
+  - `python scripts/train_motor.py --check`, `python scripts/laboratorio.py --check` y `python scripts/train_models.py --check` → coinciden.
+- Consultado con SOKA: sí, el 2026-10-21: «todo aprobado, pásalo a main».
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
+## 2026-10-21 · Claude con SOKA · rama claude/admiring-wozniak-xaengq · commits 527da5e, ac41307 y 3cbeb29 · reglas v2.0
+- Qué cambió:
+  - (0) A pedido de SOKA se creó y se hizo merge del pull request soka-js/Prototipo-IIND#1 (`feat/equipo-modelos-v1.3` → `main`, commit d9c95e6) con 72 passed, backtest con 0 violaciones, `--check` y el Preview de Vercel en `success`.
+  - (1) **Motor bayesiano (reglas v2.0).** El valor esperado pasa a ser P(acepta | ve) × comisión a 12 meses. P sale de una regresión probit bayesiana con actualización en línea (`lulo_app/ml/bayes.py`, `lulo_app/ml/motor.py`). Sus creencias previas vienen de la base: la conversión de cada ramo, con un Beta-Binomial jerárquico con Bayes completo sobre Campanas_Previas; el efecto del momento (el evento pasó hace menos de 30 días), con una serie de casos autocontrolada sobre las 113 compras externas de Pagos_Seguros, jerárquica por ramo y con la exposición medida para no inflar el promedio; y la señal media (× 0,6 con duda). 38 rasgos se descubren de los datos (`lulo_app/ml/rasgos.py`), empiezan con peso 0 y la duda total se reparte entre todos (0,45/√D). El motor aprende el apetito del cliente con las respuestas de la sesión y explora con muestreo de Thompson en el 10 % del tratamiento (buckets 10 a 19; el control no cambia). Las compuertas de v1.3 no cambian. `MOTOR = "regla"` (o `Context.motor`) reproduce v1.3, y cada evaluación dice qué habría elegido la regla.
+  - (2) `scripts/train_motor.py` escribe `lulo_app/ml/motor.json` en Python puro y de forma determinista. Tiene `--check`, `--respuestas` (aprende de respuestas reales y solo promueve con campeón/retador), `--datos`, `--salida`, `--reporte` y `--sin-clientes`.
+  - (3) `scripts/laboratorio.py` escribe `lulo_app/ml/laboratorio.json`: verdad simulada, 4 escenarios y 5 políticas.
+  - (4) Camino para datos reales: `LULO_DATASET` en `core/store.py` y `core/catalog.py`, y `scripts/validar_datos.py`. El catálogo acepta valores mensuales que cambian (promedio ponderado por pólizas) y varias campañas por ramo (columna opcional `ramo`). `train_models.py` lee Seguros_Mensual de `LULO_DATASET`.
+  - (5) CLI `explicar` y `motor`, `campana --motor`, ruta `GET /api/v3/motor` y columnas nuevas en el plan (`p`, `ev_regla`, `ramo_regla`, `policy`).
+  - (6) **Experiencia guiada** en la v3: bienvenida con qué es el prototipo, las cuatro cosas nuevas y tres caminos; recorrido de 11 pasos con Sebastián (`public/static/v3/tour.js`); «Resaltar lo nuevo» (`data-new` en las pantallas) y su lista en «Estás viendo»; «Lo que acaba de decidir el motor» debajo del teléfono; pestañas «Recorrido» y «Aprendizaje» (`public/static/v3/aprende.js`, con gráficos accesibles y tabla equivalente); P(acepta) en la tabla de candidatos. En el celular, el recorrido va como tarjeta dentro del teléfono.
+  - (7) Corrige «Laura M..» (punto doble) en «Por qué lo ves» y en el comprobante.
+  - (8) `docs/MOTOR.md` y `docs/DATOS_REALES.md` nuevos; `README.md` y `CLAUDE.md` (invariante del motor, etapa E10, lo pendiente de aprobar) actualizados.
+- Por qué: SOKA pidió, después de hablar con Lulo, dos cosas. Primero, un motor con lógica real de machine learning o probabilidad que use los datos, funcione igual o mejor con más datos y más tipos de datos, y esté explicado para que el equipo lo estudie y lo justifique. Segundo, un prototipo que se entienda al abrirlo: el contacto de Lulo dijo que no sabía qué hacer ni qué era nuevo.
+- Archivos: `lulo_app/ml/bayes.py`, `lulo_app/ml/rasgos.py`, `lulo_app/ml/motor.py`, `lulo_app/ml/motor.json`, `lulo_app/ml/laboratorio.json`, `lulo_app/core/engine.py`, `lulo_app/core/experiment.py`, `lulo_app/core/rules.py`, `lulo_app/core/__main__.py`, `lulo_app/core/store.py`, `lulo_app/core/catalog.py`, `lulo_app/api_v3.py`, `scripts/train_motor.py`, `scripts/laboratorio.py`, `scripts/validar_datos.py`, `scripts/train_models.py`, `lulo_app/templates/app.html`, `public/static/v3/` (`app.js`, `screens.js`, `content.js`, `app.css`, `tour.js`, `aprende.js`), `tests/test_motor.py`, `tests/test_api_v3.py`, `tests/test_ml.py`, `docs/MOTOR.md`, `docs/DATOS_REALES.md`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 93 passed (21 pruebas nuevas en `tests/test_motor.py`).
+  - `python -m lulo_app.core backtest` → 0 violaciones; máximo de 4 push en 30 días.
+  - `python scripts/train_motor.py --check`, `python scripts/laboratorio.py --check` y `python scripts/train_models.py --check` → coinciden. Dos entrenamientos seguidos dieron el mismo sha256.
+  - Plan de campaña al corte: mismos resultados y canales que v1.3 (219 push, 183 banner, 84 sin autorización, 74 sin oferta, 40 de control). De 442 decisiones, 403 iguales y 39 cambian (9 de clientes que exploran).
+  - El camino de datos reales probado con una copia de la base fuera del repositorio: validar, escribir el manifiesto, entrenar con `--datos` y obtener el mismo embudo y el mismo momento.
+  - Recorrido completo en Playwright, en escritorio (1440×900) y en celular (390×844); también exploración libre, escenarios rápidos, pestañas «Aprendizaje» y «Motor» y `/v2`: sin errores de consola. Sin cambios en `/v2`, en `vercel.json`, en `api/` ni en `requirements*.txt`.
+- Consultado con SOKA: sí. El 2026-10-21 pidió en la conversación implementarlo en una rama aparte, completo y sin consultas intermedias. Queda para su revisión antes de pasar a `main`; en `CLAUDE.md` se lista lo que debe confirmar: valor esperado v2.0, Hogar con la predictiva, traslado del efecto del momento, 10 % de exploración y previas.
+- Cifras nuevas y su origen:
+  - De `scripts/train_motor.py` sobre la base (`motor.json`):
+    - Conversión encogida: SOAT 12,5 %, Vida 9,5 %, Desempleo 8,6 %, Hogar 10,7 % (de 5,2 % a 17,6 %), Mascotas 10,5 % y Viajes 10,2 %. Interés 30,8 %, cierre 33,7 % y alcance del banner 25,4 % (Campanas_Previas).
+    - Momento: 12 compras externas en la ventana frente a 8,1 esperadas; razón de tasas 1,54 (90 %: 0,78 a 2,86). Exposición por ramo de 29 % a 100 %. Sensibilidad: 7 días 0,60; 60 días 2,18 (Pagos_Seguros, Movimientos y Cajitas).
+    - Chequeo previo: P(acepta) sorteada de 0,7 % a 31,6 %.
+  - De `scripts/laboratorio.py` (verdad simulada, no son métricas de Lulo): +10,1 % con señal, −1,1 % si la regla tenía razón, +10,4 % con ruido y +10,6 % con la hipótesis equivocada.
+  - Supuestos nuevos para validar con Lulo: el traslado del efecto del momento a ofertas, las previas, el 10 % de exploración y la ventana de 30 días (la base sugiere que el efecto está entre 30 y 60 días).
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-20 · Claude con SOKA · rama feat/equipo-modelos-v1.3 → main · sobre 4b0fc9e
 - Qué cambió: (1) Se integró a `main` el aporte de Julián (v1.2) y Tomás (v1.3). Llegó como zip sin historial de git y entró tal cual en el commit 4b0fc9e. (2) M1 ya no usa «visitas a Seguros» en ningún ramo (`CONSEQUENCE_FEATURES` en `scripts/train_models.py`), y la evidencia queda en la llave `consecuencia` de `modelos.json`. Los modelos pasan de `ml-1.0` a `ml-1.1`. (3) El optimizador liblinear de M1 ahora usa la semilla 19. (4) `requirements-dev.txt` fija scikit-learn 1.8.0 y numpy 2.4.6. (5) La pestaña «Modelos» lee de `modelos.json` qué se excluye y qué ramos pasan la compuerta, en vez de un texto fijo. (6) Prueba nueva `test_model_never_uses_variables_that_follow_from_holding_insurance`. (7) `docs/MODELOS.md`, `README.md` y `CLAUDE.md` (decisión aprobada y etapa E9).
 - Por qué: al revisar el aporte salió que «visitas a Seguros» es consecuencia de tener una póliza Lulo y no causa, y que era lo único que hacía pasar la compuerta a SOAT, Vida y Desempleo. Con ella, la afinidad subía el valor esperado de quien ya tiene otra póliza Lulo y bajaba el de quien no tiene ninguna, y la app se lo presentaba al cliente como «Clientes como tú». Además, el entrenamiento no era determinista: liblinear usaba el azar global y `--check` dependía de la versión instalada.

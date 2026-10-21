@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from dataclasses import dataclass
 from datetime import date
 from functools import lru_cache
@@ -14,7 +15,9 @@ from pathlib import Path
 
 from .schema import AppUsage, Client, ExternalPolicy, History, LuloPolicy, Movement, PocketDeposit
 
-DATASET = Path(__file__).resolve().parent.parent / "dataset"
+# LULO_DATASET permite correr el motor sobre otra carpeta con el mismo esquema (pruebas internas con datos
+# reales, fuera de este repositorio: docs/DATOS_REALES.md). Por defecto, la base del reto.
+DATASET = Path(os.environ.get("LULO_DATASET") or Path(__file__).resolve().parent.parent / "dataset")
 
 # Los seguros que la base dice que el cliente ya tiene con Lulo no traen vencimiento ni aliado.
 _LULO_TITLE = {"SOAT": "SOAT", "Vida": "Seguro de vida", "Desempleo": "Seguro de desempleo",

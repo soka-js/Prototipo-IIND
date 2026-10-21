@@ -23,6 +23,12 @@
   <div class="top-t">
     <h1>Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank</h1>
     <p><span class="proto-tag">Prototipo académico · datos simulados</span>Reto 19 · Grupo 14 · Julián Ordoñez, Nicolás Ramírez, Sebastián Socarrás y Tomás Carrillo · <a href="/v2">versión anterior</a></p>
+    <div class="top-acts">
+      <button class="tbtn go" data-tour="start">▶ Recorrido guiado · 3 min</button>
+      <button class="tbtn" id="hlBtn" aria-pressed="false">Resaltar lo nuevo</button>
+      <button class="tbtn" id="welcomeBtn">¿Qué es este prototipo?</button>
+      <span class="legend"><i class="lg-same"></i>Igual a la app de Lulo <i class="lg-new"></i>Nuevo en el prototipo</span>
+    </div>
   </div>
   <div class="ideas">
     <button class="idea-chip" data-goto="anio" data-acc="acc-idea1"><b>Pasado</b>Tu año en Lulo</button>
@@ -32,35 +38,46 @@
 </header>
 <div class="page">
   <section class="stage" aria-label="Prototipo móvil">
-    <p class="how">Úsala como la app: transfiere, abona a un bolsillo, pide un crédito o renueva el SOAT. El motor en Python lee lo que haces y decide qué ofrecer, por qué canal y cuándo.</p>
-    <div class="phone">
+    <p class="how" id="how" data-base="Úsala como la app: transfiere, abona a un bolsillo, pide un crédito o renueva el SOAT. El motor lee lo que haces y decide qué ofrecer, por qué canal y cuándo.">Úsala como la app: transfiere, abona a un bolsillo, pide un crédito o renueva el SOAT. El motor lee lo que haces y decide qué ofrecer, por qué canal y cuándo.</p>
+    <div class="phone" data-proto="Prototipo · datos simulados">
       <div class="phone-in" id="phone">
         <div class="status"><span>18:37</span><span class="notch"></span><span class="sig"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:13px"></i><span class="bat">29</span></span></div>
         <div class="scroll" id="scroll"></div>
         <nav class="tabbar" id="tabbar" aria-label="Navegación principal" hidden></nav>
-        <button class="notif" id="notif" aria-live="polite"></button>
+        <button class="notif" id="notif" aria-live="polite" data-new="push"></button>
         <button class="notif-x" id="notifX" aria-label="Descartar notificación">✕</button>
         <div class="toast" id="toast" role="status"></div>
         <div class="splash" id="splash"><img src="/static/img/logo-lulo.png" alt="Lulo Bank"></div>
+        <div class="coach" id="coach" hidden aria-live="polite"></div>
       </div>
     </div>
+    <section class="dec-card" id="decCard" hidden aria-live="polite">
+      <div class="dec-t"><b>Lo que acaba de decidir el motor</b><span><button class="lnk" data-tab-go="motor">Traza completa</button> · <button class="lnk" data-tab-go="aprende">Cómo aprende</button></span></div>
+      <div id="decBody"></div>
+    </section>
     <details class="now" id="nowCard" open>
       <summary><span class="now-k">Estás viendo · <b id="nowWho"></b></span><span class="now-n" id="nowName"></span></summary>
       <div class="now-body" id="nowBody"></div>
+      <div class="now-new" id="nowNew"></div>
     </details>
   </section>
 
   <aside class="panel" aria-label="Panel de la demo">
     <div class="sheet-head"><b>Panel de la demo</b><button class="pbtn sm" id="sheetClose">Cerrar</button></div>
     <div class="ptabs" role="tablist">
+      <button role="tab" data-tab="tour" aria-selected="true">Recorrido</button>
       <button role="tab" data-tab="cliente" aria-selected="false">Cliente</button>
-      <button role="tab" data-tab="motor" aria-selected="true">Motor</button>
+      <button role="tab" data-tab="motor" aria-selected="false">Motor</button>
+      <button role="tab" data-tab="aprende" aria-selected="false">Aprendizaje</button>
       <button role="tab" data-tab="camp" aria-selected="false">Campaña</button>
       <button role="tab" data-tab="modelos" aria-selected="false">Modelos</button>
       <button role="tab" data-tab="datos" aria-selected="false">Datos</button>
       <button role="tab" data-tab="demo" aria-selected="false">Demo</button>
       <button role="tab" data-tab="func" aria-selected="false">Propuesta</button>
     </div>
+
+    <!-- ============ RECORRIDO ============ -->
+    <div class="pview" id="view-tour"></div>
 
     <!-- ============ CLIENTE ============ -->
     <div class="pview" id="view-cliente" hidden>
@@ -82,7 +99,7 @@
     </div>
 
     <!-- ============ MOTOR ============ -->
-    <div class="pview" id="view-motor">
+    <div class="pview" id="view-motor" hidden>
       <div>
         <h3>Motor de disparadores</h3>
         <p class="lead">Cada evento, venga del panel o de la app, recorre las compuertas del motor real y termina en el teléfono como push, banner o nada.</p>
@@ -110,6 +127,9 @@
       <div class="ctrls"><button class="pbtn" id="resetBtn">Reiniciar demo</button></div>
     </div>
 
+    <!-- ============ APRENDIZAJE ============ -->
+    <div class="pview" id="view-aprende" hidden></div>
+
     <!-- ============ CAMPAÑA ============ -->
     <div class="pview" id="view-camp" hidden>
       <div><div class="row-h"><h3>Plan de campaña</h3><button class="pbtn sm" id="campBtn">Recalcular</button></div>
@@ -122,7 +142,7 @@
 
     <!-- ============ MODELOS ============ -->
     <div class="pview" id="view-modelos" hidden>
-      <div><h3>Modelos entrenados con la base</h3><p class="lead">Seis modelos y pruebas sobre los 600 clientes. Cada uno dice si le gana al azar; solo los que le ganan entran a la decisión del motor (reglas v1.2).</p></div>
+      <div><h3>Modelos entrenados con la base</h3><p class="lead">Seis modelos y pruebas sobre los 600 clientes. Cada uno dice si le gana al azar. M1 entra al motor bayesiano como la afinidad, con peso 0 mientras no le gane; el resto describe la base y sirve para planear (la decisión y su aprendizaje están en «Aprendizaje»).</p></div>
       <div id="models" class="pstack"></div>
     </div>
 
@@ -152,6 +172,23 @@
   </aside>
 </div>
 <button class="fab" id="panelFab" aria-label="Abrir el panel de la demo">Panel</button>
+
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wTitle" hidden>
+  <div class="w-in" tabindex="-1">
+    <span class="proto-tag">Prototipo académico · datos simulados · Grupo 14</span>
+    <h2 id="wTitle">Seguros en el momento justo, dentro de la app de Lulo</h2>
+    <p class="w-lead">Es la app de Lulo como la conoces, con cuatro cosas nuevas. Detrás corre un motor que decide qué seguro ofrecer, a quién, cuándo y por qué canal, y que aprende de cada respuesta.</p>
+    <div class="w-grid" id="wGrid"></div>
+    <div class="w-motor"><b>Detrás: un motor que aprende.</b> Calcula la probabilidad de que el cliente acepte con los datos de la base (campañas previas, compras de seguros después de cada evento, sus señales) y la actualiza con cada respuesta. Un grupo de control mide el efecto real.</div>
+    <div class="w-choices">
+      <button class="w-ch main" data-w="tour"><b>▶ Recorrido guiado</b><span>3 minutos con Sebastián: te decimos qué tocar y por qué le sirve a Lulo.</span></button>
+      <button class="w-ch" data-w="free"><b>Explorar por mi cuenta</b><span>Usa la app; lo nuevo queda resaltado en lima.</span></button>
+      <button class="w-ch" data-w="motor"><b>Ver el motor por dentro</b><span>Para el equipo técnico: probabilidades, datos y laboratorio.</span></button>
+    </div>
+    <p class="w-foot"><span class="legend"><i class="lg-same"></i>Igual a la app de Lulo <i class="lg-new"></i>Nuevo en el prototipo</span> La base del reto es 100 % sintética: sus cifras no son métricas de Lulo Bank. Clientes, montos, placas y cuentas son simulados.</p>
+    <button class="w-x" data-w="close" aria-label="Cerrar">✕</button>
+  </div>
+</div>
 
 <script id="bootstrap" type="application/json">{{ bootstrap | safe }}</script>
 <script type="module" src="/static/v3/app.js?v={{ version }}"></script>
