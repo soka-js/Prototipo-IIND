@@ -160,7 +160,7 @@ def cmd_backtest(a) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="python -m lulo_app.core", description="Motor v3 (reglas v2.0) · Reto 19 Lulo Bank")
+    ap = argparse.ArgumentParser(prog="python -m lulo_app.core", description=f"Motor v3 (reglas {rules.VERSION}) · Reto 19 Lulo Bank")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("catalogo").set_defaults(fn=cmd_catalogo)
     sub.add_parser("reglas").set_defaults(fn=cmd_reglas)

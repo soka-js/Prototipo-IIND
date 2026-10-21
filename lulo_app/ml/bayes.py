@@ -385,6 +385,85 @@ class Creencias:
             out[k] = mk + math.sqrt(vk) * r.gauss(0.0, 1.0)
         return out
 
+    def sin(self, x: dict[str, float], k: str) -> tuple[float, float]:
+        """Predictor lineal sin el peso `k`: media m y escala s = √(1 + v) del resto de la oferta."""
+        m, v = self.lineal({j: xj for j, xj in x.items() if j != k})
+        return m, math.sqrt(1 + v)
+
+    def cambiar_previa(self, k: str, sd_vieja: float, sd_nueva: float) -> None:
+        """Cambia la previa N(0, sd_vieja²) de un peso ya actualizado por N(0, sd_nueva²) sin volver a correr las
+        respuestas: con creencias gaussianas, la posterior es previa × datos, así que se divide la previa vieja y
+        se multiplica la nueva en forma natural (precisión y media × precisión), como en propagación de esperanza:
+            λ_datos = 1/v − 1/sd_vieja²,   η = m/v,   v' = 1/(1/sd_nueva² + λ_datos),   m' = η·v'."""
+        if k not in self.medias or sd_vieja <= 0:
+            return
+        m, v = self.medias[k], self.varianzas[k]
+        if sd_nueva <= 0:
+            self.medias[k], self.varianzas[k] = 0.0, 0.0
+            return
+        lam = max(1 / v - 1 / (sd_vieja * sd_vieja), 0.0)
+        v2 = 1 / (1 / (sd_nueva * sd_nueva) + lam)
+        self.medias[k], self.varianzas[k] = m / v * v2, v2
+
+
+class ApetitoEB:
+    """Bayes empírico (tipo II) para τ, la dispersión del apetito por seguros entre clientes.
+
+    Cada cliente tiene un apetito u ~ N(0, τ²) que se suma al predictor de todas sus ofertas. Para cada τ de la
+    rejilla, la verosimilitud marginal de las respuestas de un cliente integra su apetito:
+        L_i(τ) = ∫ Π_j Φ(t_ij·(m_ij + u)/s_ij) · N(u; 0, τ²) du,    t = +1 si aceptó y −1 si no,
+    con m_ij y s_ij el predictor del resto de la oferta cuando se hizo (sin el apetito). La integral va en una
+    rejilla fija de u (paso 0,025 entre −2 y 2): log Φ(·) se acumula por nodo al llegar cada respuesta y estimar
+    τ̂ = argmax Σ_i log L_i(τ) cuesta lo mismo con 100 o con 100.000 respuestas por cliente.
+    Con τ̂ ≈ 0 los clientes no se distinguen y el motor deja de perseguir ruido; con τ̂ grande aprende rápido de
+    cada uno. Referencia: Gelman et al., BDA3, cap. 5 (estimación de hiperparámetros por la marginal)."""
+
+    PASO_U = 0.025
+    U_MAX = 2.0
+    REJILLA = tuple(round(0.02 * k, 2) for k in range(0, 31))   # 0 a 0,60
+
+    def __init__(self) -> None:
+        n = round(self.U_MAX / self.PASO_U)
+        self.us = [i * self.PASO_U for i in range(-n, n + 1)]
+        self.cero = n
+        self.lu: dict[str, list[float]] = {}
+        self.n = 0
+
+    def agregar(self, cid: str, m: float, s: float, y: int) -> None:
+        t = 1.0 if y else -1.0
+        acc = self.lu.setdefault(cid, [0.0] * len(self.us))
+        for i, u in enumerate(self.us):
+            acc[i] += math.log(max(Phi(t * (m + u) / s), 1e-300))
+        self.n += 1
+
+    def curva(self) -> dict[float, float]:
+        """Σ_i log L_i(τ) para cada τ de la rejilla (τ = 0: el apetito vale 0 para todos)."""
+        out = {}
+        for tau in self.REJILLA:
+            if tau == 0:
+                out[tau] = sum(lu[self.cero] for lu in self.lu.values())
+                continue
+            w = [math.exp(-0.5 * (u / tau) ** 2) for u in self.us]
+            tw = sum(w)
+            lw = [math.log(x / tw) if x > 0 else -math.inf for x in w]
+            tot = 0.0
+            for lu in self.lu.values():
+                a = [l + b for l, b in zip(lu, lw)]
+                mx = max(a)
+                tot += mx + math.log(sum(math.exp(x - mx) for x in a))
+            out[tau] = tot
+        return out
+
+    def estimar(self) -> dict:
+        """τ̂ (máximo de la marginal en la rejilla) e intervalo aproximado: los τ a menos de 1,92 de log-verosimilitud
+        del máximo (razón de verosimilitud al 95 %)."""
+        if not self.lu:
+            return {"tau": None, "clientes": 0, "respuestas": 0}
+        c = self.curva()
+        tau = max(c, key=lambda t: (c[t], -t))
+        dentro = [t for t, v in c.items() if v >= c[tau] - 1.92]
+        return {"tau": tau, "ic95": [min(dentro), max(dentro)], "clientes": len(self.lu), "respuestas": self.n}
+
 
 def rng(*parts) -> random.Random:
     """Generador con semilla derivada del texto de `parts` (sha256): la misma decisión, el mismo sorteo."""
