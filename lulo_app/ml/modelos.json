@@ -1,0 +1,1583 @@
+{
+ "version": "ml-1.0",
+ "entrenado_con": {
+  "sha256_base": "5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c",
+  "clientes": 600,
+  "corte": "2026-10-08",
+  "variables": 41,
+  "semilla": 19,
+  "permutaciones": 200
+ },
+ "etiquetas": {
+  "edad": "Rango de edad",
+  "ocup_Empleado": "Ocupación: empleado",
+  "ocup_Independiente": "Ocupación: independiente",
+  "ocup_Estudiante": "Ocupación: estudiante",
+  "ocup_Pensionado": "Ocupación: pensionado",
+  "pro": "Segmento Pro",
+  "antiguedad": "Antigüedad en Lulo",
+  "log_saldo": "Saldo promedio",
+  "log_ingreso": "Ingreso mensual",
+  "credito": "Crédito activo",
+  "cdt": "CDT activo",
+  "cajitas": "Usa bolsillos",
+  "log_movs": "Movimientos en el año",
+  "n_Peajes": "Pasos por peaje",
+  "n_Mascotas": "Compras en mascotas",
+  "n_Aerolineas": "Compras en aerolineas",
+  "n_Hoteles": "Compras en hoteles",
+  "n_Transferencia fija tercero": "Transferencias fijas a un tercero",
+  "n_Salud": "Compras en salud",
+  "n_E-commerce": "Compras en e-commerce",
+  "n_Restaurantes": "Compras en restaurantes",
+  "n_Transporte": "Compras en transporte",
+  "n_Supermercados": "Compras en supermercados",
+  "n_Servicios": "Compras en servicios",
+  "racha_ingreso": "Meses seguidos con nómina",
+  "meses_ingreso": "Meses con nómina",
+  "meses_fija": "Meses con transferencia fija",
+  "ratio_consumo": "Gasto frente a ingreso",
+  "log_gasto_mes": "Gasto mensual",
+  "abonos_Viajes": "Abonos al bolsillo viajes",
+  "abonos_Mascotas": "Abonos al bolsillo mascotas",
+  "abonos_Vivienda": "Abonos al bolsillo vivienda",
+  "abonos_Emergencias": "Abonos al bolsillo emergencias",
+  "abonos_Otras": "Abonos al bolsillo otras",
+  "canal_PSE": "Uso de PSE",
+  "canal_QR": "Uso de QR",
+  "canal_Tarjeta débito": "Uso de Tarjeta débito",
+  "canal_Transferencia": "Uso de Transferencia",
+  "sesiones": "Sesiones en la app",
+  "visitas_seguros": "Visitas a Seguros",
+  "tasa_apertura": "Abre notificaciones"
+ },
+ "objetivo": "Tenencia del ramo: con Lulo (Clientes.seguros_vigentes) o pagado a otra aseguradora (Pagos_Seguros)",
+ "regla_de_uso": {
+  "p_max": 0.05,
+  "auc_min": 0.55,
+  "afinidad_min": 0.5,
+  "afinidad_max": 2.0
+ },
+ "propension": {
+  "SOAT": {
+   "positivos": 170,
+   "tasa_base": 0.2833,
+   "C": 0.05,
+   "auc_cv": 0.629,
+   "auc_sd": 0.049,
+   "auc_oof": 0.623,
+   "p_permutacion": 0.005,
+   "auc_por_conjunto": {
+    "perfil": 0.496,
+    "comportamiento": 0.625,
+    "todas": 0.624
+   },
+   "auc_gbm": 0.604,
+   "lift_decil_superior": 1.41,
+   "usable": true,
+   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "excluidas_por_regla": [
+    "n_Peajes"
+   ],
+   "media": {
+    "visitas_seguros": 1.765
+   },
+   "escala": {
+    "visitas_seguros": 1.69699
+   },
+   "intercepto": -0.96424,
+   "coeficientes": {
+    "visitas_seguros": 0.43602
+   },
+   "estabilidad": {
+    "pro": 0.3,
+    "log_saldo": 0.35,
+    "cdt": 0.3,
+    "cajitas": 0.31,
+    "log_movs": 0.46,
+    "n_Mascotas": 0.62,
+    "n_Salud": 0.77,
+    "abonos_Viajes": 0.35,
+    "visitas_seguros": 0.99
+   }
+  },
+  "Vida": {
+   "positivos": 93,
+   "tasa_base": 0.155,
+   "C": 0.1,
+   "auc_cv": 0.589,
+   "auc_sd": 0.072,
+   "auc_oof": 0.573,
+   "p_permutacion": 0.0398,
+   "auc_por_conjunto": {
+    "perfil": 0.477,
+    "comportamiento": 0.597,
+    "todas": 0.593
+   },
+   "auc_gbm": 0.543,
+   "lift_decil_superior": 1.72,
+   "usable": true,
+   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "excluidas_por_regla": [
+    "meses_fija",
+    "racha_ingreso",
+    "meses_ingreso"
+   ],
+   "media": {
+    "abonos_Viajes": 0.215622,
+    "visitas_seguros": 1.765
+   },
+   "escala": {
+    "abonos_Viajes": 0.552014,
+    "visitas_seguros": 1.69699
+   },
+   "intercepto": -1.79413,
+   "coeficientes": {
+    "abonos_Viajes": -0.36092,
+    "visitas_seguros": 0.40624
+   },
+   "estabilidad": {
+    "edad": 0.33,
+    "ocup_Empleado": 0.31,
+    "pro": 0.48,
+    "antiguedad": 0.48,
+    "cdt": 0.31,
+    "n_Mascotas": 0.75,
+    "n_Hoteles": 0.49,
+    "n_Salud": 0.7,
+    "n_Restaurantes": 0.3,
+    "n_Supermercados": 0.47,
+    "abonos_Viajes": 0.89,
+    "abonos_Mascotas": 0.6,
+    "abonos_Otras": 0.42,
+    "canal_PSE": 0.52,
+    "canal_Transferencia": 0.5,
+    "sesiones": 0.62,
+    "visitas_seguros": 0.99
+   }
+  },
+  "Desempleo": {
+   "positivos": 39,
+   "tasa_base": 0.065,
+   "C": 0.1,
+   "auc_cv": 0.638,
+   "auc_sd": 0.08,
+   "auc_oof": 0.623,
+   "p_permutacion": 0.0299,
+   "auc_por_conjunto": {
+    "perfil": 0.602,
+    "comportamiento": 0.62,
+    "todas": 0.651
+   },
+   "auc_gbm": 0.585,
+   "lift_decil_superior": 0.77,
+   "usable": true,
+   "motivo": "Le gana al azar: se usa para ajustar el valor esperado",
+   "excluidas_por_regla": [
+    "racha_ingreso",
+    "meses_ingreso"
+   ],
+   "media": {
+    "credito": 0.35,
+    "visitas_seguros": 1.765
+   },
+   "escala": {
+    "credito": 0.47697,
+    "visitas_seguros": 1.69699
+   },
+   "intercepto": -2.86221,
+   "coeficientes": {
+    "credito": 0.4829,
+    "visitas_seguros": 0.47703
+   },
+   "estabilidad": {
+    "pro": 0.4,
+    "credito": 0.89,
+    "cajitas": 0.4,
+    "n_Hoteles": 0.36,
+    "n_Salud": 0.53,
+    "n_E-commerce": 0.66,
+    "n_Supermercados": 0.43,
+    "n_Servicios": 0.33,
+    "ratio_consumo": 0.33,
+    "canal_QR": 0.39,
+    "visitas_seguros": 0.91
+   }
+  },
+  "Hogar": {
+   "positivos": 66,
+   "tasa_base": 0.11,
+   "C": 0.05,
+   "auc_cv": 0.5,
+   "auc_sd": 0.0,
+   "auc_oof": 0.493,
+   "p_permutacion": 0.8109,
+   "auc_por_conjunto": {
+    "perfil": 0.5,
+    "comportamiento": 0.5,
+    "todas": 0.5
+   },
+   "auc_gbm": 0.488,
+   "lift_decil_superior": 0.61,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.50, p = 0.81): el motor sigue con la regla",
+   "excluidas_por_regla": [
+    "abonos_Vivienda"
+   ],
+   "media": {},
+   "escala": {},
+   "intercepto": -2.09074,
+   "coeficientes": {},
+   "estabilidad": {}
+  },
+  "Mascotas": {
+   "positivos": 38,
+   "tasa_base": 0.0633,
+   "C": 0.05,
+   "auc_cv": 0.5,
+   "auc_sd": 0.0,
+   "auc_oof": 0.483,
+   "p_permutacion": 0.9751,
+   "auc_por_conjunto": {
+    "perfil": 0.5,
+    "comportamiento": 0.5,
+    "todas": 0.5
+   },
+   "auc_gbm": 0.421,
+   "lift_decil_superior": 0.26,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.50, p = 0.98): el motor sigue con la regla",
+   "excluidas_por_regla": [
+    "n_Mascotas",
+    "abonos_Mascotas"
+   ],
+   "media": {},
+   "escala": {},
+   "intercepto": -2.69392,
+   "coeficientes": {},
+   "estabilidad": {}
+  },
+  "Viajes": {
+   "positivos": 18,
+   "tasa_base": 0.03,
+   "C": 0.5,
+   "auc_cv": 0.509,
+   "auc_sd": 0.133,
+   "auc_oof": 0.544,
+   "p_permutacion": 0.3433,
+   "auc_por_conjunto": {
+    "perfil": 0.503,
+    "comportamiento": 0.506,
+    "todas": 0.52
+   },
+   "auc_gbm": 0.47,
+   "lift_decil_superior": 1.11,
+   "usable": false,
+   "motivo": "No le gana al azar (AUC 0.51, p = 0.34): el motor sigue con la regla",
+   "excluidas_por_regla": [
+    "n_Aerolineas",
+    "n_Hoteles",
+    "abonos_Viajes"
+   ],
+   "media": {
+    "pro": 0.26,
+    "antiguedad": 30.47,
+    "n_Peajes": 0.701334,
+    "n_E-commerce": 1.175958,
+    "visitas_seguros": 1.765
+   },
+   "escala": {
+    "pro": 0.438634,
+    "antiguedad": 17.317306,
+    "n_Peajes": 0.514443,
+    "n_E-commerce": 0.504782,
+    "visitas_seguros": 1.69699
+   },
+   "intercepto": -3.87471,
+   "coeficientes": {
+    "pro": 0.42821,
+    "antiguedad": -0.56382,
+    "n_Peajes": -0.47022,
+    "n_E-commerce": 0.16485,
+    "visitas_seguros": 0.51223
+   },
+   "estabilidad": {
+    "edad": 0.55,
+    "ocup_Empleado": 0.52,
+    "ocup_Independiente": 0.34,
+    "ocup_Estudiante": 0.35,
+    "ocup_Pensionado": 0.64,
+    "pro": 0.83,
+    "antiguedad": 0.94,
+    "log_saldo": 0.77,
+    "log_ingreso": 0.5,
+    "credito": 0.75,
+    "cdt": 0.73,
+    "cajitas": 0.44,
+    "n_Peajes": 0.85,
+    "n_Mascotas": 0.58,
+    "n_Salud": 0.71,
+    "n_E-commerce": 0.88,
+    "n_Restaurantes": 0.65,
+    "n_Transporte": 0.56,
+    "n_Supermercados": 0.65,
+    "n_Servicios": 0.45,
+    "meses_fija": 0.74,
+    "ratio_consumo": 0.52,
+    "abonos_Mascotas": 0.75,
+    "abonos_Vivienda": 0.78,
+    "abonos_Emergencias": 0.48,
+    "abonos_Otras": 0.36,
+    "canal_PSE": 0.54,
+    "canal_QR": 0.35,
+    "canal_Transferencia": 0.33,
+    "sesiones": 0.54,
+    "visitas_seguros": 0.98,
+    "tasa_apertura": 0.54
+   }
+  }
+ },
+ "segmentos": {
+  "variables": [
+   "n_Peajes",
+   "n_Mascotas",
+   "n_Aerolineas",
+   "n_Hoteles",
+   "meses_fija",
+   "racha_ingreso",
+   "ratio_consumo",
+   "log_gasto_mes",
+   "abonos_Viajes",
+   "abonos_Mascotas",
+   "abonos_Vivienda",
+   "abonos_Emergencias",
+   "sesiones",
+   "visitas_seguros",
+   "credito",
+   "pro"
+  ],
+  "media": [
+   0.701334,
+   0.384989,
+   0.364476,
+   0.307452,
+   1.64,
+   7.113333,
+   0.146132,
+   13.361762,
+   0.215622,
+   0.144916,
+   0.201487,
+   0.309148,
+   14.555,
+   1.765,
+   0.35,
+   0.26
+  ],
+  "escala": [
+   0.514443,
+   0.449188,
+   0.429293,
+   0.401504,
+   2.649604,
+   5.258056,
+   0.05205,
+   0.639549,
+   0.552014,
+   0.481573,
+   0.538871,
+   0.64673,
+   7.88714,
+   1.69699,
+   0.47697,
+   0.438634
+  ],
+  "k": 3,
+  "silueta": {
+   "3": 0.109,
+   "4": 0.1,
+   "5": 0.107,
+   "6": 0.107,
+   "7": 0.103
+  },
+  "segmentos": [
+   {
+    "id": 2,
+    "nombre": "Gasto contenido",
+    "rasgos": [
+     "Gasta poco frente a su ingreso",
+     "Gasto mensual bajo",
+     "Casi no compra vuelos"
+    ],
+    "clientes": 316,
+    "centro": [
+     -0.12004,
+     -0.19682,
+     -0.35627,
+     -0.16603,
+     -0.35501,
+     0.03743,
+     -0.60534,
+     -0.51388,
+     0.13498,
+     -0.30092,
+     -0.18153,
+     0.19626,
+     -0.14901,
+     0.10118,
+     -0.07033,
+     -0.14545
+    ],
+    "tenencia": {
+     "SOAT": 0.323,
+     "Vida": 0.161,
+     "Desempleo": 0.079,
+     "Hogar": 0.101,
+     "Mascotas": 0.063,
+     "Viajes": 0.032
+    },
+    "lift": {
+     "SOAT": 1.14,
+     "Vida": 1.04,
+     "Desempleo": 1.22,
+     "Hogar": 0.92,
+     "Mascotas": 1.0,
+     "Viajes": 1.05
+    },
+    "ramo_afin": "Desempleo"
+   },
+   {
+    "id": 0,
+    "nombre": "Gasta lo que entra",
+    "rasgos": [
+     "Gasta buena parte de su ingreso",
+     "Gasto mensual alto",
+     "Compra vuelos y hoteles"
+    ],
+    "clientes": 233,
+    "centro": [
+     0.15602,
+     0.26846,
+     0.47551,
+     0.24767,
+     0.45659,
+     -0.05992,
+     0.82952,
+     0.72549,
+     -0.09756,
+     -0.30092,
+     0.32804,
+     -0.16154,
+     0.17505,
+     -0.15742,
+     0.10303,
+     0.18023
+    ],
+    "tenencia": {
+     "SOAT": 0.24,
+     "Vida": 0.129,
+     "Desempleo": 0.039,
+     "Hogar": 0.112,
+     "Mascotas": 0.073,
+     "Viajes": 0.026
+    },
+    "lift": {
+     "SOAT": 0.85,
+     "Vida": 0.83,
+     "Desempleo": 0.59,
+     "Hogar": 1.01,
+     "Mascotas": 1.15,
+     "Viajes": 0.86
+    },
+    "ramo_afin": "Mascotas"
+   },
+   {
+    "id": 1,
+    "nombre": "Con mascota",
+    "rasgos": [
+     "Ahorra para su mascota",
+     "No ahorra para emergencias"
+    ],
+    "clientes": 51,
+    "centro": [
+     0.03097,
+     -0.00701,
+     0.03507,
+     -0.10279,
+     0.11367,
+     0.04184,
+     -0.03904,
+     -0.13043,
+     -0.39061,
+     3.23934,
+     -0.37391,
+     -0.47802,
+     0.12354,
+     0.09226,
+     -0.03494,
+     0.07778
+    ],
+    "tenencia": {
+     "SOAT": 0.235,
+     "Vida": 0.235,
+     "Desempleo": 0.098,
+     "Hogar": 0.157,
+     "Mascotas": 0.02,
+     "Viajes": 0.039
+    },
+    "lift": {
+     "SOAT": 0.83,
+     "Vida": 1.52,
+     "Desempleo": 1.51,
+     "Hogar": 1.43,
+     "Mascotas": 0.31,
+     "Viajes": 1.31
+    },
+    "ramo_afin": "Vida"
+   }
+  ]
+ },
+ "respuesta_push": {
+  "alfa": 33.42,
+  "beta": 66.34,
+  "rho": 0.00992,
+  "heterogeneo": false,
+  "media_previa": 0.335,
+  "tasa_agregada": 0.3347,
+  "clientes_con_envios": 439,
+  "umbral_push": 0.2,
+  "bajo_umbral": 0,
+  "percentiles": {
+   "10": 0.325,
+   "25": 0.332,
+   "50": 0.335,
+   "75": 0.338,
+   "90": 0.345
+  }
+ },
+ "demanda": {
+  "SOAT": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 237
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 221
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 226
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 219
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 206
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 250
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 231
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 240
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 279
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 228
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 219
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 261
+    }
+   ],
+   "pendiente_mes": 2.25,
+   "pendiente_significativa": false,
+   "promedio": 234.8,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 249,
+     "bajo": 218,
+     "alto": 281
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 252,
+     "bajo": 219,
+     "alto": 284
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 254,
+     "bajo": 220,
+     "alto": 288
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 97
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 103
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 47
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 81
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 86
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 67
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 44
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 55
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 98
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 73
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 74
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 124
+     }
+    ],
+    "pendiente_mes": 0.65,
+    "pendiente_significativa": false,
+    "promedio": 79.1,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 83,
+      "bajo": 43,
+      "alto": 124
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 84,
+      "bajo": 42,
+      "alto": 126
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 85,
+      "bajo": 41,
+      "alto": 128
+     }
+    ],
+    "tasa_sobre_emitidas": 0.337
+   }
+  },
+  "Vida": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 102
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 139
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 129
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 130
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 117
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 112
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 138
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 161
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 145
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 121
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 143
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 126
+    }
+   ],
+   "pendiente_mes": 1.67,
+   "pendiente_significativa": false,
+   "promedio": 130.2,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 141,
+     "bajo": 116,
+     "alto": 166
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 143,
+     "bajo": 117,
+     "alto": 169
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 144,
+     "bajo": 117,
+     "alto": 172
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 46
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 47
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 38
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 47
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 48
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 35
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 45
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 33
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 40
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 46
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 31
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 42
+     }
+    ],
+    "pendiente_mes": -0.71,
+    "pendiente_significativa": false,
+    "promedio": 41.5,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 37,
+      "bajo": 28,
+      "alto": 46
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 36,
+      "bajo": 27,
+      "alto": 46
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 35,
+      "bajo": 26,
+      "alto": 45
+     }
+    ],
+    "tasa_sobre_emitidas": 0.319
+   }
+  },
+  "Desempleo": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 72
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 76
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 71
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 76
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 78
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 78
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 75
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 82
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 85
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 73
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 84
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 80
+    }
+   ],
+   "pendiente_mes": 0.8,
+   "pendiente_significativa": true,
+   "promedio": 77.5,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 83,
+     "bajo": 77,
+     "alto": 89
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 83,
+     "bajo": 77,
+     "alto": 90
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 84,
+     "bajo": 78,
+     "alto": 91
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 27
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 36
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 33
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 34
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 16
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 21
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 22
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 37
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 27
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 20
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 23
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 14
+     }
+    ],
+    "pendiente_mes": -1.13,
+    "pendiente_significativa": false,
+    "promedio": 25.8,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 19,
+      "bajo": 7,
+      "alto": 30
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 17,
+      "bajo": 6,
+      "alto": 29
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 16,
+      "bajo": 4,
+      "alto": 28
+     }
+    ],
+    "tasa_sobre_emitidas": 0.333
+   }
+  },
+  "Hogar": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 59
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 55
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 53
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 59
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 57
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 58
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 59
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 74
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 66
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 68
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 61
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 62
+    }
+   ],
+   "pendiente_mes": 0.98,
+   "pendiente_significativa": true,
+   "promedio": 60.9,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 67,
+     "bajo": 59,
+     "alto": 75
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 68,
+     "bajo": 60,
+     "alto": 76
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 69,
+     "bajo": 61,
+     "alto": 78
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 17
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 12
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 20
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 21
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 14
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 10
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 19
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 25
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 27
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 21
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 19
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 18
+     }
+    ],
+    "pendiente_mes": 0.53,
+    "pendiente_significativa": false,
+    "promedio": 18.6,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 22,
+      "bajo": 14,
+      "alto": 30
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 23,
+      "bajo": 15,
+      "alto": 31
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 23,
+      "bajo": 15,
+      "alto": 31
+     }
+    ],
+    "tasa_sobre_emitidas": 0.305
+   }
+  },
+  "Mascotas": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 48
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 50
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 53
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 47
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 55
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 52
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 52
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 58
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 61
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 59
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 53
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 60
+    }
+   ],
+   "pendiente_mes": 0.98,
+   "pendiente_significativa": true,
+   "promedio": 54.0,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 60,
+     "bajo": 55,
+     "alto": 65
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 61,
+     "bajo": 56,
+     "alto": 67
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 62,
+     "bajo": 57,
+     "alto": 68
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 12
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 14
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 9
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 18
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 13
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 13
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 23
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 20
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 27
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 16
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 13
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 11
+     }
+    ],
+    "pendiente_mes": 0.37,
+    "pendiente_significativa": false,
+    "promedio": 15.8,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 18,
+      "bajo": 9,
+      "alto": 27
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 19,
+      "bajo": 10,
+      "alto": 27
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 19,
+      "bajo": 10,
+      "alto": 28
+     }
+    ],
+    "tasa_sobre_emitidas": 0.292
+   }
+  },
+  "Viajes": {
+   "historia": [
+    {
+     "mes": "2025-11",
+     "polizas": 38
+    },
+    {
+     "mes": "2025-12",
+     "polizas": 44
+    },
+    {
+     "mes": "2026-01",
+     "polizas": 37
+    },
+    {
+     "mes": "2026-02",
+     "polizas": 39
+    },
+    {
+     "mes": "2026-03",
+     "polizas": 40
+    },
+    {
+     "mes": "2026-04",
+     "polizas": 46
+    },
+    {
+     "mes": "2026-05",
+     "polizas": 37
+    },
+    {
+     "mes": "2026-06",
+     "polizas": 46
+    },
+    {
+     "mes": "2026-07",
+     "polizas": 47
+    },
+    {
+     "mes": "2026-08",
+     "polizas": 39
+    },
+    {
+     "mes": "2026-09",
+     "polizas": 48
+    },
+    {
+     "mes": "2026-10",
+     "polizas": 43
+    }
+   ],
+   "pendiente_mes": 0.54,
+   "pendiente_significativa": false,
+   "promedio": 42.0,
+   "pronostico": [
+    {
+     "mes": "2026-11",
+     "pronostico": 46,
+     "bajo": 39,
+     "alto": 52
+    },
+    {
+     "mes": "2026-12",
+     "pronostico": 46,
+     "bajo": 40,
+     "alto": 52
+    },
+    {
+     "mes": "2027-01",
+     "pronostico": 47,
+     "bajo": 40,
+     "alto": 53
+    }
+   ],
+   "renovaciones": {
+    "historia": [
+     {
+      "mes": "2025-11",
+      "polizas": 0
+     },
+     {
+      "mes": "2025-12",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-01",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-02",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-03",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-04",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-05",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-06",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-07",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-08",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-09",
+      "polizas": 0
+     },
+     {
+      "mes": "2026-10",
+      "polizas": 0
+     }
+    ],
+    "pendiente_mes": 0.0,
+    "pendiente_significativa": false,
+    "promedio": 0.0,
+    "pronostico": [
+     {
+      "mes": "2026-11",
+      "pronostico": 0,
+      "bajo": 0,
+      "alto": 0
+     },
+     {
+      "mes": "2026-12",
+      "pronostico": 0,
+      "bajo": 0,
+      "alto": 0
+     },
+     {
+      "mes": "2027-01",
+      "pronostico": 0,
+      "bajo": 0,
+      "alto": 0
+     }
+    ],
+    "tasa_sobre_emitidas": 0.0
+   }
+  }
+ },
+ "momento": {
+  "pagos_analizados": 76,
+  "pagos_sin_nomina_previa": 37,
+  "ventanas": [
+   {
+    "dias": "0-7",
+    "observados": 17,
+    "esperados": 19.0
+   },
+   {
+    "dias": "8-14",
+    "observados": 19,
+    "esperados": 16.6
+   },
+   {
+    "dias": "15-21",
+    "observados": 10,
+    "esperados": 16.6
+   },
+   {
+    "dias": "22-31",
+    "observados": 30,
+    "esperados": 23.8
+   }
+  ],
+  "chi2": 4.835,
+  "critico_5pct": 7.815,
+  "hay_momento": false,
+  "eventos": {
+   "ventana_dias": 30,
+   "simulaciones": 20000,
+   "por_ramo": {
+    "SOAT": {
+     "evento": "peaje",
+     "pagos": 50,
+     "pagos_sin_evento": 16,
+     "observados": 7,
+     "esperados": 4.3,
+     "razon": 1.63,
+     "p": 0.127
+    },
+    "Vida": {
+     "evento": "transferencia fija a un tercero",
+     "pagos": 27,
+     "pagos_sin_evento": 20,
+     "observados": 4,
+     "esperados": 2.8,
+     "razon": 1.42,
+     "p": 0.294
+    },
+    "Hogar": {
+     "evento": "abono al bolsillo de vivienda",
+     "pagos": 24,
+     "pagos_sin_evento": 23,
+     "observados": 0,
+     "esperados": 0.3,
+     "razon": 0.0,
+     "p": 1.0
+    },
+    "Mascotas": {
+     "evento": "compra en tienda de mascotas o abono al bolsillo de mascotas",
+     "pagos": 12,
+     "pagos_sin_evento": 6,
+     "observados": 1,
+     "esperados": 0.6,
+     "razon": 1.61,
+     "p": 0.497
+    }
+   },
+   "total": {
+    "pagos": 113,
+    "observados": 12,
+    "esperados": 8.1,
+    "razon": 1.49,
+    "p": 0.083
+   },
+   "hay_efecto": false
+  }
+ },
+ "piloto": {
+  "SOAT": {
+   "conversion_base": 0.129,
+   "lift_20": 2871,
+   "lift_50": 510,
+   "lift_100": 147
+  },
+  "Vida": {
+   "conversion_base": 0.0923,
+   "lift_20": 4201,
+   "lift_50": 752,
+   "lift_100": 219
+  },
+  "Desempleo": {
+   "conversion_base": 0.0803,
+   "lift_20": 4900,
+   "lift_50": 879,
+   "lift_100": 257
+  },
+  "Hogar": {
+   "conversion_base": 0.0803,
+   "lift_20": 4900,
+   "lift_50": 879,
+   "lift_100": 257
+  },
+  "Mascotas": {
+   "conversion_base": 0.1058,
+   "lift_20": 3605,
+   "lift_50": 643,
+   "lift_100": 187
+  },
+  "Viajes": {
+   "conversion_base": 0.1017,
+   "lift_20": 3769,
+   "lift_50": 673,
+   "lift_100": 196
+  }
+ }
+}

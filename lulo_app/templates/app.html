@@ -56,6 +56,7 @@
       <button role="tab" data-tab="cliente" aria-selected="false">Cliente</button>
       <button role="tab" data-tab="motor" aria-selected="true">Motor</button>
       <button role="tab" data-tab="camp" aria-selected="false">Campaña</button>
+      <button role="tab" data-tab="modelos" aria-selected="false">Modelos</button>
       <button role="tab" data-tab="datos" aria-selected="false">Datos</button>
       <button role="tab" data-tab="demo" aria-selected="false">Demo</button>
       <button role="tab" data-tab="func" aria-selected="false">Propuesta</button>
@@ -117,6 +118,12 @@
       <div><div class="row-h"><h3>Backtest</h3><button class="pbtn sm lime" id="btBtn">Correr</button></div>
         <p class="lead">Recorre el año con el motor y verifica que ningún cliente pase el tope, que nadie sin autorización reciba ofertas y que el control nunca vea una.</p></div>
       <div id="backtest" class="pstack"><span class="empty">Pulsa «Correr».</span></div>
+    </div>
+
+    <!-- ============ MODELOS ============ -->
+    <div class="pview" id="view-modelos" hidden>
+      <div><h3>Modelos entrenados con la base</h3><p class="lead">Seis modelos y pruebas sobre los 600 clientes. Cada uno dice si le gana al azar; solo los que le ganan entran a la decisión del motor (reglas v1.2).</p></div>
+      <div id="models" class="pstack"></div>
     </div>
 
     <!-- ============ DATOS ============ -->

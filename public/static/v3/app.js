@@ -592,7 +592,7 @@ function candTable(ev) {
   if (!ev || !ev.candidates || !ev.candidates.length) return "";
   const top = ev.decision && ev.decision.ramo;
   const ST = {ofrecer: "ofrecer", has: "ya tiene", weak: "débil", none: "sin señal", ineligible: "no elegible", cooldown: "en espera", external: "externo"};
-  return `<div class="tbl-w"><table class="ctable"><thead><tr><th>Ramo</th><th>Estado</th><th>Fuerza</th><th>VE</th><th>Por qué</th></tr></thead><tbody>${ev.candidates.map(c => `<tr class="${c.ramo === top ? "win" : ""}"><td><b>${esc(c.ramo)}</b>${c.deadline ? " ⏱" : ""}</td><td><span class="st-k ${c.status}">${ST[c.status]}</span></td><td>${c.strength}</td><td class="num">${c.ev != null ? money(c.ev) : "—"}</td><td>${esc(c.status === "ofrecer" ? c.signal.headline : c.reason)}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="tbl-w"><table class="ctable"><thead><tr><th>Ramo</th><th>Estado</th><th>Fuerza</th><th title="Probabilidad del modelo / tasa base del ramo; 1,00 si el modelo no le gana al azar">Afinidad</th><th>VE</th><th>Por qué</th></tr></thead><tbody>${ev.candidates.map(c => `<tr class="${c.ramo === top ? "win" : ""}"><td><b>${esc(c.ramo)}</b>${c.deadline ? " ⏱" : ""}</td><td><span class="st-k ${c.status}">${ST[c.status]}</span></td><td>${c.strength}</td><td class="num">${c.ml ? `${c.afinidad.toFixed(2).replace(".", ",")}${c.ml.usable ? "" : " <small>regla</small>"}` : "—"}</td><td class="num">${c.ev != null ? money(c.ev) : "—"}</td><td>${esc(c.status === "ofrecer" ? c.signal.headline : c.reason)}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function signalsHTML(ev) {
   const sig = ev && ev.signals ? Object.values(ev.signals) : [];
@@ -649,12 +649,43 @@ function renderData() {
   $("#dataRules").innerHTML = `<div class="tbl-w"><table class="tbl"><tbody>${keys.map(k => `<tr><td><code>${k}</code></td><td>${esc(typeof R[k] === "object" ? JSON.stringify(R[k]) : String(R[k]))}</td></tr>`).join("")}</tbody></table></div>
     <div class="box">${Object.entries(R.CHANGELOG).map(([v, t]) => `<b>${v}</b>: ${esc(t)}`).join("<br>")}</div>`;
 }
+/* =================== modelos =================== */
+const pc = x => x == null ? "—" : `${(x * 100).toFixed(1).replace(".", ",")} %`;
+const dec = (x, n = 2) => x == null ? "—" : Number(x).toFixed(n).replace(".", ",");
+function renderModels() {
+  const box = $("#models"); if (!box) return;
+  const M = META.models, P = M.propension, ev = S.evaluation, me = ev && ev.ml;
+  const props = ev && ev.candidates ? Object.fromEntries(ev.candidates.filter(c => c.ml).map(c => [c.ramo, c])) : {};
+  const client = me ? `<div class="box"><b>${esc(S.B.client.name)}</b> · segmento <b>${esc(me.segmento.nombre)}</b> (${esc(me.segmento.rasgos.join(", ").toLowerCase())}) · probabilidad de abrir un push ${pc(me.push.p)}${me.push.supuesto ? " (uso de la app supuesto)" : ""}
+      <div class="tbl-w" style="margin-top:8px"><table class="tbl"><thead><tr><th>Ramo</th><th>Prob.</th><th>Base</th><th>Afinidad</th><th>Qué la empuja</th></tr></thead><tbody>${Object.values(props).map(c => `<tr><td><b>${esc(c.ramo)}</b></td><td class="num">${c.ml.usable ? pc(c.ml.p) : "—"}</td><td class="num">${pc(c.ml.tasa_base)}</td><td class="num">${dec(c.afinidad)}${c.ml.usable ? "" : " <small>regla</small>"}</td><td>${c.ml.usable ? c.ml.drivers.map(d => esc(d.label)).join(", ") || "—" : "—"}</td></tr>`).join("")}</tbody></table></div></div>`
+    : `<div class="box">Este cliente no autorizó el uso de sus datos: el motor no calcula modelos sobre él (Ley 1581).</div>`;
+  const rows = Object.entries(P).map(([k, v]) => `<tr><td><b>${esc(k)}</b>${v.usable ? `<small class="vars">${v.coeficientes.map(c => `${esc(c.label)} ${c.coef > 0 ? "+" : "−"}${dec(Math.abs(c.coef))}`).join(" · ")}</small>` : ""}</td><td class="num">${v.positivos}</td><td class="num">${dec(v.auc_cv)}</td><td class="num">${dec(v.p_permutacion, 3)}</td><td class="num">${dec(v.auc_por_conjunto.perfil)} / ${dec(v.auc_por_conjunto.comportamiento)}</td><td><span class="tag ${v.usable ? "ok" : "no"}">${v.usable ? "ajusta el VE" : "regla"}</span></td></tr>`).join("");
+  const seg = M.segmentos, sil = Math.max(...Object.values(seg.silueta));
+  const segRows = seg.grupos.map(g => `<tr><td><b>${esc(g.nombre)}</b></td><td class="num">${g.clientes}</td><td>${esc(g.rasgos.join(", "))}</td><td>${esc(g.ramo_afin)} (× ${dec(g.lift[g.ramo_afin])})</td></tr>`).join("");
+  const D = M.demanda;
+  const dem = Object.entries(D).map(([k, d]) => { const mx = Math.max(...d.historia.map(h => h.polizas), ...d.pronostico.map(f => f.alto)); return `<div class="dem"><div class="dem-h"><b>${esc(k)}</b><span>${d.pendiente_mes > 0 ? "+" : ""}${dec(d.pendiente_mes, 1)} pólizas/mes ${d.pendiente_significativa ? "· tendencia significativa" : "· sin tendencia clara"}</span></div>
+      <div class="spark">${d.historia.map(h => `<i title="${h.mes}: ${h.polizas}" style="height:${h.polizas / mx * 100}%"></i>`).join("")}${d.pronostico.map(f => `<i class="fc" title="${f.mes}: ${f.pronostico} (${f.bajo} a ${f.alto})" style="height:${f.pronostico / mx * 100}%"></i>`).join("")}</div>
+      <div class="dem-f">${d.pronostico.map(f => `${f.mes.slice(5)}/${f.mes.slice(2, 4)}: <b>${f.pronostico}</b> <small>(${f.bajo} a ${f.alto})</small>`).join(" · ")}</div>${d.renovaciones ? `<div class="dem-f">Renovaciones: ${dec(d.renovaciones.promedio, 1)}/mes (${pc(d.renovaciones.tasa_sobre_emitidas)} de las emitidas)${d.renovaciones.promedio > 0 ? ` · ${d.renovaciones.pronostico[0].mes.slice(5)}/${d.renovaciones.pronostico[0].mes.slice(2, 4)}: <b>${d.renovaciones.pronostico[0].pronostico}</b> <small>(${d.renovaciones.pronostico[0].bajo} a ${d.renovaciones.pronostico[0].alto})</small>` : ""}</div>` : ""}</div>`; }).join("");
+  const T = M.momento, R = M.respuesta_push;
+  box.innerHTML = `<div><h4>Este cliente</h4>${client}</div>
+    <div><h4>M1 · Propensión por ramo</h4><p class="lead" style="margin:-4px 0 8px">${esc(M.objetivo)}. Regresión logística L1, validación cruzada 5×5 y prueba de permutación con ${M.entrenado_con.permutaciones} barajadas. Solo ajusta el valor esperado si p &lt; ${dec(M.regla_de_uso.p_max)} y AUC ≥ ${dec(M.regla_de_uso.auc_min)}; la afinidad se acota entre ${dec(M.regla_de_uso.afinidad_min, 1)} y ${dec(M.regla_de_uso.afinidad_max, 1)}.</p>
+      <div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo y variables</th><th>Tienen</th><th>AUC</th><th>p</th><th>AUC perfil / conducta</th><th>Uso</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="box">El perfil (12 variables: edad, ocupación, ingreso, saldo, crédito…) queda en el azar en SOAT y Vida; en Desempleo aporta por el crédito activo. Lo que más predice es la conducta, sobre todo visitar la sección de Seguros. M1 estima parecido con quien ya tiene el seguro, no respuesta a una oferta. Las variables que la regla del ramo ya usa (por ejemplo, peajes para el SOAT) se excluyen para no contarlas dos veces.</div></div>
+    <div><h4>M2 · Segmentos de comportamiento</h4><p class="lead" style="margin:-4px 0 8px">K-medias sobre ${seg.grupos.length ? "16" : ""} hábitos; k = ${seg.k} por silueta (${dec(sil, 2)}). Una silueta tan baja dice que los clientes no forman grupos marcados: los segmentos sirven para describir y redactar, no para decidir.</p>
+      <div class="tbl-w"><table class="tbl"><thead><tr><th>Segmento</th><th>Clientes</th><th>Rasgos</th><th>Ramo más afín</th></tr></thead><tbody>${segRows}</tbody></table></div></div>
+    <div><h4>M3 · Respuesta al push</h4><div class="box">Beta-binomial con Bayes empírico: α = ${dec(R.alfa, 1)}, β = ${dec(R.beta, 1)}, correlación entre envíos del mismo cliente ρ = ${dec(R.rho, 4)}. Tasa de apertura agregada ${pc(R.tasa_agregada)}; ${R.heterogeneo ? "hay diferencias reales entre clientes." : "<b>no hay diferencias reales entre clientes</b>: lo que parece fatiga individual es ruido de muestras pequeñas."} Ningún cliente queda bajo el umbral de ${pc(R.umbral_push)}, así que hoy el modelo no cambia ningún canal.</div></div>
+    <div><h4>M4 · Demanda por ramo</h4><p class="lead" style="margin:-4px 0 8px">Tendencia lineal de las pólizas emitidas y de las renovaciones (Seguros_Mensual) con intervalo de predicción al 80 %. Barras punteadas: pronóstico; cada ramo tiene su propia escala.</p><div class="dems">${dem}</div></div>
+    <div><h4>M5 · ¿Hay un momento del mes para comprar?</h4><div class="box">${T.pagos_analizados} pagos de seguros con nómina previa, por días desde la nómina: ${T.ventanas.map(w => `${w.dias} días: ${w.observados} (esperados ${dec(w.esperados, 1)})`).join(" · ")}. χ² = ${dec(T.chi2)} frente a ${dec(T.critico_5pct, 2)}: ${T.hay_momento ? "sí hay un momento preferido." : "<b>no hay un momento preferido del mes</b>. El momento de la oferta lo siguen dando los eventos, y se valida con el grupo de control."}</div>${T.eventos ? `<div class="box" style="margin-top:8px"><b>M5b · ¿Se compra después del evento?</b> Pagos de seguros externos en los ${T.eventos.ventana_dias} días siguientes al evento que dispara el ramo, frente a lo esperado si el pago cayera en un día al azar: ${Object.entries(T.eventos.por_ramo).map(([k, v]) => `${esc(k)} (${esc(v.evento)}): ${v.observados} de ${v.pagos}, esperados ${dec(v.esperados, 1)}, p = ${dec(v.p, 3)}`).join(" · ")}. En total ${T.eventos.total.observados} frente a ${dec(T.eventos.total.esperados, 1)} (p = ${dec(T.eventos.total.p, 3)}): ${T.eventos.hay_efecto ? "<b>sí hay más compras después del evento</b>." : "<b>la dirección apoya ofrecer en el evento, pero con estas muestras no es significativo</b>: el efecto se mide en el piloto."}</div>` : ""}</div>
+    <div><h4>M6 · Tamaño del piloto</h4><p class="lead" style="margin:-4px 0 8px">Clientes por grupo para detectar un aumento de la conversión (α = 5 %, potencia 80 %). Con 600 clientes y un control del 10 % no se puede detectar ninguno: el piloto real necesita la base completa del banco.</p>
+      <div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo</th><th>Conversión base</th><th>+20 %</th><th>+50 %</th><th>+100 %</th></tr></thead><tbody>${Object.entries(M.piloto).map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td class="num">${pc(v.conversion_base)}</td><td class="num">${num(v.lift_20)}</td><td class="num">${num(v.lift_50)}</td><td class="num">${num(v.lift_100)}</td></tr>`).join("")}</tbody></table></div></div>
+    <div class="box">Entrenado con la base ${esc(M.entrenado_con.sha256_base.slice(0, 12))}… (${M.entrenado_con.clientes} clientes, corte ${M.entrenado_con.corte}) · ${esc(M.version)} · <code>python scripts/train_models.py</code></div>`;
+}
 function renderAccs() {
   const open = new Set($$("#accs details[open]").map(d => d.id).filter(Boolean));
   $("#accs").innerHTML = buildAccs(S, META).map(a => a.g ? `<div class="grp-t">${a.g}</div>` :
     `<details class="acc" id="${a.id}"${(open.size ? open.has(a.id) : a.open) ? " open" : ""}><summary><span class="s-k${a.kp ? " pk" : ""}">${a.k}</span><span class="s-t">${a.t}</span><span class="s-d">${a.d}</span></summary><div class="acc-b">${a.b}</div></details>`).join("");
 }
-function renderAllPanel() { renderClientTab(); renderMotor(); renderAccs(); renderDemo(); if (!$("#view-camp").hidden) renderCampaign(); }
+function renderAllPanel() { renderClientTab(); renderMotor(); renderAccs(); renderDemo(); if (!$("#view-camp").hidden) renderCampaign(); if (!$("#view-modelos").hidden) renderModels(); }
 function updateNow() {
   const N = NOW[S.screen]; if (!N) return;
   let name = N.n, what = N.what;
@@ -669,6 +700,7 @@ function setTab(t) {
   $$(".pview").forEach(v => v.hidden = v.id !== "view-" + t);
   if (t === "camp" && !CAMP) renderCampaign();
   if (t === "datos") renderData();
+  if (t === "modelos") renderModels();
   if (t === "cliente") renderExplorer();
 }
 $(".ptabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });

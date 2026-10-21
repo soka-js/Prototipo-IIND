@@ -32,7 +32,8 @@ def test_store_loads_base_and_personas():
 def test_catalog_numbers_come_from_the_base():
     p = catalog.products()
     assert p["Vida"].commission_12m == round(28500 * 0.32 * (6 * (1 + 0.91) / 2 + 6 * (0.91 + 0.83) / 2))
-    assert p["SOAT"].commission_12m == round(365000 * 0.085)
+    assert p["SOAT"].commission_12m == round(365000 * 0.085 * (1 - 0.04))     # v1.3: pago único menos cancelación
+    assert p["Viajes"].commission_12m == round(78000 * 0.24 * (1 - 0.03))
     assert p["SOAT"].prior == pytest.approx(178 / 1380, abs=1e-4)          # ventas / impactados, no / elegibles
     assert p["Hogar"].prior == min(p[r].prior for r in ("SOAT", "Vida", "Desempleo", "Mascotas", "Viajes"))
     assert "supuesto" in p["Hogar"].prior_source
@@ -191,3 +192,35 @@ def test_backtest_has_zero_violations():
     r = backtest.run(every=14)
     assert r["violations"] == []
     assert r["max_push_30d"] <= 4 and r["offers"] > 0 and r["control"] > 0
+
+
+def test_capacity_of_payment_uses_income_and_balance():
+    """v1.3: la prima se compara con el ingreso mensual (mensuales) o con el saldo promedio (pago único)."""
+    from dataclasses import replace as dc_replace
+
+    from lulo_app.core import eligibility, features
+
+    s = store()
+    h = s.history("C00002")
+    f = features.compute(h, CUTOFF, s.cutoff)
+    ok = eligibility.check(h.client, catalog.product("Desempleo"), f)
+    cap = next(c for c in ok.checks if c["req"].startswith("Capacidad de pago"))
+    assert cap["ok"] and cap["share"] == round(32900 / h.client.monthly_income, 4)
+    poor = dc_replace(h.client, monthly_income=500_000, avg_balance=100_000)
+    no = eligibility.check(poor, catalog.product("Desempleo"), f)
+    assert not no.ok and any("Capacidad de pago" in r for r in no.reasons)
+    assert not eligibility.check(poor, catalog.product("SOAT"), f).ok
+    assert eligibility.capacity(h.client, catalog.product("Pago protegido"), f) is None
+
+
+def test_capacity_rule_does_not_exclude_anyone_in_this_base():
+    """Con la base del reto la prima más alta es 2,5 % del ingreso más bajo: la regla no cambia decisiones."""
+    from lulo_app.core import eligibility, features
+
+    s = store()
+    for cid in s.ids("reto"):
+        h = s.history(cid)
+        f = features.compute(h, CUTOFF, s.cutoff)
+        for p in catalog.products().values():
+            c = eligibility.capacity(h.client, p, f)
+            assert c is None or c["ok"], (cid, p.ramo)

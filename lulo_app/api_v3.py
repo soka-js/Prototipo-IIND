@@ -13,6 +13,7 @@ from pydantic import BaseModel
 from .core import backtest as bt
 from .core import catalog, engine, rules, view
 from .core.store import store
+from .ml import models as ml
 
 router = APIRouter(prefix="/api/v3", tags=["v3"])
 
@@ -41,7 +42,14 @@ def meta():
             "dataset": {"fuente": m["fuente"], "filas": m["filas"], "chequeos": m["chequeos"], "uso": m["uso"],
                         "restriccion": m["restriccion"]},
             "events": [{"type": k, **{x: v[x] for x in ("label", "ramo") if x in v}} for k, v in engine.EVENT_TYPES.items()],
-            "clients": {"reto": len(s.ids("reto")), "persona": len(s.ids("persona"))}}
+            "clients": {"reto": len(s.ids("reto")), "persona": len(s.ids("persona"))},
+            "models": ml.summary()}
+
+
+@router.get("/models")
+def models():
+    """Modelos entrenados: métricas de validación, uso en el motor y resultados agregados."""
+    return ml.summary()
 
 
 @router.get("/clients")
