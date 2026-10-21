@@ -130,9 +130,9 @@ export function createTour(A) {
   function prev() { if (!active || busy || i <= 0) return; goTo(i - 1); }
   async function doIt() {
     const st = step(); if (!st || !st.auto || busy) return;
-    busy = true;
+    busy = true; paint();
     try { await st.auto(); } catch (e) { console.error(e); A.toast("No se pudo hacer este paso"); }
-    busy = false; tick();
+    busy = false; paint(); tick();
   }
   /** Después de cada render: resalta el objetivo del paso dentro del teléfono. */
   function decorate() {
@@ -162,7 +162,7 @@ export function createTour(A) {
 
   function card(st) {
     const tgt = targetOf(st);
-    return `<div class="tour-card"><div class="tour-top"><span class="tour-k">${esc(st.k)}</span><span class="tour-n">Paso ${i + 1} de ${STEPS.length}</span><button class="g-x g-hide" data-sheet="close" aria-label="Ocultar la explicación">✕</button></div>
+    return `<div class="tour-card" aria-busy="${busy}"><div class="tour-top"><span class="tour-k">${esc(st.k)}</span><span class="tour-n">Paso ${i + 1} de ${STEPS.length}</span><button class="g-x g-hide" data-sheet="close" aria-label="Ocultar la explicación">✕</button></div>
       <div class="tour-prog">${STEPS.map((_, k) => `<i class="${k < i ? "done" : k === i ? "on" : ""}"></i>`).join("")}</div>
       <h3>${esc(st.t)}</h3><div class="tour-d">${st.d()}</div>
       <div class="tour-lulo"><b>Por qué le sirve a Lulo</b>${esc(st.lulo)}</div>
