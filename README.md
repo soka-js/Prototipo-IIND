@@ -2,17 +2,14 @@
 
 **🔗 App en línea: https://prototipo-iind.vercel.app** · versión que vio el cliente: [`/v2`](https://prototipo-iind.vercel.app/v2) y rama `backup-main`
 
-### Versiones en revisión antes de pasar a `main`
-
-Ábranlas lado a lado y comparen cuál les gusta más.
+### Versiones
 
 | Versión | Enlace | Rama |
 |---|---|---|
-| **Producción**: lo que está hoy en `main` | https://prototipo-iind.vercel.app | `main` |
-| **A · Solo la app**: sin panel de explicación; el recorrido (paso a paso o automático) y los escenarios aparecen al lado del teléfono cuando se piden | https://prototipo-iind-git-feat-claude-solo-app-proyects-soka.vercel.app | `feat/claude-solo-app` |
-| **B · App + consola de Lulo**: lo mismo que A, más herramientas para el banco (decisiones en vivo, plan de campaña, tamaño del piloto y clientes de la base) | https://prototipo-iind-git-feat-claude-consola-lulo-proyects-soka.vercel.app | `feat/claude-consola-lulo` |
+| **Producción**: la versión A (solo la app, con el recorrido paso a paso o automático como video), elegida por SOKA el 2026-10-21 | https://prototipo-iind.vercel.app | `main` |
+| **B · App + consola de Lulo** (alternativa que no se eligió): lo mismo que A, más herramientas para el banco (decisiones en vivo, plan de campaña, tamaño del piloto y clientes de la base) | https://prototipo-iind-git-feat-claude-consola-lulo-proyects-soka.vercel.app | `feat/claude-consola-lulo` |
 
-Los enlaces de A y B siempre muestran el último push de su rama. Cuando SOKA apruebe una, pasa a `main` por pull request y esta tabla se actualiza. Si Vercel pide iniciar sesión, la protección de las vistas previas está activa: SOKA puede invitar al equipo al proyecto o apagarla en Vercel (Settings → Deployment Protection).
+La rama B queda como referencia. Si Vercel pide iniciar sesión para verla, la protección de las vistas previas está activa: SOKA puede invitar al equipo al proyecto o apagarla en Vercel (Settings → Deployment Protection).
 
 **Más seguros, mejor ofrecidos, dentro de la app de Lulo Bank.** Prototipo académico con datos simulados: una app con el look de la app real, un **motor bayesiano que decide qué seguro ofrecer y aprende de cada respuesta**, corriendo de verdad sobre la base sintética del reto (600 clientes, 20.473 movimientos) y sobre los tres personajes de la presentación, y un **recorrido guiado** que muestra qué es nuevo frente a la app real.
 

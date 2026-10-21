@@ -17,6 +17,19 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app → main · SOKA elige la versión A (solo la app)
+- Qué cambió:
+  - SOKA comparó las dos alternativas de E11 y eligió A, solo la app con el recorrido automático como video, para pasar a `main`.
+  - `README.md`: la tabla de versiones dice que producción es A. B (`feat/claude-consola-lulo`, app + consola de Lulo) queda como alternativa que no se eligió, con su enlace de vista previa.
+  - `CLAUDE.md`: E11 queda como hecha y en `main`; la consola no se eligió y agregarla después es un cambio grande.
+  - Sin cambios de código.
+- Por qué: SOKA pidió pasar a `main` lo que se venía probando y, preguntado por cuál de las dos, eligió «A · Solo la app».
+- Archivos: `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó: sobre esta rama, `python -m pytest` → 105 passed (incluye las 6 de punta a punta); `train_motor.py --check`, `laboratorio.py --check` y `train_models.py --check` coinciden; backtest con 0 violaciones.
+- Consultado con SOKA: sí, el 2026-10-21: «pasa eso a main», versión A.
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático como video
 - Qué cambió: el recorrido automático es ahora una «película» del prototipo, que se explica solo (`public/static/v3/film.js`). Reemplaza la versión de la entrada anterior (tarjeta que avanzaba sola); el recorrido paso a paso no cambia.
   - **Cursor:** se mueve por la pantalla y hace los clics de verdad en la app, con un efecto de toque: avisos, pago del SOAT, la transferencia a Laura (+, Transferir, contacto, monto, confirmar), la notificación, «Activar», las pestañas y Tu año.
