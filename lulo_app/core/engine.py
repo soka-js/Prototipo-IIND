@@ -235,7 +235,7 @@ def notification(sig: Signal, p: Product) -> dict:
 
 # --------------------------------------------------------------------------- evaluación
 def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, as_of: date,
-               prop: dict | None = None, bay: dict | None = None) -> dict:
+               prop: dict | None = None, bay: dict | None = None, lite: bool = False) -> dict:
     c = h.client
     held = c.holds(sig.ramo) or sig.ramo in ctx.accepted
     ext_vig = [e for e in f.external if e["ramo"] == sig.ramo and e["status"] == "vigente"]
@@ -277,7 +277,8 @@ def _candidate(sig: Signal, p: Product, f: Features, h: History, ctx: Context, a
     return {"ramo": sig.ramo, "title": p.title, "partner": p.partner, "price": p.price_label(), "status": status,
             "reason": reason, "strength": sig.strength, "kind": sig.kind,
             "ev": round(ev) if ev is not None else None, "momento": sig.kind == "momento", "deadline": deadline,
-            "afinidad": aff, "ml": m, "eligibility": el.to_dict(), "signal": sig.to_dict(),
+            "afinidad": aff, "ml": m, "eligibility": {"ok": el.ok} if lite else el.to_dict(),
+            "signal": None if lite else sig.to_dict(),
             "prob": prob, "valor": p.commission_12m, "ev_regla": round(ev_regla) if ev_regla is not None else None,
             "ev_rank": round(ev_rank) if ev_rank is not None else None, "muestra": sample,
             "momento_dias": (bay or {}).get("momento", {}).get(sig.ramo)}
@@ -340,8 +341,11 @@ def _bayes(cid: str, h: History, sigs: dict[str, Signal], mlc: dict, ctx: Contex
 
 
 def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
-             disbursement: int | None = None) -> dict:
-    """Evalúa a un cliente. `focus` restringe la decisión al ramo que alimentó un evento."""
+             disbursement: int | None = None, lite: bool = False) -> dict:
+    """Evalúa a un cliente. `focus` restringe la decisión al ramo que alimentó un evento.
+
+    `lite` (backtest y plan de campaña) toma la misma decisión sin armar la traza: sin variables, señales ni
+    registro, y la elegibilidad de cada candidato queda solo como si pasa o no."""
     ctx = ctx or Context()
     s = store()
     h0 = _history(cid)
@@ -371,7 +375,7 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
     kind = ctx.motor or rules.MOTOR
     bay = _bayes(cid, h, sigs, mlc, ctx, as_of, s.cutoff, exp, kind)
     base["motor"] = bay["info"]
-    cands = [_candidate(sig, product(r), f, h, ctx, as_of, mlc["propension"], bay) for r, sig in sigs.items()]
+    cands = [_candidate(sig, product(r), f, h, ctx, as_of, mlc["propension"], bay, lite) for r, sig in sigs.items()]
     offer = sorted([x for x in cands if x["status"] == "ofrecer"], key=_rank_key)
     pool_r = sorted([x for x in cands if x["status"] == "ofrecer" and (not focus or x["ramo"] == focus)], key=_rank_key_regla)
     base["regla"] = {"version": "v1.3", "ramo": pool_r[0]["ramo"] if pool_r else None}
@@ -388,9 +392,10 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
             outcome, detail = "none", "Ninguna señal fuerte o media es elegible hoy"
         steps.append({"step": "decidir", "ok": False, "detail": detail})
         return {**base, "outcome": outcome, "label": OUTCOME_LABEL[outcome], "chain": 1, "steps": steps,
-                "features": f.to_dict(), "signals": {k: v.to_dict() for k, v in sigs.items()}, "candidates": cands,
+                "features": None if lite else f.to_dict(),
+                "signals": None if lite else {k: v.to_dict() for k, v in sigs.items()}, "candidates": cands,
                 "decision": None, "queue": list(ctx.queue), "experiment": None, "channel": None,
-                "message": detail, "record": _record(base, outcome, focus, None, None, f)}
+                "message": detail, "record": None if lite else _record(base, outcome, focus, None, None, f)}
 
     top = pool[0]
     sig = sigs[top["ramo"]]
@@ -422,12 +427,12 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
 
     if exp["group"] == "control":
         steps.append({"step": "experimento", "ok": False, "detail": f"Grupo de control ({exp['via']})"})
-        return _final(base, "control", steps, f, sigs, cands, decision, ctx, exp, None, top)
+        return _final(base, "control", steps, f, sigs, cands, decision, ctx, exp, None, top, lite)
     steps.append({"step": "experimento", "ok": True, "detail": f"Tratamiento ({exp['via']})"
                   + (" · explora con muestreo de Thompson" if exp.get("policy") == "explorar" and kind == "bayesiano" else "")})
     if not ctx.suggestions:
         steps.append({"step": "preferencias", "ok": False, "detail": "El cliente apagó las sugerencias de seguros"})
-        return _final(base, "optout", steps, f, sigs, cands, decision, ctx, exp, None, top)
+        return _final(base, "optout", steps, f, sigs, cands, decision, ctx, exp, None, top, lite)
 
     pushes = sorted(o.date for o in ctx.history if o.channel == "push" and o.result != "control" and o.date <= as_of)
     valid = contact.usage_snapshot_valid(as_of, s.cutoff)
@@ -443,18 +448,21 @@ def evaluate(cid: str, ctx: Context | None = None, *, focus: str | None = None,
         queue = [q for q in ctx.queue if q.get("ramo") != decision["ramo"]] + [decision]
         queue.sort(key=lambda d: (0 if d.get("deadline") else 1, -(d.get("ev") or 0)))
         steps.append({"step": "ventana", "ok": False, "detail": f"Ventana ocupada por {ctx.window.get('title', 'otra oferta')}"})
-        out = _final(base, "queued", steps, f, sigs, cands, decision, ctx, exp, ch, top)
+        out = _final(base, "queued", steps, f, sigs, cands, decision, ctx, exp, ch, top, lite)
         out["queue"] = queue
         return out
-    return _final(base, "shown" if ch.channel == "push" else "banner", steps, f, sigs, cands, decision, ctx, exp, ch, top)
+    return _final(base, "shown" if ch.channel == "push" else "banner", steps, f, sigs, cands, decision, ctx, exp, ch,
+                  top, lite)
 
 
-def _final(base, outcome, steps, f, sigs, cands, decision, ctx, exp, ch, top) -> dict:
+def _final(base, outcome, steps, f, sigs, cands, decision, ctx, exp, ch, top, lite=False) -> dict:
     return {**base, "outcome": outcome, "label": OUTCOME_LABEL[outcome], "chain": CHAIN.get(outcome, 1),
-            "steps": steps, "features": f.to_dict(), "signals": {k: v.to_dict() for k, v in sigs.items()},
+            "steps": steps, "features": None if lite else f.to_dict(),
+            "signals": None if lite else {k: v.to_dict() for k, v in sigs.items()},
             "candidates": cands, "decision": decision, "queue": list(ctx.queue), "experiment": exp,
             "channel": ch.__dict__ if ch else None, "message": steps[-1]["detail"],
-            "record": _record(base, outcome, top["ramo"], top["strength"], top["ev"], f, exp, ch, top["prob"])}
+            "record": None if lite else _record(base, outcome, top["ramo"], top["strength"], top["ev"], f, exp, ch,
+                                                top["prob"])}
 
 
 def _record(base, outcome, ramo, strength, ev, f, exp=None, ch=None, prob=None) -> dict:
@@ -509,7 +517,7 @@ def campaign(as_of: date | None = None, *, include_personas: bool = False, alert
     ctx = Context(as_of=as_of, mode="lote", alert_days=alert_days, motor=motor)
     rows = []
     for cid in s.ids(None if include_personas else "reto"):
-        r = evaluate(cid, ctx)
+        r = evaluate(cid, ctx, lite=True)
         d = r["decision"] or {}
         rows.append({"client_id": cid, "outcome": r["outcome"], "ramo": d.get("ramo"), "title": d.get("title"),
                      "kind": d.get("kind"), "strength": d.get("strength"), "ev": d.get("ev"),

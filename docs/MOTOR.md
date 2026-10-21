@@ -1,4 +1,4 @@
-# Motor bayesiano de ofertas de seguros · reglas v2.0 · Grupo 14 · Reto 19
+# Motor bayesiano de ofertas de seguros · reglas v2.1 · Grupo 14 · Reto 19
 
 Este documento explica cómo decide y cómo aprende el motor del prototipo, para estudiarlo y defenderlo. Cada cifra sale de `lulo_app/ml/motor.json` (lo escribe `scripts/train_motor.py`) o de `lulo_app/ml/laboratorio.json` (lo escribe `scripts/laboratorio.py`), calculadas sobre la base del reto (`Base_Datos_Reto_Universidad.xlsx`, sha256 `5029790b7a29…`, 600 clientes, corte 2026-10-08). **La base es 100 % sintética y académica: sus cifras no son métricas de Lulo Bank.**
 
@@ -17,7 +17,7 @@ Complementa a [`docs/MODELOS.md`](MODELOS.md) (los modelos M1 a M6) y a [`docs/D
   con P = Φ(base + señal + momento + afinidad + rasgos + cliente), una regresión probit bayesiana.
 - **Qué usa de los datos.** Las 9 tablas de la base: las campañas previas dan la conversión de cada ramo; las compras de seguros a otras aseguradoras dan el efecto del momento; los movimientos, bolsillos, perfil y uso de la app dan las señales, los rasgos y el canal; Seguros_Mensual da el valor; Elegibilidad y Jurídico dan las compuertas.
 - **Por qué mejora con más datos.** (1) Empieza en lo que la base sabe hoy y cada respuesta mueve solo lo que la evidencia muestra. (2) Una variable nueva empieza en «no sé» (peso 0) y no cambia nada hasta que los datos digan que importa; la duda total está fija, así que sumar variables no agrega ruido. (3) Lo aprendido se usa solo si mejora fuera de muestra (campeón contra retador).
-- **Qué muestra el laboratorio** (verdad simulada, no datos de Lulo). Con efectos que la regla no ve, el motor gana **+10 %** de comisión por oferta frente a la regla v1.3 y recorre el **91 %** del camino entre el azar y el oráculo (la regla, 58 %). Si la regla tenía razón, el motor queda a **−1,1 %**. Con 20 variables de ruido, sigue en **+10 %**.
+- **Qué muestra el laboratorio** (verdad simulada, no datos de Lulo). Con efectos que la regla no ve, el motor gana **+10 %** de comisión por oferta frente a la regla v1.3 y recorre el **91 %** del camino entre el azar y el oráculo (la regla, 58 %). Si la regla tenía razón, el motor queda a **−1,0 %**. Con 20 variables de ruido, sigue en **+10 %**. Con una columna nueva que la base no trae y que sí predice, el motor la aprende solo y gana **+0,8 %** frente al mismo motor sin ese dato (el techo posible era 3 %).
 - **Qué no promete.** No dice cuánto venderá Lulo: con esta base el motor sabe poco más que la regla, y lo dice. Lo que sí garantiza es que aprende lo que los datos reales muestren y que cada decisión queda registrada para medirla contra el grupo de control.
 
 ---
@@ -74,7 +74,7 @@ Se integra sobre (μ, κ) en una rejilla de 121 × 121 puntos: es Bayes completo
 | SOAT | 12,9 % | 12,5 % | 11,0 % a 14,0 % |
 | Vida | 9,2 % | 9,5 % | 8,1 % a 11,0 % |
 | Desempleo | 8,0 % | 8,6 % | 7,1 % a 10,4 % |
-| Hogar | sin campaña | 10,7 % | 5,2 % a 17,6 % |
+| Hogar | sin campaña | 10,7 % | 5,1 % a 17,6 % |
 | Mascotas | 10,6 % | 10,5 % | 8,9 % a 12,3 % |
 | Viajes | 10,2 % | 10,2 % | 8,5 % a 12,1 % |
 
@@ -154,7 +154,7 @@ Así el promedio sigue siendo el de la campaña y el momento solo **redistribuye
 | `r|momento` | 1 si el evento pasó hace < 30 días | Φ⁻¹(razón·b) − Φ⁻¹(b), duda de B2 | B2 |
 | `r|afinidad` | desplazamiento probit de M1 | media 0 (M1 no le gana al azar) | M1, `docs/MODELOS.md` |
 | `*|rasgo` y `r|rasgo` | rasgo estandarizado | media 0, duda repartida | B3 |
-| `cliente:c` | 1 | media 0, desviación 0,25 | apetito del cliente |
+| `cliente:c` | 1 | media 0, desviación τ: 0,25 sin respuestas; con respuestas, τ̂ por Bayes empírico (v2.1) | apetito del cliente |
 
 **Aprendizaje.** Cada respuesta (aceptó o no) actualiza las creencias en una sola pasada, con el filtrado de densidad supuesta (ADF) que usa AdPredictor, el modelo de clics de Bing (Graepel et al., 2010):
 
@@ -166,7 +166,7 @@ v_k ← v_k · (1 − x_k² · v_k / s² · ψ(z) · (ψ(z) + z))
 
 Por qué este modelo: (1) la actualización es exacta en forma cerrada y cuesta lo mismo que leer la oferta, así que escala a millones de respuestas; (2) una variable que nunca aparece conserva su creencia previa; (3) la duda de cada peso está a la vista, y es lo que usa la exploración.
 
-**Qué ve el cliente y el panel.** La probabilidad es Φ(Σ x_k m_k), con un intervalo al 90 % que suma la duda de lo que ya tiene evidencia (base, señal, momento, afinidad, lo aprendido de los rasgos y del cliente). Los rasgos que todavía no aprendieron nada se cuentan aparte («38 rasgos esperan respuestas para pesar») para no mostrar un intervalo de 1 % a 60 % que solo diría «no hay respuestas todavía».
+**Qué ve el cliente y el recorrido.** La probabilidad es Φ(Σ x_k m_k), con un intervalo al 90 % que suma la duda de lo que ya tiene evidencia (base, señal, momento, afinidad, lo aprendido de los rasgos y del cliente). Los rasgos que todavía no aprendieron nada se cuentan aparte («38 rasgos esperan respuestas para pesar») para no mostrar un intervalo de 1 % a 60 % que solo diría «no hay respuestas todavía».
 
 ### B5 · Canal: ¿la va a ver?
 
@@ -185,12 +185,13 @@ El mismo de v1.3 (`lulo_app/core/catalog.py`): prima × comisión × meses esper
    - **Exploración (10 %)**, los buckets 10 a 19 del mismo hash: deciden con un sorteo de las creencias (**muestreo de Thompson**; Thompson, 1933; Chapelle y Li, 2011; Russo et al., 2018). El sorteo usa una semilla derivada del cliente y la fecha: la misma situación da la misma decisión.
    - **Explotación (80 %)**: la mejor estimación.
 
-**Lo que dice el laboratorio de explorar.** Con estos clientes, explorar casi no cambia el resultado (−0,5 % en el escenario con señal, +0,1 % en el de hipótesis equivocada): la variedad de clientes ya obliga al motor a probar de todo (Bastani, Bayati y Khosravi, 2021). Se deja el 10 % por dos razones: protege contra creencias previas equivocadas en opciones que el motor casi nunca elegiría, y deja datos con azar conocido para **evaluar políticas nuevas fuera de línea sin probarlas en clientes** (Li et al., 2011). Lulo puede bajarlo con `EXPLORE_PCT`.
+**Lo que dice el laboratorio de explorar.** Con estos clientes, explorar casi no cambia el resultado (−0,3 % en el escenario con señal, −0,2 % en el de hipótesis equivocada): la variedad de clientes ya obliga al motor a probar de todo (Bastani, Bayati y Khosravi, 2021). Se deja el 10 % por dos razones: protege contra creencias previas equivocadas en opciones que el motor casi nunca elegiría, y deja datos con azar conocido para **evaluar políticas nuevas fuera de línea sin probarlas en clientes** (Li et al., 2011). Lulo puede bajarlo con `EXPLORE_PCT`.
 
 ### B8 · Aprendizaje: en la sesión y con la población
 
 - **En la sesión.** El motor no guarda estado: el registro de respuestas viaja en cada llamada. Con él, actualiza solo el apetito del cliente (`cliente:c`); los pesos de la población no se tocan, porque una persona no cambia lo que se sabe de todos. Ejemplo del recorrido: Sebastián renueva el SOAT (aceptó) y su apetito pasa de 0 a +0,06; luego acepta Vida y llega a +0,12, y su probabilidad para el seguro de viaje sube de 9,2 % a 10,3 %. Un rechazo mueve mucho menos: cuando casi todos rechazan, rechazar dice poco.
-- **Con la población.** `python scripts/train_motor.py --respuestas respuestas.csv` actualiza todas las creencias con las respuestas reales en orden cronológico, y **solo las promueve si mejoran**: el retador (previas + el 80 % más antiguo) debe bajar la log-pérdida en el 20 % más reciente frente al campeón (las previas), con un intervalo bootstrap al 95 % que no cruce 0. Si no, `motor.json` se queda con las previas y lo dice en `validacion`. `test_training_with_responses_learns_and_validates` lo prueba con respuestas sembradas.
+- **Cuánto se distinguen los clientes (v2.1).** El apetito de cada cliente es u ~ N(0, τ²). Sin respuestas, τ = 0,25 (hipótesis). Con respuestas, τ se estima con **Bayes empírico**: se elige el τ que maximiza la verosimilitud marginal de las respuestas de cada cliente, L_i(τ) = ∫ Π_j Φ(t_ij·(m_ij + u)/s_ij) · N(u; 0, τ²) du, con m_ij el predictor del resto de la oferta cuando se hizo. La integral va en una rejilla fija de u (paso 0,025), así que estimar τ cuesta lo mismo con 100 o con 100.000 respuestas por cliente (`bayes.ApetitoEB`). Con τ̂ se cambia la previa del apetito de cada cliente sin volver a correr las respuestas (`Creencias.cambiar_previa`: con creencias gaussianas, la posterior es previa × datos). Si τ̂ = 0 se usa un piso de 0,02 (`APETITO_TAU_MIN`) para no perder lo que digan las respuestas siguientes. Sin respuestas no cambia ninguna decisión.
+- **Con la población.** `python scripts/train_motor.py --respuestas respuestas.csv` actualiza todas las creencias con las respuestas reales en orden cronológico, y **solo las promueve si mejoran**: el retador (previas + el 80 % más antiguo) debe bajar la log-pérdida en el 20 % más reciente frente al campeón (las previas), con un intervalo bootstrap al 95 % que no cruce 0. Si no, `motor.json` se queda con las previas y lo dice en `validacion`. El retador ya usa τ̂ de Bayes empírico; si se promueve, `motor.json` guarda τ̂ como la desviación del apetito y su origen. `test_training_with_responses_learns_and_validates` lo prueba con respuestas sembradas. El prototipo descarga las respuestas de una sesión en ese formato («Descargar respuestas (CSV)»).
 
 ---
 
@@ -202,7 +203,7 @@ El mismo de v1.3 (`lulo_app/core/catalog.py`): prima × comisión × meses esper
 2. **Probabilidad.** Base de Vida fuera del momento: **7,5 %**. La transferencia acaba de pasar (momento, × 1,63): **12,3 %**, con 90 % entre 5,2 % y 24,4 %.
 3. **Valor esperado.** 12,3 % × $99.864 de comisión a 12 meses = **$12.305** (la regla v1.3 daba $9.217).
 4. **Canal.** Le quedan contactos (2 de 4 en 30 días), no hay fatiga y su latencia permite disparar al instante: **push**. La abriría con probabilidad 34 %, así que el valor por contacto es $4.208.
-5. **Registro.** Se guarda la decisión con su probabilidad, la versión de reglas (v2.0), la del motor (motor-1.0), el grupo y el canal.
+5. **Registro.** Se guarda la decisión con su probabilidad, la versión de reglas (v2.1), la del motor (motor-1.0), el grupo y el canal.
 
 Antes de la transferencia, el SOAT de Sebastián vence en 27 días y tiene fecha límite: gana la ventana aunque Vida tenga más valor esperado (regla v1.1).
 
@@ -210,35 +211,38 @@ Antes de la transferencia, el SOAT de Sebastián vence en 27 días y tiene fecha
 
 ## 4. ¿Mejora con más datos? El laboratorio
 
-La base no trae respuestas a ofertas, así que no se puede probar con ella que el motor aprende. `scripts/laboratorio.py` **inventa una verdad conocida** sobre los clientes reales de la base (sus señales, su momento y sus rasgos son los de verdad), simula 40 rondas de ofertas a los 442 clientes que tienen una oferta permitida, y compara cinco políticas: la regla v1.3 (no aprende), el motor v2.0 (aprende después de cada ronda), el motor sin explorar, un oráculo que conoce la verdad (el techo) y el azar (el piso). Todas enfrentan la misma suerte (números aleatorios comunes). **No son resultados de Lulo**: muestran que el método aprende.
+La base no trae respuestas a ofertas, así que no se puede probar con ella que el motor aprende. `scripts/laboratorio.py` **inventa una verdad conocida** sobre los clientes reales de la base (sus señales, su momento y sus rasgos son los de verdad), simula 40 rondas de ofertas a los 442 clientes que tienen una oferta permitida, y compara cinco políticas: la regla v1.3 (no aprende), el motor (aprende después de cada ronda y cada 5 rondas reestima τ con Bayes empírico), el motor sin explorar, un oráculo que conoce la verdad (el techo) y el azar (el piso). Todas enfrentan la misma suerte (números aleatorios comunes). **No son resultados de Lulo**: muestran que el método aprende.
 
 Efectos sembrados en la verdad del escenario «con señal» (escala probit): abrir notificaciones +0,12 y sesiones +0,08 en todos los ramos; crédito activo en Desempleo +0,30; abonos al bolsillo de viajes en Viajes +0,30; edad en Vida +0,20; abonos al bolsillo de mascotas en Mascotas +0,25; peajes recientes en SOAT +0,20; saldo en Hogar +0,15; señal media × 0,45 (el motor cree × 0,6); momento × 1,6; apetito de cada cliente con desviación 0,20.
 
 | Escenario | Regla v1.3 | Motor | Motor sin explorar | Oráculo | Azar | Motor frente a regla | Del azar al oráculo |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Con señal | $8.004 | $8.811 | $8.854 | $9.043 | $6.590 | **+10,1 %** | 91 % (regla 58 %) |
-| La regla tenía razón | $5.921 | $5.856 | $5.882 | $5.921 | $4.652 | **−1,1 %** | 95 % (regla 100 %) |
-| Con 20 variables de ruido | $8.004 | $8.835 | $8.840 | $9.043 | $6.590 | **+10,4 %** | 92 % |
-| Hipótesis equivocada (señal media × 1,0) | $10.056 | $11.124 | $11.118 | $11.356 | $8.887 | **+10,6 %** | 91 % (regla 47 %) |
+| Con señal | $8.004 | $8.816 | $8.840 | $9.043 | $6.590 | **+10,2 %** | 91 % (regla 58 %) |
+| La regla tenía razón | $5.921 | $5.861 | $5.870 | $5.921 | $4.652 | **−1,0 %** | 95 % (regla 100 %) |
+| Con 20 variables de ruido | $8.004 | $8.838 | $8.852 | $9.043 | $6.590 | **+10,4 %** | 92 % |
+| Hipótesis equivocada (señal media × 1,0) | $10.056 | $11.114 | $11.133 | $11.356 | $8.887 | **+10,5 %** | 90 % (regla 47 %) |
+| Dato nuevo (una columna que la base no trae) | $8.488 | $9.256 | $9.284 | $9.458 | $6.904 | **+9,0 %** | 92 % (regla 62 %) |
 
-Comisión esperada por oferta, promedio de las últimas 10 rondas.
+Comisión esperada por oferta, promedio de las últimas 10 rondas. En «dato nuevo», el mismo motor sin esa columna logra $9.183.
 
 Lo que muestra:
 
 1. **Aprende lo que la regla no ve.** Con señal, el error medio de su probabilidad frente a la verdad baja de 5,5 a 3,1 puntos porcentuales; el de la regla se queda en 5,9.
-2. **Descubre los pesos despacio, a propósito.** Los efectos sembrados se acercan a la verdad sin pasarse (por ejemplo, abrir notificaciones: 0 → 0,10, verdad 0,12; abonos al bolsillo de mascotas: 0 → 0,11, verdad 0,25). La previa estrecha frena perseguir ruido; con más respuestas siguen subiendo.
-3. **El ruido no lo confunde.** Con 20 variables que no significan nada, su peso medio queda en 0,012 y el resultado es el mismo que sin ellas.
-4. **Corrige hipótesis equivocadas.** Si la señal media vende tanto como la fuerte, el motor lo aprende y gana +10,6 %, donde la regla, atada a × 0,6, se queda en el 47 % del camino.
-5. **Si la regla tenía razón, cuesta poco.** El motor empieza 2,7 % por debajo (cree en el momento y en un Hogar mejor que en esa verdad) y termina a −1,1 %.
+2. **Descubre los pesos despacio, a propósito.** Los efectos sembrados se acercan a la verdad sin pasarse (por ejemplo, abrir notificaciones: 0 → 0,10, verdad 0,12; abonos al bolsillo de mascotas: 0 → 0,12, verdad 0,25). La previa estrecha frena perseguir ruido; con más respuestas siguen subiendo.
+3. **El ruido no lo confunde.** Con 20 variables que no significan nada, su peso medio queda en 0,013 y el resultado es el mismo que sin ellas.
+4. **Corrige hipótesis equivocadas.** Si la señal media vende tanto como la fuerte, el motor lo aprende y gana +10,5 %, donde la regla, atada a × 0,6, se queda en el 47 % del camino.
+5. **Si la regla tenía razón, cuesta poco.** El motor empieza 2,7 % por debajo (cree en el momento y en un Hogar mejor que en esa verdad) y termina a −1,0 %.
+6. **Aprovecha un tipo de dato nuevo.** En «dato nuevo», la verdad incluye una columna que la base no trae (simulada, estandarizada) con efecto +0,10 en todos los ramos y +0,30 más en Vida. El motor la recibe con peso 0, como cualquier variable nueva, y la aprende: 0 → 0,13 el peso común y 0 → 0,16 el de Vida. Gana +0,8 % de comisión frente al mismo motor sin esa columna, el 26 % de lo que le faltaba para el oráculo. La ganancia es pequeña porque en esta población el techo posible era 3 %: lo que importa es que la usa sin que nadie la programe.
+7. **Sabe cuánto se distinguen los clientes (v2.1).** Cada 5 rondas, el motor reestima τ con Bayes empírico. Cuando los clientes no se distinguen («la regla tenía razón», verdad 0), τ̂ = 0 desde la ronda 5 (al 95 %, de 0 a 0,06 en la ronda 35). Con dispersión verdadera de 0,20, τ̂ queda en 0,14 (de 0,10 a 0,18): las variables fijas de cada cliente absorben una parte. Con 20 variables de ruido baja a 0,08, porque esas variables, fijas por cliente, se llevan otra parte.
 
-**Una limitación que el laboratorio deja ver.** En el mundo donde la regla tenía razón, el error de la probabilidad sube de 1,4 a cerca de 3 puntos en las primeras rondas y baja despacio (2,1 en la ronda 40). El motor supone que los clientes difieren entre sí (desviación 0,25 del apetito) y, con pocas respuestas por cliente, al principio confunde suerte con apetito. A las decisiones les cuesta poco, pero con datos reales conviene **estimar esa desviación con las respuestas** (Bayes empírico sobre el apetito), que es el siguiente paso natural.
+**Lo que corrigió v2.1.** En el mundo donde la regla tenía razón, el error de la probabilidad sube de 1,4 a 3,0 puntos en las primeras 5 rondas: el motor supone que los clientes difieren (0,25) y, con pocas respuestas por cliente, confunde suerte con apetito. Con v2.0 se quedaba ahí (2,4 en promedio entre las rondas 6 y 40; 2,1 en la ronda 40). Con Bayes empírico, desde la primera reestimación (ronda 5) baja a 2,1 en promedio y termina en **1,75**. La comisión prácticamente no cambia (±0,1 %).
 
 ---
 
 ## 5. Por qué funciona igual o mejor con más datos y más tipos de datos
 
 1. **Las previas son lo que se sabe hoy; los datos mueven solo lo que muestran.** Sin respuestas, el motor decide como v1.3 corregido por lo que la base sí trae (el embudo y el momento). Cada respuesta actualiza la creencia en proporción a lo que informa.
-2. **Una variable nueva no cambia nada hasta que importa.** Empieza con media 0 y la duda total se reparte (0,45/√D): más tipos de datos no agregan ruido. El laboratorio con 20 variables de ruido lo confirma.
+2. **Una variable nueva no cambia nada hasta que importa.** Empieza con media 0 y la duda total se reparte (0,45/√D): más tipos de datos no agregan ruido. El laboratorio con 20 variables de ruido lo confirma, y el de «dato nuevo» muestra que, si la columna sí predice, el motor la aprende solo.
 3. **Solo se promueve lo que mejora fuera de muestra.** El campeón/retador del entrenamiento con respuestas evita que un reentrenamiento empeore el motor.
 4. **Las compuertas no dependen del modelo.** Autorización (Ley 1581), contacto (Ley 2300), elegibilidad, capacidad de pago, control: ningún dato nuevo puede saltárselas.
 5. **Todo queda medido.** Cada decisión guarda su probabilidad y su versión; el grupo de control da el efecto real.
@@ -264,13 +268,13 @@ Lo que muestra:
 pip install -r requirements-dev.txt
 python scripts/train_motor.py              # escribe lulo_app/ml/motor.json (≈ 2 s, Python puro)
 python scripts/train_motor.py --check      # verifica que coincide
-python scripts/laboratorio.py              # escribe lulo_app/ml/laboratorio.json (≈ 20 s)
+python scripts/laboratorio.py              # escribe lulo_app/ml/laboratorio.json (≈ 80 s)
 python scripts/laboratorio.py --check
 python -m lulo_app.core motor              # piezas del motor y sus datos
 python -m lulo_app.core explicar C00002    # de dónde sale cada probabilidad
 python -m lulo_app.core campana            # plan de los 600, con la comparación frente a la regla v1.3
 python -m lulo_app.core campana --motor regla
-python -m pytest                           # incluye tests/test_motor.py
+python -m pytest                           # incluye tests/test_motor.py y, con Playwright, tests/test_e2e.py
 ```
 
 Si cambia una regla (`lulo_app/core/rules.py`) o el vector de rasgos, hay que volver a correr `train_motor.py` y `laboratorio.py`, y sus `--check` deben pasar.
@@ -298,7 +302,7 @@ Puede serlo: 12 compras frente a 8,1 esperadas, con 85 % de probabilidad de que 
 Por tres cosas que la regla hacía mal: tomaba la conversión de cada campaña sin su ruido, le asignaba a Hogar la peor conversión por no tener campaña, e ignoraba el momento. Y 9 cambios son la exploración.
 
 **¿Qué pasa si Lulo trae una variable nueva, por ejemplo combustible?**
-Se declara en el esquema (o llega como una categoría nueva de movimientos), se reentrena y entra con peso 0. Solo cambia decisiones si las respuestas muestran que importa, y el campeón/retador solo la acepta si mejora fuera de muestra.
+Se declara en el esquema (o llega como una categoría nueva de movimientos), se reentrena y entra con peso 0. Solo cambia decisiones si las respuestas muestran que importa, y el campeón/retador solo la acepta si mejora fuera de muestra. El escenario «dato nuevo» del laboratorio lo muestra: la columna se aprende sola y suma.
 
 **¿No es invasivo usar los movimientos?**
 Sin autorización (Ley 1581) el motor no lee nada. Solo usa categoría, MCC, canal, fecha y monto, nunca nombres; el cliente puede apagar las sugerencias y eso se mide como señal de daño; cada oferta explica por qué aparece.

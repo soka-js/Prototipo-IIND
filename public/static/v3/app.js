@@ -1,10 +1,12 @@
-// Orquestador v3: estado, navegación, flujos, llamadas al motor real, panel, recorrido guiado y demo.
-import { $, $$, addDays, clone, debounce, esc, money, num, nowTime, pct, store, strip, wait } from "./util.js";
+// Orquestador v3: estado, navegación, flujos, llamadas al motor real, recorrido guiado y escenarios rápidos.
+// La página es solo la app: lo que explica vive en la guía al lado del teléfono (recorrido y escenarios).
+import { $, $$, addDays, clone, debounce, esc, money, num, nowTime, store, wait } from "./util.js";
 import { I } from "./icons.js";
 import { PLUS_SHEET, ROOTS, SCREENS, cands, chapters, creditCuota, hasRamo, movListHTML, product, quote, skeletonRows } from "./screens.js";
-import { NEW, NEW_LIST, NOW, buildAccs } from "./content.js";
-import { aprendeHTML, decisionHTML, mountAprende, pc as pcp, probSteps } from "./aprende.js";
+import { NEW, NEW_LIST } from "./content.js";
+import { decisionHTML } from "./aprende.js";
 import { createTour } from "./tour.js";
+import { createFilm } from "./film.js";
 
 const BOOT = JSON.parse($("#bootstrap").textContent);
 const META = BOOT.meta;
@@ -14,6 +16,7 @@ const KEY = "lulo:v3";
 const IMG_LOGO = "/static/img/logo-lulo.png";
 let S;
 let TOUR = null;   // recorrido guiado: se crea al final, antes de boot()
+let FILM = null;   // recorrido automático (el prototipo explicándose solo)
 
 /* =================== API =================== */
 async function call(path, body) {
@@ -31,12 +34,8 @@ const API = {
   evaluate: (id, ctx, focus) => call(`${V3}/clients/${id}/evaluate${focus ? `?focus=${encodeURIComponent(focus)}` : ""}`, ctx).then(r => r.json()),
   year: (id, ctx) => call(`${V3}/clients/${id}/year`, ctx).then(r => r.json()),
   upcoming: (id, ctx) => call(`${V3}/clients/${id}/upcoming`, ctx).then(r => r.json()),
-  campaign: asOf => call(`${V3}/campaign?as_of=${asOf}`).then(r => r.json()),
-  backtest: every => call(`${V3}/backtest?every=${every}`).then(r => r.json()),
   motor: () => call(`${V3}/motor`).then(r => r.json()),
-  csv: log => call("/api/report/csv", log).then(r => r.blob()),
 };
-function apiStatus(state, html) { const el = $("#apiStatus"); if (!el) return; el.className = "api-status " + state; el.querySelector("span").innerHTML = html; }
 
 /* =================== estado =================== */
 function fresh(B) {
@@ -49,12 +48,12 @@ function fresh(B) {
     control: null, sugg: true, remind: true, alertDays: 30, consent: B.client.consent,
     known: {}, declined: {}, story: 0, storyOpened: false, storyDone: false, yearLoaded: false,
     offer: null, flow: {}, soat: {owner: "tu", placa: (B.car && B.car.plate || "").replace("-", ""), accept: false},
-    detail: null, mq: "", mg: "todos", lastTrace: null,
+    detail: null, mq: "", mg: "todos", lastTrace: null, expo: [],
   };
 }
 const SAVE = ["screen", "unlocked", "xt", "hide", "cardFrozen", "balance", "sessionRows", "sessionMovs", "sessionDeps", "seq", "pockets", "credit",
   "notifs", "accepted", "renewed", "history", "log", "queue", "banner", "control", "sugg", "remind", "alertDays", "consent", "known", "declined",
-  "story", "storyOpened", "storyDone", "yearLoaded", "mq", "mg", "evaluation", "chapters", "upcoming", "soat", "topBannerClosed"];
+  "story", "storyOpened", "storyDone", "yearLoaded", "mq", "mg", "evaluation", "chapters", "upcoming", "soat", "topBannerClosed", "expo"];
 function loadState(B) {
   const saved = store.get(`${KEY}:state:${B.client.id}:${B.as_of}`);
   S = fresh(B);
@@ -137,7 +136,7 @@ function render(anim = "none") {
   }
   S.sessionRows.forEach(m => m.flash = false);
   MOUNT[S.screen]?.();
-  updateNow();
+  if (document.body.classList.contains("show-new")) tipNew(true);
   const h = S.unlocked && hashFor();
   if (h && location.hash !== h) history.replaceState(history.state, "", h);
   persist();
@@ -233,83 +232,74 @@ function addRow(created, label) {
 function addNotif(n) { S.notifs.unshift({id: `n${++S.seq}`, date: today(), time: nowTime().slice(0, 5), unread: true, icon: "shield", ...n}); }
 function addLog(ev, offer, res, tipo, ramo) {
   S.log.unshift({t: nowTime(), client: S.B.client.first, ev, offer, res, tipo, ramo: ramo || ""});
-  if (["ok", "no", "harm", "info", "val", "ban"].includes(tipo)) lightStep(3);
-  renderMotor(); persist();
+  persist();
 }
 function hist(ramo, result, channel) { S.history.push({ramo, date: today(), result, channel}); }
+/** Registro de respuestas (formato de docs/DATOS_REALES.md): cada oferta que el motor mostró y lo que hizo el cliente. */
+function expose(d, canal) {
+  S.expo.push({cliente_id: S.cid, fecha: today(), ramo: d.ramo, canal, resultado: null, grupo: "tratamiento",
+    politica: d.policy || "", p_motor: d.prob ? d.prob.p : "", version_reglas: META.rules_version});
+}
+function respond(ramo, resultado) {
+  const e = [...S.expo].reverse().find(x => x.ramo === ramo && !x.resultado);
+  if (e) { e.resultado = resultado; persist(); }
+}
 
 /* =================== motor =================== */
-let chainTimer = [];
-function lightStep(i) { const el = $(`.step[data-step="${i}"]`); if (!el) return; el.classList.add("on"); setTimeout(() => el.classList.remove("on"), 1400); }
-function runChain(upTo, done) {
-  chainTimer.forEach(clearTimeout); chainTimer = [];
-  $$(".step").forEach(s => s.classList.remove("on"));
-  for (let i = 0; i <= upTo; i++) chainTimer.push(setTimeout(() => lightStep(i), i * 360));
-  chainTimer.push(setTimeout(done || (() => {}), upTo * 360 + 300));
-}
-function msg(h) { const m = $("#chainMsg"); if (m) m.innerHTML = h; }
 let busy = Promise.resolve();
 function fire(type, extra = {}, src) { busy = busy.then(() => fireNow(type, extra, src)).catch(e => { console.error(e); toast("El motor no respondió"); }); return busy; }
 async function fireNow(type, extra = {}, src) {
   const def = S.B.events.find(e => e.type === type) || {};
   const event = {type, amount: extra.amount || def.amount, merchant: extra.merchant ?? def.merchant ?? null, counterparty: extra.counterparty ?? def.counterparty ?? null,
     pocket_type: extra.pocket_type ?? def.pocket_type ?? null, pocket_name: extra.pocket_name ?? def.pocket_name ?? null};
-  runChain(0);
-  const t0 = performance.now();
-  let R;
-  try { R = await API.event(S.cid, event, ctx()); apiStatus("ok", `<b>Motor v3 conectado</b> · reglas ${META.rules_version} · última decisión en ${Math.round(performance.now() - t0)} ms`); }
-  catch (e) { apiStatus("err", "<b>El motor no respondió.</b> " + esc(e.message)); msg("<b>Error:</b> no se pudo consultar el motor."); throw e; }
+  const R = await API.event(S.cid, event, ctx());
   if (R.created) {
     if (R.created.kind === "deposit") S.sessionDeps.push({pocket_type: R.created.pocket_type, amount: R.created.amount, pocket_name: R.created.pocket_name, date: R.created.date});
     else S.sessionMovs.push({category: R.created.category, amount: R.created.amount, date: R.created.date, merchant: R.created.merchant, counterparty: R.created.counterparty, channel: "Transferencia"});
     if (!extra.noRow) { const row = addRow(R.created, extra.label); if (R.signal) row.sig = {ramo: R.signal.ramo, name: R.signal.name, headline: R.signal.headline, rule: R.signal.rule, strength: R.signal.strength}; }
   }
   if (R.evaluation) { S.lastTrace = R.evaluation; S.queue = R.evaluation.queue || S.queue; }
-  const sg = $(`.sig[data-sig="${R.focus}"]`); if (sg) { sg.classList.remove("flash"); void sg.offsetWidth; sg.classList.add("flash"); }
   await handleOutcome(R.outcome, R.evaluation && R.evaluation.decision, src || R.label, R.message, R.evaluation);
   refreshEval();
   return R;
 }
 async function handleOutcome(outcome, d, src, message, ev) {
   const title = d ? d.title : "";
-  showDecision(ev || {outcome, message, label: message, decision: null}, src);
-  if (outcome === "shown") { show(d, src); await wait(3 * 360 + 400); return; }
-  if (outcome === "banner") { runChain(2); setBanner(d, src, ev && ev.channel ? ev.channel.reason : ""); return; }
-  runChain(outcome === "noconsent" ? 0 : 1);
-  msg(`<b>${esc(ev ? ev.label : outcome)}:</b> ${esc(message || "")}`);
+  noteDecision(ev || {outcome, message, label: message, decision: null}, src);
+  if (outcome === "shown") { show(d, src); await wait(1480); return; }
+  if (outcome === "banner") { setBanner(d, src, ev && ev.channel ? ev.channel.reason : ""); return; }
   const L = {queued: ["En cola: ventana ocupada", "hold"], control: ["Grupo de control: no se muestra", "ctrl"], optout: ["Sugerencias apagadas por el cliente", "ctrl"],
     noconsent: ["Sin autorización de datos", "ctrl"], weak: ["Señal débil", "ctrl"], ineligible: ["No elegible", "ctrl"], has: ["Ya tiene el seguro", "ctrl"],
     cooldown: ["En espera: ofrecido hace poco", "ctrl"], external: ["Lo tiene con otra aseguradora", "ctrl"], none: ["No alimenta ninguna señal", "info"]}[outcome];
   if (outcome === "control" && d) hist(d.ramo, "control", "ninguno");
   addLog(src, title || (ev && ev.focus) || "—", `${L[0]}${message && outcome !== "none" ? ` · ${message}` : ""}`, L[1], d && d.ramo);
-  renderMotor();
 }
 function show(d, src) {
   S.shown = {...d, src};
   hist(d.ramo, "mostrada", "push");
-  msg(`<b>Se muestra por push:</b> ${esc(d.title)}. ${d.deadline ? "Tiene fecha límite." : `Valor esperado ${money(d.ev || 0)}.`} Mira el teléfono.`);
-  runChain(2, () => {
+  expose(d, "push");
+  setTimeout(() => {
     const n = $("#notif");
     n.innerHTML = `<span class="ic"><img src="${IMG_LOGO}" alt=""></span><span style="flex:1"><span class="t"><span>Lulo Bank</span><span>ahora</span></span><span class="b"><b>${esc(d.notif.t)}</b>${esc(d.notif.b)}</span></span>`;
     n.classList.add("show"); $("#notifX").classList.add("show");
-    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo && !(TOUR && TOUR.active())) hideNotif(); }, 9000);
+    setTimeout(() => { if (S.shown && S.shown.ramo === d.ramo && !(TOUR && TOUR.active()) && !(FILM && FILM.active())) hideNotif(); }, 9000);
     addNotif({t: d.notif.t, b: d.notif.b, go: d.ramo === "SOAT" && ["renovacion", "captura"].includes(d.kind) ? "renew" : `offer:${d.ramo}`, ramo: d.ramo});
     if (["home", "alertas"].includes(S.screen)) render("none");
     addLog(src, d.title, "Mostrada por push", "info", d.ramo);
-  });
-  renderMotor();
+  }, 1000);
 }
 function setBanner(d, src, reason) {
   S.banner = {...d, src};
   S.topBannerClosed = false;
   hist(d.ramo, "banner", "banner");
-  msg(`<b>Banner pasivo:</b> ${esc(d.title)} aparece en Home y en Alertas, sin notificación. ${esc(reason || "")}`);
+  expose(d, "banner");
   addLog(src, d.title, `Banner pasivo · ${reason || ""}`, "ban", d.ramo);
   if (["home", "alertas"].includes(S.screen)) render("none");
   toast("Oferta como banner (sin push)");
 }
 function hideNotif() { $("#notif").classList.remove("show"); $("#notifX").classList.remove("show"); }
-function closeWindow() { S.shown = null; renderMotor(); }
+// Al cerrarse la ventana (el cliente respondió o la descartó), la siguiente oferta de la cola pasa por el motor.
+function closeWindow() { S.shown = null; if (S.queue.length) setTimeout(nextWindow, 1200); }
 function abandonOpen() { if (S.shown && (S.screen === "offer" || S.screen === "renew") ) { addLog(S.shown.src, S.shown.title, "Cerró sin decidir", "no", S.shown.ramo); closeWindow(); } }
 function openDecision(d) {
   hideNotif(); if (!S.unlocked) unlock();
@@ -317,15 +307,14 @@ function openDecision(d) {
   if (d.ramo === "SOAT" && ["renovacion", "captura"].includes(d.kind)) openRenew(); else { S.offer = d.ramo; go("offer"); }
 }
 $("#notif").addEventListener("click", () => { if (S.shown) openDecision(S.shown); });
-$("#notifX").addEventListener("click", () => { const d = S.shown; hideNotif(); if (d) { addLog(d.src, d.title, "Descartó la notificación", "no", d.ramo); hist(d.ramo, "rechazada", "ninguno"); closeWindow(); } });
+$("#notifX").addEventListener("click", () => { const d = S.shown; hideNotif(); if (d) { addLog(d.src, d.title, "Descartó la notificación", "no", d.ramo); hist(d.ramo, "rechazada", "ninguno"); respond(d.ramo, "rechazada"); closeWindow(); } });
 
 async function refreshEval() {
   try {
     const [ev, up] = await Promise.all([API.evaluate(S.cid, ctx("lote")), API.upcoming(S.cid, ctx("lote"))]);
     S.evaluation = ev; S.upcoming = up; if (!S.lastTrace) S.lastTrace = ev;
-    if (S.screen === "proteccion" || S.screen === "explora") render("none"); else if (ROOTS.includes(S.screen)) render("none");
-    renderMotor(); persist();
-    if (!$("#view-aprende").hidden) renderAprende();
+    if (ROOTS.includes(S.screen)) render("none");
+    persist();
     if (TOUR) TOUR.tick();
   } catch (e) { console.error(e); }
 }
@@ -338,6 +327,7 @@ function srcOf() { return S.shown ? S.shown.src : S.banner && S.banner.ramo === 
 function activate(ramo, src) {
   if (!S.accepted.includes(ramo)) S.accepted.push(ramo);
   hist(ramo, "aceptada", "ninguno");
+  respond(ramo, "aceptada");
   if (ramo === "Pago protegido" && S.credit) S.credit.protected = true;
   if (S.banner && S.banner.ramo === ramo) S.banner = null;
   addLog(src, product(S, ramo).title, "Aceptó", "ok", ramo);
@@ -357,6 +347,7 @@ function pay() {
   replace("paying");
   setTimeout(() => {
     S.renewed.push("SOAT");
+    respond("SOAT", "aceptada");
     S.sessionMovs.push({category: "Seguros", amount: -total, date: today(), merchant: "SOAT · Seguros Mundial", channel: "Transferencia"});
     addRow({kind: "movement", category: "Seguros", amount: -total, merchant: `SOAT ${S.B.car?.plate || (S.soat.placa || "").toUpperCase()} · Seguros Mundial`});
     S.notifs = S.notifs.filter(n => n.ramo !== "SOAT");
@@ -391,8 +382,7 @@ function openStory(i) {
 function storyOpenedHooks() {
   if (!S.storyOpened) {
     S.storyOpened = true;
-    msg(`<b>Tu año en Lulo:</b> el backend leyó ${num(S.B.movCount)} movimientos y armó ${chapters(S).length} capítulos. Mira el teléfono.`);
-    runChain(2); addLog("Tu año en Lulo", "Resumen anual", "Abrió el resumen", "info");
+    addLog("Tu año en Lulo", "Resumen anual", "Abrió el resumen", "info");
   }
   storySeen();
 }
@@ -525,15 +515,15 @@ $("#phone").addEventListener("click", e => {
     case "st-prev": storyStep(-1); break;
     case "st-close": back(); break;
     case "st-yes": activate(b.dataset.k, "Tu año en Lulo · " + chapters(S)[S.story].name); render("none"); toast("Activado"); break;
-    case "st-no": S.declined[b.dataset.k] = true; hist(b.dataset.k, "rechazada", "ninguno"); addLog("Tu año en Lulo · " + chapters(S)[S.story].name, product(S, b.dataset.k).title, "Rechazó: ahora no", "no", b.dataset.k); render("none"); break;
+    case "st-no": S.declined[b.dataset.k] = true; hist(b.dataset.k, "rechazada", "ninguno"); respond(b.dataset.k, "rechazada"); addLog("Tu año en Lulo · " + chapters(S)[S.story].name, product(S, b.dataset.k).title, "Rechazó: ahora no", "no", b.dataset.k); render("none"); break;
     case "st-soat": { const p = chapters(S)[S.story].protect; if (p && ["renovacion", "captura"].includes(p.kind)) openRenew(); else go("soatIntro"); break; }
     case "st-share": addLog("Tu año en Lulo", "Resumen anual", "Compartió su año", "info"); toast("Imagen lista para compartir"); break;
     case "known": setKnown(b.dataset.v); break;
     case "accept": acceptOffer(); break;
-    case "later": { const r = S.offer; hist(r, "rechazada", "ninguno"); addLog(srcOf(), product(S, r).title, "Rechazó: ahora no", "no", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("Listo, no te lo mostraremos en 30 días"); refreshEval(); break; }
-    case "optout": { const r = S.offer; hist(r, "rechazada", "ninguno"); addLog(srcOf(), product(S, r).title, "Pidió no ver este tipo de sugerencias", "harm", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("No verás más sugerencias de este tipo"); refreshEval(); break; }
+    case "later": { const r = S.offer; hist(r, "rechazada", "ninguno"); respond(r, "rechazada"); addLog(srcOf(), product(S, r).title, "Rechazó: ahora no", "no", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("Listo, no te lo mostraremos en 30 días"); refreshEval(); break; }
+    case "optout": { const r = S.offer; hist(r, "rechazada", "ninguno"); respond(r, "rechazada"); addLog(srcOf(), product(S, r).title, "Pidió no ver este tipo de sugerencias", "harm", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("No verás más sugerencias de este tipo"); refreshEval(); break; }
     case "pay": pay(); break;
-    case "postpone": hist("SOAT", "pospuesta", "ninguno"); addLog(S.shown && S.shown.ramo === "SOAT" ? S.shown.src : "Explora › Seguros", "SOAT", "Pospuso la renovación", "no", "SOAT"); if (S.shown && S.shown.ramo === "SOAT") closeWindow(); back(); toast("Te lo recordaremos más adelante"); break;
+    case "postpone": hist("SOAT", "pospuesta", "ninguno"); respond("SOAT", "rechazada"); addLog(S.shown && S.shown.ramo === "SOAT" ? S.shown.src : "Explora › Seguros", "SOAT", "Pospuso la renovación", "no", "SOAT"); if (S.shown && S.shown.ramo === "SOAT") closeWindow(); back(); toast("Te lo recordaremos más adelante"); break;
     case "soat-owner": S.soat.owner = b.dataset.v; render("none"); break;
     case "soat-accept": S.soat.accept = !S.soat.accept; render("none"); { const i = $("#placa"); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } } break;
     case "soat-continue": openRenewFromForm(); break;
@@ -564,258 +554,107 @@ document.addEventListener("keydown", e => {
   if (S.screen === "story") { if (e.key === "ArrowRight") storyStep(1); if (e.key === "ArrowLeft") storyStep(-1); if (e.key === "Escape") back(); }
 });
 
-/* =================== panel =================== */
-const OUT_TAG = {shown: ["Push", "info"], banner: ["Banner", "ban"], control: ["Control", "ctrl"], noconsent: ["Sin autorización", "ctrl"], none: ["Nada", "no"], queued: ["Cola", "hold"]};
-const LABEL = {ok: "Acepta", no: "Rechaza", hold: "Cola", ctrl: "Sin contacto", harm: "No daño", info: "Contacto", val: "Validación", ban: "Banner"};
-function personasHTML() {
-  return PERSONAS.map(c => `<button class="cl${c.id === S.cid ? " on" : ""}" data-client="${c.id}" aria-pressed="${c.id === S.cid}"><span class="av" style="background:${c.color};color:var(--ink)">${esc(c.first[0])}</span><span class="cl-t"><b>${esc(c.first)}</b><span>${esc(c.tags.slice(0, 2).join(" · "))}</span></span></button>`).join("");
-}
-let XQ = {q: "", outcome: "", ramo: "", source: "reto"};
-async function renderExplorer() {
-  const box = $("#xlist"); if (!box) return;
-  box.innerHTML = `<span class="empty">Cargando…</span>`;
-  try {
-    const r = await API.explorer({...XQ, limit: 120});
-    $("#xcount").textContent = `${r.total} de ${META.clients.reto + META.clients.persona} clientes`;
-    box.innerHTML = r.items.map(x => { const [l, t] = OUT_TAG[x.outcome] || [x.outcome, "no"];
-      return `<button class="xrow${x.client_id === S.cid ? " on" : ""}" data-client="${x.client_id}"><span><code>${esc(x.client_id)}</code><small>${esc(x.age_band)} · ${esc(x.occupation)}</small></span><span>${x.ramo ? `<b>${esc(x.title || x.ramo)}</b>` : `<span style="color:#AFB8CC">${esc(x.message || "—").slice(0, 60)}</span>`}<small>${x.offerable.length ? `Ofrecibles: ${x.offerable.join(", ")}` : x.consent ? "Sin ofertas hoy" : "No autoriza ofertas"}</small></span><span class="tag ${t}">${l}</span></button>`; }).join("") || `<span class="empty">Ningún cliente con esos filtros.</span>`;
-  } catch { box.innerHTML = `<span class="empty">No se pudo cargar el explorador.</span>`; }
-}
-function whoHTML() {
-  const c = S.B.client, u = c.usage;
-  return `<div class="who"><span class="av" style="background:${c.color};color:var(--ink)">${esc(c.first[0])}</span><span class="grow"><b>${esc(c.name)} ${c.source === "reto" ? `<span class="tag ctrl">base del reto</span>` : `<span class="tag val">personaje</span>`}</b><span>${esc(c.summary)}</span>
-    <span>Autoriza ofertas: ${c.consent ? "sí" : "no"} · Uso de la app (30 días): ${u.sessions_30d} sesiones, ${u.notifs_sent_30d} notificaciones (${u.opened_30d} abiertas), latencia «${esc(u.event_latency)}»${u.assumed ? " · supuesto" : ""}</span></span></div>`;
-}
-function renderClientTab() {
-  $("#personas").innerHTML = personasHTML();
-  $("#who").innerHTML = whoHTML();
-  const offs = [0, 2, 30, 60, 90];
-  $("#timetravel").innerHTML = offs.map(d => { const iso = addDays(META.cutoff, d); return `<button data-asof="${iso}" aria-pressed="${S.asOf === iso}">${d === 0 ? "Corte · " : `+${d} días · `}${iso.slice(5)}</button>`; }).join("");
-}
-function gatesHTML(ev) {
-  if (!ev) return `<span class="empty">Dispara un evento o usa la app.</span>`;
-  return `<div class="gates">${ev.steps.map(s => `<div class="gate"><span class="${s.ok ? "ok" : "no"}">${s.ok ? "✓" : "✗"}</span><b>${esc(s.step)}</b><span>${esc(s.detail)}</span></div>`).join("")}</div>`;
-}
-function candTable(ev) {
-  if (!ev || !ev.candidates || !ev.candidates.length) return "";
-  const top = ev.decision && ev.decision.ramo;
-  const ST = {ofrecer: "ofrecer", has: "ya tiene", weak: "débil", none: "sin señal", ineligible: "no elegible", cooldown: "en espera", external: "externo"};
-  return `<div class="tbl-w"><table class="ctable"><thead><tr><th>Ramo</th><th>Estado</th><th>Fuerza</th><th title="Probabilidad de aceptar si ve la oferta (motor bayesiano) y su intervalo al 90 %">P(acepta)</th><th title="P × comisión a 12 meses; debajo, el de la regla v1.3">VE</th><th>Por qué</th></tr></thead><tbody>${ev.candidates.map(c => `<tr class="${c.ramo === top ? "win" : ""}"><td><b>${esc(c.ramo)}</b>${c.deadline ? " ⏱" : ""}</td><td><span class="st-k ${c.status}">${ST[c.status]}</span></td><td>${c.strength}${c.momento_dias != null ? `<small class="mom">evento hace ${c.momento_dias} d</small>` : ""}</td><td class="num">${c.prob ? `${pcp(c.prob.p)}<small>${pcp(c.prob.ic90[0], 0)} a ${pcp(c.prob.ic90[1], 0)}</small>` : "—"}</td><td class="num">${c.ev != null ? money(c.ev) : "—"}${c.ev_regla != null && c.ev_regla !== c.ev ? `<small>v1.3 ${money(c.ev_regla)}</small>` : ""}</td><td>${esc(c.status === "ofrecer" ? c.signal.headline : c.reason)}</td></tr>`).join("")}</tbody></table></div>`;
-}
-function signalsHTML(ev) {
-  const sig = ev && ev.signals ? Object.values(ev.signals) : [];
-  const tag = {fuerte: "ok", media: "hold", "débil": "no", ninguna: "no"};
-  return sig.map(s => `<details class="sig" data-sig="${esc(s.ramo)}"><summary><span class="sig-n">${esc(s.ramo)} · ${esc(s.name)}</span><span class="tag ${tag[s.strength]}">${s.strength}</span><span class="sig-h">${esc(s.headline)}</span></summary>
-    <div class="sig-b"><ul>${s.evidence.map(x => `<li>${esc(x)}</li>`).join("")}</ul><div class="sig-r"><b>Regla:</b> ${esc(s.rule)}</div><div class="sig-r"><b>Tipo:</b> ${esc(s.kind)}</div></div></details>`).join("") || `<span class="empty">Sin autorización: el motor no lee movimientos.</span>`;
-}
-function renderMotor() {
-  if (!S || !$("#metrics")) return;
-  const L = S.log;
-  const m = [[L.filter(l => l.res === "Mostrada por push").length, "Push mostrados", "lime"], [L.filter(l => l.tipo === "ban").length, "Banners pasivos"], [L.filter(l => l.tipo === "ok").length, "Aceptadas o renovadas"], [L.filter(l => l.tipo === "harm").length, "Señales de daño", "harm"]];
-  $("#metrics").innerHTML = m.map(([v, l, c]) => `<div class="metric ${c || ""}"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
-  $("#queue").innerHTML = S.queue.length ? S.queue.map(q => `<span class="qitem"><b>${q.deadline ? "⏱" : money(q.ev || 0)}</b> ${esc(q.title)}</span>`).join("") : `<span class="empty">${S.shown ? "Ventana ocupada: " + esc(S.shown.title) + ". Cola vacía." : "Ventana libre. Cola vacía."}</span>`;
-  $("#nextWin").disabled = !S.queue.length;
-  $("#ctrlBtn").setAttribute("aria-pressed", S.control === true);
-  $("#log").innerHTML = L.length ? L.map(l => `<div class="log-row"><time>${l.t}</time><span class="e"><b>${esc(l.offer)}</b><br>${esc(l.ev)} · ${esc(l.res)}</span><span class="tag ${l.tipo}">${LABEL[l.tipo]}</span></div>`).join("") : `<span class="empty">Todavía no hay respuestas. Es el paso que hoy no existe en Lulo Bank.</span>`;
-  const ev = S.lastTrace || S.evaluation;
-  const dd = ev && ev.decision;
-  $("#trace").innerHTML = gatesHTML(ev) + (dd && dd.prob ? `<div class="box" style="margin:8px 0"><b>Probabilidad de ${esc(dd.title)}</b>${probSteps(dd.prob)}</div>` : "") + candTable(ev);
-  $("#signals").innerHTML = signalsHTML(S.evaluation);
-  $("#events").innerHTML = S.B.events.map(e => `<button class="ev" data-ev="${e.type}"><span class="n">${esc(e.label)}</span><span class="h">${e.ramo ? `→ ${esc(e.ramo)}` : e.type === "abono_bolsillo" ? `→ según el bolsillo (${esc(e.pocket_type)})` : "→ ningún ramo"} · ${money(e.amount)}</span></button>`).join("");
-  const dl = $("#demoLast"); if (dl) dl.innerHTML = L.length ? `<b>Último registro · ${esc(L[0].client)}</b><br>${esc(L[0].offer)}: ${esc(L[0].res)}` : `<b>Último registro</b><br>Todavía no hay respuestas.`;
-}
-let CAMP = null, BT = null;
-async function renderCampaign() {
-  const box = $("#campaign"); if (!box) return;
-  box.innerHTML = `<span class="empty">Calculando el plan de los 600 clientes…</span>`;
-  try { CAMP = await API.campaign(S.asOf); } catch { box.innerHTML = `<span class="empty">No se pudo calcular el plan.</span>`; return; }
-  const s = CAMP.summary, mx = Math.max(...Object.values(s.by_outcome), 1), mr = Math.max(...Object.values(s.shown_by_ramo), 1);
-  const OL = {shown: "Push", banner: "Banner pasivo", noconsent: "Sin autorización", none: "Nada que ofrecer", control: "Grupo de control"};
-  box.innerHTML = `<p class="lead" style="margin:0">Fecha ${CAMP.as_of} · datos hasta ${CAMP.data_until} · reglas ${CAMP.rules_version}</p>
-    <div class="kpis"><div class="metric lime"><div class="v">${(s.shown_by_channel.shown || 0) + (s.shown_by_channel.banner || 0)}</div><div class="l">clientes con oferta</div></div><div class="metric"><div class="v">${s.control}</div><div class="l">en grupo de control</div></div><div class="metric"><div class="v">${money(s.ev_total)}</div><div class="l">valor esperado (hipótesis)</div></div></div>
-    <h4 style="margin-top:6px">Decisión por cliente</h4><div class="hbars">${Object.entries(s.by_outcome).map(([k, v]) => `<div class="hbar"><span>${OL[k] || k}</span><span class="tr"><i class="${k === "banner" ? "b2" : ""}" style="width:${v / mx * 100}%"></i></span><span>${v}</span></div>`).join("")}</div>
-    <h4>Ofertas por ramo</h4><div class="hbars">${Object.entries(s.shown_by_ramo).map(([k, v]) => `<div class="hbar"><span>${esc(k)}</span><span class="tr"><i style="width:${v / mr * 100}%"></i></span><span>${v}</span></div>`).join("")}</div>
-    <div class="box">Banner en vez de push por: ${Object.entries(s.reasons_banner).map(([k, v]) => `${esc(k)} (${v})`).join(", ") || "—"}.</div>
-    <div class="ctrls"><a class="pbtn lime" href="${V3}/campaign.csv?as_of=${CAMP.as_of}" download>Descargar plan (CSV)</a></div>`;
-}
-async function runBacktest() {
-  const box = $("#backtest"); if (!box) return;
-  box.innerHTML = `<span class="empty">Recorriendo el año cada 14 días… (unos segundos)</span>`;
-  try { BT = await API.backtest(14); } catch { box.innerHTML = `<span class="empty">No se pudo correr el backtest.</span>`; return; }
-  const months = Object.entries(BT.by_month), mx = Math.max(...months.map(([, c]) => (c.shown || 0) + (c.banner || 0)), 1);
-  box.innerHTML = `<div class="kpis"><div class="metric lime"><div class="v">${num(BT.offers)}</div><div class="l">ofertas (${num(BT.push)} push, ${num(BT.banner)} banner)</div></div><div class="metric"><div class="v">${BT.max_push_30d}</div><div class="l">máx. push a un cliente en 30 días</div></div><div class="metric ${BT.violations.length ? "harm" : "lime"}"><div class="v">${BT.violations.length}</div><div class="l">violaciones de las invariantes</div></div></div>
-    <div class="hbars">${months.map(([m, c]) => `<div class="hbar"><span>${m}</span><span class="tr"><i style="width:${((c.shown || 0) + (c.banner || 0)) / mx * 100}%"></i></span><span>${(c.shown || 0) + (c.banner || 0)}</span></div>`).join("")}</div>
-    <div class="box">${num(BT.evaluations)} evaluaciones de ${BT.start} a ${BT.end}; ${BT.clients_reached} clientes alcanzados; ${num(BT.control)} decisiones en control. No simula aceptaciones: la base no trae resultados por cliente.</div>`;
-}
-function renderData() {
-  const d = META.dataset, chk = d.chequeos;
-  $("#dataQ").innerHTML = `<div class="box"><b>${esc(d.fuente.archivo)}</b> · sha256 ${esc(d.fuente.sha256.slice(0, 16))}… · ${esc(d.uso)}. ${esc(d.restriccion)}</div>
-    ${`<div class="tbl-w"><table class="tbl"><thead><tr><th>Tabla</th><th>Filas</th></tr></thead><tbody>${Object.entries(d.filas).map(([k, v]) => `<tr><td>${k}</td><td class="num">${num(v)}</td></tr>`).join("")}</tbody></table></div>`}
-    <div class="tbl-w"><table class="tbl"><thead><tr><th>Pestaña</th><th>Chequeo</th><th></th><th>Detalle</th></tr></thead><tbody>${chk.map(c => `<tr><td>${esc(c.pestana)}</td><td>${esc(c.chequeo)}</td><td><span class="chk ${c.estado}">${c.estado}</span></td><td>${esc(c.detalle)}</td></tr>`).join("")}</tbody></table></div>`;
-  $("#dataCat").innerHTML = `<div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo</th><th>Prima</th><th>Comisión 12 m</th><th>Conv.</th><th>VE fuerte</th><th>Edad</th><th>Origen</th></tr></thead><tbody>${META.catalog.map(p => `<tr><td><b>${esc(p.ramo)}</b></td><td>${esc(p.price)}</td><td class="num">${p.commission_12m ? money(p.commission_12m) : "n/d"}</td><td class="num">${p.prior ? pct(p.prior) : "n/d"}</td><td class="num">${p.ev_fuerte ? money(p.ev_fuerte) : "n/d"}</td><td>${esc(p.age)}</td><td>${esc(p.prior_source)}</td></tr>`).join("")}</tbody></table></div>`;
-  const R = META.rules;
-  const keys = ["VERSION", "APPROVED_ON", "STRENGTH_MULT", "DESEMPLEO_MIN_STREAK", "VIDA_MIN_MONTHS", "VIAJES_PURCHASE_DAYS", "VIAJES_POCKET_MIN", "MASCOTAS_SPEND_MIN", "HOGAR_POCKET_MIN", "SOAT_TOLLS_MEDIA", "SOAT_TOLLS_FUERTE", "SOAT_REMINDER_DAYS", "MIN_DAYS_BETWEEN_PUSH", "DEADLINE_FIRST", "COOLDOWN_DAYS", "FATIGUE_MIN_IGNORED", "CONTROL_PCT", "EXCLUDE_OPEN_AGE_BAND"];
-  $("#dataRules").innerHTML = `<div class="tbl-w"><table class="tbl"><tbody>${keys.map(k => `<tr><td><code>${k}</code></td><td>${esc(typeof R[k] === "object" ? JSON.stringify(R[k]) : String(R[k]))}</td></tr>`).join("")}</tbody></table></div>
-    <div class="box">${Object.entries(R.CHANGELOG).map(([v, t]) => `<b>${v}</b>: ${esc(t)}`).join("<br>")}</div>`;
-}
-/* =================== modelos =================== */
-const pc = x => x == null ? "—" : `${(x * 100).toFixed(1).replace(".", ",")} %`;
-const dec = (x, n = 2) => x == null ? "—" : Number(x).toFixed(n).replace(".", ",");
-// Lectura de M1 a partir de modelos.json: qué variables se excluyen y qué ramos pasan la compuerta.
-function modelsNote(M, P) {
-  const Q = M.consecuencia, ok = Object.entries(P).filter(([, v]) => v.usable).map(([k]) => k);
-  const why = Q ? `«Visitas a Seguros» no entra a M1: quien ya tiene una póliza Lulo entra a Seguros a gestionarla (${dec(Q.visitas_media_con_poliza_lulo)} visitas en 30 días contra ${dec(Q.visitas_media_sin_poliza_lulo)}; AUC ${dec(Q.auc_visitas_tiene_poliza_lulo, 3)} para reconocer a quien ya tiene póliza), así que es consecuencia de tener seguro y no causa. ` : "";
-  const gate = ok.length ? `Le ganan al azar y ajustan el valor esperado: ${esc(ok.join(", "))}.` : `<b>Ningún ramo le gana al azar</b>: el motor decide con la regla en todos los ramos y la afinidad vale 1.`;
-  return `${why}${gate} M1 estima parecido con quien ya tiene el seguro, no respuesta a una oferta. Las variables que la regla del ramo ya usa (por ejemplo, peajes para el SOAT) también se excluyen para no contarlas dos veces.`;
-}
-function renderModels() {
-  const box = $("#models"); if (!box) return;
-  const M = META.models, P = M.propension, ev = S.evaluation, me = ev && ev.ml;
-  const props = ev && ev.candidates ? Object.fromEntries(ev.candidates.filter(c => c.ml).map(c => [c.ramo, c])) : {};
-  const client = me ? `<div class="box"><b>${esc(S.B.client.name)}</b> · segmento <b>${esc(me.segmento.nombre)}</b> (${esc(me.segmento.rasgos.join(", ").toLowerCase())}) · probabilidad de abrir un push ${pc(me.push.p)}${me.push.supuesto ? " (uso de la app supuesto)" : ""}
-      <div class="tbl-w" style="margin-top:8px"><table class="tbl"><thead><tr><th>Ramo</th><th>Prob.</th><th>Base</th><th>Afinidad</th><th>Qué la empuja</th></tr></thead><tbody>${Object.values(props).map(c => `<tr><td><b>${esc(c.ramo)}</b></td><td class="num">${c.ml.usable ? pc(c.ml.p) : "—"}</td><td class="num">${pc(c.ml.tasa_base)}</td><td class="num">${dec(c.afinidad)}${c.ml.usable ? "" : " <small>regla</small>"}</td><td>${c.ml.usable ? c.ml.drivers.map(d => esc(d.label)).join(", ") || "—" : "—"}</td></tr>`).join("")}</tbody></table></div></div>`
-    : `<div class="box">Este cliente no autorizó el uso de sus datos: el motor no calcula modelos sobre él (Ley 1581).</div>`;
-  const rows = Object.entries(P).map(([k, v]) => `<tr><td><b>${esc(k)}</b>${v.usable ? `<small class="vars">${v.coeficientes.map(c => `${esc(c.label)} ${c.coef > 0 ? "+" : "−"}${dec(Math.abs(c.coef))}`).join(" · ")}</small>` : ""}</td><td class="num">${v.positivos}</td><td class="num">${dec(v.auc_cv)}</td><td class="num">${dec(v.p_permutacion, 3)}</td><td class="num">${dec(v.auc_por_conjunto.perfil)} / ${dec(v.auc_por_conjunto.comportamiento)}</td><td><span class="tag ${v.usable ? "ok" : "no"}">${v.usable ? "ajusta el VE" : "regla"}</span></td></tr>`).join("");
-  const seg = M.segmentos, sil = Math.max(...Object.values(seg.silueta));
-  const segRows = seg.grupos.map(g => `<tr><td><b>${esc(g.nombre)}</b></td><td class="num">${g.clientes}</td><td>${esc(g.rasgos.join(", "))}</td><td>${esc(g.ramo_afin)} (× ${dec(g.lift[g.ramo_afin])})</td></tr>`).join("");
-  const D = M.demanda;
-  const dem = Object.entries(D).map(([k, d]) => { const mx = Math.max(...d.historia.map(h => h.polizas), ...d.pronostico.map(f => f.alto)); return `<div class="dem"><div class="dem-h"><b>${esc(k)}</b><span>${d.pendiente_mes > 0 ? "+" : ""}${dec(d.pendiente_mes, 1)} pólizas/mes ${d.pendiente_significativa ? "· tendencia significativa" : "· sin tendencia clara"}</span></div>
-      <div class="spark">${d.historia.map(h => `<i title="${h.mes}: ${h.polizas}" style="height:${h.polizas / mx * 100}%"></i>`).join("")}${d.pronostico.map(f => `<i class="fc" title="${f.mes}: ${f.pronostico} (${f.bajo} a ${f.alto})" style="height:${f.pronostico / mx * 100}%"></i>`).join("")}</div>
-      <div class="dem-f">${d.pronostico.map(f => `${f.mes.slice(5)}/${f.mes.slice(2, 4)}: <b>${f.pronostico}</b> <small>(${f.bajo} a ${f.alto})</small>`).join(" · ")}</div>${d.renovaciones ? `<div class="dem-f">Renovaciones: ${dec(d.renovaciones.promedio, 1)}/mes (${pc(d.renovaciones.tasa_sobre_emitidas)} de las emitidas)${d.renovaciones.promedio > 0 ? ` · ${d.renovaciones.pronostico[0].mes.slice(5)}/${d.renovaciones.pronostico[0].mes.slice(2, 4)}: <b>${d.renovaciones.pronostico[0].pronostico}</b> <small>(${d.renovaciones.pronostico[0].bajo} a ${d.renovaciones.pronostico[0].alto})</small>` : ""}</div>` : ""}</div>`; }).join("");
-  const T = M.momento, R = M.respuesta_push;
-  box.innerHTML = `<div><h4>Este cliente</h4>${client}</div>
-    <div><h4>M1 · Propensión por ramo</h4><p class="lead" style="margin:-4px 0 8px">${esc(M.objetivo)}. Regresión logística L1, validación cruzada 5×5 y prueba de permutación con ${M.entrenado_con.permutaciones} barajadas. Solo ajusta el valor esperado si p &lt; ${dec(M.regla_de_uso.p_max)} y AUC ≥ ${dec(M.regla_de_uso.auc_min)}; la afinidad se acota entre ${dec(M.regla_de_uso.afinidad_min, 1)} y ${dec(M.regla_de_uso.afinidad_max, 1)}.</p>
-      <div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo y variables</th><th>Tienen</th><th>AUC</th><th>p</th><th>AUC perfil / conducta</th><th>Uso</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <div class="box">${modelsNote(M, P)}</div></div>
-    <div><h4>M2 · Segmentos de comportamiento</h4><p class="lead" style="margin:-4px 0 8px">K-medias sobre ${seg.grupos.length ? "16" : ""} hábitos; k = ${seg.k} por silueta (${dec(sil, 2)}). Una silueta tan baja dice que los clientes no forman grupos marcados: los segmentos sirven para describir y redactar, no para decidir.</p>
-      <div class="tbl-w"><table class="tbl"><thead><tr><th>Segmento</th><th>Clientes</th><th>Rasgos</th><th>Ramo más afín</th></tr></thead><tbody>${segRows}</tbody></table></div></div>
-    <div><h4>M3 · Respuesta al push</h4><div class="box">Beta-binomial con Bayes empírico: α = ${dec(R.alfa, 1)}, β = ${dec(R.beta, 1)}, correlación entre envíos del mismo cliente ρ = ${dec(R.rho, 4)}. Tasa de apertura agregada ${pc(R.tasa_agregada)}; ${R.heterogeneo ? "hay diferencias reales entre clientes." : "<b>no hay diferencias reales entre clientes</b>: lo que parece fatiga individual es ruido de muestras pequeñas."} Ningún cliente queda bajo el umbral de ${pc(R.umbral_push)}, así que hoy el modelo no cambia ningún canal.</div></div>
-    <div><h4>M4 · Demanda por ramo</h4><p class="lead" style="margin:-4px 0 8px">Tendencia lineal de las pólizas emitidas y de las renovaciones (Seguros_Mensual) con intervalo de predicción al 80 %. Barras punteadas: pronóstico; cada ramo tiene su propia escala.</p><div class="dems">${dem}</div></div>
-    <div><h4>M5 · ¿Hay un momento del mes para comprar?</h4><div class="box">${T.pagos_analizados} pagos de seguros con nómina previa, por días desde la nómina: ${T.ventanas.map(w => `${w.dias} días: ${w.observados} (esperados ${dec(w.esperados, 1)})`).join(" · ")}. χ² = ${dec(T.chi2)} frente a ${dec(T.critico_5pct, 2)}: ${T.hay_momento ? "sí hay un momento preferido." : "<b>no hay un momento preferido del mes</b>. El momento de la oferta lo siguen dando los eventos, y se valida con el grupo de control."}</div>${T.eventos ? `<div class="box" style="margin-top:8px"><b>M5b · ¿Se compra después del evento?</b> Pagos de seguros externos en los ${T.eventos.ventana_dias} días siguientes al evento que dispara el ramo, frente a lo esperado si el pago cayera en un día al azar: ${Object.entries(T.eventos.por_ramo).map(([k, v]) => `${esc(k)} (${esc(v.evento)}): ${v.observados} de ${v.pagos}, esperados ${dec(v.esperados, 1)}, p = ${dec(v.p, 3)}`).join(" · ")}. En total ${T.eventos.total.observados} frente a ${dec(T.eventos.total.esperados, 1)} (p = ${dec(T.eventos.total.p, 3)}): ${T.eventos.hay_efecto ? "<b>sí hay más compras después del evento</b>." : "<b>la dirección apoya ofrecer en el evento, pero con estas muestras no es significativo</b>: el efecto se mide en el piloto."}</div>` : ""}</div>
-    <div><h4>M6 · Tamaño del piloto</h4><p class="lead" style="margin:-4px 0 8px">Clientes por grupo para detectar un aumento de la conversión (α = 5 %, potencia 80 %). Con 600 clientes y un control del 10 % no se puede detectar ninguno: el piloto real necesita la base completa del banco.</p>
-      <div class="tbl-w"><table class="tbl"><thead><tr><th>Ramo</th><th>Conversión base</th><th>+20 %</th><th>+50 %</th><th>+100 %</th></tr></thead><tbody>${Object.entries(M.piloto).map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td class="num">${pc(v.conversion_base)}</td><td class="num">${num(v.lift_20)}</td><td class="num">${num(v.lift_50)}</td><td class="num">${num(v.lift_100)}</td></tr>`).join("")}</tbody></table></div></div>
-    <div class="box">Entrenado con la base ${esc(M.entrenado_con.sha256_base.slice(0, 12))}… (${M.entrenado_con.clientes} clientes, corte ${M.entrenado_con.corte}) · ${esc(M.version)} · <code>python scripts/train_models.py</code></div>`;
-}
-function renderAccs() {
-  const open = new Set($$("#accs details[open]").map(d => d.id).filter(Boolean));
-  $("#accs").innerHTML = buildAccs(S, META).map(a => a.g ? `<div class="grp-t">${a.g}</div>` :
-    `<details class="acc" id="${a.id}"${(open.size ? open.has(a.id) : a.open) ? " open" : ""}><summary><span class="s-k${a.kp ? " pk" : ""}">${a.k}</span><span class="s-t">${a.t}</span><span class="s-d">${a.d}</span></summary><div class="acc-b">${a.b}</div></details>`).join("");
-}
-function renderAllPanel() { renderClientTab(); renderMotor(); renderAccs(); renderDemo(); if (!$("#view-camp").hidden) renderCampaign(); if (!$("#view-modelos").hidden) renderModels(); if (!$("#view-aprende").hidden) renderAprende(); if (TOUR) TOUR.paint(); }
-function updateNow() {
-  const N = NOW[S.screen]; if (!N) return;
-  let name = N.n, what = N.what;
-  if (S.screen === "story") { const c = chapters(S)[S.story]; name += `: ${c.name} (${S.story + 1} de ${chapters(S).length})`; what = c.spec; }
-  if (S.screen === "offer" && S.offer) name += ": " + product(S, S.offer).title;
-  $("#nowName").textContent = name;
-  $("#nowWho").textContent = S.B.client.name;
-  $("#nowBody").innerHTML = `<span class="idea-tag">${N.tag}</span><div>${what}</div><h5>Qué puedes hacer aquí</h5><ul>${N.how.map(h => `<li>${h}</li>`).join("")}</ul><h5>Qué valida o mide</h5><div>${N.val}</div>`;
-  const keys = newOnScreen();
-  $("#nowNew").innerHTML = keys.length ? `<h5>Lo nuevo en esta pantalla</h5><div class="nn">${keys.map(k => `<button class="nn-c" data-nn="${k}">${esc(NEW[k].t)}</button>`).join("")}</div><p class="nn-d" id="nnD">Toca uno para ubicarlo en el teléfono.</p>`
-    : `<h5>Lo nuevo en esta pantalla</h5><p class="nn-d">Nada: esta pantalla es igual a la app de Lulo.</p>`;
-}
-function setTab(t) {
-  $$(".ptabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  $$(".pview").forEach(v => v.hidden = v.id !== "view-" + t);
-  if (t === "camp" && !CAMP) renderCampaign();
-  if (t === "datos") renderData();
-  if (t === "modelos") renderModels();
-  if (t === "cliente") renderExplorer();
-  if (t === "aprende") renderAprende();
-  if (t === "tour" && TOUR) TOUR.paint();
-}
-
-/* =================== aprendizaje, decisión explicada y lo nuevo =================== */
-let MOTOR = null;
-async function renderAprende() {
-  const box = $("#view-aprende"); if (!box) return;
-  if (!MOTOR) { box.innerHTML = aprendeHTML(null); try { MOTOR = await API.motor(); } catch { box.innerHTML = `<span class="empty">No se pudo cargar el motor.</span>`; return; } }
-  box.innerHTML = aprendeHTML(MOTOR, S.evaluation, S.B.client.name);
-  mountAprende(box, MOTOR, renderAprende);
-}
-function showDecision(ev, src) {
-  const card = $("#decCard"); if (!card) return;
-  card.hidden = false;
-  $("#decBody").innerHTML = decisionHTML(ev, src, r => product(S, r).title);
-  card.classList.remove("flashbox"); void card.offsetWidth; card.classList.add("flashbox");
-}
-const UI = "lulo:ui";
-function setHighlight(on) {
-  document.body.classList.toggle("show-new", on);
-  $("#hlBtn").setAttribute("aria-pressed", on);
-  store.set(`${UI}:resaltar`, on);
-  updateNow();
-}
-function newOnScreen() {
-  return [...new Set($$("#phone [data-new]").filter(e => e.getClientRects().length && getComputedStyle(e).visibility !== "hidden")
-    .map(e => e.dataset.new))].filter(k => NEW[k]);
-}
-function pulseNew(k) {
-  const el = $(`#phone [data-new="${k}"]`); if (!el) return;
-  el.classList.remove("nn-pulse"); void el.offsetWidth; el.classList.add("nn-pulse");
-  const sc = $("#scroll");
-  if (sc.contains(el)) { const r = el.getBoundingClientRect(), b = sc.getBoundingClientRect(); if (r.top < b.top || r.bottom > b.bottom) sc.scrollTo({top: sc.scrollTop + r.top - b.top - 80, behavior: "smooth"}); }
-  const d = $("#nnD"); if (d) d.innerHTML = `<b>${esc(NEW[k].t)}:</b> ${esc(NEW[k].d)}`;
-}
-function openWelcome() {
-  const w = $("#welcome"); w.hidden = false; document.body.classList.add("welcome-open");
-  setTimeout(() => { w.scrollTop = 0; w.querySelector(".w-in").focus({preventScroll: true}); }, 30);
-}
-function closeWelcome() { $("#welcome").hidden = true; document.body.classList.remove("welcome-open"); store.set(`${UI}:bienvenida`, true); }
-$(".ptabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
-$("#openAll").addEventListener("click", () => $$("#accs details").forEach(d => d.open = true));
-$("#closeAll").addEventListener("click", () => $$("#accs details").forEach(d => d.open = false));
-$("#events").addEventListener("click", e => { const b = e.target.closest("[data-ev]"); if (b) { if (!S.unlocked) unlock(); fire(b.dataset.ev, {}, "Panel · " + (S.B.events.find(x => x.type === b.dataset.ev) || {}).label); } });
-$("#nextWin").addEventListener("click", nextWindow);
+/* =================== cola de ofertas =================== */
 async function nextWindow() {
-  if (S.shown) { hideNotif(); addLog(S.shown.src, S.shown.title, "Ventana cerrada sin respuesta", "no", S.shown.ramo); closeWindow(); }
+  if (S.shown) return;
   const d = S.queue.shift(); if (!d) return;
   try {
     const ev = await API.evaluate(S.cid, {...ctx(), window: null, queue: S.queue}, d.ramo);
     S.lastTrace = ev;
     await handleOutcome(ev.outcome, ev.decision || d, "Cola · siguiente ventana", ev.message, ev);
   } catch { toast("El motor no respondió"); }
-  renderMotor();
 }
-$("#ctrlBtn").addEventListener("click", () => { S.control = S.control === true ? null : true; renderMotor(); persist(); toast(S.control ? "Cliente en grupo de control" : "Asignación normal (hash o personaje)"); });
-$("#csvBtn").addEventListener("click", async () => {
-  if (!S.log.length) { toast("El registro está vacío"); return; }
-  try { const blob = await API.csv(S.log.slice().reverse()); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `registro-respuestas-${S.cid}.csv`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
-  catch { toast("No se pudo generar el CSV"); }
-});
-$("#btBtn").addEventListener("click", runBacktest);
-$("#campBtn").addEventListener("click", renderCampaign);
-const xfilter = debounce(() => renderExplorer(), 250);
-$("#xq").addEventListener("input", e => { XQ.q = e.target.value; xfilter(); });
-$("#xout").addEventListener("change", e => { XQ.outcome = e.target.value; renderExplorer(); });
-$("#xramo").addEventListener("change", e => { XQ.ramo = e.target.value; renderExplorer(); });
-$("#xsrc").addEventListener("change", e => { XQ.source = e.target.value; renderExplorer(); });
-$("#timetravel").addEventListener("click", e => { const b = e.target.closest("[data-asof]"); if (b) switchClient(S.cid, b.dataset.asof); });
-function resetAll() {
-  try { Object.keys(sessionStorage).filter(k => k.startsWith(KEY)).forEach(k => sessionStorage.removeItem(k)); } catch { /* sin almacenamiento */ }
-  Object.keys(MC).forEach(k => delete MC[k]);
-  hideNotif(); busy = Promise.resolve(); chainTimer.forEach(clearTimeout);
-  loadState(S.B); S.unlocked = true; S.screen = "home"; S.lastTrace = null;
-  demoDone.clear(); msg("Dispara un evento o usa la app para ver cómo decide el motor.");
-  $("#decCard").hidden = true;
-  render("fade"); renderAllPanel(); toast("Demo reiniciada");
+
+/* =================== encabezado: personajes, lo nuevo, bienvenida y respuestas =================== */
+function renderPersonas() {
+  const base = S.B.client.source === "reto" ? `<span class="pchip on" aria-current="true">${esc(S.cid)} · cliente de la base</span>` : "";
+  const html = PERSONAS.map(c => `<button class="pchip${c.id === S.cid ? " on" : ""}" data-client="${c.id}" aria-pressed="${c.id === S.cid}"><span class="av" style="background:${c.color}">${esc(c.first[0])}</span>${esc(c.first)}</button>`).join("") + base;
+  $("#personas").innerHTML = html; $("#wPersonas").innerHTML = html;
 }
+function renderChrome() { renderPersonas(); paintGuide(); }
+const UI = "lulo:ui";
+const TIP = "Nuevo en el prototipo · ";
+/** Con «Resaltar lo nuevo», cada elemento nuevo dice qué es al pasar el mouse. */
+function tipNew(on) {
+  $$("#phone [data-new]").forEach(e => {
+    const n = NEW[e.dataset.new];
+    if (on && n && !e.title) e.title = `${TIP}${n.t}: ${n.d}`;
+    if (!on && e.title.startsWith(TIP)) e.removeAttribute("title");
+  });
+}
+function setHighlight(on) {
+  document.body.classList.toggle("show-new", on);
+  $("#hlBtn").setAttribute("aria-pressed", on);
+  store.set(`${UI}:resaltar`, on);
+  tipNew(on);
+}
+function openWelcome() {
+  const w = $("#welcome"); w.hidden = false; document.body.classList.add("welcome-open");
+  setTimeout(() => { w.scrollTop = 0; w.querySelector(".w-in").focus({preventScroll: true}); }, 30);
+}
+function closeWelcome() { $("#welcome").hidden = true; document.body.classList.remove("welcome-open"); store.set(`${UI}:bienvenida`, true); }
+
+const EXPO_COLS = ["cliente_id", "fecha", "ramo", "canal", "resultado", "grupo", "politica", "p_motor", "version_reglas"];
+/** Todas las ofertas mostradas en la sesión (todos los clientes que se abrieron) con su resultado; sin respuesta = ignorada. */
+function exportResponses() {
+  const rows = [], mine = `${KEY}:state:${S.cid}:${S.asOf}`;
+  try { Object.keys(sessionStorage).filter(k => k.startsWith(`${KEY}:state:`) && k !== mine).forEach(k => rows.push(...(store.get(k)?.expo || []))); } catch { /* sin almacenamiento */ }
+  rows.push(...S.expo);
+  if (!rows.length) { toast("Todavía no hay ofertas mostradas"); return; }
+  const cell = v => /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v);
+  const text = [EXPO_COLS.join(","), ...rows.map(r => EXPO_COLS.map(c => cell(c === "resultado" ? r[c] || "ignorada" : r[c] ?? "")).join(","))].join("\n") + "\n";
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type: "text/csv;charset=utf-8"}));
+  a.download = "respuestas-prototipo.csv"; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast(`${rows.length} ${rows.length === 1 ? "oferta" : "ofertas"} en el CSV`);
+}
+$("#csvBtn").addEventListener("click", exportResponses);
+$("#hlBtn").addEventListener("click", () => setHighlight(!document.body.classList.contains("show-new")));
+$("#welcomeBtn").addEventListener("click", openWelcome);
+// En el celular el encabezado no se ve: «Guía» abre los escenarios o el recorrido si están abiertos y, si no, la bienvenida.
+$("#guideFab").addEventListener("click", () => { if (GUIDE) openGuide(GUIDE); else openWelcome(); });
+$("#welcome").addEventListener("click", e => { if (e.target.id === "welcome") closeWelcome(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#welcome").hidden) closeWelcome(); });
+
+/* =================== guía al lado del teléfono: recorrido y escenarios =================== */
+// En el escritorio es una tarjeta junto al teléfono; en el celular, una hoja que se abre sobre la app.
+const mobile = () => matchMedia("(max-width: 760px)").matches;
+let GUIDE = null;          // "tour" | "scen" | null
+let LAST = null;           // lo último que decidió el motor en un escenario: {ev, src}
+let SCEN_ON = null;        // escenario corriendo
+function openGuide(mode, sheet = true) { GUIDE = mode; paintGuide(); if (mobile() && sheet) document.body.classList.add("guide-open"); }
+function closeGuide() { GUIDE = null; paintGuide(); document.body.classList.remove("guide-open"); }
+function closeGuideSheet() { document.body.classList.remove("guide-open"); }
+function paintGuide() {
+  const g = $("#guide");
+  g.hidden = !GUIDE;
+  if (GUIDE === "tour" && TOUR) TOUR.paint();
+  else if (GUIDE === "scen") g.innerHTML = scenHTML();
+}
+function scenHTML() {
+  return `<div class="g-head"><b>Escenarios rápidos</b><button class="g-x" data-guide="close" aria-label="Cerrar los escenarios">✕</button></div>
+    <p class="g-lead">Un toque y el teléfono muestra el caso; aquí abajo, lo que decidió el motor y por qué.</p>
+    <div class="scen">${SCEN.map((s, k) => `<button data-scen="${k}"${SCEN_ON === k ? ' aria-busy="true"' : ""}${SCEN_ON !== null ? " disabled" : ""}><b>${esc(s.t)}</b><span>${esc(s.d)}</span></button>`).join("")}</div>
+    ${LAST ? `<div class="g-dec">${decisionHTML(LAST.ev, LAST.src, r => product(S, r).title)}</div>` : ""}
+    <p class="g-foot">También puedes usar la app libremente: cada transferencia, abono, crédito o renovación pasa por el mismo motor.</p>`;
+}
+function noteDecision(ev, src) { LAST = {ev, src}; if (GUIDE === "scen") paintGuide(); }
+
+/* =================== cambio de cliente =================== */
 /** Deja a un cliente como recién abierto en la fecha de corte (lo usa el recorrido guiado). */
 async function freshClient(id) {
   try { sessionStorage.removeItem(`${KEY}:state:${id}:${META.cutoff}`); } catch { /* sin almacenamiento */ }
   if (S.cid !== id || S.asOf !== META.cutoff) { await switchClient(id, META.cutoff); await wait(400); }
   else {
     Object.keys(MC).forEach(k => delete MC[k]);
-    hideNotif(); busy = Promise.resolve(); chainTimer.forEach(clearTimeout);
-    loadState(S.B); S.lastTrace = null; render("fade"); renderAllPanel();
+    hideNotif(); busy = Promise.resolve();
+    loadState(S.B); S.lastTrace = null; render("fade"); renderChrome();
   }
   try { sessionStorage.removeItem(`${KEY}:state:${id}:${META.cutoff}`); } catch { /* sin almacenamiento */ }
   loadState(S.B); S.lastTrace = null;
-  $("#decCard").hidden = true;
   unlock();
 }
-$("#resetBtn").addEventListener("click", resetAll); $("#resetBtn2").addEventListener("click", resetAll);
-
 async function switchClient(id, asOf = S.asOf) {
   if (id === S.cid && asOf === S.asOf) return;
   store.set(`${KEY}:state:${S.cid}:${S.asOf}`, snapshot());
@@ -825,121 +664,113 @@ async function switchClient(id, asOf = S.asOf) {
     $("#splash").classList.remove("hide");
     try { NB = CACHE[key] = await API.client(id, asOf); } catch { $("#splash").classList.add("hide"); toast("No se pudo cargar el cliente"); return; }
   }
-  hideNotif(); closeSheetPlus(); busy = Promise.resolve(); chainTimer.forEach(clearTimeout);
+  hideNotif(); closeSheetPlus(); busy = Promise.resolve();
   Object.keys(MC).forEach(k => delete MC[k]);
   const keepUnlocked = id === S.cid;
   loadState(NB); if (keepUnlocked) { S.unlocked = true; S.screen = "home"; } else { S.unlocked = false; S.screen = "lock"; }
   store.set(`${KEY}:client`, id);
   const u = new URL(location.href); u.searchParams.set("cliente", id); if (asOf !== META.cutoff) u.searchParams.set("fecha", asOf); else u.searchParams.delete("fecha"); u.hash = ""; history.replaceState(history.state, "", u);
-  msg(`Cliente: <b>${esc(NB.client.name)}</b> · fecha ${asOf}. Dispara un evento o usa la app.`);
-  render("fade"); renderAllPanel(); if (!$("#view-cliente").hidden) renderExplorer();
-  CAMP = null; if (!$("#view-camp").hidden) renderCampaign();
+  render("fade"); renderChrome();
   setTimeout(() => $("#splash").classList.add("hide"), 350);
   flashPhone();
 }
 document.addEventListener("click", e => {
+  const f = e.target.closest("[data-film]");
+  if (f) { closeWelcome(); if (TOUR.active()) TOUR.finish(false, true); FILM.start(+f.dataset.film || 0); return; }
   if (TOUR && TOUR.onClick(e)) return;
   const w = e.target.closest("[data-w]");
   if (w) {
     const a = w.dataset.w; closeWelcome();
     if (a === "tour") TOUR.start();
+    else if (a === "auto") FILM.start(0);
     else if (a === "free") { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
-    else if (a === "motor") { setTab("aprende"); if (mobile()) document.body.classList.add("sheet-open"); else $(".panel").scrollTop = 0; }
+    else if (a === "scen") openGuide("scen");
     return;
   }
-  const nn = e.target.closest("[data-nn]"); if (nn) { pulseNew(nn.dataset.nn); return; }
-  const c = e.target.closest("[data-client]");
-  if (c) { switchClient(c.dataset.client); closeSheet(); return; }
-  const b = e.target.closest("[data-goto]"); if (!b) return;
-  gotoTarget(b.dataset.goto);
-  if (b.dataset.acc) { setTab("func"); const d = document.getElementById(b.dataset.acc); if (d) { d.open = true; d.scrollIntoView({behavior: "smooth", block: "start"}); } }
+  if (e.target.closest('[data-sheet="close"]')) { closeGuideSheet(); return; }
+  const g = e.target.closest("[data-guide]");
+  if (g) {
+    if (TOUR && TOUR.active()) TOUR.finish(false);
+    if (g.dataset.guide === "close") closeGuide(); else openGuide(g.dataset.guide);
+    return;
+  }
+  const sc = e.target.closest("[data-scen]"); if (sc) { runScen(+sc.dataset.scen); return; }
+  const c = e.target.closest("[data-client]"); if (c) { if (c.closest("#welcome")) closeWelcome(); switchClient(c.dataset.client); return; }
+  const b = e.target.closest("[data-goto]"); if (b) gotoTarget(b.dataset.goto);
 });
 function gotoTarget(t) {
-  if (t === "motor") { setTab("motor"); return; }
-  if (t === "lock") { lock(); flashPhone(); closeSheet(); return; }
+  if (t === "lock") { lock(); flashPhone(); return; }
   S.unlocked = true; abandonOpen(); closeSheetPlus();
   const [scr, arg] = t.split(":");
   S.stack = []; S.params = {};
   const home = {screen: "home", params: {}, scroll: 0};
-  if (scr === "story") { S.screen = "anio"; render("none"); openStory(storyIndex(arg)); flashPhone(); closeSheet(); return; }
+  if (scr === "story") { S.screen = "anio"; render("none"); openStory(storyIndex(arg)); flashPhone(); return; }
   if (scr === "offer") { S.stack = [home]; S.offer = arg; S.screen = "offer"; }
   else if (scr === "explora") { S.xt = arg || "ahorro"; S.screen = "explora"; }
   else if (scr === "renew") { S.stack = [home]; if (S.B.car && S.B.car.days != null && !S.renewed.includes("SOAT")) S.screen = "renew"; else S.screen = "soatIntro"; }
   else if (scr === "mov") { S.stack = [home, {screen: "cuenta", params: {}, scroll: 0}]; S.detail = null; S.screen = "mov"; S.params = {id: arg}; }
   else if (["alertas", "cuenta", "perfil", "ayuda", "soatIntro", "bolsillos", "credito", "card", "mapa"].includes(scr)) { S.stack = [home]; S.screen = scr; }
   else S.screen = ROOTS.includes(scr) ? scr : "home";
-  render("fade"); sc().scrollTop = 0; armHistory(); flashPhone(); closeSheet();
+  render("fade"); sc().scrollTop = 0; armHistory(); flashPhone();
   if (ROOTS.includes(S.screen)) onEnterRoot(S.screen);
 }
 
-/* =================== panel en el celular =================== */
-const mobile = () => matchMedia("(max-width: 760px)").matches;
-function closeSheet() { document.body.classList.remove("sheet-open"); }
-$("#panelFab").addEventListener("click", () => document.body.classList.toggle("sheet-open"));
-$("#sheetClose").addEventListener("click", closeSheet);
-$("#hlBtn").addEventListener("click", () => setHighlight(!document.body.classList.contains("show-new")));
-$("#welcomeBtn").addEventListener("click", openWelcome);
-$("#welcome").addEventListener("click", e => { if (e.target.id === "welcome") closeWelcome(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#welcome").hidden) closeWelcome(); });
-
-/* =================== demo guiada =================== */
-const waitFor = async (fn, ms = 5000) => { const t0 = Date.now(); while (!fn() && Date.now() - t0 < ms) await wait(60); };
+/* =================== escenarios rápidos =================== */
 async function ensureClient(id) { if (S.cid !== id || S.asOf !== META.cutoff) { await switchClient(id, META.cutoff); await wait(450); } if (!S.unlocked) unlock(); }
-async function inStory(id) { gotoTarget(`story:${id}`); await waitFor(() => S.screen === "story"); await wait(500); }
-const DEMO = [
-  {k: "Contexto", t: "Arranca como Sebastián", d: "Home con la estructura de la app real: carrusel, Bolsillos Flex y mapa de cajeros, más el aviso del SOAT.", run: async () => { await ensureClient("sebastian"); gotoTarget("home"); }},
-  {k: "Look real", t: "Explora › Seguros", d: "Los cuatro seguros que hoy muestra Lulo y debajo los ramos de la base, marcados «Para ti» por el motor.", run: async () => { await ensureClient("sebastian"); gotoTarget("explora:seguros"); }},
-  {k: "Futuro", t: "Renueva el SOAT con el flujo real", d: "Vence en 27 días: renovación con Seguros Mundial y pago desde la Lulo Cuenta.", run: async () => { await ensureClient("sebastian"); if (S.renewed.includes("SOAT")) { toast("El SOAT ya estaba renovado"); return; } gotoTarget("renew"); await wait(700); pay(); await wait(1500); }},
-  {k: "Pasado", t: "Abre Tu año: «te faltan 3 abonos»", d: "Sebastián tiene 3 nóminas en Lulo y la regla pide 6: el seguro de desempleo queda agendado, no se ofrece.", run: async () => { await ensureClient("sebastian"); await refreshYear(); await inStory("ingreso"); }},
-  {k: "Pasado", t: "Responde la validación del crédito", d: "«No sabía que tenía pago protegido» queda en el registro.", run: async () => { await ensureClient("sebastian"); await inStory("credito"); if (!S.known["Pago protegido"]) setKnown("No"); }},
-  {k: "Presente", t: "Transfiere a Laura", d: "Una acción real: transferencia fija → señal de dependientes → Vida por push.", run: async () => {
-    await ensureClient("sebastian"); gotoTarget("home"); await wait(400); go("transfer", {mode: "enviar"}); await wait(600); pickContact("laura"); await wait(500);
-    setAmount(450000); await wait(600); go("confirm"); await wait(600); await confirmFlow(); }},
-  {k: "Prioridad", t: "Abona a «Viajes» con la ventana ocupada", d: "La oferta de Vida sigue abierta: la de viaje espera en cola.", run: async () => { await ensureClient("sebastian"); if (!S.shown) toast("Primero muestra una oferta (paso anterior)"); await fire("abono_bolsillo", {pocket_type: "Viajes", pocket_name: "Viajes", amount: 300000}, "Abono al bolsillo Viajes"); }},
-  {k: "Presente", t: "Abre la notificación y activa", d: "«Por qué lo ves» sale de su evidencia. Al activar, aparece en Tu protección.", run: async () => {
-    await ensureClient("sebastian"); if (S.shown) { openDecision(S.shown); await wait(1100); acceptOffer(); } else toast("No hay una oferta abierta"); }},
-  {k: "Espaciado", t: "Siguiente ventana: va como banner", d: "Ya hubo un push hoy: la oferta en cola se muestra como banner pasivo (7 días entre push, reglas v1.1).", run: async () => { await ensureClient("sebastian"); if (S.queue.length) await nextWindow(); else await fire("compra_aerolinea", {merchant: "Avianca · BOG–CTG", amount: 1200000}); }},
-  {k: "Control", t: "Grupo de control", d: "El evento se detecta y se registra, pero no se muestra: así se mide el efecto real.", run: async () => { await ensureClient("andres"); S.control = true; renderMotor(); await fire("transferencia_fija", {}, "Transferencia a Martha G."); S.control = null; renderMotor(); }},
-  {k: "Urgencia", t: "Andrés: el SOAT a 9 días gana", d: "Vida tiene más valor esperado, pero el SOAT tiene fecha límite (v1.1).", run: async () => { await ensureClient("andres"); gotoTarget("proteccion"); setTab("motor"); S.lastTrace = S.evaluation; renderMotor(); }},
-  {k: "Momento único", t: "Valentina pide un crédito", d: "Sin pago protegido: el desembolso dispara la oferta en ese instante.", run: async () => { await ensureClient("valentina"); await fire("desembolso", {amount: 5000000, label: "Desembolso Lulo Crédito"}, "Desembolso Lulo Crédito"); }},
-  {k: "No daño", t: "Apaga las sugerencias", d: "Queda como señal de daño y Tu protección explica por qué no hay sugerencias.", run: async () => { await ensureClient("valentina"); gotoTarget("perfil"); await wait(500); if (S.sugg) toggleSugg(); }},
-  {k: "Base real", t: "Un cliente de la base: C00002", d: "11 abonos de nómina y crédito activo: Desempleo fuerte, con su porqué.", run: async () => { await ensureClient("C00002"); unlock(); gotoTarget("proteccion"); setTab("motor"); }},
-  {k: "Campaña", t: "Plan de los 600 y backtest", d: "Qué se le ofrece a cada cliente hoy y el año recorrido con cero violaciones.", run: async () => { setTab("camp"); await renderCampaign(); await runBacktest(); }},
-  {k: "Viaje en el tiempo", t: "+30 días: se abren ventanas de SOAT", d: "Los vencimientos de la base entran en la ventana de 30 días; el comportamiento queda congelado en el corte.", run: async () => { await switchClient("C00210", addDays(META.cutoff, 30)); if (!S.unlocked) unlock(); setTab("cliente"); }},
-];
-// Escenarios rápidos del recorrido: los mismos pasos de la demo, contados para quien llega por primera vez.
+/** Lo que decide el motor hoy para el cliente abierto (evaluación en lote, recién pedida), para mostrarlo en la guía. */
+async function todayDecision(src) { await refreshEval(); if (S.evaluation) noteDecision(S.evaluation, src); }
 const SCEN = [
-  {t: "Valentina pide un crédito", d: "Sin pago protegido, el desembolso dispara la oferta en ese instante.", run: DEMO[11].run},
-  {t: "Andrés: el SOAT vence en 9 días", d: "Gana la ventana aunque el seguro de vida valga más: tiene fecha límite.", run: DEMO[10].run},
-  {t: "Grupo de control", d: "El motor detecta y decide, pero no muestra: así se mide el efecto real.", run: DEMO[9].run},
-  {t: "Un cliente de la base: C00002", d: "11 abonos de nómina y crédito activo: desempleo, con su probabilidad.", run: DEMO[13].run},
-  {t: "Viaje en el tiempo: +30 días", d: "Se abren las ventanas de SOAT de los clientes de la base.", run: DEMO[15].run},
+  {t: "Valentina pide un crédito", d: "Sin pago protegido, el desembolso dispara la oferta en ese instante.",
+    run: async () => { await ensureClient("valentina"); await fire("desembolso", {amount: 5000000, label: "Desembolso Lulo Crédito"}, "Valentina · desembolso de Lulo Crédito"); }},
+  {t: "Andrés: el SOAT vence en 9 días", d: "Gana la ventana aunque el seguro de vida valga más: tiene fecha límite.",
+    run: async () => { await ensureClient("andres"); gotoTarget("proteccion"); await todayDecision("Andrés · evaluación de hoy"); }},
+  {t: "Grupo de control", d: "El motor detecta y decide, pero no muestra: así se mide el efecto real.",
+    run: async () => {
+      await ensureClient("andres"); S.control = true;
+      try { await fire("transferencia_fija", {}, "Andrés · transferencia a Martha G. (grupo de control)"); }
+      finally { S.control = null; persist(); refreshEval(); }   // el control forzado es solo para esta transferencia
+    }},
+  {t: "Un cliente de la base: C00002", d: "11 abonos de nómina y crédito activo: desempleo, con su probabilidad.",
+    run: async () => { await ensureClient("C00002"); unlock(); gotoTarget("proteccion"); await todayDecision("C00002 · evaluación de hoy"); }},
+  {t: "Viaje en el tiempo: +30 días", d: "Se abren las ventanas de SOAT de los clientes de la base.",
+    run: async () => { await switchClient("C00210", addDays(META.cutoff, 30)); if (!S.unlocked) unlock(); gotoTarget("home"); await todayDecision(`C00210 · ${addDays(META.cutoff, 30)} (+30 días)`); }},
 ];
 async function runScen(k) {
-  if (mobile()) closeSheet();
+  if (SCEN_ON !== null) return;
+  SCEN_ON = k; LAST = null; paintGuide();
+  if (mobile()) closeGuideSheet();
   try { await SCEN[k].run(); } catch (err) { console.error(err); toast("No se pudo ejecutar el escenario"); }
-  renderMotor();
+  SCEN_ON = null; paintGuide();
+  if (mobile()) setTimeout(() => toast("Toca «Guía» para ver qué decidió el motor"), 2600);
 }
-const demoDone = new Set();
-function renderDemo() {
-  $("#demoLead").textContent = `${DEMO.length} pasos para contar la propuesta con el motor real. Cada botón ejecuta el paso en el teléfono; también puedes hacerlo a mano.`;
-  $("#demo").innerHTML = DEMO.map((s, i) => `<li class="${demoDone.has(i) ? "done" : ""}"><div><div class="dk">${s.k}</div><div class="dt">${s.t}</div><div class="dd">${s.d}</div></div><button data-demo="${i}">${demoDone.has(i) ? "Repetir" : "Ejecutar"}</button></li>`).join("");
-}
-$("#demo").addEventListener("click", async e => {
-  const b = e.target.closest("[data-demo]"); if (!b) return;
-  const i = +b.dataset.demo; b.disabled = true;
-  if (mobile()) closeSheet();
-  try { await DEMO[i].run(); demoDone.add(i); } catch (err) { console.error(err); toast("No se pudo ejecutar el paso"); } finally { renderDemo(); renderMotor(); }
-});
 
 /* =================== recorrido guiado =================== */
+let MOTOR = null;
 TOUR = createTour({
-  S: () => S, META, NEW_LIST, SCEN, go, tabTo, gotoTarget, toast,
-  setTab(t) { setTab(t); if (mobile()) document.body.classList.add("sheet-open"); }, openRenew, pay, pickContact, setAmount, confirmFlow,
-  openDecision, acceptOffer, refreshEval, setHighlight, runScen, motor: () => MOTOR,
+  S: () => S, META, NEW_LIST, go, tabTo, gotoTarget, toast,
+  openRenew, pay, pickContact, setAmount, confirmFlow,
+  openDecision, acceptOffer, refreshEval, setHighlight, motor: () => MOTOR,
   fresh: freshClient, title: r => product(S, r).title,
   openStory: i => openStory(i),
-  showTour(open) { setTab("tour"); if (mobile()) document.body.classList.toggle("sheet-open", !!open); else $(".panel").scrollTop = 0; if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {}); },
+  card: () => GUIDE === "tour" ? $("#guide") : null,
+  showTour(sheet) { openGuide("tour", !!sheet); if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {}); },
+  endTour(next) { if (next) openGuide("scen", false); else closeGuide(); },
+});
+
+/* =================== recorrido automático: la película =================== */
+FILM = createFilm({
+  S: () => S, META, toast, go, gotoTarget, pickContact, setAmount, confirmFlow, openDecision, acceptOffer, refreshEval,
+  setHighlight, openRenew, fresh: freshClient, title: r => product(S, r).title, motor: () => MOTOR,
+  onStart() {
+    closeWelcome(); closeGuide(); document.body.classList.remove("console-open");
+    if (TOUR.active()) TOUR.finish(false, true);
+    if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {});
+  },
+  onEnd(d = {}) {
+    if (d.manual !== undefined) TOUR.start(d.manual);
+    else if (d.scen) openGuide("scen");
+    else if (d.libre) { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
+  },
 });
 
 /* =================== inicio =================== */
@@ -952,13 +783,11 @@ async function boot() {
   loadState(B);
   const route = location.hash ? routeFromHash(location.hash) : null;
   history.replaceState({lulo: "base"}, "", location.href);
-  render("none"); renderAllPanel();
+  render("none"); renderChrome();
   if (route) gotoTarget(route); else if (S.unlocked) armHistory();
   setTimeout(() => $("#splash").classList.add("hide"), 1000);
-  apiStatus("ok", `<b>Motor v3 conectado</b> · reglas ${META.rules_version} · ${META.clients.reto} clientes de la base + ${META.clients.persona} personajes`);
   $("#wGrid").innerHTML = NEW_LIST.slice(0, 4).map(([k, t, d], i) => `<div class="w-c"><span class="w-n">${i + 1}</span><b>${esc(t)}</b><span>${esc(d)}</span></div>`).join("");
   if (store.get(`${UI}:resaltar`)) setHighlight(true);
   if (!store.get(`${UI}:bienvenida`) && !url.searchParams.get("cliente") && !route) openWelcome();
-  TOUR.paint();
 }
 boot();

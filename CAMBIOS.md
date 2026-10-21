@@ -17,6 +17,99 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app → main · SOKA elige la versión A (solo la app)
+- Qué cambió:
+  - SOKA comparó las dos alternativas de E11 y eligió A, solo la app con el recorrido automático como video, para pasar a `main`.
+  - `README.md`: la tabla de versiones dice que producción es A. B (`feat/claude-consola-lulo`, app + consola de Lulo) queda como alternativa que no se eligió, con su enlace de vista previa.
+  - `CLAUDE.md`: E11 queda como hecha y en `main`; la consola no se eligió y agregarla después es un cambio grande.
+  - Sin cambios de código.
+- Por qué: SOKA pidió pasar a `main` lo que se venía probando y, preguntado por cuál de las dos, eligió «A · Solo la app».
+- Archivos: `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó: sobre esta rama, `python -m pytest` → 105 passed (incluye las 6 de punta a punta); `train_motor.py --check`, `laboratorio.py --check` y `train_models.py --check` coinciden; backtest con 0 violaciones.
+- Consultado con SOKA: sí, el 2026-10-21: «pasa eso a main», versión A.
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5.
+
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático como video
+- Qué cambió: el recorrido automático es ahora una «película» del prototipo, que se explica solo (`public/static/v3/film.js`). Reemplaza la versión de la entrada anterior (tarjeta que avanzaba sola); el recorrido paso a paso no cambia.
+  - **Cursor:** se mueve por la pantalla y hace los clics de verdad en la app, con un efecto de toque: avisos, pago del SOAT, la transferencia a Laura (+, Transferir, contacto, monto, confirmar), la notificación, «Activar», las pestañas y Tu año.
+  - **Subtítulos:** abajo cuentan lo que pasa, con las cifras del motor: días al vencimiento, P(acepta), el paso del momento, valor esperado, apetito antes y después, resultado del laboratorio y tamaño del piloto.
+  - **Globos:** junto a cada cosa nueva, unidos al elemento con una línea; usan los textos de lo nuevo de `content.js`.
+  - **Capítulos:** son los mismos 11 del recorrido paso a paso. El escritorio deja solo el teléfono, achicado para que quepan los subtítulos. La etiqueta «Prototipo académico · datos simulados» sigue a la vista; en el celular va debajo de los subtítulos.
+  - **Controles de video:** pausar y seguir (barra, espacio o tocar la pantalla), capítulo anterior o siguiente (← →), saltar a cualquier capítulo (prepara el estado que necesita), voz opcional con la síntesis del navegador (apagada por defecto), «Paso a paso» (pasa al recorrido manual en el mismo capítulo) y Salir (Esc). Al final ofrece ver de nuevo, explorar o escenarios.
+  - **Desde el recorrido manual:** cada tarjeta tiene «Verlo en automático desde aquí».
+  - **Otros:** `tour.js` vuelve a ser solo el recorrido paso a paso; la notificación no se esconde mientras corre la película; `?ritmo=` sigue sirviendo para acelerar o frenar.
+- Por qué: SOKA pidió que el recorrido automático fuera «más tipo video animado», con el cursor a la vista y la explicación integrada en la app, «como si fuera el propio prototipo autoexplicándose», solo para la parte automática.
+- Archivos: `public/static/v3/film.js` (nuevo), `public/static/v3/tour.js`, `public/static/v3/app.js`, `public/static/v3/app.css`, `lulo_app/templates/app.html`, `tests/test_e2e.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 105 passed.
+  - La prueba de punta a punta `test_automatic_tour_is_the_prototype_explaining_itself` comprueba la pausa, el final solo con los 11 capítulos, Vida aceptada en el CSV por los clics del cursor y el paso de manual a película y de vuelta. Estable en 3 corridas.
+  - Con Playwright, la película completa duró 218 s (3 min 38 s) a ritmo normal y 78 s a `?ritmo=0.35` en escritorio (1440 × 900), y 81 s a `?ritmo=0.35` en celular (390 × 844), sin errores de consola.
+  - Los controles (pausa, siguiente, salto al capítulo 5, «Paso a paso», «Verlo en automático desde aquí» y Esc) funcionan.
+  - Se corrigió un error encontrado al probar: la capa que bloquea los clics seguía activa después de salir.
+- Consultado con SOKA: sí, el 2026-10-21 (su pedido).
+- Cifras nuevas y su origen: las de los subtítulos salen del motor en vivo (evaluación y registro de la sesión), de `laboratorio.json` y de `modelos.json`; las duraciones, de la medición con Playwright.
+- Modelo de Claude usado: claude-opus-5-5.
+
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático
+- Qué cambió: el recorrido guiado tiene una opción automática. Se reproduce solo: lee cada paso, lo hace en el teléfono (lo que antes era «Hazlo por mí») y sigue, sin que nadie toque nada.
+  - **Tiempo de lectura:** unos 35 ms por carácter del texto, entre 5,5 y 15 s por paso; el recorrido completo dura unos 3 minutos. Una barra lima muestra cuánto falta para seguir.
+  - **Controles:** «Pausar», «Seguir» y «Paso a paso» (vuelve al modo manual). En el paso de Tu año, además, pasa tres capítulos de la historia.
+  - **Dónde se activa:** en el encabezado («Recorrido automático»), en la bienvenida (cuarta opción) y desde la tarjeta del recorrido («Que se reproduzca solo»).
+  - **Ritmo:** `?ritmo=` lo acelera o lo hace más lento (de 0,05 a 3).
+  - **Pistas:** en automático la pista dice si sigue solo, si está haciendo el paso o si está en pausa, en vez de «toca…».
+  - **Íconos:** los de reproducir y pausar son SVG, porque los símbolos ⏵ y ⏸ no se ven con la fuente de la app.
+- Por qué: a SOKA le gusta que haya un botón que haga el recorrido paso a paso de forma automática, sin que el cliente tenga que tocar nada, como opción.
+- Archivos: `public/static/v3/tour.js`, `public/static/v3/app.js`, `public/static/v3/app.css`, `lulo_app/templates/app.html`, `tests/test_e2e.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → todo pasa, con la prueba nueva `test_automatic_tour_plays_by_itself_and_can_pause`: en pausa no avanza, al seguir llega solo al final y el CSV trae Vida aceptada. Las 6 pruebas de punta a punta son estables en 3 corridas.
+  - Con Playwright, el recorrido automático completo a ritmo normal duró 2 min 39 s desde el paso 2 (unos 2 min 50 s en total) y a `?ritmo=0.1`, 29 s. En el celular, la tarjeta dentro del teléfono muestra «Pausar». Sin errores de consola.
+- Consultado con SOKA: sí, el 2026-10-21 (su pedido).
+- Cifras nuevas y su origen: la duración del recorrido, medida con Playwright como dice arriba.
+- Modelo de Claude usado: claude-opus-5-5.
+
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app · commits bc82492, 102f17e, e9e3875, a58302e y el de esta entrada · E11 (reglas v2.1)
+- Qué cambió:
+  - (0) A pedido de SOKA («push de todo»), merge de soka-js/Prototipo-IIND#3 (accesibilidad) a `main` (dd5a95b) con el Preview de Vercel en `success`. Esta rama parte de ese `main`.
+  - (1) **Backtest y plan más rápidos con las mismas decisiones** (bc82492). `evaluate(..., lite=True)` no arma la traza. Las previas por defecto se calculan una vez por nombre y `puntuar` reutiliza la varianza.
+  - (2) **Reglas v2.1** (102f17e).
+    - Con respuestas, la dispersión del apetito entre clientes (τ) se estima con Bayes empírico (`bayes.ApetitoEB`, verosimilitud marginal en una rejilla fija) y la previa se cambia sin volver a correr las respuestas (`Creencias.cambiar_previa`).
+    - `train_motor.py --respuestas` la usa en el retador, la guarda si se promueve y la muestra en el reporte.
+    - Sin respuestas sigue en 0,25. `motor-1.0` se conserva porque su versión es la semilla del sorteo de exploración.
+    - Laboratorio `lab-1.1`: reestima τ cada 5 rondas y tiene el escenario nuevo «dato nuevo», una columna que la base no trae, comparado con el mismo motor sin ella.
+  - (3) **Solo la app** (e9e3875). Se quitan el panel de la derecha (nueve pestañas), «Estás viendo» y la tarjeta de decisión, con su código y 209 reglas de CSS que solo usaban ellos. Quedan:
+    - un encabezado con el recorrido, los escenarios, «Resaltar lo nuevo», «¿Qué es este prototipo?», el cambio de personaje y «Descargar respuestas (CSV)»;
+    - una guía al lado del teléfono que aparece solo con el recorrido o los escenarios (en el celular, una hoja desde «Guía»);
+    - escenarios que dicen qué decidió el motor y por qué;
+    - el CSV de respuestas en el formato de `docs/DATOS_REALES.md`;
+    - la cola de ofertas, que pasa sola al cerrarse una ventana;
+    - la descripción de lo nuevo al pasar el mouse.
+  - (4) **Pruebas de punta a punta** con Playwright (a58302e): `tests/test_e2e.py` y `playwright==1.56.0` en `requirements-dev.txt`. La tarjeta del recorrido marca `aria-busy`.
+  - (5) Documentación:
+    - `docs/RESUMEN.md`, el resumen de una página para la entrega;
+    - `docs/MOTOR.md`: v2.1, laboratorio actualizado, «dato nuevo» y Bayes empírico;
+    - `docs/DATOS_REALES.md`: el CSV del prototipo y τ̂ en el reporte;
+    - `README.md` y `CLAUDE.md`: v2.1, E11, invariantes y mapa del código;
+    - corrección de redondeo: el intervalo de Hogar es de 5,1 % a 17,6 % (0,051455 en `motor.json`), no de 5,2 %.
+- Por qué: SOKA aprobó todas las mejoras propuestas después de E10 («estoy de acuerdo con todo»). Pidió quitar el panel de explicación porque «no sirve» y confundía: «dejar solo la app». Pidió también, en otra rama, una versión igual con un panel de más valor (`feat/claude-consola-lulo`), para revisar las dos al final y decidir cuál pasa a `main`.
+- Archivos: `lulo_app/core/engine.py`, `lulo_app/core/backtest.py`, `lulo_app/core/rules.py`, `lulo_app/core/__main__.py`, `lulo_app/ml/bayes.py`, `lulo_app/ml/motor.py`, `lulo_app/ml/motor.json`, `lulo_app/ml/laboratorio.json`, `scripts/train_motor.py`, `scripts/laboratorio.py`, `lulo_app/templates/app.html`, `public/static/v3/` (`app.js`, `app.css`, `tour.js`, `aprende.js`, `content.js`), `tests/test_core.py`, `tests/test_motor.py`, `tests/test_api_v3.py`, `tests/test_ml.py`, `tests/test_e2e.py`, `requirements-dev.txt`, `docs/RESUMEN.md`, `docs/MOTOR.md`, `docs/DATOS_REALES.md`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 104 passed, incluidas 5 de punta a punta (estables en 4 corridas de unos 16 s).
+  - `python -m lulo_app.core backtest` → violaciones de las invariantes: 0; máximo de 4 push en 30 días.
+  - `train_motor.py --check`, `laboratorio.py --check` y `train_models.py --check` → coinciden.
+  - Contra una línea base guardada antes del cambio, la salida es idéntica en el backtest cada 14 días, en el plan de los 600 (al corte, a +30 días y con la regla v1.3) y en 40 evaluaciones completas. Tras v2.1, las filas y el resumen del plan también son idénticos; solo cambia la etiqueta `rules_version`.
+  - En el navegador (Playwright, 1440 × 900 y 390 × 844): recorrido completo, escenarios, descarga del CSV y hoja del celular, sin errores de consola y sin desborde horizontal.
+- Consultado con SOKA: sí, el 2026-10-21. Aprobó todas las mejoras y quitar el panel; la versión con consola va aparte, para que él elija.
+- Cifras nuevas y su origen:
+  - **Tiempos** (local, `time.perf_counter`): backtest de 10,7 s a 6,3 s y plan de 0,68 s a 0,39 s.
+  - **Laboratorio** (`lulo_app/ml/laboratorio.json`):
+    - +10,2 %, −1,0 %, +10,4 %, +10,5 % y +9,0 % frente a la regla;
+    - «dato nuevo» +0,8 % frente al motor sin la columna, con pesos 0,13 y 0,16 (verdad 0,10 y 0,30);
+    - τ̂ 0 («regla correcta») y 0,14 («señal», verdad 0,20);
+    - error de calibración final de 2,14 a 1,75 puntos.
+  - **`docs/RESUMEN.md`**: `motor.json`, `python -m lulo_app.core campana`, `python -m lulo_app.core backtest` y `modelos.json`, como dice su pie.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-readme-versiones · commit de esta entrada · enlaces para comparar versiones
 - Qué cambió: `README.md` abre con la tabla «Versiones en revisión antes de pasar a `main`». Tiene el enlace de producción y las vistas previas de Vercel de las dos alternativas de E11: A (`feat/claude-solo-app`, solo la app) y B (`feat/claude-consola-lulo`, app + consola de Lulo). Sin cambios de código.
 - Por qué: SOKA pidió dejar en el README el enlace de `main` y el de las versiones que se están probando, para que él y el equipo comparen las dos antes de decidir cuál pasa a `main`.

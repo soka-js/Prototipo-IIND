@@ -68,17 +68,22 @@ def momento(h: History, ramo: str, as_of: date, ventana: int) -> int | None:
 # --------------------------------------------------------------------------- creencias
 def _previa_por_defecto(sp: dict):
     pv = sp["previas"]
+    memo: dict[str, tuple[float, float]] = {}   # la previa de un nombre no cambia: se calcula una vez
 
     def f(k: str) -> tuple[float, float]:
+        if k in memo:
+            return memo[k]
         if k.startswith("cliente:"):
             return 0.0, pv["cliente_sd"]
         ramo, _, var = k.partition("|")
         if ramo == "*":
-            return 0.0, pv["global_sd"]
-        if var in ("base", "senal_media", "momento", "afinidad"):
-            m, s = pv[var][ramo]
-            return m, s
-        return 0.0, pv["ramo_sd"]
+            out = 0.0, pv["global_sd"]
+        elif var in ("base", "senal_media", "momento", "afinidad"):
+            out = tuple(pv[var][ramo])
+        else:
+            out = 0.0, pv["ramo_sd"]
+        memo[k] = out
+        return out
     return f
 
 
@@ -135,14 +140,11 @@ def aprender_sesion(cr: bayes.Creencias, cid: str, respuestas: list[tuple[dict[s
 
 
 # --------------------------------------------------------------------------- puntaje y explicación
-def _aprendida(cr: bayes.Creencias, k: str, prev_sd: float, umbral: float = 0.5) -> bool:
-    """Un peso cuenta como aprendido cuando las respuestas bajaron su varianza bajo `umbral` × la previa."""
-    _, v = cr.get(k)
-    return v < umbral * prev_sd * prev_sd
-
-
 def puntuar(cr: bayes.Creencias, x: dict[str, float], ramo: str, sp: dict | None = None) -> dict:
-    """Probabilidad (media de la creencia), intervalo al 90 % y descomposición en factores sobre la base."""
+    """Probabilidad (media de la creencia), intervalo al 90 % y descomposición en factores sobre la base.
+
+    Un peso cuenta como aprendido cuando las respuestas bajaron su varianza bajo la mitad de la previa
+    (0,95 de la previa para el apetito del cliente)."""
     sp = sp or spec()
     pv = sp["previas"]
     fixed = ("base", "senal_media", "momento", "afinidad")
@@ -155,7 +157,7 @@ def puntuar(cr: bayes.Creencias, x: dict[str, float], ramo: str, sp: dict | None
             # El apetito del cliente entra al intervalo solo cuando ya aprendió algo de sus respuestas:
             # antes, el intervalo describe al cliente promedio con esas señales.
             contrib["cliente"] += c
-            if _aprendida(cr, k, pv["cliente_sd"], 0.95):
+            if vk < 0.95 * pv["cliente_sd"] * pv["cliente_sd"]:
                 var_known += xk * xk * vk
             continue
         r, _, var = k.partition("|")
@@ -164,7 +166,7 @@ def puntuar(cr: bayes.Creencias, x: dict[str, float], ramo: str, sp: dict | None
             var_known += xk * xk * vk
             continue
         prev_sd = pv["global_sd"] if r == "*" else pv["ramo_sd"]
-        if _aprendida(cr, k, prev_sd):
+        if vk < 0.5 * prev_sd * prev_sd:
             contrib["rasgos"] += c
             var_known += xk * xk * vk
             top.append((var, c))

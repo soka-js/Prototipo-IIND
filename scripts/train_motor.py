@@ -36,6 +36,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "lulo_app" / "ml" / "motor.json"
+# La versión entra en la semilla del sorteo de exploración (motor.muestra): cambiarla vuelve a sortear a quienes
+# exploran. Sube solo cuando cambia cómo puntúa el motor; v2.1 (Bayes empírico del apetito) solo actúa con
+# respuestas y deja igual el puntaje sin ellas, así que conserva motor-1.0.
 VERSION = "motor-1.0"
 SEED = 19
 GRID = (-4.0, 4.0, 321)            # rejilla del log de la razón de tasas del momento
@@ -394,9 +397,33 @@ def _logloss(p: float, y: int) -> float:
     return -math.log(p if y else 1 - p)
 
 
+def aprender(ej: list[tuple], sp: dict):
+    """Creencias aprendidas de las respuestas `ej` (en orden de fecha), con la dispersión del apetito entre
+    clientes estimada por Bayes empírico (v2.1). Cada respuesta entra a la marginal con el predictor que había
+    antes de verla; al final, el apetito de cada cliente cambia su previa de 0,25 a τ̂ (bayes.ApetitoEB)."""
+    from lulo_app.core import rules
+    from lulo_app.ml import bayes, motor
+
+    cr = motor.creencias(sp)
+    eb = bayes.ApetitoEB()
+    for _, cid, _, x, y in ej:
+        eb.agregar(cid, *cr.sin(x, f"cliente:{cid}"), y)
+        cr.actualizar(x, y)
+    est = eb.estimar()
+    tau = max(est["tau"], rules.APETITO_TAU_MIN)
+    sd0 = sp["previas"]["cliente_sd"]
+    for k in [k for k in cr.medias if k.startswith("cliente:")]:
+        cr.cambiar_previa(k, sd0, tau)
+    sp_tau = json.loads(json.dumps(sp))
+    sp_tau["previas"]["cliente_sd"] = tau        # los clientes sin respuestas también parten de τ̂
+    out = bayes.Creencias(cr.medias, cr.varianzas, motor.creencias(sp_tau).default)
+    return out, {**est, "usado": tau}
+
+
 def validar(ej: list[tuple], sp: dict) -> dict:
-    """Campeón (creencias previas) contra retador (previas + 80 % más antiguo de las respuestas), medido en el
-    20 % más reciente. Se promueve si la log-pérdida baja y el intervalo bootstrap al 95 % no cruza 0."""
+    """Campeón (creencias previas) contra retador (previas + 80 % más antiguo de las respuestas, con τ por Bayes
+    empírico), medido en el 20 % más reciente. Se promueve si la log-pérdida baja y el intervalo bootstrap al
+    95 % no cruza 0."""
     from lulo_app.ml import bayes, motor
 
     n = len(ej)
@@ -404,9 +431,7 @@ def validar(ej: list[tuple], sp: dict) -> dict:
         return {"respuestas": n, "promovido": False, "motivo": "Menos de 50 respuestas: se mantienen las previas"}
     cut = int(n * 0.8)
     camp = motor.creencias(sp)
-    ret = camp.copia()
-    for _, _, _, x, y in ej[:cut]:
-        ret.actualizar(x, y)
+    ret, ap = aprender(ej[:cut], sp)
     d, ll0s, ll1s = [], [], []
     for _, _, _, x, y in ej[cut:]:
         a, b = _logloss(camp.predictiva(x), y), _logloss(ret.predictiva(x), y)
@@ -420,7 +445,7 @@ def validar(ej: list[tuple], sp: dict) -> dict:
     ok = md < 0 and hi < 0
     return {"respuestas": n, "entrenamiento": cut, "prueba": n - cut, "logloss_campeon": r(sum(ll0s) / len(d), 4),
             "logloss_retador": r(sum(ll1s) / len(d), 4), "diferencia": r(md, 4), "ic95": [r(lo, 4), r(hi, 4)],
-            "promovido": ok, "motivo": ("El retador mejora fuera de muestra: se usan las creencias aprendidas" if ok else
+            "apetito_entrenamiento": ap, "promovido": ok, "motivo": ("El retador mejora fuera de muestra: se usan las creencias aprendidas" if ok else
                                         "El retador no mejora con claridad: se mantienen las previas")}
 
 
@@ -468,10 +493,13 @@ def build(respuestas: Path | None) -> dict:
         print(f"  Respuestas: {len(ej)} · {val['motivo']}"
               + (f" (log-pérdida {val['logloss_campeon']} → {val['logloss_retador']})" if "logloss_campeon" in val else ""))
         if val["promovido"]:
-            from lulo_app.ml import motor
-            cr = motor.creencias(sp)
-            for _, _, _, x, y in ej:
-                cr.actualizar(x, y)
+            cr, ap = aprender(ej, sp)
+            sp["previas"]["cliente_sd"] = ap["usado"]
+            sp["previas"]["origen"]["cliente"] = (
+                f"Bayes empírico con {ap['respuestas']} respuestas de {ap['clientes']} clientes: τ̂ = {_c(ap['tau'])} "
+                f"(95 %: {_c(ap['ic95'][0])} a {_c(ap['ic95'][1])}); antes de las respuestas era "
+                f"{_c(rules.PRIOR_SD_CLIENTE)}")
+            val["apetito"] = ap
             sp["pesos"] = {k: [r(cr.medias[k]), r(math.sqrt(cr.varianzas[k]))] for k in sorted(cr.medias)
                            if not k.startswith("cliente:")}
             sp["clientes"] = {k.split(":", 1)[1]: [r(cr.medias[k]), r(math.sqrt(cr.varianzas[k]))]
@@ -508,6 +536,12 @@ def reporte(model: dict) -> str:
     if "logloss_campeon" in v:
         lines.append(f"- Log-pérdida: campeón {v['logloss_campeon']}, retador {v['logloss_retador']}, "
                      f"diferencia {v['diferencia']} (IC 95 % {v['ic95'][0]} a {v['ic95'][1]})")
+    ap = v.get("apetito") or v.get("apetito_entrenamiento")
+    if ap and ap.get("tau") is not None:
+        from lulo_app.core import rules
+        lines.append(f"- Dispersión del apetito entre clientes (Bayes empírico): τ̂ = {ap['tau']} "
+                     f"(IC 95 % {ap['ic95'][0]} a {ap['ic95'][1]}) con {ap['respuestas']} respuestas de {ap['clientes']} "
+                     f"clientes; sin respuestas se supone {rules.PRIOR_SD_CLIENTE}")
     return "\n".join(lines) + "\n"
 
 

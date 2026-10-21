@@ -4,7 +4,7 @@
   "sha256_base": "5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c",
   "clientes": 600,
   "corte": "2026-10-08",
-  "reglas": "v2.0",
+  "reglas": "v2.1",
   "semilla": 19,
   "respuestas": 0,
   "archivo": null

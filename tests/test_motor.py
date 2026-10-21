@@ -1,4 +1,4 @@
-"""Motor bayesiano (reglas v2.0): matemática, calibración, invariantes, aprendizaje y laboratorio."""
+"""Motor bayesiano (reglas v2.1): matemática, calibración, invariantes, aprendizaje y laboratorio."""
 
 import csv
 import json
@@ -60,10 +60,36 @@ def test_adf_update_moves_toward_the_evidence_and_reduces_doubt():
     assert cr2.get("b") == (0.0, 1.0) and cr2.get("a")[0] > 0
 
 
+def test_changing_a_prior_keeps_what_the_data_said():
+    """Previa N(0, 1) y datos con precisión 3 y media 0,5 → posterior; cambiar la previa a N(0, 0,5²) da lo mismo
+    que combinar la previa nueva con esos datos desde el principio."""
+    lam, mu = 3.0, 0.5
+    cr = bayes.Creencias({"u": lam * mu / (1 + lam)}, {"u": 1 / (1 + lam)})
+    cr.cambiar_previa("u", 1.0, 0.5)
+    v = 1 / (4 + lam)
+    assert cr.get("u") == pytest.approx((lam * mu * v, v))
+    cr.cambiar_previa("u", 0.5, 0.0)
+    assert cr.get("u") == (0.0, 0.0)
+
+
+@pytest.mark.parametrize("tau", [0.0, 0.3])
+def test_empirical_bayes_recovers_the_spread_between_clients(tau):
+    g = bayes.rng("test-eb", tau)
+    eb = bayes.ApetitoEB()
+    for i in range(300):
+        u = g.gauss(0.0, tau)
+        for _ in range(15):
+            m = bayes.Phi_inv(g.uniform(0.05, 0.25))
+            eb.agregar(f"c{i}", m, 1.0, int(g.random() < bayes.Phi(m + u)))
+    est = eb.estimar()
+    assert est["ic95"][0] <= tau <= est["ic95"][1] and est["respuestas"] == 4500   # el intervalo cubre la verdad
+    assert (est["ic95"][0] > 0) == (tau > 0)                                         # y separa «hay» de «no hay»
+
+
 # --------------------------------------------------------------------------- entrenamiento
 def test_engine_was_trained_on_this_dataset_with_current_rules():
     e = SP["entrenado_con"]
-    assert e["sha256_base"] == store().manifest["fuente"]["sha256"] and e["reglas"] == rules.VERSION == "v2.0"
+    assert e["sha256_base"] == store().manifest["fuente"]["sha256"] and e["reglas"] == rules.VERSION == "v2.1"
     assert e["respuestas"] == 0 and SP["pesos"] == {} and SP["clientes"] == {}
 
 
@@ -213,7 +239,11 @@ def test_training_with_responses_learns_and_validates(tmp_path):
     v = m["validacion"]
     assert v["promovido"] and v["logloss_retador"] < v["logloss_campeon"]
     assert m["pesos"]["Desempleo|perfil:credito"][0] > 0.1 and m["clientes"]
-    assert train_motor.reporte(json.loads(train_motor.dump(m))).startswith("# Motor bayesiano")
+    # la verdad sembrada no tiene apetito propio por cliente: Bayes empírico baja la previa de 0,25
+    assert v["apetito"]["tau"] < rules.PRIOR_SD_CLIENTE and m["previas"]["cliente_sd"] == v["apetito"]["usado"]
+    assert "Bayes empírico" in m["previas"]["origen"]["cliente"]
+    rep = train_motor.reporte(json.loads(train_motor.dump(m)))
+    assert rep.startswith("# Motor bayesiano") and "Bayes empírico" in rep
 
 
 # --------------------------------------------------------------------------- laboratorio y API
@@ -227,6 +257,15 @@ def test_laboratory_shows_learning_without_harm():
     for esc in e.values():
         assert esc["final"]["azar"] <= esc["final"]["motor"] <= esc["final"]["oraculo"] * 1.001
     assert "no son resultados" in lab["aviso"]
+    # más tipos de datos: la columna nueva entra con peso 0, se aprende y suma frente al motor sin ella
+    n = e["dato nuevo"]
+    assert n["valor_del_dato"] > 0 and n["final"]["motor_sin_dato"] < n["final"]["motor"] <= n["final"]["oraculo"]
+    for k, w in n["pesos"].items():
+        if "nuevo:dato" in k:
+            assert w["estimado"][0] == 0 and 0 < w["estimado"][-1] <= w["verdad"] * 1.5
+    # Bayes empírico: sin diferencias entre clientes, τ̂ = 0; con ellas (verdad 0,20), τ̂ > 0
+    assert e["regla correcta"]["apetito"]["estimado"][-1]["motor"]["tau"] == 0
+    assert 0.05 < e["señal"]["apetito"]["estimado"][-1]["motor"]["tau"] < 0.3
 
 
 def test_motor_api_and_campaign_csv():
@@ -244,21 +283,24 @@ def test_page_keeps_prototype_label_and_guides_the_visitor():
     """La página v3 sigue marcada como prototipo (etiqueta visible y noindex) y trae la bienvenida y el recorrido."""
     html = TestClient(app).get("/").text
     assert "Prototipo académico · datos simulados" in html and 'content="noindex, nofollow"' in html
-    assert 'id="welcome"' in html and 'data-tab="tour"' in html and 'data-tab="aprende"' in html
+    assert 'id="welcome"' in html and 'data-tour="start"' in html and 'id="guide"' in html
     assert 'data-new="push"' in html and "/static/v3/tour.js" not in html          # los módulos los importa app.js
+    # solo la app: sin panel de explicación al lado; la guía aparece solo con el recorrido o los escenarios
+    assert 'class="panel"' not in html and 'data-tab=' not in html and 'id="guide" hidden' in html
+    assert 'id="csvBtn"' in html and 'data-w="scen"' in html
     v2 = TestClient(app).get("/v2").text
     assert 'id="welcome"' not in v2                                                 # /v2 no se toca
 
 
 def test_page_form_controls_have_accessible_names():
-    """Cada campo y lista del panel tiene nombre para lectores de pantalla (aria-label o <label for>)."""
+    """Cada campo y lista de la página tiene nombre para lectores de pantalla (aria-label o <label for>)."""
     import re
     html = TestClient(app).get("/").text
     def con_nombre(campo):
         ident = re.search(r'id="([^"]+)"', campo)
         return "aria-label=" in campo or (ident and f'for="{ident.group(1)}"' in html)
     campos = re.findall(r"<(?:input|select)\b[^>]*>", html)
-    assert campos and all(con_nombre(c) for c in campos), [c for c in campos if not con_nombre(c)]
+    assert all(con_nombre(c) for c in campos), [c for c in campos if not con_nombre(c)]
 
 
 def test_real_data_path_validates_and_trains_outside_the_repo(tmp_path):

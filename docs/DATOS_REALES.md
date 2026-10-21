@@ -35,6 +35,8 @@ Si Lulo tiene registro de ofertas mostradas y su resultado, un CSV aparte (fuera
 
 Hoy el entrenamiento usa `aceptada` y `rechazada` (la aceptación cuando el cliente vio la oferta); `ignorada` queda para el modelo de canal. Si existen, sirven también `grupo` (control o tratamiento) y `politica` (explotar o explorar): el grupo de control es lo que permite medir el efecto real.
 
+El prototipo descarga este mismo archivo con «Descargar respuestas (CSV)» en el encabezado. Trae las ofertas que el motor mostró en la sesión, de todos los clientes que se abrieron, con su resultado; las que quedaron sin respuesta salen como `ignorada`. Agrega `grupo`, `politica`, `p_motor` (la probabilidad con la que se decidió) y `version_reglas`. Sirve para probar el entrenamiento de punta a punta: `python scripts/train_motor.py --respuestas respuestas-prototipo.csv --salida motor-prueba.json`.
+
 ## 2. Validar la carpeta
 
 ```bash
@@ -71,6 +73,7 @@ En Windows (PowerShell) la variable se fija con `$env:LULO_DATASET = "CARPETA"` 
 - **B1 · Conversión por ramo:** la de cada campaña y la creencia encogida, con su intervalo. Si un ramo cambia mucho al encogerse, tiene pocas ventas.
 - **B2 · Momento:** cuántas compras externas caen en los 30 días después del evento frente a lo esperado al azar, por ramo. Una razón de tasas con intervalo por encima de 1 es evidencia de que ofrecer en el momento funciona.
 - **Validación:** si hubo respuestas, la log-pérdida del campeón (las creencias previas) y del retador (lo aprendido) en el 20 % más reciente. Lo aprendido solo se usa si el retador mejora con un intervalo al 95 % que no cruza 0.
+- **Dispersión del apetito (τ̂):** cuánto se distinguen los clientes entre sí, estimado con Bayes empírico sobre las respuestas (reglas v2.1). Cerca de 0 quiere decir que las diferencias entre clientes se explican con sus variables; un τ̂ alto, que cada cliente tiene un apetito propio que el motor aprende rápido de sus respuestas. Sin respuestas se supone 0,25.
 
 ## 5. Qué devolverle al equipo
 
@@ -81,5 +84,5 @@ En Windows (PowerShell) la variable se fija con `$env:LULO_DATASET = "CARPETA"` 
 ## 6. Qué esperar
 
 - Con solo los datos de la base (sin respuestas), el motor ordena con la conversión de las campañas y el efecto del momento: sabe poco más que las reglas, y lo dice con sus intervalos.
-- Con respuestas, aprende qué rasgos importan, corrige las hipótesis (por ejemplo, la señal media × 0,6) y estima el apetito de cada cliente. El laboratorio (`docs/MOTOR.md`, sección 4) muestra cuánto puede mejorar y que no empeora si no hay nada que aprender.
+- Con respuestas, aprende qué rasgos importan, corrige las hipótesis (por ejemplo, la señal media × 0,6), estima cuánto se distinguen los clientes (τ̂) y el apetito de cada uno. El laboratorio (`docs/MOTOR.md`, sección 4) muestra cuánto puede mejorar y que no empeora si no hay nada que aprender.
 - El paso siguiente con datos reales es el piloto con grupo de control: para detectar un aumento de 50 % en el SOAT hacen falta 510 clientes por grupo (modelo M6).

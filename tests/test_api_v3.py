@@ -1,4 +1,4 @@
-"""API v3: el motor real expuesto para la app y el panel."""
+"""API v3: el motor real expuesto para la app."""
 
 from fastapi.testclient import TestClient
 
@@ -9,7 +9,7 @@ client = TestClient(app)
 
 def test_meta():
     m = client.get("/api/v3/meta").json()
-    assert m["cutoff"] == "2026-10-08" and m["rules_version"] == "v2.0"
+    assert m["cutoff"] == "2026-10-08" and m["rules_version"] == "v2.1"
     assert m["clients"] == {"reto": 600, "persona": 3}
     assert {e["type"] for e in m["events"]} >= {"transferencia_fija", "desembolso", "abono_bolsillo"}
 

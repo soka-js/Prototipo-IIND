@@ -11,7 +11,7 @@ Origen de cada parámetro:
 
 from __future__ import annotations
 
-VERSION = "v2.0"
+VERSION = "v2.1"
 APPROVED_ON = "2026-10-21"
 CHANGELOG = {
     "v1": "Umbrales de la tabla de cobertura, valor esperado, control 10 %, banner al tope, 56+ excluido.",
@@ -26,6 +26,9 @@ CHANGELOG = {
             "respuestas (de la sesión y de la población) y explora con muestreo de Thompson en un 10 % de los "
             "clientes. Las compuertas de v1.3 (autorización, elegibilidad, exclusiones, espera, control, canal) "
             "no cambian. MOTOR = \"regla\" reproduce v1.3.",
+    "v2.1": "Con respuestas a ofertas, la dispersión del apetito entre clientes (τ) se estima con Bayes empírico "
+            "(verosimilitud marginal) en vez de quedar fija en 0,25; sin respuestas sigue en 0,25 y ninguna "
+            "decisión cambia. El backtest y el plan de campaña toman la misma decisión sin armar la traza.",
 }
 
 # Motor de decisión. "bayesiano" (v2.0) o "regla" (reproduce v1.3: conversión previa × comisión × fuerza ×
@@ -141,6 +144,11 @@ PRIOR_SENAL_LOGSD = 0.37
 PRIOR_SD_RASGOS_TOTAL = 0.45
 PRIOR_FRACCION_COMUN = 0.6
 PRIOR_SD_CLIENTE = 0.25
+
+# Con respuestas, la dispersión del apetito (τ) sale de los datos: Bayes empírico sobre la verosimilitud
+# marginal de las respuestas de cada cliente (bayes.ApetitoEB). Si la estimación es 0 (los clientes no se
+# distinguen), se usa este piso para no perder lo que digan las respuestas siguientes. [v2.1]
+APETITO_TAU_MIN = 0.02
 
 # Peso de la afinidad de M1: media 1 si M1 pasa la compuerta del ramo (se cree a M1), 0 si no (no se cree
 # hasta que las respuestas lo confirmen). [aprobado v1.2]

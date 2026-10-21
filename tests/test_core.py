@@ -194,6 +194,20 @@ def test_backtest_has_zero_violations():
     assert r["max_push_30d"] <= 4 and r["offers"] > 0 and r["control"] > 0
 
 
+@pytest.mark.parametrize("dias", [0, 30])
+def test_lite_evaluation_takes_the_same_decision(dias):
+    """El modo liviano (backtest y plan de campaña) solo deja de armar la traza: la decisión es la misma."""
+    s = store()
+    ctx = Context(as_of=date.fromordinal(s.cutoff.toordinal() + dias), mode="lote")
+    keep = ("outcome", "decision", "steps", "experiment", "channel", "message", "motor", "regla", "queue")
+    for cid in s.ids(None):
+        full, lite = evaluate(cid, ctx), evaluate(cid, ctx, lite=True)
+        assert {k: lite.get(k) for k in keep} == {k: full.get(k) for k in keep}, cid
+        for a, b in zip(full["candidates"], lite["candidates"]):
+            assert {**a, "eligibility": a["eligibility"]["ok"], "signal": None} == {**b, "eligibility": b["eligibility"]["ok"]}
+        assert lite["features"] is None and (lite["record"] is None or lite["outcome"] == "noconsent")
+
+
 def test_capacity_of_payment_uses_income_and_balance():
     """v1.3: la prima se compara con el ingreso mensual (mensuales) o con el saldo promedio (pago único)."""
     from dataclasses import replace as dc_replace
