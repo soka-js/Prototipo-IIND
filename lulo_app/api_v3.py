@@ -129,18 +129,27 @@ def upcoming(cid: str, ctx: engine.Context):
     return engine.upcoming(cid, ctx)
 
 
+MOTORES = ("bayesiano", "regla")
+
+
+def _motor(motor: str | None) -> str | None:
+    if motor is not None and motor not in MOTORES:
+        raise HTTPException(422, f"motor debe ser uno de {MOTORES}")
+    return motor
+
+
 @router.get("/campaign")
-def campaign(as_of: str | None = None, personas: bool = False):
-    """Plan de campaña de todos los clientes a una fecha."""
+def campaign(as_of: str | None = None, personas: bool = False, motor: str | None = None):
+    """Plan de campaña de todos los clientes a una fecha (motor bayesiano o, con motor=regla, la regla v1.3)."""
     d = _date(as_of) or store().cutoff
-    out = view.campaign_cached(d.isoformat(), personas)
+    out = view.campaign_cached(d.isoformat(), personas, _motor(motor))
     return {**out, "rows": out["rows"]}
 
 
 @router.get("/campaign.csv")
-def campaign_csv(as_of: str | None = None, personas: bool = False):
+def campaign_csv(as_of: str | None = None, personas: bool = False, motor: str | None = None):
     d = _date(as_of) or store().cutoff
-    out = view.campaign_cached(d.isoformat(), personas)
+    out = view.campaign_cached(d.isoformat(), personas, _motor(motor))
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";", lineterminator="\n")
     cols = ["client_id", "outcome", "ramo", "kind", "strength", "p", "ev", "ev_regla", "ramo_regla", "channel",

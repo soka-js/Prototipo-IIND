@@ -53,7 +53,19 @@
           <div class="coach" id="coach" hidden aria-live="polite"></div>
         </div>
       </div>
-      <aside class="guide" id="guide" hidden aria-live="polite" aria-label="Guía del prototipo"></aside>
+      <div class="side">
+        <aside class="guide" id="guide" hidden aria-live="polite" aria-label="Guía del prototipo"></aside>
+        <aside class="console" id="console" aria-label="Consola de Lulo">
+          <div class="c-top"><div><b>Consola de Lulo</b><span>Lo que ve el banco mientras el cliente usa la app</span></div><button class="g-x c-close" data-c-close aria-label="Cerrar la consola">✕</button></div>
+          <div class="ctabs" role="tablist">
+            <button role="tab" data-ctab="vivo" aria-selected="true">En vivo</button>
+            <button role="tab" data-ctab="campana" aria-selected="false">Campaña</button>
+            <button role="tab" data-ctab="piloto" aria-selected="false">Piloto</button>
+            <button role="tab" data-ctab="clientes" aria-selected="false">Clientes</button>
+          </div>
+          <div class="c-body" id="cBody" role="tabpanel"></div>
+        </aside>
+      </div>
     </div>
     <p class="foot">Prototipo académico. La base del reto es 100% sintética: sus cifras no son métricas de Lulo Bank. Clientes, montos, placas y números de cuenta son simulados; las reglas y la fuerza de las señales son hipótesis del equipo para validar con el grupo de control.</p>
   </section>
@@ -72,7 +84,7 @@
       <button class="w-ch" data-w="free"><b>Explorar por mi cuenta</b><span>Usa la app; lo nuevo queda resaltado en lima.</span></button>
       <button class="w-ch" data-w="scen"><b>Escenarios rápidos</b><span>Un toque: crédito, SOAT por vencer, grupo de control, un cliente de la base.</span></button>
     </div>
-    <div class="w-who"><span class="who-l">Ver la app como</span><span class="personas-top" id="wPersonas" role="group" aria-label="Cliente"></span></div>
+    <div class="w-who"><span class="who-l">Ver la app como</span><span class="personas-top" id="wPersonas" role="group" aria-label="Cliente"></span><button class="tbtn sm mob-only" data-w="console">Abrir la consola de Lulo</button></div>
     <p class="w-foot"><span class="legend"><i class="lg-same"></i>Igual a la app de Lulo <i class="lg-new"></i>Nuevo en el prototipo</span> La base del reto es 100 % sintética: sus cifras no son métricas de Lulo Bank. Clientes, montos, placas y cuentas son simulados.</p>
     <button class="w-x" data-w="close" aria-label="Cerrar">✕</button>
   </div>

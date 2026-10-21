@@ -526,6 +526,7 @@ def campaign(as_of: date | None = None, *, include_personas: bool = False, alert
                      "group": (r["experiment"] or {}).get("group"),
                      "policy": (r["experiment"] or {}).get("policy"),
                      "p": ((d.get("prob") or {}).get("p")), "ev_regla": d.get("ev_regla"),
+                     "alcance": (d.get("alcance") or {}).get("p"), "valor": d.get("valor"),
                      "ramo_regla": (r.get("regla") or {}).get("ramo"),
                      "offerable": [x["ramo"] for x in r["candidates"] if x["status"] == "ofrecer"],
                      "message": r.get("message")})
@@ -554,6 +555,10 @@ def summarize(rows: list[dict]) -> dict:
             "shown_by_ramo": dict(by_ramo.most_common()), "shown_by_channel": dict(by_channel),
             "control": len(ctrl), "control_by_ramo": dict(Counter(r["ramo"] for r in ctrl).most_common()),
             "ev_total": round(sum(r["ev"] or 0 for r in shown)),
+            # Si las probabilidades del motor son correctas: ventas = Σ P(la ve) × P(acepta | la ve), y su comisión.
+            "ventas_esperadas": round(sum((r.get("alcance") or 0) * (r.get("p") or 0) for r in shown), 2),
+            "comision_esperada": round(sum((r.get("alcance") or 0) * (r.get("p") or 0) * (r.get("valor") or 0)
+                                           for r in shown)),
             "reasons_banner": dict(Counter((r["channel_reason"] or "").split(":")[0] for r in shown
                                            if r["outcome"] == "banner").most_common())}
 

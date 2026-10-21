@@ -1,11 +1,12 @@
 // Orquestador v3: estado, navegación, flujos, llamadas al motor real, recorrido guiado y escenarios rápidos.
-// La página es solo la app: lo que explica vive en la guía al lado del teléfono (recorrido y escenarios).
+// Al lado del teléfono: la guía (recorrido y escenarios, solo cuando se pide) y la consola de Lulo (herramientas).
 import { $, $$, addDays, clone, debounce, esc, money, num, nowTime, store, wait } from "./util.js";
 import { I } from "./icons.js";
 import { PLUS_SHEET, ROOTS, SCREENS, cands, chapters, creditCuota, hasRamo, movListHTML, product, quote, skeletonRows } from "./screens.js";
 import { NEW, NEW_LIST } from "./content.js";
 import { decisionHTML } from "./aprende.js";
 import { createTour } from "./tour.js";
+import { createConsole } from "./console.js";
 
 const BOOT = JSON.parse($("#bootstrap").textContent);
 const META = BOOT.meta;
@@ -33,6 +34,8 @@ const API = {
   year: (id, ctx) => call(`${V3}/clients/${id}/year`, ctx).then(r => r.json()),
   upcoming: (id, ctx) => call(`${V3}/clients/${id}/upcoming`, ctx).then(r => r.json()),
   motor: () => call(`${V3}/motor`).then(r => r.json()),
+  campaign: (asOf, motor) => call(`${V3}/campaign?as_of=${asOf}${motor === "regla" ? "&motor=regla" : ""}`).then(r => r.json()),
+  backtest: every => call(`${V3}/backtest?every=${every}`).then(r => r.json()),
 };
 
 /* =================== estado =================== */
@@ -238,9 +241,10 @@ function expose(d, canal) {
   S.expo.push({cliente_id: S.cid, fecha: today(), ramo: d.ramo, canal, resultado: null, grupo: "tratamiento",
     politica: d.policy || "", p_motor: d.prob ? d.prob.p : "", version_reglas: META.rules_version});
 }
-function respond(ramo, resultado) {
+function respond(ramo, resultado, optout = false) {
   const e = [...S.expo].reverse().find(x => x.ramo === ramo && !x.resultado);
   if (e) { e.resultado = resultado; persist(); }
+  CONSOLE.respond(S.cid, ramo, resultado, optout);
 }
 
 /* =================== motor =================== */
@@ -264,6 +268,7 @@ async function fireNow(type, extra = {}, src) {
 async function handleOutcome(outcome, d, src, message, ev) {
   const title = d ? d.title : "";
   noteDecision(ev || {outcome, message, label: message, decision: null}, src);
+  CONSOLE.record(ev || {outcome, message, label: message, decision: null}, src);
   if (outcome === "shown") { show(d, src); await wait(1480); return; }
   if (outcome === "banner") { setBanner(d, src, ev && ev.channel ? ev.channel.reason : ""); return; }
   const L = {queued: ["En cola: ventana ocupada", "hold"], control: ["Grupo de control: no se muestra", "ctrl"], optout: ["Sugerencias apagadas por el cliente", "ctrl"],
@@ -519,7 +524,7 @@ $("#phone").addEventListener("click", e => {
     case "known": setKnown(b.dataset.v); break;
     case "accept": acceptOffer(); break;
     case "later": { const r = S.offer; hist(r, "rechazada", "ninguno"); respond(r, "rechazada"); addLog(srcOf(), product(S, r).title, "Rechazó: ahora no", "no", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("Listo, no te lo mostraremos en 30 días"); refreshEval(); break; }
-    case "optout": { const r = S.offer; hist(r, "rechazada", "ninguno"); respond(r, "rechazada"); addLog(srcOf(), product(S, r).title, "Pidió no ver este tipo de sugerencias", "harm", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("No verás más sugerencias de este tipo"); refreshEval(); break; }
+    case "optout": { const r = S.offer; hist(r, "rechazada", "ninguno"); respond(r, "rechazada", true); addLog(srcOf(), product(S, r).title, "Pidió no ver este tipo de sugerencias", "harm", r); if (S.shown && S.shown.ramo === r) closeWindow(); if (S.banner && S.banner.ramo === r) S.banner = null; back(); toast("No verás más sugerencias de este tipo"); refreshEval(); break; }
     case "pay": pay(); break;
     case "postpone": hist("SOAT", "pospuesta", "ninguno"); respond("SOAT", "rechazada"); addLog(S.shown && S.shown.ramo === "SOAT" ? S.shown.src : "Explora › Seguros", "SOAT", "Pospuso la renovación", "no", "SOAT"); if (S.shown && S.shown.ramo === "SOAT") closeWindow(); back(); toast("Te lo recordaremos más adelante"); break;
     case "soat-owner": S.soat.owner = b.dataset.v; render("none"); break;
@@ -569,7 +574,7 @@ function renderPersonas() {
   const html = PERSONAS.map(c => `<button class="pchip${c.id === S.cid ? " on" : ""}" data-client="${c.id}" aria-pressed="${c.id === S.cid}"><span class="av" style="background:${c.color}">${esc(c.first[0])}</span>${esc(c.first)}</button>`).join("") + base;
   $("#personas").innerHTML = html; $("#wPersonas").innerHTML = html;
 }
-function renderChrome() { renderPersonas(); paintGuide(); }
+function renderChrome() { renderPersonas(); paintGuide(); CONSOLE.refreshClient(); }
 const UI = "lulo:ui";
 const TIP = "Nuevo en el prototipo · ";
 /** Con «Resaltar lo nuevo», cada elemento nuevo dice qué es al pasar el mouse. */
@@ -680,8 +685,10 @@ document.addEventListener("click", e => {
     if (a === "tour") TOUR.start();
     else if (a === "free") { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
     else if (a === "scen") openGuide("scen");
+    else if (a === "console") document.body.classList.add("console-open");
     return;
   }
+  if (e.target.closest("[data-c-close]")) { document.body.classList.remove("console-open"); return; }
   if (e.target.closest('[data-sheet="close"]')) { closeGuideSheet(); return; }
   const g = e.target.closest("[data-guide]");
   if (g) {
@@ -690,7 +697,8 @@ document.addEventListener("click", e => {
     return;
   }
   const sc = e.target.closest("[data-scen]"); if (sc) { runScen(+sc.dataset.scen); return; }
-  const c = e.target.closest("[data-client]"); if (c) { if (c.closest("#welcome")) closeWelcome(); switchClient(c.dataset.client); return; }
+  const c = e.target.closest("[data-client]");
+  if (c) { if (c.closest("#welcome")) closeWelcome(); if (c.closest("#console")) document.body.classList.remove("console-open"); switchClient(c.dataset.client); return; }
   const b = e.target.closest("[data-goto]"); if (b) gotoTarget(b.dataset.goto);
 });
 function gotoTarget(t) {
@@ -738,6 +746,17 @@ async function runScen(k) {
   SCEN_ON = null; paintGuide();
   if (mobile()) setTimeout(() => toast("Toca «Guía» para ver qué decidió el motor"), 2600);
 }
+
+/* =================== consola de Lulo =================== */
+const CONSOLE = createConsole({
+  S: () => S, META, API, toast, addDays,
+  fireEvent(type) {
+    if (!S.unlocked) unlock();
+    if (mobile()) document.body.classList.remove("console-open");
+    const e = S.B.events.find(x => x.type === type) || {};
+    fire(type, {}, `Consola · ${e.label || type}`);
+  },
+});
 
 /* =================== recorrido guiado =================== */
 let MOTOR = null;

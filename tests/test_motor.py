@@ -279,6 +279,18 @@ def test_motor_api_and_campaign_csv():
     assert ev["evaluation"]["decision"]["prob"]["p"] > 0
 
 
+def test_campaign_api_compares_engines_and_estimates_sales():
+    """La consola pide el plan con el motor o con la regla v1.3; las ventas esperadas suman P(la ve) × P(acepta)."""
+    c = TestClient(app)
+    b, r = c.get("/api/v3/campaign").json(), c.get("/api/v3/campaign?motor=regla").json()
+    assert b["motor"] == "bayesiano" and r["motor"] == "regla"
+    assert b["summary"]["by_outcome"] == r["summary"]["by_outcome"]                # mismas compuertas y canales
+    shown = [x for x in b["rows"] if x["outcome"] in ("shown", "banner")]
+    assert b["summary"]["ventas_esperadas"] == pytest.approx(sum(x["alcance"] * x["p"] for x in shown), abs=0.01)
+    assert 0 < b["summary"]["ventas_esperadas"] < len(shown) and b["summary"]["comision_esperada"] > 0
+    assert c.get("/api/v3/campaign?motor=otro").status_code == 422
+
+
 def test_page_keeps_prototype_label_and_guides_the_visitor():
     """La página v3 sigue marcada como prototipo (etiqueta visible y noindex) y trae la bienvenida y el recorrido."""
     html = TestClient(app).get("/").text

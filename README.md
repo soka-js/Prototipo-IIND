@@ -15,6 +15,7 @@
 - **Decide con probabilidad aprendida de los datos.** Valor esperado = P(acepta | ve la oferta) × comisión a 12 meses. P sale de una regresión probit bayesiana cuyas creencias previas vienen de la base: la conversión de cada ramo con un Beta-Binomial jerárquico sobre las campañas previas, y el efecto del momento (el evento pasó hace menos de 30 días) con las compras externas de Pagos_Seguros (serie de casos autocontrolada). 38 rasgos del cliente se descubren de los datos y empiezan en «no sé». Aprende en línea de cada respuesta (como AdPredictor), estima con Bayes empírico cuánto se distinguen los clientes (v2.1), explora con muestreo de Thompson en un 10 % del tratamiento y solo promueve lo aprendido si mejora fuera de muestra. Las compuertas de v1.3 no cambian. Método, resultados, supuestos y preguntas difíciles: [`docs/MOTOR.md`](docs/MOTOR.md).
 - **Laboratorio con verdad simulada**: con efectos que la regla no ve, el motor gana +10 % de comisión por oferta frente a la regla v1.3; si la regla tenía razón, queda a −1,0 %; con 20 variables de ruido, igual; con una columna nueva que sí predice, la aprende solo y gana +0,8 % frente al mismo motor sin ella.
 - **Listo para datos reales**: `scripts/validar_datos.py` y `scripts/train_motor.py --datos` corren en el equipo de Lulo sin subir nada ([`docs/DATOS_REALES.md`](docs/DATOS_REALES.md)).
+- **Consola de Lulo** (esta rama, `feat/claude-consola-lulo`): al lado del teléfono, herramientas para el banco en vez de explicaciones. **En vivo**: cada decisión del motor con su probabilidad y lo que hizo el cliente, y eventos para disparar. **Campaña**: el plan de los 600 a una fecha, con el motor o con la regla v1.3, ventas y comisión esperadas, y el año recorrido. **Piloto**: cuántos clientes hacen falta para medir el efecto contra el control (el cálculo de M6). **Clientes**: buscar en la base y abrir la app como cualquiera. En el celular se abre desde la bienvenida.
 - **Solo la app, con guía**: la página es el teléfono. Hay una bienvenida que explica qué es el prototipo y un recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo, con «Hazlo por mí»). Los escenarios rápidos dicen qué decidió el motor y por qué. Están también «Resaltar lo nuevo», el cambio de personaje y «Descargar respuestas (CSV)», con las ofertas de la sesión en el formato de datos reales. La guía aparece al lado del teléfono solo cuando se pide; en el celular se abre como hoja desde «Guía».
 
 ## Versión 3 (en `main` desde el 2026-10-14)
@@ -96,7 +97,8 @@ lulo_app/
   api_v3.py                  rutas /api/v3
   main.py                    app FastAPI: / (v3), /v2 (versión del cliente) y API v2
   simulator.py … engine.py   prototipo v2 (personajes y motor anterior)
-public/static/v3/            app v3 (JS sin framework y CSS): app.js (estado, flujos, guía y escenarios), screens.js,
+public/static/v3/            app v3 (JS sin framework y CSS): app.js (estado, flujos, guía y escenarios), console.js
+                             (consola de Lulo), screens.js,
                              content.js (lo nuevo), tour.js (recorrido guiado), aprende.js (probabilidad por pasos y
                              decisión en lenguaje claro), util.js, icons.js
 public/static/js|css         app v2

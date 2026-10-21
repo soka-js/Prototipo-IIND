@@ -160,3 +160,33 @@ def test_client_version_v2_still_loads(base, browser):
     page.goto(base + "v2", wait_until="networkidle")
     assert page.locator("#welcome").count() == 0 and not errors
     ctx.close()
+
+
+def test_lulo_console_tracks_decisions_plans_the_campaign_and_sizes_the_pilot(base, browser):
+    ctx, page, errors = _page(browser, viewport={"width": 1440, "height": 1000})
+    page.goto(base + "?cliente=sebastian", wait_until="networkidle")
+    # en vivo: un evento disparado desde la consola queda con su decisión y su probabilidad
+    page.click('#console [data-c-ev="transferencia_fija"]')
+    page.wait_for_selector("#console .feed li")
+    li = page.inner_text("#console .feed li")
+    assert "Sebastián · Seguro de vida" in li and "P(acepta)" in li and "Push" in li
+    # campaña: el plan de los 600 con el motor y con la regla v1.3 (mismas compuertas)
+    page.click('#console [data-ctab="campana"]')
+    page.wait_for_selector("#console .kpi")
+    assert "402" in page.inner_text("#console .kpis") and "Frente a la regla v1.3" in page.inner_text("#cBody")
+    page.click('#console [data-c-motor="regla"]')
+    page.wait_for_function("() => document.querySelector('[data-c-motor=\"regla\"]').getAttribute('aria-pressed') === 'true' && !document.querySelector('#cBody').innerText.includes('recalculando')")
+    assert "402" in page.inner_text("#console .kpis") and "Frente a la regla v1.3" not in page.inner_text("#cBody")
+    # piloto: el mismo cálculo que M6 (510 por grupo para +50 % en el SOAT)
+    page.click('#console [data-ctab="piloto"]')
+    assert page.inner_text("#pRes .kpi b") == "510"
+    page.fill('#console [data-p="lift"]', "100")
+    assert page.inner_text("#pRes .kpi b") == "147"
+    # clientes: buscar en la base y abrir la app como ese cliente
+    page.click('#console [data-ctab="clientes"]')
+    page.fill('#console [data-x="q"]', "C00002")
+    page.wait_for_selector('#console .xr[data-client="C00002"]')
+    page.click('#console .xr[data-client="C00002"]')
+    page.wait_for_selector('#personas .pchip.on >> text=C00002')
+    assert not errors
+    ctx.close()

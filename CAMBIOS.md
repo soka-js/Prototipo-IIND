@@ -17,6 +17,30 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-consola-lulo (parte de feat/claude-solo-app) · commit de esta entrada · E11, versión con consola
+- Qué cambió: la misma app de `feat/claude-solo-app` más una **consola de Lulo** al lado del teléfono (`public/static/v3/console.js`). Son herramientas para el banco, no explicaciones, en cuatro pestañas:
+  - **En vivo**: cada decisión del motor con su probabilidad y su valor esperado, y lo que hizo el cliente (aceptó, rechazó, pidió no ver más o sin respuesta). Muestra las ofertas, la tasa de aceptación, la comisión a 12 meses ganada y los clientes en control, y deja disparar los eventos del cliente abierto.
+  - **Campaña**: el plan de los 600 al corte o a +30, +60 y +90 días, con el motor v2 o con la regla v1.3. Muestra:
+    - la oferta, el control y la autorización;
+    - las ventas y la comisión esperadas (Σ P(la ve) × P(acepta), si las probabilidades del motor son correctas);
+    - las ofertas por seguro y los cambios frente a la regla;
+    - el CSV del plan y el backtest del año.
+  - **Piloto**: clientes por grupo, total con el porcentaje de control y meses según el flujo mensual que escriba Lulo. Es el mismo cálculo de M6 (`sample_size` en `scripts/train_models.py`).
+  - **Clientes**: buscar en los 600 de la base y abrir la app como cualquiera.
+  - En el celular, la consola es una hoja que se abre desde la bienvenida.
+  - API: `/api/v3/campaign` y `/campaign.csv` aceptan `motor=regla`, y el plan suma `alcance`, `valor`, `ventas_esperadas` y `comision_esperada`; solo agrega datos de salida, la decisión no cambia.
+- Por qué: SOKA pidió, en otra rama, «una versión igual pero que el panel tenga una funcionalidad que dé más valor», para compararla con la que deja solo la app y decidir cuál pasa a `main`.
+- Archivos: `public/static/v3/console.js` (nuevo), `public/static/v3/app.js`, `public/static/v3/app.css`, `lulo_app/templates/app.html`, `lulo_app/core/engine.py`, `lulo_app/core/view.py`, `lulo_app/api_v3.py`, `tests/test_motor.py`, `tests/test_e2e.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → 106 passed. Incluye `test_campaign_api_compares_engines_and_estimates_sales` y, de punta a punta, `test_lulo_console_tracks_decisions_plans_the_campaign_and_sizes_the_pilot`, estable en 3 corridas.
+  - En el navegador, a 1440 × 1000 y 390 × 844: sin errores de consola y sin desborde horizontal.
+  - La calculadora da 510 por grupo para +50 % en el SOAT y 147 para +100 %, como `modelos.json` (M6).
+- Consultado con SOKA: sí, el 2026-10-21. Pidió esta versión como alternativa para revisarla.
+- Cifras nuevas y su origen:
+  - **Ventas y comisión esperadas** (9 y $762.168 al corte con el motor): `engine.summarize`, Σ alcance × P(acepta) × comisión de las ofertas del plan. Base sintética: no son ventas de Lulo.
+  - **Tamaño del piloto**: la fórmula de M6, con las conversiones de `modelos.json`.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app · commits bc82492, 102f17e, e9e3875, a58302e y el de esta entrada · E11 (reglas v2.1)
 - Qué cambió:
   - (0) A pedido de SOKA («push de todo»), merge de soka-js/Prototipo-IIND#3 (accesibilidad) a `main` (dd5a95b) con el Preview de Vercel en `success`. Esta rama parte de ese `main`.

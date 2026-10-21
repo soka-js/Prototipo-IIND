@@ -291,9 +291,9 @@ def bootstrap(cid: str, as_of: date | None = None) -> dict:
     }
 
 
-@lru_cache(maxsize=8)
-def campaign_cached(as_of_iso: str, include_personas: bool) -> dict:
-    return campaign(date.fromisoformat(as_of_iso), include_personas=include_personas)
+@lru_cache(maxsize=16)
+def campaign_cached(as_of_iso: str, include_personas: bool, motor: str | None = None) -> dict:
+    return campaign(date.fromisoformat(as_of_iso), include_personas=include_personas, motor=motor)
 
 
 def explorer(q: str = "", outcome: str = "", ramo: str = "", source: str = "", offset: int = 0, limit: int = 50) -> dict:

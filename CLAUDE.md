@@ -55,7 +55,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 - **El motor no guarda estado**: el contexto de la sesión viaja en cada llamada.
 - **Vida grupo deudor (inducido por el crédito) no es Vida voluntario**: no se mezclan en ningún cálculo ni texto.
 - **`/v2` es la versión que vio el cliente y no se toca**: `lulo_app/templates/index.html`, `public/static/js`, `public/static/css` y los módulos v2 (`simulator.py`, `signals.py`, `engine.py`, `clients.py`, `year.py`, `offers.py`, `catalog.py` de la raíz de `lulo_app`). El simulador solo se lee para traducir los personajes.
-- **Look de la app real**: los colores son los tokens de `public/static/v3/app.css`, tomados de capturas de la app. La barra inferior es Home · Explora · (+) · Tu año · Protección. La página es solo la app: lo que explica vive en la guía al lado del teléfono (recorrido y escenarios), que aparece solo cuando se pide.
+- **Look de la app real**: los colores son los tokens de `public/static/v3/app.css`, tomados de capturas de la app. La barra inferior es Home · Explora · (+) · Tu año · Protección. Lo que explica vive en la guía al lado del teléfono (recorrido y escenarios), que aparece solo cuando se pide; en `feat/claude-consola-lulo`, la consola de Lulo (herramientas, no explicaciones) va también al lado.
 - **Es un prototipo**: queda visible la etiqueta «Prototipo académico · datos simulados», se mantiene `noindex`, no se usan datos de clientes reales ni números de cuenta reales, y la clave del ingreso nunca sale del navegador.
 - **La base es 100% sintética y académica**: sus cifras no se presentan como métricas de Lulo Bank.
 
@@ -160,6 +160,7 @@ lulo_app/api_v3.py         rutas /api/v3
 lulo_app/main.py           / (v3), /v2 (versión del cliente), API v2
 lulo_app/templates/app.html   página v3   ·   index.html   página v2 (no tocar)
 public/static/v3/          app v3: app.js (estado, flujos, guía y escenarios), screens.js (pantallas),
+                           console.js (consola de Lulo: en vivo, campaña, piloto y clientes),
                            content.js (lo nuevo), tour.js (recorrido), aprende.js (probabilidad por pasos y
                            decisión en lenguaje claro), icons.js, util.js, app.css
 tests/                     ingesta, motor, API v2 y v3, entrada de Vercel, de punta a punta (test_e2e.py)
