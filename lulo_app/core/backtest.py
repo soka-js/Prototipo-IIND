@@ -40,7 +40,7 @@ def run(start: date | None = None, end: date | None = None, every: int = 7, incl
     day = start
     while day <= end:
         for cid in ids:
-            r = evaluate(cid, Context(as_of=day, mode="lote", history=ledgers[cid]))
+            r = evaluate(cid, Context(as_of=day, mode="lote", history=ledgers[cid]), lite=True)
             n_eval += 1
             out = r["outcome"]
             if out not in RESULT:
