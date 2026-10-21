@@ -615,7 +615,7 @@ body.welcome-open{overflow:hidden}
 .w-c .w-n{width:24px;height:24px;border-radius:50%;background:var(--lime);color:#101500;display:grid;place-items:center;font-size:12px;font-weight:800}
 .w-motor{background:#F1F4FA;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.5;color:#2B3650}
 .w-motor b{color:var(--ink)}
-.w-choices{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;margin-top:16px}
+.w-choices{display:grid;grid-template-columns:1.25fr 1.15fr 1fr 1fr;gap:10px;margin-top:16px}
 .w-ch{border:1.5px solid #C9D2E3;background:#fff;border-radius:16px;padding:14px 16px;text-align:left;display:flex;flex-direction:column;gap:4px;color:var(--ink)}
 .w-ch b{font-size:15px}.w-ch span{font-size:12.5px;color:#4A5570;line-height:1.4}
 .w-ch:hover{border-color:var(--ink)}
@@ -720,3 +720,15 @@ span.pchip{padding:4px 11px}
   body.guide-open .fab{display:none}
   .page.solo .foot{display:none}
 }
+
+/* recorrido automático: barra del tiempo que falta para seguir */
+.tour-timer{height:4px;border-radius:2px;background:var(--panel-3);overflow:hidden}
+.tour-timer i{display:block;height:100%;width:100%;background:var(--lime);transform-origin:left;animation:tourTimer linear forwards}
+@keyframes tourTimer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.tour-timer{display:none}}
+.tour-sub{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:-2px}
+.tour-sub button{background:none;border:0;padding:2px 0;color:#AFB8CC;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.tour-sub button:hover:not(:disabled){color:#fff;text-decoration:underline}
+.tour-sub button:disabled{opacity:.4}
+.pbtn svg,.tbtn svg{flex:none}
+.tbtn .ico-auto,.w-ch .ico-auto{vertical-align:-1px}

@@ -119,6 +119,27 @@ def test_guided_tour_runs_to_the_end_and_leaves_the_scenarios_open(base, browser
     ctx.close()
 
 
+def test_automatic_tour_plays_by_itself_and_can_pause(base, browser, tmp_path):
+    """Opción automática: nadie toca el teléfono; se puede pausar y seguir (?ritmo=0.1 lo acelera para la prueba)."""
+    ctx, page, errors = _page(browser, viewport={"width": 1440, "height": 900})
+    page.goto(base + "?ritmo=0.1", wait_until="networkidle")
+    page.click('[data-w="auto"]')
+    page.wait_for_selector('#guide [data-tour="pause"]')
+    page.click('#guide [data-tour="pause"]')
+    n = _step(page)
+    page.wait_for_timeout(2000)                                   # a este ritmo un paso dura menos de 1 s
+    assert _step(page) == n and "En pausa" in page.inner_text("#guide .tour-hint")
+    page.click('#guide [data-tour="resume"]')
+    page.wait_for_selector("#guide .scen", timeout=120000)        # llega solo al final y abre los escenarios
+    with page.expect_download() as dl:
+        page.click("#csvBtn")
+    f = tmp_path / "respuestas.csv"
+    dl.value.save_as(f)
+    assert "sebastian,2026-10-08,Vida,push,aceptada,tratamiento," in f.read_text(encoding="utf-8")
+    assert not errors
+    ctx.close()
+
+
 def test_scenarios_say_what_the_engine_decided(base, browser):
     ctx, page, errors = _page(browser, viewport={"width": 1440, "height": 900})
     page.goto(base + "?cliente=andres", wait_until="networkidle")    # con cliente en la URL no sale la bienvenida

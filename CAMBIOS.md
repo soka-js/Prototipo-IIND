@@ -17,6 +17,23 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app (y luego feat/claude-consola-lulo) · commit de esta entrada · recorrido automático
+- Qué cambió: el recorrido guiado tiene una opción automática. Se reproduce solo: lee cada paso, lo hace en el teléfono (lo que antes era «Hazlo por mí») y sigue, sin que nadie toque nada.
+  - **Tiempo de lectura:** unos 35 ms por carácter del texto, entre 5,5 y 15 s por paso; el recorrido completo dura unos 3 minutos. Una barra lima muestra cuánto falta para seguir.
+  - **Controles:** «Pausar», «Seguir» y «Paso a paso» (vuelve al modo manual). En el paso de Tu año, además, pasa tres capítulos de la historia.
+  - **Dónde se activa:** en el encabezado («Recorrido automático»), en la bienvenida (cuarta opción) y desde la tarjeta del recorrido («Que se reproduzca solo»).
+  - **Ritmo:** `?ritmo=` lo acelera o lo hace más lento (de 0,05 a 3).
+  - **Pistas:** en automático la pista dice si sigue solo, si está haciendo el paso o si está en pausa, en vez de «toca…».
+  - **Íconos:** los de reproducir y pausar son SVG, porque los símbolos ⏵ y ⏸ no se ven con la fuente de la app.
+- Por qué: a SOKA le gusta que haya un botón que haga el recorrido paso a paso de forma automática, sin que el cliente tenga que tocar nada, como opción.
+- Archivos: `public/static/v3/tour.js`, `public/static/v3/app.js`, `public/static/v3/app.css`, `lulo_app/templates/app.html`, `tests/test_e2e.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`.
+- Cómo se verificó:
+  - `python -m pytest` → todo pasa, con la prueba nueva `test_automatic_tour_plays_by_itself_and_can_pause`: en pausa no avanza, al seguir llega solo al final y el CSV trae Vida aceptada. Las 6 pruebas de punta a punta son estables en 3 corridas.
+  - Con Playwright, el recorrido automático completo a ritmo normal duró 2 min 39 s desde el paso 2 (unos 2 min 50 s en total) y a `?ritmo=0.1`, 29 s. En el celular, la tarjeta dentro del teléfono muestra «Pausar». Sin errores de consola.
+- Consultado con SOKA: sí, el 2026-10-21 (su pedido).
+- Cifras nuevas y su origen: la duración del recorrido, medida con Playwright como dice arriba.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app · commits bc82492, 102f17e, e9e3875, a58302e y el de esta entrada · E11 (reglas v2.1)
 - Qué cambió:
   - (0) A pedido de SOKA («push de todo»), merge de soka-js/Prototipo-IIND#3 (accesibilidad) a `main` (dd5a95b) con el Preview de Vercel en `success`. Esta rama parte de ese `main`.

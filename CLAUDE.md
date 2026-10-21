@@ -104,6 +104,7 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
   - Descarga de respuestas en el formato de datos reales.
   - Pruebas de punta a punta con Playwright (dependencia de desarrollo).
   - Resumen de una página para la entrega.
+  - Recorrido automático como opción: se reproduce solo, sin que el cliente toque nada, y se puede pausar. Paso a paso sigue igual.
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.

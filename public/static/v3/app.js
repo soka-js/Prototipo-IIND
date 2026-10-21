@@ -678,6 +678,7 @@ document.addEventListener("click", e => {
   if (w) {
     const a = w.dataset.w; closeWelcome();
     if (a === "tour") TOUR.start();
+    else if (a === "auto") TOUR.autoplay();
     else if (a === "free") { setHighlight(true); if (!S.unlocked) unlock(); gotoTarget("home"); toast("Lo resaltado en lima es nuevo"); }
     else if (a === "scen") openGuide("scen");
     return;
@@ -746,7 +747,7 @@ TOUR = createTour({
   openRenew, pay, pickContact, setAmount, confirmFlow,
   openDecision, acceptOffer, refreshEval, setHighlight, motor: () => MOTOR,
   fresh: freshClient, title: r => product(S, r).title,
-  openStory: i => openStory(i),
+  openStory: i => openStory(i), storyNext: () => { if (S.screen === "story") storyStep(1); },
   card: () => GUIDE === "tour" ? $("#guide") : null,
   showTour(sheet) { openGuide("tour", !!sheet); if (!MOTOR) API.motor().then(m => { MOTOR = m; }).catch(() => {}); },
   endTour(next) { if (next) openGuide("scen", false); else closeGuide(); },
