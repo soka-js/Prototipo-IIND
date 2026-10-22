@@ -17,6 +17,69 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-22 · Claude con SOKA · rama feat/claude-powerbi · commit de esta entrada · E12: dashboard de resultados en Power BI y casos reales
+- Qué cambió: un dashboard de 8 páginas para responder si el motor convierte ofertas en ventas. Como la base no trae respuestas a ofertas, separa tres tipos de datos y los marca:
+  - la base del reto;
+  - lo que decide el motor;
+  - un piloto simulado.
+  - **`scripts/exportar_powerbi.py`** (nuevo) escribe `powerbi/datos/` en estrella: 21 tablas en CSV.
+    - **Base:** campañas previas, pólizas por mes, pagos a otras aseguradoras, clientes y ramos.
+    - **Motor:** plan al corte con alcance y ventas esperadas, backtest e invariantes.
+    - **Piloto simulado:** el año de la base recorrido semana a semana (36 evaluaciones de los 600 clientes) con el motor de verdad, su grupo de control, su política de contacto y lo que aprende de cada cliente. Solo las respuestas son inventadas:
+      - si el cliente ve la oferta, con el alcance que calcula el motor (M3 o el banner);
+      - si la acepta, con la verdad del laboratorio en dos mundos («señal» y «regla correcta»);
+      - las compras por su cuenta, sin oferta y en los dos grupos, al ritmo de Pagos_Seguros.
+
+      Los sorteos son comunes a los dos mundos y el control queda idéntico. Tiene el formato de `docs/DATOS_REALES.md`: con el piloto real se cambian tres archivos.
+    - **Laboratorio:** series, calibración, pesos aprendidos, τ y resumen de `laboratorio.json`.
+    - **Casos y meta:** los casos reales, y las versiones, la semilla y el hash de la base.
+    - `--check` verifica todo `powerbi/`.
+  - **`scripts/powerbi_modelo.py`** (nuevo) genera el proyecto **`powerbi/Lulo.pbip`**:
+    - el modelo semántico con tipos tomados de los CSV, carga con cultura en-US y el parámetro «Origen», que apunta a GitHub o a una carpeta local;
+    - 23 relaciones;
+    - 88 medidas DAX, también en `powerbi/medidas.dax`: diferencia frente al control con IC 95 %, valor p, ventas y comisión incrementales, efecto mínimo detectable, veredicto, calibración, motor frente a regla, embudo, plan, base y laboratorio;
+    - 8 páginas con 75 visuales y el tema Lulo (`tema-lulo.json`).
+
+    Las series pasan el validador de la guía de visualización en modo oscuro. La lima `#E8FF00` queda como acento, no como serie.
+  - **`scripts/powerbi_vista.py`** (nuevo) genera `powerbi/vista_previa.html`: las mismas 8 páginas en el navegador, sin Power BI. Calcula cada cifra con la misma definición que la medida DAX y sirve para revisar las medidas.
+  - **`powerbi/casos.csv` y `docs/CASOS.md`** (nuevos): 20 casos reales de empresas con métodos como los del prototipo, con fuente y nivel de confianza (15 alta, 5 media). Son 7 éxitos, 1 sin efecto, 6 mixtos y 6 fracasos, con 6 lecciones conectadas con el prototipo y el dashboard. Quedan fuera las cifras que no se pudieron confirmar.
+  - **`powerbi/GUIA.md`** (nueva): cómo abrirlo, qué es real y qué es simulado, el resultado de los dos mundos y los supuestos. También cada página con sus campos, cómo pasar al piloto real sin subir datos al repo y un plan B para armarlo a mano.
+  - **Pruebas:** `tests/test_powerbi.py` (nuevo, 14 pruebas) cubre:
+    - **Reproducibilidad:** el exportador da byte a byte lo que está en `powerbi/`.
+    - **Coherencia del piloto con el motor:**
+      - el grupo sale del hash;
+      - el control nunca ve ofertas y queda idéntico en los dos mundos;
+      - cada venta por oferta es una aceptación;
+      - las compras cuentan desde la primera decisión;
+      - el formato es el de datos reales.
+    - **Medidas:** las dos cuentas independientes de la diferencia coinciden.
+    - **Modelo e informe:**
+      - el modelo calza con los CSV y todas las referencias DAX existen, sin `CALCULATE` en filtros booleanos;
+      - los campos del informe existen;
+      - la etiqueta del prototipo está en cada página;
+      - no hay columnas de nombres de comercios.
+    - **Casos:** cada caso tiene fuente.
+  - **Otros archivos:** `README.md`, `CLAUDE.md` (E12, invariante del dashboard, comandos y mapa) y `.gitignore` (caché local de Power BI).
+- Por qué: el equipo pidió, tras su reunión, un dashboard de Power BI «de alto impacto» con estadísticas para saber si el modelo convierte los seguros ofrecidos en ventas. También pidieron referenciar casos reales de éxito o fracaso de empresas con métodos parecidos. La propuesta, con los tres tipos de datos, el piloto simulado marcado como tal y estos entregables, la aprobó SOKA el 2026-10-22.
+- Archivos: `scripts/exportar_powerbi.py`, `scripts/powerbi_modelo.py`, `scripts/powerbi_vista.py`, `powerbi/` (todo), `docs/CASOS.md`, `tests/test_powerbi.py`, `README.md`, `CLAUDE.md`, `CAMBIOS.md`, `.gitignore`. No cambian el motor, las reglas, la base, los modelos ni la app.
+- Cómo se verificó:
+  - `python -m pytest` → 119 passed, 1 warning in 117.12s: las 105 de antes, con las 6 de punta a punta, más las 14 nuevas.
+  - `python scripts/exportar_powerbi.py --check` → «powerbi/ coincide (30 archivos)». Da lo mismo con el Python del sistema y con el del `.venv`.
+  - Invariantes: 0 violaciones.
+  - La vista previa se probó con Playwright en las 8 páginas, en 1440 × 900 y 390 × 844: sin errores de consola y sin desplazamiento horizontal.
+  - El proyecto `.pbip` **no se pudo abrir en Power BI Desktop**, porque el entorno es Linux. La guía trae el plan B y la vista previa para comparar cifras.
+- Consultado con SOKA: sí, el 2026-10-22. Aprobó el plan («ok si estoy de acuerdo con tu propuesta», con el pedido de los casos reales) y después pasarlo a `main` («Listo pasa a main todo lo q acabamos de hacer»).
+- Cifras nuevas y su origen:
+  - **Piloto simulado** (salida del exportador):
+    - **«señal»:** 437 clientes en tratamiento y 45 en control; compran 25,4 % frente a 4,4 %; diferencia +21,0 pp (IC 95 % +13,7 a +28,2; p = 0,0016); 92 clientes compran por las ofertas; comisión incremental $6.919.020; 968 ofertas vistas y 99 aceptadas (10,2 %); observado / esperado 1,42.
+    - **«regla correcta»:** 19,5 % frente a 4,4 %; +15,0 pp (+7,9 a +22,1; p = 0,0127); 66 clientes; $4.913.935; 70 aceptadas de 987 (7,1 %); 0,98.
+    - **En los dos mundos:** el motor elige lo mismo que la regla en el 99,6 %, porque en el piloto el motor de la población no se reentrena; el efecto mínimo detectable es de unos 17 a 19 pp.
+  - **Compras por su cuenta:** pares cliente-ramo de Pagos_Seguros (SOAT 50, Vida 27, Hogar 24, Mascotas 12) sobre 600 clientes × 48,7 semanas.
+  - **Plan al corte:** 219 push, 183 banner, 40 en control, 84 sin autorización y 74 sin nada que ofrecer.
+  - **Base:** 7.193 pólizas emitidas en el año, $129.194.121 de comisión de primas emitidas, $20.668.000 pagados a otras aseguradoras y conversión de las campañas de 10,5 %. Salen de las pestañas de la base.
+  - **Casos:** cada cifra lleva su fuente en `powerbi/casos.csv`.
+- Modelo de Claude usado: claude-opus-5-5.
+
 ## 2026-10-21 · Claude con SOKA · rama feat/claude-solo-app → main · SOKA elige la versión A (solo la app)
 - Qué cambió:
   - SOKA comparó las dos alternativas de E11 y eligió A, solo la app con el recorrido automático como video, para pasar a `main`.

@@ -1,0 +1,1041 @@
+escenario,politica,politica_nombre,politica_orden,ronda,respuestas_acumuladas,comision_por_oferta,aceptacion
+señal,regla,Regla v1.3,2,1,442,7863.5,0.09486
+señal,regla,Regla v1.3,2,2,884,7978.2,0.09703
+señal,regla,Regla v1.3,2,3,1326,8037.6,0.09785
+señal,regla,Regla v1.3,2,4,1768,8015.7,0.09738
+señal,regla,Regla v1.3,2,5,2210,8082.4,0.09825
+señal,regla,Regla v1.3,2,6,2652,7945.2,0.09674
+señal,regla,Regla v1.3,2,7,3094,8037.9,0.09777
+señal,regla,Regla v1.3,2,8,3536,8013,0.09664
+señal,regla,Regla v1.3,2,9,3978,7995.7,0.09742
+señal,regla,Regla v1.3,2,10,4420,7926.6,0.09631
+señal,regla,Regla v1.3,2,11,4862,8009.2,0.09629
+señal,regla,Regla v1.3,2,12,5304,7957.7,0.09644
+señal,regla,Regla v1.3,2,13,5746,7876.8,0.0958
+señal,regla,Regla v1.3,2,14,6188,8067.3,0.09831
+señal,regla,Regla v1.3,2,15,6630,7917.6,0.09631
+señal,regla,Regla v1.3,2,16,7072,7847.6,0.09481
+señal,regla,Regla v1.3,2,17,7514,7920.8,0.09651
+señal,regla,Regla v1.3,2,18,7956,7986.8,0.09642
+señal,regla,Regla v1.3,2,19,8398,8039.5,0.09736
+señal,regla,Regla v1.3,2,20,8840,7950,0.09573
+señal,regla,Regla v1.3,2,21,9282,8055.2,0.09725
+señal,regla,Regla v1.3,2,22,9724,7930.3,0.09618
+señal,regla,Regla v1.3,2,23,10166,7960.7,0.09581
+señal,regla,Regla v1.3,2,24,10608,7996.7,0.09758
+señal,regla,Regla v1.3,2,25,11050,8077.6,0.09846
+señal,regla,Regla v1.3,2,26,11492,7968.6,0.09694
+señal,regla,Regla v1.3,2,27,11934,7993,0.09758
+señal,regla,Regla v1.3,2,28,12376,7855.2,0.09502
+señal,regla,Regla v1.3,2,29,12818,8010.3,0.09715
+señal,regla,Regla v1.3,2,30,13260,8120.2,0.0986
+señal,regla,Regla v1.3,2,31,13702,8061.1,0.09765
+señal,regla,Regla v1.3,2,32,14144,8076.5,0.09793
+señal,regla,Regla v1.3,2,33,14586,7922,0.09568
+señal,regla,Regla v1.3,2,34,15028,7926.5,0.09585
+señal,regla,Regla v1.3,2,35,15470,8083.3,0.09741
+señal,regla,Regla v1.3,2,36,15912,7987,0.09665
+señal,regla,Regla v1.3,2,37,16354,7929,0.09587
+señal,regla,Regla v1.3,2,38,16796,7971.9,0.09651
+señal,regla,Regla v1.3,2,39,17238,8024.8,0.09715
+señal,regla,Regla v1.3,2,40,17680,8055.4,0.09723
+señal,motor,Motor bayesiano v2.0,1,1,442,8377.4,0.10038
+señal,motor,Motor bayesiano v2.0,1,2,884,8512.6,0.10661
+señal,motor,Motor bayesiano v2.0,1,3,1326,8624.6,0.10752
+señal,motor,Motor bayesiano v2.0,1,4,1768,8515,0.10874
+señal,motor,Motor bayesiano v2.0,1,5,2210,8531.3,0.1102
+señal,motor,Motor bayesiano v2.0,1,6,2652,8631.8,0.11269
+señal,motor,Motor bayesiano v2.0,1,7,3094,8716.2,0.11196
+señal,motor,Motor bayesiano v2.0,1,8,3536,8769.3,0.11426
+señal,motor,Motor bayesiano v2.0,1,9,3978,8886.5,0.11674
+señal,motor,Motor bayesiano v2.0,1,10,4420,8770.7,0.11546
+señal,motor,Motor bayesiano v2.0,1,11,4862,8781.4,0.11307
+señal,motor,Motor bayesiano v2.0,1,12,5304,8785.8,0.1155
+señal,motor,Motor bayesiano v2.0,1,13,5746,8694.9,0.11265
+señal,motor,Motor bayesiano v2.0,1,14,6188,8929.6,0.11698
+señal,motor,Motor bayesiano v2.0,1,15,6630,8785.7,0.11274
+señal,motor,Motor bayesiano v2.0,1,16,7072,8843,0.114
+señal,motor,Motor bayesiano v2.0,1,17,7514,8816.6,0.1146
+señal,motor,Motor bayesiano v2.0,1,18,7956,8780,0.11368
+señal,motor,Motor bayesiano v2.0,1,19,8398,8724.8,0.11318
+señal,motor,Motor bayesiano v2.0,1,20,8840,8761.7,0.11296
+señal,motor,Motor bayesiano v2.0,1,21,9282,8940.1,0.1162
+señal,motor,Motor bayesiano v2.0,1,22,9724,8716.6,0.11161
+señal,motor,Motor bayesiano v2.0,1,23,10166,8846.4,0.11522
+señal,motor,Motor bayesiano v2.0,1,24,10608,8730.1,0.11589
+señal,motor,Motor bayesiano v2.0,1,25,11050,8890.1,0.11935
+señal,motor,Motor bayesiano v2.0,1,26,11492,8796.7,0.11702
+señal,motor,Motor bayesiano v2.0,1,27,11934,8676.9,0.11482
+señal,motor,Motor bayesiano v2.0,1,28,12376,8676.3,0.11308
+señal,motor,Motor bayesiano v2.0,1,29,12818,8756.5,0.11539
+señal,motor,Motor bayesiano v2.0,1,30,13260,8912.5,0.11673
+señal,motor,Motor bayesiano v2.0,1,31,13702,8747.1,0.11323
+señal,motor,Motor bayesiano v2.0,1,32,14144,8863.2,0.11924
+señal,motor,Motor bayesiano v2.0,1,33,14586,8729.6,0.11407
+señal,motor,Motor bayesiano v2.0,1,34,15028,8808.4,0.11527
+señal,motor,Motor bayesiano v2.0,1,35,15470,8858.9,0.11505
+señal,motor,Motor bayesiano v2.0,1,36,15912,8774.4,0.11488
+señal,motor,Motor bayesiano v2.0,1,37,16354,8821,0.11587
+señal,motor,Motor bayesiano v2.0,1,38,16796,8798.8,0.11567
+señal,motor,Motor bayesiano v2.0,1,39,17238,8839.9,0.11518
+señal,motor,Motor bayesiano v2.0,1,40,17680,8922.7,0.11885
+señal,motor_sin_explorar,Motor sin explorar,5,1,442,8428.1,0.10068
+señal,motor_sin_explorar,Motor sin explorar,5,2,884,8495,0.105
+señal,motor_sin_explorar,Motor sin explorar,5,3,1326,8690,0.10901
+señal,motor_sin_explorar,Motor sin explorar,5,4,1768,8595.6,0.10898
+señal,motor_sin_explorar,Motor sin explorar,5,5,2210,8571.7,0.10858
+señal,motor_sin_explorar,Motor sin explorar,5,6,2652,8714.3,0.11348
+señal,motor_sin_explorar,Motor sin explorar,5,7,3094,8745.6,0.11148
+señal,motor_sin_explorar,Motor sin explorar,5,8,3536,8833.1,0.11483
+señal,motor_sin_explorar,Motor sin explorar,5,9,3978,8886.3,0.11527
+señal,motor_sin_explorar,Motor sin explorar,5,10,4420,8818.8,0.11682
+señal,motor_sin_explorar,Motor sin explorar,5,11,4862,8817.9,0.11307
+señal,motor_sin_explorar,Motor sin explorar,5,12,5304,8868.7,0.11513
+señal,motor_sin_explorar,Motor sin explorar,5,13,5746,8724.2,0.11265
+señal,motor_sin_explorar,Motor sin explorar,5,14,6188,8959.8,0.11578
+señal,motor_sin_explorar,Motor sin explorar,5,15,6630,8752.5,0.11173
+señal,motor_sin_explorar,Motor sin explorar,5,16,7072,8747.3,0.11298
+señal,motor_sin_explorar,Motor sin explorar,5,17,7514,8771.7,0.11447
+señal,motor_sin_explorar,Motor sin explorar,5,18,7956,8704.7,0.11216
+señal,motor_sin_explorar,Motor sin explorar,5,19,8398,8742.8,0.11397
+señal,motor_sin_explorar,Motor sin explorar,5,20,8840,8780.6,0.11264
+señal,motor_sin_explorar,Motor sin explorar,5,21,9282,8943.1,0.11738
+señal,motor_sin_explorar,Motor sin explorar,5,22,9724,8749.1,0.11289
+señal,motor_sin_explorar,Motor sin explorar,5,23,10166,8860.9,0.11602
+señal,motor_sin_explorar,Motor sin explorar,5,24,10608,8817.5,0.11703
+señal,motor_sin_explorar,Motor sin explorar,5,25,11050,8927.8,0.12047
+señal,motor_sin_explorar,Motor sin explorar,5,26,11492,8822.2,0.11814
+señal,motor_sin_explorar,Motor sin explorar,5,27,11934,8718.6,0.11616
+señal,motor_sin_explorar,Motor sin explorar,5,28,12376,8737.6,0.11398
+señal,motor_sin_explorar,Motor sin explorar,5,29,12818,8767.3,0.11671
+señal,motor_sin_explorar,Motor sin explorar,5,30,13260,8929.3,0.11692
+señal,motor_sin_explorar,Motor sin explorar,5,31,13702,8814.8,0.11527
+señal,motor_sin_explorar,Motor sin explorar,5,32,14144,8891,0.11901
+señal,motor_sin_explorar,Motor sin explorar,5,33,14586,8722.9,0.11379
+señal,motor_sin_explorar,Motor sin explorar,5,34,15028,8834.1,0.1165
+señal,motor_sin_explorar,Motor sin explorar,5,35,15470,8899,0.11638
+señal,motor_sin_explorar,Motor sin explorar,5,36,15912,8792.3,0.116
+señal,motor_sin_explorar,Motor sin explorar,5,37,16354,8827.2,0.11582
+señal,motor_sin_explorar,Motor sin explorar,5,38,16796,8853.5,0.11662
+señal,motor_sin_explorar,Motor sin explorar,5,39,17238,8828.2,0.11465
+señal,motor_sin_explorar,Motor sin explorar,5,40,17680,8939.8,0.12063
+señal,oraculo,Oráculo (conoce la verdad),3,1,442,8964.9,0.11842
+señal,oraculo,Oráculo (conoce la verdad),3,2,884,9017.2,0.12197
+señal,oraculo,Oráculo (conoce la verdad),3,3,1326,9038.8,0.11967
+señal,oraculo,Oráculo (conoce la verdad),3,4,1768,9054.8,0.1233
+señal,oraculo,Oráculo (conoce la verdad),3,5,2210,9085.7,0.12227
+señal,oraculo,Oráculo (conoce la verdad),3,6,2652,9052.8,0.12226
+señal,oraculo,Oráculo (conoce la verdad),3,7,3094,9112.4,0.12362
+señal,oraculo,Oráculo (conoce la verdad),3,8,3536,9078,0.12126
+señal,oraculo,Oráculo (conoce la verdad),3,9,3978,9102.5,0.12135
+señal,oraculo,Oráculo (conoce la verdad),3,10,4420,8975.6,0.12276
+señal,oraculo,Oráculo (conoce la verdad),3,11,4862,9018.9,0.1206
+señal,oraculo,Oráculo (conoce la verdad),3,12,5304,9075.8,0.12282
+señal,oraculo,Oráculo (conoce la verdad),3,13,5746,8970.7,0.12102
+señal,oraculo,Oráculo (conoce la verdad),3,14,6188,9132.5,0.12218
+señal,oraculo,Oráculo (conoce la verdad),3,15,6630,8979.4,0.12204
+señal,oraculo,Oráculo (conoce la verdad),3,16,7072,8978.4,0.11867
+señal,oraculo,Oráculo (conoce la verdad),3,17,7514,8996.1,0.12073
+señal,oraculo,Oráculo (conoce la verdad),3,18,7956,8970.8,0.11813
+señal,oraculo,Oráculo (conoce la verdad),3,19,8398,9081.2,0.12304
+señal,oraculo,Oráculo (conoce la verdad),3,20,8840,8991.6,0.12145
+señal,oraculo,Oráculo (conoce la verdad),3,21,9282,9111.9,0.12339
+señal,oraculo,Oráculo (conoce la verdad),3,22,9724,8954.3,0.11864
+señal,oraculo,Oráculo (conoce la verdad),3,23,10166,9049.5,0.12077
+señal,oraculo,Oráculo (conoce la verdad),3,24,10608,9006.2,0.12227
+señal,oraculo,Oráculo (conoce la verdad),3,25,11050,9138.7,0.12442
+señal,oraculo,Oráculo (conoce la verdad),3,26,11492,9058.8,0.12312
+señal,oraculo,Oráculo (conoce la verdad),3,27,11934,8993.1,0.12067
+señal,oraculo,Oráculo (conoce la verdad),3,28,12376,8985.7,0.11955
+señal,oraculo,Oráculo (conoce la verdad),3,29,12818,9056.6,0.1224
+señal,oraculo,Oráculo (conoce la verdad),3,30,13260,9170.4,0.12198
+señal,oraculo,Oráculo (conoce la verdad),3,31,13702,9070.2,0.12055
+señal,oraculo,Oráculo (conoce la verdad),3,32,14144,9135,0.12404
+señal,oraculo,Oráculo (conoce la verdad),3,33,14586,8951.2,0.11739
+señal,oraculo,Oráculo (conoce la verdad),3,34,15028,9000.6,0.11924
+señal,oraculo,Oráculo (conoce la verdad),3,35,15470,9119.3,0.12134
+señal,oraculo,Oráculo (conoce la verdad),3,36,15912,9035.7,0.12059
+señal,oraculo,Oráculo (conoce la verdad),3,37,16354,8978.1,0.11985
+señal,oraculo,Oráculo (conoce la verdad),3,38,16796,9004.2,0.11928
+señal,oraculo,Oráculo (conoce la verdad),3,39,17238,9044.3,0.11941
+señal,oraculo,Oráculo (conoce la verdad),3,40,17680,9092.9,0.12289
+señal,azar,Al azar,4,1,442,6382.4,0.0939
+señal,azar,Al azar,4,2,884,6758.8,0.09862
+señal,azar,Al azar,4,3,1326,6289.9,0.09679
+señal,azar,Al azar,4,4,1768,6651.2,0.10238
+señal,azar,Al azar,4,5,2210,6697,0.10159
+señal,azar,Al azar,4,6,2652,6522,0.09803
+señal,azar,Al azar,4,7,3094,6138.7,0.09533
+señal,azar,Al azar,4,8,3536,6220,0.09433
+señal,azar,Al azar,4,9,3978,6676.1,0.09779
+señal,azar,Al azar,4,10,4420,6675.9,0.0967
+señal,azar,Al azar,4,11,4862,6348.5,0.09549
+señal,azar,Al azar,4,12,5304,6749.3,0.10091
+señal,azar,Al azar,4,13,5746,6616.1,0.09725
+señal,azar,Al azar,4,14,6188,6815.1,0.10199
+señal,azar,Al azar,4,15,6630,6245.3,0.09456
+señal,azar,Al azar,4,16,7072,6659.5,0.09688
+señal,azar,Al azar,4,17,7514,6343.5,0.09515
+señal,azar,Al azar,4,18,7956,6392.8,0.09433
+señal,azar,Al azar,4,19,8398,6586.3,0.09939
+señal,azar,Al azar,4,20,8840,6514.3,0.09816
+señal,azar,Al azar,4,21,9282,6590.6,0.09703
+señal,azar,Al azar,4,22,9724,6477.6,0.0979
+señal,azar,Al azar,4,23,10166,6242.2,0.09586
+señal,azar,Al azar,4,24,10608,6431.9,0.0987
+señal,azar,Al azar,4,25,11050,6849.5,0.10139
+señal,azar,Al azar,4,26,11492,6666.8,0.10156
+señal,azar,Al azar,4,27,11934,6603.6,0.09823
+señal,azar,Al azar,4,28,12376,6613.1,0.09711
+señal,azar,Al azar,4,29,12818,6606.9,0.09662
+señal,azar,Al azar,4,30,13260,6472.5,0.09644
+señal,azar,Al azar,4,31,13702,6898,0.10007
+señal,azar,Al azar,4,32,14144,6324.6,0.09596
+señal,azar,Al azar,4,33,14586,6706.3,0.09752
+señal,azar,Al azar,4,34,15028,6828.3,0.10037
+señal,azar,Al azar,4,35,15470,6402.3,0.09867
+señal,azar,Al azar,4,36,15912,6445.2,0.09514
+señal,azar,Al azar,4,37,16354,6525,0.09664
+señal,azar,Al azar,4,38,16796,6546.6,0.10008
+señal,azar,Al azar,4,39,17238,6618.1,0.09485
+señal,azar,Al azar,4,40,17680,6610.5,0.09757
+regla correcta,regla,Regla v1.3,2,1,442,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,2,884,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,3,1326,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,4,1768,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,5,2210,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,6,2652,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,7,3094,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,8,3536,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,9,3978,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,10,4420,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,11,4862,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,12,5304,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,13,5746,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,14,6188,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,15,6630,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,16,7072,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,17,7514,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,18,7956,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,19,8398,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,20,8840,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,21,9282,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,22,9724,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,23,10166,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,24,10608,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,25,11050,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,26,11492,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,27,11934,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,28,12376,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,29,12818,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,30,13260,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,31,13702,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,32,14144,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,33,14586,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,34,15028,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,35,15470,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,36,15912,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,37,16354,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,38,16796,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,39,17238,5921.2,0.07011
+regla correcta,regla,Regla v1.3,2,40,17680,5921.2,0.07011
+regla correcta,motor,Motor bayesiano v2.0,1,1,442,5758.4,0.0688
+regla correcta,motor,Motor bayesiano v2.0,1,2,884,5737.3,0.07007
+regla correcta,motor,Motor bayesiano v2.0,1,3,1326,5708.4,0.07071
+regla correcta,motor,Motor bayesiano v2.0,1,4,1768,5884,0.06957
+regla correcta,motor,Motor bayesiano v2.0,1,5,2210,5839.4,0.0702
+regla correcta,motor,Motor bayesiano v2.0,1,6,2652,5831.2,0.06913
+regla correcta,motor,Motor bayesiano v2.0,1,7,3094,5835.6,0.06937
+regla correcta,motor,Motor bayesiano v2.0,1,8,3536,5804,0.0691
+regla correcta,motor,Motor bayesiano v2.0,1,9,3978,5818.6,0.06951
+regla correcta,motor,Motor bayesiano v2.0,1,10,4420,5848.5,0.0696
+regla correcta,motor,Motor bayesiano v2.0,1,11,4862,5796.5,0.06874
+regla correcta,motor,Motor bayesiano v2.0,1,12,5304,5831.2,0.07027
+regla correcta,motor,Motor bayesiano v2.0,1,13,5746,5821.1,0.06937
+regla correcta,motor,Motor bayesiano v2.0,1,14,6188,5819.8,0.06914
+regla correcta,motor,Motor bayesiano v2.0,1,15,6630,5826.7,0.06932
+regla correcta,motor,Motor bayesiano v2.0,1,16,7072,5757.4,0.06891
+regla correcta,motor,Motor bayesiano v2.0,1,17,7514,5784,0.06942
+regla correcta,motor,Motor bayesiano v2.0,1,18,7956,5763.2,0.06936
+regla correcta,motor,Motor bayesiano v2.0,1,19,8398,5800.8,0.06965
+regla correcta,motor,Motor bayesiano v2.0,1,20,8840,5842.5,0.06967
+regla correcta,motor,Motor bayesiano v2.0,1,21,9282,5851.6,0.06962
+regla correcta,motor,Motor bayesiano v2.0,1,22,9724,5848.4,0.06957
+regla correcta,motor,Motor bayesiano v2.0,1,23,10166,5867.4,0.06971
+regla correcta,motor,Motor bayesiano v2.0,1,24,10608,5885.1,0.06969
+regla correcta,motor,Motor bayesiano v2.0,1,25,11050,5880.9,0.06969
+regla correcta,motor,Motor bayesiano v2.0,1,26,11492,5860.8,0.06944
+regla correcta,motor,Motor bayesiano v2.0,1,27,11934,5822.6,0.06881
+regla correcta,motor,Motor bayesiano v2.0,1,28,12376,5799.8,0.06859
+regla correcta,motor,Motor bayesiano v2.0,1,29,12818,5850.5,0.06915
+regla correcta,motor,Motor bayesiano v2.0,1,30,13260,5836.8,0.06889
+regla correcta,motor,Motor bayesiano v2.0,1,31,13702,5842.7,0.06895
+regla correcta,motor,Motor bayesiano v2.0,1,32,14144,5857.8,0.06908
+regla correcta,motor,Motor bayesiano v2.0,1,33,14586,5877.3,0.0692
+regla correcta,motor,Motor bayesiano v2.0,1,34,15028,5864.5,0.06949
+regla correcta,motor,Motor bayesiano v2.0,1,35,15470,5862.9,0.06914
+regla correcta,motor,Motor bayesiano v2.0,1,36,15912,5861.8,0.06933
+regla correcta,motor,Motor bayesiano v2.0,1,37,16354,5867.4,0.06924
+regla correcta,motor,Motor bayesiano v2.0,1,38,16796,5854.7,0.06951
+regla correcta,motor,Motor bayesiano v2.0,1,39,17238,5848.8,0.06907
+regla correcta,motor,Motor bayesiano v2.0,1,40,17680,5869.8,0.06941
+regla correcta,motor_sin_explorar,Motor sin explorar,5,1,442,5827.8,0.06901
+regla correcta,motor_sin_explorar,Motor sin explorar,5,2,884,5734.4,0.07073
+regla correcta,motor_sin_explorar,Motor sin explorar,5,3,1326,5739.6,0.07067
+regla correcta,motor_sin_explorar,Motor sin explorar,5,4,1768,5911.5,0.06978
+regla correcta,motor_sin_explorar,Motor sin explorar,5,5,2210,5873.6,0.07021
+regla correcta,motor_sin_explorar,Motor sin explorar,5,6,2652,5845.1,0.06928
+regla correcta,motor_sin_explorar,Motor sin explorar,5,7,3094,5877.6,0.06974
+regla correcta,motor_sin_explorar,Motor sin explorar,5,8,3536,5859.7,0.06961
+regla correcta,motor_sin_explorar,Motor sin explorar,5,9,3978,5859.3,0.06965
+regla correcta,motor_sin_explorar,Motor sin explorar,5,10,4420,5867.8,0.06947
+regla correcta,motor_sin_explorar,Motor sin explorar,5,11,4862,5838.1,0.0691
+regla correcta,motor_sin_explorar,Motor sin explorar,5,12,5304,5888.4,0.07015
+regla correcta,motor_sin_explorar,Motor sin explorar,5,13,5746,5834.4,0.06933
+regla correcta,motor_sin_explorar,Motor sin explorar,5,14,6188,5819.5,0.06894
+regla correcta,motor_sin_explorar,Motor sin explorar,5,15,6630,5858.1,0.06955
+regla correcta,motor_sin_explorar,Motor sin explorar,5,16,7072,5819.1,0.06957
+regla correcta,motor_sin_explorar,Motor sin explorar,5,17,7514,5828.2,0.06964
+regla correcta,motor_sin_explorar,Motor sin explorar,5,18,7956,5840.9,0.06988
+regla correcta,motor_sin_explorar,Motor sin explorar,5,19,8398,5835,0.06949
+regla correcta,motor_sin_explorar,Motor sin explorar,5,20,8840,5871.8,0.06993
+regla correcta,motor_sin_explorar,Motor sin explorar,5,21,9282,5884.2,0.07
+regla correcta,motor_sin_explorar,Motor sin explorar,5,22,9724,5869.6,0.06966
+regla correcta,motor_sin_explorar,Motor sin explorar,5,23,10166,5896.6,0.06969
+regla correcta,motor_sin_explorar,Motor sin explorar,5,24,10608,5903,0.06989
+regla correcta,motor_sin_explorar,Motor sin explorar,5,25,11050,5894.4,0.06978
+regla correcta,motor_sin_explorar,Motor sin explorar,5,26,11492,5886,0.06969
+regla correcta,motor_sin_explorar,Motor sin explorar,5,27,11934,5857.4,0.06928
+regla correcta,motor_sin_explorar,Motor sin explorar,5,28,12376,5804.1,0.06856
+regla correcta,motor_sin_explorar,Motor sin explorar,5,29,12818,5852.2,0.06917
+regla correcta,motor_sin_explorar,Motor sin explorar,5,30,13260,5838.3,0.06893
+regla correcta,motor_sin_explorar,Motor sin explorar,5,31,13702,5857.8,0.06923
+regla correcta,motor_sin_explorar,Motor sin explorar,5,32,14144,5862.1,0.06916
+regla correcta,motor_sin_explorar,Motor sin explorar,5,33,14586,5871.2,0.06926
+regla correcta,motor_sin_explorar,Motor sin explorar,5,34,15028,5888.5,0.06942
+regla correcta,motor_sin_explorar,Motor sin explorar,5,35,15470,5873.1,0.06947
+regla correcta,motor_sin_explorar,Motor sin explorar,5,36,15912,5888.1,0.06947
+regla correcta,motor_sin_explorar,Motor sin explorar,5,37,16354,5871.8,0.06943
+regla correcta,motor_sin_explorar,Motor sin explorar,5,38,16796,5876.1,0.06953
+regla correcta,motor_sin_explorar,Motor sin explorar,5,39,17238,5845.7,0.0691
+regla correcta,motor_sin_explorar,Motor sin explorar,5,40,17680,5866,0.06933
+regla correcta,oraculo,Oráculo (conoce la verdad),3,1,442,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,2,884,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,3,1326,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,4,1768,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,5,2210,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,6,2652,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,7,3094,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,8,3536,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,9,3978,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,10,4420,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,11,4862,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,12,5304,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,13,5746,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,14,6188,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,15,6630,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,16,7072,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,17,7514,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,18,7956,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,19,8398,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,20,8840,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,21,9282,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,22,9724,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,23,10166,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,24,10608,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,25,11050,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,26,11492,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,27,11934,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,28,12376,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,29,12818,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,30,13260,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,31,13702,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,32,14144,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,33,14586,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,34,15028,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,35,15470,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,36,15912,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,37,16354,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,38,16796,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,39,17238,5921.2,0.07011
+regla correcta,oraculo,Oráculo (conoce la verdad),3,40,17680,5921.2,0.07011
+regla correcta,azar,Al azar,4,1,442,4609.7,0.06687
+regla correcta,azar,Al azar,4,2,884,4626.3,0.06624
+regla correcta,azar,Al azar,4,3,1326,4652.4,0.06741
+regla correcta,azar,Al azar,4,4,1768,4628.2,0.06741
+regla correcta,azar,Al azar,4,5,2210,4604,0.06678
+regla correcta,azar,Al azar,4,6,2652,4606.1,0.06708
+regla correcta,azar,Al azar,4,7,3094,4653.3,0.06647
+regla correcta,azar,Al azar,4,8,3536,4612.8,0.06641
+regla correcta,azar,Al azar,4,9,3978,4557.9,0.06725
+regla correcta,azar,Al azar,4,10,4420,4553,0.06672
+regla correcta,azar,Al azar,4,11,4862,4668.7,0.06572
+regla correcta,azar,Al azar,4,12,5304,4685.3,0.06728
+regla correcta,azar,Al azar,4,13,5746,4711.8,0.06742
+regla correcta,azar,Al azar,4,14,6188,4761.8,0.06685
+regla correcta,azar,Al azar,4,15,6630,4459.1,0.06572
+regla correcta,azar,Al azar,4,16,7072,4570.7,0.06694
+regla correcta,azar,Al azar,4,17,7514,4475.2,0.06658
+regla correcta,azar,Al azar,4,18,7956,4550.9,0.06668
+regla correcta,azar,Al azar,4,19,8398,4628,0.06704
+regla correcta,azar,Al azar,4,20,8840,4582.9,0.0661
+regla correcta,azar,Al azar,4,21,9282,4717.3,0.06683
+regla correcta,azar,Al azar,4,22,9724,4676.3,0.06681
+regla correcta,azar,Al azar,4,23,10166,4667.2,0.06661
+regla correcta,azar,Al azar,4,24,10608,4518.3,0.06666
+regla correcta,azar,Al azar,4,25,11050,4609.8,0.06611
+regla correcta,azar,Al azar,4,26,11492,4727.5,0.06692
+regla correcta,azar,Al azar,4,27,11934,4685.2,0.06637
+regla correcta,azar,Al azar,4,28,12376,4555.4,0.06631
+regla correcta,azar,Al azar,4,29,12818,4500.3,0.06616
+regla correcta,azar,Al azar,4,30,13260,4704.5,0.06674
+regla correcta,azar,Al azar,4,31,13702,4596,0.06614
+regla correcta,azar,Al azar,4,32,14144,4633.5,0.06653
+regla correcta,azar,Al azar,4,33,14586,4513.9,0.06596
+regla correcta,azar,Al azar,4,34,15028,4625.1,0.06694
+regla correcta,azar,Al azar,4,35,15470,4742.5,0.06755
+regla correcta,azar,Al azar,4,36,15912,4705.8,0.06724
+regla correcta,azar,Al azar,4,37,16354,4641.1,0.06631
+regla correcta,azar,Al azar,4,38,16796,4661.7,0.06674
+regla correcta,azar,Al azar,4,39,17238,4736.2,0.06753
+regla correcta,azar,Al azar,4,40,17680,4662.1,0.06674
+ruido,regla,Regla v1.3,2,1,442,7863.5,0.09486
+ruido,regla,Regla v1.3,2,2,884,7978.2,0.09703
+ruido,regla,Regla v1.3,2,3,1326,8037.6,0.09785
+ruido,regla,Regla v1.3,2,4,1768,8015.7,0.09738
+ruido,regla,Regla v1.3,2,5,2210,8082.4,0.09825
+ruido,regla,Regla v1.3,2,6,2652,7945.2,0.09674
+ruido,regla,Regla v1.3,2,7,3094,8037.9,0.09777
+ruido,regla,Regla v1.3,2,8,3536,8013,0.09664
+ruido,regla,Regla v1.3,2,9,3978,7995.7,0.09742
+ruido,regla,Regla v1.3,2,10,4420,7926.6,0.09631
+ruido,regla,Regla v1.3,2,11,4862,8009.2,0.09629
+ruido,regla,Regla v1.3,2,12,5304,7957.7,0.09644
+ruido,regla,Regla v1.3,2,13,5746,7876.8,0.0958
+ruido,regla,Regla v1.3,2,14,6188,8067.3,0.09831
+ruido,regla,Regla v1.3,2,15,6630,7917.6,0.09631
+ruido,regla,Regla v1.3,2,16,7072,7847.6,0.09481
+ruido,regla,Regla v1.3,2,17,7514,7920.8,0.09651
+ruido,regla,Regla v1.3,2,18,7956,7986.8,0.09642
+ruido,regla,Regla v1.3,2,19,8398,8039.5,0.09736
+ruido,regla,Regla v1.3,2,20,8840,7950,0.09573
+ruido,regla,Regla v1.3,2,21,9282,8055.2,0.09725
+ruido,regla,Regla v1.3,2,22,9724,7930.3,0.09618
+ruido,regla,Regla v1.3,2,23,10166,7960.7,0.09581
+ruido,regla,Regla v1.3,2,24,10608,7996.7,0.09758
+ruido,regla,Regla v1.3,2,25,11050,8077.6,0.09846
+ruido,regla,Regla v1.3,2,26,11492,7968.6,0.09694
+ruido,regla,Regla v1.3,2,27,11934,7993,0.09758
+ruido,regla,Regla v1.3,2,28,12376,7855.2,0.09502
+ruido,regla,Regla v1.3,2,29,12818,8010.3,0.09715
+ruido,regla,Regla v1.3,2,30,13260,8120.2,0.0986
+ruido,regla,Regla v1.3,2,31,13702,8061.1,0.09765
+ruido,regla,Regla v1.3,2,32,14144,8076.5,0.09793
+ruido,regla,Regla v1.3,2,33,14586,7922,0.09568
+ruido,regla,Regla v1.3,2,34,15028,7926.5,0.09585
+ruido,regla,Regla v1.3,2,35,15470,8083.3,0.09741
+ruido,regla,Regla v1.3,2,36,15912,7987,0.09665
+ruido,regla,Regla v1.3,2,37,16354,7929,0.09587
+ruido,regla,Regla v1.3,2,38,16796,7971.9,0.09651
+ruido,regla,Regla v1.3,2,39,17238,8024.8,0.09715
+ruido,regla,Regla v1.3,2,40,17680,8055.4,0.09723
+ruido,motor,Motor bayesiano v2.0,1,1,442,8346.9,0.10103
+ruido,motor,Motor bayesiano v2.0,1,2,884,8443.3,0.10377
+ruido,motor,Motor bayesiano v2.0,1,3,1326,8487.8,0.10547
+ruido,motor,Motor bayesiano v2.0,1,4,1768,8521.5,0.11095
+ruido,motor,Motor bayesiano v2.0,1,5,2210,8645.3,0.11041
+ruido,motor,Motor bayesiano v2.0,1,6,2652,8646.3,0.11138
+ruido,motor,Motor bayesiano v2.0,1,7,3094,8796.1,0.11245
+ruido,motor,Motor bayesiano v2.0,1,8,3536,8819.3,0.11359
+ruido,motor,Motor bayesiano v2.0,1,9,3978,8842.4,0.1165
+ruido,motor,Motor bayesiano v2.0,1,10,4420,8763.9,0.11607
+ruido,motor,Motor bayesiano v2.0,1,11,4862,8670.2,0.11195
+ruido,motor,Motor bayesiano v2.0,1,12,5304,8770.9,0.114
+ruido,motor,Motor bayesiano v2.0,1,13,5746,8707.5,0.11313
+ruido,motor,Motor bayesiano v2.0,1,14,6188,8952.6,0.11661
+ruido,motor,Motor bayesiano v2.0,1,15,6630,8739.2,0.11181
+ruido,motor,Motor bayesiano v2.0,1,16,7072,8750.2,0.11179
+ruido,motor,Motor bayesiano v2.0,1,17,7514,8739.8,0.11301
+ruido,motor,Motor bayesiano v2.0,1,18,7956,8656.9,0.11244
+ruido,motor,Motor bayesiano v2.0,1,19,8398,8729.8,0.11478
+ruido,motor,Motor bayesiano v2.0,1,20,8840,8720.6,0.11261
+ruido,motor,Motor bayesiano v2.0,1,21,9282,8956.1,0.11734
+ruido,motor,Motor bayesiano v2.0,1,22,9724,8701.6,0.11297
+ruido,motor,Motor bayesiano v2.0,1,23,10166,8815.3,0.11564
+ruido,motor,Motor bayesiano v2.0,1,24,10608,8765.4,0.11664
+ruido,motor,Motor bayesiano v2.0,1,25,11050,8908.1,0.11856
+ruido,motor,Motor bayesiano v2.0,1,26,11492,8831.3,0.11712
+ruido,motor,Motor bayesiano v2.0,1,27,11934,8777.8,0.11475
+ruido,motor,Motor bayesiano v2.0,1,28,12376,8740.6,0.11408
+ruido,motor,Motor bayesiano v2.0,1,29,12818,8774.1,0.11649
+ruido,motor,Motor bayesiano v2.0,1,30,13260,8994.2,0.11758
+ruido,motor,Motor bayesiano v2.0,1,31,13702,8844.3,0.11638
+ruido,motor,Motor bayesiano v2.0,1,32,14144,8929.1,0.11924
+ruido,motor,Motor bayesiano v2.0,1,33,14586,8735.2,0.11393
+ruido,motor,Motor bayesiano v2.0,1,34,15028,8801.2,0.11591
+ruido,motor,Motor bayesiano v2.0,1,35,15470,8932.8,0.11733
+ruido,motor,Motor bayesiano v2.0,1,36,15912,8804.1,0.11647
+ruido,motor,Motor bayesiano v2.0,1,37,16354,8783.6,0.11642
+ruido,motor,Motor bayesiano v2.0,1,38,16796,8767.8,0.11516
+ruido,motor,Motor bayesiano v2.0,1,39,17238,8842.2,0.11495
+ruido,motor,Motor bayesiano v2.0,1,40,17680,8944,0.11879
+ruido,motor_sin_explorar,Motor sin explorar,5,1,442,8428.1,0.10068
+ruido,motor_sin_explorar,Motor sin explorar,5,2,884,8513,0.10416
+ruido,motor_sin_explorar,Motor sin explorar,5,3,1326,8571.7,0.10627
+ruido,motor_sin_explorar,Motor sin explorar,5,4,1768,8474.4,0.10874
+ruido,motor_sin_explorar,Motor sin explorar,5,5,2210,8635.9,0.11072
+ruido,motor_sin_explorar,Motor sin explorar,5,6,2652,8655.7,0.11105
+ruido,motor_sin_explorar,Motor sin explorar,5,7,3094,8845.9,0.11271
+ruido,motor_sin_explorar,Motor sin explorar,5,8,3536,8787.4,0.11301
+ruido,motor_sin_explorar,Motor sin explorar,5,9,3978,8928.5,0.11694
+ruido,motor_sin_explorar,Motor sin explorar,5,10,4420,8845.8,0.11642
+ruido,motor_sin_explorar,Motor sin explorar,5,11,4862,8755.2,0.11272
+ruido,motor_sin_explorar,Motor sin explorar,5,12,5304,8817.3,0.11604
+ruido,motor_sin_explorar,Motor sin explorar,5,13,5746,8769.6,0.11411
+ruido,motor_sin_explorar,Motor sin explorar,5,14,6188,8943.4,0.11678
+ruido,motor_sin_explorar,Motor sin explorar,5,15,6630,8725.4,0.11161
+ruido,motor_sin_explorar,Motor sin explorar,5,16,7072,8763.1,0.11252
+ruido,motor_sin_explorar,Motor sin explorar,5,17,7514,8774.7,0.11307
+ruido,motor_sin_explorar,Motor sin explorar,5,18,7956,8690.8,0.11278
+ruido,motor_sin_explorar,Motor sin explorar,5,19,8398,8808.8,0.11669
+ruido,motor_sin_explorar,Motor sin explorar,5,20,8840,8735.8,0.11296
+ruido,motor_sin_explorar,Motor sin explorar,5,21,9282,8980.4,0.11716
+ruido,motor_sin_explorar,Motor sin explorar,5,22,9724,8700.2,0.11215
+ruido,motor_sin_explorar,Motor sin explorar,5,23,10166,8853.4,0.11596
+ruido,motor_sin_explorar,Motor sin explorar,5,24,10608,8766.1,0.11676
+ruido,motor_sin_explorar,Motor sin explorar,5,25,11050,8976.3,0.11992
+ruido,motor_sin_explorar,Motor sin explorar,5,26,11492,8839,0.11749
+ruido,motor_sin_explorar,Motor sin explorar,5,27,11934,8779.8,0.11512
+ruido,motor_sin_explorar,Motor sin explorar,5,28,12376,8745.3,0.1152
+ruido,motor_sin_explorar,Motor sin explorar,5,29,12818,8812.2,0.11754
+ruido,motor_sin_explorar,Motor sin explorar,5,30,13260,8977.3,0.11724
+ruido,motor_sin_explorar,Motor sin explorar,5,31,13702,8831.1,0.11606
+ruido,motor_sin_explorar,Motor sin explorar,5,32,14144,8901.1,0.11932
+ruido,motor_sin_explorar,Motor sin explorar,5,33,14586,8753.4,0.11437
+ruido,motor_sin_explorar,Motor sin explorar,5,34,15028,8831.7,0.1165
+ruido,motor_sin_explorar,Motor sin explorar,5,35,15470,8922.3,0.11718
+ruido,motor_sin_explorar,Motor sin explorar,5,36,15912,8843.7,0.1177
+ruido,motor_sin_explorar,Motor sin explorar,5,37,16354,8807.5,0.11678
+ruido,motor_sin_explorar,Motor sin explorar,5,38,16796,8833.7,0.11636
+ruido,motor_sin_explorar,Motor sin explorar,5,39,17238,8842.2,0.11551
+ruido,motor_sin_explorar,Motor sin explorar,5,40,17680,8949.1,0.11919
+ruido,oraculo,Oráculo (conoce la verdad),3,1,442,8964.9,0.11842
+ruido,oraculo,Oráculo (conoce la verdad),3,2,884,9017.2,0.12197
+ruido,oraculo,Oráculo (conoce la verdad),3,3,1326,9038.8,0.11967
+ruido,oraculo,Oráculo (conoce la verdad),3,4,1768,9054.8,0.1233
+ruido,oraculo,Oráculo (conoce la verdad),3,5,2210,9085.7,0.12227
+ruido,oraculo,Oráculo (conoce la verdad),3,6,2652,9052.8,0.12226
+ruido,oraculo,Oráculo (conoce la verdad),3,7,3094,9112.4,0.12362
+ruido,oraculo,Oráculo (conoce la verdad),3,8,3536,9078,0.12126
+ruido,oraculo,Oráculo (conoce la verdad),3,9,3978,9102.5,0.12135
+ruido,oraculo,Oráculo (conoce la verdad),3,10,4420,8975.6,0.12276
+ruido,oraculo,Oráculo (conoce la verdad),3,11,4862,9018.9,0.1206
+ruido,oraculo,Oráculo (conoce la verdad),3,12,5304,9075.8,0.12282
+ruido,oraculo,Oráculo (conoce la verdad),3,13,5746,8970.7,0.12102
+ruido,oraculo,Oráculo (conoce la verdad),3,14,6188,9132.5,0.12218
+ruido,oraculo,Oráculo (conoce la verdad),3,15,6630,8979.4,0.12204
+ruido,oraculo,Oráculo (conoce la verdad),3,16,7072,8978.4,0.11867
+ruido,oraculo,Oráculo (conoce la verdad),3,17,7514,8996.1,0.12073
+ruido,oraculo,Oráculo (conoce la verdad),3,18,7956,8970.8,0.11813
+ruido,oraculo,Oráculo (conoce la verdad),3,19,8398,9081.2,0.12304
+ruido,oraculo,Oráculo (conoce la verdad),3,20,8840,8991.6,0.12145
+ruido,oraculo,Oráculo (conoce la verdad),3,21,9282,9111.9,0.12339
+ruido,oraculo,Oráculo (conoce la verdad),3,22,9724,8954.3,0.11864
+ruido,oraculo,Oráculo (conoce la verdad),3,23,10166,9049.5,0.12077
+ruido,oraculo,Oráculo (conoce la verdad),3,24,10608,9006.2,0.12227
+ruido,oraculo,Oráculo (conoce la verdad),3,25,11050,9138.7,0.12442
+ruido,oraculo,Oráculo (conoce la verdad),3,26,11492,9058.8,0.12312
+ruido,oraculo,Oráculo (conoce la verdad),3,27,11934,8993.1,0.12067
+ruido,oraculo,Oráculo (conoce la verdad),3,28,12376,8985.7,0.11955
+ruido,oraculo,Oráculo (conoce la verdad),3,29,12818,9056.6,0.1224
+ruido,oraculo,Oráculo (conoce la verdad),3,30,13260,9170.4,0.12198
+ruido,oraculo,Oráculo (conoce la verdad),3,31,13702,9070.2,0.12055
+ruido,oraculo,Oráculo (conoce la verdad),3,32,14144,9135,0.12404
+ruido,oraculo,Oráculo (conoce la verdad),3,33,14586,8951.2,0.11739
+ruido,oraculo,Oráculo (conoce la verdad),3,34,15028,9000.6,0.11924
+ruido,oraculo,Oráculo (conoce la verdad),3,35,15470,9119.3,0.12134
+ruido,oraculo,Oráculo (conoce la verdad),3,36,15912,9035.7,0.12059
+ruido,oraculo,Oráculo (conoce la verdad),3,37,16354,8978.1,0.11985
+ruido,oraculo,Oráculo (conoce la verdad),3,38,16796,9004.2,0.11928
+ruido,oraculo,Oráculo (conoce la verdad),3,39,17238,9044.3,0.11941
+ruido,oraculo,Oráculo (conoce la verdad),3,40,17680,9092.9,0.12289
+ruido,azar,Al azar,4,1,442,6382.4,0.0939
+ruido,azar,Al azar,4,2,884,6758.8,0.09862
+ruido,azar,Al azar,4,3,1326,6289.9,0.09679
+ruido,azar,Al azar,4,4,1768,6651.2,0.10238
+ruido,azar,Al azar,4,5,2210,6697,0.10159
+ruido,azar,Al azar,4,6,2652,6522,0.09803
+ruido,azar,Al azar,4,7,3094,6138.7,0.09533
+ruido,azar,Al azar,4,8,3536,6220,0.09433
+ruido,azar,Al azar,4,9,3978,6676.1,0.09779
+ruido,azar,Al azar,4,10,4420,6675.9,0.0967
+ruido,azar,Al azar,4,11,4862,6348.5,0.09549
+ruido,azar,Al azar,4,12,5304,6749.3,0.10091
+ruido,azar,Al azar,4,13,5746,6616.1,0.09725
+ruido,azar,Al azar,4,14,6188,6815.1,0.10199
+ruido,azar,Al azar,4,15,6630,6245.3,0.09456
+ruido,azar,Al azar,4,16,7072,6659.5,0.09688
+ruido,azar,Al azar,4,17,7514,6343.5,0.09515
+ruido,azar,Al azar,4,18,7956,6392.8,0.09433
+ruido,azar,Al azar,4,19,8398,6586.3,0.09939
+ruido,azar,Al azar,4,20,8840,6514.3,0.09816
+ruido,azar,Al azar,4,21,9282,6590.6,0.09703
+ruido,azar,Al azar,4,22,9724,6477.6,0.0979
+ruido,azar,Al azar,4,23,10166,6242.2,0.09586
+ruido,azar,Al azar,4,24,10608,6431.9,0.0987
+ruido,azar,Al azar,4,25,11050,6849.5,0.10139
+ruido,azar,Al azar,4,26,11492,6666.8,0.10156
+ruido,azar,Al azar,4,27,11934,6603.6,0.09823
+ruido,azar,Al azar,4,28,12376,6613.1,0.09711
+ruido,azar,Al azar,4,29,12818,6606.9,0.09662
+ruido,azar,Al azar,4,30,13260,6472.5,0.09644
+ruido,azar,Al azar,4,31,13702,6898,0.10007
+ruido,azar,Al azar,4,32,14144,6324.6,0.09596
+ruido,azar,Al azar,4,33,14586,6706.3,0.09752
+ruido,azar,Al azar,4,34,15028,6828.3,0.10037
+ruido,azar,Al azar,4,35,15470,6402.3,0.09867
+ruido,azar,Al azar,4,36,15912,6445.2,0.09514
+ruido,azar,Al azar,4,37,16354,6525,0.09664
+ruido,azar,Al azar,4,38,16796,6546.6,0.10008
+ruido,azar,Al azar,4,39,17238,6618.1,0.09485
+ruido,azar,Al azar,4,40,17680,6610.5,0.09757
+oportunidad oculta,regla,Regla v1.3,2,1,442,9920.8,0.12447
+oportunidad oculta,regla,Regla v1.3,2,2,884,10034.4,0.12682
+oportunidad oculta,regla,Regla v1.3,2,3,1326,10074.4,0.1274
+oportunidad oculta,regla,Regla v1.3,2,4,1768,10067.3,0.12695
+oportunidad oculta,regla,Regla v1.3,2,5,2210,10144.6,0.1279
+oportunidad oculta,regla,Regla v1.3,2,6,2652,9974.9,0.12624
+oportunidad oculta,regla,Regla v1.3,2,7,3094,10087.5,0.12745
+oportunidad oculta,regla,Regla v1.3,2,8,3536,10036.5,0.12592
+oportunidad oculta,regla,Regla v1.3,2,9,3978,10057.9,0.12719
+oportunidad oculta,regla,Regla v1.3,2,10,4420,9963.1,0.12573
+oportunidad oculta,regla,Regla v1.3,2,11,4862,10059.1,0.12556
+oportunidad oculta,regla,Regla v1.3,2,12,5304,9984.6,0.12561
+oportunidad oculta,regla,Regla v1.3,2,13,5746,9932.2,0.12556
+oportunidad oculta,regla,Regla v1.3,2,14,6188,10156.1,0.12853
+oportunidad oculta,regla,Regla v1.3,2,15,6630,9949.8,0.12582
+oportunidad oculta,regla,Regla v1.3,2,16,7072,9900.5,0.12427
+oportunidad oculta,regla,Regla v1.3,2,17,7514,9958.8,0.12597
+oportunidad oculta,regla,Regla v1.3,2,18,7956,10018.8,0.12574
+oportunidad oculta,regla,Regla v1.3,2,19,8398,10096.9,0.12693
+oportunidad oculta,regla,Regla v1.3,2,20,8840,9995.8,0.12505
+oportunidad oculta,regla,Regla v1.3,2,21,9282,10135.4,0.12707
+oportunidad oculta,regla,Regla v1.3,2,22,9724,10005,0.12593
+oportunidad oculta,regla,Regla v1.3,2,23,10166,10028.5,0.12561
+oportunidad oculta,regla,Regla v1.3,2,24,10608,10024.9,0.12702
+oportunidad oculta,regla,Regla v1.3,2,25,11050,10147.1,0.12818
+oportunidad oculta,regla,Regla v1.3,2,26,11492,10007.2,0.12643
+oportunidad oculta,regla,Regla v1.3,2,27,11934,10035,0.12736
+oportunidad oculta,regla,Regla v1.3,2,28,12376,9886.1,0.12426
+oportunidad oculta,regla,Regla v1.3,2,29,12818,10085.9,0.12703
+oportunidad oculta,regla,Regla v1.3,2,30,13260,10194.2,0.12859
+oportunidad oculta,regla,Regla v1.3,2,31,13702,10137.2,0.12756
+oportunidad oculta,regla,Regla v1.3,2,32,14144,10140.8,0.12774
+oportunidad oculta,regla,Regla v1.3,2,33,14586,9973.2,0.12522
+oportunidad oculta,regla,Regla v1.3,2,34,15028,9977,0.12525
+oportunidad oculta,regla,Regla v1.3,2,35,15470,10131,0.12691
+oportunidad oculta,regla,Regla v1.3,2,36,15912,10052.5,0.12642
+oportunidad oculta,regla,Regla v1.3,2,37,16354,9958.6,0.12504
+oportunidad oculta,regla,Regla v1.3,2,38,16796,10000.6,0.12578
+oportunidad oculta,regla,Regla v1.3,2,39,17238,10078.5,0.12676
+oportunidad oculta,regla,Regla v1.3,2,40,17680,10106,0.12659
+oportunidad oculta,motor,Motor bayesiano v2.0,1,1,442,10568.4,0.13185
+oportunidad oculta,motor,Motor bayesiano v2.0,1,2,884,10796.6,0.14163
+oportunidad oculta,motor,Motor bayesiano v2.0,1,3,1326,10719.4,0.13964
+oportunidad oculta,motor,Motor bayesiano v2.0,1,4,1768,10739.2,0.14471
+oportunidad oculta,motor,Motor bayesiano v2.0,1,5,2210,10954.4,0.14665
+oportunidad oculta,motor,Motor bayesiano v2.0,1,6,2652,10887.6,0.1452
+oportunidad oculta,motor,Motor bayesiano v2.0,1,7,3094,11000.4,0.1492
+oportunidad oculta,motor,Motor bayesiano v2.0,1,8,3536,10865.9,0.14508
+oportunidad oculta,motor,Motor bayesiano v2.0,1,9,3978,11082.9,0.15084
+oportunidad oculta,motor,Motor bayesiano v2.0,1,10,4420,10880.3,0.14612
+oportunidad oculta,motor,Motor bayesiano v2.0,1,11,4862,10740.2,0.14265
+oportunidad oculta,motor,Motor bayesiano v2.0,1,12,5304,10860.8,0.14545
+oportunidad oculta,motor,Motor bayesiano v2.0,1,13,5746,10920.9,0.14647
+oportunidad oculta,motor,Motor bayesiano v2.0,1,14,6188,11183,0.15046
+oportunidad oculta,motor,Motor bayesiano v2.0,1,15,6630,11009.6,0.14525
+oportunidad oculta,motor,Motor bayesiano v2.0,1,16,7072,10996.9,0.14475
+oportunidad oculta,motor,Motor bayesiano v2.0,1,17,7514,11070,0.14731
+oportunidad oculta,motor,Motor bayesiano v2.0,1,18,7956,10966.2,0.14435
+oportunidad oculta,motor,Motor bayesiano v2.0,1,19,8398,11028.8,0.14712
+oportunidad oculta,motor,Motor bayesiano v2.0,1,20,8840,11024.4,0.14634
+oportunidad oculta,motor,Motor bayesiano v2.0,1,21,9282,11185.2,0.14779
+oportunidad oculta,motor,Motor bayesiano v2.0,1,22,9724,11087.9,0.14589
+oportunidad oculta,motor,Motor bayesiano v2.0,1,23,10166,11177.6,0.15
+oportunidad oculta,motor,Motor bayesiano v2.0,1,24,10608,11016.4,0.14718
+oportunidad oculta,motor,Motor bayesiano v2.0,1,25,11050,11238,0.1508
+oportunidad oculta,motor,Motor bayesiano v2.0,1,26,11492,11180.6,0.15147
+oportunidad oculta,motor,Motor bayesiano v2.0,1,27,11934,11026.5,0.14751
+oportunidad oculta,motor,Motor bayesiano v2.0,1,28,12376,11079.3,0.14971
+oportunidad oculta,motor,Motor bayesiano v2.0,1,29,12818,11151.1,0.14782
+oportunidad oculta,motor,Motor bayesiano v2.0,1,30,13260,11188.7,0.15094
+oportunidad oculta,motor,Motor bayesiano v2.0,1,31,13702,11108.5,0.15158
+oportunidad oculta,motor,Motor bayesiano v2.0,1,32,14144,11104.4,0.15119
+oportunidad oculta,motor,Motor bayesiano v2.0,1,33,14586,11031.6,0.14913
+oportunidad oculta,motor,Motor bayesiano v2.0,1,34,15028,11116.4,0.14936
+oportunidad oculta,motor,Motor bayesiano v2.0,1,35,15470,11185.7,0.15204
+oportunidad oculta,motor,Motor bayesiano v2.0,1,36,15912,11162.2,0.15198
+oportunidad oculta,motor,Motor bayesiano v2.0,1,37,16354,11077.6,0.14902
+oportunidad oculta,motor,Motor bayesiano v2.0,1,38,16796,11026.3,0.14822
+oportunidad oculta,motor,Motor bayesiano v2.0,1,39,17238,11113,0.14944
+oportunidad oculta,motor,Motor bayesiano v2.0,1,40,17680,11212.1,0.15185
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,1,442,10568.9,0.13147
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,2,884,10812.9,0.14026
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,3,1326,10900.2,0.14327
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,4,1768,10755.8,0.14469
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,5,2210,11072.2,0.14767
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,6,2652,10946.4,0.14416
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,7,3094,11121.1,0.14877
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,8,3536,10982.6,0.14645
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,9,3978,11180.4,0.14924
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,10,4420,10970.6,0.14943
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,11,4862,10759.1,0.14258
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,12,5304,10903.5,0.14552
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,13,5746,10950.5,0.14628
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,14,6188,11182.9,0.15054
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,15,6630,11035.6,0.14642
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,16,7072,11000.2,0.14451
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,17,7514,11044.3,0.14778
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,18,7956,10959.9,0.14566
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,19,8398,11189.6,0.14963
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,20,8840,11062.8,0.14807
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,21,9282,11213.5,0.14835
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,22,9724,11123.3,0.14698
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,23,10166,11213.3,0.14996
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,24,10608,11065.5,0.14877
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,25,11050,11254.1,0.15151
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,26,11492,11170.9,0.15088
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,27,11934,11058,0.14857
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,28,12376,11061.9,0.1485
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,29,12818,11143.1,0.14809
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,30,13260,11255.4,0.15238
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,31,13702,11156.3,0.15205
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,32,14144,11201.2,0.15043
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,33,14586,10974.3,0.14789
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,34,15028,11189.4,0.15036
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,35,15470,11190,0.15178
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,36,15912,11134.8,0.15298
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,37,16354,11124.9,0.14878
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,38,16796,11055.1,0.14828
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,39,17238,11103.4,0.14992
+oportunidad oculta,motor_sin_explorar,Motor sin explorar,5,40,17680,11202.4,0.15308
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,1,442,11337.8,0.15534
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,2,884,11342.7,0.15514
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,3,1326,11353.5,0.15208
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,4,1768,11300.5,0.15356
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,5,2210,11451.6,0.1571
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,6,2652,11288,0.15332
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,7,3094,11392.3,0.15446
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,8,3536,11318.4,0.15345
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,9,3978,11438,0.15629
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,10,4420,11243.2,0.1554
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,11,4862,11260.4,0.15037
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,12,5304,11340.3,0.15379
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,13,5746,11259.6,0.15415
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,14,6188,11504.5,0.15666
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,15,6630,11307.3,0.15559
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,16,7072,11301.7,0.1523
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,17,7514,11282,0.15348
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,18,7956,11240.6,0.15103
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,19,8398,11392.1,0.15536
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,20,8840,11265.6,0.15237
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,21,9282,11419.5,0.15548
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,22,9724,11320.6,0.15227
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,23,10166,11388.7,0.1551
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,24,10608,11231.2,0.15413
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,25,11050,11443.7,0.15706
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,26,11492,11348.1,0.15561
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,27,11934,11263.7,0.1528
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,28,12376,11320.7,0.15448
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,29,12818,11379.6,0.15381
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,30,13260,11467.8,0.15615
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,31,13702,11417.7,0.15573
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,32,14144,11433.4,0.15588
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,33,14586,11246,0.15252
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,34,15028,11339.2,0.15363
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,35,15470,11435,0.1557
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,36,15912,11355.7,0.15474
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,37,16354,11282.6,0.15243
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,38,16796,11278.7,0.15224
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,39,17238,11345.6,0.15402
+oportunidad oculta,oraculo,Oráculo (conoce la verdad),3,40,17680,11429.6,0.15645
+oportunidad oculta,azar,Al azar,4,1,442,8686.1,0.13475
+oportunidad oculta,azar,Al azar,4,2,884,9040.1,0.13897
+oportunidad oculta,azar,Al azar,4,3,1326,8595.5,0.13984
+oportunidad oculta,azar,Al azar,4,4,1768,9010.5,0.14474
+oportunidad oculta,azar,Al azar,4,5,2210,9088.7,0.14384
+oportunidad oculta,azar,Al azar,4,6,2652,8751.3,0.1401
+oportunidad oculta,azar,Al azar,4,7,3094,8366.4,0.13794
+oportunidad oculta,azar,Al azar,4,8,3536,8531,0.13762
+oportunidad oculta,azar,Al azar,4,9,3978,8909.5,0.13753
+oportunidad oculta,azar,Al azar,4,10,4420,8977.6,0.13714
+oportunidad oculta,azar,Al azar,4,11,4862,8663.1,0.13685
+oportunidad oculta,azar,Al azar,4,12,5304,9007,0.14251
+oportunidad oculta,azar,Al azar,4,13,5746,8858.7,0.13816
+oportunidad oculta,azar,Al azar,4,14,6188,9154.4,0.14447
+oportunidad oculta,azar,Al azar,4,15,6630,8686.3,0.13867
+oportunidad oculta,azar,Al azar,4,16,7072,8942.9,0.13698
+oportunidad oculta,azar,Al azar,4,17,7514,8703.4,0.13745
+oportunidad oculta,azar,Al azar,4,18,7956,8713.1,0.13559
+oportunidad oculta,azar,Al azar,4,19,8398,8876.6,0.1415
+oportunidad oculta,azar,Al azar,4,20,8840,8891.7,0.14112
+oportunidad oculta,azar,Al azar,4,21,9282,8966.1,0.13982
+oportunidad oculta,azar,Al azar,4,22,9724,8740.9,0.14006
+oportunidad oculta,azar,Al azar,4,23,10166,8515.3,0.13736
+oportunidad oculta,azar,Al azar,4,24,10608,8663.6,0.14038
+oportunidad oculta,azar,Al azar,4,25,11050,9099,0.14219
+oportunidad oculta,azar,Al azar,4,26,11492,8970.6,0.14527
+oportunidad oculta,azar,Al azar,4,27,11934,8903.2,0.14063
+oportunidad oculta,azar,Al azar,4,28,12376,8956.6,0.13847
+oportunidad oculta,azar,Al azar,4,29,12818,8821,0.13697
+oportunidad oculta,azar,Al azar,4,30,13260,8832.5,0.13908
+oportunidad oculta,azar,Al azar,4,31,13702,9164.5,0.13967
+oportunidad oculta,azar,Al azar,4,32,14144,8697.9,0.13948
+oportunidad oculta,azar,Al azar,4,33,14586,8927.2,0.13719
+oportunidad oculta,azar,Al azar,4,34,15028,9050.6,0.13948
+oportunidad oculta,azar,Al azar,4,35,15470,8673.5,0.14061
+oportunidad oculta,azar,Al azar,4,36,15912,8755.3,0.13709
+oportunidad oculta,azar,Al azar,4,37,16354,8870.1,0.13863
+oportunidad oculta,azar,Al azar,4,38,16796,8805.3,0.14205
+oportunidad oculta,azar,Al azar,4,39,17238,8909.9,0.13557
+oportunidad oculta,azar,Al azar,4,40,17680,9012.4,0.14035
+dato nuevo,regla,Regla v1.3,2,1,442,8310,0.09969
+dato nuevo,regla,Regla v1.3,2,2,884,8452,0.10205
+dato nuevo,regla,Regla v1.3,2,3,1326,8515,0.10301
+dato nuevo,regla,Regla v1.3,2,4,1768,8497.6,0.10255
+dato nuevo,regla,Regla v1.3,2,5,2210,8613.3,0.10388
+dato nuevo,regla,Regla v1.3,2,6,2652,8413.4,0.10173
+dato nuevo,regla,Regla v1.3,2,7,3094,8505.3,0.10278
+dato nuevo,regla,Regla v1.3,2,8,3536,8439.1,0.1013
+dato nuevo,regla,Regla v1.3,2,9,3978,8502.6,0.10288
+dato nuevo,regla,Regla v1.3,2,10,4420,8397.9,0.10136
+dato nuevo,regla,Regla v1.3,2,11,4862,8481.4,0.10135
+dato nuevo,regla,Regla v1.3,2,12,5304,8473.4,0.10192
+dato nuevo,regla,Regla v1.3,2,13,5746,8349.2,0.10085
+dato nuevo,regla,Regla v1.3,2,14,6188,8563.8,0.10361
+dato nuevo,regla,Regla v1.3,2,15,6630,8384.6,0.10134
+dato nuevo,regla,Regla v1.3,2,16,7072,8337.1,0.10009
+dato nuevo,regla,Regla v1.3,2,17,7514,8399.3,0.10166
+dato nuevo,regla,Regla v1.3,2,18,7956,8504.3,0.10198
+dato nuevo,regla,Regla v1.3,2,19,8398,8584.9,0.10314
+dato nuevo,regla,Regla v1.3,2,20,8840,8385.7,0.10038
+dato nuevo,regla,Regla v1.3,2,21,9282,8606.8,0.10308
+dato nuevo,regla,Regla v1.3,2,22,9724,8426.9,0.1015
+dato nuevo,regla,Regla v1.3,2,23,10166,8428.6,0.10087
+dato nuevo,regla,Regla v1.3,2,24,10608,8453.2,0.10246
+dato nuevo,regla,Regla v1.3,2,25,11050,8585.3,0.10385
+dato nuevo,regla,Regla v1.3,2,26,11492,8452.5,0.10216
+dato nuevo,regla,Regla v1.3,2,27,11934,8529.2,0.10326
+dato nuevo,regla,Regla v1.3,2,28,12376,8396.7,0.10084
+dato nuevo,regla,Regla v1.3,2,29,12818,8503.9,0.1024
+dato nuevo,regla,Regla v1.3,2,30,13260,8612.9,0.10386
+dato nuevo,regla,Regla v1.3,2,31,13702,8590.7,0.10329
+dato nuevo,regla,Regla v1.3,2,32,14144,8579,0.10336
+dato nuevo,regla,Regla v1.3,2,33,14586,8372.6,0.1005
+dato nuevo,regla,Regla v1.3,2,34,15028,8430.7,0.10129
+dato nuevo,regla,Regla v1.3,2,35,15470,8562.4,0.10251
+dato nuevo,regla,Regla v1.3,2,36,15912,8479.4,0.10189
+dato nuevo,regla,Regla v1.3,2,37,16354,8381.2,0.10072
+dato nuevo,regla,Regla v1.3,2,38,16796,8446,0.10158
+dato nuevo,regla,Regla v1.3,2,39,17238,8536.5,0.10264
+dato nuevo,regla,Regla v1.3,2,40,17680,8505.7,0.10203
+dato nuevo,motor,Motor bayesiano v2.0,1,1,442,8674.7,0.10426
+dato nuevo,motor,Motor bayesiano v2.0,1,2,884,8931.4,0.10995
+dato nuevo,motor,Motor bayesiano v2.0,1,3,1326,8996.7,0.11284
+dato nuevo,motor,Motor bayesiano v2.0,1,4,1768,8885.6,0.11323
+dato nuevo,motor,Motor bayesiano v2.0,1,5,2210,8949.9,0.11407
+dato nuevo,motor,Motor bayesiano v2.0,1,6,2652,8897.5,0.11521
+dato nuevo,motor,Motor bayesiano v2.0,1,7,3094,9134,0.1156
+dato nuevo,motor,Motor bayesiano v2.0,1,8,3536,9031.8,0.11508
+dato nuevo,motor,Motor bayesiano v2.0,1,9,3978,9049.3,0.11734
+dato nuevo,motor,Motor bayesiano v2.0,1,10,4420,9111,0.11855
+dato nuevo,motor,Motor bayesiano v2.0,1,11,4862,9116.3,0.11492
+dato nuevo,motor,Motor bayesiano v2.0,1,12,5304,9252.9,0.1195
+dato nuevo,motor,Motor bayesiano v2.0,1,13,5746,9147.6,0.11744
+dato nuevo,motor,Motor bayesiano v2.0,1,14,6188,9307.3,0.11969
+dato nuevo,motor,Motor bayesiano v2.0,1,15,6630,9136.9,0.11785
+dato nuevo,motor,Motor bayesiano v2.0,1,16,7072,9161,0.11561
+dato nuevo,motor,Motor bayesiano v2.0,1,17,7514,9168.8,0.1182
+dato nuevo,motor,Motor bayesiano v2.0,1,18,7956,9161.7,0.11629
+dato nuevo,motor,Motor bayesiano v2.0,1,19,8398,9224.7,0.11965
+dato nuevo,motor,Motor bayesiano v2.0,1,20,8840,9191,0.11868
+dato nuevo,motor,Motor bayesiano v2.0,1,21,9282,9453.6,0.12118
+dato nuevo,motor,Motor bayesiano v2.0,1,22,9724,9221.9,0.11888
+dato nuevo,motor,Motor bayesiano v2.0,1,23,10166,9215.5,0.1196
+dato nuevo,motor,Motor bayesiano v2.0,1,24,10608,9136.4,0.1202
+dato nuevo,motor,Motor bayesiano v2.0,1,25,11050,9381.9,0.12243
+dato nuevo,motor,Motor bayesiano v2.0,1,26,11492,9242.4,0.12144
+dato nuevo,motor,Motor bayesiano v2.0,1,27,11934,9219.2,0.119
+dato nuevo,motor,Motor bayesiano v2.0,1,28,12376,9187.1,0.11715
+dato nuevo,motor,Motor bayesiano v2.0,1,29,12818,9249.6,0.1192
+dato nuevo,motor,Motor bayesiano v2.0,1,30,13260,9355.6,0.12182
+dato nuevo,motor,Motor bayesiano v2.0,1,31,13702,9287.7,0.1206
+dato nuevo,motor,Motor bayesiano v2.0,1,32,14144,9325.8,0.12338
+dato nuevo,motor,Motor bayesiano v2.0,1,33,14586,9105,0.11685
+dato nuevo,motor,Motor bayesiano v2.0,1,34,15028,9205.7,0.11997
+dato nuevo,motor,Motor bayesiano v2.0,1,35,15470,9366.6,0.12073
+dato nuevo,motor,Motor bayesiano v2.0,1,36,15912,9253.9,0.11965
+dato nuevo,motor,Motor bayesiano v2.0,1,37,16354,9165.9,0.11862
+dato nuevo,motor,Motor bayesiano v2.0,1,38,16796,9268.6,0.11992
+dato nuevo,motor,Motor bayesiano v2.0,1,39,17238,9262,0.11866
+dato nuevo,motor,Motor bayesiano v2.0,1,40,17680,9316.4,0.1205
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,1,442,8729.3,0.10412
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,2,884,8924.8,0.10936
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,3,1326,8796.7,0.11145
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,4,1768,8759.6,0.1135
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,5,2210,8956.6,0.11371
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,6,2652,9027.4,0.1169
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,7,3094,9167.3,0.11467
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,8,3536,9183.2,0.11552
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,9,3978,9216.3,0.11844
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,10,4420,9133.2,0.11846
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,11,4862,9208.5,0.11618
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,12,5304,9314.6,0.12113
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,13,5746,9157,0.11958
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,14,6188,9379.6,0.1216
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,15,6630,9189.6,0.11949
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,16,7072,9201.8,0.11677
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,17,7514,9203.4,0.11863
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,18,7956,9190.2,0.11785
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,19,8398,9384.1,0.12269
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,20,8840,9205,0.12055
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,21,9282,9448.2,0.121
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,22,9724,9210.1,0.11844
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,23,10166,9269.4,0.12033
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,24,10608,9213.7,0.12172
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,25,11050,9410.4,0.12407
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,26,11492,9268.5,0.12076
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,27,11934,9309,0.12012
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,28,12376,9240.6,0.1181
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,29,12818,9303.2,0.12064
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,30,13260,9367.3,0.12135
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,31,13702,9329,0.12095
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,32,14144,9379.7,0.12446
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,33,14586,9147.8,0.11731
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,34,15028,9260.2,0.11977
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,35,15470,9401,0.12162
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,36,15912,9278.2,0.11934
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,37,16354,9190.4,0.11881
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,38,16796,9270.6,0.11991
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,39,17238,9276.1,0.11828
+dato nuevo,motor_sin_explorar,Motor sin explorar,5,40,17680,9311.8,0.12145
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,1,442,9326.3,0.12312
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,2,884,9461.3,0.12672
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,3,1326,9441.1,0.12342
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,4,1768,9465.4,0.12784
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,5,2210,9547.5,0.12757
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,6,2652,9421.8,0.12623
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,7,3094,9506.4,0.12765
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,8,3536,9443,0.12471
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,9,3978,9533.1,0.12622
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,10,4420,9341.2,0.12688
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,11,4862,9397.2,0.12376
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,12,5304,9509.4,0.12677
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,13,5746,9355.1,0.12399
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,14,6188,9560.7,0.12628
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,15,6630,9366.5,0.12548
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,16,7072,9393.1,0.12311
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,17,7514,9412,0.12521
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,18,7956,9444.2,0.12286
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,19,8398,9561.6,0.12746
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,20,8840,9364.8,0.12495
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,21,9282,9582.9,0.12804
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,22,9724,9387.5,0.12366
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,23,10166,9425.9,0.1243
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,24,10608,9377.1,0.1262
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,25,11050,9575.2,0.12831
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,26,11492,9465.2,0.12725
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,27,11934,9478.1,0.12625
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,28,12376,9447.7,0.12514
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,29,12818,9477.7,0.12632
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,30,13260,9593.3,0.12651
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,31,13702,9542.6,0.12562
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,32,14144,9560.5,0.12845
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,33,14586,9330.1,0.12197
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,34,15028,9423.3,0.12356
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,35,15470,9547.3,0.12573
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,36,15912,9462.7,0.1253
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,37,16354,9354.4,0.12352
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,38,16796,9409.2,0.12392
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,39,17238,9469.4,0.124
+dato nuevo,oraculo,Oráculo (conoce la verdad),3,40,17680,9481.4,0.12704
+dato nuevo,azar,Al azar,4,1,442,6489.2,0.09535
+dato nuevo,azar,Al azar,4,2,884,7057.4,0.10189
+dato nuevo,azar,Al azar,4,3,1326,6488.9,0.09969
+dato nuevo,azar,Al azar,4,4,1768,6966.1,0.10635
+dato nuevo,azar,Al azar,4,5,2210,6947.6,0.10481
+dato nuevo,azar,Al azar,4,6,2652,6919.3,0.10231
+dato nuevo,azar,Al azar,4,7,3094,6411.8,0.09856
+dato nuevo,azar,Al azar,4,8,3536,6497.8,0.09769
+dato nuevo,azar,Al azar,4,9,3978,6983.4,0.10177
+dato nuevo,azar,Al azar,4,10,4420,6876.6,0.09904
+dato nuevo,azar,Al azar,4,11,4862,6747,0.09962
+dato nuevo,azar,Al azar,4,12,5304,7080.6,0.10453
+dato nuevo,azar,Al azar,4,13,5746,6976.4,0.10143
+dato nuevo,azar,Al azar,4,14,6188,7173.3,0.10601
+dato nuevo,azar,Al azar,4,15,6630,6712.5,0.09987
+dato nuevo,azar,Al azar,4,16,7072,7011.8,0.10091
+dato nuevo,azar,Al azar,4,17,7514,6540.6,0.0977
+dato nuevo,azar,Al azar,4,18,7956,6768.2,0.0985
+dato nuevo,azar,Al azar,4,19,8398,6817.2,0.10237
+dato nuevo,azar,Al azar,4,20,8840,6846.3,0.10203
+dato nuevo,azar,Al azar,4,21,9282,7026.2,0.1019
+dato nuevo,azar,Al azar,4,22,9724,6879.6,0.10265
+dato nuevo,azar,Al azar,4,23,10166,6481,0.09847
+dato nuevo,azar,Al azar,4,24,10608,6816.3,0.10331
+dato nuevo,azar,Al azar,4,25,11050,7079.2,0.10414
+dato nuevo,azar,Al azar,4,26,11492,6986.7,0.1055
+dato nuevo,azar,Al azar,4,27,11934,6940.1,0.10226
+dato nuevo,azar,Al azar,4,28,12376,6975.3,0.10135
+dato nuevo,azar,Al azar,4,29,12818,6747.1,0.09893
+dato nuevo,azar,Al azar,4,30,13260,6784.3,0.09992
+dato nuevo,azar,Al azar,4,31,13702,7218.4,0.10354
+dato nuevo,azar,Al azar,4,32,14144,6565.5,0.09945
+dato nuevo,azar,Al azar,4,33,14586,7087.3,0.10175
+dato nuevo,azar,Al azar,4,34,15028,7106,0.10401
+dato nuevo,azar,Al azar,4,35,15470,6642.5,0.10152
+dato nuevo,azar,Al azar,4,36,15912,6751.2,0.09906
+dato nuevo,azar,Al azar,4,37,16354,6942.3,0.10122
+dato nuevo,azar,Al azar,4,38,16796,6783.8,0.10312
+dato nuevo,azar,Al azar,4,39,17238,6967.3,0.09905
+dato nuevo,azar,Al azar,4,40,17680,6972.9,0.10179
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,1,442,8708,0.10415
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,2,884,8928.2,0.11078
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,3,1326,8869.8,0.11047
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,4,1768,8710.9,0.1125
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,5,2210,8949,0.11344
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,6,2652,8962.2,0.11703
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,7,3094,9127.7,0.11477
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,8,3536,9032.3,0.11522
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,9,3978,9228,0.11924
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,10,4420,8935.4,0.11598
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,11,4862,9114.6,0.11601
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,12,5304,9137.6,0.12016
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,13,5746,9011.1,0.11584
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,14,6188,9276.2,0.12012
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,15,6630,9108,0.11803
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,16,7072,9121.7,0.11636
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,17,7514,9085.4,0.11838
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,18,7956,9068.9,0.11677
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,19,8398,9146.6,0.12032
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,20,8840,9061.2,0.11697
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,21,9282,9382.9,0.12064
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,22,9724,8990.9,0.11456
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,23,10166,9224.5,0.12002
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,24,10608,9015.5,0.12015
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,25,11050,9345,0.12358
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,26,11492,9183.1,0.12072
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,27,11934,9219,0.12033
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,28,12376,9151.2,0.11759
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,29,12818,9188.3,0.11934
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,30,13260,9312.6,0.12113
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,31,13702,9208.8,0.11899
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,32,14144,9253.4,0.12231
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,33,14586,9024.1,0.11637
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,34,15028,9172.6,0.1185
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,35,15470,9283.2,0.11992
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,36,15912,9166.4,0.11887
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,37,16354,9107.2,0.11816
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,38,16796,9160.1,0.11857
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,39,17238,9181.3,0.11807
+dato nuevo,motor_sin_dato,Motor sin el dato nuevo,6,40,17680,9277.1,0.12215

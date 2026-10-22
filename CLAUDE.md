@@ -58,6 +58,11 @@ Todo cambio, por pequeño que sea, deja rastro:
 - **Look de la app real**: los colores son los tokens de `public/static/v3/app.css`, tomados de capturas de la app. La barra inferior es Home · Explora · (+) · Tu año · Protección. La página es solo la app: lo que explica vive en la guía al lado del teléfono (recorrido y escenarios), que aparece solo cuando se pide, y en el recorrido automático como video. La consola de Lulo de `feat/claude-consola-lulo` no se eligió; agregarla a `main` es un cambio grande.
 - **Es un prototipo**: queda visible la etiqueta «Prototipo académico · datos simulados», se mantiene `noindex`, no se usan datos de clientes reales ni números de cuenta reales, y la clave del ingreso nunca sale del navegador.
 - **La base es 100% sintética y académica**: sus cifras no se presentan como métricas de Lulo Bank.
+- **Dashboard reproducible y honesto** (`powerbi/`, `powerbi/GUIA.md`):
+  - `powerbi/` solo cambia con `scripts/exportar_powerbi.py`, y `--check` debe pasar. Esto cubre los CSV, el proyecto `Lulo.pbip`, las medidas, el tema y la vista previa.
+  - El piloto es **simulado** y lo dice en cada página: el motor y sus decisiones son reales, las respuestas son inventadas con la verdad del laboratorio.
+  - Los casos reales (`powerbi/casos.csv`, `docs/CASOS.md`) llevan siempre su fuente.
+  - Los datos del piloto real nunca entran al repo: se leen desde una carpeta local.
 
 ## 6. Plan y estado
 
@@ -74,6 +79,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E9 Integración de E7 y E8 a `main` con revisión: «visitas a Seguros» fuera de M1 (modelos `ml-1.1`) y versiones fijas | Hecha el 2026-10-20 por decisión de SOKA |
 | E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Hecha el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq`; SOKA la aprobó completa y pasó a `main` el mismo día |
 | E11 Perfeccionar el prototipo: solo la app (sin panel de explicación), backtest sin traza, Bayes empírico del apetito (reglas v2.1), laboratorio «dato nuevo», descarga de respuestas, pruebas de punta a punta, resumen de una página y recorrido automático como video | Hecha el 2026-10-21 en `feat/claude-solo-app`. SOKA eligió esta versión (A) y pasó a `main` el mismo día. La alternativa con la consola de Lulo queda en `feat/claude-consola-lulo`, sin pasar a `main` |
+| E12 Dashboard de resultados en Power BI: base, plan y backtest del motor, piloto simulado con grupo de control en el formato de datos reales, laboratorio y 20 casos reales con fuente | Hecha el 2026-10-22 en `feat/claude-powerbi`. SOKA aprobó el plan y pasarla a `main` el mismo día |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -105,6 +111,17 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
   - Pruebas de punta a punta con Playwright (dependencia de desarrollo).
   - Resumen de una página para la entrega.
   - Recorrido automático como opción, en forma de video: el prototipo se explica solo. Un cursor usa la app de verdad, con subtítulos y globos junto a lo nuevo; se pausa y se cambia de capítulo (`film.js`). Paso a paso sigue igual.
+- E12 (2026-10-22, «ok si estoy de acuerdo con tu propuesta»):
+  - Dashboard de Power BI con tres tipos de datos marcados: la base, lo que decide el motor y un piloto simulado.
+  - El piloto simulado tiene dos mundos del laboratorio («señal» y «regla correcta»), grupo de control y compras por su cuenta al ritmo de Pagos_Seguros.
+  - Entregables:
+    - exportador reproducible;
+    - medidas DAX;
+    - tema Lulo;
+    - proyecto PBIP;
+    - guía página por página;
+    - vista previa web.
+  - Casos reales de éxito y fracaso de empresas con métodos como los del prototipo, con fuente (pedido del curso).
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
@@ -137,6 +154,7 @@ python -m lulo_app.core campana          # plan de campaña de los 600
 python scripts/train_models.py --check   # si tocaste el vector o los modelos: debe coincidir
 python scripts/train_motor.py --check    # si tocaste reglas, rasgos o el motor bayesiano: debe coincidir
 python scripts/laboratorio.py --check    # ídem para el laboratorio
+python scripts/exportar_powerbi.py --check  # si tocaste el motor, la base, el laboratorio o powerbi/: debe coincidir
 python -m lulo_app.core explicar C00002  # de dónde sale cada probabilidad
 ```
 
@@ -150,11 +168,14 @@ scripts/train_models.py    entrena y valida los modelos M1 a M6 → lulo_app/ml/
 scripts/train_motor.py     entrena el motor bayesiano → lulo_app/ml/motor.json (Python puro)
 scripts/laboratorio.py     laboratorio con verdad simulada → lulo_app/ml/laboratorio.json
 scripts/validar_datos.py   valida otra base con el mismo esquema y escribe su manifiesto (datos reales)
+scripts/exportar_powerbi.py  datos del dashboard y proyecto de Power BI (con powerbi_modelo.py y powerbi_vista.py)
+powerbi/                   Lulo.pbip, datos/, medidas.dax, tema-lulo.json, vista_previa.html, casos.csv, GUIA.md
 lulo_app/ml/               M1 a M6 (vector, models) y motor bayesiano (bayes, rasgos, motor) en producción
 docs/MODELOS.md            método, resultados y límites de los modelos M1 a M6
 docs/MOTOR.md              motor bayesiano: método, resultados, supuestos y preguntas difíciles
 docs/DATOS_REALES.md       cómo correr el motor con datos reales de Lulo
 docs/RESUMEN.md            resumen de una página para la entrega, con el origen de cada cifra
+docs/CASOS.md              20 casos reales de éxito y fracaso con métodos como los del prototipo, con fuente
 lulo_app/core/             motor v3: schema, store, personas, catalog, rules, features, signals,
                            eligibility, contact, experiment, engine, year, view, backtest, CLI (__main__)
 lulo_app/api_v3.py         rutas /api/v3
@@ -164,6 +185,6 @@ public/static/v3/          app v3: app.js (estado, flujos, guía y escenarios), 
                            content.js (lo nuevo), tour.js (recorrido paso a paso), film.js (recorrido
                            automático como video: cursor, subtítulos y globos), aprende.js (probabilidad por pasos y
                            decisión en lenguaje claro), icons.js, util.js, app.css
-tests/                     ingesta, motor, API v2 y v3, entrada de Vercel, de punta a punta (test_e2e.py)
+tests/                     ingesta, motor, API v2 y v3, entrada de Vercel, dashboard (test_powerbi.py), de punta a punta (test_e2e.py)
 CAMBIOS.md                 registro obligatorio de cambios
 ```

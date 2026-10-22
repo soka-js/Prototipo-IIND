@@ -1,0 +1,17 @@
+clave,valor,fuente
+etiqueta,Prototipo académico · datos simulados,
+exportador,pbi-1.0,scripts/exportar_powerbi.py
+base_sha256,5029790b7a29889c1ff3a78ea033779cf7ee5f88c917d5a4a12b637b7fd78b8c,lulo_app/dataset/manifest.json
+base_inicio,2025-11-01,base
+base_corte,2026-10-08,base
+clientes,600,base
+reglas,v2.1,lulo_app/core/rules.py
+motor,motor-1.0,lulo_app/ml/motor.json
+laboratorio,lab-1.1,lulo_app/ml/laboratorio.json
+piloto_desde,2026-01-30,simulado
+piloto_hasta,2026-10-08,simulado
+piloto_cada_dias,7,simulado
+semilla,19,simulado
+aviso_base,La base es 100 % sintética y académica: sus cifras no son métricas de Lulo Bank.,base
+aviso_piloto,Piloto simulado: el motor y sus decisiones son reales; las respuestas son inventadas con la verdad del laboratorio. No dice si el motor vende: muestra cómo se va a saber.,simulado
+lab_resumen,"Con señal que la regla no ve, el motor gana +10 % de comisión por oferta frente a la regla en las últimas 10 de 40 rondas y recorre el 91 % del camino entre el azar y el oráculo (la regla, el 58 %). Si la regla tenía razón, el motor queda a −1,0 % de ella. Con 20 variables de ruido, +10 %. Si la señal media vende más de lo que se creía, el motor logra +11 % y sin explorar +11 %. Con una columna nueva que sí predice, el motor la aprende sola y gana +0,8 % frente al mismo motor sin ese dato.",lulo_app/ml/laboratorio.json

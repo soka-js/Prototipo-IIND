@@ -1,0 +1,9 @@
+invariante,violaciones,fuente
+Nadie sin autorización de datos recibe una oferta,0,backtest: python -m lulo_app.core backtest
+Solo se muestra lo que las compuertas permiten ofrecer,0,backtest: python -m lulo_app.core backtest
+Nadie recibe un ramo para el que no es elegible,0,backtest: python -m lulo_app.core backtest
+Nadie recibe un ramo que ya tiene con Lulo,0,backtest: python -m lulo_app.core backtest
+Entre dos push pasan al menos 7 días,0,backtest: python -m lulo_app.core backtest
+Nadie recibe más push que su tope en 30 días,0,backtest: python -m lulo_app.core backtest
+El mismo ramo no se repite antes de 30 días,0,backtest: python -m lulo_app.core backtest
+El grupo de control nunca ve una oferta,0,piloto simulado: decisiones del motor

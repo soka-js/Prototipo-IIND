@@ -1,0 +1,6 @@
+escenario,descripcion,orden
+señal,"La verdad tiene efectos que la regla no ve (rasgos, momento, señal media más débil).",1
+regla correcta,La verdad es exactamente la regla v1.3: el motor no debería empeorar.,2
+ruido,"Como «señal», más 20 variables de puro ruido: el motor no debería confundirse.",3
+oportunidad oculta,"Como «señal», pero la señal media vende tanto como la fuerte: hay que explorar para verlo.",4
+dato nuevo,"Como «señal», más una columna que la base no trae y que sí mueve la aceptación (sobre todo de Vida).",5

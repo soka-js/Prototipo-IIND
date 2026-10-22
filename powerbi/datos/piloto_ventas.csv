@@ -1,0 +1,230 @@
+escenario,fecha,cliente_id,ramo,origen,canal,comision_12m_cop
+señal,2026-01-30,C00136,Viajes,oferta,push,18158
+señal,2026-01-30,C00320,Mascotas,oferta,push,60490
+señal,2026-01-30,C00403,Mascotas,oferta,push,60490
+señal,2026-01-30,C00434,Mascotas,por su cuenta,,60490
+señal,2026-01-30,C00458,Vida,oferta,push,99864
+señal,2026-01-30,C00501,Vida,por su cuenta,,99864
+señal,2026-02-06,C00102,Viajes,oferta,push,18158
+señal,2026-02-06,C00335,Viajes,oferta,push,18158
+señal,2026-02-13,C00390,Mascotas,oferta,push,60490
+señal,2026-02-13,C00454,Mascotas,por su cuenta,,60490
+señal,2026-02-20,C00487,Vida,por su cuenta,,99864
+señal,2026-02-27,C00274,SOAT,por su cuenta,,29784
+señal,2026-03-06,C00149,Mascotas,oferta,push,60490
+señal,2026-03-06,C00278,Vida,oferta,push,99864
+señal,2026-03-06,C00350,Viajes,oferta,push,18158
+señal,2026-03-13,C00128,Viajes,oferta,push,18158
+señal,2026-03-13,C00315,Viajes,oferta,push,18158
+señal,2026-03-13,C00356,SOAT,por su cuenta,,29784
+señal,2026-03-20,C00033,Hogar,por su cuenta,,74670
+señal,2026-03-20,C00444,Vida,oferta,push,99864
+señal,2026-03-20,C00522,Vida,oferta,push,99864
+señal,2026-03-27,C00004,SOAT,por su cuenta,,29784
+señal,2026-04-10,C00225,Mascotas,oferta,push,60490
+señal,2026-04-10,C00250,Vida,oferta,push,99864
+señal,2026-04-10,C00404,Viajes,oferta,push,18158
+señal,2026-04-10,C00420,Viajes,oferta,push,18158
+señal,2026-04-10,C00425,Viajes,oferta,push,18158
+señal,2026-04-10,C00484,Mascotas,oferta,push,60490
+señal,2026-04-10,C00552,Viajes,oferta,push,18158
+señal,2026-04-17,C00080,Hogar,por su cuenta,,74670
+señal,2026-04-17,C00290,Hogar,por su cuenta,,74670
+señal,2026-04-17,C00315,SOAT,por su cuenta,,29784
+señal,2026-04-17,C00417,Viajes,oferta,push,18158
+señal,2026-04-24,C00241,SOAT,oferta,push,29784
+señal,2026-04-24,C00357,SOAT,oferta,push,29784
+señal,2026-04-24,C00397,Viajes,oferta,push,18158
+señal,2026-05-01,C00071,Desempleo,oferta,push,103043
+señal,2026-05-01,C00238,SOAT,por su cuenta,,29784
+señal,2026-05-01,C00559,SOAT,por su cuenta,,29784
+señal,2026-05-01,C00582,Desempleo,oferta,push,103043
+señal,2026-05-08,C00191,SOAT,por su cuenta,,29784
+señal,2026-05-08,C00286,Mascotas,oferta,push,60490
+señal,2026-05-08,C00446,Viajes,oferta,push,18158
+señal,2026-05-15,C00034,Mascotas,oferta,push,60490
+señal,2026-05-15,C00071,Vida,oferta,push,99864
+señal,2026-05-15,C00103,Mascotas,oferta,push,60490
+señal,2026-05-22,C00149,Viajes,oferta,push,18158
+señal,2026-05-22,C00558,Vida,oferta,push,99864
+señal,2026-05-29,C00151,SOAT,oferta,push,29784
+señal,2026-05-29,C00195,SOAT,por su cuenta,,29784
+señal,2026-05-29,C00384,Vida,oferta,push,99864
+señal,2026-05-29,C00586,Hogar,por su cuenta,,74670
+señal,2026-06-05,C00091,Desempleo,oferta,push,103043
+señal,2026-06-05,C00101,Desempleo,oferta,push,103043
+señal,2026-06-05,C00152,Desempleo,oferta,push,103043
+señal,2026-06-05,C00357,Viajes,oferta,push,18158
+señal,2026-06-05,C00462,Desempleo,oferta,push,103043
+señal,2026-06-05,C00475,Desempleo,oferta,push,103043
+señal,2026-06-05,C00486,Hogar,por su cuenta,,74670
+señal,2026-06-05,C00490,Desempleo,oferta,push,103043
+señal,2026-06-05,C00536,Desempleo,oferta,push,103043
+señal,2026-06-05,C00550,Desempleo,oferta,push,103043
+señal,2026-06-05,C00561,Hogar,por su cuenta,,74670
+señal,2026-06-05,C00566,Desempleo,oferta,push,103043
+señal,2026-06-05,C00569,Desempleo,oferta,push,103043
+señal,2026-06-12,C00365,Viajes,oferta,push,18158
+señal,2026-06-12,C00509,Mascotas,oferta,push,60490
+señal,2026-06-12,C00570,Vida,por su cuenta,,99864
+señal,2026-06-19,C00004,Vida,oferta,push,99864
+señal,2026-06-19,C00162,Mascotas,oferta,push,60490
+señal,2026-06-19,C00195,Mascotas,oferta,push,60490
+señal,2026-06-19,C00469,Mascotas,oferta,push,60490
+señal,2026-06-26,C00233,Viajes,oferta,push,18158
+señal,2026-06-26,C00509,Vida,oferta,push,99864
+señal,2026-07-03,C00204,Viajes,oferta,push,18158
+señal,2026-07-03,C00217,SOAT,por su cuenta,,29784
+señal,2026-07-03,C00331,SOAT,oferta,push,29784
+señal,2026-07-10,C00086,Desempleo,oferta,push,103043
+señal,2026-07-10,C00411,Desempleo,oferta,push,103043
+señal,2026-07-10,C00420,SOAT,por su cuenta,,29784
+señal,2026-07-24,C00273,Hogar,oferta,push,74670
+señal,2026-07-24,C00284,Mascotas,oferta,push,60490
+señal,2026-07-24,C00466,Viajes,oferta,push,18158
+señal,2026-07-24,C00576,Vida,oferta,push,99864
+señal,2026-07-24,C00593,Mascotas,oferta,push,60490
+señal,2026-07-31,C00227,Hogar,por su cuenta,,74670
+señal,2026-07-31,C00452,Vida,oferta,push,99864
+señal,2026-07-31,C00565,SOAT,por su cuenta,,29784
+señal,2026-08-07,C00126,Viajes,oferta,push,18158
+señal,2026-08-07,C00212,Vida,oferta,push,99864
+señal,2026-08-07,C00275,Vida,por su cuenta,,99864
+señal,2026-08-07,C00491,Hogar,oferta,push,74670
+señal,2026-08-14,C00327,Vida,por su cuenta,,99864
+señal,2026-08-14,C00429,Vida,oferta,push,99864
+señal,2026-08-14,C00487,Desempleo,oferta,push,103043
+señal,2026-08-14,C00560,Hogar,oferta,push,74670
+señal,2026-08-14,C00591,Vida,oferta,push,99864
+señal,2026-08-21,C00063,Hogar,por su cuenta,,74670
+señal,2026-08-21,C00155,Hogar,oferta,push,74670
+señal,2026-08-21,C00440,Viajes,oferta,push,18158
+señal,2026-08-21,C00453,Mascotas,por su cuenta,,60490
+señal,2026-08-21,C00509,Desempleo,oferta,push,103043
+señal,2026-08-21,C00514,Vida,oferta,push,99864
+señal,2026-08-28,C00030,Viajes,oferta,push,18158
+señal,2026-08-28,C00046,Hogar,oferta,push,74670
+señal,2026-08-28,C00087,Vida,por su cuenta,,99864
+señal,2026-08-28,C00294,Hogar,oferta,push,74670
+señal,2026-08-28,C00514,Mascotas,oferta,push,60490
+señal,2026-09-04,C00576,Mascotas,oferta,push,60490
+señal,2026-09-11,C00167,Mascotas,por su cuenta,,60490
+señal,2026-09-18,C00005,Desempleo,oferta,push,103043
+señal,2026-09-18,C00129,Desempleo,oferta,push,103043
+señal,2026-09-18,C00157,Desempleo,oferta,push,103043
+señal,2026-09-18,C00185,Desempleo,oferta,push,103043
+señal,2026-09-18,C00390,Vida,oferta,push,99864
+señal,2026-09-18,C00394,Desempleo,oferta,push,103043
+señal,2026-09-18,C00484,Desempleo,oferta,push,103043
+señal,2026-09-18,C00553,Vida,oferta,push,99864
+señal,2026-09-25,C00158,SOAT,oferta,push,29784
+señal,2026-09-25,C00455,Vida,oferta,push,99864
+señal,2026-09-25,C00588,Viajes,oferta,push,18158
+señal,2026-10-02,C00023,Viajes,oferta,push,18158
+señal,2026-10-02,C00090,Mascotas,oferta,push,60490
+señal,2026-10-02,C00122,Viajes,oferta,push,18158
+señal,2026-10-02,C00170,Mascotas,oferta,push,60490
+señal,2026-10-02,C00212,Viajes,oferta,push,18158
+señal,2026-10-02,C00248,Vida,por su cuenta,,99864
+señal,2026-10-02,C00490,Viajes,oferta,push,18158
+señal,2026-10-02,C00538,Vida,oferta,push,99864
+regla correcta,2026-01-30,C00136,Viajes,oferta,push,18158
+regla correcta,2026-01-30,C00320,Mascotas,oferta,push,60490
+regla correcta,2026-01-30,C00434,Mascotas,por su cuenta,,60490
+regla correcta,2026-01-30,C00501,Vida,por su cuenta,,99864
+regla correcta,2026-02-06,C00102,Viajes,oferta,push,18158
+regla correcta,2026-02-06,C00335,Viajes,oferta,push,18158
+regla correcta,2026-02-13,C00390,Mascotas,oferta,push,60490
+regla correcta,2026-02-13,C00454,Mascotas,por su cuenta,,60490
+regla correcta,2026-02-20,C00487,Vida,por su cuenta,,99864
+regla correcta,2026-02-27,C00274,SOAT,por su cuenta,,29784
+regla correcta,2026-03-06,C00278,Vida,oferta,push,99864
+regla correcta,2026-03-13,C00128,Viajes,oferta,push,18158
+regla correcta,2026-03-13,C00315,Viajes,oferta,push,18158
+regla correcta,2026-03-13,C00356,SOAT,por su cuenta,,29784
+regla correcta,2026-03-20,C00033,Hogar,por su cuenta,,74670
+regla correcta,2026-03-20,C00444,Vida,oferta,push,99864
+regla correcta,2026-03-20,C00522,Vida,oferta,push,99864
+regla correcta,2026-03-27,C00004,SOAT,por su cuenta,,29784
+regla correcta,2026-04-10,C00169,Viajes,oferta,push,18158
+regla correcta,2026-04-10,C00250,Vida,oferta,push,99864
+regla correcta,2026-04-10,C00404,Viajes,oferta,push,18158
+regla correcta,2026-04-10,C00425,Viajes,oferta,push,18158
+regla correcta,2026-04-10,C00484,Mascotas,oferta,push,60490
+regla correcta,2026-04-10,C00552,Viajes,oferta,push,18158
+regla correcta,2026-04-17,C00080,Hogar,por su cuenta,,74670
+regla correcta,2026-04-17,C00290,Hogar,por su cuenta,,74670
+regla correcta,2026-04-17,C00315,SOAT,por su cuenta,,29784
+regla correcta,2026-04-24,C00357,SOAT,oferta,push,29784
+regla correcta,2026-05-01,C00238,SOAT,por su cuenta,,29784
+regla correcta,2026-05-01,C00559,SOAT,por su cuenta,,29784
+regla correcta,2026-05-08,C00191,SOAT,por su cuenta,,29784
+regla correcta,2026-05-08,C00471,Viajes,oferta,push,18158
+regla correcta,2026-05-15,C00034,Mascotas,oferta,push,60490
+regla correcta,2026-05-15,C00390,Viajes,oferta,push,18158
+regla correcta,2026-05-15,C00453,Viajes,oferta,push,18158
+regla correcta,2026-05-22,C00149,Viajes,oferta,push,18158
+regla correcta,2026-05-22,C00519,Viajes,oferta,push,18158
+regla correcta,2026-05-29,C00195,SOAT,por su cuenta,,29784
+regla correcta,2026-05-29,C00586,Hogar,por su cuenta,,74670
+regla correcta,2026-06-05,C00101,Desempleo,oferta,push,103043
+regla correcta,2026-06-05,C00152,Desempleo,oferta,push,103043
+regla correcta,2026-06-05,C00462,Desempleo,oferta,push,103043
+regla correcta,2026-06-05,C00486,Hogar,por su cuenta,,74670
+regla correcta,2026-06-05,C00536,Desempleo,oferta,push,103043
+regla correcta,2026-06-05,C00550,Desempleo,oferta,push,103043
+regla correcta,2026-06-05,C00561,Hogar,por su cuenta,,74670
+regla correcta,2026-06-05,C00566,Desempleo,oferta,push,103043
+regla correcta,2026-06-12,C00365,Viajes,oferta,push,18158
+regla correcta,2026-06-12,C00509,Mascotas,oferta,push,60490
+regla correcta,2026-06-12,C00570,Vida,por su cuenta,,99864
+regla correcta,2026-06-19,C00004,Vida,oferta,push,99864
+regla correcta,2026-06-19,C00195,Mascotas,oferta,push,60490
+regla correcta,2026-06-26,C00509,Vida,oferta,push,99864
+regla correcta,2026-07-03,C00204,Viajes,oferta,push,18158
+regla correcta,2026-07-03,C00217,SOAT,por su cuenta,,29784
+regla correcta,2026-07-10,C00086,Desempleo,oferta,push,103043
+regla correcta,2026-07-10,C00420,SOAT,por su cuenta,,29784
+regla correcta,2026-07-17,C00568,Vida,oferta,push,99864
+regla correcta,2026-07-24,C00466,Viajes,oferta,push,18158
+regla correcta,2026-07-24,C00469,Mascotas,oferta,push,60490
+regla correcta,2026-07-24,C00576,Vida,oferta,push,99864
+regla correcta,2026-07-31,C00227,Hogar,por su cuenta,,74670
+regla correcta,2026-07-31,C00452,Vida,oferta,push,99864
+regla correcta,2026-07-31,C00558,Vida,oferta,push,99864
+regla correcta,2026-07-31,C00565,SOAT,por su cuenta,,29784
+regla correcta,2026-07-31,C00565,Hogar,oferta,push,74670
+regla correcta,2026-08-07,C00126,Viajes,oferta,push,18158
+regla correcta,2026-08-07,C00212,Vida,oferta,push,99864
+regla correcta,2026-08-07,C00275,Vida,por su cuenta,,99864
+regla correcta,2026-08-14,C00327,Vida,por su cuenta,,99864
+regla correcta,2026-08-14,C00487,Desempleo,oferta,push,103043
+regla correcta,2026-08-14,C00560,Hogar,oferta,push,74670
+regla correcta,2026-08-14,C00591,Vida,oferta,push,99864
+regla correcta,2026-08-21,C00063,Hogar,por su cuenta,,74670
+regla correcta,2026-08-21,C00453,Mascotas,por su cuenta,,60490
+regla correcta,2026-08-21,C00509,Desempleo,oferta,push,103043
+regla correcta,2026-08-21,C00514,Vida,oferta,push,99864
+regla correcta,2026-08-28,C00046,Hogar,oferta,push,74670
+regla correcta,2026-08-28,C00087,Vida,por su cuenta,,99864
+regla correcta,2026-08-28,C00157,Mascotas,oferta,push,60490
+regla correcta,2026-08-28,C00294,Hogar,oferta,push,74670
+regla correcta,2026-08-28,C00440,Mascotas,oferta,push,60490
+regla correcta,2026-08-28,C00514,Mascotas,oferta,push,60490
+regla correcta,2026-09-11,C00167,Mascotas,por su cuenta,,60490
+regla correcta,2026-09-18,C00005,Desempleo,oferta,push,103043
+regla correcta,2026-09-18,C00055,Desempleo,oferta,push,103043
+regla correcta,2026-09-18,C00390,Vida,oferta,push,99864
+regla correcta,2026-09-18,C00394,Desempleo,oferta,push,103043
+regla correcta,2026-09-18,C00484,Desempleo,oferta,push,103043
+regla correcta,2026-09-25,C00158,SOAT,oferta,push,29784
+regla correcta,2026-09-25,C00455,Vida,oferta,push,99864
+regla correcta,2026-09-25,C00588,Viajes,oferta,push,18158
+regla correcta,2026-10-02,C00090,Mascotas,oferta,push,60490
+regla correcta,2026-10-02,C00165,Hogar,oferta,push,74670
+regla correcta,2026-10-02,C00170,Mascotas,oferta,push,60490
+regla correcta,2026-10-02,C00212,Viajes,oferta,push,18158
+regla correcta,2026-10-02,C00248,Vida,por su cuenta,,99864
+regla correcta,2026-10-02,C00490,Viajes,oferta,push,18158
+regla correcta,2026-10-02,C00504,Viajes,oferta,push,18158
+regla correcta,2026-10-02,C00538,Vida,oferta,push,99864

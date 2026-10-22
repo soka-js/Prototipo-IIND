@@ -1,0 +1,12 @@
+metrica,valor,nota
+evaluaciones,21600,clientes × fechas evaluadas
+ofertas,4168,push + banner
+push,4160,
+banner,8,
+control,394,decisiones registradas sin mostrar
+clientes_alcanzados,437,con al menos una oferta
+max_push_30d,4,el máximo de push a un cliente en 30 días
+violaciones,0,debe ser 0
+desde,2026-01-30,
+hasta,2026-10-08,
+cada_dias,7,
