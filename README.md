@@ -26,6 +26,19 @@ La rama B queda como referencia. Si Vercel pide iniciar sesión para verla, la p
 - **Listo para datos reales**: `scripts/validar_datos.py` y `scripts/train_motor.py --datos` corren en el equipo de Lulo sin subir nada ([`docs/DATOS_REALES.md`](docs/DATOS_REALES.md)).
 - **Solo la app, con guía**: la página es el teléfono. Hay una bienvenida que explica qué es el prototipo y un recorrido de 11 pasos con Sebastián (qué tocar, qué es nuevo, por qué le sirve a Lulo), paso a paso con «Hazlo por mí» o **en automático, como un video**: el prototipo se explica solo. Un cursor usa la app de verdad, los subtítulos cuentan lo que pasa y un globo señala lo nuevo. Se pausa (barra, espacio o tocando la pantalla), se cambia de capítulo, tiene voz opcional y «Paso a paso» para seguir a mano. Dura unos 3 min 40 s; `?ritmo=0.5` lo acelera y `?ritmo=1.5` lo hace más lento. Los escenarios rápidos dicen qué decidió el motor y por qué. Están también «Resaltar lo nuevo», el cambio de personaje y «Descargar respuestas (CSV)», con las ofertas de la sesión en el formato de datos reales. La guía aparece al lado del teléfono solo cuando se pide; en el celular se abre como hoja desde «Guía».
 
+## Dashboard de resultados (Power BI)
+
+**¿El motor convierte ofertas en ventas?** La base del reto no trae respuestas a ofertas, así que eso solo lo dirá un piloto con grupo de control. La carpeta [`powerbi/`](powerbi/GUIA.md) trae un dashboard de 8 páginas que muestra lo que hay hoy y cómo se va a saber.
+
+- **Tres tipos de datos, siempre marcados:**
+  - la base del reto tal cual;
+  - lo que decide el motor (plan al corte y backtest con 0 violaciones);
+  - un **piloto simulado**: el motor de verdad, semana a semana durante el año de la base, con su grupo de control. Solo las respuestas son inventadas, con la verdad del laboratorio.
+- **Resultado del piloto simulado:** con ofertas compran +21,0 pp más clientes que en el control si el motor ve más que la regla, y +15,0 pp si la regla tenía razón.
+- **Límite de la muestra:** el control tiene solo 45 clientes, así que la lectura es frágil. El piloto real necesita la base completa de Lulo (510 clientes por grupo para ver +50 % en el SOAT).
+- **Casos reales:** 20 casos de empresas que usaron métodos como estos, con su fuente. Hay 7 éxitos, 6 fracasos, 6 mixtos y uno sin efecto ([`docs/CASOS.md`](docs/CASOS.md)).
+- **Cómo abrirlo:** `powerbi/Lulo.pbip` en Power BI Desktop, o `powerbi/vista_previa.html` en el navegador (mismas cifras). La guía, con supuestos, páginas y cómo cambiar al piloto real, está en [`powerbi/GUIA.md`](powerbi/GUIA.md).
+
 ## Versión 3 (en `main` desde el 2026-10-14)
 
 - **Look de la app real**: Home · Explora · (+) · Tu año · Protección; Explora con Ahorro, Inversión, Crédito y Seguros; Alertas, Ayuda, mapa de cajeros, Lulo Cuenta y el flujo real del SOAT. Colores tomados de capturas de la app.
@@ -75,6 +88,7 @@ python scripts/train_models.py --check           # verifica que modelos.json coi
 python scripts/train_motor.py [--check]          # entrena el motor bayesiano (lulo_app/ml/motor.json, Python puro)
 python scripts/laboratorio.py [--check]          # laboratorio con verdad simulada (lulo_app/ml/laboratorio.json)
 python scripts/validar_datos.py CARPETA          # valida otra base con el mismo esquema (datos reales)
+python scripts/exportar_powerbi.py [--check]     # datos, proyecto y vista previa del dashboard (powerbi/)
 ```
 
 ## Volver a la versión del cliente
@@ -93,6 +107,11 @@ scripts/train_models.py      entrenamiento y validación de los modelos M1 a M6
 scripts/train_motor.py       entrenamiento del motor bayesiano (embudo, momento, previas, respuestas)
 scripts/laboratorio.py       laboratorio con verdad simulada
 scripts/validar_datos.py     validación y manifiesto de otra base (datos reales)
+scripts/exportar_powerbi.py  datos del dashboard (base, motor, piloto simulado, laboratorio y casos) + proyecto
+scripts/powerbi_modelo.py    modelo semántico, medidas DAX, páginas y tema Lulo del proyecto de Power BI
+scripts/powerbi_vista.py     vista previa web del dashboard (las mismas cifras que las medidas)
+powerbi/                     Lulo.pbip, datos/ (CSV), medidas.dax, tema-lulo.json, vista_previa.html, casos.csv y GUIA.md
+docs/CASOS.md                20 casos reales de éxito y fracaso con métodos como los del prototipo
 docs/MODELOS.md              método, resultados y límites de los modelos M1 a M6
 docs/MOTOR.md                el motor bayesiano: método, resultados, supuestos y preguntas difíciles
 docs/DATOS_REALES.md         cómo correr el motor con los datos de Lulo
@@ -110,7 +129,8 @@ public/static/v3/            app v3 (JS sin framework y CSS): app.js (estado, fl
                              video), aprende.js (probabilidad por pasos y
                              decisión en lenguaje claro), util.js, icons.js
 public/static/js|css         app v2
-tests/                       ingesta, motor, API v2 y v3, entrada de Vercel y de punta a punta (test_e2e.py, Playwright)
+tests/                       ingesta, motor, API v2 y v3, entrada de Vercel, dashboard (test_powerbi.py) y de punta a
+                             punta (test_e2e.py, Playwright)
 ```
 
 ## API v3

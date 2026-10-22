@@ -1,0 +1,6 @@
+campana,ramo,canal,elegibles,impactados,interesados,ventas,conv_ventas_impactados,nota_calidad
+SOAT renovación,SOAT,Push + banner,4200,1380,520,178,0.129,"conversion_impactados reportada = ventas/elegibles, no ventas/impactados"
+Seguro vida,Vida,Banner in-app,3600,910,260,84,0.0923,"conversion_impactados reportada = ventas/elegibles, no ventas/impactados"
+Seguro desempleo,Desempleo,Push,2800,760,195,61,0.0803,"conversion_impactados reportada = ventas/elegibles, no ventas/impactados"
+Seguro mascotas,Mascotas,Push + cajita,1900,690,205,73,0.1058,"conversion_impactados reportada = ventas/elegibles, no ventas/impactados"
+Seguro viaje,Viajes,Banner + cajita,1600,580,171,59,0.1017,"conversion_impactados reportada = ventas/elegibles, no ventas/impactados"

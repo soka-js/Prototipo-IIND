@@ -1,0 +1,601 @@
+cliente_id,rango_edad,ocupacion,antiguedad_meses,segmento,saldo_promedio_cop,ingreso_mensual_cop,credito_activo,cajitas_activas,cdt_activo,seguros_lulo,n_seguros_lulo,autoriza_ofertas,sesiones_30d,max_contactos_mes,latencia_eventos,grupo,grupo_orden,politica,bucket,segmento_motor
+C00001,18-25,Estudiante,41,No Pro,12650000,3740000,No,Sí,Sí,SOAT · Hogar,2,Sí,13,4,Mismo día,tratamiento,1,explotar,46,Gasto contenido
+C00002,18-25,Empleado,22,No Pro,2750000,2220000,Sí,Sí,No,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,89,Gasto contenido
+C00003,56+,Empleado,30,No Pro,13780000,5060000,Sí,No,No,,0,Sí,6,4,1-5 min,tratamiento,1,explotar,26,Gasto contenido
+C00004,36-45,Empleado,3,No Pro,2910000,4030000,No,Sí,No,Hogar,1,Sí,5,4,<1 min,tratamiento,1,explotar,62,Gasto contenido
+C00005,46-55,Empleado,48,No Pro,11220000,4890000,No,Sí,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,60,Gasto contenido
+C00006,46-55,Independiente,34,No Pro,41430000,12110000,No,Sí,No,Desempleo,1,Sí,26,4,5-30 min,tratamiento,1,explotar,61,Gasto contenido
+C00007,36-45,Independiente,53,No Pro,11060000,7100000,No,Sí,No,SOAT,1,Sí,28,4,1-5 min,tratamiento,1,explotar,98,Gasto contenido
+C00008,36-45,Independiente,20,No Pro,2410000,4160000,No,Sí,Sí,,0,Sí,5,4,Mismo día,tratamiento,1,explotar,68,Gasto contenido
+C00009,18-25,Empleado,5,No Pro,6390000,1880000,No,Sí,No,Desempleo,1,No,23,4,5-30 min,tratamiento,1,explotar,26,
+C00010,46-55,Pensionado,29,Pro,10180000,6250000,No,Sí,No,SOAT,1,No,13,4,1-5 min,tratamiento,1,explotar,30,
+C00011,36-45,Independiente,27,No Pro,20730000,7930000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,76,Gasto contenido
+C00012,18-25,Empleado,6,No Pro,5310000,1900000,No,Sí,No,Desempleo,1,Sí,11,4,5-30 min,tratamiento,1,explotar,70,Gasto contenido
+C00013,26-35,Empleado,7,No Pro,9890000,3870000,No,No,No,,0,Sí,18,4,5-30 min,tratamiento,1,explorar,14,Gasto contenido
+C00014,26-35,Independiente,25,No Pro,13980000,4100000,No,Sí,No,,0,Sí,19,4,1-5 min,tratamiento,1,explotar,77,Gasto contenido
+C00015,26-35,Empleado,48,Pro,8440000,9050000,Sí,Sí,No,SOAT,1,Sí,32,4,1-5 min,tratamiento,1,explotar,69,Gasta lo que entra
+C00016,18-25,Estudiante,39,No Pro,2950000,4840000,No,Sí,No,,0,Sí,19,4,1-5 min,tratamiento,1,explotar,35,Gasto contenido
+C00017,18-25,Empleado,16,No Pro,4700000,3120000,No,Sí,Sí,,0,Sí,8,4,5-30 min,tratamiento,1,explotar,73,Gasto contenido
+C00018,18-25,Independiente,35,No Pro,13830000,5270000,No,No,No,SOAT,1,Sí,8,4,1-5 min,tratamiento,1,explotar,55,Gasto contenido
+C00019,56+,Empleado,51,Pro,6330000,7300000,No,Sí,No,Vida,1,Sí,19,4,5-30 min,tratamiento,1,explotar,75,Gasta lo que entra
+C00020,18-25,Empleado,40,No Pro,3880000,2480000,Sí,Sí,No,,0,Sí,27,4,5-30 min,control,2,,9,Gasto contenido
+C00021,26-35,Independiente,43,Pro,10530000,4920000,No,Sí,No,SOAT,1,Sí,28,4,5-30 min,tratamiento,1,explotar,89,Gasta lo que entra
+C00022,18-25,Independiente,5,No Pro,3380000,1710000,No,No,No,,0,Sí,13,4,Mismo día,tratamiento,1,explotar,65,Gasto contenido
+C00023,46-55,Independiente,50,Pro,11760000,4410000,No,Sí,No,,0,Sí,28,4,5-30 min,tratamiento,1,explotar,32,Gasto contenido
+C00024,26-35,Independiente,20,No Pro,1540000,4870000,No,Sí,No,,0,Sí,10,4,1-5 min,tratamiento,1,explotar,40,Gasta lo que entra
+C00025,26-35,Pensionado,38,Pro,7570000,2500000,Sí,Sí,No,,0,Sí,22,4,Mismo día,control,2,,2,Gasta lo que entra
+C00026,46-55,Pensionado,55,No Pro,8020000,5240000,No,Sí,No,SOAT · Vida,2,No,1,4,5-30 min,tratamiento,1,explotar,59,
+C00027,46-55,Empleado,39,No Pro,13940000,7320000,No,Sí,No,Vida,1,Sí,22,4,5-30 min,tratamiento,1,explotar,55,Gasto contenido
+C00028,56+,Independiente,20,Pro,5000000,7110000,Sí,No,No,Desempleo · Viajes,2,Sí,10,4,5-30 min,tratamiento,1,explotar,32,Gasto contenido
+C00029,36-45,Estudiante,4,No Pro,21830000,7310000,No,Sí,No,Desempleo,1,Sí,4,4,<1 min,tratamiento,1,explotar,60,Con mascota
+C00030,56+,Estudiante,17,Pro,2850000,10490000,No,Sí,No,Vida · Hogar,2,Sí,21,4,1-5 min,tratamiento,1,explorar,19,Gasta lo que entra
+C00031,36-45,Empleado,57,No Pro,9200000,3980000,Sí,Sí,No,SOAT,1,No,8,4,1-5 min,tratamiento,1,explotar,41,
+C00032,18-25,Estudiante,4,No Pro,9010000,3200000,Sí,Sí,Sí,Vida,1,Sí,9,4,5-30 min,tratamiento,1,explotar,98,Gasto contenido
+C00033,18-25,Empleado,4,No Pro,10150000,3120000,No,Sí,Sí,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,96,Con mascota
+C00034,26-35,Pensionado,29,Pro,13870000,4470000,Sí,No,No,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,54,Gasta lo que entra
+C00035,56+,Independiente,2,No Pro,5080000,3990000,Sí,No,No,Mascotas,1,No,5,4,1-5 min,tratamiento,1,explotar,34,
+C00036,18-25,Independiente,27,No Pro,7740000,2820000,No,Sí,No,SOAT,1,No,23,4,1-5 min,tratamiento,1,explotar,40,
+C00037,26-35,Empleado,45,Pro,12130000,4030000,No,Sí,Sí,SOAT,1,Sí,6,4,Mismo día,tratamiento,1,explotar,88,Gasta lo que entra
+C00038,18-25,Empleado,18,Pro,3370000,1300000,No,Sí,No,,0,Sí,28,4,5-30 min,tratamiento,1,explotar,84,Gasto contenido
+C00039,46-55,Empleado,34,No Pro,29030000,8830000,No,Sí,Sí,Vida,1,Sí,11,4,1-5 min,tratamiento,1,explotar,57,Gasto contenido
+C00040,36-45,Empleado,53,Pro,7270000,6470000,Sí,Sí,No,SOAT,1,No,27,4,<1 min,tratamiento,1,explotar,24,
+C00041,26-35,Empleado,55,Pro,19780000,5800000,No,No,No,Vida · Hogar,2,No,19,4,5-30 min,tratamiento,1,explotar,34,
+C00042,18-25,Empleado,57,No Pro,4160000,1960000,No,No,No,Hogar,1,Sí,26,4,5-30 min,control,2,,0,Gasto contenido
+C00043,26-35,Empleado,52,No Pro,2840000,3750000,No,Sí,No,Mascotas,1,Sí,6,4,1-5 min,tratamiento,1,explotar,74,Con mascota
+C00044,36-45,Independiente,1,No Pro,8280000,7830000,Sí,Sí,No,SOAT,1,Sí,23,4,<1 min,tratamiento,1,explorar,17,Gasta lo que entra
+C00045,26-35,Empleado,45,No Pro,4820000,4090000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,52,Gasta lo que entra
+C00046,56+,Pensionado,32,Pro,5440000,3500000,Sí,Sí,No,SOAT,1,Sí,28,4,1-5 min,tratamiento,1,explotar,84,Gasto contenido
+C00047,36-45,Independiente,1,No Pro,4870000,5660000,No,Sí,No,SOAT,1,No,11,4,1-5 min,tratamiento,1,explorar,19,
+C00048,36-45,Empleado,4,No Pro,14290000,4510000,No,No,No,,0,Sí,15,4,5-30 min,control,2,,8,Gasta lo que entra
+C00049,18-25,Estudiante,34,No Pro,1350000,1440000,Sí,Sí,No,,0,Sí,12,4,5-30 min,tratamiento,1,explotar,53,Gasta lo que entra
+C00050,26-35,Empleado,39,No Pro,14090000,4420000,No,No,Sí,SOAT · Desempleo,2,Sí,16,4,Mismo día,tratamiento,1,explotar,24,Gasto contenido
+C00051,46-55,Empleado,10,No Pro,23620000,7920000,No,No,No,,0,Sí,1,4,1-5 min,control,2,,7,Gasto contenido
+C00052,46-55,Independiente,20,No Pro,20240000,5790000,No,Sí,No,Mascotas,1,Sí,1,4,1-5 min,control,2,,5,Gasto contenido
+C00053,36-45,Empleado,29,Pro,25270000,8740000,No,Sí,No,,0,Sí,28,4,1-5 min,control,2,,1,Gasto contenido
+C00054,36-45,Independiente,10,No Pro,2180000,2210000,No,No,No,,0,No,26,4,5-30 min,tratamiento,1,explotar,45,
+C00055,26-35,Empleado,35,No Pro,1770000,3910000,No,Sí,No,SOAT,1,Sí,13,4,1-5 min,tratamiento,1,explotar,81,Gasto contenido
+C00056,18-25,Independiente,10,No Pro,6860000,2130000,Sí,Sí,Sí,Vida,1,Sí,3,4,1-5 min,tratamiento,1,explotar,42,Gasto contenido
+C00057,26-35,Empleado,31,No Pro,20510000,7630000,No,Sí,No,SOAT,1,Sí,9,4,5-30 min,tratamiento,1,explotar,76,Gasto contenido
+C00058,18-25,Empleado,6,Pro,1270000,2850000,Sí,No,Sí,SOAT,1,Sí,11,4,5-30 min,tratamiento,1,explotar,75,Gasta lo que entra
+C00059,26-35,Pensionado,22,Pro,28980000,8790000,No,No,No,SOAT,1,Sí,23,4,1-5 min,tratamiento,1,explotar,21,Gasto contenido
+C00060,26-35,Independiente,41,No Pro,10910000,5390000,No,Sí,No,,0,Sí,8,4,Mismo día,tratamiento,1,explotar,84,Gasto contenido
+C00061,46-55,Empleado,55,No Pro,2160000,5840000,Sí,Sí,No,,0,Sí,10,4,1-5 min,tratamiento,1,explorar,10,Gasta lo que entra
+C00062,26-35,Empleado,12,No Pro,20810000,6370000,No,Sí,No,,0,No,17,4,<1 min,control,2,,4,
+C00063,26-35,Pensionado,39,No Pro,3840000,3850000,Sí,Sí,No,,0,Sí,5,4,1-5 min,tratamiento,1,explotar,33,Gasta lo que entra
+C00064,36-45,Estudiante,37,No Pro,6810000,4700000,Sí,No,No,SOAT,1,Sí,13,4,<1 min,tratamiento,1,explotar,89,Gasto contenido
+C00065,36-45,Estudiante,2,No Pro,2240000,5300000,No,Sí,No,Vida,1,Sí,11,4,Mismo día,tratamiento,1,explotar,72,Gasto contenido
+C00066,26-35,Empleado,23,No Pro,12480000,4720000,Sí,No,Sí,,0,Sí,13,4,<1 min,tratamiento,1,explotar,74,Gasta lo que entra
+C00067,26-35,Estudiante,1,Pro,8600000,4510000,No,No,No,SOAT · Viajes,2,Sí,8,4,Mismo día,tratamiento,1,explotar,25,Gasta lo que entra
+C00068,18-25,Independiente,42,No Pro,3590000,1300000,No,No,Sí,,0,Sí,7,4,1-5 min,control,2,,0,Gasto contenido
+C00069,26-35,Empleado,56,Pro,4560000,3550000,Sí,Sí,No,SOAT,1,Sí,17,4,1-5 min,tratamiento,1,explotar,63,Gasto contenido
+C00070,18-25,Independiente,3,No Pro,7790000,2230000,No,Sí,No,,0,Sí,11,4,5-30 min,tratamiento,1,explotar,47,Gasto contenido
+C00071,46-55,Empleado,27,Pro,7050000,5660000,Sí,Sí,Sí,,0,Sí,24,4,5-30 min,tratamiento,1,explotar,86,Con mascota
+C00072,26-35,Estudiante,14,Pro,13190000,7260000,Sí,Sí,No,SOAT,1,Sí,22,4,5-30 min,tratamiento,1,explotar,48,Gasta lo que entra
+C00073,26-35,Independiente,32,No Pro,29980000,10470000,No,Sí,No,,0,Sí,10,4,5-30 min,tratamiento,1,explotar,89,Gasta lo que entra
+C00074,18-25,Independiente,59,No Pro,4140000,2060000,Sí,No,No,,0,No,2,4,1-5 min,control,2,,0,
+C00075,26-35,Estudiante,14,No Pro,16260000,4700000,No,No,No,,0,Sí,1,4,1-5 min,tratamiento,1,explotar,54,Gasto contenido
+C00076,56+,Empleado,58,No Pro,4100000,2210000,No,Sí,No,Desempleo,1,No,17,4,1-5 min,tratamiento,1,explotar,97,
+C00077,46-55,Empleado,51,Pro,5300000,10260000,Sí,Sí,No,Vida · Viajes,2,No,19,4,<1 min,tratamiento,1,explotar,70,
+C00078,46-55,Independiente,59,Pro,14940000,4960000,No,No,No,,0,Sí,32,4,1-5 min,tratamiento,1,explotar,30,Gasto contenido
+C00079,46-55,Independiente,38,No Pro,33850000,15320000,No,No,No,Vida,1,Sí,9,4,1-5 min,tratamiento,1,explorar,16,Gasta lo que entra
+C00080,26-35,Independiente,38,No Pro,19510000,12100000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,62,Gasta lo que entra
+C00081,26-35,Empleado,13,No Pro,5810000,4620000,No,No,No,,0,Sí,16,4,1-5 min,tratamiento,1,explotar,78,Gasto contenido
+C00082,26-35,Empleado,36,No Pro,3960000,6900000,Sí,No,No,Vida,1,Sí,19,4,1-5 min,tratamiento,1,explotar,21,Gasta lo que entra
+C00083,36-45,Pensionado,18,Pro,4700000,8800000,No,Sí,No,Viajes,1,Sí,9,4,1-5 min,tratamiento,1,explotar,47,Gasto contenido
+C00084,36-45,Empleado,54,No Pro,43060000,18510000,No,Sí,No,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,86,Gasta lo que entra
+C00085,36-45,Empleado,27,No Pro,12290000,6320000,No,Sí,No,,0,Sí,10,4,5-30 min,tratamiento,1,explotar,33,Con mascota
+C00086,46-55,Empleado,10,No Pro,12870000,7230000,Sí,Sí,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,88,Gasta lo que entra
+C00087,36-45,Empleado,17,No Pro,10650000,4720000,Sí,No,No,,0,Sí,14,4,<1 min,tratamiento,1,explotar,66,Gasto contenido
+C00088,18-25,Estudiante,36,Pro,1760000,3530000,Sí,No,No,Hogar,1,Sí,27,4,5-30 min,tratamiento,1,explotar,93,Gasta lo que entra
+C00089,26-35,Independiente,13,Pro,4400000,9650000,No,Sí,No,,0,Sí,19,4,1-5 min,tratamiento,1,explotar,34,Gasta lo que entra
+C00090,36-45,Empleado,39,Pro,9700000,7080000,No,Sí,No,Vida,1,Sí,26,4,1-5 min,tratamiento,1,explotar,23,Con mascota
+C00091,26-35,Empleado,26,No Pro,21000000,8430000,Sí,No,No,,0,Sí,21,4,<1 min,tratamiento,1,explotar,54,Gasta lo que entra
+C00092,26-35,Empleado,28,No Pro,5600000,2940000,No,Sí,No,Hogar,1,No,4,4,<1 min,tratamiento,1,explotar,23,
+C00093,18-25,Pensionado,45,Pro,3720000,3620000,No,Sí,No,Hogar,1,Sí,32,4,1-5 min,tratamiento,1,explotar,28,Gasta lo que entra
+C00094,26-35,Independiente,30,No Pro,12000000,3880000,Sí,Sí,No,SOAT,1,Sí,19,4,1-5 min,tratamiento,1,explotar,34,Gasta lo que entra
+C00095,46-55,Empleado,13,Pro,4910000,2470000,Sí,Sí,Sí,,0,Sí,28,4,1-5 min,tratamiento,1,explotar,39,Con mascota
+C00096,18-25,Empleado,45,Pro,3980000,1900000,No,Sí,No,,0,Sí,23,4,5-30 min,tratamiento,1,explotar,48,Gasto contenido
+C00097,36-45,Empleado,24,No Pro,9360000,9370000,No,No,Sí,Vida,1,No,14,4,1-5 min,tratamiento,1,explotar,41,
+C00098,36-45,Empleado,10,No Pro,45990000,13800000,No,No,No,Vida,1,Sí,9,4,Mismo día,tratamiento,1,explotar,92,Gasto contenido
+C00099,26-35,Empleado,35,No Pro,4330000,1980000,No,No,No,,0,Sí,1,4,<1 min,tratamiento,1,explotar,82,Gasto contenido
+C00100,36-45,Empleado,45,No Pro,20800000,6970000,No,Sí,No,Hogar,1,Sí,26,4,Mismo día,tratamiento,1,explotar,85,Gasta lo que entra
+C00101,26-35,Empleado,54,Pro,1180000,2070000,Sí,No,Sí,SOAT,1,Sí,14,4,1-5 min,tratamiento,1,explotar,38,Gasta lo que entra
+C00102,26-35,Independiente,59,No Pro,10800000,6950000,No,Sí,No,,0,Sí,13,4,<1 min,tratamiento,1,explotar,72,Gasta lo que entra
+C00103,18-25,Estudiante,48,No Pro,2810000,2120000,Sí,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,68,Con mascota
+C00104,26-35,Independiente,9,No Pro,4890000,6770000,No,No,No,,0,Sí,9,4,1-5 min,tratamiento,1,explotar,47,Gasto contenido
+C00105,26-35,Independiente,15,No Pro,3100000,2520000,No,No,No,Desempleo,1,Sí,16,4,1-5 min,tratamiento,1,explotar,50,Gasto contenido
+C00106,56+,Pensionado,1,No Pro,11270000,6700000,Sí,Sí,No,Desempleo,1,Sí,1,4,<1 min,tratamiento,1,explotar,37,Gasto contenido
+C00107,26-35,Independiente,54,No Pro,14210000,7720000,Sí,Sí,No,,0,Sí,16,4,<1 min,tratamiento,1,explotar,93,Gasto contenido
+C00108,56+,Empleado,44,No Pro,2890000,7260000,Sí,Sí,No,,0,Sí,13,4,5-30 min,tratamiento,1,explotar,77,Gasto contenido
+C00109,26-35,Independiente,48,No Pro,20020000,6430000,No,No,Sí,,0,No,3,4,1-5 min,tratamiento,1,explotar,45,
+C00110,26-35,Independiente,57,Pro,6890000,4650000,Sí,No,No,SOAT,1,Sí,20,4,Mismo día,tratamiento,1,explotar,56,Gasto contenido
+C00111,56+,Independiente,41,No Pro,14650000,5960000,No,No,No,Mascotas,1,Sí,27,4,1-5 min,tratamiento,1,explotar,34,Gasta lo que entra
+C00112,26-35,Empleado,21,No Pro,7650000,2460000,No,Sí,No,,0,Sí,4,4,Mismo día,tratamiento,1,explotar,89,Gasto contenido
+C00113,36-45,Empleado,35,Pro,7530000,10740000,Sí,Sí,No,Vida · Desempleo,2,Sí,18,4,Mismo día,tratamiento,1,explotar,56,Gasta lo que entra
+C00114,26-35,Pensionado,19,No Pro,7880000,3840000,Sí,Sí,No,SOAT · Desempleo,2,Sí,8,4,5-30 min,tratamiento,1,explotar,97,Gasto contenido
+C00115,26-35,Empleado,19,No Pro,13400000,4310000,No,Sí,No,SOAT,1,No,14,4,1-5 min,tratamiento,1,explotar,47,
+C00116,26-35,Independiente,53,No Pro,6330000,5250000,No,Sí,No,SOAT · Desempleo,2,No,7,4,1-5 min,tratamiento,1,explotar,61,
+C00117,46-55,Empleado,48,No Pro,15240000,5140000,No,Sí,No,SOAT,1,No,6,4,5-30 min,control,2,,4,
+C00118,36-45,Empleado,47,No Pro,20890000,6870000,No,Sí,No,,0,Sí,1,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00119,36-45,Empleado,43,No Pro,8960000,4200000,Sí,Sí,No,,0,Sí,10,4,1-5 min,tratamiento,1,explotar,86,Gasto contenido
+C00120,56+,Independiente,35,No Pro,8740000,4090000,No,Sí,No,,0,Sí,8,4,5-30 min,control,2,,3,Gasta lo que entra
+C00121,26-35,Independiente,26,No Pro,10060000,6930000,No,Sí,No,SOAT,1,Sí,8,4,Mismo día,tratamiento,1,explotar,68,Gasto contenido
+C00122,18-25,Empleado,23,No Pro,2430000,1680000,Sí,Sí,No,,0,Sí,26,4,1-5 min,tratamiento,1,explotar,41,Gasto contenido
+C00123,26-35,Empleado,16,Pro,6320000,4110000,Sí,Sí,No,,0,No,28,4,<1 min,tratamiento,1,explorar,11,
+C00124,36-45,Independiente,54,Pro,5690000,3320000,No,Sí,No,,0,No,13,4,1-5 min,tratamiento,1,explotar,38,
+C00125,36-45,Independiente,6,No Pro,20150000,10980000,Sí,No,No,,0,Sí,2,4,Mismo día,tratamiento,1,explotar,66,Gasta lo que entra
+C00126,36-45,Independiente,60,No Pro,15700000,5500000,Sí,Sí,No,Hogar,1,Sí,12,4,Mismo día,tratamiento,1,explotar,82,Gasta lo que entra
+C00127,26-35,Empleado,43,No Pro,26520000,9480000,Sí,Sí,No,,0,Sí,7,4,5-30 min,tratamiento,1,explotar,37,Gasta lo que entra
+C00128,18-25,Empleado,44,No Pro,7590000,3070000,No,Sí,Sí,,0,Sí,25,4,Mismo día,tratamiento,1,explorar,12,Con mascota
+C00129,46-55,Empleado,48,Pro,3830000,3980000,Sí,No,No,SOAT,1,Sí,27,4,1-5 min,tratamiento,1,explotar,68,Gasto contenido
+C00130,56+,Estudiante,47,No Pro,13840000,6630000,Sí,No,No,,0,Sí,4,4,5-30 min,tratamiento,1,explotar,80,Gasta lo que entra
+C00131,56+,Empleado,45,No Pro,6510000,3780000,No,Sí,No,SOAT,1,Sí,25,4,1-5 min,tratamiento,1,explotar,43,Con mascota
+C00132,26-35,Empleado,59,Pro,8420000,3500000,No,No,Sí,,0,No,27,4,1-5 min,tratamiento,1,explotar,27,
+C00133,36-45,Independiente,48,No Pro,19410000,7060000,No,Sí,No,SOAT,1,Sí,9,4,<1 min,tratamiento,1,explotar,48,Gasta lo que entra
+C00134,26-35,Independiente,18,Pro,3700000,3320000,Sí,Sí,No,Viajes,1,Sí,29,4,5-30 min,control,2,,0,Gasto contenido
+C00135,56+,Empleado,52,No Pro,8000000,2300000,Sí,Sí,No,SOAT,1,No,11,4,<1 min,tratamiento,1,explotar,68,
+C00136,26-35,Empleado,51,Pro,1920000,1770000,No,No,No,SOAT,1,Sí,32,4,1-5 min,tratamiento,1,explotar,69,Gasta lo que entra
+C00137,56+,Empleado,33,No Pro,17340000,6820000,No,Sí,No,Vida,1,Sí,25,4,1-5 min,tratamiento,1,explotar,22,Gasto contenido
+C00138,36-45,Empleado,41,No Pro,20250000,8400000,No,Sí,No,,0,No,2,4,5-30 min,tratamiento,1,explorar,10,
+C00139,46-55,Estudiante,30,No Pro,12860000,3830000,Sí,Sí,No,,0,Sí,25,4,5-30 min,control,2,,9,Con mascota
+C00140,36-45,Empleado,38,No Pro,8520000,8450000,No,Sí,No,Hogar,1,Sí,16,4,<1 min,tratamiento,1,explotar,97,Gasta lo que entra
+C00141,36-45,Independiente,30,No Pro,6950000,6670000,No,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00142,18-25,Empleado,21,No Pro,6810000,2700000,No,Sí,No,,0,Sí,16,4,Mismo día,control,2,,0,Gasto contenido
+C00143,26-35,Estudiante,27,Pro,2740000,6200000,Sí,No,Sí,Mascotas,1,Sí,36,4,5-30 min,tratamiento,1,explorar,11,Gasta lo que entra
+C00144,26-35,Empleado,54,No Pro,2990000,4320000,Sí,Sí,No,Desempleo,1,Sí,14,4,1-5 min,tratamiento,1,explotar,91,Gasta lo que entra
+C00145,18-25,Independiente,47,Pro,1720000,1890000,Sí,No,No,,0,Sí,15,4,Mismo día,tratamiento,1,explorar,12,Gasto contenido
+C00146,26-35,Estudiante,41,No Pro,3630000,4600000,Sí,Sí,No,,0,Sí,25,4,1-5 min,tratamiento,1,explotar,96,Gasta lo que entra
+C00147,56+,Empleado,59,No Pro,7820000,5280000,Sí,No,No,Viajes,1,Sí,18,4,1-5 min,tratamiento,1,explotar,29,Gasto contenido
+C00148,26-35,Empleado,60,No Pro,2290000,3250000,No,Sí,No,,0,Sí,12,4,<1 min,tratamiento,1,explotar,74,Gasto contenido
+C00149,26-35,Pensionado,27,Pro,19540000,10850000,Sí,Sí,No,Vida · Desempleo,2,Sí,25,4,5-30 min,tratamiento,1,explotar,88,Con mascota
+C00150,26-35,Independiente,9,No Pro,7930000,3270000,Sí,Sí,No,Hogar,1,Sí,4,4,5-30 min,tratamiento,1,explotar,54,Gasto contenido
+C00151,46-55,Independiente,30,No Pro,3320000,8950000,No,Sí,No,,0,Sí,13,4,5-30 min,tratamiento,1,explorar,15,Gasta lo que entra
+C00152,26-35,Empleado,45,No Pro,10850000,3770000,Sí,No,No,Vida,1,Sí,15,4,5-30 min,tratamiento,1,explotar,50,Gasta lo que entra
+C00153,26-35,Empleado,25,Pro,4420000,2310000,No,No,No,SOAT,1,Sí,26,4,Mismo día,tratamiento,1,explotar,48,Gasto contenido
+C00154,46-55,Estudiante,12,No Pro,11890000,6000000,Sí,Sí,No,SOAT · Hogar,2,Sí,11,4,1-5 min,control,2,,2,Gasta lo que entra
+C00155,46-55,Pensionado,23,Pro,44330000,13870000,Sí,Sí,No,SOAT,1,Sí,30,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00156,46-55,Independiente,5,No Pro,3740000,4250000,No,No,Sí,Desempleo,1,Sí,8,4,Mismo día,tratamiento,1,explotar,85,Gasto contenido
+C00157,26-35,Empleado,52,No Pro,6740000,3620000,Sí,Sí,No,SOAT,1,Sí,5,4,1-5 min,tratamiento,1,explotar,99,Gasta lo que entra
+C00158,36-45,Empleado,23,No Pro,6460000,3390000,Sí,No,No,Mascotas,1,Sí,16,4,Mismo día,tratamiento,1,explotar,97,Gasta lo que entra
+C00159,36-45,Empleado,9,No Pro,10520000,8340000,No,No,Sí,,0,Sí,13,4,5-30 min,tratamiento,1,explorar,10,Gasta lo que entra
+C00160,26-35,Estudiante,51,No Pro,9080000,2710000,Sí,No,No,Mascotas,1,Sí,14,4,Mismo día,tratamiento,1,explotar,75,Gasto contenido
+C00161,46-55,Independiente,51,Pro,12940000,11960000,No,No,No,,0,No,25,4,5-30 min,tratamiento,1,explotar,22,
+C00162,36-45,Empleado,18,Pro,6890000,5780000,No,Sí,No,,0,Sí,28,4,1-5 min,tratamiento,1,explotar,51,Con mascota
+C00163,26-35,Empleado,16,No Pro,8230000,5210000,Sí,Sí,No,,0,Sí,9,4,5-30 min,tratamiento,1,explotar,85,Gasto contenido
+C00164,36-45,Independiente,3,No Pro,12000000,4700000,No,Sí,Sí,,0,Sí,9,4,<1 min,tratamiento,1,explotar,87,Gasto contenido
+C00165,36-45,Empleado,6,No Pro,5340000,6350000,No,Sí,No,SOAT · Viajes,2,Sí,17,4,Mismo día,tratamiento,1,explotar,62,Gasto contenido
+C00166,46-55,Independiente,6,No Pro,21270000,10510000,No,Sí,No,,0,Sí,21,4,1-5 min,tratamiento,1,explotar,44,Gasta lo que entra
+C00167,36-45,Empleado,8,No Pro,7400000,4620000,Sí,Sí,No,SOAT · Desempleo,2,Sí,19,4,5-30 min,tratamiento,1,explotar,34,Gasto contenido
+C00168,26-35,Independiente,32,No Pro,7900000,3480000,Sí,No,Sí,,0,Sí,4,4,1-5 min,tratamiento,1,explotar,48,Gasta lo que entra
+C00169,26-35,Independiente,10,No Pro,5100000,5330000,No,Sí,No,,0,Sí,2,4,5-30 min,tratamiento,1,explotar,31,Gasta lo que entra
+C00170,36-45,Independiente,33,Pro,1520000,4130000,No,Sí,No,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,81,Con mascota
+C00171,18-25,Independiente,56,Pro,3580000,2480000,Sí,No,Sí,,0,No,21,4,1-5 min,tratamiento,1,explotar,32,
+C00172,26-35,Empleado,39,No Pro,2350000,3430000,Sí,Sí,No,,0,Sí,9,4,<1 min,tratamiento,1,explotar,24,Gasto contenido
+C00173,36-45,Empleado,36,No Pro,10900000,6110000,Sí,No,No,SOAT,1,Sí,12,4,1-5 min,tratamiento,1,explorar,19,Gasta lo que entra
+C00174,36-45,Independiente,20,No Pro,7520000,5250000,No,Sí,No,SOAT · Desempleo · Mascotas,3,Sí,4,4,5-30 min,tratamiento,1,explotar,68,Gasto contenido
+C00175,36-45,Independiente,11,No Pro,6750000,7050000,No,No,No,,0,No,17,4,5-30 min,tratamiento,1,explotar,34,
+C00176,36-45,Estudiante,19,Pro,7300000,4280000,Sí,Sí,No,,0,Sí,24,4,5-30 min,tratamiento,1,explotar,66,Gasto contenido
+C00177,26-35,Empleado,32,Pro,8790000,3090000,No,Sí,Sí,Vida,1,Sí,19,4,1-5 min,tratamiento,1,explotar,81,Gasto contenido
+C00178,26-35,Empleado,31,No Pro,2890000,2250000,No,Sí,No,SOAT,1,No,9,4,1-5 min,control,2,,6,
+C00179,46-55,Empleado,56,No Pro,47240000,14500000,No,Sí,No,,0,Sí,1,4,5-30 min,tratamiento,1,explotar,36,Gasta lo que entra
+C00180,18-25,Independiente,41,Pro,7160000,2930000,Sí,Sí,No,Vida,1,No,21,4,5-30 min,tratamiento,1,explotar,31,
+C00181,36-45,Empleado,27,No Pro,12750000,7990000,No,No,No,,0,Sí,8,4,5-30 min,tratamiento,1,explotar,32,Gasto contenido
+C00182,18-25,Empleado,20,No Pro,2740000,2470000,No,No,No,,0,Sí,15,4,<1 min,tratamiento,1,explotar,47,Gasto contenido
+C00183,26-35,Independiente,35,No Pro,5540000,5700000,No,Sí,No,SOAT,1,No,6,4,5-30 min,tratamiento,1,explorar,17,
+C00184,26-35,Empleado,28,No Pro,11960000,5280000,Sí,Sí,No,,0,Sí,10,4,5-30 min,tratamiento,1,explorar,17,Gasta lo que entra
+C00185,36-45,Empleado,56,Pro,21590000,8380000,Sí,Sí,No,Hogar,1,Sí,25,4,1-5 min,tratamiento,1,explotar,22,Gasta lo que entra
+C00186,36-45,Empleado,55,No Pro,34670000,10230000,No,Sí,No,,0,Sí,19,4,5-30 min,tratamiento,1,explotar,73,Gasta lo que entra
+C00187,26-35,Independiente,11,No Pro,17330000,7570000,No,No,Sí,SOAT,1,Sí,13,4,<1 min,tratamiento,1,explotar,93,Gasta lo que entra
+C00188,36-45,Independiente,33,No Pro,9340000,3690000,No,No,Sí,SOAT,1,Sí,17,4,1-5 min,tratamiento,1,explotar,34,Gasto contenido
+C00189,46-55,Pensionado,58,No Pro,2480000,8490000,No,Sí,No,Hogar,1,Sí,21,4,Mismo día,tratamiento,1,explotar,23,Gasto contenido
+C00190,36-45,Empleado,46,Pro,2260000,4080000,No,No,No,SOAT,1,Sí,14,4,5-30 min,control,2,,7,Gasto contenido
+C00191,36-45,Pensionado,30,No Pro,28970000,11420000,Sí,Sí,No,,0,Sí,1,4,5-30 min,tratamiento,1,explotar,37,Con mascota
+C00192,26-35,Independiente,25,No Pro,17710000,5500000,No,No,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,36,Gasta lo que entra
+C00193,36-45,Empleado,27,No Pro,2470000,8650000,Sí,No,No,Vida,1,Sí,11,4,1-5 min,tratamiento,1,explotar,40,Gasta lo que entra
+C00194,26-35,Independiente,3,No Pro,6850000,2920000,No,No,Sí,,0,Sí,13,4,Mismo día,tratamiento,1,explorar,10,Gasto contenido
+C00195,26-35,Empleado,36,No Pro,1900000,3740000,No,Sí,No,,0,Sí,4,4,1-5 min,tratamiento,1,explotar,99,Gasto contenido
+C00196,56+,Empleado,25,Pro,5280000,5610000,No,Sí,No,,0,Sí,24,4,<1 min,control,2,,9,Gasta lo que entra
+C00197,18-25,Empleado,37,No Pro,1700000,1770000,No,Sí,No,,0,Sí,23,4,1-5 min,tratamiento,1,explotar,77,Gasto contenido
+C00198,56+,Independiente,24,No Pro,16610000,6810000,Sí,Sí,No,SOAT · Desempleo,2,Sí,11,4,1-5 min,tratamiento,1,explotar,31,Gasto contenido
+C00199,18-25,Estudiante,2,No Pro,1500000,2600000,Sí,Sí,No,Viajes,1,Sí,5,4,<1 min,tratamiento,1,explotar,58,Gasto contenido
+C00200,36-45,Empleado,12,Pro,3960000,5320000,No,Sí,Sí,,0,No,31,4,<1 min,tratamiento,1,explotar,85,
+C00201,56+,Estudiante,30,No Pro,6930000,6680000,Sí,Sí,No,SOAT,1,Sí,19,4,1-5 min,control,2,,8,Con mascota
+C00202,46-55,Empleado,9,No Pro,20250000,6120000,Sí,Sí,No,Desempleo,1,Sí,29,4,1-5 min,tratamiento,1,explotar,53,Gasto contenido
+C00203,18-25,Pensionado,33,No Pro,2040000,1620000,No,Sí,No,,0,Sí,22,4,<1 min,tratamiento,1,explotar,89,Gasto contenido
+C00204,26-35,Pensionado,51,Pro,6850000,3650000,No,Sí,No,,0,Sí,22,4,5-30 min,tratamiento,1,explotar,81,Gasta lo que entra
+C00205,46-55,Empleado,9,Pro,16700000,5650000,No,No,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,38,Gasta lo que entra
+C00206,46-55,Estudiante,5,No Pro,19110000,6770000,No,No,No,,0,Sí,1,4,1-5 min,control,2,,9,Gasto contenido
+C00207,56+,Independiente,27,No Pro,12620000,3710000,No,Sí,No,Viajes,1,Sí,12,4,1-5 min,tratamiento,1,explotar,35,Gasta lo que entra
+C00208,36-45,Empleado,7,No Pro,8110000,6270000,No,Sí,No,Vida,1,Sí,1,4,1-5 min,tratamiento,1,explotar,93,Gasto contenido
+C00209,26-35,Empleado,25,Pro,3280000,4040000,No,Sí,No,SOAT,1,Sí,24,4,5-30 min,tratamiento,1,explotar,96,Gasto contenido
+C00210,46-55,Pensionado,58,Pro,13670000,7650000,No,Sí,No,Vida,1,Sí,16,4,1-5 min,tratamiento,1,explotar,78,Gasto contenido
+C00211,26-35,Estudiante,54,No Pro,14250000,4800000,Sí,No,No,SOAT,1,Sí,22,4,<1 min,tratamiento,1,explotar,43,Gasto contenido
+C00212,26-35,Empleado,22,No Pro,3200000,2080000,Sí,No,No,,0,Sí,18,4,1-5 min,tratamiento,1,explotar,26,Gasto contenido
+C00213,46-55,Estudiante,16,No Pro,11900000,5780000,No,Sí,No,Hogar,1,Sí,13,4,1-5 min,tratamiento,1,explotar,78,Gasto contenido
+C00214,26-35,Independiente,12,No Pro,7670000,2510000,Sí,Sí,No,SOAT · Vida,2,Sí,11,4,1-5 min,tratamiento,1,explotar,40,Con mascota
+C00215,18-25,Empleado,17,No Pro,10800000,3220000,No,No,No,SOAT · Vida,2,Sí,25,4,1-5 min,tratamiento,1,explotar,31,Gasto contenido
+C00216,26-35,Independiente,32,No Pro,7360000,3350000,Sí,No,No,SOAT,1,Sí,17,4,<1 min,tratamiento,1,explotar,89,Gasto contenido
+C00217,26-35,Empleado,18,No Pro,9840000,3070000,Sí,Sí,Sí,Hogar,1,Sí,12,4,5-30 min,tratamiento,1,explotar,46,Gasto contenido
+C00218,26-35,Empleado,36,No Pro,1440000,5530000,Sí,Sí,No,Vida,1,Sí,6,4,5-30 min,tratamiento,1,explotar,87,Con mascota
+C00219,26-35,Estudiante,17,No Pro,11280000,5800000,No,No,No,,0,Sí,18,4,1-5 min,tratamiento,1,explotar,75,Gasta lo que entra
+C00220,56+,Empleado,16,Pro,1780000,4740000,No,Sí,No,,0,Sí,28,4,5-30 min,control,2,,6,Con mascota
+C00221,36-45,Empleado,7,No Pro,6420000,3700000,No,Sí,No,,0,Sí,29,4,Mismo día,tratamiento,1,explotar,57,Gasto contenido
+C00222,26-35,Independiente,57,No Pro,13270000,4530000,Sí,Sí,No,,0,Sí,5,4,1-5 min,control,2,,5,Gasto contenido
+C00223,26-35,Empleado,11,No Pro,2980000,3940000,No,Sí,No,Mascotas,1,Sí,38,4,<1 min,tratamiento,1,explotar,26,Gasta lo que entra
+C00224,26-35,Empleado,15,No Pro,4440000,2100000,No,No,No,,0,No,3,4,5-30 min,tratamiento,1,explotar,33,
+C00225,26-35,Independiente,17,No Pro,17500000,6870000,No,Sí,No,SOAT,1,Sí,15,4,1-5 min,tratamiento,1,explotar,20,Con mascota
+C00226,46-55,Empleado,60,Pro,2270000,3590000,No,No,No,Hogar,1,Sí,33,4,1-5 min,control,2,,5,Gasta lo que entra
+C00227,36-45,Independiente,45,Pro,5040000,4190000,Sí,No,Sí,,0,Sí,12,4,5-30 min,control,2,,7,Gasta lo que entra
+C00228,26-35,Pensionado,48,No Pro,22350000,6950000,No,Sí,No,SOAT,1,Sí,6,4,1-5 min,tratamiento,1,explotar,80,Gasta lo que entra
+C00229,26-35,Independiente,28,No Pro,5980000,4630000,No,Sí,Sí,Viajes,1,Sí,23,4,5-30 min,tratamiento,1,explotar,85,Gasta lo que entra
+C00230,26-35,Empleado,2,No Pro,7530000,2420000,Sí,Sí,No,,0,Sí,8,4,1-5 min,tratamiento,1,explorar,17,Gasto contenido
+C00231,26-35,Empleado,1,No Pro,5520000,3180000,No,No,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,81,Gasto contenido
+C00232,26-35,Empleado,25,No Pro,3530000,3170000,No,Sí,Sí,,0,Sí,20,4,<1 min,tratamiento,1,explotar,96,Gasta lo que entra
+C00233,46-55,Empleado,1,No Pro,19600000,6540000,Sí,Sí,No,SOAT,1,Sí,4,4,5-30 min,tratamiento,1,explotar,45,Gasto contenido
+C00234,26-35,Empleado,32,No Pro,1290000,2990000,No,Sí,Sí,,0,Sí,21,4,1-5 min,tratamiento,1,explotar,30,Gasto contenido
+C00235,56+,Empleado,32,No Pro,7370000,5280000,Sí,Sí,No,,0,No,13,4,5-30 min,control,2,,0,
+C00236,36-45,Empleado,22,Pro,6300000,4440000,No,Sí,Sí,,0,Sí,9,4,5-30 min,tratamiento,1,explotar,72,Gasto contenido
+C00237,18-25,Empleado,25,Pro,1390000,1350000,No,Sí,No,Hogar,1,Sí,18,4,<1 min,tratamiento,1,explorar,16,Gasto contenido
+C00238,18-25,Independiente,23,No Pro,2260000,3840000,No,No,Sí,,0,Sí,16,4,1-5 min,tratamiento,1,explotar,77,Gasta lo que entra
+C00239,18-25,Empleado,43,No Pro,8950000,2720000,No,No,Sí,,0,Sí,17,4,5-30 min,tratamiento,1,explotar,25,Gasta lo que entra
+C00240,36-45,Empleado,52,No Pro,8380000,4180000,Sí,Sí,No,,0,No,11,4,<1 min,tratamiento,1,explotar,51,
+C00241,26-35,Empleado,35,No Pro,4080000,4080000,No,No,No,,0,Sí,20,4,5-30 min,tratamiento,1,explotar,97,Gasta lo que entra
+C00242,26-35,Empleado,14,Pro,3630000,2530000,Sí,Sí,Sí,SOAT,1,Sí,15,4,1-5 min,tratamiento,1,explotar,27,Gasta lo que entra
+C00243,36-45,Empleado,27,No Pro,4990000,6650000,Sí,No,No,Mascotas,1,No,13,4,Mismo día,tratamiento,1,explotar,49,
+C00244,18-25,Empleado,4,No Pro,4660000,3240000,No,Sí,No,SOAT,1,Sí,10,4,5-30 min,tratamiento,1,explotar,23,Gasto contenido
+C00245,56+,Empleado,20,No Pro,6620000,5340000,No,Sí,No,Vida,1,Sí,13,4,5-30 min,tratamiento,1,explotar,29,Gasto contenido
+C00246,56+,Empleado,55,No Pro,2410000,7280000,No,Sí,No,SOAT,1,Sí,5,4,1-5 min,tratamiento,1,explotar,47,Gasto contenido
+C00247,36-45,Empleado,44,No Pro,8530000,6280000,No,Sí,Sí,,0,Sí,25,4,1-5 min,control,2,,5,Gasta lo que entra
+C00248,36-45,Empleado,46,No Pro,9550000,4540000,No,Sí,No,,0,Sí,6,4,5-30 min,tratamiento,1,explotar,82,Gasto contenido
+C00249,26-35,Empleado,54,No Pro,7540000,3380000,No,Sí,No,,0,Sí,13,4,1-5 min,control,2,,8,Gasta lo que entra
+C00250,46-55,Independiente,27,Pro,14950000,6150000,No,No,No,SOAT,1,Sí,10,4,5-30 min,tratamiento,1,explotar,70,Gasto contenido
+C00251,26-35,Empleado,57,No Pro,7490000,3130000,No,Sí,No,,0,Sí,4,4,5-30 min,tratamiento,1,explorar,14,Gasta lo que entra
+C00252,26-35,Empleado,14,No Pro,15720000,6190000,Sí,No,No,SOAT,1,Sí,11,4,5-30 min,tratamiento,1,explotar,62,Gasto contenido
+C00253,56+,Estudiante,14,No Pro,2330000,4480000,No,Sí,No,,0,No,19,4,5-30 min,tratamiento,1,explotar,56,
+C00254,26-35,Estudiante,3,Pro,1820000,6910000,No,Sí,No,,0,Sí,17,4,5-30 min,tratamiento,1,explotar,77,Gasta lo que entra
+C00255,26-35,Independiente,34,No Pro,11900000,8220000,No,No,Sí,SOAT,1,Sí,6,4,Mismo día,tratamiento,1,explotar,55,Gasto contenido
+C00256,36-45,Pensionado,3,No Pro,11050000,4530000,No,Sí,Sí,Hogar,1,No,16,4,5-30 min,tratamiento,1,explorar,10,
+C00257,26-35,Empleado,6,No Pro,2810000,3840000,No,Sí,No,,0,Sí,11,4,5-30 min,tratamiento,1,explotar,31,Gasto contenido
+C00258,18-25,Empleado,11,No Pro,1950000,1360000,Sí,No,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,28,Gasto contenido
+C00259,36-45,Independiente,17,Pro,13780000,5640000,No,No,No,SOAT · Vida · Desempleo,3,Sí,18,4,5-30 min,tratamiento,1,explotar,23,Gasto contenido
+C00260,56+,Independiente,6,No Pro,7280000,4460000,Sí,Sí,No,Hogar,1,Sí,25,4,Mismo día,tratamiento,1,explotar,41,Gasto contenido
+C00261,26-35,Empleado,56,No Pro,20080000,10710000,Sí,Sí,No,SOAT,1,Sí,21,4,5-30 min,tratamiento,1,explotar,34,Gasto contenido
+C00262,26-35,Empleado,31,Pro,22260000,6810000,No,Sí,No,Vida · Mascotas,2,No,17,4,1-5 min,tratamiento,1,explorar,18,
+C00263,26-35,Empleado,29,No Pro,4110000,3590000,No,Sí,No,,0,Sí,12,4,Mismo día,control,2,,3,Gasto contenido
+C00264,18-25,Independiente,22,Pro,6790000,2020000,Sí,Sí,No,SOAT,1,Sí,10,4,<1 min,tratamiento,1,explotar,55,Gasto contenido
+C00265,26-35,Empleado,8,No Pro,7450000,3880000,No,Sí,No,,0,Sí,6,4,5-30 min,tratamiento,1,explotar,45,Gasto contenido
+C00266,36-45,Independiente,19,Pro,13740000,4370000,No,Sí,Sí,,0,Sí,8,4,5-30 min,tratamiento,1,explotar,92,Con mascota
+C00267,36-45,Estudiante,59,No Pro,30550000,9710000,Sí,No,No,,0,Sí,1,4,5-30 min,tratamiento,1,explorar,17,Gasto contenido
+C00268,26-35,Estudiante,45,Pro,9390000,4260000,No,Sí,No,,0,Sí,28,4,5-30 min,tratamiento,1,explotar,32,Gasta lo que entra
+C00269,26-35,Empleado,59,Pro,14470000,5110000,No,Sí,No,,0,No,12,4,1-5 min,tratamiento,1,explotar,99,
+C00270,36-45,Pensionado,53,No Pro,14100000,7340000,No,Sí,No,,0,Sí,7,4,<1 min,tratamiento,1,explorar,14,Gasto contenido
+C00271,26-35,Independiente,24,Pro,26460000,7820000,Sí,Sí,No,,0,Sí,20,4,1-5 min,tratamiento,1,explorar,11,Gasta lo que entra
+C00272,46-55,Empleado,54,No Pro,11470000,6930000,No,Sí,No,Desempleo,1,Sí,13,4,Mismo día,tratamiento,1,explotar,58,Gasta lo que entra
+C00273,46-55,Estudiante,33,No Pro,10020000,16360000,No,Sí,No,Desempleo,1,Sí,20,4,<1 min,tratamiento,1,explorar,17,Gasta lo que entra
+C00274,26-35,Estudiante,9,No Pro,10700000,7260000,No,No,No,Vida,1,Sí,13,4,5-30 min,tratamiento,1,explotar,59,Gasta lo que entra
+C00275,18-25,Independiente,43,Pro,11950000,4140000,No,Sí,No,,0,Sí,29,4,Mismo día,tratamiento,1,explotar,20,Gasta lo que entra
+C00276,26-35,Independiente,31,No Pro,7730000,5720000,No,Sí,No,SOAT,1,Sí,18,4,5-30 min,tratamiento,1,explorar,17,Gasto contenido
+C00277,26-35,Empleado,25,No Pro,11590000,3940000,Sí,No,No,,0,Sí,20,4,<1 min,tratamiento,1,explorar,12,Gasto contenido
+C00278,36-45,Empleado,2,No Pro,37100000,11300000,No,Sí,No,,0,Sí,21,4,1-5 min,tratamiento,1,explotar,22,Gasto contenido
+C00279,46-55,Empleado,46,No Pro,3070000,7320000,No,No,No,SOAT,1,Sí,16,4,1-5 min,tratamiento,1,explotar,39,Gasto contenido
+C00280,36-45,Pensionado,54,No Pro,2070000,3300000,Sí,Sí,Sí,SOAT,1,Sí,15,4,5-30 min,tratamiento,1,explotar,26,Gasta lo que entra
+C00281,18-25,Empleado,44,No Pro,11320000,3830000,No,Sí,Sí,Vida,1,Sí,10,4,1-5 min,tratamiento,1,explotar,32,Gasto contenido
+C00282,26-35,Independiente,28,No Pro,2220000,2070000,No,Sí,No,,0,No,16,4,Mismo día,tratamiento,1,explotar,42,
+C00283,36-45,Empleado,43,Pro,19480000,8090000,No,No,No,,0,No,5,4,1-5 min,tratamiento,1,explorar,18,
+C00284,26-35,Empleado,26,Pro,550000,2100000,No,Sí,No,,0,Sí,22,4,5-30 min,tratamiento,1,explotar,21,Con mascota
+C00285,18-25,Pensionado,46,No Pro,1920000,2730000,Sí,Sí,No,,0,Sí,9,4,Mismo día,tratamiento,1,explotar,71,Gasto contenido
+C00286,36-45,Estudiante,23,No Pro,3170000,3990000,No,Sí,No,,0,Sí,9,4,1-5 min,tratamiento,1,explotar,30,Gasto contenido
+C00287,36-45,Empleado,60,No Pro,2450000,9290000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explorar,11,Gasta lo que entra
+C00288,18-25,Independiente,52,Pro,960000,1660000,Sí,Sí,No,Vida · Viajes,2,Sí,18,4,5-30 min,tratamiento,1,explotar,64,Gasta lo que entra
+C00289,56+,Estudiante,21,No Pro,15180000,5510000,No,Sí,Sí,,0,No,3,4,1-5 min,tratamiento,1,explotar,34,
+C00290,26-35,Empleado,1,No Pro,13210000,4860000,Sí,Sí,No,,0,Sí,24,4,5-30 min,tratamiento,1,explotar,33,Gasta lo que entra
+C00291,26-35,Empleado,39,No Pro,11260000,6280000,Sí,No,No,,0,Sí,8,4,5-30 min,tratamiento,1,explotar,93,Gasto contenido
+C00292,26-35,Independiente,28,No Pro,18530000,5560000,Sí,No,No,,0,Sí,13,4,<1 min,tratamiento,1,explotar,73,Gasto contenido
+C00293,36-45,Independiente,57,No Pro,6730000,3380000,No,Sí,No,SOAT · Vida,2,Sí,18,4,<1 min,tratamiento,1,explotar,41,Con mascota
+C00294,26-35,Empleado,10,No Pro,10050000,5090000,No,Sí,No,,0,Sí,7,4,1-5 min,tratamiento,1,explotar,34,Gasta lo que entra
+C00295,36-45,Empleado,34,No Pro,18440000,8490000,Sí,No,No,,0,Sí,14,4,5-30 min,tratamiento,1,explotar,38,Gasta lo que entra
+C00296,36-45,Pensionado,54,Pro,15330000,11880000,No,Sí,No,,0,Sí,20,4,<1 min,tratamiento,1,explotar,80,Gasta lo que entra
+C00297,36-45,Independiente,41,No Pro,20090000,7830000,No,No,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00298,56+,Independiente,17,No Pro,15410000,5040000,Sí,Sí,No,,0,Sí,4,4,1-5 min,tratamiento,1,explotar,31,Gasta lo que entra
+C00299,26-35,Empleado,25,No Pro,12000000,6880000,No,No,No,,0,Sí,11,4,1-5 min,tratamiento,1,explotar,78,Gasto contenido
+C00300,26-35,Empleado,5,Pro,2240000,2440000,Sí,No,No,,0,Sí,25,4,<1 min,control,2,,3,Gasto contenido
+C00301,36-45,Independiente,54,No Pro,16890000,5320000,No,Sí,No,,0,Sí,3,4,<1 min,tratamiento,1,explotar,80,Gasto contenido
+C00302,36-45,Empleado,15,No Pro,24110000,8130000,No,Sí,Sí,Vida,1,No,20,4,<1 min,tratamiento,1,explorar,11,
+C00303,26-35,Estudiante,44,No Pro,7480000,3330000,No,Sí,Sí,,0,Sí,11,4,5-30 min,tratamiento,1,explotar,74,Gasto contenido
+C00304,18-25,Pensionado,50,Pro,4200000,2130000,No,No,No,,0,Sí,16,4,1-5 min,tratamiento,1,explorar,11,Gasto contenido
+C00305,36-45,Empleado,25,Pro,51550000,18090000,No,No,Sí,Vida,1,Sí,26,4,1-5 min,tratamiento,1,explotar,88,Gasto contenido
+C00306,18-25,Empleado,15,Pro,9720000,3650000,Sí,Sí,Sí,,0,Sí,16,4,5-30 min,tratamiento,1,explorar,17,Gasto contenido
+C00307,36-45,Pensionado,11,No Pro,9910000,4950000,Sí,Sí,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,55,Gasta lo que entra
+C00308,46-55,Independiente,8,Pro,17200000,5920000,No,No,No,,0,Sí,18,4,1-5 min,tratamiento,1,explotar,40,Gasta lo que entra
+C00309,36-45,Empleado,56,No Pro,17850000,9610000,No,Sí,No,,0,Sí,4,4,<1 min,tratamiento,1,explotar,64,Gasta lo que entra
+C00310,26-35,Empleado,4,No Pro,4260000,2790000,No,Sí,No,SOAT,1,Sí,10,4,5-30 min,tratamiento,1,explotar,77,Gasto contenido
+C00311,26-35,Empleado,27,No Pro,3250000,2320000,No,Sí,No,SOAT · Vida,2,Sí,19,4,Mismo día,tratamiento,1,explotar,22,Gasto contenido
+C00312,36-45,Independiente,38,No Pro,17380000,6370000,No,Sí,No,Vida,1,Sí,11,4,5-30 min,tratamiento,1,explotar,88,Gasta lo que entra
+C00313,36-45,Independiente,50,No Pro,3320000,5300000,No,Sí,No,Hogar,1,No,11,4,5-30 min,tratamiento,1,explotar,83,
+C00314,36-45,Empleado,51,Pro,10870000,9170000,Sí,No,Sí,,0,Sí,11,4,<1 min,tratamiento,1,explotar,26,Gasta lo que entra
+C00315,36-45,Empleado,34,No Pro,11790000,6930000,Sí,Sí,No,,0,Sí,8,4,Mismo día,tratamiento,1,explotar,58,Gasto contenido
+C00316,18-25,Empleado,44,No Pro,3930000,1700000,Sí,Sí,No,Mascotas,1,Sí,15,4,<1 min,tratamiento,1,explotar,88,Gasto contenido
+C00317,26-35,Empleado,58,No Pro,2110000,7010000,Sí,Sí,No,,0,No,11,4,5-30 min,tratamiento,1,explotar,42,
+C00318,46-55,Independiente,3,No Pro,9760000,10090000,Sí,Sí,No,,0,No,16,4,1-5 min,tratamiento,1,explorar,15,
+C00319,56+,Independiente,22,No Pro,3070000,6420000,No,Sí,No,,0,Sí,1,4,1-5 min,tratamiento,1,explotar,29,Gasto contenido
+C00320,46-55,Estudiante,14,No Pro,21380000,7880000,No,Sí,Sí,,0,Sí,15,4,<1 min,tratamiento,1,explotar,74,Con mascota
+C00321,18-25,Pensionado,14,Pro,6740000,2010000,No,Sí,No,,0,Sí,20,4,1-5 min,tratamiento,1,explotar,48,Gasto contenido
+C00322,26-35,Empleado,21,No Pro,6290000,3300000,Sí,Sí,No,,0,Sí,16,4,Mismo día,tratamiento,1,explotar,73,Gasto contenido
+C00323,36-45,Independiente,11,No Pro,31470000,11010000,No,Sí,Sí,,0,No,9,4,<1 min,tratamiento,1,explotar,92,
+C00324,56+,Independiente,42,No Pro,3860000,7000000,No,Sí,No,,0,Sí,17,4,<1 min,tratamiento,1,explotar,88,Gasta lo que entra
+C00325,26-35,Empleado,53,Pro,19840000,7380000,No,Sí,No,SOAT,1,Sí,21,4,5-30 min,tratamiento,1,explotar,43,Con mascota
+C00326,36-45,Empleado,25,No Pro,2430000,3050000,No,Sí,No,,0,Sí,14,4,Mismo día,tratamiento,1,explotar,99,Con mascota
+C00327,36-45,Independiente,32,Pro,5540000,4430000,No,Sí,No,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,57,Gasta lo que entra
+C00328,46-55,Pensionado,41,No Pro,11850000,3980000,No,No,No,Vida,1,No,24,4,5-30 min,tratamiento,1,explotar,98,
+C00329,26-35,Empleado,51,Pro,2950000,5340000,No,No,Sí,,0,Sí,17,4,<1 min,tratamiento,1,explotar,29,Gasta lo que entra
+C00330,18-25,Independiente,58,No Pro,5940000,1760000,No,Sí,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,74,Gasta lo que entra
+C00331,46-55,Independiente,47,Pro,15870000,5770000,Sí,Sí,No,,0,Sí,28,4,Mismo día,tratamiento,1,explotar,75,Gasta lo que entra
+C00332,46-55,Empleado,8,Pro,6490000,4010000,Sí,Sí,No,Hogar,1,No,33,4,<1 min,tratamiento,1,explotar,37,
+C00333,46-55,Empleado,5,No Pro,18990000,9720000,Sí,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,98,Gasto contenido
+C00334,26-35,Empleado,11,No Pro,7030000,3620000,Sí,Sí,No,SOAT · Desempleo,2,Sí,18,4,<1 min,tratamiento,1,explotar,89,Gasto contenido
+C00335,18-25,Empleado,17,Pro,7600000,2180000,No,Sí,No,,0,Sí,26,4,5-30 min,tratamiento,1,explotar,57,Gasto contenido
+C00336,18-25,Empleado,40,No Pro,2260000,2770000,No,Sí,No,Vida,1,Sí,19,4,<1 min,tratamiento,1,explotar,99,Con mascota
+C00337,36-45,Empleado,6,No Pro,10960000,6190000,No,No,Sí,Vida,1,No,17,4,5-30 min,tratamiento,1,explotar,23,
+C00338,46-55,Empleado,52,No Pro,8000000,4260000,No,No,No,,0,Sí,1,4,1-5 min,tratamiento,1,explotar,81,Gasta lo que entra
+C00339,46-55,Empleado,18,Pro,14740000,4310000,No,Sí,No,,0,Sí,27,4,<1 min,tratamiento,1,explotar,49,Gasta lo que entra
+C00340,26-35,Empleado,15,No Pro,8480000,2470000,No,No,No,,0,Sí,9,4,<1 min,tratamiento,1,explotar,82,Gasto contenido
+C00341,18-25,Empleado,7,No Pro,7120000,2550000,No,Sí,No,,0,No,2,4,1-5 min,tratamiento,1,explotar,81,
+C00342,26-35,Empleado,35,Pro,6550000,3730000,No,Sí,No,,0,Sí,26,4,5-30 min,control,2,,0,Gasto contenido
+C00343,26-35,Empleado,44,No Pro,780000,2060000,No,No,Sí,SOAT,1,Sí,10,4,5-30 min,tratamiento,1,explotar,51,Gasto contenido
+C00344,36-45,Empleado,38,No Pro,9750000,5690000,No,Sí,No,SOAT · Viajes,2,Sí,12,4,5-30 min,tratamiento,1,explotar,45,Con mascota
+C00345,18-25,Independiente,58,No Pro,3710000,2530000,No,Sí,Sí,Vida,1,Sí,7,4,1-5 min,tratamiento,1,explotar,62,Gasto contenido
+C00346,46-55,Independiente,36,Pro,26070000,9750000,Sí,Sí,No,Hogar,1,Sí,16,4,5-30 min,tratamiento,1,explotar,67,Gasta lo que entra
+C00347,26-35,Empleado,19,No Pro,8890000,3620000,Sí,No,No,SOAT,1,Sí,17,4,Mismo día,tratamiento,1,explorar,14,Gasto contenido
+C00348,46-55,Empleado,53,Pro,1260000,4980000,No,Sí,No,,0,Sí,29,4,5-30 min,tratamiento,1,explotar,70,Gasta lo que entra
+C00349,36-45,Empleado,24,No Pro,11050000,4780000,No,Sí,No,,0,Sí,4,4,1-5 min,tratamiento,1,explotar,54,Gasta lo que entra
+C00350,18-25,Empleado,35,Pro,2630000,2330000,No,Sí,No,,0,Sí,16,4,1-5 min,tratamiento,1,explotar,95,Gasto contenido
+C00351,46-55,Empleado,46,No Pro,2840000,8610000,Sí,Sí,No,,0,No,20,4,<1 min,tratamiento,1,explotar,82,
+C00352,18-25,Empleado,36,Pro,3940000,1300000,No,No,No,Vida,1,Sí,26,4,1-5 min,tratamiento,1,explorar,11,Gasto contenido
+C00353,26-35,Empleado,15,No Pro,7870000,4540000,Sí,Sí,No,,0,Sí,10,4,Mismo día,tratamiento,1,explotar,53,Gasta lo que entra
+C00354,26-35,Empleado,27,No Pro,22180000,9860000,No,Sí,No,Vida,1,No,11,4,Mismo día,tratamiento,1,explotar,45,
+C00355,26-35,Empleado,45,No Pro,5810000,3230000,No,Sí,Sí,,0,Sí,10,4,5-30 min,tratamiento,1,explotar,79,Gasta lo que entra
+C00356,56+,Empleado,42,No Pro,2010000,2300000,No,Sí,Sí,Vida,1,Sí,7,4,1-5 min,tratamiento,1,explotar,32,Con mascota
+C00357,26-35,Empleado,59,No Pro,8430000,3440000,No,Sí,No,Desempleo · Hogar · Mascotas,3,Sí,17,4,5-30 min,tratamiento,1,explotar,46,Gasto contenido
+C00358,46-55,Independiente,53,Pro,4350000,5690000,Sí,Sí,No,,0,No,14,4,5-30 min,tratamiento,1,explotar,70,
+C00359,26-35,Pensionado,21,No Pro,8520000,5060000,Sí,No,No,SOAT · Viajes,2,Sí,19,4,1-5 min,tratamiento,1,explotar,60,Gasto contenido
+C00360,46-55,Estudiante,17,No Pro,4160000,2620000,Sí,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,90,Gasto contenido
+C00361,36-45,Empleado,28,No Pro,13460000,4130000,No,Sí,Sí,,0,No,8,4,Mismo día,tratamiento,1,explotar,81,
+C00362,36-45,Pensionado,7,Pro,10080000,4650000,No,Sí,No,,0,Sí,23,4,1-5 min,tratamiento,1,explotar,85,Gasto contenido
+C00363,26-35,Pensionado,50,Pro,12450000,7260000,Sí,No,No,,0,Sí,24,4,Mismo día,tratamiento,1,explotar,93,Gasta lo que entra
+C00364,56+,Empleado,23,Pro,12010000,5510000,Sí,Sí,No,SOAT,1,Sí,11,4,Mismo día,tratamiento,1,explotar,93,Gasta lo que entra
+C00365,26-35,Empleado,39,Pro,1630000,4090000,Sí,Sí,Sí,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,59,Gasta lo que entra
+C00366,26-35,Independiente,10,No Pro,6160000,4520000,Sí,Sí,No,,0,No,24,4,1-5 min,tratamiento,1,explotar,84,
+C00367,36-45,Pensionado,9,No Pro,2000000,4520000,No,Sí,No,Vida,1,No,20,4,1-5 min,tratamiento,1,explotar,89,
+C00368,36-45,Empleado,11,Pro,19660000,8890000,No,Sí,No,Vida,1,Sí,27,4,1-5 min,control,2,,0,Gasto contenido
+C00369,26-35,Independiente,26,No Pro,6690000,3390000,No,No,Sí,,0,Sí,3,4,1-5 min,tratamiento,1,explotar,66,Gasto contenido
+C00370,36-45,Empleado,52,No Pro,4630000,5030000,No,No,No,,0,Sí,5,4,<1 min,tratamiento,1,explotar,64,Gasto contenido
+C00371,36-45,Empleado,40,No Pro,860000,2800000,No,Sí,No,,0,No,19,4,5-30 min,tratamiento,1,explotar,82,
+C00372,26-35,Estudiante,53,Pro,3190000,9730000,No,Sí,Sí,SOAT,1,Sí,19,4,1-5 min,tratamiento,1,explotar,23,Gasta lo que entra
+C00373,26-35,Independiente,35,Pro,7880000,2330000,No,No,No,SOAT,1,Sí,8,4,Mismo día,tratamiento,1,explotar,85,Gasto contenido
+C00374,18-25,Pensionado,23,Pro,13220000,4510000,Sí,Sí,No,Mascotas,1,Sí,6,4,1-5 min,tratamiento,1,explorar,19,Gasto contenido
+C00375,26-35,Empleado,35,No Pro,1830000,4130000,No,Sí,No,,0,Sí,15,4,<1 min,tratamiento,1,explotar,38,Gasto contenido
+C00376,36-45,Empleado,34,No Pro,2960000,2920000,Sí,Sí,No,,0,Sí,6,4,1-5 min,tratamiento,1,explotar,74,Gasto contenido
+C00377,46-55,Empleado,43,No Pro,24320000,8270000,Sí,No,Sí,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,35,Gasta lo que entra
+C00378,26-35,Independiente,37,Pro,1830000,4820000,No,Sí,No,SOAT,1,Sí,16,4,5-30 min,tratamiento,1,explotar,80,Gasta lo que entra
+C00379,26-35,Pensionado,41,Pro,680000,2470000,Sí,No,No,,0,Sí,17,4,5-30 min,tratamiento,1,explotar,88,Gasto contenido
+C00380,18-25,Empleado,24,No Pro,6410000,3680000,No,No,No,Viajes,1,Sí,16,4,<1 min,tratamiento,1,explotar,90,Gasto contenido
+C00381,36-45,Independiente,6,No Pro,17220000,10000000,No,Sí,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,88,Gasto contenido
+C00382,26-35,Empleado,14,Pro,2900000,4300000,No,No,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,69,Gasta lo que entra
+C00383,56+,Empleado,35,Pro,3870000,2070000,No,Sí,No,,0,Sí,32,4,<1 min,tratamiento,1,explotar,91,Gasto contenido
+C00384,26-35,Empleado,22,No Pro,8580000,4060000,No,No,Sí,,0,Sí,22,4,1-5 min,tratamiento,1,explotar,44,Gasta lo que entra
+C00385,36-45,Empleado,42,No Pro,5610000,4530000,No,Sí,No,SOAT · Vida,2,Sí,1,4,Mismo día,tratamiento,1,explotar,74,Gasto contenido
+C00386,56+,Independiente,25,No Pro,9570000,2900000,No,No,No,SOAT,1,Sí,1,4,1-5 min,tratamiento,1,explotar,44,Gasto contenido
+C00387,18-25,Empleado,35,No Pro,7020000,2610000,Sí,Sí,No,Desempleo,1,No,17,4,<1 min,tratamiento,1,explorar,16,
+C00388,18-25,Empleado,59,No Pro,16500000,4970000,No,Sí,No,,0,Sí,9,4,1-5 min,tratamiento,1,explotar,82,Gasto contenido
+C00389,36-45,Empleado,54,No Pro,1780000,4140000,No,Sí,No,,0,Sí,1,4,5-30 min,tratamiento,1,explotar,31,Gasto contenido
+C00390,26-35,Empleado,34,No Pro,12570000,3760000,No,Sí,No,,0,Sí,7,4,5-30 min,tratamiento,1,explotar,57,Con mascota
+C00391,26-35,Empleado,43,No Pro,9280000,2710000,No,Sí,No,,0,No,7,4,1-5 min,tratamiento,1,explotar,52,
+C00392,26-35,Independiente,51,Pro,10640000,3470000,No,Sí,No,,0,Sí,16,4,5-30 min,tratamiento,1,explotar,53,Gasta lo que entra
+C00393,56+,Empleado,47,No Pro,6290000,2130000,No,Sí,No,Vida,1,Sí,11,4,1-5 min,control,2,,8,Con mascota
+C00394,18-25,Empleado,59,No Pro,2710000,1380000,Sí,Sí,No,,0,Sí,16,4,5-30 min,tratamiento,1,explotar,35,Gasto contenido
+C00395,26-35,Estudiante,38,No Pro,10170000,4550000,No,Sí,Sí,SOAT,1,Sí,12,4,1-5 min,tratamiento,1,explorar,14,Gasto contenido
+C00396,18-25,Pensionado,13,Pro,5510000,3950000,Sí,Sí,No,Viajes,1,Sí,22,4,<1 min,tratamiento,1,explotar,37,Gasta lo que entra
+C00397,36-45,Pensionado,49,No Pro,20430000,16020000,No,Sí,No,,0,Sí,11,4,Mismo día,tratamiento,1,explotar,77,Gasto contenido
+C00398,36-45,Estudiante,32,No Pro,11450000,3940000,No,No,Sí,,0,No,10,4,1-5 min,tratamiento,1,explotar,63,
+C00399,56+,Empleado,44,No Pro,15500000,9140000,No,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,51,Gasta lo que entra
+C00400,26-35,Independiente,59,No Pro,26390000,8660000,No,Sí,No,,0,Sí,16,4,5-30 min,tratamiento,1,explorar,13,Gasto contenido
+C00401,36-45,Empleado,9,No Pro,2610000,7920000,No,Sí,No,,0,No,27,4,1-5 min,tratamiento,1,explotar,97,
+C00402,26-35,Independiente,52,Pro,12950000,4190000,Sí,No,No,SOAT,1,No,27,4,5-30 min,tratamiento,1,explotar,64,
+C00403,56+,Independiente,56,Pro,10500000,5130000,Sí,Sí,No,Hogar,1,Sí,17,4,1-5 min,tratamiento,1,explotar,35,Con mascota
+C00404,36-45,Empleado,14,Pro,10770000,12640000,Sí,Sí,Sí,,0,Sí,25,4,5-30 min,tratamiento,1,explotar,72,Gasta lo que entra
+C00405,46-55,Estudiante,26,No Pro,5640000,4150000,No,No,No,,0,Sí,16,4,1-5 min,tratamiento,1,explorar,11,Gasta lo que entra
+C00406,18-25,Empleado,3,Pro,12820000,4390000,No,Sí,No,SOAT,1,Sí,16,4,5-30 min,tratamiento,1,explotar,33,Gasto contenido
+C00407,56+,Estudiante,2,No Pro,21160000,6540000,No,Sí,No,Desempleo,1,Sí,22,4,5-30 min,tratamiento,1,explotar,82,Gasta lo que entra
+C00408,26-35,Empleado,55,No Pro,9570000,3300000,No,No,No,Hogar,1,Sí,12,4,1-5 min,tratamiento,1,explotar,57,Gasta lo que entra
+C00409,46-55,Empleado,26,No Pro,3730000,4840000,Sí,Sí,No,Vida,1,Sí,14,4,1-5 min,tratamiento,1,explotar,38,Gasto contenido
+C00410,36-45,Empleado,38,No Pro,11880000,6180000,Sí,Sí,No,Vida,1,No,1,4,5-30 min,tratamiento,1,explotar,73,
+C00411,18-25,Empleado,20,Pro,7880000,3970000,Sí,Sí,No,,0,Sí,25,4,1-5 min,tratamiento,1,explotar,69,Gasto contenido
+C00412,56+,Independiente,19,No Pro,8210000,6900000,Sí,Sí,No,Hogar,1,Sí,6,4,<1 min,tratamiento,1,explotar,70,Gasta lo que entra
+C00413,26-35,Empleado,39,No Pro,12070000,4410000,No,Sí,No,,0,Sí,17,4,1-5 min,tratamiento,1,explotar,75,Gasto contenido
+C00414,26-35,Pensionado,14,No Pro,1440000,4230000,No,No,No,,0,Sí,10,4,5-30 min,tratamiento,1,explotar,25,Gasto contenido
+C00415,26-35,Estudiante,48,No Pro,1130000,2800000,Sí,No,No,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,35,Gasto contenido
+C00416,46-55,Empleado,7,No Pro,10590000,4170000,No,Sí,No,,0,Sí,24,4,<1 min,tratamiento,1,explorar,11,Gasto contenido
+C00417,26-35,Independiente,42,Pro,10020000,2880000,No,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,41,Gasto contenido
+C00418,46-55,Empleado,23,No Pro,54130000,16030000,No,No,Sí,,0,Sí,9,4,Mismo día,tratamiento,1,explotar,32,Gasto contenido
+C00419,56+,Independiente,32,No Pro,2960000,3680000,No,Sí,Sí,Vida · Hogar,2,Sí,27,4,Mismo día,tratamiento,1,explotar,84,Gasta lo que entra
+C00420,26-35,Empleado,14,Pro,15120000,5240000,No,Sí,Sí,,0,Sí,27,4,1-5 min,tratamiento,1,explotar,43,Gasta lo que entra
+C00421,26-35,Empleado,52,No Pro,6010000,3520000,No,Sí,Sí,,0,No,9,4,<1 min,tratamiento,1,explotar,67,
+C00422,36-45,Empleado,55,No Pro,13610000,7580000,No,Sí,No,SOAT,1,No,10,4,1-5 min,tratamiento,1,explotar,47,
+C00423,46-55,Empleado,9,No Pro,16350000,7450000,No,Sí,No,Vida,1,Sí,19,4,1-5 min,tratamiento,1,explotar,72,Gasta lo que entra
+C00424,26-35,Estudiante,23,No Pro,5380000,1910000,No,No,No,,0,Sí,1,4,5-30 min,tratamiento,1,explotar,42,Gasto contenido
+C00425,36-45,Empleado,14,No Pro,8930000,5350000,Sí,Sí,No,SOAT,1,Sí,11,4,1-5 min,tratamiento,1,explotar,93,Gasta lo que entra
+C00426,36-45,Empleado,1,No Pro,21250000,8380000,No,Sí,No,,0,Sí,16,4,1-5 min,tratamiento,1,explorar,17,Gasta lo que entra
+C00427,36-45,Independiente,31,Pro,11940000,8620000,No,Sí,Sí,SOAT,1,No,30,4,<1 min,tratamiento,1,explotar,20,
+C00428,36-45,Empleado,7,No Pro,21540000,6700000,No,Sí,No,Vida · Viajes,2,No,1,4,5-30 min,tratamiento,1,explorar,18,
+C00429,26-35,Empleado,58,Pro,9140000,2640000,No,Sí,No,,0,Sí,31,4,1-5 min,tratamiento,1,explotar,36,Gasta lo que entra
+C00430,26-35,Empleado,21,No Pro,17110000,5340000,Sí,Sí,Sí,,0,Sí,11,4,Mismo día,tratamiento,1,explotar,90,Gasto contenido
+C00431,36-45,Pensionado,32,No Pro,18720000,8800000,No,Sí,No,,0,Sí,14,4,Mismo día,tratamiento,1,explotar,39,Gasto contenido
+C00432,26-35,Empleado,47,Pro,18360000,6480000,No,Sí,No,,0,Sí,35,4,1-5 min,tratamiento,1,explotar,41,Gasta lo que entra
+C00433,36-45,Independiente,22,No Pro,2270000,4320000,No,No,No,,0,Sí,21,4,Mismo día,tratamiento,1,explotar,74,Gasto contenido
+C00434,46-55,Independiente,4,No Pro,12980000,5060000,No,No,No,SOAT,1,Sí,14,4,<1 min,control,2,,3,Gasta lo que entra
+C00435,36-45,Estudiante,1,Pro,2690000,4630000,Sí,Sí,No,,0,Sí,16,4,Mismo día,tratamiento,1,explotar,51,Gasta lo que entra
+C00436,18-25,Empleado,25,No Pro,1030000,1430000,No,Sí,No,SOAT,1,No,1,4,Mismo día,tratamiento,1,explotar,32,
+C00437,18-25,Independiente,48,Pro,1960000,1870000,No,Sí,No,Mascotas,1,Sí,20,4,<1 min,tratamiento,1,explotar,28,Gasto contenido
+C00438,46-55,Empleado,27,No Pro,26840000,11430000,No,Sí,No,,0,Sí,7,4,5-30 min,tratamiento,1,explotar,61,Gasta lo que entra
+C00439,46-55,Independiente,43,No Pro,8340000,7700000,No,No,No,Vida,1,Sí,1,4,1-5 min,tratamiento,1,explotar,84,Gasto contenido
+C00440,26-35,Empleado,37,No Pro,4870000,3680000,Sí,Sí,No,,0,Sí,24,4,1-5 min,tratamiento,1,explotar,37,Gasto contenido
+C00441,18-25,Empleado,36,No Pro,5810000,2530000,Sí,No,Sí,Desempleo · Hogar,2,Sí,16,4,5-30 min,tratamiento,1,explotar,98,Gasta lo que entra
+C00442,26-35,Estudiante,25,No Pro,6470000,2430000,Sí,Sí,No,,0,Sí,11,4,<1 min,tratamiento,1,explotar,44,Gasto contenido
+C00443,26-35,Empleado,40,Pro,4770000,3260000,No,Sí,Sí,Mascotas,1,Sí,26,4,1-5 min,tratamiento,1,explotar,99,Gasta lo que entra
+C00444,46-55,Estudiante,31,No Pro,4410000,4690000,Sí,No,Sí,,0,Sí,18,4,1-5 min,tratamiento,1,explotar,36,Gasta lo que entra
+C00445,26-35,Independiente,9,Pro,9520000,4320000,No,No,No,SOAT,1,Sí,32,4,Mismo día,control,2,,0,Gasta lo que entra
+C00446,36-45,Empleado,31,No Pro,9710000,3170000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explorar,10,Gasto contenido
+C00447,36-45,Empleado,59,Pro,4600000,4170000,No,No,No,,0,Sí,11,4,1-5 min,control,2,,2,Gasto contenido
+C00448,26-35,Empleado,48,No Pro,17000000,6320000,No,Sí,No,SOAT · Hogar,2,Sí,9,4,Mismo día,control,2,,9,Gasto contenido
+C00449,26-35,Empleado,6,No Pro,7190000,3370000,No,Sí,No,SOAT,1,Sí,1,4,1-5 min,tratamiento,1,explotar,84,Gasto contenido
+C00450,36-45,Empleado,30,No Pro,35800000,10960000,Sí,No,No,,0,Sí,22,4,Mismo día,tratamiento,1,explotar,66,Gasta lo que entra
+C00451,46-55,Empleado,4,No Pro,18250000,5520000,No,Sí,No,,0,Sí,1,4,5-30 min,control,2,,3,Gasta lo que entra
+C00452,36-45,Empleado,53,No Pro,2560000,9460000,No,Sí,No,,0,Sí,14,4,<1 min,tratamiento,1,explotar,66,Con mascota
+C00453,18-25,Empleado,8,Pro,4610000,2290000,No,Sí,No,,0,Sí,28,4,<1 min,tratamiento,1,explotar,79,Gasta lo que entra
+C00454,56+,Empleado,44,Pro,18280000,7970000,No,Sí,No,,0,Sí,23,4,1-5 min,tratamiento,1,explotar,80,Gasta lo que entra
+C00455,36-45,Empleado,22,No Pro,5460000,3600000,No,Sí,No,SOAT,1,Sí,4,4,5-30 min,tratamiento,1,explotar,59,Gasto contenido
+C00456,26-35,Empleado,6,No Pro,3990000,5460000,No,Sí,No,,0,Sí,3,4,5-30 min,tratamiento,1,explotar,44,Gasto contenido
+C00457,26-35,Empleado,41,No Pro,2260000,1860000,No,Sí,No,,0,Sí,12,4,<1 min,tratamiento,1,explotar,30,Gasto contenido
+C00458,36-45,Empleado,21,Pro,33500000,10340000,Sí,No,No,,0,Sí,30,4,5-30 min,tratamiento,1,explotar,42,Gasta lo que entra
+C00459,46-55,Empleado,27,No Pro,11390000,4680000,No,Sí,No,Vida,1,Sí,14,4,Mismo día,tratamiento,1,explorar,15,Gasto contenido
+C00460,56+,Independiente,4,No Pro,12780000,3820000,No,No,No,SOAT,1,Sí,1,4,5-30 min,tratamiento,1,explotar,70,Gasto contenido
+C00461,46-55,Empleado,49,Pro,4760000,4330000,Sí,No,No,,0,Sí,20,4,1-5 min,tratamiento,1,explotar,99,Gasto contenido
+C00462,26-35,Empleado,56,No Pro,2970000,7930000,Sí,Sí,No,,0,Sí,18,4,<1 min,tratamiento,1,explotar,29,Gasta lo que entra
+C00463,46-55,Empleado,45,Pro,6530000,4670000,Sí,Sí,No,SOAT · Hogar · Mascotas,3,Sí,24,4,5-30 min,tratamiento,1,explotar,99,Gasta lo que entra
+C00464,36-45,Empleado,42,No Pro,7310000,9450000,Sí,Sí,No,,0,Sí,19,4,5-30 min,tratamiento,1,explotar,49,Gasta lo que entra
+C00465,26-35,Empleado,6,Pro,7090000,3570000,No,Sí,No,,0,No,24,4,1-5 min,tratamiento,1,explotar,39,
+C00466,36-45,Empleado,45,No Pro,490000,1370000,Sí,Sí,No,,0,Sí,10,4,5-30 min,tratamiento,1,explotar,79,Gasto contenido
+C00467,26-35,Empleado,10,No Pro,13480000,5170000,No,No,No,Vida,1,Sí,20,4,5-30 min,tratamiento,1,explorar,13,Gasto contenido
+C00468,26-35,Estudiante,55,No Pro,1420000,2250000,No,Sí,No,,0,Sí,26,4,1-5 min,control,2,,4,Gasto contenido
+C00469,18-25,Empleado,50,No Pro,9130000,3970000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,65,Con mascota
+C00470,56+,Empleado,21,No Pro,7300000,4440000,No,Sí,No,Mascotas,1,Sí,26,4,Mismo día,tratamiento,1,explotar,38,Gasto contenido
+C00471,18-25,Empleado,16,No Pro,2510000,2410000,No,Sí,No,,0,Sí,5,4,5-30 min,tratamiento,1,explotar,24,Con mascota
+C00472,36-45,Empleado,32,No Pro,10950000,6490000,Sí,No,No,,0,Sí,16,4,1-5 min,tratamiento,1,explotar,99,Gasto contenido
+C00473,36-45,Independiente,13,No Pro,29030000,8580000,No,No,No,Vida,1,Sí,16,4,Mismo día,control,2,,4,Gasto contenido
+C00474,36-45,Empleado,51,No Pro,3040000,6690000,No,Sí,No,,0,Sí,1,4,<1 min,tratamiento,1,explotar,29,Gasto contenido
+C00475,26-35,Empleado,12,No Pro,6560000,4290000,Sí,No,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,83,Gasto contenido
+C00476,36-45,Empleado,16,No Pro,1790000,5430000,Sí,Sí,Sí,,0,Sí,4,4,<1 min,control,2,,0,Gasto contenido
+C00477,18-25,Empleado,34,No Pro,12950000,5890000,Sí,No,No,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,49,Gasta lo que entra
+C00478,36-45,Empleado,38,No Pro,2030000,6840000,No,Sí,No,,0,Sí,22,4,5-30 min,tratamiento,1,explotar,59,Gasto contenido
+C00479,36-45,Estudiante,28,No Pro,29860000,9640000,Sí,No,No,SOAT · Hogar,2,Sí,22,4,1-5 min,tratamiento,1,explotar,47,Gasta lo que entra
+C00480,36-45,Empleado,55,No Pro,11540000,7700000,No,No,No,SOAT,1,No,13,4,1-5 min,tratamiento,1,explotar,67,
+C00481,36-45,Empleado,15,No Pro,20460000,9180000,Sí,Sí,No,,0,Sí,19,4,1-5 min,tratamiento,1,explotar,39,Gasta lo que entra
+C00482,36-45,Estudiante,18,No Pro,57270000,17090000,Sí,Sí,No,Desempleo,1,Sí,17,4,1-5 min,tratamiento,1,explotar,94,Gasto contenido
+C00483,18-25,Empleado,8,No Pro,8430000,2510000,No,Sí,No,SOAT,1,Sí,17,4,1-5 min,tratamiento,1,explorar,15,Gasta lo que entra
+C00484,46-55,Empleado,47,No Pro,12910000,4500000,No,Sí,No,SOAT · Hogar,2,Sí,16,4,1-5 min,tratamiento,1,explorar,17,Con mascota
+C00485,26-35,Independiente,30,Pro,4930000,2750000,Sí,No,No,Vida,1,No,20,4,1-5 min,tratamiento,1,explotar,86,
+C00486,46-55,Independiente,52,No Pro,19380000,6370000,No,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,34,Gasto contenido
+C00487,26-35,Empleado,5,No Pro,13470000,3950000,No,Sí,No,,0,Sí,9,4,<1 min,tratamiento,1,explotar,56,Gasta lo que entra
+C00488,18-25,Empleado,8,No Pro,920000,2740000,No,Sí,No,SOAT,1,No,6,4,1-5 min,tratamiento,1,explotar,57,
+C00489,18-25,Estudiante,1,No Pro,4900000,4490000,Sí,No,No,,0,Sí,1,4,1-5 min,control,2,,5,Gasto contenido
+C00490,46-55,Empleado,2,No Pro,12800000,4290000,Sí,Sí,No,SOAT · Vida,2,Sí,2,4,5-30 min,tratamiento,1,explotar,76,Gasto contenido
+C00491,26-35,Estudiante,29,Pro,10970000,7960000,No,Sí,No,,0,Sí,23,4,5-30 min,tratamiento,1,explotar,83,Gasta lo que entra
+C00492,36-45,Empleado,16,No Pro,2860000,5140000,Sí,No,No,Vida,1,Sí,17,4,5-30 min,control,2,,3,Gasto contenido
+C00493,26-35,Independiente,26,Pro,10040000,3030000,Sí,No,No,Vida,1,Sí,22,4,1-5 min,tratamiento,1,explotar,67,Gasta lo que entra
+C00494,26-35,Independiente,55,Pro,6210000,6770000,No,Sí,No,SOAT,1,Sí,25,4,1-5 min,control,2,,6,Gasta lo que entra
+C00495,18-25,Empleado,40,No Pro,3350000,1700000,No,No,No,SOAT,1,Sí,9,4,1-5 min,tratamiento,1,explotar,79,Gasto contenido
+C00496,26-35,Independiente,6,No Pro,4310000,4150000,No,No,No,SOAT,1,Sí,17,4,1-5 min,tratamiento,1,explorar,15,Gasta lo que entra
+C00497,56+,Empleado,9,Pro,4510000,4850000,No,No,No,Mascotas,1,No,15,4,1-5 min,tratamiento,1,explotar,78,
+C00498,36-45,Empleado,12,No Pro,7620000,4890000,Sí,Sí,No,SOAT,1,Sí,19,4,1-5 min,tratamiento,1,explotar,84,Gasta lo que entra
+C00499,26-35,Independiente,14,No Pro,6320000,2100000,No,No,No,,0,Sí,12,4,1-5 min,tratamiento,1,explotar,71,Gasto contenido
+C00500,36-45,Empleado,3,No Pro,14300000,4900000,Sí,No,No,SOAT,1,Sí,14,4,1-5 min,control,2,,8,Gasto contenido
+C00501,26-35,Empleado,34,No Pro,4940000,3690000,No,No,Sí,,0,Sí,10,4,<1 min,tratamiento,1,explorar,13,Gasta lo que entra
+C00502,36-45,Independiente,16,No Pro,18320000,6760000,Sí,Sí,No,,0,Sí,13,4,Mismo día,tratamiento,1,explotar,24,Gasta lo que entra
+C00503,26-35,Empleado,58,No Pro,3890000,1720000,Sí,Sí,No,Desempleo,1,Sí,22,4,5-30 min,tratamiento,1,explotar,36,Gasto contenido
+C00504,46-55,Empleado,3,No Pro,19310000,9750000,Sí,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,87,Gasta lo que entra
+C00505,18-25,Independiente,48,No Pro,2360000,2000000,Sí,No,No,,0,Sí,7,4,1-5 min,tratamiento,1,explotar,39,Gasto contenido
+C00506,26-35,Empleado,11,No Pro,1670000,2180000,No,Sí,No,,0,Sí,1,4,Mismo día,tratamiento,1,explotar,34,Gasta lo que entra
+C00507,26-35,Pensionado,54,No Pro,5830000,2440000,Sí,Sí,No,Vida,1,Sí,15,4,<1 min,control,2,,9,Con mascota
+C00508,18-25,Independiente,12,Pro,1580000,2320000,Sí,No,Sí,,0,Sí,30,4,<1 min,tratamiento,1,explotar,29,Gasto contenido
+C00509,36-45,Empleado,35,No Pro,25110000,8200000,Sí,Sí,No,,0,Sí,25,4,Mismo día,tratamiento,1,explorar,16,Gasta lo que entra
+C00510,46-55,Empleado,49,No Pro,13340000,6870000,Sí,Sí,No,,0,Sí,12,4,5-30 min,tratamiento,1,explotar,55,Gasto contenido
+C00511,26-35,Empleado,53,Pro,2390000,7620000,No,No,No,,0,Sí,21,4,<1 min,tratamiento,1,explotar,93,Gasto contenido
+C00512,46-55,Empleado,2,No Pro,16950000,10800000,Sí,Sí,No,Mascotas,1,Sí,14,4,5-30 min,tratamiento,1,explotar,52,Gasto contenido
+C00513,26-35,Empleado,36,No Pro,4290000,10350000,No,Sí,No,,0,Sí,5,4,5-30 min,tratamiento,1,explotar,84,Gasta lo que entra
+C00514,46-55,Pensionado,12,No Pro,29820000,9320000,No,No,No,SOAT,1,Sí,8,4,1-5 min,tratamiento,1,explorar,11,Gasta lo que entra
+C00515,26-35,Independiente,48,No Pro,7690000,14150000,Sí,No,No,Desempleo,1,Sí,13,4,Mismo día,tratamiento,1,explorar,11,Gasta lo que entra
+C00516,18-25,Independiente,53,Pro,4890000,1720000,No,Sí,No,SOAT,1,Sí,18,4,1-5 min,tratamiento,1,explotar,60,Con mascota
+C00517,26-35,Empleado,41,Pro,3470000,3550000,No,Sí,No,SOAT,1,No,18,4,5-30 min,tratamiento,1,explotar,80,
+C00518,36-45,Independiente,11,No Pro,7360000,5000000,No,No,No,Hogar,1,Sí,12,4,5-30 min,tratamiento,1,explotar,79,Gasto contenido
+C00519,56+,Empleado,15,No Pro,9900000,3320000,No,Sí,No,,0,Sí,5,4,5-30 min,tratamiento,1,explotar,49,Gasto contenido
+C00520,36-45,Pensionado,16,No Pro,21930000,6950000,No,No,No,,0,Sí,23,4,5-30 min,tratamiento,1,explotar,58,Gasta lo que entra
+C00521,56+,Empleado,26,No Pro,22380000,8620000,Sí,Sí,No,,0,Sí,1,4,5-30 min,tratamiento,1,explorar,15,Gasto contenido
+C00522,46-55,Empleado,33,No Pro,9500000,5290000,No,No,Sí,SOAT · Mascotas,2,Sí,8,4,5-30 min,tratamiento,1,explotar,68,Gasto contenido
+C00523,36-45,Independiente,32,No Pro,4160000,4600000,No,No,Sí,,0,Sí,21,4,1-5 min,tratamiento,1,explotar,92,Gasta lo que entra
+C00524,18-25,Pensionado,40,No Pro,5700000,3530000,Sí,No,No,Desempleo · Hogar,2,Sí,17,4,<1 min,tratamiento,1,explotar,68,Gasto contenido
+C00525,46-55,Empleado,1,No Pro,18230000,6530000,No,No,Sí,Mascotas,1,Sí,15,4,5-30 min,tratamiento,1,explotar,63,Gasta lo que entra
+C00526,46-55,Estudiante,28,No Pro,9130000,2700000,No,Sí,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,86,Con mascota
+C00527,26-35,Empleado,36,Pro,9960000,5240000,Sí,Sí,Sí,,0,Sí,19,4,<1 min,tratamiento,1,explotar,83,Gasta lo que entra
+C00528,26-35,Independiente,41,No Pro,4270000,3260000,No,Sí,Sí,Mascotas,1,Sí,10,4,<1 min,tratamiento,1,explotar,33,Gasto contenido
+C00529,36-45,Independiente,24,No Pro,3370000,4300000,Sí,No,Sí,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,82,Gasta lo que entra
+C00530,18-25,Empleado,11,No Pro,4570000,2170000,Sí,No,No,Vida · Hogar,2,Sí,8,4,Mismo día,tratamiento,1,explotar,99,Gasta lo que entra
+C00531,46-55,Empleado,33,No Pro,6690000,8890000,No,No,No,SOAT,1,No,7,4,1-5 min,tratamiento,1,explotar,82,
+C00532,26-35,Empleado,16,No Pro,9800000,4930000,Sí,No,No,,0,No,2,4,1-5 min,tratamiento,1,explotar,83,
+C00533,36-45,Independiente,57,No Pro,25230000,8450000,No,Sí,No,,0,No,8,4,<1 min,tratamiento,1,explotar,58,
+C00534,26-35,Independiente,4,No Pro,4540000,2760000,No,No,No,SOAT,1,Sí,17,4,Mismo día,tratamiento,1,explotar,33,Gasto contenido
+C00535,56+,Independiente,9,No Pro,5280000,3450000,Sí,Sí,No,,0,Sí,15,4,<1 min,tratamiento,1,explotar,23,Gasta lo que entra
+C00536,26-35,Empleado,45,No Pro,11430000,4470000,No,No,No,Mascotas,1,Sí,6,4,<1 min,tratamiento,1,explotar,44,Gasto contenido
+C00537,26-35,Pensionado,6,No Pro,21750000,6260000,No,Sí,Sí,,0,Sí,15,4,1-5 min,tratamiento,1,explorar,10,Gasto contenido
+C00538,26-35,Empleado,11,No Pro,1840000,4050000,No,Sí,No,,0,Sí,3,4,<1 min,tratamiento,1,explotar,96,Gasta lo que entra
+C00539,36-45,Independiente,17,Pro,11260000,4020000,No,Sí,No,,0,No,23,4,5-30 min,tratamiento,1,explotar,46,
+C00540,18-25,Empleado,57,No Pro,7970000,2820000,Sí,Sí,No,Desempleo,1,No,6,4,5-30 min,tratamiento,1,explotar,91,
+C00541,36-45,Empleado,54,No Pro,11080000,5000000,No,Sí,No,SOAT,1,Sí,10,4,1-5 min,tratamiento,1,explotar,27,Gasta lo que entra
+C00542,18-25,Independiente,28,No Pro,2640000,2560000,No,No,No,,0,Sí,20,4,<1 min,tratamiento,1,explotar,88,Gasta lo que entra
+C00543,46-55,Empleado,41,No Pro,13330000,4970000,No,Sí,No,,0,Sí,14,4,1-5 min,control,2,,0,Gasto contenido
+C00544,36-45,Estudiante,33,No Pro,11490000,3780000,No,No,No,SOAT,1,Sí,4,4,1-5 min,tratamiento,1,explotar,35,Gasta lo que entra
+C00545,36-45,Pensionado,27,No Pro,12160000,4080000,No,Sí,No,Desempleo · Hogar,2,Sí,9,4,Mismo día,control,2,,2,Gasto contenido
+C00546,18-25,Pensionado,10,No Pro,5190000,2830000,No,No,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,81,Gasto contenido
+C00547,56+,Independiente,37,No Pro,16690000,8900000,No,Sí,No,SOAT,1,Sí,1,4,1-5 min,tratamiento,1,explotar,90,Gasto contenido
+C00548,26-35,Empleado,44,No Pro,9870000,4420000,No,Sí,Sí,Hogar,1,Sí,3,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00549,56+,Pensionado,6,No Pro,6320000,4430000,No,No,No,,0,Sí,9,4,5-30 min,tratamiento,1,explotar,83,Gasto contenido
+C00550,36-45,Empleado,7,No Pro,10900000,6130000,Sí,Sí,No,,0,Sí,11,4,Mismo día,tratamiento,1,explorar,16,Gasta lo que entra
+C00551,36-45,Empleado,27,No Pro,20520000,7330000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,32,Gasto contenido
+C00552,18-25,Pensionado,55,No Pro,1100000,1830000,No,Sí,No,Mascotas,1,Sí,24,4,5-30 min,tratamiento,1,explotar,30,Gasto contenido
+C00553,46-55,Empleado,20,Pro,2360000,2940000,Sí,Sí,No,Desempleo,1,Sí,12,4,Mismo día,tratamiento,1,explotar,99,Con mascota
+C00554,26-35,Empleado,26,No Pro,5640000,4130000,No,Sí,No,Hogar,1,Sí,1,4,Mismo día,tratamiento,1,explotar,55,Con mascota
+C00555,26-35,Empleado,58,No Pro,7620000,2200000,No,Sí,No,,0,Sí,15,4,5-30 min,tratamiento,1,explotar,34,Con mascota
+C00556,36-45,Empleado,39,Pro,19640000,6170000,No,No,No,SOAT,1,Sí,25,4,Mismo día,tratamiento,1,explotar,65,Gasta lo que entra
+C00557,36-45,Empleado,10,No Pro,13730000,5510000,No,Sí,No,SOAT,1,Sí,6,4,Mismo día,tratamiento,1,explotar,92,Gasta lo que entra
+C00558,36-45,Empleado,60,No Pro,1220000,4000000,Sí,Sí,No,Desempleo,1,Sí,14,4,5-30 min,tratamiento,1,explotar,49,Gasta lo que entra
+C00559,36-45,Estudiante,17,No Pro,7020000,2790000,Sí,Sí,No,Desempleo,1,Sí,1,4,1-5 min,tratamiento,1,explotar,94,Gasta lo que entra
+C00560,46-55,Independiente,5,No Pro,4600000,3090000,No,Sí,No,,0,Sí,7,4,<1 min,tratamiento,1,explotar,37,Gasta lo que entra
+C00561,36-45,Independiente,25,No Pro,10010000,7810000,No,No,No,,0,Sí,1,4,<1 min,tratamiento,1,explotar,63,Gasto contenido
+C00562,36-45,Empleado,31,No Pro,9880000,3450000,No,No,No,,0,Sí,8,4,1-5 min,tratamiento,1,explotar,48,Gasto contenido
+C00563,26-35,Estudiante,56,No Pro,3880000,2600000,No,Sí,No,,0,Sí,16,4,<1 min,control,2,,6,Con mascota
+C00564,26-35,Independiente,37,No Pro,2800000,2380000,Sí,Sí,Sí,,0,Sí,16,4,<1 min,tratamiento,1,explotar,71,Gasta lo que entra
+C00565,26-35,Empleado,39,No Pro,1610000,2480000,No,Sí,No,,0,Sí,12,4,Mismo día,tratamiento,1,explorar,16,Gasta lo que entra
+C00566,46-55,Empleado,59,No Pro,4470000,7350000,Sí,No,No,,0,Sí,1,4,5-30 min,tratamiento,1,explorar,14,Gasta lo que entra
+C00567,56+,Empleado,7,No Pro,31120000,10780000,Sí,Sí,No,Desempleo · Viajes,2,Sí,10,4,5-30 min,tratamiento,1,explotar,87,Con mascota
+C00568,36-45,Independiente,21,No Pro,8410000,2700000,No,No,No,,0,Sí,12,4,Mismo día,tratamiento,1,explotar,51,Gasto contenido
+C00569,26-35,Empleado,42,Pro,20130000,6210000,Sí,No,No,,0,Sí,4,4,1-5 min,tratamiento,1,explotar,34,Gasto contenido
+C00570,36-45,Pensionado,18,Pro,8280000,4300000,No,No,No,SOAT,1,Sí,30,4,<1 min,tratamiento,1,explotar,62,Gasta lo que entra
+C00571,18-25,Independiente,54,No Pro,10360000,3100000,No,Sí,No,,0,Sí,21,4,5-30 min,tratamiento,1,explorar,11,Con mascota
+C00572,46-55,Empleado,42,No Pro,4760000,4160000,No,Sí,No,SOAT · Hogar,2,Sí,10,4,1-5 min,tratamiento,1,explotar,42,Gasto contenido
+C00573,36-45,Empleado,47,No Pro,6150000,7360000,Sí,No,No,Mascotas,1,Sí,10,4,5-30 min,tratamiento,1,explorar,12,Gasto contenido
+C00574,46-55,Empleado,15,No Pro,15960000,5380000,No,Sí,No,,0,Sí,7,4,5-30 min,control,2,,5,Gasto contenido
+C00575,36-45,Empleado,59,No Pro,31890000,10490000,Sí,No,No,,0,Sí,14,4,5-30 min,tratamiento,1,explotar,37,Gasta lo que entra
+C00576,36-45,Empleado,44,No Pro,4030000,5250000,No,Sí,Sí,,0,Sí,15,4,<1 min,tratamiento,1,explotar,67,Gasta lo que entra
+C00577,46-55,Empleado,33,No Pro,30250000,12920000,No,Sí,No,,0,Sí,14,4,1-5 min,tratamiento,1,explotar,53,Gasta lo que entra
+C00578,26-35,Empleado,50,No Pro,2550000,5420000,No,Sí,No,Desempleo,1,No,17,4,<1 min,tratamiento,1,explotar,68,
+C00579,36-45,Independiente,50,No Pro,3500000,5380000,No,Sí,Sí,,0,Sí,17,4,<1 min,control,2,,7,Gasta lo que entra
+C00580,18-25,Independiente,44,No Pro,2730000,2670000,No,Sí,No,SOAT,1,Sí,15,4,1-5 min,tratamiento,1,explotar,92,Gasto contenido
+C00581,26-35,Empleado,54,Pro,5980000,4520000,Sí,Sí,No,,0,Sí,15,4,1-5 min,tratamiento,1,explotar,90,Gasta lo que entra
+C00582,26-35,Empleado,42,No Pro,2710000,3940000,Sí,No,No,Vida,1,Sí,19,4,5-30 min,tratamiento,1,explotar,49,Gasto contenido
+C00583,26-35,Empleado,22,No Pro,8080000,3050000,No,Sí,No,SOAT · Viajes,2,Sí,10,4,1-5 min,tratamiento,1,explorar,17,Gasto contenido
+C00584,26-35,Empleado,36,Pro,23280000,6730000,No,Sí,No,,0,Sí,13,4,1-5 min,tratamiento,1,explotar,32,Gasta lo que entra
+C00585,26-35,Empleado,23,No Pro,6660000,2850000,No,Sí,Sí,,0,Sí,6,4,Mismo día,tratamiento,1,explotar,89,Gasto contenido
+C00586,26-35,Independiente,13,No Pro,3710000,2400000,No,Sí,No,Vida,1,Sí,16,4,1-5 min,tratamiento,1,explotar,77,Gasta lo que entra
+C00587,56+,Independiente,17,No Pro,2410000,4300000,No,Sí,No,,0,Sí,4,4,Mismo día,tratamiento,1,explorar,15,Gasto contenido
+C00588,36-45,Empleado,58,Pro,15760000,6440000,No,Sí,No,SOAT,1,Sí,24,4,1-5 min,tratamiento,1,explotar,21,Gasta lo que entra
+C00589,26-35,Independiente,35,No Pro,3840000,3700000,No,No,No,,0,Sí,9,4,Mismo día,tratamiento,1,explotar,49,Gasto contenido
+C00590,36-45,Empleado,11,No Pro,8040000,2460000,Sí,No,Sí,,0,No,13,4,Mismo día,tratamiento,1,explorar,19,
+C00591,36-45,Empleado,23,Pro,12690000,9440000,No,Sí,No,,0,Sí,34,4,<1 min,tratamiento,1,explotar,64,Gasta lo que entra
+C00592,18-25,Empleado,53,Pro,4640000,1550000,No,Sí,No,SOAT · Hogar,2,Sí,16,4,1-5 min,tratamiento,1,explotar,79,Gasto contenido
+C00593,46-55,Empleado,44,Pro,21210000,6480000,Sí,Sí,Sí,Desempleo,1,Sí,13,4,5-30 min,tratamiento,1,explotar,71,Con mascota
+C00594,46-55,Empleado,60,No Pro,47870000,13700000,No,Sí,No,SOAT,1,Sí,17,4,1-5 min,tratamiento,1,explotar,85,Gasta lo que entra
+C00595,56+,Empleado,25,Pro,24920000,11040000,No,Sí,No,,0,Sí,24,4,5-30 min,tratamiento,1,explotar,88,Gasta lo que entra
+C00596,56+,Independiente,54,No Pro,2370000,4060000,No,Sí,No,SOAT,1,Sí,8,4,Mismo día,tratamiento,1,explotar,42,Gasto contenido
+C00597,36-45,Pensionado,18,No Pro,10430000,9860000,Sí,Sí,Sí,,0,Sí,30,4,5-30 min,tratamiento,1,explotar,46,Gasta lo que entra
+C00598,26-35,Empleado,33,No Pro,13310000,6430000,No,Sí,No,SOAT · Hogar,2,Sí,19,4,1-5 min,tratamiento,1,explotar,27,Gasto contenido
+C00599,26-35,Independiente,50,No Pro,27380000,8330000,No,Sí,No,,0,Sí,5,4,Mismo día,tratamiento,1,explorar,18,Gasta lo que entra
+C00600,36-45,Independiente,24,No Pro,25460000,7780000,No,No,No,SOAT,1,No,8,4,Mismo día,tratamiento,1,explotar,58,

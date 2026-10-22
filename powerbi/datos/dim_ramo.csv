@@ -1,0 +1,7 @@
+ramo,titulo,aliado,periodicidad,prima_cop,comision_pct,persistencia_6m,persistencia_12m,cancelacion_pct,meses_esperados,comision_12m_cop,conversion_previa,fuente_conversion,compras_por_su_cuenta,ritmo_semanal_por_su_cuenta,piloto_n_20,piloto_n_50,piloto_n_100,orden
+SOAT,SOAT,Seguros Mundial,Anual,365000,0.085,,,0.04,,29784,0.129,ventas / impactados de la campaña previa,50,0.0017107,2871,510,147,1
+Vida,Seguro de vida,AXA Colpatria,Mensual,28500,0.32,0.91,0.83,0.1,10.95,99864,0.0923,ventas / impactados de la campaña previa,27,0.0009238,4201,752,219,2
+Desempleo,Seguro de desempleo,Chubb,Mensual,32900,0.3,0.87,0.74,0.16,10.44,103043,0.0803,ventas / impactados de la campaña previa,0,0,4900,879,257,3
+Hogar,Seguro de hogar,,Mensual,24900,0.28,0.89,0.79,0.13,10.71,74670,0.0803,"supuesto: sin campaña previa, se usa la menor conversión observada",24,0.0008211,4900,879,257,4
+Mascotas,Seguro de mascotas,,Mensual,21900,0.27,0.85,0.71,0.18,10.23,60490,0.1058,ventas / impactados de la campaña previa,12,0.0004106,3605,643,187,5
+Viajes,Seguro de viaje,IGS Asistencias,Por viaje,78000,0.24,,,0.03,,18158,0.1017,ventas / impactados de la campaña previa,0,0,3769,673,196,6

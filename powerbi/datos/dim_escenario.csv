@@ -1,0 +1,3 @@
+escenario,nombre,descripcion,orden
+señal,El motor ve más que la regla,"Verdad del escenario «señal» del laboratorio: efectos que la regla no ve (uso de la app, perfil, bolsillos, peajes), momento × 1,6, señal media × 0,45 y un apetito propio por cliente (desviación 0,20).",1
+regla correcta,La regla tenía razón,"Verdad igual a la regla v1.3: conversión de la campaña previa del ramo × 0,6 si la señal es media, sin momento ni apetito propio. Muestra lo que se vería si el motor no tuviera nada más que aprender.",2

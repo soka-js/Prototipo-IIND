@@ -1,0 +1,2481 @@
+escenario,variable,etiqueta,verdad,ronda,estimado
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,1,0
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,2,0.0588
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,3,0.0693
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,4,0.0748
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,5,0.0645
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,6,0.0703
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,7,0.0889
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,8,0.0974
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,9,0.1104
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,10,0.0945
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,11,0.0967
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,12,0.0873
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,13,0.0969
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,14,0.0962
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,15,0.0978
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,16,0.0975
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,17,0.0973
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,18,0.0961
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,19,0.1
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,20,0.0961
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,21,0.0969
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,22,0.0978
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,23,0.098
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,24,0.0973
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,25,0.0984
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,26,0.101
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,27,0.1034
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,28,0.1015
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,29,0.1015
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,30,0.1078
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,31,0.1044
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,32,0.1078
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,33,0.1068
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,34,0.1086
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,35,0.1083
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,36,0.1059
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,37,0.1041
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,38,0.1012
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,39,0.1018
+señal,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,40,0.1002
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,1,0
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,2,0.0443
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,3,0.0322
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,4,0.0288
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,5,0.0521
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,6,0.0567
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,7,0.056
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,8,0.0619
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,9,0.0629
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,10,0.0635
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,11,0.0737
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,12,0.075
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,13,0.0817
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,14,0.0728
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,15,0.0739
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,16,0.0753
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,17,0.0741
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,18,0.0647
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,19,0.0592
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,20,0.0618
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,21,0.0541
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,22,0.058
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,23,0.0532
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,24,0.0529
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,25,0.0475
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,26,0.0451
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,27,0.0451
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,28,0.0472
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,29,0.0446
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,30,0.0409
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,31,0.0386
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,32,0.0421
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,33,0.0449
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,34,0.0466
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,35,0.0512
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,36,0.05
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,37,0.0478
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,38,0.0475
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,39,0.0482
+señal,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,40,0.0475
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,1,0
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,2,0.0238
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,3,0.0492
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,4,0.0579
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,5,0.0595
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,6,0.0732
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,7,0.0722
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,8,0.0781
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,9,0.0783
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,10,0.0919
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,11,0.0931
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,12,0.0939
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,13,0.1013
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,14,0.1032
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,15,0.0938
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,16,0.0937
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,17,0.1004
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,18,0.0926
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,19,0.092
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,20,0.1022
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,21,0.1018
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,22,0.1015
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,23,0.0966
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,24,0.0892
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,25,0.0905
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,26,0.0862
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,27,0.0915
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,28,0.0905
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,29,0.0953
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,30,0.0885
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,31,0.0884
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,32,0.0935
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,33,0.0964
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,34,0.0951
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,35,0.0962
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,36,0.0963
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,37,0.1
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,38,0.0987
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,39,0.1028
+señal,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,40,0.1014
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,1,0
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,2,0.0211
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,3,0.0271
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,4,0.042
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,5,0.0361
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,6,0.0475
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,7,0.048
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,8,0.0583
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,9,0.0583
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,10,0.0643
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,11,0.0724
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,12,0.0745
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,13,0.0777
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,14,0.0882
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,15,0.0919
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,16,0.095
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,17,0.1002
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,18,0.1034
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,19,0.0997
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,20,0.1058
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,21,0.1017
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,22,0.1004
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,23,0.0951
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,24,0.0953
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,25,0.0968
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,26,0.1054
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,27,0.103
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,28,0.1036
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,29,0.1057
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,30,0.108
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,31,0.108
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,32,0.1207
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,33,0.1212
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,34,0.1239
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,35,0.1259
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,36,0.1211
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,37,0.1215
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,38,0.1208
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,39,0.1201
+señal,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,40,0.1223
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,1,0
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,2,-0.005
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,3,-0.0038
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,4,0.0061
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,5,0.0098
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,6,0.0093
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,7,0.0147
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,8,0.0268
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,9,0.0216
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,10,0.0237
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,11,0.0341
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,12,0.0383
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,13,0.0381
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,14,0.0453
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,15,0.0465
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,16,0.0507
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,17,0.0462
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,18,0.0458
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,19,0.0481
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,20,0.0474
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,21,0.0484
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,22,0.0558
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,23,0.0642
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,24,0.0713
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,25,0.0626
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,26,0.0672
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,27,0.0637
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,28,0.0567
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,29,0.0604
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,30,0.0568
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,31,0.0605
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,32,0.0699
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,33,0.071
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,34,0.071
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,35,0.0658
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,36,0.076
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,37,0.0776
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,38,0.0749
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,39,0.0738
+señal,Vida|perfil:edad,Vida · Rango de edad,0.2,40,0.0746
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,1,0
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,2,0.0506
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,3,0.0598
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,4,0.0636
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,5,0.0506
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,6,0.0611
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,7,0.0959
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,8,0.1095
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,9,0.1054
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,10,0.1078
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,11,0.1093
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,12,0.1072
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,13,0.1054
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,14,0.1054
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,15,0.1027
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,16,0.0981
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,17,0.097
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,18,0.0989
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,19,0.1093
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,20,0.107
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,21,0.1086
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,22,0.1122
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,23,0.1076
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,24,0.1108
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,25,0.1075
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,26,0.1092
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,27,0.1084
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,28,0.1057
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,29,0.1031
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,30,0.1079
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,31,0.1119
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,32,0.115
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,33,0.1148
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,34,0.1148
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,35,0.1117
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,36,0.111
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,37,0.1159
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,38,0.1145
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,39,0.118
+señal,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,40,0.1181
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,1,0
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,2,0.013
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,3,0.0105
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,4,0.0086
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,5,0.0109
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,6,0.0154
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,7,0.0265
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,8,0.0307
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,9,0.0358
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,10,0.0372
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,11,0.0477
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,12,0.0444
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,13,0.0358
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,14,0.0423
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,15,0.0335
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,16,0.039
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,17,0.0399
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,18,0.0464
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,19,0.055
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,20,0.0643
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,21,0.0724
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,22,0.0668
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,23,0.0622
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,24,0.059
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,25,0.0517
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,26,0.0454
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,27,0.0473
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,28,0.0478
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,29,0.0495
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,30,0.0533
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,31,0.0577
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,32,0.06
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,33,0.0534
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,34,0.055
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,35,0.052
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,36,0.0509
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,37,0.0512
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,38,0.0584
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,39,0.0666
+señal,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,40,0.0641
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,1,0
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,2,0.0013
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,3,0.001
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,4,0.0094
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,5,0.0086
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,6,0.0075
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,7,0.0092
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,8,0.0027
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,9,0.0033
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,10,0.0161
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,11,0.0296
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,12,0.0286
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,13,0.0254
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,14,0.0263
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,15,0.0271
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,16,0.028
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,17,0.0327
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,18,0.0389
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,19,0.0386
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,20,0.0368
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,21,0.035
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,22,0.0333
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,23,0.0379
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,24,0.0298
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,25,0.0405
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,26,0.0442
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,27,0.0478
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,28,0.0497
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,29,0.0507
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,30,0.048
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,31,0.0486
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,32,0.0477
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,33,0.0533
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,34,0.0461
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,35,0.044
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,36,0.045
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,37,0.0454
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,38,0.045
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,39,0.0435
+señal,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,40,0.041
+señal,Vida|senal_media,Vida · señal media,-0.3893,1,-0.2562
+señal,Vida|senal_media,Vida · señal media,-0.3893,2,-0.3931
+señal,Vida|senal_media,Vida · señal media,-0.3893,3,-0.3669
+señal,Vida|senal_media,Vida · señal media,-0.3893,4,-0.4276
+señal,Vida|senal_media,Vida · señal media,-0.3893,5,-0.4576
+señal,Vida|senal_media,Vida · señal media,-0.3893,6,-0.4457
+señal,Vida|senal_media,Vida · señal media,-0.3893,7,-0.466
+señal,Vida|senal_media,Vida · señal media,-0.3893,8,-0.4079
+señal,Vida|senal_media,Vida · señal media,-0.3893,9,-0.3937
+señal,Vida|senal_media,Vida · señal media,-0.3893,10,-0.3161
+señal,Vida|senal_media,Vida · señal media,-0.3893,11,-0.2662
+señal,Vida|senal_media,Vida · señal media,-0.3893,12,-0.2455
+señal,Vida|senal_media,Vida · señal media,-0.3893,13,-0.2353
+señal,Vida|senal_media,Vida · señal media,-0.3893,14,-0.252
+señal,Vida|senal_media,Vida · señal media,-0.3893,15,-0.2367
+señal,Vida|senal_media,Vida · señal media,-0.3893,16,-0.279
+señal,Vida|senal_media,Vida · señal media,-0.3893,17,-0.2559
+señal,Vida|senal_media,Vida · señal media,-0.3893,18,-0.2662
+señal,Vida|senal_media,Vida · señal media,-0.3893,19,-0.2837
+señal,Vida|senal_media,Vida · señal media,-0.3893,20,-0.2892
+señal,Vida|senal_media,Vida · señal media,-0.3893,21,-0.2794
+señal,Vida|senal_media,Vida · señal media,-0.3893,22,-0.2932
+señal,Vida|senal_media,Vida · señal media,-0.3893,23,-0.3036
+señal,Vida|senal_media,Vida · señal media,-0.3893,24,-0.2912
+señal,Vida|senal_media,Vida · señal media,-0.3893,25,-0.2629
+señal,Vida|senal_media,Vida · señal media,-0.3893,26,-0.2789
+señal,Vida|senal_media,Vida · señal media,-0.3893,27,-0.2914
+señal,Vida|senal_media,Vida · señal media,-0.3893,28,-0.2944
+señal,Vida|senal_media,Vida · señal media,-0.3893,29,-0.313
+señal,Vida|senal_media,Vida · señal media,-0.3893,30,-0.3045
+señal,Vida|senal_media,Vida · señal media,-0.3893,31,-0.2833
+señal,Vida|senal_media,Vida · señal media,-0.3893,32,-0.2884
+señal,Vida|senal_media,Vida · señal media,-0.3893,33,-0.2739
+señal,Vida|senal_media,Vida · señal media,-0.3893,34,-0.2845
+señal,Vida|senal_media,Vida · señal media,-0.3893,35,-0.3005
+señal,Vida|senal_media,Vida · señal media,-0.3893,36,-0.2829
+señal,Vida|senal_media,Vida · señal media,-0.3893,37,-0.2987
+señal,Vida|senal_media,Vida · señal media,-0.3893,38,-0.3121
+señal,Vida|senal_media,Vida · señal media,-0.3893,39,-0.3105
+señal,Vida|senal_media,Vida · señal media,-0.3893,40,-0.3221
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,1,-0.2411
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,2,-0.358
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,3,-0.4366
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,4,-0.4894
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,5,-0.5006
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,6,-0.5122
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,7,-0.5131
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,8,-0.5394
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,9,-0.5358
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,10,-0.5398
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,11,-0.5279
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,12,-0.5633
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,13,-0.5516
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,14,-0.5542
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,15,-0.5365
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,16,-0.5419
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,17,-0.5519
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,18,-0.5657
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,19,-0.5395
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,20,-0.5474
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,21,-0.5475
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,22,-0.5425
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,23,-0.5511
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,24,-0.5429
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,25,-0.5472
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,26,-0.5442
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,27,-0.5474
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,28,-0.5555
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,29,-0.5534
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,30,-0.5433
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,31,-0.537
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,32,-0.5472
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,33,-0.5596
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,34,-0.5575
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,35,-0.564
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,36,-0.5708
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,37,-0.5691
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,38,-0.5715
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,39,-0.5781
+señal,Desempleo|senal_media,Desempleo · señal media,-0.3673,40,-0.5813
+señal,SOAT|momento,SOAT · momento,0.2909,1,0.3057
+señal,SOAT|momento,SOAT · momento,0.2909,2,0.2754
+señal,SOAT|momento,SOAT · momento,0.2909,3,0.2653
+señal,SOAT|momento,SOAT · momento,0.2909,4,0.2713
+señal,SOAT|momento,SOAT · momento,0.2909,5,0.2797
+señal,SOAT|momento,SOAT · momento,0.2909,6,0.2952
+señal,SOAT|momento,SOAT · momento,0.2909,7,0.2999
+señal,SOAT|momento,SOAT · momento,0.2909,8,0.2978
+señal,SOAT|momento,SOAT · momento,0.2909,9,0.333
+señal,SOAT|momento,SOAT · momento,0.2909,10,0.3967
+señal,SOAT|momento,SOAT · momento,0.2909,11,0.4859
+señal,SOAT|momento,SOAT · momento,0.2909,12,0.4622
+señal,SOAT|momento,SOAT · momento,0.2909,13,0.4029
+señal,SOAT|momento,SOAT · momento,0.2909,14,0.37
+señal,SOAT|momento,SOAT · momento,0.2909,15,0.33
+señal,SOAT|momento,SOAT · momento,0.2909,16,0.3159
+señal,SOAT|momento,SOAT · momento,0.2909,17,0.3266
+señal,SOAT|momento,SOAT · momento,0.2909,18,0.3269
+señal,SOAT|momento,SOAT · momento,0.2909,19,0.313
+señal,SOAT|momento,SOAT · momento,0.2909,20,0.3585
+señal,SOAT|momento,SOAT · momento,0.2909,21,0.3697
+señal,SOAT|momento,SOAT · momento,0.2909,22,0.3559
+señal,SOAT|momento,SOAT · momento,0.2909,23,0.3468
+señal,SOAT|momento,SOAT · momento,0.2909,24,0.3288
+señal,SOAT|momento,SOAT · momento,0.2909,25,0.2962
+señal,SOAT|momento,SOAT · momento,0.2909,26,0.266
+señal,SOAT|momento,SOAT · momento,0.2909,27,0.2789
+señal,SOAT|momento,SOAT · momento,0.2909,28,0.2766
+señal,SOAT|momento,SOAT · momento,0.2909,29,0.2879
+señal,SOAT|momento,SOAT · momento,0.2909,30,0.2891
+señal,SOAT|momento,SOAT · momento,0.2909,31,0.3011
+señal,SOAT|momento,SOAT · momento,0.2909,32,0.3022
+señal,SOAT|momento,SOAT · momento,0.2909,33,0.2892
+señal,SOAT|momento,SOAT · momento,0.2909,34,0.3039
+señal,SOAT|momento,SOAT · momento,0.2909,35,0.2864
+señal,SOAT|momento,SOAT · momento,0.2909,36,0.2978
+señal,SOAT|momento,SOAT · momento,0.2909,37,0.2948
+señal,SOAT|momento,SOAT · momento,0.2909,38,0.2937
+señal,SOAT|momento,SOAT · momento,0.2909,39,0.3145
+señal,SOAT|momento,SOAT · momento,0.2909,40,0.2985
+señal,Vida|momento,Vida · momento,0.265,1,0.277
+señal,Vida|momento,Vida · momento,0.265,2,0.0598
+señal,Vida|momento,Vida · momento,0.265,3,0.1382
+señal,Vida|momento,Vida · momento,0.265,4,0.1298
+señal,Vida|momento,Vida · momento,0.265,5,0.1437
+señal,Vida|momento,Vida · momento,0.265,6,0.1099
+señal,Vida|momento,Vida · momento,0.265,7,0.0979
+señal,Vida|momento,Vida · momento,0.265,8,0.0626
+señal,Vida|momento,Vida · momento,0.265,9,0.0394
+señal,Vida|momento,Vida · momento,0.265,10,0.0281
+señal,Vida|momento,Vida · momento,0.265,11,0.0915
+señal,Vida|momento,Vida · momento,0.265,12,0.1337
+señal,Vida|momento,Vida · momento,0.265,13,0.1856
+señal,Vida|momento,Vida · momento,0.265,14,0.1948
+señal,Vida|momento,Vida · momento,0.265,15,0.2103
+señal,Vida|momento,Vida · momento,0.265,16,0.1809
+señal,Vida|momento,Vida · momento,0.265,17,0.2099
+señal,Vida|momento,Vida · momento,0.265,18,0.2145
+señal,Vida|momento,Vida · momento,0.265,19,0.2408
+señal,Vida|momento,Vida · momento,0.265,20,0.2229
+señal,Vida|momento,Vida · momento,0.265,21,0.2242
+señal,Vida|momento,Vida · momento,0.265,22,0.2027
+señal,Vida|momento,Vida · momento,0.265,23,0.1968
+señal,Vida|momento,Vida · momento,0.265,24,0.2076
+señal,Vida|momento,Vida · momento,0.265,25,0.2143
+señal,Vida|momento,Vida · momento,0.265,26,0.1937
+señal,Vida|momento,Vida · momento,0.265,27,0.2075
+señal,Vida|momento,Vida · momento,0.265,28,0.2167
+señal,Vida|momento,Vida · momento,0.265,29,0.208
+señal,Vida|momento,Vida · momento,0.265,30,0.2098
+señal,Vida|momento,Vida · momento,0.265,31,0.2155
+señal,Vida|momento,Vida · momento,0.265,32,0.2303
+señal,Vida|momento,Vida · momento,0.265,33,0.2325
+señal,Vida|momento,Vida · momento,0.265,34,0.232
+señal,Vida|momento,Vida · momento,0.265,35,0.2258
+señal,Vida|momento,Vida · momento,0.265,36,0.2349
+señal,Vida|momento,Vida · momento,0.265,37,0.2202
+señal,Vida|momento,Vida · momento,0.265,38,0.2122
+señal,Vida|momento,Vida · momento,0.265,39,0.209
+señal,Vida|momento,Vida · momento,0.265,40,0.2044
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,1,0
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,2,0.0009
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,3,-0.0141
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,4,-0.0089
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,5,0.0087
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,6,-0.0053
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,7,-0.0002
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,8,-0.0012
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,9,-0.0062
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,10,-0.0009
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,11,0.0019
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,12,0.0095
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,13,0.0121
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,14,0.0227
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,15,0.0148
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,16,0.0144
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,17,0.0182
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,18,0.0187
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,19,0.0146
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,20,0.016
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,21,0.0159
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,22,0.0085
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,23,0.0105
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,24,0.0064
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,25,0.0109
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,26,0.011
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,27,0.011
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,28,0.0145
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,29,0.0131
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,30,0.0127
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,31,0.0117
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,32,0.0096
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,33,0.0061
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,34,0.0053
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,35,0.006
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,36,0.0051
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,37,0.0049
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,38,0.0046
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,39,0.0039
+regla correcta,*|uso:apertura,Todos los ramos · Abre notificaciones,0,40,0.0024
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,1,0
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,2,-0.0468
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,3,-0.0424
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,4,-0.0489
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,5,-0.0389
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,6,-0.0013
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,7,0.001
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,8,-0.0019
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,9,0.0072
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,10,0.0122
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,11,0.0011
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,12,-0.0065
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,13,-0.0086
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,14,0.0051
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,15,-0.0043
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,16,-0.0128
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,17,-0.0041
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,18,-0.0021
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,19,0.006
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,20,0.0106
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,21,0.0206
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,22,0.0213
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,23,0.0226
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,24,0.0182
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,25,0.0185
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,26,0.0185
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,27,0.0156
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,28,0.0123
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,29,0.0206
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,30,0.017
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,31,0.0157
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,32,0.0125
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,33,0.011
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,34,0.0136
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,35,0.0105
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,36,0.0103
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,37,0.0099
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,38,0.0035
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,39,-0.0012
+regla correcta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0,40,-0.0031
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,1,0
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,2,-0.0115
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,3,-0.0123
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,4,-0.0122
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,5,-0.0069
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,6,-0.0131
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,7,-0.0289
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,8,-0.0254
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,9,-0.0288
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,10,-0.0282
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,11,-0.0156
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,12,-0.0176
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,13,-0.0158
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,14,-0.015
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,15,-0.0189
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,16,-0.0098
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,17,-0.0162
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,18,-0.0204
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,19,-0.022
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,20,-0.026
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,21,-0.0316
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,22,-0.0149
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,23,-0.0175
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,24,-0.017
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,25,-0.0002
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,26,-0.002
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,27,0.0063
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,28,0.0005
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,29,0.0029
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,30,0.0095
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,31,0.0039
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,32,0.0027
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,33,0.0011
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,34,-0.0014
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,35,-0.0016
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,36,-0.001
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,37,-0.0002
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,38,0.0043
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,39,0.0086
+regla correcta,Desempleo|perfil:credito,Desempleo · Crédito activo,0,40,0.0024
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,1,0
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,2,-0.0079
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,3,-0.0017
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,4,-0.0121
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,5,-0.0063
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,6,-0.0066
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,7,-0.0162
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,8,-0.0173
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,9,-0.0206
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,10,-0.0042
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,11,-0.005
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,12,-0.0069
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,13,-0.0134
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,14,-0.0199
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,15,-0.0246
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,16,-0.0203
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,17,-0.0096
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,18,-0.0175
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,19,-0.0184
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,20,-0.0166
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,21,0.0005
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,22,-0.0001
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,23,-0.0037
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,24,-0.0025
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,25,-0.0065
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,26,-0.0055
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,27,-0.0111
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,28,0.0023
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,29,-0.0032
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,30,-0.0059
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,31,-0.0045
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,32,-0.0041
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,33,0.0024
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,34,0.0051
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,35,0.0006
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,36,-0.0009
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,37,-0.0033
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,38,-0.0042
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,39,-0.0083
+regla correcta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0,40,-0.003
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,1,0
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,2,0.0073
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,3,0.0234
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,4,0.0365
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,5,0.0337
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,6,0.028
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,7,0.04
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,8,0.0182
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,9,0.0081
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,10,0.0048
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,11,0.0024
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,12,0.0013
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,13,-0.0083
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,14,-0.0045
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,15,-0.0106
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,16,-0.0068
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,17,-0.0013
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,18,-0.0117
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,19,-0.0001
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,20,-0.0003
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,21,-0.001
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,22,0.0023
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,23,-0.001
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,24,0.0023
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,25,0.0031
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,26,0.0048
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,27,0.0034
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,28,-0.0057
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,29,0.001
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,30,-0.0031
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,31,-0.005
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,32,0.0045
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,33,0.0059
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,34,0.0049
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,35,-0.0004
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,36,0.0035
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,37,0.0073
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,38,0.0106
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,39,0.0091
+regla correcta,Vida|perfil:edad,Vida · Rango de edad,0,40,0.0114
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,1,0
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,2,0.0015
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,3,-0.0009
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,4,-0.0096
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,5,-0.0037
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,6,-0.0042
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,7,-0.006
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,8,-0.0079
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,9,0.0057
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,10,-0.0055
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,11,-0.0031
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,12,-0.0021
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,13,0.0014
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,14,-0.0019
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,15,-0.0044
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,16,-0.0047
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,17,-0.0067
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,18,-0.0086
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,19,-0.0066
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,20,-0.0078
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,21,-0.0115
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,22,-0.0145
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,23,-0.016
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,24,-0.011
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,25,-0.0124
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,26,-0.013
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,27,0.0012
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,28,0.0021
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,29,0.0053
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,30,0.0089
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,31,0.0077
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,32,0.0068
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,33,0.006
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,34,0.0003
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,35,0.0063
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,36,0.0027
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,37,0.0047
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,38,0.0154
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,39,0.0101
+regla correcta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0,40,0.0062
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,1,0
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,2,-0.0058
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,3,-0.0071
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,4,-0.0121
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,5,-0.0084
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,6,-0.0031
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,7,0.0063
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,8,0.0112
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,9,0.0054
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,10,0.0066
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,11,0.0101
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,12,0.021
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,13,0.0158
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,14,0.0121
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,15,0.0155
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,16,0.0101
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,17,0.0097
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,18,0.0093
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,19,0.0037
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,20,0.01
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,21,0.0168
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,22,0.0211
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,23,0.0156
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,24,0.0091
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,25,0.0122
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,26,0.0055
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,27,0.0072
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,28,0.0026
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,29,-0.0006
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,30,-0.0054
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,31,-0.0078
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,32,-0.0067
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,33,-0.0094
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,34,-0.0099
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,35,-0.0096
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,36,-0.0136
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,37,-0.0108
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,38,-0.0113
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,39,-0.0104
+regla correcta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0,40,-0.01
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,1,0
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,2,-0.0019
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,3,0.0004
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,4,-0.0003
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,5,-0.0024
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,6,0.0009
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,7,0.0032
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,8,0.0001
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,9,-0.0014
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,10,-0.0032
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,11,-0.0045
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,12,0.0015
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,13,0.0011
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,14,0.0025
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,15,0.0065
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,16,0.0075
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,17,0.0008
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,18,0.0035
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,19,-0.0052
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,20,0.0029
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,21,-0.0043
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,22,-0.006
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,23,-0.0015
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,24,-0.0048
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,25,-0.0104
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,26,-0.0044
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,27,-0.0043
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,28,-0.007
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,29,-0.0067
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,30,-0.0045
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,31,-0.0056
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,32,-0.0091
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,33,-0.0148
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,34,-0.0124
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,35,-0.0039
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,36,-0.001
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,37,-0.0025
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,38,-0.0065
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,39,-0.0102
+regla correcta,Hogar|perfil:saldo,Hogar · Saldo promedio,0,40,-0.0069
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,1,-0.2562
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,2,-0.3462
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,3,-0.4204
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,4,-0.3784
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,5,-0.4036
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,6,-0.3343
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,7,-0.3394
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,8,-0.3423
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,9,-0.3739
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,10,-0.3734
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,11,-0.3937
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,12,-0.408
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,13,-0.3501
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,14,-0.3845
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,15,-0.3316
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,16,-0.3385
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,17,-0.3516
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,18,-0.3489
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,19,-0.3489
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,20,-0.3445
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,21,-0.3323
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,22,-0.3239
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,23,-0.3227
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,24,-0.3249
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,25,-0.3134
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,26,-0.3228
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,27,-0.3301
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,28,-0.3209
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,29,-0.2738
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,30,-0.2683
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,31,-0.2641
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,32,-0.2802
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,33,-0.287
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,34,-0.2916
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,35,-0.3012
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,36,-0.3032
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,37,-0.3056
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,38,-0.2957
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,39,-0.2971
+regla correcta,Vida|senal_media,Vida · señal media,-0.2681,40,-0.2988
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,1,-0.2411
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,2,-0.2354
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,3,-0.283
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,4,-0.2521
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,5,-0.2674
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,6,-0.1943
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,7,-0.1849
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,8,-0.1838
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,9,-0.1855
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,10,-0.1963
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,11,-0.1875
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,12,-0.2162
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,13,-0.1968
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,14,-0.1922
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,15,-0.193
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,16,-0.1993
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,17,-0.1973
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,18,-0.2177
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,19,-0.2211
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,20,-0.2081
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,21,-0.196
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,22,-0.2022
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,23,-0.1966
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,24,-0.2034
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,25,-0.2141
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,26,-0.2122
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,27,-0.2041
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,28,-0.1933
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,29,-0.2038
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,30,-0.2107
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,31,-0.204
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,32,-0.2016
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,33,-0.2022
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,34,-0.2024
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,35,-0.199
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,36,-0.2046
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,37,-0.204
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,38,-0.2041
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,39,-0.2012
+regla correcta,Desempleo|senal_media,Desempleo · señal media,-0.2597,40,-0.2017
+regla correcta,SOAT|momento,SOAT · momento,0,1,0.3057
+regla correcta,SOAT|momento,SOAT · momento,0,2,0.2543
+regla correcta,SOAT|momento,SOAT · momento,0,3,0.1791
+regla correcta,SOAT|momento,SOAT · momento,0,4,0.1111
+regla correcta,SOAT|momento,SOAT · momento,0,5,0.18
+regla correcta,SOAT|momento,SOAT · momento,0,6,0.1553
+regla correcta,SOAT|momento,SOAT · momento,0,7,0.2185
+regla correcta,SOAT|momento,SOAT · momento,0,8,0.1836
+regla correcta,SOAT|momento,SOAT · momento,0,9,0.1463
+regla correcta,SOAT|momento,SOAT · momento,0,10,0.1624
+regla correcta,SOAT|momento,SOAT · momento,0,11,0.1867
+regla correcta,SOAT|momento,SOAT · momento,0,12,0.1686
+regla correcta,SOAT|momento,SOAT · momento,0,13,0.1358
+regla correcta,SOAT|momento,SOAT · momento,0,14,0.1244
+regla correcta,SOAT|momento,SOAT · momento,0,15,0.1048
+regla correcta,SOAT|momento,SOAT · momento,0,16,0.0756
+regla correcta,SOAT|momento,SOAT · momento,0,17,0.0604
+regla correcta,SOAT|momento,SOAT · momento,0,18,0.0445
+regla correcta,SOAT|momento,SOAT · momento,0,19,0.0272
+regla correcta,SOAT|momento,SOAT · momento,0,20,-0.0043
+regla correcta,SOAT|momento,SOAT · momento,0,21,0.0659
+regla correcta,SOAT|momento,SOAT · momento,0,22,0.0833
+regla correcta,SOAT|momento,SOAT · momento,0,23,0.0678
+regla correcta,SOAT|momento,SOAT · momento,0,24,0.0405
+regla correcta,SOAT|momento,SOAT · momento,0,25,0.0208
+regla correcta,SOAT|momento,SOAT · momento,0,26,0.0057
+regla correcta,SOAT|momento,SOAT · momento,0,27,-0.0058
+regla correcta,SOAT|momento,SOAT · momento,0,28,-0.0122
+regla correcta,SOAT|momento,SOAT · momento,0,29,-0.0257
+regla correcta,SOAT|momento,SOAT · momento,0,30,-0.0447
+regla correcta,SOAT|momento,SOAT · momento,0,31,-0.0466
+regla correcta,SOAT|momento,SOAT · momento,0,32,-0.0572
+regla correcta,SOAT|momento,SOAT · momento,0,33,-0.0656
+regla correcta,SOAT|momento,SOAT · momento,0,34,-0.0697
+regla correcta,SOAT|momento,SOAT · momento,0,35,-0.0796
+regla correcta,SOAT|momento,SOAT · momento,0,36,-0.0882
+regla correcta,SOAT|momento,SOAT · momento,0,37,-0.0684
+regla correcta,SOAT|momento,SOAT · momento,0,38,-0.0531
+regla correcta,SOAT|momento,SOAT · momento,0,39,-0.0311
+regla correcta,SOAT|momento,SOAT · momento,0,40,-0.0389
+regla correcta,Vida|momento,Vida · momento,0,1,0.277
+regla correcta,Vida|momento,Vida · momento,0,2,0.2693
+regla correcta,Vida|momento,Vida · momento,0,3,0.0907
+regla correcta,Vida|momento,Vida · momento,0,4,0.1393
+regla correcta,Vida|momento,Vida · momento,0,5,0.1173
+regla correcta,Vida|momento,Vida · momento,0,6,0.2127
+regla correcta,Vida|momento,Vida · momento,0,7,0.1846
+regla correcta,Vida|momento,Vida · momento,0,8,0.1817
+regla correcta,Vida|momento,Vida · momento,0,9,0.1877
+regla correcta,Vida|momento,Vida · momento,0,10,0.1884
+regla correcta,Vida|momento,Vida · momento,0,11,0.1995
+regla correcta,Vida|momento,Vida · momento,0,12,0.2195
+regla correcta,Vida|momento,Vida · momento,0,13,0.196
+regla correcta,Vida|momento,Vida · momento,0,14,0.1909
+regla correcta,Vida|momento,Vida · momento,0,15,0.1952
+regla correcta,Vida|momento,Vida · momento,0,16,0.1789
+regla correcta,Vida|momento,Vida · momento,0,17,0.1771
+regla correcta,Vida|momento,Vida · momento,0,18,0.1995
+regla correcta,Vida|momento,Vida · momento,0,19,0.1829
+regla correcta,Vida|momento,Vida · momento,0,20,0.1671
+regla correcta,Vida|momento,Vida · momento,0,21,0.1595
+regla correcta,Vida|momento,Vida · momento,0,22,0.1742
+regla correcta,Vida|momento,Vida · momento,0,23,0.1804
+regla correcta,Vida|momento,Vida · momento,0,24,0.1763
+regla correcta,Vida|momento,Vida · momento,0,25,0.1711
+regla correcta,Vida|momento,Vida · momento,0,26,0.1541
+regla correcta,Vida|momento,Vida · momento,0,27,0.1574
+regla correcta,Vida|momento,Vida · momento,0,28,0.1566
+regla correcta,Vida|momento,Vida · momento,0,29,0.1676
+regla correcta,Vida|momento,Vida · momento,0,30,0.1753
+regla correcta,Vida|momento,Vida · momento,0,31,0.186
+regla correcta,Vida|momento,Vida · momento,0,32,0.1798
+regla correcta,Vida|momento,Vida · momento,0,33,0.1715
+regla correcta,Vida|momento,Vida · momento,0,34,0.1744
+regla correcta,Vida|momento,Vida · momento,0,35,0.173
+regla correcta,Vida|momento,Vida · momento,0,36,0.1771
+regla correcta,Vida|momento,Vida · momento,0,37,0.1628
+regla correcta,Vida|momento,Vida · momento,0,38,0.166
+regla correcta,Vida|momento,Vida · momento,0,39,0.1719
+regla correcta,Vida|momento,Vida · momento,0,40,0.1696
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,1,0
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,2,0.0456
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,3,0.0552
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,4,0.06
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,5,0.0574
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,6,0.0606
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,7,0.0753
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,8,0.0855
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,9,0.0977
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,10,0.0827
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,11,0.0847
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,12,0.0765
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,13,0.0833
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,14,0.0836
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,15,0.0851
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,16,0.0839
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,17,0.0827
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,18,0.0788
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,19,0.0841
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,20,0.0805
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,21,0.0837
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,22,0.0855
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,23,0.0845
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,24,0.0838
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,25,0.0851
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,26,0.0903
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,27,0.0924
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,28,0.0909
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,29,0.0911
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,30,0.0958
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,31,0.0937
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,32,0.0979
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,33,0.0963
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,34,0.0996
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,35,0.0996
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,36,0.0981
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,37,0.0975
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,38,0.095
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,39,0.0957
+ruido,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,40,0.0944
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,1,0
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,2,0.0285
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,3,0.021
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,4,0.027
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,5,0.048
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,6,0.055
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,7,0.0564
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,8,0.0616
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,9,0.0625
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,10,0.0637
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,11,0.0749
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,12,0.082
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,13,0.0872
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,14,0.0787
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,15,0.0799
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,16,0.0818
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,17,0.0816
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,18,0.0726
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,19,0.0684
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,20,0.07
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,21,0.0623
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,22,0.065
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,23,0.0622
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,24,0.0609
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,25,0.0572
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,26,0.0548
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,27,0.0534
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,28,0.0548
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,29,0.0524
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,30,0.0475
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,31,0.0454
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,32,0.0482
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,33,0.0502
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,34,0.0517
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,35,0.0559
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,36,0.0537
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,37,0.051
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,38,0.0495
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,39,0.0504
+ruido,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,40,0.0498
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,1,0
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,2,0.0163
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,3,0.0332
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,4,0.0408
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,5,0.0428
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,6,0.052
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,7,0.0548
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,8,0.061
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,9,0.0628
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,10,0.0739
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,11,0.0756
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,12,0.0775
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,13,0.0835
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,14,0.0862
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,15,0.0778
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,16,0.079
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,17,0.085
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,18,0.0783
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,19,0.0785
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,20,0.087
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,21,0.0875
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,22,0.0888
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,23,0.0837
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,24,0.0773
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,25,0.0784
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,26,0.0752
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,27,0.0812
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,28,0.0784
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,29,0.0827
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,30,0.0758
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,31,0.0762
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,32,0.0806
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,33,0.083
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,34,0.0818
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,35,0.0828
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,36,0.0822
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,37,0.0847
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,38,0.0827
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,39,0.0866
+ruido,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,40,0.0858
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,1,0
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,2,0.0171
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,3,0.0209
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,4,0.0313
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,5,0.0236
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,6,0.0302
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,7,0.0308
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,8,0.0431
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,9,0.0518
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,10,0.0576
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,11,0.0608
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,12,0.0648
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,13,0.0667
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,14,0.0765
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,15,0.0772
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,16,0.0773
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,17,0.086
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,18,0.0899
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,19,0.0864
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,20,0.0854
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,21,0.0805
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,22,0.084
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,23,0.0806
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,24,0.0852
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,25,0.0841
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,26,0.0935
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,27,0.0898
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,28,0.0915
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,29,0.092
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,30,0.0944
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,31,0.0948
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,32,0.1064
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,33,0.1083
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,34,0.1116
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,35,0.1151
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,36,0.1122
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,37,0.1136
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,38,0.1128
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,39,0.1122
+ruido,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,40,0.1146
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,1,0
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,2,-0.0056
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,3,-0.0046
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,4,0.0018
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,5,0.0011
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,6,0.0059
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,7,0.0126
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,8,0.0232
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,9,0.0182
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,10,0.02
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,11,0.025
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,12,0.0248
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,13,0.0246
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,14,0.0304
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,15,0.0316
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,16,0.0364
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,17,0.0334
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,18,0.0364
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,19,0.0374
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,20,0.0384
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,21,0.0397
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,22,0.0447
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,23,0.0502
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,24,0.0563
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,25,0.0486
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,26,0.0516
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,27,0.0494
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,28,0.044
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,29,0.0456
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,30,0.0422
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,31,0.0449
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,32,0.0529
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,33,0.0537
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,34,0.0544
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,35,0.0511
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,36,0.0584
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,37,0.0601
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,38,0.0591
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,39,0.0574
+ruido,Vida|perfil:edad,Vida · Rango de edad,0.2,40,0.0587
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,1,0
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,2,0.0318
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,3,0.0349
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,4,0.0357
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,5,0.0346
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,6,0.0477
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,7,0.0813
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,8,0.0961
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,9,0.0936
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,10,0.0986
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,11,0.1007
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,12,0.0986
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,13,0.0977
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,14,0.1015
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,15,0.0994
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,16,0.0947
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,17,0.0926
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,18,0.0953
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,19,0.107
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,20,0.1066
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,21,0.1063
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,22,0.1107
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,23,0.1074
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,24,0.1127
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,25,0.109
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,26,0.1118
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,27,0.1109
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,28,0.1087
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,29,0.1068
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,30,0.112
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,31,0.1158
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,32,0.1186
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,33,0.1179
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,34,0.1172
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,35,0.1154
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,36,0.1165
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,37,0.1204
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,38,0.1184
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,39,0.1223
+ruido,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,40,0.1222
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,1,0
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,2,0.0079
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,3,0.0091
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,4,0.0079
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,5,0.0089
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,6,0.0124
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,7,0.021
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,8,0.0244
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,9,0.0301
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,10,0.0316
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,11,0.038
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,12,0.0351
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,13,0.029
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,14,0.032
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,15,0.0253
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,16,0.0297
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,17,0.0314
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,18,0.0328
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,19,0.0378
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,20,0.0459
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,21,0.0517
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,22,0.0497
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,23,0.0519
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,24,0.0499
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,25,0.0439
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,26,0.0389
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,27,0.0405
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,28,0.0413
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,29,0.0432
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,30,0.0475
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,31,0.0508
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,32,0.0519
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,33,0.0467
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,34,0.0485
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,35,0.0462
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,36,0.0454
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,37,0.0444
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,38,0.047
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,39,0.0548
+ruido,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,40,0.0538
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,1,0
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,2,0.0004
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,3,-0.0007
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,4,0.0053
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,5,0.0084
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,6,0.0069
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,7,0.008
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,8,0.0037
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,9,0.0027
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,10,0.011
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,11,0.019
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,12,0.0172
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,13,0.0206
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,14,0.0215
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,15,0.0223
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,16,0.0191
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,17,0.0214
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,18,0.025
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,19,0.0251
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,20,0.0233
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,21,0.0215
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,22,0.0199
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,23,0.027
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,24,0.0208
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,25,0.0276
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,26,0.0301
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,27,0.0323
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,28,0.0332
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,29,0.0337
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,30,0.0302
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,31,0.0309
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,32,0.0306
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,33,0.0376
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,34,0.0324
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,35,0.0306
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,36,0.0305
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,37,0.0307
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,38,0.0305
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,39,0.029
+ruido,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,40,0.0268
+ruido,Vida|senal_media,Vida · señal media,-0.3893,1,-0.2562
+ruido,Vida|senal_media,Vida · señal media,-0.3893,2,-0.3897
+ruido,Vida|senal_media,Vida · señal media,-0.3893,3,-0.3735
+ruido,Vida|senal_media,Vida · señal media,-0.3893,4,-0.4405
+ruido,Vida|senal_media,Vida · señal media,-0.3893,5,-0.4722
+ruido,Vida|senal_media,Vida · señal media,-0.3893,6,-0.4648
+ruido,Vida|senal_media,Vida · señal media,-0.3893,7,-0.4876
+ruido,Vida|senal_media,Vida · señal media,-0.3893,8,-0.4372
+ruido,Vida|senal_media,Vida · señal media,-0.3893,9,-0.4273
+ruido,Vida|senal_media,Vida · señal media,-0.3893,10,-0.3607
+ruido,Vida|senal_media,Vida · señal media,-0.3893,11,-0.3344
+ruido,Vida|senal_media,Vida · señal media,-0.3893,12,-0.3059
+ruido,Vida|senal_media,Vida · señal media,-0.3893,13,-0.2892
+ruido,Vida|senal_media,Vida · señal media,-0.3893,14,-0.2975
+ruido,Vida|senal_media,Vida · señal media,-0.3893,15,-0.2782
+ruido,Vida|senal_media,Vida · señal media,-0.3893,16,-0.3195
+ruido,Vida|senal_media,Vida · señal media,-0.3893,17,-0.2909
+ruido,Vida|senal_media,Vida · señal media,-0.3893,18,-0.2991
+ruido,Vida|senal_media,Vida · señal media,-0.3893,19,-0.3169
+ruido,Vida|senal_media,Vida · señal media,-0.3893,20,-0.3202
+ruido,Vida|senal_media,Vida · señal media,-0.3893,21,-0.3104
+ruido,Vida|senal_media,Vida · señal media,-0.3893,22,-0.3247
+ruido,Vida|senal_media,Vida · señal media,-0.3893,23,-0.3367
+ruido,Vida|senal_media,Vida · señal media,-0.3893,24,-0.323
+ruido,Vida|senal_media,Vida · señal media,-0.3893,25,-0.2911
+ruido,Vida|senal_media,Vida · señal media,-0.3893,26,-0.3061
+ruido,Vida|senal_media,Vida · señal media,-0.3893,27,-0.3183
+ruido,Vida|senal_media,Vida · señal media,-0.3893,28,-0.3203
+ruido,Vida|senal_media,Vida · señal media,-0.3893,29,-0.3386
+ruido,Vida|senal_media,Vida · señal media,-0.3893,30,-0.3285
+ruido,Vida|senal_media,Vida · señal media,-0.3893,31,-0.3052
+ruido,Vida|senal_media,Vida · señal media,-0.3893,32,-0.3094
+ruido,Vida|senal_media,Vida · señal media,-0.3893,33,-0.2946
+ruido,Vida|senal_media,Vida · señal media,-0.3893,34,-0.3049
+ruido,Vida|senal_media,Vida · señal media,-0.3893,35,-0.3215
+ruido,Vida|senal_media,Vida · señal media,-0.3893,36,-0.3016
+ruido,Vida|senal_media,Vida · señal media,-0.3893,37,-0.318
+ruido,Vida|senal_media,Vida · señal media,-0.3893,38,-0.3319
+ruido,Vida|senal_media,Vida · señal media,-0.3893,39,-0.3305
+ruido,Vida|senal_media,Vida · señal media,-0.3893,40,-0.3425
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,1,-0.2411
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,2,-0.3561
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,3,-0.4546
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,4,-0.5043
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,5,-0.498
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,6,-0.5139
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,7,-0.5206
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,8,-0.546
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,9,-0.5561
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,10,-0.5592
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,11,-0.5544
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,12,-0.5911
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,13,-0.5881
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,14,-0.5866
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,15,-0.566
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,16,-0.5787
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,17,-0.5877
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,18,-0.6012
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,19,-0.5728
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,20,-0.5807
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,21,-0.5817
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,22,-0.5805
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,23,-0.5877
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,24,-0.5722
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,25,-0.5767
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,26,-0.5741
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,27,-0.5772
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,28,-0.5849
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,29,-0.5869
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,30,-0.5748
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,31,-0.5677
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,32,-0.5776
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,33,-0.5899
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,34,-0.5876
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,35,-0.5942
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,36,-0.6
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,37,-0.598
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,38,-0.5959
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,39,-0.6029
+ruido,Desempleo|senal_media,Desempleo · señal media,-0.3673,40,-0.6055
+ruido,SOAT|momento,SOAT · momento,0.2909,1,0.3057
+ruido,SOAT|momento,SOAT · momento,0.2909,2,0.2471
+ruido,SOAT|momento,SOAT · momento,0.2909,3,0.2644
+ruido,SOAT|momento,SOAT · momento,0.2909,4,0.2589
+ruido,SOAT|momento,SOAT · momento,0.2909,5,0.2407
+ruido,SOAT|momento,SOAT · momento,0.2909,6,0.2712
+ruido,SOAT|momento,SOAT · momento,0.2909,7,0.2844
+ruido,SOAT|momento,SOAT · momento,0.2909,8,0.2879
+ruido,SOAT|momento,SOAT · momento,0.2909,9,0.312
+ruido,SOAT|momento,SOAT · momento,0.2909,10,0.3779
+ruido,SOAT|momento,SOAT · momento,0.2909,11,0.4818
+ruido,SOAT|momento,SOAT · momento,0.2909,12,0.4505
+ruido,SOAT|momento,SOAT · momento,0.2909,13,0.3929
+ruido,SOAT|momento,SOAT · momento,0.2909,14,0.364
+ruido,SOAT|momento,SOAT · momento,0.2909,15,0.331
+ruido,SOAT|momento,SOAT · momento,0.2909,16,0.3192
+ruido,SOAT|momento,SOAT · momento,0.2909,17,0.3387
+ruido,SOAT|momento,SOAT · momento,0.2909,18,0.3443
+ruido,SOAT|momento,SOAT · momento,0.2909,19,0.3148
+ruido,SOAT|momento,SOAT · momento,0.2909,20,0.3675
+ruido,SOAT|momento,SOAT · momento,0.2909,21,0.3631
+ruido,SOAT|momento,SOAT · momento,0.2909,22,0.3543
+ruido,SOAT|momento,SOAT · momento,0.2909,23,0.3694
+ruido,SOAT|momento,SOAT · momento,0.2909,24,0.3424
+ruido,SOAT|momento,SOAT · momento,0.2909,25,0.3098
+ruido,SOAT|momento,SOAT · momento,0.2909,26,0.2813
+ruido,SOAT|momento,SOAT · momento,0.2909,27,0.2954
+ruido,SOAT|momento,SOAT · momento,0.2909,28,0.2932
+ruido,SOAT|momento,SOAT · momento,0.2909,29,0.3058
+ruido,SOAT|momento,SOAT · momento,0.2909,30,0.3068
+ruido,SOAT|momento,SOAT · momento,0.2909,31,0.318
+ruido,SOAT|momento,SOAT · momento,0.2909,32,0.3119
+ruido,SOAT|momento,SOAT · momento,0.2909,33,0.3004
+ruido,SOAT|momento,SOAT · momento,0.2909,34,0.3157
+ruido,SOAT|momento,SOAT · momento,0.2909,35,0.2955
+ruido,SOAT|momento,SOAT · momento,0.2909,36,0.3034
+ruido,SOAT|momento,SOAT · momento,0.2909,37,0.2956
+ruido,SOAT|momento,SOAT · momento,0.2909,38,0.2935
+ruido,SOAT|momento,SOAT · momento,0.2909,39,0.3138
+ruido,SOAT|momento,SOAT · momento,0.2909,40,0.2992
+ruido,Vida|momento,Vida · momento,0.265,1,0.277
+ruido,Vida|momento,Vida · momento,0.265,2,0.0553
+ruido,Vida|momento,Vida · momento,0.265,3,0.1175
+ruido,Vida|momento,Vida · momento,0.265,4,0.0865
+ruido,Vida|momento,Vida · momento,0.265,5,0.129
+ruido,Vida|momento,Vida · momento,0.265,6,0.1044
+ruido,Vida|momento,Vida · momento,0.265,7,0.1002
+ruido,Vida|momento,Vida · momento,0.265,8,0.1032
+ruido,Vida|momento,Vida · momento,0.265,9,0.0768
+ruido,Vida|momento,Vida · momento,0.265,10,0.0608
+ruido,Vida|momento,Vida · momento,0.265,11,0.1286
+ruido,Vida|momento,Vida · momento,0.265,12,0.1722
+ruido,Vida|momento,Vida · momento,0.265,13,0.2092
+ruido,Vida|momento,Vida · momento,0.265,14,0.214
+ruido,Vida|momento,Vida · momento,0.265,15,0.225
+ruido,Vida|momento,Vida · momento,0.265,16,0.1966
+ruido,Vida|momento,Vida · momento,0.265,17,0.2278
+ruido,Vida|momento,Vida · momento,0.265,18,0.231
+ruido,Vida|momento,Vida · momento,0.265,19,0.2547
+ruido,Vida|momento,Vida · momento,0.265,20,0.2354
+ruido,Vida|momento,Vida · momento,0.265,21,0.2354
+ruido,Vida|momento,Vida · momento,0.265,22,0.2153
+ruido,Vida|momento,Vida · momento,0.265,23,0.2071
+ruido,Vida|momento,Vida · momento,0.265,24,0.22
+ruido,Vida|momento,Vida · momento,0.265,25,0.2289
+ruido,Vida|momento,Vida · momento,0.265,26,0.2098
+ruido,Vida|momento,Vida · momento,0.265,27,0.2228
+ruido,Vida|momento,Vida · momento,0.265,28,0.2323
+ruido,Vida|momento,Vida · momento,0.265,29,0.2247
+ruido,Vida|momento,Vida · momento,0.265,30,0.2255
+ruido,Vida|momento,Vida · momento,0.265,31,0.2333
+ruido,Vida|momento,Vida · momento,0.265,32,0.2488
+ruido,Vida|momento,Vida · momento,0.265,33,0.2496
+ruido,Vida|momento,Vida · momento,0.265,34,0.2487
+ruido,Vida|momento,Vida · momento,0.265,35,0.2416
+ruido,Vida|momento,Vida · momento,0.265,36,0.2492
+ruido,Vida|momento,Vida · momento,0.265,37,0.234
+ruido,Vida|momento,Vida · momento,0.265,38,0.2264
+ruido,Vida|momento,Vida · momento,0.265,39,0.2273
+ruido,Vida|momento,Vida · momento,0.265,40,0.222
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,1,0
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,2,0.0529
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,3,0.0635
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,4,0.0733
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,5,0.0517
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,6,0.0655
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,7,0.0686
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,8,0.0774
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,9,0.0831
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,10,0.0762
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,11,0.0729
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,12,0.0623
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,13,0.0674
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,14,0.0665
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,15,0.0694
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,16,0.0727
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,17,0.0729
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,18,0.0733
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,19,0.0768
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,20,0.0746
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,21,0.0769
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,22,0.0759
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,23,0.0706
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,24,0.0697
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,25,0.0729
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,26,0.0754
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,27,0.0763
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,28,0.0768
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,29,0.0776
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,30,0.0815
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,31,0.0788
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,32,0.081
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,33,0.0819
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,34,0.0847
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,35,0.0828
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,36,0.0829
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,37,0.0808
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,38,0.0787
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,39,0.0809
+oportunidad oculta,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,40,0.0775
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,1,0
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,2,0.0432
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,3,0.0405
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,4,0.0318
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,5,0.0556
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,6,0.0819
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,7,0.0703
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,8,0.0638
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,9,0.0611
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,10,0.0658
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,11,0.0685
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,12,0.0754
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,13,0.0703
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,14,0.0603
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,15,0.0557
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,16,0.061
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,17,0.0636
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,18,0.0569
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,19,0.0506
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,20,0.053
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,21,0.0464
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,22,0.0515
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,23,0.0522
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,24,0.052
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,25,0.0511
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,26,0.0494
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,27,0.0472
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,28,0.0505
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,29,0.0462
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,30,0.0457
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,31,0.0454
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,32,0.0482
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,33,0.0534
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,34,0.0535
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,35,0.0589
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,36,0.0601
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,37,0.0577
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,38,0.056
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,39,0.0566
+oportunidad oculta,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,40,0.059
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,1,0
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,2,0.0164
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,3,0.0351
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,4,0.0407
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,5,0.0345
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,6,0.0446
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,7,0.0491
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,8,0.0549
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,9,0.055
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,10,0.0687
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,11,0.067
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,12,0.0655
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,13,0.0745
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,14,0.0781
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,15,0.0719
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,16,0.0714
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,17,0.077
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,18,0.0701
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,19,0.0702
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,20,0.0814
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,21,0.0812
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,22,0.0843
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,23,0.0786
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,24,0.0715
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,25,0.0719
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,26,0.0683
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,27,0.0733
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,28,0.0694
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,29,0.0714
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,30,0.0636
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,31,0.0637
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,32,0.0689
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,33,0.0713
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,34,0.0695
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,35,0.0697
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,36,0.0688
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,37,0.0706
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,38,0.067
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,39,0.071
+oportunidad oculta,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,40,0.0687
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,1,0
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,2,0.0178
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,3,0.0227
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,4,0.0469
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,5,0.0432
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,6,0.0441
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,7,0.0515
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,8,0.0498
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,9,0.0509
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,10,0.0503
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,11,0.0508
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,12,0.0545
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,13,0.0632
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,14,0.0629
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,15,0.0675
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,16,0.0632
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,17,0.074
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,18,0.0804
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,19,0.0823
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,20,0.0897
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,21,0.0905
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,22,0.0861
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,23,0.0769
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,24,0.0777
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,25,0.0832
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,26,0.0894
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,27,0.0872
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,28,0.093
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,29,0.0952
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,30,0.0938
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,31,0.093
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,32,0.1063
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,33,0.1063
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,34,0.114
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,35,0.1183
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,36,0.1149
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,37,0.117
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,38,0.1195
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,39,0.1181
+oportunidad oculta,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,40,0.1189
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,1,0
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,2,-0.0078
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,3,-0.0113
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,4,-0.0058
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,5,-0.0103
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,6,-0.0035
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,7,-0.008
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,8,-0.0042
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,9,0.0026
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,10,0.0007
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,11,0.008
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,12,-0.0007
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,13,0.0012
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,14,0.0059
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,15,0.008
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,16,0.0211
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,17,0.0165
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,18,0.0166
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,19,0.022
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,20,0.0233
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,21,0.0223
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,22,0.0251
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,23,0.0231
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,24,0.0298
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,25,0.0256
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,26,0.0339
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,27,0.032
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,28,0.025
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,29,0.0301
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,30,0.0245
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,31,0.0312
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,32,0.0421
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,33,0.0414
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,34,0.0432
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,35,0.0375
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,36,0.0451
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,37,0.0525
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,38,0.0524
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,39,0.054
+oportunidad oculta,Vida|perfil:edad,Vida · Rango de edad,0.2,40,0.0565
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,1,0
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,2,0.0578
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,3,0.075
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,4,0.0835
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,5,0.0728
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,6,0.0871
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,7,0.114
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,8,0.1195
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,9,0.1165
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,10,0.1135
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,11,0.109
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,12,0.1077
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,13,0.1059
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,14,0.1064
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,15,0.1096
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,16,0.1072
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,17,0.1095
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,18,0.1116
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,19,0.1199
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,20,0.1148
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,21,0.1133
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,22,0.1134
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,23,0.1159
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,24,0.1213
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,25,0.1194
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,26,0.1185
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,27,0.1148
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,28,0.1159
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,29,0.1112
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,30,0.1126
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,31,0.1142
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,32,0.116
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,33,0.1157
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,34,0.1159
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,35,0.1144
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,36,0.1155
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,37,0.1192
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,38,0.118
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,39,0.1209
+oportunidad oculta,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,40,0.1205
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,1,0
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,2,0.0098
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,3,0.0193
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,4,0.0325
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,5,0.0324
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,6,0.0457
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,7,0.0578
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,8,0.0633
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,9,0.0655
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,10,0.0648
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,11,0.0662
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,12,0.062
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,13,0.0645
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,14,0.0701
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,15,0.0569
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,16,0.0576
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,17,0.0612
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,18,0.066
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,19,0.0819
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,20,0.0965
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,21,0.1104
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,22,0.1091
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,23,0.1081
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,24,0.1091
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,25,0.1046
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,26,0.103
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,27,0.102
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,28,0.1063
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,29,0.1118
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,30,0.1094
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,31,0.1104
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,32,0.1209
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,33,0.1158
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,34,0.1145
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,35,0.1082
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,36,0.109
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,37,0.1078
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,38,0.1092
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,39,0.1129
+oportunidad oculta,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,40,0.1133
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,1,0
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,2,0.0057
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,3,-0.0091
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,4,-0.0016
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,5,0.0087
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,6,0.0144
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,7,0.0187
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,8,0.0099
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,9,0.0122
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,10,0.0171
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,11,0.0319
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,12,0.0299
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,13,0.0332
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,14,0.0332
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,15,0.0312
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,16,0.0259
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,17,0.033
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,18,0.0348
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,19,0.0336
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,20,0.0324
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,21,0.0316
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,22,0.0205
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,23,0.024
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,24,0.0228
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,25,0.032
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,26,0.0354
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,27,0.044
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,28,0.0457
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,29,0.0436
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,30,0.0426
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,31,0.0428
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,32,0.0423
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,33,0.0485
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,34,0.048
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,35,0.0459
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,36,0.0466
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,37,0.0478
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,38,0.0445
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,39,0.0472
+oportunidad oculta,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,40,0.0479
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,1,-0.2562
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,2,-0.3494
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,3,-0.3341
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,4,-0.3447
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,5,-0.2747
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,6,-0.2612
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,7,-0.2461
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,8,-0.239
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,9,-0.2271
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,10,-0.1736
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,11,-0.1247
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,12,-0.0845
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,13,-0.0935
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,14,-0.1224
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,15,-0.1109
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,16,-0.1075
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,17,-0.0987
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,18,-0.099
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,19,-0.1092
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,20,-0.1047
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,21,-0.0904
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,22,-0.0996
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,23,-0.0979
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,24,-0.0919
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,25,-0.0786
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,26,-0.0701
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,27,-0.0802
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,28,-0.0892
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,29,-0.1112
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,30,-0.109
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,31,-0.0866
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,32,-0.0791
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,33,-0.065
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,34,-0.0785
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,35,-0.0886
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,36,-0.0771
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,37,-0.088
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,38,-0.1036
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,39,-0.1012
+oportunidad oculta,Vida|senal_media,Vida · señal media,0,40,-0.1116
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,1,-0.2411
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,2,-0.2957
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,3,-0.3571
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,4,-0.3596
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,5,-0.3498
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,6,-0.3436
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,7,-0.3697
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,8,-0.3801
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,9,-0.3921
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,10,-0.3975
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,11,-0.3782
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,12,-0.3873
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,13,-0.3887
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,14,-0.3987
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,15,-0.3986
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,16,-0.3979
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,17,-0.3971
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,18,-0.4102
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,19,-0.3937
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,20,-0.4027
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,21,-0.3971
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,22,-0.4052
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,23,-0.4041
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,24,-0.3958
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,25,-0.3949
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,26,-0.3909
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,27,-0.3924
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,28,-0.3909
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,29,-0.3886
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,30,-0.3825
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,31,-0.3803
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,32,-0.3899
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,33,-0.3917
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,34,-0.3904
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,35,-0.3887
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,36,-0.3921
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,37,-0.382
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,38,-0.3742
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,39,-0.3822
+oportunidad oculta,Desempleo|senal_media,Desempleo · señal media,0,40,-0.3833
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,1,0.3057
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,2,0.2726
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,3,0.3597
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,4,0.5305
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,5,0.4856
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,6,0.513
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,7,0.4475
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,8,0.4726
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,9,0.4404
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,10,0.4673
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,11,0.5069
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,12,0.505
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,13,0.4635
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,14,0.4403
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,15,0.3836
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,16,0.3626
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,17,0.3756
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,18,0.398
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,19,0.3928
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,20,0.4112
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,21,0.4319
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,22,0.4307
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,23,0.4102
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,24,0.4244
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,25,0.4094
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,26,0.3821
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,27,0.393
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,28,0.3923
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,29,0.4072
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,30,0.3998
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,31,0.3868
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,32,0.4257
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,33,0.4248
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,34,0.4309
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,35,0.4159
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,36,0.4276
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,37,0.425
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,38,0.4152
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,39,0.4321
+oportunidad oculta,SOAT|momento,SOAT · momento,0.2909,40,0.4117
+oportunidad oculta,Vida|momento,Vida · momento,0.265,1,0.277
+oportunidad oculta,Vida|momento,Vida · momento,0.265,2,0.0572
+oportunidad oculta,Vida|momento,Vida · momento,0.265,3,0.0548
+oportunidad oculta,Vida|momento,Vida · momento,0.265,4,0.0285
+oportunidad oculta,Vida|momento,Vida · momento,0.265,5,0.0877
+oportunidad oculta,Vida|momento,Vida · momento,0.265,6,0.0741
+oportunidad oculta,Vida|momento,Vida · momento,0.265,7,0.0606
+oportunidad oculta,Vida|momento,Vida · momento,0.265,8,0.0361
+oportunidad oculta,Vida|momento,Vida · momento,0.265,9,0.0031
+oportunidad oculta,Vida|momento,Vida · momento,0.265,10,0.0046
+oportunidad oculta,Vida|momento,Vida · momento,0.265,11,0.0626
+oportunidad oculta,Vida|momento,Vida · momento,0.265,12,0.0778
+oportunidad oculta,Vida|momento,Vida · momento,0.265,13,0.1354
+oportunidad oculta,Vida|momento,Vida · momento,0.265,14,0.1282
+oportunidad oculta,Vida|momento,Vida · momento,0.265,15,0.1558
+oportunidad oculta,Vida|momento,Vida · momento,0.265,16,0.135
+oportunidad oculta,Vida|momento,Vida · momento,0.265,17,0.1577
+oportunidad oculta,Vida|momento,Vida · momento,0.265,18,0.1947
+oportunidad oculta,Vida|momento,Vida · momento,0.265,19,0.2292
+oportunidad oculta,Vida|momento,Vida · momento,0.265,20,0.2189
+oportunidad oculta,Vida|momento,Vida · momento,0.265,21,0.2347
+oportunidad oculta,Vida|momento,Vida · momento,0.265,22,0.2217
+oportunidad oculta,Vida|momento,Vida · momento,0.265,23,0.2082
+oportunidad oculta,Vida|momento,Vida · momento,0.265,24,0.2356
+oportunidad oculta,Vida|momento,Vida · momento,0.265,25,0.2329
+oportunidad oculta,Vida|momento,Vida · momento,0.265,26,0.207
+oportunidad oculta,Vida|momento,Vida · momento,0.265,27,0.2123
+oportunidad oculta,Vida|momento,Vida · momento,0.265,28,0.223
+oportunidad oculta,Vida|momento,Vida · momento,0.265,29,0.2085
+oportunidad oculta,Vida|momento,Vida · momento,0.265,30,0.2045
+oportunidad oculta,Vida|momento,Vida · momento,0.265,31,0.219
+oportunidad oculta,Vida|momento,Vida · momento,0.265,32,0.2509
+oportunidad oculta,Vida|momento,Vida · momento,0.265,33,0.2486
+oportunidad oculta,Vida|momento,Vida · momento,0.265,34,0.2449
+oportunidad oculta,Vida|momento,Vida · momento,0.265,35,0.2407
+oportunidad oculta,Vida|momento,Vida · momento,0.265,36,0.2442
+oportunidad oculta,Vida|momento,Vida · momento,0.265,37,0.2356
+oportunidad oculta,Vida|momento,Vida · momento,0.265,38,0.223
+oportunidad oculta,Vida|momento,Vida · momento,0.265,39,0.2221
+oportunidad oculta,Vida|momento,Vida · momento,0.265,40,0.2212
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,1,0
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,2,0.054
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,3,0.0776
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,4,0.0798
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,5,0.0701
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,6,0.0684
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,7,0.0795
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,8,0.0913
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,9,0.0946
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,10,0.0928
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,11,0.0933
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,12,0.0865
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,13,0.0922
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,14,0.0909
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,15,0.0916
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,16,0.0923
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,17,0.088
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,18,0.0881
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,19,0.0913
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,20,0.0901
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,21,0.0923
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,22,0.0948
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,23,0.0967
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,24,0.0973
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,25,0.099
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,26,0.1028
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,27,0.1031
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,28,0.1014
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,29,0.0982
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,30,0.1069
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,31,0.1035
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,32,0.105
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,33,0.107
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,34,0.1103
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,35,0.107
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,36,0.1063
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,37,0.1053
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,38,0.1016
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,39,0.1023
+dato nuevo,*|uso:apertura,Todos los ramos · Abre notificaciones,0.12,40,0.0988
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,1,0
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,2,0.0305
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,3,0.0286
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,4,0.0427
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,5,0.0677
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,6,0.0681
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,7,0.0699
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,8,0.0585
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,9,0.0588
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,10,0.0583
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,11,0.0699
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,12,0.0676
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,13,0.0667
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,14,0.0613
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,15,0.0636
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,16,0.0672
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,17,0.0621
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,18,0.05
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,19,0.0569
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,20,0.0613
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,21,0.057
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,22,0.0561
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,23,0.0538
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,24,0.053
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,25,0.0479
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,26,0.0451
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,27,0.0437
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,28,0.0454
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,29,0.0407
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,30,0.0386
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,31,0.0389
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,32,0.0439
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,33,0.0473
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,34,0.0475
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,35,0.05
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,36,0.0516
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,37,0.0503
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,38,0.0507
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,39,0.054
+dato nuevo,*|uso:sesiones,Todos los ramos · Sesiones en la app,0.08,40,0.0531
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,1,0
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,2,0.024
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,3,0.0532
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,4,0.065
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,5,0.0619
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,6,0.0719
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,7,0.0715
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,8,0.0796
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,9,0.0758
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,10,0.0872
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,11,0.0843
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,12,0.0892
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,13,0.1027
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,14,0.1084
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,15,0.0984
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,16,0.101
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,17,0.108
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,18,0.0998
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,19,0.0961
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,20,0.1066
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,21,0.1043
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,22,0.1068
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,23,0.0999
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,24,0.0926
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,25,0.0942
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,26,0.0921
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,27,0.098
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,28,0.0956
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,29,0.0992
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,30,0.0931
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,31,0.0922
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,32,0.098
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,33,0.1016
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,34,0.1005
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,35,0.1005
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,36,0.1029
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,37,0.1097
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,38,0.1078
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,39,0.1092
+dato nuevo,Desempleo|perfil:credito,Desempleo · Crédito activo,0.3,40,0.1071
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,1,0
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,2,0.022
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,3,0.0267
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,4,0.0202
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,5,0.0195
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,6,0.0207
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,7,0.0224
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,8,0.0283
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,9,0.0455
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,10,0.0484
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,11,0.0578
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,12,0.067
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,13,0.0769
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,14,0.09
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,15,0.0919
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,16,0.0857
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,17,0.0976
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,18,0.1039
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,19,0.1016
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,20,0.101
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,21,0.1026
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,22,0.1021
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,23,0.099
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,24,0.0997
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,25,0.0946
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,26,0.0993
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,27,0.0952
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,28,0.0996
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,29,0.1007
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,30,0.1032
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,31,0.1026
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,32,0.1142
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,33,0.1134
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,34,0.1132
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,35,0.1189
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,36,0.1132
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,37,0.1127
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,38,0.1113
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,39,0.1113
+dato nuevo,Viajes|bolsillo:Viajes,Viajes · Abonos al bolsillo viajes,0.3,40,0.1124
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,1,0
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,2,-0.0012
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,3,0.004
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,4,0.0087
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,5,0.0052
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,6,0.0109
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,7,-0.0006
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,8,0.0023
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,9,-0.0087
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,10,-0.0089
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,11,-0.0044
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,12,-0.0018
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,13,0.0023
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,14,0.0055
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,15,0.0047
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,16,0.0132
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,17,0.013
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,18,0.0097
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,19,0.0127
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,20,0.0159
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,21,0.0162
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,22,0.0226
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,23,0.0316
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,24,0.0358
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,25,0.0356
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,26,0.0361
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,27,0.0303
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,28,0.026
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,29,0.0241
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,30,0.023
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,31,0.0291
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,32,0.0364
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,33,0.0372
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,34,0.0395
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,35,0.0357
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,36,0.042
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,37,0.0441
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,38,0.0412
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,39,0.0376
+dato nuevo,Vida|perfil:edad,Vida · Rango de edad,0.2,40,0.0376
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,1,0
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,2,0.0354
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,3,0.0515
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,4,0.0476
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,5,0.0398
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,6,0.048
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,7,0.0854
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,8,0.0994
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,9,0.1007
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,10,0.1022
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,11,0.1029
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,12,0.0993
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,13,0.0959
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,14,0.0961
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,15,0.0931
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,16,0.0925
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,17,0.0896
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,18,0.0915
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,19,0.1005
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,20,0.1027
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,21,0.102
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,22,0.1067
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,23,0.1022
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,24,0.1055
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,25,0.1007
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,26,0.1026
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,27,0.0993
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,28,0.0965
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,29,0.0941
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,30,0.0997
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,31,0.1019
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,32,0.1058
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,33,0.1071
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,34,0.1064
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,35,0.1045
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,36,0.1066
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,37,0.11
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,38,0.1092
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,39,0.1136
+dato nuevo,Mascotas|bolsillo:Mascotas,Mascotas · Abonos al bolsillo mascotas,0.25,40,0.1134
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,1,0
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,2,0.0121
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,3,0.0091
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,4,0.0073
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,5,0.0172
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,6,0.0203
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,7,0.0191
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,8,0.0236
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,9,0.0328
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,10,0.0378
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,11,0.0471
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,12,0.0466
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,13,0.037
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,14,0.0423
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,15,0.0324
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,16,0.0392
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,17,0.043
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,18,0.0473
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,19,0.0528
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,20,0.0577
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,21,0.058
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,22,0.0524
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,23,0.0547
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,24,0.0505
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,25,0.048
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,26,0.0416
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,27,0.0433
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,28,0.0401
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,29,0.0415
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,30,0.0472
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,31,0.0557
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,32,0.0648
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,33,0.0582
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,34,0.0602
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,35,0.0562
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,36,0.0601
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,37,0.0585
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,38,0.0591
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,39,0.0665
+dato nuevo,SOAT|mov:Peajes,SOAT · Movimientos recientes: peajes,0.2,40,0.0635
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,1,0
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,2,0.0084
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,3,-0.0011
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,4,0.0135
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,5,0.0184
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,6,0.0204
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,7,0.0201
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,8,0.0167
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,9,0.018
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,10,0.0264
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,11,0.0355
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,12,0.0375
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,13,0.0433
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,14,0.0422
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,15,0.0371
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,16,0.0319
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,17,0.036
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,18,0.0394
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,19,0.0382
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,20,0.0357
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,21,0.0324
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,22,0.03
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,23,0.0383
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,24,0.038
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,25,0.0449
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,26,0.0465
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,27,0.0532
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,28,0.0509
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,29,0.0497
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,30,0.0462
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,31,0.0455
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,32,0.0433
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,33,0.0516
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,34,0.0519
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,35,0.0464
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,36,0.0447
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,37,0.0499
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,38,0.0516
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,39,0.0487
+dato nuevo,Hogar|perfil:saldo,Hogar · Saldo promedio,0.15,40,0.0471
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,1,-0.2562
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,2,-0.356
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,3,-0.3977
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,4,-0.4513
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,5,-0.4439
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,6,-0.4028
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,7,-0.3381
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,8,-0.3111
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,9,-0.2788
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,10,-0.2639
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,11,-0.2502
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,12,-0.2326
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,13,-0.2224
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,14,-0.2401
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,15,-0.2082
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,16,-0.2376
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,17,-0.2609
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,18,-0.2797
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,19,-0.2762
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,20,-0.271
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,21,-0.2768
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,22,-0.3005
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,23,-0.2992
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,24,-0.2919
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,25,-0.2688
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,26,-0.2749
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,27,-0.2643
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,28,-0.269
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,29,-0.2884
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,30,-0.2889
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,31,-0.2782
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,32,-0.2817
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,33,-0.2762
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,34,-0.2926
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,35,-0.3017
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,36,-0.2802
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,37,-0.2954
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,38,-0.3078
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,39,-0.3083
+dato nuevo,Vida|senal_media,Vida · señal media,-0.3893,40,-0.3201
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,1,-0.2411
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,2,-0.3487
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,3,-0.4717
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,4,-0.5398
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,5,-0.5327
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,6,-0.5605
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,7,-0.5502
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,8,-0.5609
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,9,-0.5667
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,10,-0.5483
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,11,-0.5421
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,12,-0.5801
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,13,-0.5835
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,14,-0.5843
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,15,-0.5825
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,16,-0.5905
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,17,-0.6002
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,18,-0.6142
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,19,-0.5811
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,20,-0.5838
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,21,-0.5737
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,22,-0.58
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,23,-0.5863
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,24,-0.5825
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,25,-0.5915
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,26,-0.5931
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,27,-0.5871
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,28,-0.5907
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,29,-0.5983
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,30,-0.59
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,31,-0.5805
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,32,-0.5898
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,33,-0.6031
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,34,-0.6003
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,35,-0.5961
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,36,-0.608
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,37,-0.606
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,38,-0.609
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,39,-0.6122
+dato nuevo,Desempleo|senal_media,Desempleo · señal media,-0.3673,40,-0.6148
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,1,0.3057
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,2,0.2688
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,3,0.2809
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,4,0.2848
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,5,0.2314
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,6,0.2402
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,7,0.2294
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,8,0.249
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,9,0.2909
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,10,0.371
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,11,0.4824
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,12,0.4545
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,13,0.3859
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,14,0.3447
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,15,0.3087
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,16,0.3108
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,17,0.3155
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,18,0.332
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,19,0.3724
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,20,0.3964
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,21,0.3982
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,22,0.3818
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,23,0.3787
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,24,0.341
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,25,0.3288
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,26,0.2994
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,27,0.3069
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,28,0.3024
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,29,0.3142
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,30,0.3158
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,31,0.3236
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,32,0.3379
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,33,0.3265
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,34,0.3466
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,35,0.325
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,36,0.339
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,37,0.3358
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,38,0.3301
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,39,0.3448
+dato nuevo,SOAT|momento,SOAT · momento,0.2909,40,0.326
+dato nuevo,Vida|momento,Vida · momento,0.265,1,0.277
+dato nuevo,Vida|momento,Vida · momento,0.265,2,0.1252
+dato nuevo,Vida|momento,Vida · momento,0.265,3,0.1224
+dato nuevo,Vida|momento,Vida · momento,0.265,4,0.1298
+dato nuevo,Vida|momento,Vida · momento,0.265,5,0.0973
+dato nuevo,Vida|momento,Vida · momento,0.265,6,0.1263
+dato nuevo,Vida|momento,Vida · momento,0.265,7,0.1086
+dato nuevo,Vida|momento,Vida · momento,0.265,8,0.1028
+dato nuevo,Vida|momento,Vida · momento,0.265,9,0.1207
+dato nuevo,Vida|momento,Vida · momento,0.265,10,0.1073
+dato nuevo,Vida|momento,Vida · momento,0.265,11,0.1431
+dato nuevo,Vida|momento,Vida · momento,0.265,12,0.1344
+dato nuevo,Vida|momento,Vida · momento,0.265,13,0.1569
+dato nuevo,Vida|momento,Vida · momento,0.265,14,0.1718
+dato nuevo,Vida|momento,Vida · momento,0.265,15,0.1764
+dato nuevo,Vida|momento,Vida · momento,0.265,16,0.1607
+dato nuevo,Vida|momento,Vida · momento,0.265,17,0.1627
+dato nuevo,Vida|momento,Vida · momento,0.265,18,0.1873
+dato nuevo,Vida|momento,Vida · momento,0.265,19,0.2006
+dato nuevo,Vida|momento,Vida · momento,0.265,20,0.1994
+dato nuevo,Vida|momento,Vida · momento,0.265,21,0.1919
+dato nuevo,Vida|momento,Vida · momento,0.265,22,0.1631
+dato nuevo,Vida|momento,Vida · momento,0.265,23,0.1579
+dato nuevo,Vida|momento,Vida · momento,0.265,24,0.1635
+dato nuevo,Vida|momento,Vida · momento,0.265,25,0.1715
+dato nuevo,Vida|momento,Vida · momento,0.265,26,0.1621
+dato nuevo,Vida|momento,Vida · momento,0.265,27,0.1782
+dato nuevo,Vida|momento,Vida · momento,0.265,28,0.1855
+dato nuevo,Vida|momento,Vida · momento,0.265,29,0.1679
+dato nuevo,Vida|momento,Vida · momento,0.265,30,0.1765
+dato nuevo,Vida|momento,Vida · momento,0.265,31,0.1709
+dato nuevo,Vida|momento,Vida · momento,0.265,32,0.1791
+dato nuevo,Vida|momento,Vida · momento,0.265,33,0.185
+dato nuevo,Vida|momento,Vida · momento,0.265,34,0.1811
+dato nuevo,Vida|momento,Vida · momento,0.265,35,0.1787
+dato nuevo,Vida|momento,Vida · momento,0.265,36,0.1829
+dato nuevo,Vida|momento,Vida · momento,0.265,37,0.1806
+dato nuevo,Vida|momento,Vida · momento,0.265,38,0.1735
+dato nuevo,Vida|momento,Vida · momento,0.265,39,0.183
+dato nuevo,Vida|momento,Vida · momento,0.265,40,0.1769
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,1,0
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,2,0.0852
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,3,0.0641
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,4,0.0699
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,5,0.0595
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,6,0.0806
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,7,0.1043
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,8,0.1113
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,9,0.1072
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,10,0.1101
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,11,0.1085
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,12,0.11
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,13,0.1095
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,14,0.1098
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,15,0.1088
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,16,0.1099
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,17,0.1097
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,18,0.1174
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,19,0.117
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,20,0.1139
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,21,0.1112
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,22,0.108
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,23,0.1124
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,24,0.1142
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,25,0.1169
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,26,0.1151
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,27,0.1184
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,28,0.1214
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,29,0.1204
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,30,0.1194
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,31,0.1189
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,32,0.1187
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,33,0.1211
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,34,0.1222
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,35,0.1236
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,36,0.128
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,37,0.13
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,38,0.1303
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,39,0.1307
+dato nuevo,*|nuevo:dato,Todos los ramos · dato nuevo (simulado),0.1,40,0.1304
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,1,0
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,2,0.0257
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,3,0.0408
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,4,0.0473
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,5,0.055
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,6,0.0798
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,7,0.1086
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,8,0.1208
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,9,0.1178
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,10,0.1253
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,11,0.1304
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,12,0.1279
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,13,0.1327
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,14,0.1257
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,15,0.1379
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,16,0.131
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,17,0.1301
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,18,0.1434
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,19,0.1533
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,20,0.1543
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,21,0.1484
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,22,0.1422
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,23,0.1465
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,24,0.1503
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,25,0.1524
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,26,0.1518
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,27,0.1577
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,28,0.1644
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,29,0.1656
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,30,0.166
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,31,0.1673
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,32,0.1646
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,33,0.1662
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,34,0.1646
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,35,0.1625
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,36,0.1686
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,37,0.1676
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,38,0.1665
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,39,0.1664
+dato nuevo,Vida|nuevo:dato,Vida · dato nuevo (simulado),0.3,40,0.1646

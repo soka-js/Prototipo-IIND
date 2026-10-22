@@ -1,0 +1,401 @@
+escenario,modelo,ronda,error_medio
+señal,motor,1,0.05511
+señal,motor,2,0.04769
+señal,motor,3,0.04905
+señal,motor,4,0.04762
+señal,motor,5,0.04565
+señal,motor,6,0.04254
+señal,motor,7,0.04198
+señal,motor,8,0.03966
+señal,motor,9,0.0391
+señal,motor,10,0.03853
+señal,motor,11,0.03975
+señal,motor,12,0.03787
+señal,motor,13,0.0397
+señal,motor,14,0.03715
+señal,motor,15,0.03569
+señal,motor,16,0.03561
+señal,motor,17,0.03541
+señal,motor,18,0.03327
+señal,motor,19,0.03567
+señal,motor,20,0.03482
+señal,motor,21,0.03272
+señal,motor,22,0.03432
+señal,motor,23,0.03315
+señal,motor,24,0.03249
+señal,motor,25,0.03225
+señal,motor,26,0.03203
+señal,motor,27,0.03174
+señal,motor,28,0.032
+señal,motor,29,0.03112
+señal,motor,30,0.03165
+señal,motor,31,0.03187
+señal,motor,32,0.03258
+señal,motor,33,0.03158
+señal,motor,34,0.03105
+señal,motor,35,0.02996
+señal,motor,36,0.03052
+señal,motor,37,0.0312
+señal,motor,38,0.03082
+señal,motor,39,0.03084
+señal,motor,40,0.03094
+señal,regla,1,0.05599
+señal,regla,2,0.05817
+señal,regla,3,0.05767
+señal,regla,4,0.05769
+señal,regla,5,0.05796
+señal,regla,6,0.05751
+señal,regla,7,0.05861
+señal,regla,8,0.05782
+señal,regla,9,0.05788
+señal,regla,10,0.05734
+señal,regla,11,0.05742
+señal,regla,12,0.05768
+señal,regla,13,0.05795
+señal,regla,14,0.05813
+señal,regla,15,0.05747
+señal,regla,16,0.05643
+señal,regla,17,0.05785
+señal,regla,18,0.05583
+señal,regla,19,0.05786
+señal,regla,20,0.05719
+señal,regla,21,0.05797
+señal,regla,22,0.05719
+señal,regla,23,0.05675
+señal,regla,24,0.05702
+señal,regla,25,0.05873
+señal,regla,26,0.05837
+señal,regla,27,0.05696
+señal,regla,28,0.05746
+señal,regla,29,0.05735
+señal,regla,30,0.05785
+señal,regla,31,0.05772
+señal,regla,32,0.05762
+señal,regla,33,0.05735
+señal,regla,34,0.05581
+señal,regla,35,0.05813
+señal,regla,36,0.0568
+señal,regla,37,0.05764
+señal,regla,38,0.05738
+señal,regla,39,0.05667
+señal,regla,40,0.05865
+regla correcta,motor,1,0.01407
+regla correcta,motor,2,0.0239
+regla correcta,motor,3,0.02816
+regla correcta,motor,4,0.02721
+regla correcta,motor,5,0.02946
+regla correcta,motor,6,0.022
+regla correcta,motor,7,0.02258
+regla correcta,motor,8,0.02214
+regla correcta,motor,9,0.02282
+regla correcta,motor,10,0.02384
+regla correcta,motor,11,0.0233
+regla correcta,motor,12,0.02429
+regla correcta,motor,13,0.02408
+regla correcta,motor,14,0.02272
+regla correcta,motor,15,0.02233
+regla correcta,motor,16,0.02275
+regla correcta,motor,17,0.02338
+regla correcta,motor,18,0.02416
+regla correcta,motor,19,0.02419
+regla correcta,motor,20,0.02302
+regla correcta,motor,21,0.02264
+regla correcta,motor,22,0.02065
+regla correcta,motor,23,0.02127
+regla correcta,motor,24,0.02021
+regla correcta,motor,25,0.01973
+regla correcta,motor,26,0.02014
+regla correcta,motor,27,0.01927
+regla correcta,motor,28,0.01907
+regla correcta,motor,29,0.01975
+regla correcta,motor,30,0.01989
+regla correcta,motor,31,0.02011
+regla correcta,motor,32,0.01952
+regla correcta,motor,33,0.01846
+regla correcta,motor,34,0.01844
+regla correcta,motor,35,0.01852
+regla correcta,motor,36,0.01859
+regla correcta,motor,37,0.01864
+regla correcta,motor,38,0.01872
+regla correcta,motor,39,0.01827
+regla correcta,motor,40,0.01751
+regla correcta,regla,1,0
+regla correcta,regla,2,0
+regla correcta,regla,3,0
+regla correcta,regla,4,0
+regla correcta,regla,5,0
+regla correcta,regla,6,0
+regla correcta,regla,7,0
+regla correcta,regla,8,0
+regla correcta,regla,9,0
+regla correcta,regla,10,0
+regla correcta,regla,11,0
+regla correcta,regla,12,0
+regla correcta,regla,13,0
+regla correcta,regla,14,0
+regla correcta,regla,15,0
+regla correcta,regla,16,0
+regla correcta,regla,17,0
+regla correcta,regla,18,0
+regla correcta,regla,19,0
+regla correcta,regla,20,0
+regla correcta,regla,21,0
+regla correcta,regla,22,0
+regla correcta,regla,23,0
+regla correcta,regla,24,0
+regla correcta,regla,25,0
+regla correcta,regla,26,0
+regla correcta,regla,27,0
+regla correcta,regla,28,0
+regla correcta,regla,29,0
+regla correcta,regla,30,0
+regla correcta,regla,31,0
+regla correcta,regla,32,0
+regla correcta,regla,33,0
+regla correcta,regla,34,0
+regla correcta,regla,35,0
+regla correcta,regla,36,0
+regla correcta,regla,37,0
+regla correcta,regla,38,0
+regla correcta,regla,39,0
+regla correcta,regla,40,0
+ruido,motor,1,0.05511
+ruido,motor,2,0.05042
+ruido,motor,3,0.04842
+ruido,motor,4,0.05036
+ruido,motor,5,0.04847
+ruido,motor,6,0.0445
+ruido,motor,7,0.04252
+ruido,motor,8,0.04007
+ruido,motor,9,0.03929
+ruido,motor,10,0.03868
+ruido,motor,11,0.03954
+ruido,motor,12,0.03781
+ruido,motor,13,0.0393
+ruido,motor,14,0.03797
+ruido,motor,15,0.03646
+ruido,motor,16,0.03584
+ruido,motor,17,0.03594
+ruido,motor,18,0.03536
+ruido,motor,19,0.03655
+ruido,motor,20,0.03619
+ruido,motor,21,0.03503
+ruido,motor,22,0.03559
+ruido,motor,23,0.03548
+ruido,motor,24,0.03403
+ruido,motor,25,0.03442
+ruido,motor,26,0.03421
+ruido,motor,27,0.03508
+ruido,motor,28,0.03486
+ruido,motor,29,0.03382
+ruido,motor,30,0.03387
+ruido,motor,31,0.03419
+ruido,motor,32,0.03422
+ruido,motor,33,0.03347
+ruido,motor,34,0.03274
+ruido,motor,35,0.0328
+ruido,motor,36,0.03327
+ruido,motor,37,0.03333
+ruido,motor,38,0.03302
+ruido,motor,39,0.03389
+ruido,motor,40,0.03341
+ruido,regla,1,0.05599
+ruido,regla,2,0.05817
+ruido,regla,3,0.05767
+ruido,regla,4,0.05769
+ruido,regla,5,0.05796
+ruido,regla,6,0.05751
+ruido,regla,7,0.05861
+ruido,regla,8,0.05782
+ruido,regla,9,0.05788
+ruido,regla,10,0.05734
+ruido,regla,11,0.05742
+ruido,regla,12,0.05768
+ruido,regla,13,0.05795
+ruido,regla,14,0.05813
+ruido,regla,15,0.05747
+ruido,regla,16,0.05643
+ruido,regla,17,0.05785
+ruido,regla,18,0.05583
+ruido,regla,19,0.05786
+ruido,regla,20,0.05719
+ruido,regla,21,0.05797
+ruido,regla,22,0.05719
+ruido,regla,23,0.05675
+ruido,regla,24,0.05702
+ruido,regla,25,0.05873
+ruido,regla,26,0.05837
+ruido,regla,27,0.05696
+ruido,regla,28,0.05746
+ruido,regla,29,0.05735
+ruido,regla,30,0.05785
+ruido,regla,31,0.05772
+ruido,regla,32,0.05762
+ruido,regla,33,0.05735
+ruido,regla,34,0.05581
+ruido,regla,35,0.05813
+ruido,regla,36,0.0568
+ruido,regla,37,0.05764
+ruido,regla,38,0.05738
+ruido,regla,39,0.05667
+ruido,regla,40,0.05865
+oportunidad oculta,motor,1,0.07527
+oportunidad oculta,motor,2,0.06527
+oportunidad oculta,motor,3,0.06608
+oportunidad oculta,motor,4,0.05895
+oportunidad oculta,motor,5,0.05855
+oportunidad oculta,motor,6,0.05569
+oportunidad oculta,motor,7,0.05411
+oportunidad oculta,motor,8,0.0516
+oportunidad oculta,motor,9,0.0532
+oportunidad oculta,motor,10,0.05224
+oportunidad oculta,motor,11,0.05428
+oportunidad oculta,motor,12,0.05259
+oportunidad oculta,motor,13,0.04923
+oportunidad oculta,motor,14,0.04994
+oportunidad oculta,motor,15,0.04801
+oportunidad oculta,motor,16,0.04865
+oportunidad oculta,motor,17,0.04496
+oportunidad oculta,motor,18,0.04472
+oportunidad oculta,motor,19,0.04551
+oportunidad oculta,motor,20,0.04434
+oportunidad oculta,motor,21,0.0444
+oportunidad oculta,motor,22,0.04415
+oportunidad oculta,motor,23,0.0441
+oportunidad oculta,motor,24,0.04316
+oportunidad oculta,motor,25,0.04256
+oportunidad oculta,motor,26,0.04159
+oportunidad oculta,motor,27,0.04196
+oportunidad oculta,motor,28,0.04071
+oportunidad oculta,motor,29,0.03995
+oportunidad oculta,motor,30,0.03919
+oportunidad oculta,motor,31,0.04026
+oportunidad oculta,motor,32,0.03891
+oportunidad oculta,motor,33,0.0377
+oportunidad oculta,motor,34,0.03709
+oportunidad oculta,motor,35,0.0371
+oportunidad oculta,motor,36,0.03777
+oportunidad oculta,motor,37,0.03785
+oportunidad oculta,motor,38,0.03819
+oportunidad oculta,motor,39,0.03852
+oportunidad oculta,motor,40,0.03772
+oportunidad oculta,regla,1,0.07854
+oportunidad oculta,regla,2,0.08137
+oportunidad oculta,regla,3,0.08069
+oportunidad oculta,regla,4,0.08051
+oportunidad oculta,regla,5,0.08147
+oportunidad oculta,regla,6,0.0803
+oportunidad oculta,regla,7,0.08109
+oportunidad oculta,regla,8,0.07996
+oportunidad oculta,regla,9,0.08022
+oportunidad oculta,regla,10,0.0797
+oportunidad oculta,regla,11,0.0795
+oportunidad oculta,regla,12,0.07992
+oportunidad oculta,regla,13,0.08099
+oportunidad oculta,regla,14,0.08169
+oportunidad oculta,regla,15,0.07999
+oportunidad oculta,regla,16,0.07901
+oportunidad oculta,regla,17,0.08078
+oportunidad oculta,regla,18,0.07854
+oportunidad oculta,regla,19,0.08092
+oportunidad oculta,regla,20,0.07993
+oportunidad oculta,regla,21,0.08086
+oportunidad oculta,regla,22,0.08087
+oportunidad oculta,regla,23,0.07992
+oportunidad oculta,regla,24,0.07956
+oportunidad oculta,regla,25,0.08162
+oportunidad oculta,regla,26,0.08149
+oportunidad oculta,regla,27,0.0803
+oportunidad oculta,regla,28,0.08043
+oportunidad oculta,regla,29,0.0796
+oportunidad oculta,regla,30,0.081
+oportunidad oculta,regla,31,0.0805
+oportunidad oculta,regla,32,0.08061
+oportunidad oculta,regla,33,0.08022
+oportunidad oculta,regla,34,0.07887
+oportunidad oculta,regla,35,0.08091
+oportunidad oculta,regla,36,0.08014
+oportunidad oculta,regla,37,0.08056
+oportunidad oculta,regla,38,0.0796
+oportunidad oculta,regla,39,0.07971
+oportunidad oculta,regla,40,0.08204
+dato nuevo,motor,1,0.0607
+dato nuevo,motor,2,0.05229
+dato nuevo,motor,3,0.0551
+dato nuevo,motor,4,0.0493
+dato nuevo,motor,5,0.05021
+dato nuevo,motor,6,0.04687
+dato nuevo,motor,7,0.04345
+dato nuevo,motor,8,0.04202
+dato nuevo,motor,9,0.0417
+dato nuevo,motor,10,0.03979
+dato nuevo,motor,11,0.03906
+dato nuevo,motor,12,0.03877
+dato nuevo,motor,13,0.03702
+dato nuevo,motor,14,0.03697
+dato nuevo,motor,15,0.03499
+dato nuevo,motor,16,0.0361
+dato nuevo,motor,17,0.03607
+dato nuevo,motor,18,0.03473
+dato nuevo,motor,19,0.03459
+dato nuevo,motor,20,0.03489
+dato nuevo,motor,21,0.03394
+dato nuevo,motor,22,0.035
+dato nuevo,motor,23,0.03328
+dato nuevo,motor,24,0.03265
+dato nuevo,motor,25,0.03319
+dato nuevo,motor,26,0.03295
+dato nuevo,motor,27,0.03288
+dato nuevo,motor,28,0.03222
+dato nuevo,motor,29,0.03262
+dato nuevo,motor,30,0.03267
+dato nuevo,motor,31,0.03191
+dato nuevo,motor,32,0.0309
+dato nuevo,motor,33,0.03033
+dato nuevo,motor,34,0.02939
+dato nuevo,motor,35,0.02949
+dato nuevo,motor,36,0.03004
+dato nuevo,motor,37,0.03086
+dato nuevo,motor,38,0.03045
+dato nuevo,motor,39,0.03135
+dato nuevo,motor,40,0.03043
+dato nuevo,regla,1,0.06129
+dato nuevo,regla,2,0.06366
+dato nuevo,regla,3,0.06368
+dato nuevo,regla,4,0.06341
+dato nuevo,regla,5,0.06395
+dato nuevo,regla,6,0.06271
+dato nuevo,regla,7,0.06379
+dato nuevo,regla,8,0.063
+dato nuevo,regla,9,0.06367
+dato nuevo,regla,10,0.06252
+dato nuevo,regla,11,0.06306
+dato nuevo,regla,12,0.06332
+dato nuevo,regla,13,0.06307
+dato nuevo,regla,14,0.0637
+dato nuevo,regla,15,0.06268
+dato nuevo,regla,16,0.06234
+dato nuevo,regla,17,0.06327
+dato nuevo,regla,18,0.06166
+dato nuevo,regla,19,0.06416
+dato nuevo,regla,20,0.06273
+dato nuevo,regla,21,0.06399
+dato nuevo,regla,22,0.06264
+dato nuevo,regla,23,0.06246
+dato nuevo,regla,24,0.06253
+dato nuevo,regla,25,0.06413
+dato nuevo,regla,26,0.06395
+dato nuevo,regla,27,0.06262
+dato nuevo,regla,28,0.06375
+dato nuevo,regla,29,0.06327
+dato nuevo,regla,30,0.06351
+dato nuevo,regla,31,0.06347
+dato nuevo,regla,32,0.06354
+dato nuevo,regla,33,0.06227
+dato nuevo,regla,34,0.06168
+dato nuevo,regla,35,0.0635
+dato nuevo,regla,36,0.06249
+dato nuevo,regla,37,0.0632
+dato nuevo,regla,38,0.06312
+dato nuevo,regla,39,0.06245
+dato nuevo,regla,40,0.06358

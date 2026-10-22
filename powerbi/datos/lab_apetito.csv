@@ -1,0 +1,71 @@
+escenario,ronda,politica,tau,ic95_bajo,ic95_alto,verdad,previa
+señal,5,motor,0,0,0.24,0.2,0.25
+señal,5,motor_sin_explorar,0,0,0.24,0.2,0.25
+señal,10,motor,0.16,0,0.26,0.2,0.25
+señal,10,motor_sin_explorar,0.14,0,0.26,0.2,0.25
+señal,15,motor,0.12,0,0.2,0.2,0.25
+señal,15,motor_sin_explorar,0.14,0,0.22,0.2,0.25
+señal,20,motor,0.18,0.1,0.22,0.2,0.25
+señal,20,motor_sin_explorar,0.16,0.08,0.22,0.2,0.25
+señal,25,motor,0.16,0.1,0.2,0.2,0.25
+señal,25,motor_sin_explorar,0.14,0.08,0.2,0.2,0.25
+señal,30,motor,0.14,0.1,0.2,0.2,0.25
+señal,30,motor_sin_explorar,0.14,0.08,0.18,0.2,0.25
+señal,35,motor,0.14,0.1,0.18,0.2,0.25
+señal,35,motor_sin_explorar,0.14,0.1,0.18,0.2,0.25
+regla correcta,5,motor,0,0,0.3,0,0.25
+regla correcta,5,motor_sin_explorar,0,0,0.28,0,0.25
+regla correcta,10,motor,0,0,0.18,0,0.25
+regla correcta,10,motor_sin_explorar,0,0,0.16,0,0.25
+regla correcta,15,motor,0,0,0.1,0,0.25
+regla correcta,15,motor_sin_explorar,0,0,0.1,0,0.25
+regla correcta,20,motor,0,0,0.08,0,0.25
+regla correcta,20,motor_sin_explorar,0,0,0.08,0,0.25
+regla correcta,25,motor,0,0,0.08,0,0.25
+regla correcta,25,motor_sin_explorar,0,0,0.08,0,0.25
+regla correcta,30,motor,0,0,0.06,0,0.25
+regla correcta,30,motor_sin_explorar,0,0,0.06,0,0.25
+regla correcta,35,motor,0,0,0.06,0,0.25
+regla correcta,35,motor_sin_explorar,0,0,0.06,0,0.25
+ruido,5,motor,0,0,0.24,0.2,0.25
+ruido,5,motor_sin_explorar,0,0,0.26,0.2,0.25
+ruido,10,motor,0.1,0,0.22,0.2,0.25
+ruido,10,motor_sin_explorar,0.12,0,0.24,0.2,0.25
+ruido,15,motor,0,0,0.14,0.2,0.25
+ruido,15,motor_sin_explorar,0,0,0.16,0.2,0.25
+ruido,20,motor,0.06,0,0.16,0.2,0.25
+ruido,20,motor_sin_explorar,0.08,0,0.16,0.2,0.25
+ruido,25,motor,0.04,0,0.12,0.2,0.25
+ruido,25,motor_sin_explorar,0.06,0,0.14,0.2,0.25
+ruido,30,motor,0.06,0,0.12,0.2,0.25
+ruido,30,motor_sin_explorar,0.06,0,0.12,0.2,0.25
+ruido,35,motor,0.08,0,0.14,0.2,0.25
+ruido,35,motor_sin_explorar,0.08,0,0.12,0.2,0.25
+oportunidad oculta,5,motor,0.26,0,0.4,0.2,0.25
+oportunidad oculta,5,motor_sin_explorar,0.26,0,0.4,0.2,0.25
+oportunidad oculta,10,motor,0.22,0.1,0.3,0.2,0.25
+oportunidad oculta,10,motor_sin_explorar,0.2,0.08,0.3,0.2,0.25
+oportunidad oculta,15,motor,0.16,0,0.22,0.2,0.25
+oportunidad oculta,15,motor_sin_explorar,0.16,0.04,0.22,0.2,0.25
+oportunidad oculta,20,motor,0.18,0.12,0.24,0.2,0.25
+oportunidad oculta,20,motor_sin_explorar,0.18,0.12,0.22,0.2,0.25
+oportunidad oculta,25,motor,0.18,0.12,0.22,0.2,0.25
+oportunidad oculta,25,motor_sin_explorar,0.16,0.12,0.22,0.2,0.25
+oportunidad oculta,30,motor,0.16,0.1,0.2,0.2,0.25
+oportunidad oculta,30,motor_sin_explorar,0.14,0.1,0.18,0.2,0.25
+oportunidad oculta,35,motor,0.14,0.12,0.18,0.2,0.25
+oportunidad oculta,35,motor_sin_explorar,0.14,0.1,0.18,0.2,0.25
+dato nuevo,5,motor,0,0,0.26,0.2,0.25
+dato nuevo,5,motor_sin_explorar,0,0,0.28,0.2,0.25
+dato nuevo,10,motor,0.14,0,0.26,0.2,0.25
+dato nuevo,10,motor_sin_explorar,0.14,0,0.26,0.2,0.25
+dato nuevo,15,motor,0.14,0,0.22,0.2,0.25
+dato nuevo,15,motor_sin_explorar,0.12,0,0.2,0.2,0.25
+dato nuevo,20,motor,0.18,0.1,0.24,0.2,0.25
+dato nuevo,20,motor_sin_explorar,0.16,0.1,0.22,0.2,0.25
+dato nuevo,25,motor,0.16,0.1,0.22,0.2,0.25
+dato nuevo,25,motor_sin_explorar,0.18,0.12,0.22,0.2,0.25
+dato nuevo,30,motor,0.14,0.08,0.2,0.2,0.25
+dato nuevo,30,motor_sin_explorar,0.16,0.1,0.2,0.2,0.25
+dato nuevo,35,motor,0.16,0.1,0.2,0.2,0.25
+dato nuevo,35,motor_sin_explorar,0.16,0.12,0.2,0.2,0.25

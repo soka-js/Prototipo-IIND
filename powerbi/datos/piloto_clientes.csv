@@ -1,0 +1,965 @@
+escenario,cliente_id,grupo,politica,primera_decision,decisiones,vistas,aceptadas,ventas,compro,comision_12m_cop
+señal,C00001,tratamiento,explotar,2026-05-15,4,1,0,0,0,0
+señal,C00002,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+señal,C00004,tratamiento,explotar,2026-03-06,9,2,1,2,1,129648
+señal,C00005,tratamiento,explotar,2026-05-01,8,3,1,1,1,103043
+señal,C00006,tratamiento,explotar,2026-07-17,3,1,0,0,0,0
+señal,C00007,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+señal,C00008,tratamiento,explotar,2026-02-06,8,0,0,0,0,0
+señal,C00011,tratamiento,explotar,2026-06-12,7,0,0,0,0,0
+señal,C00012,tratamiento,explotar,2026-05-22,4,1,0,0,0,0
+señal,C00013,tratamiento,explorar,2026-04-24,10,3,0,0,0,0
+señal,C00014,tratamiento,explotar,2026-04-17,5,2,0,0,0,0
+señal,C00015,tratamiento,explotar,2026-04-17,11,1,0,0,0,0
+señal,C00016,tratamiento,explotar,2026-05-08,5,0,0,0,0,0
+señal,C00017,tratamiento,explotar,2026-05-01,11,4,0,0,0,0
+señal,C00018,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+señal,C00019,tratamiento,explotar,2026-08-07,2,0,0,0,0,0
+señal,C00020,control,,2026-05-01,5,0,0,0,0,0
+señal,C00021,tratamiento,explotar,2026-03-13,15,5,0,0,0,0
+señal,C00023,tratamiento,explotar,2026-01-30,8,2,1,1,1,18158
+señal,C00024,tratamiento,explotar,2026-05-15,6,2,0,0,0,0
+señal,C00025,control,,2026-01-30,10,0,0,0,0,0
+señal,C00027,tratamiento,explotar,2026-05-01,6,2,0,0,0,0
+señal,C00028,tratamiento,explotar,2026-08-21,2,0,0,0,0,0
+señal,C00029,tratamiento,explotar,2026-01-30,19,5,0,0,0,0
+señal,C00030,tratamiento,explorar,2026-01-30,12,3,1,1,1,18158
+señal,C00032,tratamiento,explotar,2026-01-30,3,0,0,0,0,0
+señal,C00033,tratamiento,explotar,2026-01-30,16,3,0,1,1,74670
+señal,C00034,tratamiento,explotar,2026-03-06,11,4,1,1,1,60490
+señal,C00037,tratamiento,explotar,2026-01-30,22,4,0,0,0,0
+señal,C00038,tratamiento,explotar,2026-04-17,12,2,0,0,0,0
+señal,C00039,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+señal,C00042,control,,2026-03-13,8,0,0,0,0,0
+señal,C00043,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+señal,C00045,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+señal,C00046,tratamiento,explotar,2026-01-30,7,1,1,1,1,74670
+señal,C00048,control,,2026-04-17,15,0,0,0,0,0
+señal,C00049,tratamiento,explotar,2026-02-06,13,3,0,0,0,0
+señal,C00050,tratamiento,explotar,2026-02-06,3,0,0,0,0,0
+señal,C00051,control,,2026-05-01,5,0,0,0,0,0
+señal,C00052,control,,2026-07-17,3,0,0,0,0,0
+señal,C00053,control,,2026-05-01,7,0,0,0,0,0
+señal,C00055,tratamiento,explotar,2026-02-20,15,5,0,0,0,0
+señal,C00056,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+señal,C00057,tratamiento,explotar,2026-05-01,10,0,0,0,0,0
+señal,C00058,tratamiento,explotar,2026-02-06,12,0,0,0,0,0
+señal,C00059,tratamiento,explotar,2026-01-30,5,0,0,0,0,0
+señal,C00060,tratamiento,explotar,2026-06-26,3,0,0,0,0,0
+señal,C00061,tratamiento,explorar,2026-01-30,22,9,0,0,0,0
+señal,C00063,tratamiento,explotar,2026-01-30,4,0,0,1,1,74670
+señal,C00064,tratamiento,explotar,2026-01-30,7,1,0,0,0,0
+señal,C00066,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+señal,C00068,control,,2026-09-18,1,0,0,0,0,0
+señal,C00069,tratamiento,explotar,2026-02-20,12,1,0,0,0,0
+señal,C00070,tratamiento,explotar,2026-07-17,3,0,0,0,0,0
+señal,C00071,tratamiento,explotar,2026-01-30,16,4,2,2,1,202907
+señal,C00072,tratamiento,explotar,2026-02-20,10,0,0,0,0,0
+señal,C00073,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+señal,C00075,tratamiento,explotar,2026-07-31,2,0,0,0,0,0
+señal,C00078,tratamiento,explotar,2026-07-31,2,1,0,0,0,0
+señal,C00079,tratamiento,explorar,2026-03-06,3,1,0,0,0,0
+señal,C00080,tratamiento,explotar,2026-01-30,10,3,0,1,1,74670
+señal,C00081,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+señal,C00082,tratamiento,explotar,2026-05-01,13,4,0,0,0,0
+señal,C00083,tratamiento,explotar,2026-03-06,7,2,0,0,0,0
+señal,C00084,tratamiento,explotar,2026-03-06,14,4,0,0,0,0
+señal,C00085,tratamiento,explotar,2026-01-30,17,4,0,0,0,0
+señal,C00086,tratamiento,explotar,2026-05-01,5,2,1,1,1,103043
+señal,C00087,tratamiento,explotar,2026-05-01,8,2,0,1,1,99864
+señal,C00088,tratamiento,explotar,2026-06-05,4,0,0,0,0,0
+señal,C00090,tratamiento,explotar,2026-01-30,15,6,1,1,1,60490
+señal,C00091,tratamiento,explotar,2026-05-01,3,1,1,1,1,103043
+señal,C00093,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+señal,C00094,tratamiento,explotar,2026-04-24,8,4,0,0,0,0
+señal,C00095,tratamiento,explotar,2026-01-30,19,4,0,0,0,0
+señal,C00096,tratamiento,explotar,2026-05-01,9,2,0,0,0,0
+señal,C00098,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00099,tratamiento,explotar,2026-03-27,8,2,0,0,0,0
+señal,C00100,tratamiento,explotar,2026-03-06,15,5,0,0,0,0
+señal,C00101,tratamiento,explotar,2026-01-30,4,2,1,1,1,103043
+señal,C00102,tratamiento,explotar,2026-01-30,13,2,1,1,1,18158
+señal,C00103,tratamiento,explotar,2026-01-30,11,3,1,1,1,60490
+señal,C00105,tratamiento,explotar,2026-08-07,2,0,0,0,0,0
+señal,C00106,tratamiento,explotar,2026-03-27,6,1,0,0,0,0
+señal,C00108,tratamiento,explotar,2026-02-13,7,2,0,0,0,0
+señal,C00110,tratamiento,explotar,2026-03-13,6,0,0,0,0,0
+señal,C00111,tratamiento,explotar,2026-07-17,3,0,0,0,0,0
+señal,C00112,tratamiento,explotar,2026-03-06,15,3,0,0,0,0
+señal,C00113,tratamiento,explotar,2026-06-12,4,2,0,0,0,0
+señal,C00114,tratamiento,explotar,2026-05-08,3,2,0,0,0,0
+señal,C00118,tratamiento,explotar,2026-04-17,8,1,0,0,0,0
+señal,C00119,tratamiento,explotar,2026-05-01,14,1,0,0,0,0
+señal,C00120,control,,2026-02-20,3,0,0,0,0,0
+señal,C00121,tratamiento,explotar,2026-02-06,7,1,0,0,0,0
+señal,C00122,tratamiento,explotar,2026-01-30,20,10,1,1,1,18158
+señal,C00125,tratamiento,explotar,2026-03-20,5,2,0,0,0,0
+señal,C00126,tratamiento,explotar,2026-01-30,5,2,1,1,1,18158
+señal,C00127,tratamiento,explotar,2026-02-20,21,6,0,0,0,0
+señal,C00128,tratamiento,explorar,2026-01-30,19,3,1,1,1,18158
+señal,C00129,tratamiento,explotar,2026-01-30,6,4,1,1,1,103043
+señal,C00131,tratamiento,explotar,2026-05-01,7,0,0,0,0,0
+señal,C00133,tratamiento,explotar,2026-03-06,11,1,0,0,0,0
+señal,C00134,control,,2026-02-13,7,0,0,0,0,0
+señal,C00136,tratamiento,explotar,2026-01-30,12,4,1,1,1,18158
+señal,C00137,tratamiento,explotar,2026-01-30,2,0,0,0,0,0
+señal,C00139,control,,2026-01-30,8,0,0,0,0,0
+señal,C00140,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+señal,C00142,control,,2026-02-06,14,0,0,0,0,0
+señal,C00143,tratamiento,explorar,2026-05-22,4,1,0,0,0,0
+señal,C00144,tratamiento,explotar,2026-05-22,4,1,0,0,0,0
+señal,C00146,tratamiento,explotar,2026-04-17,6,1,0,0,0,0
+señal,C00148,tratamiento,explotar,2026-05-01,13,1,0,0,0,0
+señal,C00149,tratamiento,explotar,2026-01-30,6,3,2,2,1,78648
+señal,C00150,tratamiento,explotar,2026-03-13,7,3,0,0,0,0
+señal,C00151,tratamiento,explorar,2026-03-13,13,3,1,1,1,29784
+señal,C00152,tratamiento,explotar,2026-01-30,7,2,1,1,1,103043
+señal,C00153,tratamiento,explotar,2026-05-01,5,3,0,0,0,0
+señal,C00154,control,,2026-06-05,5,0,0,0,0,0
+señal,C00155,tratamiento,explotar,2026-05-08,4,1,1,1,1,74670
+señal,C00156,tratamiento,explotar,2026-06-26,3,1,0,0,0,0
+señal,C00157,tratamiento,explotar,2026-01-30,23,4,1,1,1,103043
+señal,C00158,tratamiento,explotar,2026-03-06,15,2,1,1,1,29784
+señal,C00159,tratamiento,explorar,2026-02-13,15,3,0,0,0,0
+señal,C00160,tratamiento,explotar,2026-01-30,7,2,0,0,0,0
+señal,C00162,tratamiento,explotar,2026-01-30,10,6,1,1,1,60490
+señal,C00163,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00164,tratamiento,explotar,2026-09-18,1,0,0,0,0,0
+señal,C00165,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+señal,C00166,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+señal,C00167,tratamiento,explotar,2026-07-10,5,2,0,1,1,60490
+señal,C00168,tratamiento,explotar,2026-01-30,12,3,0,0,0,0
+señal,C00169,tratamiento,explotar,2026-03-06,9,3,0,0,0,0
+señal,C00170,tratamiento,explotar,2026-01-30,11,4,1,1,1,60490
+señal,C00172,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+señal,C00173,tratamiento,explorar,2026-01-30,14,3,0,0,0,0
+señal,C00174,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+señal,C00176,tratamiento,explotar,2026-06-26,3,0,0,0,0,0
+señal,C00177,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00179,tratamiento,explotar,2026-02-20,12,3,0,0,0,0
+señal,C00181,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+señal,C00182,tratamiento,explotar,2026-04-03,12,1,0,0,0,0
+señal,C00184,tratamiento,explorar,2026-02-06,20,3,0,0,0,0
+señal,C00185,tratamiento,explotar,2026-05-01,7,3,1,1,1,103043
+señal,C00186,tratamiento,explotar,2026-03-27,12,1,0,0,0,0
+señal,C00187,tratamiento,explotar,2026-04-10,6,0,0,0,0,0
+señal,C00189,tratamiento,explotar,2026-03-20,6,0,0,0,0,0
+señal,C00190,control,,2026-05-01,5,0,0,0,0,0
+señal,C00191,tratamiento,explotar,2026-01-30,11,5,0,1,1,29784
+señal,C00192,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+señal,C00193,tratamiento,explotar,2026-01-30,6,2,0,0,0,0
+señal,C00195,tratamiento,explotar,2026-01-30,10,3,1,2,1,90274
+señal,C00196,control,,2026-06-26,3,0,0,0,0,0
+señal,C00197,tratamiento,explotar,2026-02-06,13,4,0,0,0,0
+señal,C00198,tratamiento,explotar,2026-02-20,7,1,0,0,0,0
+señal,C00199,tratamiento,explotar,2026-05-08,5,1,0,0,0,0
+señal,C00201,control,,2026-01-30,9,0,0,0,0,0
+señal,C00203,tratamiento,explotar,2026-01-30,8,3,0,0,0,0
+señal,C00204,tratamiento,explotar,2026-01-30,8,3,1,1,1,18158
+señal,C00205,tratamiento,explotar,2026-02-13,21,3,0,0,0,0
+señal,C00208,tratamiento,explotar,2026-03-13,16,2,0,0,0,0
+señal,C00209,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00210,tratamiento,explotar,2026-07-24,3,0,0,0,0,0
+señal,C00211,tratamiento,explotar,2026-01-30,8,1,0,0,0,0
+señal,C00212,tratamiento,explotar,2026-03-20,11,3,2,2,1,118022
+señal,C00213,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+señal,C00214,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+señal,C00215,tratamiento,explotar,2026-05-01,6,0,0,0,0,0
+señal,C00216,tratamiento,explotar,2026-07-31,2,0,0,0,0,0
+señal,C00217,tratamiento,explotar,2026-05-01,9,2,0,1,1,29784
+señal,C00218,tratamiento,explotar,2026-01-30,17,4,0,0,0,0
+señal,C00219,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+señal,C00220,control,,2026-01-30,9,0,0,0,0,0
+señal,C00221,tratamiento,explotar,2026-03-13,10,2,0,0,0,0
+señal,C00222,control,,2026-01-30,5,0,0,0,0,0
+señal,C00223,tratamiento,explotar,2026-04-24,10,5,0,0,0,0
+señal,C00225,tratamiento,explotar,2026-01-30,5,1,1,1,1,60490
+señal,C00226,control,,2026-02-20,15,0,0,0,0,0
+señal,C00227,control,,2026-02-06,13,0,0,1,1,74670
+señal,C00228,tratamiento,explotar,2026-06-19,5,1,0,0,0,0
+señal,C00229,tratamiento,explotar,2026-01-30,14,4,0,0,0,0
+señal,C00230,tratamiento,explorar,2026-05-01,9,2,0,0,0,0
+señal,C00231,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+señal,C00232,tratamiento,explotar,2026-01-30,22,8,0,0,0,0
+señal,C00233,tratamiento,explotar,2026-03-13,9,1,1,1,1,18158
+señal,C00234,tratamiento,explotar,2026-05-01,8,0,0,0,0,0
+señal,C00236,tratamiento,explotar,2026-04-10,8,3,0,0,0,0
+señal,C00237,tratamiento,explorar,2026-05-01,10,5,0,0,0,0
+señal,C00238,tratamiento,explotar,2026-04-10,4,0,0,1,1,29784
+señal,C00239,tratamiento,explotar,2026-02-06,22,5,0,0,0,0
+señal,C00241,tratamiento,explotar,2026-01-30,14,3,1,1,1,29784
+señal,C00242,tratamiento,explotar,2026-01-30,18,3,0,0,0,0
+señal,C00244,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+señal,C00246,tratamiento,explotar,2026-08-21,2,0,0,0,0,0
+señal,C00247,control,,2026-01-30,12,0,0,0,0,0
+señal,C00248,tratamiento,explotar,2026-05-01,12,5,0,1,1,99864
+señal,C00249,control,,2026-01-30,26,0,0,0,0,0
+señal,C00250,tratamiento,explotar,2026-01-30,3,1,1,1,1,99864
+señal,C00251,tratamiento,explorar,2026-02-06,24,6,0,0,0,0
+señal,C00252,tratamiento,explotar,2026-03-13,11,2,0,0,0,0
+señal,C00254,tratamiento,explotar,2026-09-04,1,0,0,0,0,0
+señal,C00257,tratamiento,explotar,2026-02-20,10,0,0,0,0,0
+señal,C00258,tratamiento,explotar,2026-05-01,5,3,0,0,0,0
+señal,C00259,tratamiento,explotar,2026-09-18,1,0,0,0,0,0
+señal,C00260,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+señal,C00261,tratamiento,explotar,2026-04-10,8,2,0,0,0,0
+señal,C00263,control,,2026-01-30,19,0,0,0,0,0
+señal,C00264,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+señal,C00265,tratamiento,explotar,2026-01-30,13,1,0,0,0,0
+señal,C00266,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+señal,C00267,tratamiento,explorar,2026-04-03,6,3,0,0,0,0
+señal,C00268,tratamiento,explotar,2026-01-30,9,1,0,0,0,0
+señal,C00270,tratamiento,explorar,2026-08-14,2,0,0,0,0,0
+señal,C00271,tratamiento,explorar,2026-05-22,7,2,0,0,0,0
+señal,C00272,tratamiento,explotar,2026-02-27,3,0,0,0,0,0
+señal,C00273,tratamiento,explorar,2026-01-30,9,3,1,1,1,74670
+señal,C00274,tratamiento,explotar,2026-01-30,2,1,0,1,1,29784
+señal,C00275,tratamiento,explotar,2026-02-20,12,5,0,1,1,99864
+señal,C00276,tratamiento,explorar,2026-05-15,6,1,0,0,0,0
+señal,C00277,tratamiento,explorar,2026-05-01,7,0,0,0,0,0
+señal,C00278,tratamiento,explotar,2026-03-06,9,1,1,1,1,99864
+señal,C00279,tratamiento,explotar,2026-05-01,10,4,0,0,0,0
+señal,C00280,tratamiento,explotar,2026-02-20,12,2,0,0,0,0
+señal,C00281,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+señal,C00284,tratamiento,explotar,2026-01-30,20,5,1,1,1,60490
+señal,C00286,tratamiento,explotar,2026-05-01,4,1,1,1,1,60490
+señal,C00287,tratamiento,explorar,2026-03-13,17,1,0,0,0,0
+señal,C00288,tratamiento,explotar,2026-07-10,3,0,0,0,0,0
+señal,C00290,tratamiento,explotar,2026-04-03,12,2,0,1,1,74670
+señal,C00291,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+señal,C00292,tratamiento,explotar,2026-06-12,3,1,0,0,0,0
+señal,C00293,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+señal,C00294,tratamiento,explotar,2026-01-30,22,9,1,1,1,74670
+señal,C00295,tratamiento,explotar,2026-05-01,12,6,0,0,0,0
+señal,C00296,tratamiento,explotar,2026-03-20,11,5,0,0,0,0
+señal,C00297,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+señal,C00298,tratamiento,explotar,2026-02-27,7,1,0,0,0,0
+señal,C00299,tratamiento,explotar,2026-01-30,6,1,0,0,0,0
+señal,C00300,control,,2026-05-01,5,0,0,0,0,0
+señal,C00305,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+señal,C00306,tratamiento,explorar,2026-05-01,8,1,0,0,0,0
+señal,C00307,tratamiento,explotar,2026-01-30,3,0,0,0,0,0
+señal,C00308,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+señal,C00309,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+señal,C00310,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+señal,C00311,tratamiento,explotar,2026-02-13,15,3,0,0,0,0
+señal,C00312,tratamiento,explotar,2026-03-06,3,0,0,0,0,0
+señal,C00314,tratamiento,explotar,2026-02-20,12,4,0,0,0,0
+señal,C00315,tratamiento,explotar,2026-03-13,6,2,1,2,1,47942
+señal,C00316,tratamiento,explotar,2026-02-13,12,2,0,0,0,0
+señal,C00319,tratamiento,explotar,2026-04-17,3,2,0,0,0,0
+señal,C00320,tratamiento,explotar,2026-01-30,4,1,1,1,1,60490
+señal,C00321,tratamiento,explotar,2026-04-17,5,0,0,0,0,0
+señal,C00322,tratamiento,explotar,2026-04-17,14,4,0,0,0,0
+señal,C00325,tratamiento,explotar,2026-01-30,25,9,0,0,0,0
+señal,C00326,tratamiento,explotar,2026-01-30,17,5,0,0,0,0
+señal,C00327,tratamiento,explotar,2026-02-13,17,6,0,1,1,99864
+señal,C00329,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+señal,C00330,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+señal,C00331,tratamiento,explotar,2026-04-10,8,3,1,1,1,29784
+señal,C00333,tratamiento,explotar,2026-05-01,7,4,0,0,0,0
+señal,C00334,tratamiento,explotar,2026-01-30,7,2,0,0,0,0
+señal,C00335,tratamiento,explotar,2026-02-06,10,4,1,1,1,18158
+señal,C00336,tratamiento,explotar,2026-01-30,13,5,0,0,0,0
+señal,C00338,tratamiento,explotar,2026-01-30,15,4,0,0,0,0
+señal,C00339,tratamiento,explotar,2026-01-30,16,2,0,0,0,0
+señal,C00340,tratamiento,explotar,2026-01-30,7,0,0,0,0,0
+señal,C00342,control,,2026-01-30,13,0,0,0,0,0
+señal,C00343,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+señal,C00344,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+señal,C00346,tratamiento,explotar,2026-09-11,1,0,0,0,0,0
+señal,C00347,tratamiento,explorar,2026-05-01,8,4,0,0,0,0
+señal,C00348,tratamiento,explotar,2026-03-20,18,5,0,0,0,0
+señal,C00349,tratamiento,explotar,2026-04-24,12,1,0,0,0,0
+señal,C00350,tratamiento,explotar,2026-01-30,7,3,1,1,1,18158
+señal,C00352,tratamiento,explorar,2026-01-30,6,0,0,0,0,0
+señal,C00353,tratamiento,explotar,2026-01-30,17,2,0,0,0,0
+señal,C00355,tratamiento,explotar,2026-01-30,22,4,0,0,0,0
+señal,C00356,tratamiento,explotar,2026-01-30,10,1,0,1,1,29784
+señal,C00357,tratamiento,explotar,2026-01-30,6,3,2,2,1,47942
+señal,C00359,tratamiento,explotar,2026-05-08,9,1,0,0,0,0
+señal,C00360,tratamiento,explotar,2026-05-08,5,3,0,0,0,0
+señal,C00362,tratamiento,explotar,2026-09-25,1,1,0,0,0,0
+señal,C00364,tratamiento,explotar,2026-03-20,9,0,0,0,0,0
+señal,C00365,tratamiento,explotar,2026-04-03,8,2,1,1,1,18158
+señal,C00368,control,,2026-01-30,6,0,0,0,0,0
+señal,C00369,tratamiento,explotar,2026-03-27,8,4,0,0,0,0
+señal,C00370,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+señal,C00372,tratamiento,explotar,2026-01-30,5,2,0,0,0,0
+señal,C00373,tratamiento,explotar,2026-02-06,3,0,0,0,0,0
+señal,C00374,tratamiento,explorar,2026-06-26,3,0,0,0,0,0
+señal,C00375,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00376,tratamiento,explotar,2026-01-30,15,4,0,0,0,0
+señal,C00377,tratamiento,explotar,2026-01-30,9,3,0,0,0,0
+señal,C00378,tratamiento,explotar,2026-01-30,6,0,0,0,0,0
+señal,C00379,tratamiento,explotar,2026-02-27,3,1,0,0,0,0
+señal,C00380,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00381,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+señal,C00382,tratamiento,explotar,2026-02-20,16,5,0,0,0,0
+señal,C00383,tratamiento,explotar,2026-02-06,10,3,0,0,0,0
+señal,C00384,tratamiento,explotar,2026-02-13,9,3,1,1,1,99864
+señal,C00385,tratamiento,explotar,2026-01-30,15,1,0,0,0,0
+señal,C00386,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+señal,C00388,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+señal,C00389,tratamiento,explotar,2026-03-06,8,4,0,0,0,0
+señal,C00390,tratamiento,explotar,2026-02-13,16,7,2,2,1,160354
+señal,C00392,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+señal,C00393,control,,2026-03-20,7,0,0,0,0,0
+señal,C00394,tratamiento,explotar,2026-05-01,5,2,1,1,1,103043
+señal,C00395,tratamiento,explorar,2026-06-19,4,2,0,0,0,0
+señal,C00396,tratamiento,explotar,2026-03-06,9,0,0,0,0,0
+señal,C00397,tratamiento,explotar,2026-04-24,1,1,1,1,1,18158
+señal,C00399,tratamiento,explotar,2026-04-03,7,3,0,0,0,0
+señal,C00403,tratamiento,explotar,2026-01-30,1,1,1,1,1,60490
+señal,C00404,tratamiento,explotar,2026-01-30,11,3,1,1,1,18158
+señal,C00405,tratamiento,explorar,2026-01-30,4,0,0,0,0,0
+señal,C00406,tratamiento,explotar,2026-02-13,15,3,0,0,0,0
+señal,C00407,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+señal,C00408,tratamiento,explotar,2026-04-03,13,5,0,0,0,0
+señal,C00409,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00411,tratamiento,explotar,2026-01-30,11,4,1,1,1,103043
+señal,C00412,tratamiento,explotar,2026-01-30,2,0,0,0,0,0
+señal,C00413,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+señal,C00414,tratamiento,explotar,2026-01-30,7,3,0,0,0,0
+señal,C00415,tratamiento,explotar,2026-04-24,6,1,0,0,0,0
+señal,C00416,tratamiento,explorar,2026-05-01,7,2,0,0,0,0
+señal,C00417,tratamiento,explotar,2026-02-06,4,1,1,1,1,18158
+señal,C00418,tratamiento,explotar,2026-01-30,15,2,0,0,0,0
+señal,C00419,tratamiento,explotar,2026-01-30,14,6,0,0,0,0
+señal,C00420,tratamiento,explotar,2026-01-30,11,2,1,2,1,47942
+señal,C00423,tratamiento,explotar,2026-01-30,21,5,0,0,0,0
+señal,C00424,tratamiento,explotar,2026-09-11,1,0,0,0,0,0
+señal,C00425,tratamiento,explotar,2026-04-10,11,2,1,1,1,18158
+señal,C00426,tratamiento,explorar,2026-01-30,9,2,0,0,0,0
+señal,C00429,tratamiento,explotar,2026-01-30,13,4,1,1,1,99864
+señal,C00430,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+señal,C00432,tratamiento,explotar,2026-04-17,12,4,0,0,0,0
+señal,C00434,control,,2026-01-30,5,0,0,1,1,60490
+señal,C00435,tratamiento,explotar,2026-01-30,11,4,0,0,0,0
+señal,C00437,tratamiento,explotar,2026-10-02,1,0,0,0,0,0
+señal,C00438,tratamiento,explotar,2026-02-27,10,3,0,0,0,0
+señal,C00439,tratamiento,explotar,2026-03-27,3,0,0,0,0,0
+señal,C00440,tratamiento,explotar,2026-03-27,13,7,1,1,1,18158
+señal,C00441,tratamiento,explotar,2026-04-03,9,4,0,0,0,0
+señal,C00442,tratamiento,explotar,2026-03-06,9,2,0,0,0,0
+señal,C00443,tratamiento,explotar,2026-05-01,15,2,0,0,0,0
+señal,C00444,tratamiento,explotar,2026-02-13,7,3,1,1,1,99864
+señal,C00445,control,,2026-05-29,4,0,0,0,0,0
+señal,C00446,tratamiento,explorar,2026-02-27,8,3,1,1,1,18158
+señal,C00447,control,,2026-05-01,5,0,0,0,0,0
+señal,C00448,control,,2026-04-03,8,0,0,0,0,0
+señal,C00449,tratamiento,explotar,2026-01-30,20,5,0,0,0,0
+señal,C00450,tratamiento,explotar,2026-05-01,7,2,0,0,0,0
+señal,C00451,control,,2026-01-30,17,0,0,0,0,0
+señal,C00452,tratamiento,explotar,2026-01-30,21,6,1,1,1,99864
+señal,C00453,tratamiento,explotar,2026-03-27,17,3,0,1,1,60490
+señal,C00454,tratamiento,explotar,2026-02-06,10,2,0,1,1,60490
+señal,C00455,tratamiento,explotar,2026-05-01,9,3,1,1,1,99864
+señal,C00456,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+señal,C00457,tratamiento,explotar,2026-05-01,7,1,0,0,0,0
+señal,C00458,tratamiento,explotar,2026-01-30,6,1,1,1,1,99864
+señal,C00459,tratamiento,explorar,2026-05-01,9,1,0,0,0,0
+señal,C00460,tratamiento,explotar,2026-02-13,5,2,0,0,0,0
+señal,C00461,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00462,tratamiento,explotar,2026-04-24,10,5,1,1,1,103043
+señal,C00463,tratamiento,explotar,2026-01-30,16,6,0,0,0,0
+señal,C00464,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+señal,C00466,tratamiento,explotar,2026-05-01,8,2,1,1,1,18158
+señal,C00467,tratamiento,explorar,2026-05-01,5,1,0,0,0,0
+señal,C00468,control,,2026-06-05,3,0,0,0,0,0
+señal,C00469,tratamiento,explotar,2026-01-30,10,4,1,1,1,60490
+señal,C00471,tratamiento,explotar,2026-01-30,16,3,0,0,0,0
+señal,C00472,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00473,control,,2026-03-06,6,0,0,0,0,0
+señal,C00474,tratamiento,explotar,2026-05-01,9,2,0,0,0,0
+señal,C00475,tratamiento,explotar,2026-05-01,6,3,1,1,1,103043
+señal,C00476,control,,2026-05-01,6,0,0,0,0,0
+señal,C00477,tratamiento,explotar,2026-03-13,11,2,0,0,0,0
+señal,C00478,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+señal,C00479,tratamiento,explotar,2026-02-13,9,2,0,0,0,0
+señal,C00481,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+señal,C00482,tratamiento,explotar,2026-01-30,8,1,0,0,0,0
+señal,C00483,tratamiento,explorar,2026-01-30,19,3,0,0,0,0
+señal,C00484,tratamiento,explorar,2026-01-30,11,4,2,2,1,163533
+señal,C00486,tratamiento,explotar,2026-05-22,5,1,0,1,1,74670
+señal,C00487,tratamiento,explotar,2026-01-30,18,3,1,2,1,202907
+señal,C00489,control,,2026-01-30,2,0,0,0,0,0
+señal,C00490,tratamiento,explotar,2026-05-01,4,2,2,2,1,121201
+señal,C00491,tratamiento,explotar,2026-01-30,16,4,1,1,1,74670
+señal,C00492,control,,2026-05-01,9,0,0,0,0,0
+señal,C00493,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+señal,C00494,control,,2026-01-30,19,0,0,0,0,0
+señal,C00495,tratamiento,explotar,2026-02-06,16,4,0,0,0,0
+señal,C00496,tratamiento,explorar,2026-05-22,4,1,0,0,0,0
+señal,C00498,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+señal,C00499,tratamiento,explotar,2026-01-30,12,3,0,0,0,0
+señal,C00500,control,,2026-05-01,5,0,0,0,0,0
+señal,C00501,tratamiento,explorar,2026-01-30,12,2,0,1,1,99864
+señal,C00502,tratamiento,explotar,2026-02-13,12,1,0,0,0,0
+señal,C00503,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+señal,C00504,tratamiento,explotar,2026-03-20,12,6,0,0,0,0
+señal,C00506,tratamiento,explotar,2026-05-01,11,2,0,0,0,0
+señal,C00507,control,,2026-01-30,12,0,0,0,0,0
+señal,C00508,tratamiento,explotar,2026-07-03,3,0,0,0,0,0
+señal,C00509,tratamiento,explorar,2026-02-06,20,8,3,3,1,263397
+señal,C00510,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+señal,C00511,tratamiento,explotar,2026-01-30,10,2,0,0,0,0
+señal,C00512,tratamiento,explotar,2026-01-30,9,2,0,0,0,0
+señal,C00513,tratamiento,explotar,2026-01-30,12,1,0,0,0,0
+señal,C00514,tratamiento,explorar,2026-01-30,14,3,2,2,1,160354
+señal,C00515,tratamiento,explorar,2026-01-30,18,5,0,0,0,0
+señal,C00516,tratamiento,explotar,2026-01-30,14,3,0,0,0,0
+señal,C00519,tratamiento,explotar,2026-04-17,3,2,0,0,0,0
+señal,C00521,tratamiento,explorar,2026-05-29,4,0,0,0,0,0
+señal,C00522,tratamiento,explotar,2026-01-30,8,5,1,1,1,99864
+señal,C00523,tratamiento,explotar,2026-03-13,10,5,0,0,0,0
+señal,C00524,tratamiento,explotar,2026-03-27,10,4,0,0,0,0
+señal,C00525,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+señal,C00526,tratamiento,explotar,2026-01-30,11,2,0,0,0,0
+señal,C00527,tratamiento,explotar,2026-01-30,19,5,0,0,0,0
+señal,C00528,tratamiento,explotar,2026-07-24,5,0,0,0,0,0
+señal,C00529,tratamiento,explotar,2026-03-06,4,0,0,0,0,0
+señal,C00530,tratamiento,explotar,2026-01-30,9,1,0,0,0,0
+señal,C00534,tratamiento,explotar,2026-10-02,1,0,0,0,0,0
+señal,C00535,tratamiento,explotar,2026-08-14,4,0,0,0,0,0
+señal,C00536,tratamiento,explotar,2026-05-01,2,2,1,1,1,103043
+señal,C00537,tratamiento,explorar,2026-08-28,2,1,0,0,0,0
+señal,C00538,tratamiento,explotar,2026-02-13,23,5,1,1,1,99864
+señal,C00541,tratamiento,explotar,2026-03-06,16,5,0,0,0,0
+señal,C00542,tratamiento,explotar,2026-02-27,13,3,0,0,0,0
+señal,C00543,control,,2026-01-30,13,0,0,0,0,0
+señal,C00544,tratamiento,explotar,2026-06-12,7,1,0,0,0,0
+señal,C00545,control,,2026-01-30,4,0,0,0,0,0
+señal,C00546,tratamiento,explotar,2026-04-17,3,2,0,0,0,0
+señal,C00547,tratamiento,explotar,2026-05-15,3,0,0,0,0,0
+señal,C00548,tratamiento,explotar,2026-04-03,8,0,0,0,0,0
+señal,C00549,tratamiento,explotar,2026-06-05,4,1,0,0,0,0
+señal,C00550,tratamiento,explorar,2026-05-01,9,2,1,1,1,103043
+señal,C00551,tratamiento,explotar,2026-01-30,7,1,0,0,0,0
+señal,C00552,tratamiento,explotar,2026-03-06,2,1,1,1,1,18158
+señal,C00553,tratamiento,explotar,2026-01-30,20,3,1,1,1,99864
+señal,C00554,tratamiento,explotar,2026-05-01,17,1,0,0,0,0
+señal,C00555,tratamiento,explotar,2026-01-30,18,4,0,0,0,0
+señal,C00556,tratamiento,explotar,2026-01-30,11,4,0,0,0,0
+señal,C00557,tratamiento,explotar,2026-01-30,14,1,0,0,0,0
+señal,C00558,tratamiento,explotar,2026-04-17,7,2,1,1,1,99864
+señal,C00559,tratamiento,explotar,2026-01-30,5,3,0,1,1,29784
+señal,C00560,tratamiento,explotar,2026-07-10,3,3,1,1,1,74670
+señal,C00561,tratamiento,explotar,2026-01-30,8,1,0,1,1,74670
+señal,C00562,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+señal,C00563,control,,2026-01-30,11,0,0,0,0,0
+señal,C00564,tratamiento,explotar,2026-01-30,12,4,0,0,0,0
+señal,C00565,tratamiento,explorar,2026-01-30,16,4,0,1,1,29784
+señal,C00566,tratamiento,explorar,2026-02-20,14,4,1,1,1,103043
+señal,C00567,tratamiento,explotar,2026-01-30,8,3,0,0,0,0
+señal,C00568,tratamiento,explotar,2026-02-20,9,3,0,0,0,0
+señal,C00569,tratamiento,explotar,2026-05-01,2,1,1,1,1,103043
+señal,C00570,tratamiento,explotar,2026-01-30,5,1,0,1,1,99864
+señal,C00571,tratamiento,explorar,2026-01-30,11,2,0,0,0,0
+señal,C00572,tratamiento,explotar,2026-05-01,7,2,0,0,0,0
+señal,C00573,tratamiento,explorar,2026-05-01,5,0,0,0,0,0
+señal,C00574,control,,2026-03-20,11,0,0,0,0,0
+señal,C00575,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+señal,C00576,tratamiento,explotar,2026-03-06,12,7,2,2,1,160354
+señal,C00577,tratamiento,explotar,2026-05-01,10,3,0,0,0,0
+señal,C00579,control,,2026-01-30,16,0,0,0,0,0
+señal,C00581,tratamiento,explotar,2026-01-30,17,5,0,0,0,0
+señal,C00582,tratamiento,explotar,2026-01-30,6,2,1,1,1,103043
+señal,C00583,tratamiento,explorar,2026-04-24,10,3,0,0,0,0
+señal,C00584,tratamiento,explotar,2026-02-20,16,3,0,0,0,0
+señal,C00585,tratamiento,explotar,2026-05-01,8,1,0,0,0,0
+señal,C00586,tratamiento,explotar,2026-04-24,4,1,0,1,1,74670
+señal,C00587,tratamiento,explorar,2026-03-13,7,0,0,0,0,0
+señal,C00588,tratamiento,explotar,2026-02-06,20,7,1,1,1,18158
+señal,C00589,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+señal,C00591,tratamiento,explotar,2026-02-20,17,5,1,1,1,99864
+señal,C00592,tratamiento,explotar,2026-01-30,11,2,0,0,0,0
+señal,C00593,tratamiento,explotar,2026-01-30,14,2,1,1,1,60490
+señal,C00594,tratamiento,explotar,2026-02-20,19,2,0,0,0,0
+señal,C00595,tratamiento,explotar,2026-03-13,4,0,0,0,0,0
+señal,C00596,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+señal,C00597,tratamiento,explotar,2026-05-22,7,0,0,0,0,0
+señal,C00598,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+señal,C00599,tratamiento,explorar,2026-01-30,8,0,0,0,0,0
+regla correcta,C00001,tratamiento,explotar,2026-05-15,4,1,0,0,0,0
+regla correcta,C00002,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+regla correcta,C00004,tratamiento,explotar,2026-03-06,9,2,1,2,1,129648
+regla correcta,C00005,tratamiento,explotar,2026-05-01,8,3,1,1,1,103043
+regla correcta,C00006,tratamiento,explotar,2026-07-17,3,1,0,0,0,0
+regla correcta,C00007,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+regla correcta,C00008,tratamiento,explotar,2026-02-06,8,0,0,0,0,0
+regla correcta,C00011,tratamiento,explotar,2026-06-12,7,0,0,0,0,0
+regla correcta,C00012,tratamiento,explotar,2026-05-22,4,1,0,0,0,0
+regla correcta,C00013,tratamiento,explorar,2026-04-24,10,3,0,0,0,0
+regla correcta,C00014,tratamiento,explotar,2026-04-17,5,2,0,0,0,0
+regla correcta,C00015,tratamiento,explotar,2026-04-17,11,1,0,0,0,0
+regla correcta,C00016,tratamiento,explotar,2026-05-08,5,0,0,0,0,0
+regla correcta,C00017,tratamiento,explotar,2026-05-01,11,4,0,0,0,0
+regla correcta,C00018,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+regla correcta,C00019,tratamiento,explotar,2026-08-07,2,0,0,0,0,0
+regla correcta,C00020,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00021,tratamiento,explotar,2026-03-13,15,5,0,0,0,0
+regla correcta,C00023,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+regla correcta,C00024,tratamiento,explotar,2026-05-15,6,2,0,0,0,0
+regla correcta,C00025,control,,2026-01-30,10,0,0,0,0,0
+regla correcta,C00027,tratamiento,explotar,2026-05-01,6,2,0,0,0,0
+regla correcta,C00028,tratamiento,explotar,2026-08-21,2,0,0,0,0,0
+regla correcta,C00029,tratamiento,explotar,2026-01-30,19,5,0,0,0,0
+regla correcta,C00030,tratamiento,explorar,2026-01-30,13,4,0,0,0,0
+regla correcta,C00032,tratamiento,explotar,2026-01-30,3,0,0,0,0,0
+regla correcta,C00033,tratamiento,explotar,2026-01-30,16,3,0,1,1,74670
+regla correcta,C00034,tratamiento,explotar,2026-03-06,11,4,1,1,1,60490
+regla correcta,C00037,tratamiento,explotar,2026-01-30,22,4,0,0,0,0
+regla correcta,C00038,tratamiento,explotar,2026-04-17,12,2,0,0,0,0
+regla correcta,C00039,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+regla correcta,C00042,control,,2026-03-13,8,0,0,0,0,0
+regla correcta,C00043,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+regla correcta,C00045,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+regla correcta,C00046,tratamiento,explotar,2026-01-30,7,1,1,1,1,74670
+regla correcta,C00048,control,,2026-04-17,15,0,0,0,0,0
+regla correcta,C00049,tratamiento,explotar,2026-02-06,13,3,0,0,0,0
+regla correcta,C00050,tratamiento,explotar,2026-02-06,3,0,0,0,0,0
+regla correcta,C00051,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00052,control,,2026-07-17,3,0,0,0,0,0
+regla correcta,C00053,control,,2026-05-01,7,0,0,0,0,0
+regla correcta,C00055,tratamiento,explotar,2026-02-20,15,5,1,1,1,103043
+regla correcta,C00056,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+regla correcta,C00057,tratamiento,explotar,2026-05-01,10,0,0,0,0,0
+regla correcta,C00058,tratamiento,explotar,2026-02-06,12,0,0,0,0,0
+regla correcta,C00059,tratamiento,explotar,2026-01-30,5,0,0,0,0,0
+regla correcta,C00060,tratamiento,explotar,2026-06-26,3,0,0,0,0,0
+regla correcta,C00061,tratamiento,explorar,2026-01-30,22,9,0,0,0,0
+regla correcta,C00063,tratamiento,explotar,2026-01-30,4,0,0,1,1,74670
+regla correcta,C00064,tratamiento,explotar,2026-01-30,7,1,0,0,0,0
+regla correcta,C00066,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+regla correcta,C00068,control,,2026-09-18,1,0,0,0,0,0
+regla correcta,C00069,tratamiento,explotar,2026-02-20,12,1,0,0,0,0
+regla correcta,C00070,tratamiento,explotar,2026-07-17,3,0,0,0,0,0
+regla correcta,C00071,tratamiento,explotar,2026-01-30,24,6,0,0,0,0
+regla correcta,C00072,tratamiento,explotar,2026-02-20,10,0,0,0,0,0
+regla correcta,C00073,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+regla correcta,C00075,tratamiento,explotar,2026-07-31,2,0,0,0,0,0
+regla correcta,C00078,tratamiento,explotar,2026-07-31,2,1,0,0,0,0
+regla correcta,C00079,tratamiento,explorar,2026-03-06,3,1,0,0,0,0
+regla correcta,C00080,tratamiento,explotar,2026-01-30,10,3,0,1,1,74670
+regla correcta,C00081,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+regla correcta,C00082,tratamiento,explotar,2026-05-01,13,4,0,0,0,0
+regla correcta,C00083,tratamiento,explotar,2026-03-06,7,2,0,0,0,0
+regla correcta,C00084,tratamiento,explotar,2026-03-06,14,4,0,0,0,0
+regla correcta,C00085,tratamiento,explotar,2026-01-30,17,4,0,0,0,0
+regla correcta,C00086,tratamiento,explotar,2026-05-01,5,2,1,1,1,103043
+regla correcta,C00087,tratamiento,explotar,2026-05-01,8,2,0,1,1,99864
+regla correcta,C00088,tratamiento,explotar,2026-06-05,4,0,0,0,0,0
+regla correcta,C00090,tratamiento,explotar,2026-01-30,15,6,1,1,1,60490
+regla correcta,C00091,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+regla correcta,C00093,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+regla correcta,C00094,tratamiento,explotar,2026-04-24,8,4,0,0,0,0
+regla correcta,C00095,tratamiento,explotar,2026-01-30,19,4,0,0,0,0
+regla correcta,C00096,tratamiento,explotar,2026-05-01,9,2,0,0,0,0
+regla correcta,C00098,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00099,tratamiento,explotar,2026-03-27,8,2,0,0,0,0
+regla correcta,C00100,tratamiento,explotar,2026-03-06,15,5,0,0,0,0
+regla correcta,C00101,tratamiento,explotar,2026-01-30,4,2,1,1,1,103043
+regla correcta,C00102,tratamiento,explotar,2026-01-30,13,2,1,1,1,18158
+regla correcta,C00103,tratamiento,explotar,2026-01-30,14,3,0,0,0,0
+regla correcta,C00105,tratamiento,explotar,2026-08-07,2,0,0,0,0,0
+regla correcta,C00106,tratamiento,explotar,2026-03-27,6,1,0,0,0,0
+regla correcta,C00108,tratamiento,explotar,2026-02-13,7,2,0,0,0,0
+regla correcta,C00110,tratamiento,explotar,2026-03-13,6,0,0,0,0,0
+regla correcta,C00111,tratamiento,explotar,2026-07-17,3,0,0,0,0,0
+regla correcta,C00112,tratamiento,explotar,2026-03-06,15,3,0,0,0,0
+regla correcta,C00113,tratamiento,explotar,2026-06-12,4,2,0,0,0,0
+regla correcta,C00114,tratamiento,explotar,2026-05-08,3,2,0,0,0,0
+regla correcta,C00118,tratamiento,explotar,2026-04-17,8,1,0,0,0,0
+regla correcta,C00119,tratamiento,explotar,2026-05-01,14,1,0,0,0,0
+regla correcta,C00120,control,,2026-02-20,3,0,0,0,0,0
+regla correcta,C00121,tratamiento,explotar,2026-02-06,7,1,0,0,0,0
+regla correcta,C00122,tratamiento,explotar,2026-01-30,20,10,0,0,0,0
+regla correcta,C00125,tratamiento,explotar,2026-03-20,5,2,0,0,0,0
+regla correcta,C00126,tratamiento,explotar,2026-01-30,5,2,1,1,1,18158
+regla correcta,C00127,tratamiento,explotar,2026-02-20,21,6,0,0,0,0
+regla correcta,C00128,tratamiento,explorar,2026-01-30,19,3,1,1,1,18158
+regla correcta,C00129,tratamiento,explotar,2026-01-30,6,4,0,0,0,0
+regla correcta,C00131,tratamiento,explotar,2026-05-01,7,0,0,0,0,0
+regla correcta,C00133,tratamiento,explotar,2026-03-06,11,1,0,0,0,0
+regla correcta,C00134,control,,2026-02-13,7,0,0,0,0,0
+regla correcta,C00136,tratamiento,explotar,2026-01-30,12,4,1,1,1,18158
+regla correcta,C00137,tratamiento,explotar,2026-01-30,2,0,0,0,0,0
+regla correcta,C00139,control,,2026-01-30,8,0,0,0,0,0
+regla correcta,C00140,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+regla correcta,C00142,control,,2026-02-06,14,0,0,0,0,0
+regla correcta,C00143,tratamiento,explorar,2026-05-22,4,1,0,0,0,0
+regla correcta,C00144,tratamiento,explotar,2026-05-22,4,1,0,0,0,0
+regla correcta,C00146,tratamiento,explotar,2026-04-17,6,1,0,0,0,0
+regla correcta,C00148,tratamiento,explotar,2026-05-01,13,1,0,0,0,0
+regla correcta,C00149,tratamiento,explotar,2026-01-30,12,5,1,1,1,18158
+regla correcta,C00150,tratamiento,explotar,2026-03-13,7,3,0,0,0,0
+regla correcta,C00151,tratamiento,explorar,2026-03-13,16,4,0,0,0,0
+regla correcta,C00152,tratamiento,explotar,2026-01-30,7,2,1,1,1,103043
+regla correcta,C00153,tratamiento,explotar,2026-05-01,5,3,0,0,0,0
+regla correcta,C00154,control,,2026-06-05,5,0,0,0,0,0
+regla correcta,C00155,tratamiento,explotar,2026-05-08,5,1,0,0,0,0
+regla correcta,C00156,tratamiento,explotar,2026-06-26,3,1,0,0,0,0
+regla correcta,C00157,tratamiento,explotar,2026-01-30,22,4,1,1,1,60490
+regla correcta,C00158,tratamiento,explotar,2026-03-06,15,2,1,1,1,29784
+regla correcta,C00159,tratamiento,explorar,2026-02-13,15,3,0,0,0,0
+regla correcta,C00160,tratamiento,explotar,2026-01-30,7,2,0,0,0,0
+regla correcta,C00162,tratamiento,explotar,2026-01-30,13,9,0,0,0,0
+regla correcta,C00163,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00164,tratamiento,explotar,2026-09-18,1,0,0,0,0,0
+regla correcta,C00165,tratamiento,explotar,2026-01-30,13,3,1,1,1,74670
+regla correcta,C00166,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+regla correcta,C00167,tratamiento,explotar,2026-07-10,5,2,0,1,1,60490
+regla correcta,C00168,tratamiento,explotar,2026-01-30,12,3,0,0,0,0
+regla correcta,C00169,tratamiento,explotar,2026-03-06,5,1,1,1,1,18158
+regla correcta,C00170,tratamiento,explotar,2026-01-30,11,4,1,1,1,60490
+regla correcta,C00172,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00173,tratamiento,explorar,2026-01-30,14,3,0,0,0,0
+regla correcta,C00174,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+regla correcta,C00176,tratamiento,explotar,2026-06-26,3,0,0,0,0,0
+regla correcta,C00177,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00179,tratamiento,explotar,2026-02-20,12,3,0,0,0,0
+regla correcta,C00181,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00182,tratamiento,explotar,2026-04-03,12,1,0,0,0,0
+regla correcta,C00184,tratamiento,explorar,2026-02-06,20,3,0,0,0,0
+regla correcta,C00185,tratamiento,explotar,2026-05-01,7,3,0,0,0,0
+regla correcta,C00186,tratamiento,explotar,2026-03-27,12,1,0,0,0,0
+regla correcta,C00187,tratamiento,explotar,2026-04-10,6,0,0,0,0,0
+regla correcta,C00189,tratamiento,explotar,2026-03-20,6,0,0,0,0,0
+regla correcta,C00190,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00191,tratamiento,explotar,2026-01-30,11,5,0,1,1,29784
+regla correcta,C00192,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+regla correcta,C00193,tratamiento,explotar,2026-01-30,6,2,0,0,0,0
+regla correcta,C00195,tratamiento,explotar,2026-01-30,10,3,1,2,1,90274
+regla correcta,C00196,control,,2026-06-26,3,0,0,0,0,0
+regla correcta,C00197,tratamiento,explotar,2026-02-06,13,4,0,0,0,0
+regla correcta,C00198,tratamiento,explotar,2026-02-20,7,1,0,0,0,0
+regla correcta,C00199,tratamiento,explotar,2026-05-08,5,1,0,0,0,0
+regla correcta,C00201,control,,2026-01-30,9,0,0,0,0,0
+regla correcta,C00203,tratamiento,explotar,2026-01-30,8,3,0,0,0,0
+regla correcta,C00204,tratamiento,explotar,2026-01-30,8,3,1,1,1,18158
+regla correcta,C00205,tratamiento,explotar,2026-02-13,21,3,0,0,0,0
+regla correcta,C00208,tratamiento,explotar,2026-03-13,16,2,0,0,0,0
+regla correcta,C00209,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00210,tratamiento,explotar,2026-07-24,3,0,0,0,0,0
+regla correcta,C00211,tratamiento,explotar,2026-01-30,8,1,0,0,0,0
+regla correcta,C00212,tratamiento,explotar,2026-03-20,11,3,2,2,1,118022
+regla correcta,C00213,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+regla correcta,C00214,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+regla correcta,C00215,tratamiento,explotar,2026-05-01,6,0,0,0,0,0
+regla correcta,C00216,tratamiento,explotar,2026-07-31,2,0,0,0,0,0
+regla correcta,C00217,tratamiento,explotar,2026-05-01,9,2,0,1,1,29784
+regla correcta,C00218,tratamiento,explotar,2026-01-30,17,4,0,0,0,0
+regla correcta,C00219,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+regla correcta,C00220,control,,2026-01-30,9,0,0,0,0,0
+regla correcta,C00221,tratamiento,explotar,2026-03-13,10,2,0,0,0,0
+regla correcta,C00222,control,,2026-01-30,5,0,0,0,0,0
+regla correcta,C00223,tratamiento,explotar,2026-04-24,10,5,0,0,0,0
+regla correcta,C00225,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+regla correcta,C00226,control,,2026-02-20,15,0,0,0,0,0
+regla correcta,C00227,control,,2026-02-06,13,0,0,1,1,74670
+regla correcta,C00228,tratamiento,explotar,2026-06-19,5,1,0,0,0,0
+regla correcta,C00229,tratamiento,explotar,2026-01-30,14,4,0,0,0,0
+regla correcta,C00230,tratamiento,explorar,2026-05-01,9,2,0,0,0,0
+regla correcta,C00231,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+regla correcta,C00232,tratamiento,explotar,2026-01-30,22,8,0,0,0,0
+regla correcta,C00233,tratamiento,explotar,2026-03-13,11,2,0,0,0,0
+regla correcta,C00234,tratamiento,explotar,2026-05-01,8,0,0,0,0,0
+regla correcta,C00236,tratamiento,explotar,2026-04-10,8,3,0,0,0,0
+regla correcta,C00237,tratamiento,explorar,2026-05-01,10,5,0,0,0,0
+regla correcta,C00238,tratamiento,explotar,2026-04-10,4,0,0,1,1,29784
+regla correcta,C00239,tratamiento,explotar,2026-02-06,22,5,0,0,0,0
+regla correcta,C00241,tratamiento,explotar,2026-01-30,18,3,0,0,0,0
+regla correcta,C00242,tratamiento,explotar,2026-01-30,18,3,0,0,0,0
+regla correcta,C00244,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+regla correcta,C00246,tratamiento,explotar,2026-08-21,2,0,0,0,0,0
+regla correcta,C00247,control,,2026-01-30,12,0,0,0,0,0
+regla correcta,C00248,tratamiento,explotar,2026-05-01,12,5,0,1,1,99864
+regla correcta,C00249,control,,2026-01-30,26,0,0,0,0,0
+regla correcta,C00250,tratamiento,explotar,2026-01-30,3,1,1,1,1,99864
+regla correcta,C00251,tratamiento,explorar,2026-02-06,24,6,0,0,0,0
+regla correcta,C00252,tratamiento,explotar,2026-03-13,11,2,0,0,0,0
+regla correcta,C00254,tratamiento,explotar,2026-09-04,1,0,0,0,0,0
+regla correcta,C00257,tratamiento,explotar,2026-02-20,10,0,0,0,0,0
+regla correcta,C00258,tratamiento,explotar,2026-05-01,5,3,0,0,0,0
+regla correcta,C00259,tratamiento,explotar,2026-09-18,1,0,0,0,0,0
+regla correcta,C00260,tratamiento,explotar,2026-01-30,1,0,0,0,0,0
+regla correcta,C00261,tratamiento,explotar,2026-04-10,8,2,0,0,0,0
+regla correcta,C00263,control,,2026-01-30,19,0,0,0,0,0
+regla correcta,C00264,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+regla correcta,C00265,tratamiento,explotar,2026-01-30,13,1,0,0,0,0
+regla correcta,C00266,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+regla correcta,C00267,tratamiento,explorar,2026-04-03,6,3,0,0,0,0
+regla correcta,C00268,tratamiento,explotar,2026-01-30,9,1,0,0,0,0
+regla correcta,C00270,tratamiento,explorar,2026-08-14,2,0,0,0,0,0
+regla correcta,C00271,tratamiento,explorar,2026-05-22,7,2,0,0,0,0
+regla correcta,C00272,tratamiento,explotar,2026-02-27,3,0,0,0,0,0
+regla correcta,C00273,tratamiento,explorar,2026-01-30,11,5,0,0,0,0
+regla correcta,C00274,tratamiento,explotar,2026-01-30,2,1,0,1,1,29784
+regla correcta,C00275,tratamiento,explotar,2026-02-20,12,5,0,1,1,99864
+regla correcta,C00276,tratamiento,explorar,2026-05-15,6,1,0,0,0,0
+regla correcta,C00277,tratamiento,explorar,2026-05-01,7,0,0,0,0,0
+regla correcta,C00278,tratamiento,explotar,2026-03-06,9,1,1,1,1,99864
+regla correcta,C00279,tratamiento,explotar,2026-05-01,10,4,0,0,0,0
+regla correcta,C00280,tratamiento,explotar,2026-02-20,12,2,0,0,0,0
+regla correcta,C00281,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+regla correcta,C00284,tratamiento,explotar,2026-01-30,22,5,0,0,0,0
+regla correcta,C00286,tratamiento,explotar,2026-05-01,8,1,0,0,0,0
+regla correcta,C00287,tratamiento,explorar,2026-03-13,17,1,0,0,0,0
+regla correcta,C00288,tratamiento,explotar,2026-07-10,3,0,0,0,0,0
+regla correcta,C00290,tratamiento,explotar,2026-04-03,12,2,0,1,1,74670
+regla correcta,C00291,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00292,tratamiento,explotar,2026-06-12,3,1,0,0,0,0
+regla correcta,C00293,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+regla correcta,C00294,tratamiento,explotar,2026-01-30,22,9,1,1,1,74670
+regla correcta,C00295,tratamiento,explotar,2026-05-01,12,6,0,0,0,0
+regla correcta,C00296,tratamiento,explotar,2026-03-20,11,5,0,0,0,0
+regla correcta,C00297,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+regla correcta,C00298,tratamiento,explotar,2026-02-27,7,1,0,0,0,0
+regla correcta,C00299,tratamiento,explotar,2026-01-30,6,1,0,0,0,0
+regla correcta,C00300,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00305,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+regla correcta,C00306,tratamiento,explorar,2026-05-01,8,1,0,0,0,0
+regla correcta,C00307,tratamiento,explotar,2026-01-30,3,0,0,0,0,0
+regla correcta,C00308,tratamiento,explotar,2026-01-30,5,1,0,0,0,0
+regla correcta,C00309,tratamiento,explotar,2026-01-30,8,2,0,0,0,0
+regla correcta,C00310,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+regla correcta,C00311,tratamiento,explotar,2026-02-13,15,3,0,0,0,0
+regla correcta,C00312,tratamiento,explotar,2026-03-06,3,0,0,0,0,0
+regla correcta,C00314,tratamiento,explotar,2026-02-20,12,4,0,0,0,0
+regla correcta,C00315,tratamiento,explotar,2026-03-13,6,2,1,2,1,47942
+regla correcta,C00316,tratamiento,explotar,2026-02-13,12,2,0,0,0,0
+regla correcta,C00319,tratamiento,explotar,2026-04-17,3,2,0,0,0,0
+regla correcta,C00320,tratamiento,explotar,2026-01-30,4,1,1,1,1,60490
+regla correcta,C00321,tratamiento,explotar,2026-04-17,5,0,0,0,0,0
+regla correcta,C00322,tratamiento,explotar,2026-04-17,14,4,0,0,0,0
+regla correcta,C00325,tratamiento,explotar,2026-01-30,25,9,0,0,0,0
+regla correcta,C00326,tratamiento,explotar,2026-01-30,17,5,0,0,0,0
+regla correcta,C00327,tratamiento,explotar,2026-02-13,17,6,0,1,1,99864
+regla correcta,C00329,tratamiento,explotar,2026-05-01,8,2,0,0,0,0
+regla correcta,C00330,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+regla correcta,C00331,tratamiento,explotar,2026-04-10,10,4,0,0,0,0
+regla correcta,C00333,tratamiento,explotar,2026-05-01,7,4,0,0,0,0
+regla correcta,C00334,tratamiento,explotar,2026-01-30,7,2,0,0,0,0
+regla correcta,C00335,tratamiento,explotar,2026-02-06,10,4,1,1,1,18158
+regla correcta,C00336,tratamiento,explotar,2026-01-30,13,5,0,0,0,0
+regla correcta,C00338,tratamiento,explotar,2026-01-30,15,4,0,0,0,0
+regla correcta,C00339,tratamiento,explotar,2026-01-30,16,2,0,0,0,0
+regla correcta,C00340,tratamiento,explotar,2026-01-30,7,0,0,0,0,0
+regla correcta,C00342,control,,2026-01-30,13,0,0,0,0,0
+regla correcta,C00343,tratamiento,explotar,2026-01-30,6,3,0,0,0,0
+regla correcta,C00344,tratamiento,explotar,2026-01-30,13,3,0,0,0,0
+regla correcta,C00346,tratamiento,explotar,2026-09-11,1,0,0,0,0,0
+regla correcta,C00347,tratamiento,explorar,2026-05-01,8,4,0,0,0,0
+regla correcta,C00348,tratamiento,explotar,2026-03-20,18,5,0,0,0,0
+regla correcta,C00349,tratamiento,explotar,2026-04-24,12,1,0,0,0,0
+regla correcta,C00350,tratamiento,explotar,2026-01-30,10,4,0,0,0,0
+regla correcta,C00352,tratamiento,explorar,2026-01-30,6,0,0,0,0,0
+regla correcta,C00353,tratamiento,explotar,2026-01-30,17,2,0,0,0,0
+regla correcta,C00355,tratamiento,explotar,2026-01-30,22,4,0,0,0,0
+regla correcta,C00356,tratamiento,explotar,2026-01-30,10,1,0,1,1,29784
+regla correcta,C00357,tratamiento,explotar,2026-01-30,9,3,1,1,1,29784
+regla correcta,C00359,tratamiento,explotar,2026-05-08,9,1,0,0,0,0
+regla correcta,C00360,tratamiento,explotar,2026-05-08,5,3,0,0,0,0
+regla correcta,C00362,tratamiento,explotar,2026-09-25,1,1,0,0,0,0
+regla correcta,C00364,tratamiento,explotar,2026-03-20,9,0,0,0,0,0
+regla correcta,C00365,tratamiento,explotar,2026-04-03,8,2,1,1,1,18158
+regla correcta,C00368,control,,2026-01-30,6,0,0,0,0,0
+regla correcta,C00369,tratamiento,explotar,2026-03-27,8,4,0,0,0,0
+regla correcta,C00370,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+regla correcta,C00372,tratamiento,explotar,2026-01-30,5,2,0,0,0,0
+regla correcta,C00373,tratamiento,explotar,2026-02-06,3,0,0,0,0,0
+regla correcta,C00374,tratamiento,explorar,2026-06-26,3,0,0,0,0,0
+regla correcta,C00375,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00376,tratamiento,explotar,2026-01-30,15,4,0,0,0,0
+regla correcta,C00377,tratamiento,explotar,2026-01-30,9,3,0,0,0,0
+regla correcta,C00378,tratamiento,explotar,2026-01-30,6,0,0,0,0,0
+regla correcta,C00379,tratamiento,explotar,2026-02-27,3,1,0,0,0,0
+regla correcta,C00380,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00381,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+regla correcta,C00382,tratamiento,explotar,2026-02-20,16,5,0,0,0,0
+regla correcta,C00383,tratamiento,explotar,2026-02-06,10,3,0,0,0,0
+regla correcta,C00384,tratamiento,explotar,2026-02-13,12,4,0,0,0,0
+regla correcta,C00385,tratamiento,explotar,2026-01-30,15,1,0,0,0,0
+regla correcta,C00386,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+regla correcta,C00388,tratamiento,explotar,2026-05-01,6,1,0,0,0,0
+regla correcta,C00389,tratamiento,explotar,2026-03-06,8,4,0,0,0,0
+regla correcta,C00390,tratamiento,explotar,2026-02-13,15,7,3,3,1,178512
+regla correcta,C00392,tratamiento,explotar,2026-01-30,10,1,0,0,0,0
+regla correcta,C00393,control,,2026-03-20,7,0,0,0,0,0
+regla correcta,C00394,tratamiento,explotar,2026-05-01,5,2,1,1,1,103043
+regla correcta,C00395,tratamiento,explorar,2026-06-19,4,2,0,0,0,0
+regla correcta,C00396,tratamiento,explotar,2026-03-06,9,0,0,0,0,0
+regla correcta,C00397,tratamiento,explotar,2026-04-24,5,1,0,0,0,0
+regla correcta,C00399,tratamiento,explotar,2026-04-03,7,3,0,0,0,0
+regla correcta,C00403,tratamiento,explotar,2026-01-30,8,1,0,0,0,0
+regla correcta,C00404,tratamiento,explotar,2026-01-30,11,3,1,1,1,18158
+regla correcta,C00405,tratamiento,explorar,2026-01-30,4,0,0,0,0,0
+regla correcta,C00406,tratamiento,explotar,2026-02-13,15,3,0,0,0,0
+regla correcta,C00407,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+regla correcta,C00408,tratamiento,explotar,2026-04-03,13,5,0,0,0,0
+regla correcta,C00409,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00411,tratamiento,explotar,2026-01-30,13,4,0,0,0,0
+regla correcta,C00412,tratamiento,explotar,2026-01-30,2,0,0,0,0,0
+regla correcta,C00413,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+regla correcta,C00414,tratamiento,explotar,2026-01-30,7,3,0,0,0,0
+regla correcta,C00415,tratamiento,explotar,2026-04-24,6,1,0,0,0,0
+regla correcta,C00416,tratamiento,explorar,2026-05-01,7,2,0,0,0,0
+regla correcta,C00417,tratamiento,explotar,2026-02-06,8,3,0,0,0,0
+regla correcta,C00418,tratamiento,explotar,2026-01-30,15,2,0,0,0,0
+regla correcta,C00419,tratamiento,explotar,2026-01-30,14,6,0,0,0,0
+regla correcta,C00420,tratamiento,explotar,2026-01-30,16,2,0,1,1,29784
+regla correcta,C00423,tratamiento,explotar,2026-01-30,21,5,0,0,0,0
+regla correcta,C00424,tratamiento,explotar,2026-09-11,1,0,0,0,0,0
+regla correcta,C00425,tratamiento,explotar,2026-04-10,11,2,1,1,1,18158
+regla correcta,C00426,tratamiento,explorar,2026-01-30,9,2,0,0,0,0
+regla correcta,C00429,tratamiento,explotar,2026-01-30,14,4,0,0,0,0
+regla correcta,C00430,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00432,tratamiento,explotar,2026-04-17,12,4,0,0,0,0
+regla correcta,C00434,control,,2026-01-30,5,0,0,1,1,60490
+regla correcta,C00435,tratamiento,explotar,2026-01-30,11,4,0,0,0,0
+regla correcta,C00437,tratamiento,explotar,2026-10-02,1,0,0,0,0,0
+regla correcta,C00438,tratamiento,explotar,2026-02-27,10,3,0,0,0,0
+regla correcta,C00439,tratamiento,explotar,2026-03-27,3,0,0,0,0,0
+regla correcta,C00440,tratamiento,explotar,2026-03-27,13,7,1,1,1,60490
+regla correcta,C00441,tratamiento,explotar,2026-04-03,9,4,0,0,0,0
+regla correcta,C00442,tratamiento,explotar,2026-03-06,9,2,0,0,0,0
+regla correcta,C00443,tratamiento,explotar,2026-05-01,15,2,0,0,0,0
+regla correcta,C00444,tratamiento,explotar,2026-02-13,7,3,1,1,1,99864
+regla correcta,C00445,control,,2026-05-29,4,0,0,0,0,0
+regla correcta,C00446,tratamiento,explorar,2026-02-27,8,3,0,0,0,0
+regla correcta,C00447,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00448,control,,2026-04-03,8,0,0,0,0,0
+regla correcta,C00449,tratamiento,explotar,2026-01-30,20,5,0,0,0,0
+regla correcta,C00450,tratamiento,explotar,2026-05-01,7,2,0,0,0,0
+regla correcta,C00451,control,,2026-01-30,17,0,0,0,0,0
+regla correcta,C00452,tratamiento,explotar,2026-01-30,21,6,1,1,1,99864
+regla correcta,C00453,tratamiento,explotar,2026-03-27,14,3,1,2,1,78648
+regla correcta,C00454,tratamiento,explotar,2026-02-06,10,2,0,1,1,60490
+regla correcta,C00455,tratamiento,explotar,2026-05-01,9,3,1,1,1,99864
+regla correcta,C00456,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+regla correcta,C00457,tratamiento,explotar,2026-05-01,7,1,0,0,0,0
+regla correcta,C00458,tratamiento,explotar,2026-01-30,13,1,0,0,0,0
+regla correcta,C00459,tratamiento,explorar,2026-05-01,9,1,0,0,0,0
+regla correcta,C00460,tratamiento,explotar,2026-02-13,5,2,0,0,0,0
+regla correcta,C00461,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00462,tratamiento,explotar,2026-04-24,10,5,1,1,1,103043
+regla correcta,C00463,tratamiento,explotar,2026-01-30,16,6,0,0,0,0
+regla correcta,C00464,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+regla correcta,C00466,tratamiento,explotar,2026-05-01,8,2,1,1,1,18158
+regla correcta,C00467,tratamiento,explorar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00468,control,,2026-06-05,3,0,0,0,0,0
+regla correcta,C00469,tratamiento,explotar,2026-01-30,11,5,1,1,1,60490
+regla correcta,C00471,tratamiento,explotar,2026-01-30,16,3,1,1,1,18158
+regla correcta,C00472,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00473,control,,2026-03-06,6,0,0,0,0,0
+regla correcta,C00474,tratamiento,explotar,2026-05-01,9,2,0,0,0,0
+regla correcta,C00475,tratamiento,explotar,2026-05-01,9,4,0,0,0,0
+regla correcta,C00476,control,,2026-05-01,6,0,0,0,0,0
+regla correcta,C00477,tratamiento,explotar,2026-03-13,11,2,0,0,0,0
+regla correcta,C00478,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+regla correcta,C00479,tratamiento,explotar,2026-02-13,9,2,0,0,0,0
+regla correcta,C00481,tratamiento,explotar,2026-05-01,8,4,0,0,0,0
+regla correcta,C00482,tratamiento,explotar,2026-01-30,8,1,0,0,0,0
+regla correcta,C00483,tratamiento,explorar,2026-01-30,19,3,0,0,0,0
+regla correcta,C00484,tratamiento,explorar,2026-01-30,11,4,2,2,1,163533
+regla correcta,C00486,tratamiento,explotar,2026-05-22,5,1,0,1,1,74670
+regla correcta,C00487,tratamiento,explotar,2026-01-30,18,3,1,2,1,202907
+regla correcta,C00489,control,,2026-01-30,2,0,0,0,0,0
+regla correcta,C00490,tratamiento,explotar,2026-05-01,7,4,1,1,1,18158
+regla correcta,C00491,tratamiento,explotar,2026-01-30,17,4,0,0,0,0
+regla correcta,C00492,control,,2026-05-01,9,0,0,0,0,0
+regla correcta,C00493,tratamiento,explotar,2026-01-30,2,1,0,0,0,0
+regla correcta,C00494,control,,2026-01-30,19,0,0,0,0,0
+regla correcta,C00495,tratamiento,explotar,2026-02-06,16,4,0,0,0,0
+regla correcta,C00496,tratamiento,explorar,2026-05-22,4,1,0,0,0,0
+regla correcta,C00498,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+regla correcta,C00499,tratamiento,explotar,2026-01-30,12,3,0,0,0,0
+regla correcta,C00500,control,,2026-05-01,5,0,0,0,0,0
+regla correcta,C00501,tratamiento,explorar,2026-01-30,12,2,0,1,1,99864
+regla correcta,C00502,tratamiento,explotar,2026-02-13,12,1,0,0,0,0
+regla correcta,C00503,tratamiento,explotar,2026-01-30,11,3,0,0,0,0
+regla correcta,C00504,tratamiento,explotar,2026-03-20,12,6,1,1,1,18158
+regla correcta,C00506,tratamiento,explotar,2026-05-01,11,2,0,0,0,0
+regla correcta,C00507,control,,2026-01-30,12,0,0,0,0,0
+regla correcta,C00508,tratamiento,explotar,2026-07-03,3,0,0,0,0,0
+regla correcta,C00509,tratamiento,explorar,2026-02-06,20,8,3,3,1,263397
+regla correcta,C00510,tratamiento,explotar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00511,tratamiento,explotar,2026-01-30,10,2,0,0,0,0
+regla correcta,C00512,tratamiento,explotar,2026-01-30,9,2,0,0,0,0
+regla correcta,C00513,tratamiento,explotar,2026-01-30,12,1,0,0,0,0
+regla correcta,C00514,tratamiento,explorar,2026-01-30,14,3,2,2,1,160354
+regla correcta,C00515,tratamiento,explorar,2026-01-30,18,5,0,0,0,0
+regla correcta,C00516,tratamiento,explotar,2026-01-30,14,3,0,0,0,0
+regla correcta,C00519,tratamiento,explotar,2026-04-17,2,1,1,1,1,18158
+regla correcta,C00521,tratamiento,explorar,2026-05-29,4,0,0,0,0,0
+regla correcta,C00522,tratamiento,explotar,2026-01-30,8,5,1,1,1,99864
+regla correcta,C00523,tratamiento,explotar,2026-03-13,10,5,0,0,0,0
+regla correcta,C00524,tratamiento,explotar,2026-03-27,10,4,0,0,0,0
+regla correcta,C00525,tratamiento,explotar,2026-01-30,12,2,0,0,0,0
+regla correcta,C00526,tratamiento,explotar,2026-01-30,11,2,0,0,0,0
+regla correcta,C00527,tratamiento,explotar,2026-01-30,19,5,0,0,0,0
+regla correcta,C00528,tratamiento,explotar,2026-07-24,5,0,0,0,0,0
+regla correcta,C00529,tratamiento,explotar,2026-03-06,4,0,0,0,0,0
+regla correcta,C00530,tratamiento,explotar,2026-01-30,9,1,0,0,0,0
+regla correcta,C00534,tratamiento,explotar,2026-10-02,1,0,0,0,0,0
+regla correcta,C00535,tratamiento,explotar,2026-08-14,4,0,0,0,0,0
+regla correcta,C00536,tratamiento,explotar,2026-05-01,2,2,1,1,1,103043
+regla correcta,C00537,tratamiento,explorar,2026-08-28,2,1,0,0,0,0
+regla correcta,C00538,tratamiento,explotar,2026-02-13,23,5,1,1,1,99864
+regla correcta,C00541,tratamiento,explotar,2026-03-06,16,5,0,0,0,0
+regla correcta,C00542,tratamiento,explotar,2026-02-27,13,3,0,0,0,0
+regla correcta,C00543,control,,2026-01-30,13,0,0,0,0,0
+regla correcta,C00544,tratamiento,explotar,2026-06-12,7,1,0,0,0,0
+regla correcta,C00545,control,,2026-01-30,4,0,0,0,0,0
+regla correcta,C00546,tratamiento,explotar,2026-04-17,3,2,0,0,0,0
+regla correcta,C00547,tratamiento,explotar,2026-05-15,3,0,0,0,0,0
+regla correcta,C00548,tratamiento,explotar,2026-04-03,8,0,0,0,0,0
+regla correcta,C00549,tratamiento,explotar,2026-06-05,4,1,0,0,0,0
+regla correcta,C00550,tratamiento,explorar,2026-05-01,9,2,1,1,1,103043
+regla correcta,C00551,tratamiento,explotar,2026-01-30,7,1,0,0,0,0
+regla correcta,C00552,tratamiento,explotar,2026-03-06,2,1,1,1,1,18158
+regla correcta,C00553,tratamiento,explotar,2026-01-30,20,3,0,0,0,0
+regla correcta,C00554,tratamiento,explotar,2026-05-01,17,1,0,0,0,0
+regla correcta,C00555,tratamiento,explotar,2026-01-30,18,4,0,0,0,0
+regla correcta,C00556,tratamiento,explotar,2026-01-30,11,4,0,0,0,0
+regla correcta,C00557,tratamiento,explotar,2026-01-30,14,1,0,0,0,0
+regla correcta,C00558,tratamiento,explotar,2026-04-17,9,3,1,1,1,99864
+regla correcta,C00559,tratamiento,explotar,2026-01-30,5,3,0,1,1,29784
+regla correcta,C00560,tratamiento,explotar,2026-07-10,3,3,1,1,1,74670
+regla correcta,C00561,tratamiento,explotar,2026-01-30,8,1,0,1,1,74670
+regla correcta,C00562,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+regla correcta,C00563,control,,2026-01-30,11,0,0,0,0,0
+regla correcta,C00564,tratamiento,explotar,2026-01-30,12,4,0,0,0,0
+regla correcta,C00565,tratamiento,explorar,2026-01-30,15,4,1,2,1,104454
+regla correcta,C00566,tratamiento,explorar,2026-02-20,14,4,1,1,1,103043
+regla correcta,C00567,tratamiento,explotar,2026-01-30,8,3,0,0,0,0
+regla correcta,C00568,tratamiento,explotar,2026-02-20,7,2,1,1,1,99864
+regla correcta,C00569,tratamiento,explotar,2026-05-01,5,2,0,0,0,0
+regla correcta,C00570,tratamiento,explotar,2026-01-30,5,1,0,1,1,99864
+regla correcta,C00571,tratamiento,explorar,2026-01-30,11,2,0,0,0,0
+regla correcta,C00572,tratamiento,explotar,2026-05-01,7,2,0,0,0,0
+regla correcta,C00573,tratamiento,explorar,2026-05-01,5,0,0,0,0,0
+regla correcta,C00574,control,,2026-03-20,11,0,0,0,0,0
+regla correcta,C00575,tratamiento,explotar,2026-05-01,8,3,0,0,0,0
+regla correcta,C00576,tratamiento,explotar,2026-03-06,12,7,1,1,1,99864
+regla correcta,C00577,tratamiento,explotar,2026-05-01,10,3,0,0,0,0
+regla correcta,C00579,control,,2026-01-30,16,0,0,0,0,0
+regla correcta,C00581,tratamiento,explotar,2026-01-30,17,5,0,0,0,0
+regla correcta,C00582,tratamiento,explotar,2026-01-30,10,2,0,0,0,0
+regla correcta,C00583,tratamiento,explorar,2026-04-24,10,3,0,0,0,0
+regla correcta,C00584,tratamiento,explotar,2026-02-20,16,3,0,0,0,0
+regla correcta,C00585,tratamiento,explotar,2026-05-01,8,1,0,0,0,0
+regla correcta,C00586,tratamiento,explotar,2026-04-24,4,1,0,1,1,74670
+regla correcta,C00587,tratamiento,explorar,2026-03-13,7,0,0,0,0,0
+regla correcta,C00588,tratamiento,explotar,2026-02-06,20,7,1,1,1,18158
+regla correcta,C00589,tratamiento,explotar,2026-08-21,2,1,0,0,0,0
+regla correcta,C00591,tratamiento,explotar,2026-02-20,17,5,1,1,1,99864
+regla correcta,C00592,tratamiento,explotar,2026-01-30,11,2,0,0,0,0
+regla correcta,C00593,tratamiento,explotar,2026-01-30,16,2,0,0,0,0
+regla correcta,C00594,tratamiento,explotar,2026-02-20,19,2,0,0,0,0
+regla correcta,C00595,tratamiento,explotar,2026-03-13,4,0,0,0,0,0
+regla correcta,C00596,tratamiento,explotar,2026-01-30,4,1,0,0,0,0
+regla correcta,C00597,tratamiento,explotar,2026-05-22,7,0,0,0,0,0
+regla correcta,C00598,tratamiento,explotar,2026-05-01,5,1,0,0,0,0
+regla correcta,C00599,tratamiento,explorar,2026-01-30,8,0,0,0,0,0

@@ -1,0 +1,6 @@
+escenario,motor_frente_a_regla,motor_del_techo,regla_del_techo,ronda_supera_regla,respuestas_para_superar,valor_del_dato,comision_final_regla,comision_final_motor,comision_final_motor_sin_explorar,comision_final_oraculo,comision_final_azar,comision_final_motor_sin_dato
+señal,0.1015,0.9075,0.5762,1,442,,8003.8,8816.4,8840.3,9043.1,6590.5,
+regla correcta,-0.0102,0.9524,1,,,,5921.2,5860.8,5870,5921.2,4651.8,
+ruido,0.1043,0.9165,0.5762,1,442,,8003.8,8838.4,8851.6,9043.1,6590.5,
+oportunidad oculta,0.1052,0.9018,0.4733,1,442,,10055.5,11113.8,11133.2,11356.4,8886.7,
+dato nuevo,0.0904,0.9208,0.6204,1,442,0.0079,8488.4,9255.8,9284.5,9458.1,6903.7,9183.4

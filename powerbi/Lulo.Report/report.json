@@ -1,0 +1,793 @@
+{
+  "config": "{\"version\": \"5.43\", \"themeCollection\": {\"customTheme\": {\"name\": \"tema-lulo.json\", \"version\": \"5.43\", \"type\": 1}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useStylableVisualContainerHeader\": true}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "name": "RegisteredResources",
+        "type": 1,
+        "disabled": false,
+        "items": [
+          {
+            "name": "tema-lulo.json",
+            "path": "tema-lulo.json",
+            "type": 202
+          }
+        ]
+      }
+    }
+  ],
+  "sections": [
+    {
+      "name": "Seccionc695d748ad1",
+      "displayName": "1 · Resumen",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 0,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"c96511fea313568d8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"¿Las ofertas del motor venden? · Piloto simulado\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"6e381c27809c56739\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"1d4c0cfae2d75c77b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_escenario.nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_escenario\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"nombre\"}, \"Name\": \"dim_escenario.nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Escenario'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 916,
+          "height": 56,
+          "config": "{\"name\": \"b9e27b1c8e7a58398\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 916, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_escenario.Descripción del escenario\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_escenario\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Descripción del escenario\"}, \"Name\": \"dim_escenario.Descripción del escenario\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"12D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 4,
+          "width": 300,
+          "height": 130,
+          "config": "{\"name\": \"2bac17ed0887568c9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 4, \"width\": 300, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Diferencia frente al control (pp)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Diferencia frente al control (pp)\"}, \"Name\": \"piloto_clientes.Diferencia frente al control (pp)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Diferencia frente al control'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 132,
+          "z": 5,
+          "width": 300,
+          "height": 130,
+          "config": "{\"name\": \"3471c64f92d554b6a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 132, \"z\": 5, \"width\": 300, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Intervalo de la diferencia\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Intervalo de la diferencia\"}, \"Name\": \"piloto_clientes.Intervalo de la diferencia\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"14D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Intervalo de 95 %'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 132,
+          "z": 6,
+          "width": 290,
+          "height": 130,
+          "config": "{\"name\": \"6970728cf1e3520db\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 132, \"z\": 6, \"width\": 290, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Ventas incrementales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Ventas incrementales\"}, \"Name\": \"piloto_clientes.Ventas incrementales\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Clientes que compran por las ofertas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 132,
+          "z": 7,
+          "width": 294,
+          "height": 130,
+          "config": "{\"name\": \"a4fabce3a7c15fdc9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 132, \"z\": 7, \"width\": 294, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Comisión incremental 12 m\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Comisión incremental 12 m\"}, \"Name\": \"piloto_clientes.Comisión incremental 12 m\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Comisión incremental a 12 meses'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 274,
+          "z": 8,
+          "width": 1232,
+          "height": 52,
+          "config": "{\"name\": \"142ddaf829bd5154a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 274, \"z\": 8, \"width\": 1232, \"height\": 52}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Veredicto\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Veredicto\"}, \"Name\": \"piloto_clientes.Veredicto\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"12D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 338,
+          "z": 9,
+          "width": 760,
+          "height": 300,
+          "config": "{\"name\": \"59955339a4b85d01b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 338, \"z\": 9, \"width\": 760, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_fecha.semana_inicio\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_ventas.Conversión acumulada\"}], \"Series\": [{\"queryRef\": \"dim_cliente.grupo\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_fecha\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"piloto_ventas\", \"Type\": 0}, {\"Name\": \"t2\", \"Entity\": \"dim_cliente\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"semana_inicio\"}, \"Name\": \"dim_fecha.semana_inicio\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Conversión acumulada\"}, \"Name\": \"piloto_ventas.Conversión acumulada\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t2\"}}, \"Property\": \"grupo\"}, \"Name\": \"dim_cliente.grupo\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Clientes que ya compraron, tratamiento frente a control'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 800,
+          "y": 338,
+          "z": 10,
+          "width": 456,
+          "height": 300,
+          "config": "{\"name\": \"ae19d617ad4e5d32a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 800, \"y\": 338, \"z\": 10, \"width\": 456, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_cliente.grupo\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_clientes.Conversión por cliente\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_cliente\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"grupo\"}, \"Name\": \"dim_cliente.grupo\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Conversión por cliente\"}, \"Name\": \"piloto_clientes.Conversión por cliente\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Compran en el piloto, por grupo'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 650,
+          "z": 11,
+          "width": 1232,
+          "height": 58,
+          "config": "{\"name\": \"1fd54f89aa9b5372a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 650, \"z\": 11, \"width\": 1232, \"height\": 58}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Aviso del piloto\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Aviso del piloto\"}, \"Name\": \"meta.Aviso del piloto\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"12D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccionc2ad734e570",
+      "displayName": "2 · Embudo",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 1,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"720f3a77116658878\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"De 600 clientes a una venta: dónde se queda cada uno\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"44a0ddb6600754628\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"9542c94680b85237b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_escenario.nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_escenario\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"nombre\"}, \"Name\": \"dim_escenario.nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Escenario'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 220,
+          "height": 56,
+          "config": "{\"name\": \"a864518086e3593a8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 220, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"motor_plan.Clientes de la base\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_plan\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Clientes de la base\"}, \"Name\": \"motor_plan.Clientes de la base\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Clientes de la base'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 576,
+          "y": 64,
+          "z": 4,
+          "width": 220,
+          "height": 56,
+          "config": "{\"name\": \"6b38064f091f5d27a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 576, \"y\": 64, \"z\": 4, \"width\": 220, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"motor_plan.Autorizan ofertas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_plan\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Autorizan ofertas\"}, \"Name\": \"motor_plan.Autorizan ofertas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Autorizan ofertas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 812,
+          "y": 64,
+          "z": 5,
+          "width": 220,
+          "height": 56,
+          "config": "{\"name\": \"717c16c5f4ee5e43b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 812, \"y\": 64, \"z\": 5, \"width\": 220, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Ofertas vistas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Ofertas vistas\"}, \"Name\": \"piloto_decisiones.Ofertas vistas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ofertas vistas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1048,
+          "y": 64,
+          "z": 6,
+          "width": 208,
+          "height": 56,
+          "config": "{\"name\": \"e27b96026aca5a8e9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1048, \"y\": 64, \"z\": 6, \"width\": 208, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Ofertas aceptadas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Ofertas aceptadas\"}, \"Name\": \"piloto_decisiones.Ofertas aceptadas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ofertas aceptadas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 7,
+          "width": 610,
+          "height": 280,
+          "config": "{\"name\": \"845c1a01e4735eb7a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 7, \"width\": 610, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"piloto_decisiones.resultado\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_decisiones.Decisiones\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"resultado\"}, \"Name\": \"piloto_decisiones.resultado\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Decisiones\"}, \"Name\": \"piloto_decisiones.Decisiones\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Piloto: decisiones por resultado'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 132,
+          "z": 8,
+          "width": 606,
+          "height": 280,
+          "config": "{\"name\": \"e70af0d9dbd85321b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 132, \"z\": 8, \"width\": 606, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_ramo.ramo\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_decisiones.Conversión por oferta vista\"}, {\"queryRef\": \"piloto_decisiones.Conversión de la campaña previa\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_ramo\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ramo\"}, \"Name\": \"dim_ramo.ramo\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Conversión por oferta vista\"}, \"Name\": \"piloto_decisiones.Conversión por oferta vista\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Conversión de la campaña previa\"}, \"Name\": \"piloto_decisiones.Conversión de la campaña previa\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Conversión por oferta vista frente a la campaña previa, por ramo'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 424,
+          "z": 9,
+          "width": 1232,
+          "height": 284,
+          "config": "{\"name\": \"59a57079c7145f588\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 424, \"z\": 9, \"width\": 1232, \"height\": 284}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"base_campanas.campana\"}, {\"queryRef\": \"base_campanas.canal\"}, {\"queryRef\": \"base_campanas.elegibles\"}, {\"queryRef\": \"base_campanas.impactados\"}, {\"queryRef\": \"base_campanas.interesados\"}, {\"queryRef\": \"base_campanas.ventas\"}, {\"queryRef\": \"base_campanas.Conversión de las campañas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"base_campanas\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"campana\"}, \"Name\": \"base_campanas.campana\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"canal\"}, \"Name\": \"base_campanas.canal\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"elegibles\"}, \"Name\": \"base_campanas.elegibles\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"impactados\"}, \"Name\": \"base_campanas.impactados\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"interesados\"}, \"Name\": \"base_campanas.interesados\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ventas\"}, \"Name\": \"base_campanas.ventas\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Conversión de las campañas\"}, \"Name\": \"base_campanas.Conversión de las campañas\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Base del reto: embudo de las campañas previas'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccion0caf6360103",
+      "displayName": "3 · ¿El modelo acierta?",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 2,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"72fc429c206257d8a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Lo que el motor esperaba frente a lo que pasó\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"8b02b894e6845a278\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"6cf3856011795397a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_escenario.nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_escenario\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"nombre\"}, \"Name\": \"dim_escenario.nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Escenario'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"126a0505fb785e36b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Observado frente al motor\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Observado frente al motor\"}, \"Name\": \"piloto_decisiones.Observado frente al motor\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Observado / esperado por el motor'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 56,
+          "config": "{\"name\": \"0ea27821e1995c08a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Coinciden con la regla\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Coinciden con la regla\"}, \"Name\": \"piloto_decisiones.Coinciden con la regla\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Coinciden con la regla v1.3'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 56,
+          "config": "{\"name\": \"64dc983346f355679\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Motor frente a la regla (simulación)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Motor frente a la regla (simulación)\"}, \"Name\": \"piloto_decisiones.Motor frente a la regla (simulación)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Motor frente a la regla (verdad simulada)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 6,
+          "width": 610,
+          "height": 280,
+          "config": "{\"name\": \"7814b04df5225413a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 6, \"width\": 610, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"piloto_decisiones.tramo_p_motor\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_decisiones.P(acepta) del motor\"}, {\"queryRef\": \"piloto_decisiones.Conversión por oferta vista\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"tramo_p_motor\"}, \"Name\": \"piloto_decisiones.tramo_p_motor\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"P(acepta) del motor\"}, \"Name\": \"piloto_decisiones.P(acepta) del motor\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Conversión por oferta vista\"}, \"Name\": \"piloto_decisiones.Conversión por oferta vista\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Calibración: P(acepta) del motor frente a la aceptación observada'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 132,
+          "z": 7,
+          "width": 606,
+          "height": 280,
+          "config": "{\"name\": \"a1384279fc255f70a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 132, \"z\": 7, \"width\": 606, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"piloto_decisiones.momento_texto\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_decisiones.P(acepta) del motor\"}, {\"queryRef\": \"piloto_decisiones.Conversión por oferta vista\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"momento_texto\"}, \"Name\": \"piloto_decisiones.momento_texto\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"P(acepta) del motor\"}, \"Name\": \"piloto_decisiones.P(acepta) del motor\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Conversión por oferta vista\"}, \"Name\": \"piloto_decisiones.Conversión por oferta vista\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Aceptación con evento reciente (momento) y sin él'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 424,
+          "z": 8,
+          "width": 610,
+          "height": 284,
+          "config": "{\"name\": \"9a0e996ef52c5da38\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 424, \"z\": 8, \"width\": 610, \"height\": 284}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"lab_series.ronda\", \"active\": true}], \"Y\": [{\"queryRef\": \"lab_series.Comisión por oferta (lab)\"}], \"Series\": [{\"queryRef\": \"lab_series.politica_nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_series\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ronda\"}, \"Name\": \"lab_series.ronda\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Comisión por oferta (lab)\"}, \"Name\": \"lab_series.Comisión por oferta (lab)\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"politica_nombre\"}, \"Name\": \"lab_series.politica_nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Laboratorio: comisión por oferta en 40 rondas («señal»)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 424,
+          "z": 9,
+          "width": 606,
+          "height": 284,
+          "config": "{\"name\": \"b0cc4d8a4c21576bb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 424, \"z\": 9, \"width\": 606, \"height\": 284}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"lab_calibracion.ronda\", \"active\": true}], \"Y\": [{\"queryRef\": \"lab_calibracion.Error de calibración (lab)\"}], \"Series\": [{\"queryRef\": \"lab_calibracion.modelo\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_calibracion\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ronda\"}, \"Name\": \"lab_calibracion.ronda\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Error de calibración (lab)\"}, \"Name\": \"lab_calibracion.Error de calibración (lab)\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"modelo\"}, \"Name\": \"lab_calibracion.modelo\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Laboratorio: error de calibración, motor frente a regla'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccion9bc0d5587c4",
+      "displayName": "4 · Contacto",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 3,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"ff620b594b4456a9a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Contactar sin cansar: canal, tope y reglas que nunca se rompen\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"a1b3f148a654505eb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 80,
+          "config": "{\"name\": \"178a85cdf53250908\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 80}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"motor_invariantes.Violaciones\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_invariantes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Violaciones\"}, \"Name\": \"motor_invariantes.Violaciones\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Violaciones de las reglas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 80,
+          "config": "{\"name\": \"ed6ec10269525167b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 80}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"motor_backtest.Push máximo en 30 días\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_backtest\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Push máximo en 30 días\"}, \"Name\": \"motor_backtest.Push máximo en 30 días\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Push máximo a un cliente en 30 días'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 80,
+          "config": "{\"name\": \"0e41be7db6cf55c4a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 80}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Alcance\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Alcance\"}, \"Name\": \"piloto_decisiones.Alcance\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Alcance de las ofertas (vistas / mostradas)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 80,
+          "config": "{\"name\": \"02bd32bd3a4e5cb39\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 80}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_decisiones.Ofertas ignoradas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Ofertas ignoradas\"}, \"Name\": \"piloto_decisiones.Ofertas ignoradas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ofertas ignoradas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 156,
+          "z": 6,
+          "width": 610,
+          "height": 300,
+          "config": "{\"name\": \"44020b109f3451128\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 156, \"z\": 6, \"width\": 610, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"motor_invariantes.invariante\"}, {\"queryRef\": \"motor_invariantes.violaciones\"}, {\"queryRef\": \"motor_invariantes.fuente\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_invariantes\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"invariante\"}, \"Name\": \"motor_invariantes.invariante\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"violaciones\"}, \"Name\": \"motor_invariantes.violaciones\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"fuente\"}, \"Name\": \"motor_invariantes.fuente\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Invariantes del backtest'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 156,
+          "z": 7,
+          "width": 606,
+          "height": 300,
+          "config": "{\"name\": \"594fee246f8059aeb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 156, \"z\": 7, \"width\": 606, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"motor_plan.motivo_canal\", \"active\": true}], \"Y\": [{\"queryRef\": \"motor_plan.Ofertas del plan\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_plan\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"motivo_canal\"}, \"Name\": \"motor_plan.motivo_canal\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Ofertas del plan\"}, \"Name\": \"motor_plan.Ofertas del plan\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Plan al corte: por qué va por push o por banner'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 468,
+          "z": 8,
+          "width": 1232,
+          "height": 240,
+          "config": "{\"name\": \"744f0ceaf75d54f9b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 468, \"z\": 8, \"width\": 1232, \"height\": 240}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"motor_plan.resultado_texto\", \"active\": true}], \"Y\": [{\"queryRef\": \"motor_plan.Clientes de la base\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"motor_plan\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"resultado_texto\"}, \"Name\": \"motor_plan.resultado_texto\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Clientes de la base\"}, \"Name\": \"motor_plan.Clientes de la base\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Plan al corte: resultado del motor para los 600 clientes'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccion7c3c262c60d",
+      "displayName": "5 · Piloto real",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 4,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"d20eb796aafb561f8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Cuántos clientes necesita el piloto real para saber\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"ba6ab2d51e7c51af9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"c9343059309c54bf8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_escenario.nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_escenario\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"nombre\"}, \"Name\": \"dim_escenario.nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Escenario'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"6ee4f4b53d8153a19\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Clientes control\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Clientes control\"}, \"Name\": \"piloto_clientes.Clientes control\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Clientes en control hoy'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 56,
+          "config": "{\"name\": \"9292c5f84c55546ab\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Efecto mínimo detectable (pp)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Efecto mínimo detectable (pp)\"}, \"Name\": \"piloto_clientes.Efecto mínimo detectable (pp)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Efecto mínimo detectable con este tamaño'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 56,
+          "config": "{\"name\": \"b829e79e630b53afb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Valor p\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Valor p\"}, \"Name\": \"piloto_clientes.Valor p\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Valor p'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 6,
+          "width": 1232,
+          "height": 260,
+          "config": "{\"name\": \"7f3b38c5a02055bf8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 6, \"width\": 1232, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_ramo.ramo\"}, {\"queryRef\": \"dim_ramo.conversion_previa\"}, {\"queryRef\": \"dim_ramo.piloto_n_20\"}, {\"queryRef\": \"dim_ramo.piloto_n_50\"}, {\"queryRef\": \"dim_ramo.piloto_n_100\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_ramo\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ramo\"}, \"Name\": \"dim_ramo.ramo\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"conversion_previa\"}, \"Name\": \"dim_ramo.conversion_previa\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"piloto_n_20\"}, \"Name\": \"dim_ramo.piloto_n_20\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"piloto_n_50\"}, \"Name\": \"dim_ramo.piloto_n_50\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"piloto_n_100\"}, \"Name\": \"dim_ramo.piloto_n_100\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'M6: clientes por grupo para detectar el aumento (α 5 %, potencia 80 %)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 404,
+          "z": 7,
+          "width": 1232,
+          "height": 70,
+          "config": "{\"name\": \"ae15e78699fc54bfb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 404, \"z\": 7, \"width\": 1232, \"height\": 70}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"piloto_clientes.Lectura de la muestra\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"piloto_clientes\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Lectura de la muestra\"}, \"Name\": \"piloto_clientes.Lectura de la muestra\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"14D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 486,
+          "z": 8,
+          "width": 1232,
+          "height": 222,
+          "config": "{\"name\": \"46a9e03a06ad5b40b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 486, \"z\": 8, \"width\": 1232, \"height\": 222}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_ramo.ramo\", \"active\": true}], \"Y\": [{\"queryRef\": \"piloto_decisiones.Ofertas vistas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_ramo\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"piloto_decisiones\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ramo\"}, \"Name\": \"dim_ramo.ramo\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Ofertas vistas\"}, \"Name\": \"piloto_decisiones.Ofertas vistas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ofertas vistas por ramo en el piloto simulado'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccion3cd37350d56",
+      "displayName": "6 · Laboratorio",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 5,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"7ffd192e851b51409\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"¿El motor aprende? Verdad simulada sobre los clientes de la base\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"c65fbbbe5d3a5f8c8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"b4c7575007a2551da\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_lab_escenario.escenario\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_lab_escenario\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"escenario\"}, \"Name\": \"dim_lab_escenario.escenario\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Escenario del laboratorio'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"ad5f40ead7415e2e8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"lab_resumen.Motor frente a la regla (lab)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_resumen\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Motor frente a la regla (lab)\"}, \"Name\": \"lab_resumen.Motor frente a la regla (lab)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Motor frente a la regla'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 56,
+          "config": "{\"name\": \"2f237d58a60159178\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"lab_resumen.Camino al techo del motor (lab)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_resumen\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Camino al techo del motor (lab)\"}, \"Name\": \"lab_resumen.Camino al techo del motor (lab)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Camino al techo: motor'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 56,
+          "config": "{\"name\": \"f6ae1da46db15aae8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"lab_resumen.Camino al techo de la regla (lab)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_resumen\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Camino al techo de la regla (lab)\"}, \"Name\": \"lab_resumen.Camino al techo de la regla (lab)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Camino al techo: regla'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 6,
+          "width": 1232,
+          "height": 290,
+          "config": "{\"name\": \"4be854876c8c5fda8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 6, \"width\": 1232, \"height\": 290}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"lab_series.ronda\", \"active\": true}], \"Y\": [{\"queryRef\": \"lab_series.Comisión por oferta (lab)\"}], \"Series\": [{\"queryRef\": \"lab_series.politica_nombre\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_series\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ronda\"}, \"Name\": \"lab_series.ronda\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Comisión por oferta (lab)\"}, \"Name\": \"lab_series.Comisión por oferta (lab)\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"politica_nombre\"}, \"Name\": \"lab_series.politica_nombre\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Comisión por oferta de cada política'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 434,
+          "z": 7,
+          "width": 610,
+          "height": 274,
+          "config": "{\"name\": \"33923771a6d75c18a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 434, \"z\": 7, \"width\": 610, \"height\": 274}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"lab_pesos.etiqueta\", \"active\": true}], \"Y\": [{\"queryRef\": \"lab_pesos.Peso aprendido al final (lab)\"}, {\"queryRef\": \"lab_pesos.Peso verdadero (lab)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_pesos\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"etiqueta\"}, \"Name\": \"lab_pesos.etiqueta\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Peso aprendido al final (lab)\"}, \"Name\": \"lab_pesos.Peso aprendido al final (lab)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Peso verdadero (lab)\"}, \"Name\": \"lab_pesos.Peso verdadero (lab)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Lo que aprendió el motor de cada efecto frente a la verdad'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 434,
+          "z": 8,
+          "width": 606,
+          "height": 274,
+          "config": "{\"name\": \"e58d03ee3c8c5456a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 434, \"z\": 8, \"width\": 606, \"height\": 274}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"lab_apetito.ronda\", \"active\": true}], \"Y\": [{\"queryRef\": \"lab_apetito.τ estimado por el motor (lab)\"}, {\"queryRef\": \"lab_apetito.τ verdadero (lab)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"lab_apetito\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ronda\"}, \"Name\": \"lab_apetito.ronda\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"τ estimado por el motor (lab)\"}, \"Name\": \"lab_apetito.τ estimado por el motor (lab)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"τ verdadero (lab)\"}, \"Name\": \"lab_apetito.τ verdadero (lab)\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Dispersión del apetito entre clientes (τ, Bayes empírico)'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Secciona3d668796f0",
+      "displayName": "7 · Casos reales",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 6,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"bd970b10f2555f509\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Quién usó métodos como estos y qué pasó\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"40a2ea92f2a25acdb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"b8d3a873bb8e559aa\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"casos.Casos\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"casos\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Casos\"}, \"Name\": \"casos.Casos\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Casos'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"46be8a810cf756718\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"casos.Éxitos\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"casos\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Éxitos\"}, \"Name\": \"casos.Éxitos\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Éxitos'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 56,
+          "config": "{\"name\": \"9f8cffe1508553c6b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"casos.Fracasos\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"casos\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Fracasos\"}, \"Name\": \"casos.Fracasos\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Fracasos'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 56,
+          "config": "{\"name\": \"37a85c671bc35e6e9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"casos.conexion\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"casos\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"conexion\"}, \"Name\": \"casos.conexion\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Parte del prototipo'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 6,
+          "width": 1232,
+          "height": 576,
+          "config": "{\"name\": \"5d42c15b92a95279a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 6, \"width\": 1232, \"height\": 576}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"casos.empresa\"}, {\"queryRef\": \"casos.anio\"}, {\"queryRef\": \"casos.resultado\"}, {\"queryRef\": \"casos.cifra\"}, {\"queryRef\": \"casos.leccion\"}, {\"queryRef\": \"casos.fuente\"}, {\"queryRef\": \"casos.confianza\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"casos\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"empresa\"}, \"Name\": \"casos.empresa\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"anio\"}, \"Name\": \"casos.anio\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"resultado\"}, \"Name\": \"casos.resultado\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"cifra\"}, \"Name\": \"casos.cifra\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"leccion\"}, \"Name\": \"casos.leccion\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"fuente\"}, \"Name\": \"casos.fuente\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"confianza\"}, \"Name\": \"casos.confianza\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "Seccionce2a5b4978b",
+      "displayName": "8 · Base del reto",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 7,
+      "filters": "[]",
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 24,
+          "y": 12,
+          "z": 0,
+          "width": 900,
+          "height": 44,
+          "config": "{\"name\": \"a8027edff82c59889\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 12, \"z\": 0, \"width\": 900, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"La base del reto: lo que hay hoy (sintética y académica)\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"20pt\", \"color\": \"#FFFFFF\"}}]}]}}]}, \"vcObjects\": {\"background\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1010,
+          "y": 12,
+          "z": 1,
+          "width": 246,
+          "height": 44,
+          "config": "{\"name\": \"de19ea0ae10153299\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1010, \"y\": 12, \"z\": 1, \"width\": 246, \"height\": 44}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Etiqueta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Etiqueta\"}, \"Name\": \"meta.Etiqueta\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"10D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#E8FF00'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 64,
+          "z": 2,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"1b74d3eb166a58b49\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 64, \"z\": 2, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"base_seguros_mensual.Pólizas emitidas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"base_seguros_mensual\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Pólizas emitidas\"}, \"Name\": \"base_seguros_mensual.Pólizas emitidas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Pólizas emitidas en el año'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 64,
+          "z": 3,
+          "width": 300,
+          "height": 56,
+          "config": "{\"name\": \"b9eaabd8b5ca5f8d9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 64, \"z\": 3, \"width\": 300, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"base_seguros_mensual.Comisión de las primas emitidas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"base_seguros_mensual\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Comisión de las primas emitidas\"}, \"Name\": \"base_seguros_mensual.Comisión de las primas emitidas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Comisión de las primas emitidas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 656,
+          "y": 64,
+          "z": 4,
+          "width": 290,
+          "height": 56,
+          "config": "{\"name\": \"98e85105a66e5c09a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 64, \"z\": 4, \"width\": 290, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"base_pagos_externos.Pagado a otras aseguradoras\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"base_pagos_externos\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Pagado a otras aseguradoras\"}, \"Name\": \"base_pagos_externos.Pagado a otras aseguradoras\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Pagado a otras aseguradoras'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 962,
+          "y": 64,
+          "z": 5,
+          "width": 294,
+          "height": 56,
+          "config": "{\"name\": \"e9abc71503905159a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 962, \"y\": 64, \"z\": 5, \"width\": 294, \"height\": 56}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"base_campanas.Conversión de las campañas\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"base_campanas\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Conversión de las campañas\"}, \"Name\": \"base_campanas.Conversión de las campañas\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Conversión de las campañas previas'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 132,
+          "z": 6,
+          "width": 1232,
+          "height": 300,
+          "config": "{\"name\": \"8807232319a851278\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 132, \"z\": 6, \"width\": 1232, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_fecha.mes_nombre\", \"active\": true}], \"Y\": [{\"queryRef\": \"base_seguros_mensual.Pólizas emitidas\"}], \"Series\": [{\"queryRef\": \"dim_ramo.ramo\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_fecha\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"base_seguros_mensual\", \"Type\": 0}, {\"Name\": \"t2\", \"Entity\": \"dim_ramo\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"mes_nombre\"}, \"Name\": \"dim_fecha.mes_nombre\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Pólizas emitidas\"}, \"Name\": \"base_seguros_mensual.Pólizas emitidas\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t2\"}}, \"Property\": \"ramo\"}, \"Name\": \"dim_ramo.ramo\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Pólizas emitidas por mes y ramo'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 444,
+          "z": 7,
+          "width": 1232,
+          "height": 200,
+          "config": "{\"name\": \"4df868b523215488a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 444, \"z\": 7, \"width\": 1232, \"height\": 200}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_ramo.ramo\"}, {\"queryRef\": \"dim_ramo.prima_cop\"}, {\"queryRef\": \"dim_ramo.comision_pct\"}, {\"queryRef\": \"dim_ramo.persistencia_12m\"}, {\"queryRef\": \"dim_ramo.cancelacion_pct\"}, {\"queryRef\": \"dim_ramo.comision_12m_cop\"}, {\"queryRef\": \"dim_ramo.compras_por_su_cuenta\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_ramo\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ramo\"}, \"Name\": \"dim_ramo.ramo\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"prima_cop\"}, \"Name\": \"dim_ramo.prima_cop\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"comision_pct\"}, \"Name\": \"dim_ramo.comision_pct\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"persistencia_12m\"}, \"Name\": \"dim_ramo.persistencia_12m\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"cancelacion_pct\"}, \"Name\": \"dim_ramo.cancelacion_pct\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"comision_12m_cop\"}, \"Name\": \"dim_ramo.comision_12m_cop\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"compras_por_su_cuenta\"}, \"Name\": \"dim_ramo.compras_por_su_cuenta\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Catálogo: prima, comisión y persistencia por ramo'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 24,
+          "y": 656,
+          "z": 8,
+          "width": 1232,
+          "height": 52,
+          "config": "{\"name\": \"19b23c373b1e59c2a\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 656, \"z\": 8, \"width\": 1232, \"height\": 52}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"meta.Aviso de la base\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"meta\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Aviso de la base\"}, \"Name\": \"meta.Aviso de la base\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}], \"labels\": [{\"properties\": {\"fontSize\": {\"expr\": {\"Literal\": {\"Value\": \"12D\"}}}, \"color\": {\"solid\": {\"color\": {\"expr\": {\"Literal\": {\"Value\": \"'#AFB8CC'\"}}}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    }
+  ]
+}

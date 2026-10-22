@@ -24,3 +24,7 @@ Thumbs.db
 
 # Ajustes personales de Claude Code (no se comparten)
 .claude/settings.local.json
+
+# Power BI Desktop: archivos locales del proyecto .pbip (caché y ajustes de cada equipo)
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf
