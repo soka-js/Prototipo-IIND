@@ -68,7 +68,7 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
   - Invariantes: 0 violaciones.
   - La vista previa se probó con Playwright en las 8 páginas, en 1440 × 900 y 390 × 844: sin errores de consola y sin desplazamiento horizontal.
   - El proyecto `.pbip` **no se pudo abrir en Power BI Desktop**, porque el entorno es Linux. La guía trae el plan B y la vista previa para comparar cifras.
-- Consultado con SOKA: sí, el 2026-10-22: «ok si estoy de acuerdo con tu propuesta», con el pedido de los casos reales. Pasar a `main` queda para su aprobación del pull request.
+- Consultado con SOKA: sí, el 2026-10-22. Aprobó el plan («ok si estoy de acuerdo con tu propuesta», con el pedido de los casos reales) y después pasarlo a `main` («Listo pasa a main todo lo q acabamos de hacer»).
 - Cifras nuevas y su origen:
   - **Piloto simulado** (salida del exportador):
     - **«señal»:** 437 clientes en tratamiento y 45 en control; compran 25,4 % frente a 4,4 %; diferencia +21,0 pp (IC 95 % +13,7 a +28,2; p = 0,0016); 92 clientes compran por las ofertas; comisión incremental $6.919.020; 968 ofertas vistas y 99 aceptadas (10,2 %); observado / esperado 1,42.

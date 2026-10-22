@@ -79,7 +79,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E9 Integración de E7 y E8 a `main` con revisión: «visitas a Seguros» fuera de M1 (modelos `ml-1.1`) y versiones fijas | Hecha el 2026-10-20 por decisión de SOKA |
 | E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Hecha el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq`; SOKA la aprobó completa y pasó a `main` el mismo día |
 | E11 Perfeccionar el prototipo: solo la app (sin panel de explicación), backtest sin traza, Bayes empírico del apetito (reglas v2.1), laboratorio «dato nuevo», descarga de respuestas, pruebas de punta a punta, resumen de una página y recorrido automático como video | Hecha el 2026-10-21 en `feat/claude-solo-app`. SOKA eligió esta versión (A) y pasó a `main` el mismo día. La alternativa con la consola de Lulo queda en `feat/claude-consola-lulo`, sin pasar a `main` |
-| E12 Dashboard de resultados en Power BI: base, plan y backtest del motor, piloto simulado con grupo de control en el formato de datos reales, laboratorio y 20 casos reales con fuente | Plan aprobado por SOKA el 2026-10-22; hecho en `feat/claude-powerbi`, en revisión para pasar a `main` |
+| E12 Dashboard de resultados en Power BI: base, plan y backtest del motor, piloto simulado con grupo de control en el formato de datos reales, laboratorio y 20 casos reales con fuente | Hecha el 2026-10-22 en `feat/claude-powerbi`. SOKA aprobó el plan y pasarla a `main` el mismo día |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
