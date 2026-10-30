@@ -1,0 +1,3 @@
+escenario,clientes_trat,clientes_ctrl,compran_trat,compran_ctrl,comision_trat,comision_ctrl,ofertas_mostradas,ofertas_vistas,ofertas_aceptadas,ventas,ventas_oferta
+señal,437,45,111,2,8231574,135160,3915,968,99,129,99
+regla correcta,437,45,85,2,6226489,135160,4009,987,70,100,70

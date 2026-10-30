@@ -2,7 +2,7 @@
   "version": "1.0",
   "datasetReference": {
     "byPath": {
-      "path": "../Lulo.SemanticModel"
+      "path": "../Lulo_Impacto.SemanticModel"
     },
     "byConnection": null
   }

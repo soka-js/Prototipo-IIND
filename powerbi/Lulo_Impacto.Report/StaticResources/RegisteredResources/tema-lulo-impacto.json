@@ -1,12 +1,12 @@
 {
-  "name": "Lulo · prototipo",
+  "name": "Lulo impacto",
   "dataColors": [
-    "#8A9E00",
-    "#3987e5",
-    "#d95926",
-    "#9085e9",
-    "#199e70",
-    "#c98500"
+    "#E8FF00",
+    "#647B9A",
+    "#62E3A0",
+    "#3987E5",
+    "#FFB547",
+    "#9085E9"
   ],
   "background": "#0B1430",
   "foreground": "#FFFFFF",
@@ -14,12 +14,9 @@
   "good": "#62E3A0",
   "neutral": "#FFB547",
   "bad": "#EA6E66",
-  "maximum": "#8A9E00",
-  "center": "#647B9A",
-  "minimum": "#131E3D",
   "textClasses": {
     "callout": {
-      "fontSize": 30,
+      "fontSize": 36,
       "fontFace": "Segoe UI Semibold",
       "color": "#FFFFFF"
     },
@@ -147,36 +144,6 @@
         ]
       }
     },
-    "card": {
-      "*": {
-        "labels": [
-          {
-            "color": {
-              "solid": {
-                "color": "#FFFFFF"
-              }
-            },
-            "fontSize": 28
-          }
-        ],
-        "categoryLabels": [
-          {
-            "show": false
-          }
-        ],
-        "background": [
-          {
-            "show": true,
-            "color": {
-              "solid": {
-                "color": "#131E3D"
-              }
-            },
-            "transparency": 0
-          }
-        ]
-      }
-    },
     "tableEx": {
       "*": {
         "columnHeaders": [
@@ -230,18 +197,14 @@
             },
             "background": {
               "solid": {
-                "color": "#131E3D"
+                "color": "#1E2B50"
               }
             }
           }
         ],
         "header": [
           {
-            "fontColor": {
-              "solid": {
-                "color": "#AFB8CC"
-              }
-            }
+            "show": false
           }
         ]
       }

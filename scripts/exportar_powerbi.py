@@ -1,7 +1,10 @@
-"""Datos del dashboard de Power BI: la base, lo que decide el motor, un piloto simulado y el laboratorio.
+"""Dashboard de impacto en Power BI y sus datos: la base, lo que decide el motor, un piloto simulado y el laboratorio.
 
-    python scripts/exportar_powerbi.py            # escribe powerbi/datos/*.csv
-    python scripts/exportar_powerbi.py --check    # falla si los CSV del repositorio no coinciden
+    python scripts/exportar_powerbi.py            # escribe powerbi/: datos/, tablas/, Lulo_Impacto.pbip y la vista previa
+    python scripts/exportar_powerbi.py --check    # falla si algo de powerbi/ no coincide con lo que se genera hoy
+
+Las tablas de detalle (powerbi/datos) son la fuente: de ellas salen las 10 tablas chicas del dashboard
+(scripts/powerbi_modelo.py, powerbi/tablas) y la vista previa (scripts/powerbi_vista.py).
 
 Cuatro tipos de tabla, y cada una dice cuál es (meta.csv y powerbi/GUIA.md):
 
@@ -20,7 +23,7 @@ Cuatro tipos de tabla, y cada una dice cuál es (meta.csv y powerbi/GUIA.md):
   casos      casos reales de otras empresas, curados a mano con su fuente (powerbi/casos.csv).
 
 Las tablas piloto_* siguen el formato de docs/DATOS_REALES.md (más columnas que solo existen en la simulación):
-cuando Lulo corra el piloto real se reemplazan por sus datos con escenario «real» y el dashboard se actualiza solo.
+el registro del piloto real tendrá esas mismas columnas, y con él se entrena el motor (train_motor.py --respuestas).
 """
 
 from __future__ import annotations
@@ -34,6 +37,7 @@ import math
 import sys
 from collections import Counter, defaultdict
 from datetime import date, timedelta
+from fnmatch import fnmatch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -71,7 +75,10 @@ ESCENARIOS = {
                        "media, sin momento ni apetito propio. Muestra lo que se vería si el motor no tuviera nada "
                        "más que aprender."),
 }
-TRAMOS_P = powerbi_modelo.TRAMOS_P
+# Tramos de P(acepta) del motor: columna tramo_p_motor de piloto_decisiones (lo que predijo frente a lo que pasó).
+TRAMOS_P = ((0.06, "menos de 6 %"), (0.08, "6 a 8 %"), (0.10, "8 a 10 %"), (0.13, "10 a 13 %"), (9.0, "13 % o más"))
+# Lo que se escribe a mano en powerbi/: la guía y los casos reales con su fuente.
+MANUALES = {"GUIA.md", "casos.csv"}
 ORDEN_POLITICA = ("motor", "regla", "oraculo", "azar", "motor_sin_explorar", "motor_sin_dato")
 LAB_ESCENARIOS = {   # scripts/laboratorio.py
     "señal": "La verdad tiene efectos que la regla no ve (rasgos, momento, señal media más débil).",
@@ -540,10 +547,23 @@ def build(verbose: bool = True) -> dict[str, str]:
 
 
 def archivos(verbose: bool = True) -> dict[str, str]:
-    """Todo lo generado, por ruta relativa a powerbi/: los CSV y el proyecto de Power BI que los lee."""
+    """Todo lo generado, por ruta relativa a powerbi/: las tablas de detalle (datos/), las 10 tablas chicas del
+    dashboard (tablas/), el proyecto de Power BI con esas tablas adentro y la vista previa web."""
     tablas = build(verbose)
-    return ({f"datos/{n}": t for n, t in tablas.items()} | powerbi_modelo.proyecto(tablas)
-            | {"vista_previa.html": powerbi_vista.html(tablas)})
+    chicas, notas = powerbi_modelo.agregar(tablas)
+    return ({f"datos/{n}": t for n, t in tablas.items()} | powerbi_modelo.proyecto(chicas, notas)
+            | {"vista_previa.html": powerbi_vista.html(chicas, notas)})
+
+
+def en_disco() -> set[str]:
+    """Archivos de powerbi/ con forma de generados: los CSV, el proyecto, las medidas, el tema y la vista previa.
+    Nunca la guía, los casos, la caché local de Power BI ni un .pbix guardado por alguien."""
+    def generado(r: str) -> bool:
+        return (fnmatch(r, "datos/*.csv") or fnmatch(r, "tablas/*.csv") or fnmatch(r, "Lulo*.pbip")
+                or (fnmatch(r, "Lulo*.Report/*") or fnmatch(r, "Lulo*.SemanticModel/*")) and "/.pbi/" not in r
+                or r.endswith(".dax") or fnmatch(r, "tema-*.json") or fnmatch(r, "vista_previa*.html"))
+    rel = (p.relative_to(POWERBI).as_posix() for p in POWERBI.rglob("*") if p.is_file())
+    return {r for r in rel if r not in MANUALES and generado(r)}
 
 
 def main():
@@ -554,12 +574,17 @@ def main():
     if a.check:
         malos = [n for n, t in todo.items()
                  if not (POWERBI / n).exists() or (POWERBI / n).read_text(encoding="utf-8") != t]
-        sobran = sorted(f"datos/{p.name}" for p in OUT.glob("*.csv") if f"datos/{p.name}" not in todo)
+        sobran = sorted(en_disco() - set(todo))
         if malos or sobran:
             print(f"powerbi/ no coincide con lo que se genera hoy: {malos + sobran}", file=sys.stderr)
             sys.exit(1)
         print(f"powerbi/ coincide ({len(todo)} archivos)")
         return
+    for n in sorted(en_disco() - set(todo)):          # lo que ya no se genera (por ejemplo, un dashboard anterior)
+        (POWERBI / n).unlink()
+    for d in sorted((p for p in POWERBI.rglob("*") if p.is_dir()), reverse=True):
+        if not any(d.iterdir()):
+            d.rmdir()
     for n, t in todo.items():
         (POWERBI / n).parent.mkdir(parents=True, exist_ok=True)
         (POWERBI / n).write_text(t, encoding="utf-8")

@@ -1,0 +1,1241 @@
+{
+  "name": "Lulo_Impacto",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "es-CO",
+    "sourceQueryCulture": "es-CO",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "tables": [
+      {
+        "name": "escenario",
+        "lineageTag": "1be7dfa0-0d99-5e6e-9623-640421d99ec3",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "a06b04a6-f1ce-5cb1-81d7-be49f934fcac",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "nombre",
+            "dataType": "string",
+            "sourceColumn": "nombre",
+            "lineageTag": "8f08f8eb-ad42-51ed-99fc-b1fbdbf09196",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "orden"
+          },
+          {
+            "name": "orden",
+            "dataType": "int64",
+            "sourceColumn": "orden",
+            "lineageTag": "4ea74bd1-ba1c-5744-8f7b-c3f271d95d69",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "escenario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WKk49vDExR0lHyb+gJDM3s7gk0UohNUchN78kv0ihLFUh9/DCYoXC0lSFnESFotT0nESgUkOlWJ1oJTBPITm/qCg1uQQk7JyfV5xaVJaYkl9kBVeuUJmokFqUqICq1EgpNhYA\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, nombre = _t, orden = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"nombre\", type text}, {\"orden\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Escenario elegido",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( escenario[escenario] ),",
+              "    VALUES ( escenario[escenario] ),",
+              "    CALCULATE ( MIN ( escenario[escenario] ), REMOVEFILTERS ( escenario ), escenario[orden] = 1 )",
+              ")"
+            ],
+            "lineageTag": "53cc502b-c374-58e0-9214-8366ee574355",
+            "displayFolder": "1 · Escenario",
+            "description": "El escenario del selector; si no hay uno solo, el primero (optimista)."
+          },
+          {
+            "name": "Nombre del escenario",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    LOOKUPVALUE ( escenario[nombre], escenario[escenario], e )"
+            ],
+            "lineageTag": "ccb590b7-0dff-5768-9342-1a4d201392f4",
+            "displayFolder": "1 · Escenario"
+          }
+        ]
+      },
+      {
+        "name": "indicadores",
+        "lineageTag": "7b12fd11-2d0a-597d-909b-1d9c6cceadc0",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "f4303adb-aac5-5330-8c61-67a13021e35f",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "clientes_trat",
+            "dataType": "int64",
+            "sourceColumn": "clientes_trat",
+            "lineageTag": "5acb8715-e783-501e-ae89-832a0728f82f",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "clientes_ctrl",
+            "dataType": "int64",
+            "sourceColumn": "clientes_ctrl",
+            "lineageTag": "e2aa2c25-f834-56be-ad9c-965a48dcb3fe",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "compran_trat",
+            "dataType": "int64",
+            "sourceColumn": "compran_trat",
+            "lineageTag": "dee17bae-7b43-50e4-9310-b4d67f7c6d0e",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "compran_ctrl",
+            "dataType": "int64",
+            "sourceColumn": "compran_ctrl",
+            "lineageTag": "50f1acb5-a441-55b9-8b29-c1f77466cb14",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "comision_trat",
+            "dataType": "int64",
+            "sourceColumn": "comision_trat",
+            "lineageTag": "e2046769-dc28-5709-9e25-fe9210dc1fdf",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "comision_ctrl",
+            "dataType": "int64",
+            "sourceColumn": "comision_ctrl",
+            "lineageTag": "97293a08-2c2c-59fd-840e-b606ce53fb32",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ofertas_mostradas",
+            "dataType": "int64",
+            "sourceColumn": "ofertas_mostradas",
+            "lineageTag": "8ab100b8-a509-5b9c-8fff-e4352237ec5a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ofertas_vistas",
+            "dataType": "int64",
+            "sourceColumn": "ofertas_vistas",
+            "lineageTag": "0dfbbe66-211c-5545-af71-0a9c5baef721",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ofertas_aceptadas",
+            "dataType": "int64",
+            "sourceColumn": "ofertas_aceptadas",
+            "lineageTag": "c267b47b-f7f9-548d-b40d-224c30c8e9c8",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ventas",
+            "dataType": "int64",
+            "sourceColumn": "ventas",
+            "lineageTag": "59a17aff-d3fb-55b2-8558-886c3f034524",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ventas_oferta",
+            "dataType": "int64",
+            "sourceColumn": "ventas_oferta",
+            "lineageTag": "c7497da9-d252-5f66-b4da-85db67cd4bdb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "indicadores",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"VYxLCoAwDESvIl27SNJfcpbSRZHiRhCqF/MMXsxGXegij2EyvJTMVs+jLGY0zkal70DETurHZNFHp531GKAHK6gbCawUfZE8MY/JtDovZZjW1uq0l7+X/asNRMGxfLUO4LawrqM2CPDEnC8=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, clientes_trat = _t, clientes_ctrl = _t, compran_trat = _t, compran_ctrl = _t, comision_trat = _t, comision_ctrl = _t, ofertas_mostradas = _t, ofertas_vistas = _t, ofertas_aceptadas = _t, ventas = _t, ventas_oferta = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"clientes_trat\", Int64.Type}, {\"clientes_ctrl\", Int64.Type}, {\"compran_trat\", Int64.Type}, {\"compran_ctrl\", Int64.Type}, {\"comision_trat\", Int64.Type}, {\"comision_ctrl\", Int64.Type}, {\"ofertas_mostradas\", Int64.Type}, {\"ofertas_vistas\", Int64.Type}, {\"ofertas_aceptadas\", Int64.Type}, {\"ventas\", Int64.Type}, {\"ventas_oferta\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Clientes con ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[clientes_trat] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "952ed1fb-565a-58c2-b34f-185245259955",
+            "displayFolder": "2 · Conteos",
+            "formatString": "#,0",
+            "description": "Clientes que recibieron decisiones del motor con ofertas (el 90 %)."
+          },
+          {
+            "name": "Clientes sin ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[clientes_ctrl] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "8da0e954-1762-537e-944b-a9c202b58a1e",
+            "displayFolder": "2 · Conteos",
+            "formatString": "#,0",
+            "description": "El grupo de comparación: el motor decide pero no muestra (10 % por hash)."
+          },
+          {
+            "name": "Compran con ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[compran_trat] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "f0ac3e69-cd74-591b-a572-8834d91f9176",
+            "displayFolder": "2 · Conteos",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Compran sin ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[compran_ctrl] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "e312932b-0fac-56b7-919b-2cd5ea3da1a5",
+            "displayFolder": "2 · Conteos",
+            "formatString": "#,0",
+            "description": "Compran por su cuenta, sin ofertas."
+          },
+          {
+            "name": "Comisión con ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[comision_trat] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "895c2026-7c94-5701-b1c3-9d84e1feec75",
+            "displayFolder": "2 · Conteos",
+            "formatString": "\"$\"#,0",
+            "description": "Comisión a 12 meses de lo que compraron los clientes con ofertas."
+          },
+          {
+            "name": "Comisión sin ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[comision_ctrl] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "bfbe7f94-fd42-52ed-a973-db8211df9b8c",
+            "displayFolder": "2 · Conteos",
+            "formatString": "\"$\"#,0"
+          },
+          {
+            "name": "Conversión con ofertas",
+            "expression": "DIVIDE ( [Compran con ofertas], [Clientes con ofertas] )",
+            "lineageTag": "8fc8d9fd-26d6-5941-9582-32867e204ee4",
+            "displayFolder": "3 · Impacto",
+            "formatString": "0.0 %"
+          },
+          {
+            "name": "Conversión sin ofertas",
+            "expression": "DIVIDE ( [Compran sin ofertas], [Clientes sin ofertas] )",
+            "lineageTag": "9cb203b7-1651-5286-9189-57b5db9d75f4",
+            "displayFolder": "3 · Impacto",
+            "formatString": "0.0 %"
+          },
+          {
+            "name": "más clientes compran con las ofertas",
+            "expression": "( [Conversión con ofertas] - [Conversión sin ofertas] ) * 100",
+            "lineageTag": "2497149e-5edd-5ae3-b55c-1697c0257e5e",
+            "displayFolder": "3 · Impacto",
+            "formatString": "+0.0 \"pp\";-0.0 \"pp\";0.0 \"pp\"",
+            "description": "Diferencia en puntos porcentuales frente al grupo sin ofertas: la cifra que dice si las ofertas venden."
+          },
+          {
+            "name": "Error estándar de la diferencia",
+            "expression": [
+              "VAR ct = [Conversión con ofertas]",
+              "VAR cc = [Conversión sin ofertas]",
+              "RETURN",
+              "    SQRT ( DIVIDE ( ct * ( 1 - ct ), [Clientes con ofertas] ) + DIVIDE ( cc * ( 1 - cc ), [Clientes sin ofertas] ) )"
+            ],
+            "lineageTag": "11a4ed97-f557-5745-9243-bcae71ba803e",
+            "displayFolder": "3 · Impacto",
+            "formatString": "0.0000"
+          },
+          {
+            "name": "Diferencia IC 95 % bajo",
+            "expression": "[más clientes compran con las ofertas] - 1.96 * [Error estándar de la diferencia] * 100",
+            "lineageTag": "cd5e8e33-9a3f-531a-afc1-1f44e0eb7887",
+            "displayFolder": "3 · Impacto",
+            "formatString": "+0.0 \"pp\";-0.0 \"pp\";0.0 \"pp\""
+          },
+          {
+            "name": "Diferencia IC 95 % alto",
+            "expression": "[más clientes compran con las ofertas] + 1.96 * [Error estándar de la diferencia] * 100",
+            "lineageTag": "2f95a81f-c4ad-55df-9ee2-bdeb70d0c4c8",
+            "displayFolder": "3 · Impacto",
+            "formatString": "+0.0 \"pp\";-0.0 \"pp\";0.0 \"pp\""
+          },
+          {
+            "name": "intervalo de 95 % de la diferencia",
+            "expression": "FORMAT ( [Diferencia IC 95 % bajo], \"+0.0;-0.0\" ) & \" a \" & FORMAT ( [Diferencia IC 95 % alto], \"+0.0;-0.0\" ) & \" pp\"",
+            "lineageTag": "41f722ab-c162-58b6-9004-d436ced026c3",
+            "displayFolder": "3 · Impacto",
+            "description": "Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar."
+          },
+          {
+            "name": "¿Las ofertas venden?",
+            "expression": [
+              "SWITCH (",
+              "    TRUE (),",
+              "    [Clientes sin ofertas] = 0, \"Sin grupo sin ofertas no se puede saber\",",
+              "    [Diferencia IC 95 % bajo] > 0, \"Sí: con ofertas compran más clientes\",",
+              "    [Diferencia IC 95 % alto] < 0, \"No: con ofertas compran menos\",",
+              "    \"Todavía no se sabe: cabe en el azar\"",
+              ")"
+            ],
+            "lineageTag": "2b6bb498-c55a-5398-8934-660862e6e5ed",
+            "displayFolder": "3 · Impacto",
+            "description": "Lectura del intervalo de 95 %."
+          },
+          {
+            "name": "clientes nuevos con seguro gracias a las ofertas",
+            "expression": "( [Conversión con ofertas] - [Conversión sin ofertas] ) * [Clientes con ofertas]",
+            "lineageTag": "8f1443a3-8168-5c82-8035-3c6f0a729fdb",
+            "displayFolder": "3 · Impacto",
+            "formatString": "#,0",
+            "description": "Ventas incrementales: la diferencia frente al grupo sin ofertas por los clientes con ofertas."
+          },
+          {
+            "name": "comisión por cliente contactado",
+            "expression": "DIVIDE ( [Comisión con ofertas], [Clientes con ofertas] ) - DIVIDE ( [Comisión sin ofertas], [Clientes sin ofertas] )",
+            "lineageTag": "93b7ec43-219a-5b0d-bb93-07dbfada616c",
+            "displayFolder": "3 · Impacto",
+            "formatString": "\"$\"#,0",
+            "description": "Comisión a 12 meses que se gana de más por cada cliente que recibe ofertas."
+          },
+          {
+            "name": "comisión adicional a 12 meses",
+            "expression": "[comisión por cliente contactado] * [Clientes con ofertas] / 1000000",
+            "lineageTag": "91fcf890-f645-568a-8c79-505a22dd9e5c",
+            "displayFolder": "3 · Impacto",
+            "formatString": "\"$\"#,0.0\" M\"",
+            "description": "En millones de pesos, sobre los clientes de la base sintética que recibieron ofertas."
+          },
+          {
+            "name": "por cada 1.000 clientes contactados (proyección lineal)",
+            "expression": "[comisión por cliente contactado] * 1000 / 1000000",
+            "lineageTag": "39d67cbb-a74a-55e1-ab98-785729266602",
+            "displayFolder": "3 · Impacto",
+            "formatString": "\"$\"#,0.0\" M\"",
+            "description": "Ilustrativo, no una meta: la comisión por cliente contactado × 1.000, en millones de pesos."
+          },
+          {
+            "name": "pólizas vendidas por las ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( indicadores[ventas_oferta] ), indicadores[escenario] = e )"
+            ],
+            "lineageTag": "b6bf3689-8e4f-53e2-b259-2e50666581d1",
+            "displayFolder": "4 · Valor",
+            "formatString": "#,0"
+          },
+          {
+            "name": "de las ventas vino de una oferta",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    DIVIDE ( [pólizas vendidas por las ofertas], CALCULATE ( SUM ( indicadores[ventas] ), indicadores[escenario] = e ) )"
+            ],
+            "lineageTag": "e08a0d9d-7dca-5797-8705-66c867d25caf",
+            "displayFolder": "4 · Valor",
+            "formatString": "0.0 %",
+            "description": "Incluye las compras por su cuenta de los dos grupos."
+          },
+          {
+            "name": "aceptan la oferta que ven",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    DIVIDE (",
+              "        CALCULATE ( SUM ( indicadores[ofertas_aceptadas] ), indicadores[escenario] = e ),",
+              "        CALCULATE ( SUM ( indicadores[ofertas_vistas] ), indicadores[escenario] = e )",
+              "    )"
+            ],
+            "lineageTag": "13c9cfd9-9171-5a31-8ae6-0230082ca0d3",
+            "displayFolder": "4 · Valor",
+            "formatString": "0.0 %",
+            "description": "Aceptadas sobre vistas: comparable con ventas / impactados de las campañas previas."
+          }
+        ]
+      },
+      {
+        "name": "curva",
+        "lineageTag": "69e16013-ec91-5093-8cc2-c28ceb578bcc",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "093dd88f-8400-5d13-8829-679b492f44e9",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "semana",
+            "dataType": "dateTime",
+            "sourceColumn": "semana",
+            "lineageTag": "b3a07e25-0e45-5816-90aa-82207f70ae00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "formatString": "d mmm yyyy"
+          },
+          {
+            "name": "grupo",
+            "dataType": "string",
+            "sourceColumn": "grupo",
+            "lineageTag": "4063b662-871f-5ca7-808e-08539b07e16c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "grupo_orden"
+          },
+          {
+            "name": "grupo_orden",
+            "dataType": "int64",
+            "sourceColumn": "grupo_orden",
+            "lineageTag": "455bdb5b-f278-5972-90d1-af1492b2bb7c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "conversion",
+            "dataType": "double",
+            "sourceColumn": "conversion",
+            "lineageTag": "897baf45-a218-5d4f-b223-08e6ef9bbfaf",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "formatString": "0.0 %"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "curva",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"pZhBblsxDESvEngdFyJFidK6R+gyyMII3KJA0ABOLpYz9GL9aQOnC89YZAx44cXDsylD/DN3d7vn4+/Xw+PudqdF+77Ivpbtw9enXzdP34+nl8Pz9km2d/lSRMx297eI+fbzf0b/Mbq9LjG6Lx16emFM0CMVebS0SZigR+HcVMcgTNTj0NPECRPyVHI+VYsRJujB51PHJEhQg4/Hmjthoh54PDZKI0zIYxsW9bwzQY/AuXUrTpioB87NyzTCBD1q0OODICFN2y5FpBl9dsJEPQN5Zh2MCXqkQc8wggQ1qkAjpfRJmKhnQg/8PX+ZkOcNQ57qlSBBjcCxmUknTNQDx2bDjTBBj6LdI01KJUzI4/gSleaXl48nLlHHl6h0NSdM1OMJj8c98BIVr1MIE/RUgZ5hkzAXPWaXn1/HhiHP8M6YoEfg3GYfBAlqFI1Ny1DGRD1o+ejb/4AwIc/cdnDU884EPQLnhs7nnYl64NxqNSFM0KNo+6gVdcJEPFK2hIE8jRHccjr+eDzcPDydTseHl8NSQC199AWWX0KApYFV+HdeCq6QxQHpHJQ5m/TixCSjygKb9frVwM7ZlJcF3nOA52zSSwqK6W2BTXrx+dbeZYHNev1a4OdoSssC8xXtUm6GLM7PTXtdYLNeOOXmKgts0ovzdZttAU1pWd4+1xSczXph/t52UVtgk16cx71qXWCTXhjQz/UJR7PaCesUrWOBTXlZfj/3EZxNenGgL97aApv1zk94PzFnHPivezW9e1kBICp1gU16cSEg3RfQrBbmXBlzLrBJL+4LtPFHdv/EVmD9QVVfYVMRhfUJdfJH2KVeAbK4X7BubYFNemHh8NHXcTbrHVf7Ls6mvKSQuOpdKiYgCwsK6eZ9gc164Zx9+8ULbNILC4yP/o+zGS8rNGRakwWWeO//AA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, semana = _t, grupo = _t, grupo_orden = _t, conversion = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"semana\", type date}, {\"grupo\", type text}, {\"grupo_orden\", Int64.Type}, {\"conversion\", type number}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Clientes que ya compraron",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( curva[conversion] ), curva[escenario] = e )"
+            ],
+            "lineageTag": "6a299f29-2c97-5084-8fd9-67ca1dc2e77d",
+            "displayFolder": "4 · Valor",
+            "formatString": "0.0 %",
+            "description": "Clientes que ya compraron un seguro a esa semana, sobre los clientes de su grupo."
+          }
+        ]
+      },
+      {
+        "name": "ramo",
+        "lineageTag": "ce7a9ec2-ffdd-5441-af96-16f9a47414d3",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "75af6c37-7b36-57b7-995a-165a1f3e801b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "seguro",
+            "dataType": "string",
+            "sourceColumn": "seguro",
+            "lineageTag": "5625e60d-ad07-5436-9186-d1be8dcfae95",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "orden"
+          },
+          {
+            "name": "orden",
+            "dataType": "int64",
+            "sourceColumn": "orden",
+            "lineageTag": "8cff089e-b178-5331-b74d-0343cab6978a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "vistas",
+            "dataType": "int64",
+            "sourceColumn": "vistas",
+            "lineageTag": "b3c8deee-6e6a-58f6-b6b4-feea9e5b9b97",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "aceptadas",
+            "dataType": "int64",
+            "sourceColumn": "aceptadas",
+            "lineageTag": "4dce8d29-f6ee-5413-b925-ba610d07d518",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ventas_oferta",
+            "dataType": "int64",
+            "sourceColumn": "ventas_oferta",
+            "lineageTag": "fb01ea75-d7f6-5498-a6c9-fafe6c82e687",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "comision_oferta",
+            "dataType": "int64",
+            "sourceColumn": "comision_oferta",
+            "lineageTag": "6f18665b-23c9-5e4f-9efc-8db145c410db",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "comision_por_venta",
+            "dataType": "int64",
+            "sourceColumn": "comision_por_venta",
+            "lineageTag": "350c1d34-7c4a-5c3f-aaf9-8facbb8e82eb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ramo",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"bZK/TsQwDMZfBXW+IX/s2B6RGFgQA4jldENUohOoqKi5F+MZeDGSXHttGgZ/tdJ8tvNLjscuht8fP3SH7uX5/jV9dApwSXAODSxGpcQIMXSnw8bz9vHu85+8zdmcqUW0CBnOmQi7ne8hxPD1PYQx5cXmOKtZxTkpU2hlFdja/Tie/ZTHTMF5RDcHAKvSnMCRqk1PPvbjxcflVHgd8iYaxOq85hSI2h/Tf4Y4NzFYlBZJu9O0uQRr5GKcwnnwd/04TaG/+B1bnoHlQMHryW9oG2uFuLRZBZPNQIW48TeoqZSyq1hBlBp1U6VCTpvXYclarJE35gZ9UbMIGWSuyf9DoboBqV6LFQHa3MDpDw==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, seguro = _t, orden = _t, vistas = _t, aceptadas = _t, ventas_oferta = _t, comision_oferta = _t, comision_por_venta = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"seguro\", type text}, {\"orden\", Int64.Type}, {\"vistas\", Int64.Type}, {\"aceptadas\", Int64.Type}, {\"ventas_oferta\", Int64.Type}, {\"comision_oferta\", Int64.Type}, {\"comision_por_venta\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Comisión de las ofertas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( ramo[comision_oferta] ), ramo[escenario] = e ) / 1000000"
+            ],
+            "lineageTag": "88a9bdb9-786c-51fe-b21b-ee59ae557ebc",
+            "displayFolder": "4 · Valor",
+            "formatString": "\"$\"#,0.0\" M\"",
+            "description": "Comisión a 12 meses de las pólizas vendidas por las ofertas, en millones."
+          }
+        ]
+      },
+      {
+        "name": "segmento",
+        "lineageTag": "9257d1ba-0c5b-5eb4-8240-be59acb182cc",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "4033416b-897b-5dda-8c6e-b44f742964e6",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "segmento",
+            "dataType": "string",
+            "sourceColumn": "segmento",
+            "lineageTag": "fb0b8604-2a64-5306-bf78-c5c6621a0b2d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "orden"
+          },
+          {
+            "name": "orden",
+            "dataType": "int64",
+            "sourceColumn": "orden",
+            "lineageTag": "6f9659cd-eb01-5439-9b67-36ddee104a07",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "vistas",
+            "dataType": "int64",
+            "sourceColumn": "vistas",
+            "lineageTag": "a98ca368-799f-59b7-9a8a-f252d7dfbfd9",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "aceptadas",
+            "dataType": "int64",
+            "sourceColumn": "aceptadas",
+            "lineageTag": "9c110911-c665-52ac-a0be-8a3e309bd02e",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "segmento",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WKk49vDExR0lHyTk/TyE3sTg5vyQRyDMEYRMDIGlkqBSrg6TOPbG4JF8hOT+vJDUvMyUfpAKIjU3MQaQpptpEhZx8hcLSVIXUvJIikNHGQGxiAbLAxBisvCg1PScRaGJRUWoy2HJsTrEAkTjU43CSKcgmIzx6cDjNDOwfpdhYAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, segmento = _t, orden = _t, vistas = _t, aceptadas = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"segmento\", type text}, {\"orden\", Int64.Type}, {\"vistas\", Int64.Type}, {\"aceptadas\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Aceptación por segmento",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    DIVIDE (",
+              "        CALCULATE ( SUM ( segmento[aceptadas] ), segmento[escenario] = e ),",
+              "        CALCULATE ( SUM ( segmento[vistas] ), segmento[escenario] = e )",
+              "    )"
+            ],
+            "lineageTag": "ba3f7107-5637-5dc8-8351-ccd57296bcec",
+            "displayFolder": "4 · Valor",
+            "formatString": "0.0 %"
+          }
+        ]
+      },
+      {
+        "name": "origen",
+        "lineageTag": "039831a4-9ca7-5eb4-9f17-2c7c9ccdb7a8",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "fe0d7590-6b7a-543a-a08c-12907001117a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "origen",
+            "dataType": "string",
+            "sourceColumn": "origen",
+            "lineageTag": "96b8bbad-ca5a-50d7-a950-7360b6a3a1d5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "orden"
+          },
+          {
+            "name": "orden",
+            "dataType": "int64",
+            "sourceColumn": "orden",
+            "lineageTag": "d503514f-5136-5fd9-bc89-f4644f0ea75d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "ventas",
+            "dataType": "int64",
+            "sourceColumn": "ventas",
+            "lineageTag": "0f4f417e-ace0-55de-a4de-bb26d9edce50",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "origen",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WKk49vDExR0lHyT8ttagkUSElNUchN78kvwgoZAjElpZKsTpIygLyixSKSxWSS1PzShKBfCMgNjYAqylKTc9JVEjOLypKTQbL4TDSHIdyXEbHAgA=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, origen = _t, orden = _t, ventas = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"origen\", type text}, {\"orden\", Int64.Type}, {\"ventas\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Pólizas",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( origen[ventas] ), origen[escenario] = e )"
+            ],
+            "lineageTag": "fd7af689-98c7-5316-9778-1e69a5cdaa59",
+            "displayFolder": "4 · Valor",
+            "formatString": "#,0"
+          }
+        ]
+      },
+      {
+        "name": "laboratorio",
+        "lineageTag": "0cac60b4-2474-5f8d-8ba1-33d9551f434c",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "96741f25-1f2b-52d1-b16d-86e43217ddad",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "politica",
+            "dataType": "string",
+            "sourceColumn": "politica",
+            "lineageTag": "1675ac16-8f98-5a4d-b6f6-77e6d5346d5c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "sortByColumn": "politica_orden"
+          },
+          {
+            "name": "politica_orden",
+            "dataType": "int64",
+            "sourceColumn": "politica_orden",
+            "lineageTag": "e00d7974-b840-53c5-97a1-75e6d0a062c3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "ronda",
+            "dataType": "int64",
+            "sourceColumn": "ronda",
+            "lineageTag": "d4701937-9449-5947-9039-495e5bcd6af6",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "comision_por_oferta",
+            "dataType": "double",
+            "sourceColumn": "comision_por_oferta",
+            "lineageTag": "9c09dba2-39b8-593a-95f8-05087d6247b3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "formatString": "\"$\"#,0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "laboratorio",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"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\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, politica = _t, politica_orden = _t, ronda = _t, comision_por_oferta = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"politica\", type text}, {\"politica_orden\", Int64.Type}, {\"ronda\", Int64.Type}, {\"comision_por_oferta\", type number}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Comisión por oferta",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( AVERAGE ( laboratorio[comision_por_oferta] ), laboratorio[escenario] = e )"
+            ],
+            "lineageTag": "b8940f65-9171-5068-8389-3115ad9060cb",
+            "displayFolder": "5 · Control",
+            "formatString": "\"$\"#,0"
+          }
+        ]
+      },
+      {
+        "name": "laboratorio_resumen",
+        "lineageTag": "fbff9b63-aa80-5798-a4b5-a6a3f6e39947",
+        "columns": [
+          {
+            "name": "escenario",
+            "dataType": "string",
+            "sourceColumn": "escenario",
+            "lineageTag": "84da4dee-9cfe-5666-adb8-75df509ddf00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "motor_frente_a_regla",
+            "dataType": "double",
+            "sourceColumn": "motor_frente_a_regla",
+            "lineageTag": "d8763205-21dc-5007-9377-4f0161caf595",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "formatString": "0.0 %"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "laboratorio_resumen",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WKk49vDExR0lHyUDP0MDQVClWJ1qpKDU9J1EhOb+oKDW5JBEop2ugZ2BoYKQUGwsA\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [escenario = _t, motor_frente_a_regla = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"escenario\", type text}, {\"motor_frente_a_regla\", type number}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "más comisión por oferta que la regla (laboratorio)",
+            "expression": [
+              "VAR e = [Escenario elegido]",
+              "RETURN",
+              "    CALCULATE ( SUM ( laboratorio_resumen[motor_frente_a_regla] ), laboratorio_resumen[escenario] = e )"
+            ],
+            "lineageTag": "8170a7c8-80c3-570a-917a-42538789c4a3",
+            "displayFolder": "5 · Control",
+            "formatString": "+0.0 %;-0.0 %;0.0 %",
+            "description": "Laboratorio: últimas 10 rondas, con verdad simulada."
+          }
+        ]
+      },
+      {
+        "name": "reglas",
+        "lineageTag": "37e289d3-8081-51d1-87e3-97011b0e1455",
+        "columns": [
+          {
+            "name": "regla",
+            "dataType": "string",
+            "sourceColumn": "regla",
+            "lineageTag": "d5e3af2c-eda5-5f40-9f92-c30da678bd5c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "violaciones",
+            "dataType": "int64",
+            "sourceColumn": "violaciones",
+            "lineageTag": "7bf3b659-3825-51d1-a6a8-8e6c359afd07",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "reglas",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"fZA9TgQxDIWv8jT1FitRcILtEA3laAvvjFkiJXawEyS4DQeg4gh7MTwDmgJWlE78vR+P43BPc2J4ElBvaumNpnT5FMyMmZo6jKd0YnQh6CNbo2E37IfjbhweNCucUTp7M0JMz52RyTFpqX1ZdlS2khpL0CHFtuHfzps8jIqiUghxXoVEwR4Dn9Mp8//csv9KaImFw11w17NuyEGaRZ9oU7s/hYlT9M0oLPF2i/nyQX7doFzef6jFwjuaVkbUudn/wg6hlzyyrIFkPY1xje4gadEkTnoNOluvunxG7GaaIV0mwsvfmx+/AA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [regla = _t, violaciones = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"regla\", type text}, {\"violaciones\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "violaciones de las reglas",
+            "expression": "SUM ( reglas[violaciones] ) + 0",
+            "lineageTag": "de0d4df9-81f3-568c-92be-b2c628c6fe02",
+            "displayFolder": "5 · Control",
+            "formatString": "#,0",
+            "description": "Debe ser 0: backtest de todas las decisiones del motor sobre la base."
+          }
+        ]
+      },
+      {
+        "name": "control",
+        "lineageTag": "16fd7c12-0ec4-5558-86a6-fec5da1a6ffa",
+        "columns": [
+          {
+            "name": "indicador",
+            "dataType": "string",
+            "sourceColumn": "indicador",
+            "lineageTag": "97e1574d-c23f-5528-9f45-404318a4e95b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "valor",
+            "dataType": "int64",
+            "sourceColumn": "valor",
+            "lineageTag": "a00fac5d-fb00-5b4d-9c9b-035e052ef8ec",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "control",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fuente = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WSi1LzClNTM7Mz0stVtJRMjI0MzBQitWJViooLc6Iz02siDc2SAFKmIAFizPz4hNLS/KLMqvAeoASFhCZkvyC1Pjk/LySxOSS/GKEplgA\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [indicador = _t, valor = _t]),",
+                "    Tipos = Table.TransformColumnTypes(Fuente, {{\"indicador\", type text}, {\"valor\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "push máximo a un cliente en 30 días",
+            "expression": "LOOKUPVALUE ( control[valor], control[indicador], \"push_max_30d\" )",
+            "lineageTag": "f7b2cbdf-165c-589a-9983-6daf1c680684",
+            "displayFolder": "5 · Control",
+            "formatString": "#,0"
+          },
+          {
+            "name": "clientes sin autorización: nunca contactados",
+            "expression": "LOOKUPVALUE ( control[valor], control[indicador], \"sin_autorizacion\" )",
+            "lineageTag": "ef3ff0fe-aaf0-5e0a-9495-055e07c3659c",
+            "displayFolder": "5 · Control",
+            "formatString": "#,0",
+            "description": "Ley 1581: sin autorización el motor no lee sus movimientos ni les ofrece nada."
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"escenario\", \"indicadores\", \"curva\", \"ramo\", \"segmento\", \"origen\", \"laboratorio\", \"laboratorio_resumen\", \"reglas\", \"control\"]"
+      }
+    ]
+  }
+}

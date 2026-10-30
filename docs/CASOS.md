@@ -42,10 +42,10 @@ Enlaces, cifras completas y lección de cada caso: `powerbi/casos.csv`.
    - **Casos:** eBay, Facebook, Booking y DBS.
    - **Qué enseñan:** comparar usuarios con no usuarios, o confiar en un buen backtest, sobreestima el efecto.
    - **En el prototipo:** el grupo de control del 10 % no depende del modelo (`experiment.py`).
-   - **En el dashboard:** la cifra principal es la diferencia entre tratamiento y control, con su intervalo de 95 %, y no la conversión de las ofertas.
+   - **En el dashboard:** en la página Impacto, la cifra principal es la diferencia frente al grupo sin ofertas, con su intervalo de 95 %, y no la conversión de las ofertas.
 2. **Incrementalidad no es conversión.**
    - **Casos:** U.S. Bank y eBay. Ofrecer a quien compraría igual gasta contactos sin efecto.
-   - **En el dashboard:** la página Resumen separa las ventas por oferta de las compras por su cuenta, que existen en los dos grupos.
+   - **En el dashboard:** la página «Qué y a quién» separa las ventas por oferta de las compras por su cuenta, que existen en los dos grupos.
    - **Pendiente:** con respuestas reales se puede estimar el efecto por segmento. Usarlo para decidir es un cambio grande que se consulta con SOKA.
 3. **Consentimiento, transparencia y salida fácil, sobre todo con el seguro atado al crédito.**
    - **Casos:** Wells Fargo, el PPI y la revisión de la Superfinanciera fallaron justo ahí.
@@ -53,7 +53,7 @@ Enlaces, cifras completas y lección de cada caso: `powerbi/casos.csv`.
      - no lee movimientos sin autorización (Ley 1581);
      - respeta el tope de contactos y la espera entre push (Ley 2300);
      - separa Vida grupo deudor de Vida voluntario.
-   - **En el dashboard:** la página Contacto muestra las invariantes del backtest en 0 violaciones.
+   - **En el dashboard:** la página «Bajo control» muestra las invariantes del backtest en 0 violaciones.
 4. **El momento justo tiene un límite.**
    - **Caso:** Target muestra que un evento sensible se percibe como vigilancia.
    - **En el prototipo:** el motor solo usa campos canónicos (fecha, monto, canal, categoría y MCC), nunca nombres de comercios, y le dice al cliente por qué ve la oferta.
@@ -63,7 +63,7 @@ Enlaces, cifras completas y lección de cada caso: `powerbi/casos.csv`.
      - el motor es un probit bayesiano en línea, la misma familia que AdPredictor;
      - explora con Thompson solo en el 10 % del tratamiento;
      - guarda la probabilidad con la que decidió (`p_motor`).
-   - **En el dashboard:** la página «¿El modelo acierta?» vigila la calibración, porque el valor esperado es P × comisión.
+   - **Para el piloto real:** vigilar la calibración (lo que esperaba el motor frente a lo que pasó), porque el valor esperado es P × comisión. `piloto_decisiones.csv` guarda `p_motor` y el resultado de cada oferta para medirla.
 6. **Los modelos fallan cuando cambia el entorno, y vender no es ganar.**
    - **Casos:** Zillow y Google Flu Trends cayeron por cambios del entorno y sobreajuste. Lemonade y Tesla muestran que el volumen no asegura rentabilidad.
    - **En el prototipo:** el modelo solo ordena lo que las compuertas permiten, y el reentrenamiento es reproducible (`train_motor.py --check`).

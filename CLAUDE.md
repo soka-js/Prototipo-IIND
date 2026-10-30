@@ -59,10 +59,12 @@ Todo cambio, por pequeño que sea, deja rastro:
 - **Es un prototipo**: queda visible la etiqueta «Prototipo académico · datos simulados», se mantiene `noindex`, no se usan datos de clientes reales ni números de cuenta reales, y la clave del ingreso nunca sale del navegador.
 - **La base es 100% sintética y académica**: sus cifras no se presentan como métricas de Lulo Bank.
 - **Dashboard reproducible y honesto** (`powerbi/`, `powerbi/GUIA.md`):
-  - `powerbi/` solo cambia con `scripts/exportar_powerbi.py`, y `--check` debe pasar. Esto cubre los CSV, el proyecto `Lulo.pbip`, las medidas, el tema y la vista previa.
-  - El piloto es **simulado** y lo dice en cada página: el motor y sus decisiones son reales, las respuestas son inventadas con la verdad del laboratorio.
+  - `powerbi/` solo cambia con `scripts/exportar_powerbi.py`, y `--check` debe pasar. Esto cubre los CSV de detalle (`datos/`), las tablas del dashboard (`tablas/`), el proyecto `Lulo_Impacto.pbip` con los datos adentro, las medidas, el tema y la vista previa. A mano solo se escriben `GUIA.md` y `casos.csv`.
+  - Es el dashboard de impacto de 3 páginas (Impacto · Qué y a quién · Bajo control), en el nivel que el equipo puede justificar. Agregarle páginas, volver al de 8 páginas o cambiar sus cifras es un cambio grande.
+  - El piloto es **simulado** y lo dice en cada página: el motor y sus decisiones son reales, las respuestas son inventadas con la verdad del laboratorio. Se muestra en dos escenarios (optimista y conservador), con el intervalo de 95 % de la diferencia frente al grupo sin ofertas.
+  - No se muestran cifras que dependan de un número supuesto (por ejemplo, cuántos clientes tiene Lulo): la escala va «por cada 1.000 clientes contactados». Los textos con cifras se escriben con los datos.
   - Los casos reales (`powerbi/casos.csv`, `docs/CASOS.md`) llevan siempre su fuente.
-  - Los datos del piloto real nunca entran al repo: se leen desde una carpeta local.
+  - Los datos del piloto real nunca entran al repo.
 
 ## 6. Plan y estado
 
@@ -80,6 +82,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E10 Motor bayesiano (reglas v2.0), laboratorio, camino para datos reales y experiencia guiada (bienvenida, recorrido, «Resaltar lo nuevo», pestaña Aprendizaje) | Hecha el 2026-10-21 en la rama `claude/admiring-wozniak-xaengq`; SOKA la aprobó completa y pasó a `main` el mismo día |
 | E11 Perfeccionar el prototipo: solo la app (sin panel de explicación), backtest sin traza, Bayes empírico del apetito (reglas v2.1), laboratorio «dato nuevo», descarga de respuestas, pruebas de punta a punta, resumen de una página y recorrido automático como video | Hecha el 2026-10-21 en `feat/claude-solo-app`. SOKA eligió esta versión (A) y pasó a `main` el mismo día. La alternativa con la consola de Lulo queda en `feat/claude-consola-lulo`, sin pasar a `main` |
 | E12 Dashboard de resultados en Power BI: base, plan y backtest del motor, piloto simulado con grupo de control en el formato de datos reales, laboratorio y 20 casos reales con fuente | Hecha el 2026-10-22 en `feat/claude-powerbi`. SOKA aprobó el plan y pasarla a `main` el mismo día |
+| E13 Dashboard de impacto de 3 páginas en lugar del de 8: el del equipo (`Lulo_Impacto`), generado desde los mismos datos, con el intervalo de 95 % y el veredicto del de E12 | Pedido por SOKA el 2026-10-30 en `feat/claude-dashboard-impacto`; pasa a `main` con su aprobación del pull request |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -122,6 +125,10 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
     - guía página por página;
     - vista previa web.
   - Casos reales de éxito y fracaso de empresas con métodos como los del prototipo, con fuente (pedido del curso).
+- E13 (2026-10-30, «el que quedó en GitHub está muy complejo… solo cambia el dashboard… un punto medio de nivel pero que sea comprensible para nosotros justificarlo»):
+  - Reemplazar el dashboard de 8 páginas por el de impacto de 3 páginas del equipo, con las mismas cifras (se recontaron desde `powerbi/datos`: 0 diferencias).
+  - Del de E12 se conservan: el exportador reproducible con `--check` y pruebas, el intervalo de 95 % y el veredicto, el aviso de muestra chica, la vista previa web y los datos de detalle.
+  - Se quitan del dashboard «×5,7 veces» (2 compras en el grupo sin ofertas: demasiado frágil) y la proyección a 100.000 clientes (número supuesto); queda «por cada 1.000 clientes contactados».
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
@@ -168,8 +175,9 @@ scripts/train_models.py    entrena y valida los modelos M1 a M6 → lulo_app/ml/
 scripts/train_motor.py     entrena el motor bayesiano → lulo_app/ml/motor.json (Python puro)
 scripts/laboratorio.py     laboratorio con verdad simulada → lulo_app/ml/laboratorio.json
 scripts/validar_datos.py   valida otra base con el mismo esquema y escribe su manifiesto (datos reales)
-scripts/exportar_powerbi.py  datos del dashboard y proyecto de Power BI (con powerbi_modelo.py y powerbi_vista.py)
-powerbi/                   Lulo.pbip, datos/, medidas.dax, tema-lulo.json, vista_previa.html, casos.csv, GUIA.md
+scripts/exportar_powerbi.py  datos de detalle y dashboard de impacto (con powerbi_modelo.py y powerbi_vista.py)
+powerbi/                   Lulo_Impacto.pbip, datos/ (detalle), tablas/ (dashboard), medidas.dax,
+                           tema-lulo-impacto.json, vista_previa.html, casos.csv, GUIA.md
 lulo_app/ml/               M1 a M6 (vector, models) y motor bayesiano (bayes, rasgos, motor) en producción
 docs/MODELOS.md            método, resultados y límites de los modelos M1 a M6
 docs/MOTOR.md              motor bayesiano: método, resultados, supuestos y preguntas difíciles

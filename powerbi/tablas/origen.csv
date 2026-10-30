@@ -1,0 +1,5 @@
+escenario,origen,orden,ventas
+señal,Oferta del motor,1,99
+señal,Por su cuenta,2,30
+regla correcta,Oferta del motor,1,70
+regla correcta,Por su cuenta,2,30

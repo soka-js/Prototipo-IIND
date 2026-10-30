@@ -28,3 +28,5 @@ Thumbs.db
 # Power BI Desktop: archivos locales del proyecto .pbip (caché y ajustes de cada equipo)
 powerbi/**/.pbi/localSettings.json
 powerbi/**/.pbi/cache.abf
+# Un .pbix guardado desde Power BI para entregar: no se sube (se genera desde el proyecto .pbip)
+powerbi/*.pbix
