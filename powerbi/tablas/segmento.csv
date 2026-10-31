@@ -1,0 +1,7 @@
+escenario,segmento,orden,vistas,aceptadas
+señal,Con mascota,1,140,21
+señal,Gasto contenido,2,347,35
+señal,Gasta lo que entra,3,481,43
+regla correcta,Con mascota,1,148,13
+regla correcta,Gasto contenido,2,353,23
+regla correcta,Gasta lo que entra,3,486,34

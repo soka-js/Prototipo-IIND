@@ -17,6 +17,45 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-30 · Claude con SOKA · rama feat/claude-dashboard-impacto · commit de esta entrada · E13: dashboard de impacto de 3 páginas
+- Qué cambió: el dashboard de Power BI de 8 páginas (E12) se reemplaza por el **dashboard de impacto de 3 páginas** que armó el equipo (`Lulo_Impacto_entrega.zip`): Impacto · Qué y a quién · Bajo control, con selector de escenario optimista / conservador.
+  - **Igual que el del equipo:** las 3 páginas, sus visuales, colores y textos, y los datos dentro del modelo (no pide origen ni credenciales).
+  - **Del de E12, porque es mejor para justificarlo:**
+    - el **intervalo de 95 %** de la diferencia frente al grupo sin ofertas (+13,7 a +28,2 pp en el optimista; +7,9 a +22,1 pp en el conservador);
+    - el **veredicto** «¿Las ofertas venden?», que lee ese intervalo;
+    - el aviso de **muestra chica** con sus números (45 clientes sin ofertas, 2 compran);
+    - el **exportador reproducible** con `--check` y pruebas, la vista previa web y las tablas de detalle de `powerbi/datos`, que no cambian ni un byte.
+  - **Lo que se quita del dashboard del equipo y por qué:**
+    - «×5,7 veces más conversión»: con 2 compras en el grupo sin ofertas, una compra más la baja a ×3,8. Lo reemplaza el intervalo.
+    - La proyección con selector de 10.000 a 1.000.000 de clientes (100.000 por defecto): depende de un número supuesto. Queda «por cada 1.000 clientes contactados» ($15,8 M y $11,2 M), que es la comisión por cliente × 1.000.
+    - La tabla `momento` (no la usaba ningún visual) y algunas filas de `control` que tampoco se usaban.
+    - `datos_dashboard.xlsx`: las mismas tablas están en `powerbi/tablas` como CSV, que abren en Excel y sí se verifican byte a byte con `--check`.
+  - **Correcciones de texto:** la nota decía «Ley 2300 (4 en 30 días)», pero el 4 es el tope de contactos de la base (`max_contactos_mes`), no de la ley; ahora dice «Tope de contactos de la base: 4 en 30 días por cliente; el push cuenta como contacto (Ley 2300)». La pestaña «Qué, a quién y cuándo» pasa a «Qué y a quién», porque ningún visual muestra el cuándo. La tarjeta «84 · nunca se contacta a quien no autorizó» pasa a «clientes sin autorización: nunca contactados».
+  - **Una sola vista previa** (`powerbi/vista_previa.html`) con el selector de escenario, en lugar de dos archivos. Se ajusta al ancho de la pantalla, también en el celular.
+  - Las medidas DAX se reescribieron sin las variables repetidas que no se usaban: cada una lee los seis conteos del piloto y dice qué es.
+- Por qué: pedido de SOKA el 2026-10-30: «el que quedó en GitHub está muy complejo… solo cambia el dashboard; si ves que hay cosas que el otro tenga que estén mejor, déjalas así, pero la idea es encontrar un punto medio de nivel que sea comprensible para nosotros justificarlo».
+- Archivos:
+  - `scripts/powerbi_modelo.py` (reescrito): `agregar()` arma las 10 tablas del dashboard desde `powerbi/datos`; el proyecto `Lulo_Impacto.pbip` lleva los datos dentro del modelo; 32 medidas, 3 páginas y el tema `tema-lulo-impacto.json`. Los subtítulos y notas al pie con cifras se escriben con los mismos datos.
+  - `scripts/powerbi_vista.py` (reescrito).
+  - `scripts/exportar_powerbi.py`: arma el dashboard nuevo y borra lo que ya no se genera (el proyecto `Lulo.pbip` anterior), sin tocar `GUIA.md`, `casos.csv`, la caché de Power BI ni un `.pbix` guardado.
+  - `powerbi/`: sale `Lulo.pbip` con sus carpetas y `tema-lulo.json`; entran `Lulo_Impacto.pbip`, `tablas/` y `tema-lulo-impacto.json`; cambian `medidas.dax`, `vista_previa.html` y `GUIA.md` (reescrita: cómo defender cada cifra). `powerbi/datos/` no cambia.
+  - `tests/test_powerbi.py` (17 pruebas), `docs/CASOS.md` (las lecciones apuntan a las páginas nuevas), `README.md`, `CLAUDE.md`, `CAMBIOS.md`, `.gitignore` (`powerbi/*.pbix`).
+- Cómo se verificó:
+  - Antes de cambiar nada, cada tabla del zip del equipo se recalculó desde `powerbi/datos` de `main` (`indicadores`, `curva`, `ramo`, `segmento`, `momento`, `origen`, `control`, `reglas`, `laboratorio` y `laboratorio_resumen`): **0 diferencias**.
+  - `tests/test_powerbi.py` recuenta cada número de las tablas del dashboard desde el detalle por otro camino, compara la diferencia y el intervalo de la vista previa con los de `exportar_powerbi.lectura()` y verifica que los datos dentro del modelo sean los mismos de `powerbi/tablas`.
+  - La vista previa se probó con Playwright en 1320 px y 390 px, en los dos escenarios: sin errores de consola y sin desplazamiento horizontal.
+  - Salida real:
+    ```
+    $ python -m pytest
+    122 passed, 1 warning in 133.91s (0:02:13)
+    $ python scripts/exportar_powerbi.py --check
+    powerbi/ coincide (40 archivos)
+    ```
+    Antes del cambio, `main` daba 119 passed; salen las 14 pruebas del dashboard anterior y entran 17.
+- Consultado con SOKA: sí. Lo pidió él el 2026-10-30 («haz eso y ya, solo cambia el dashboard»). Pasa a `main` solo con su aprobación del pull request.
+- Cifras nuevas y su origen: ninguna nueva. El intervalo de 95 % y el veredicto ya estaban en E12 (`exportar_powerbi.lectura()`); «por cada 1.000 clientes contactados» = comisión por cliente contactado ($15.833 y $11.245, de `piloto_clientes`) × 1.000; «1 de 46, el 2 %» sale de `dim_cliente` (segmento «Con mascota» y `seguros_lulo`); «4 en 30 días» de `dim_cliente[max_contactos_mes]`.
+- Modelo de Claude usado: claude-opus-5-5
+
 ## 2026-10-22 · Claude con SOKA · rama feat/claude-powerbi · commit de esta entrada · E12: dashboard de resultados en Power BI y casos reales
 - Qué cambió: un dashboard de 8 páginas para responder si el motor convierte ofertas en ventas. Como la base no trae respuestas a ofertas, separa tres tipos de datos y los marca:
   - la base del reto;

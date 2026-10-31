@@ -1,0 +1,13 @@
+escenario,seguro,orden,vistas,aceptadas,ventas_oferta,comision_oferta,comision_por_venta
+señal,SOAT,1,46,5,5,148920,29784
+señal,Vida,2,163,20,20,1997280,99864
+señal,Desempleo,3,268,22,22,2266946,103043
+señal,Hogar,4,85,6,6,448020,74670
+señal,Mascotas,5,150,19,19,1149310,60490
+señal,Viajes,6,256,27,27,490266,18158
+regla correcta,SOAT,1,48,2,2,59568,29784
+regla correcta,Vida,2,166,16,16,1597824,99864
+regla correcta,Desempleo,3,272,13,13,1339559,103043
+regla correcta,Hogar,4,87,5,5,373350,74670
+regla correcta,Mascotas,5,155,12,12,725880,60490
+regla correcta,Viajes,6,259,22,22,399476,18158

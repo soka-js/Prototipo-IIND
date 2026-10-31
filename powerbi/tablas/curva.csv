@@ -1,0 +1,145 @@
+escenario,semana,grupo,grupo_orden,conversion
+señal,2026-01-30,Con ofertas,1,0.01144
+señal,2026-01-30,Sin ofertas,2,0.02222
+señal,2026-02-06,Con ofertas,1,0.01602
+señal,2026-02-06,Sin ofertas,2,0.02222
+señal,2026-02-13,Con ofertas,1,0.02059
+señal,2026-02-13,Sin ofertas,2,0.02222
+señal,2026-02-20,Con ofertas,1,0.02288
+señal,2026-02-20,Sin ofertas,2,0.02222
+señal,2026-02-27,Con ofertas,1,0.02517
+señal,2026-02-27,Sin ofertas,2,0.02222
+señal,2026-03-06,Con ofertas,1,0.03204
+señal,2026-03-06,Sin ofertas,2,0.02222
+señal,2026-03-13,Con ofertas,1,0.0389
+señal,2026-03-13,Sin ofertas,2,0.02222
+señal,2026-03-20,Con ofertas,1,0.04577
+señal,2026-03-20,Sin ofertas,2,0.02222
+señal,2026-03-27,Con ofertas,1,0.04805
+señal,2026-03-27,Sin ofertas,2,0.02222
+señal,2026-04-03,Con ofertas,1,0.04805
+señal,2026-04-03,Sin ofertas,2,0.02222
+señal,2026-04-10,Con ofertas,1,0.06407
+señal,2026-04-10,Sin ofertas,2,0.02222
+señal,2026-04-17,Con ofertas,1,0.07094
+señal,2026-04-17,Sin ofertas,2,0.02222
+señal,2026-04-24,Con ofertas,1,0.0778
+señal,2026-04-24,Sin ofertas,2,0.02222
+señal,2026-05-01,Con ofertas,1,0.08696
+señal,2026-05-01,Sin ofertas,2,0.02222
+señal,2026-05-08,Con ofertas,1,0.09382
+señal,2026-05-08,Sin ofertas,2,0.02222
+señal,2026-05-15,Con ofertas,1,0.0984
+señal,2026-05-15,Sin ofertas,2,0.02222
+señal,2026-05-22,Con ofertas,1,0.10069
+señal,2026-05-22,Sin ofertas,2,0.02222
+señal,2026-05-29,Con ofertas,1,0.10984
+señal,2026-05-29,Sin ofertas,2,0.02222
+señal,2026-06-05,Con ofertas,1,0.1373
+señal,2026-06-05,Sin ofertas,2,0.02222
+señal,2026-06-12,Con ofertas,1,0.14416
+señal,2026-06-12,Sin ofertas,2,0.02222
+señal,2026-06-19,Con ofertas,1,0.14874
+señal,2026-06-19,Sin ofertas,2,0.02222
+señal,2026-06-26,Con ofertas,1,0.15103
+señal,2026-06-26,Sin ofertas,2,0.02222
+señal,2026-07-03,Con ofertas,1,0.15789
+señal,2026-07-03,Sin ofertas,2,0.02222
+señal,2026-07-10,Con ofertas,1,0.16247
+señal,2026-07-10,Sin ofertas,2,0.02222
+señal,2026-07-17,Con ofertas,1,0.16247
+señal,2026-07-17,Sin ofertas,2,0.02222
+señal,2026-07-24,Con ofertas,1,0.17391
+señal,2026-07-24,Sin ofertas,2,0.02222
+señal,2026-07-31,Con ofertas,1,0.17849
+señal,2026-07-31,Sin ofertas,2,0.04444
+señal,2026-08-07,Con ofertas,1,0.18764
+señal,2026-08-07,Sin ofertas,2,0.04444
+señal,2026-08-14,Con ofertas,1,0.1968
+señal,2026-08-14,Sin ofertas,2,0.04444
+señal,2026-08-21,Con ofertas,1,0.20824
+señal,2026-08-21,Sin ofertas,2,0.04444
+señal,2026-08-28,Con ofertas,1,0.21739
+señal,2026-08-28,Sin ofertas,2,0.04444
+señal,2026-09-04,Con ofertas,1,0.21739
+señal,2026-09-04,Sin ofertas,2,0.04444
+señal,2026-09-11,Con ofertas,1,0.21968
+señal,2026-09-11,Sin ofertas,2,0.04444
+señal,2026-09-18,Con ofertas,1,0.23341
+señal,2026-09-18,Sin ofertas,2,0.04444
+señal,2026-09-25,Con ofertas,1,0.24027
+señal,2026-09-25,Sin ofertas,2,0.04444
+señal,2026-10-02,Con ofertas,1,0.254
+señal,2026-10-02,Sin ofertas,2,0.04444
+regla correcta,2026-01-30,Con ofertas,1,0.00686
+regla correcta,2026-01-30,Sin ofertas,2,0.02222
+regla correcta,2026-02-06,Con ofertas,1,0.01144
+regla correcta,2026-02-06,Sin ofertas,2,0.02222
+regla correcta,2026-02-13,Con ofertas,1,0.01602
+regla correcta,2026-02-13,Sin ofertas,2,0.02222
+regla correcta,2026-02-20,Con ofertas,1,0.01831
+regla correcta,2026-02-20,Sin ofertas,2,0.02222
+regla correcta,2026-02-27,Con ofertas,1,0.02059
+regla correcta,2026-02-27,Sin ofertas,2,0.02222
+regla correcta,2026-03-06,Con ofertas,1,0.02288
+regla correcta,2026-03-06,Sin ofertas,2,0.02222
+regla correcta,2026-03-13,Con ofertas,1,0.02975
+regla correcta,2026-03-13,Sin ofertas,2,0.02222
+regla correcta,2026-03-20,Con ofertas,1,0.03661
+regla correcta,2026-03-20,Sin ofertas,2,0.02222
+regla correcta,2026-03-27,Con ofertas,1,0.0389
+regla correcta,2026-03-27,Sin ofertas,2,0.02222
+regla correcta,2026-04-03,Con ofertas,1,0.0389
+regla correcta,2026-04-03,Sin ofertas,2,0.02222
+regla correcta,2026-04-10,Con ofertas,1,0.05263
+regla correcta,2026-04-10,Sin ofertas,2,0.02222
+regla correcta,2026-04-17,Con ofertas,1,0.05721
+regla correcta,2026-04-17,Sin ofertas,2,0.02222
+regla correcta,2026-04-24,Con ofertas,1,0.0595
+regla correcta,2026-04-24,Sin ofertas,2,0.02222
+regla correcta,2026-05-01,Con ofertas,1,0.06407
+regla correcta,2026-05-01,Sin ofertas,2,0.02222
+regla correcta,2026-05-08,Con ofertas,1,0.06865
+regla correcta,2026-05-08,Sin ofertas,2,0.02222
+regla correcta,2026-05-15,Con ofertas,1,0.07323
+regla correcta,2026-05-15,Sin ofertas,2,0.02222
+regla correcta,2026-05-22,Con ofertas,1,0.0778
+regla correcta,2026-05-22,Sin ofertas,2,0.02222
+regla correcta,2026-05-29,Con ofertas,1,0.08238
+regla correcta,2026-05-29,Sin ofertas,2,0.02222
+regla correcta,2026-06-05,Con ofertas,1,0.10069
+regla correcta,2026-06-05,Sin ofertas,2,0.02222
+regla correcta,2026-06-12,Con ofertas,1,0.10755
+regla correcta,2026-06-12,Sin ofertas,2,0.02222
+regla correcta,2026-06-19,Con ofertas,1,0.10755
+regla correcta,2026-06-19,Sin ofertas,2,0.02222
+regla correcta,2026-06-26,Con ofertas,1,0.10755
+regla correcta,2026-06-26,Sin ofertas,2,0.02222
+regla correcta,2026-07-03,Con ofertas,1,0.11213
+regla correcta,2026-07-03,Sin ofertas,2,0.02222
+regla correcta,2026-07-10,Con ofertas,1,0.1167
+regla correcta,2026-07-10,Sin ofertas,2,0.02222
+regla correcta,2026-07-17,Con ofertas,1,0.11899
+regla correcta,2026-07-17,Sin ofertas,2,0.02222
+regla correcta,2026-07-24,Con ofertas,1,0.12586
+regla correcta,2026-07-24,Sin ofertas,2,0.02222
+regla correcta,2026-07-31,Con ofertas,1,0.13272
+regla correcta,2026-07-31,Sin ofertas,2,0.04444
+regla correcta,2026-08-07,Con ofertas,1,0.13959
+regla correcta,2026-08-07,Sin ofertas,2,0.04444
+regla correcta,2026-08-14,Con ofertas,1,0.14645
+regla correcta,2026-08-14,Sin ofertas,2,0.04444
+regla correcta,2026-08-21,Con ofertas,1,0.15103
+regla correcta,2026-08-21,Sin ofertas,2,0.04444
+regla correcta,2026-08-28,Con ofertas,1,0.16247
+regla correcta,2026-08-28,Sin ofertas,2,0.04444
+regla correcta,2026-09-04,Con ofertas,1,0.16247
+regla correcta,2026-09-04,Sin ofertas,2,0.04444
+regla correcta,2026-09-11,Con ofertas,1,0.16476
+regla correcta,2026-09-11,Sin ofertas,2,0.04444
+regla correcta,2026-09-18,Con ofertas,1,0.17162
+regla correcta,2026-09-18,Sin ofertas,2,0.04444
+regla correcta,2026-09-25,Con ofertas,1,0.17849
+regla correcta,2026-09-25,Sin ofertas,2,0.04444
+regla correcta,2026-10-02,Con ofertas,1,0.19451
+regla correcta,2026-10-02,Sin ofertas,2,0.04444

@@ -1,507 +1,216 @@
-// Medidas del dashboard de Lulo (generado por scripts/exportar_powerbi.py; no se edita a mano).
-// Ya vienen en powerbi/Lulo.SemanticModel/model.bim. Para crearlas a mano: Modelado → Nueva medida,
-// en la tabla indicada, y pegar desde el nombre. Las del piloto filtran el escenario elegido.
+// Medidas del dashboard de impacto (las genera scripts/exportar_powerbi.py; no se editan a mano).
+// Ya vienen en Lulo_Impacto.SemanticModel/model.bim. Para crearlas a mano: Modelado → Nueva medida, en la
+// tabla indicada, y pegar desde el nombre. Las del piloto filtran el escenario elegido; no hacen falta relaciones.
 
 
-// ===== 0 · Escenario =========================================================
+// ===== 1 · Escenario =========================================================
 
-// El escenario de la segmentación; si no hay uno solo, el de orden 1.
-// Tabla: dim_escenario
-Escenario elegido =
+// El escenario del selector; si no hay uno solo, el primero (optimista).
+// Tabla: escenario
+[Escenario elegido] =
     IF (
-        HASONEVALUE ( dim_escenario[escenario] ),
-        VALUES ( dim_escenario[escenario] ),
-        CALCULATE ( LOOKUPVALUE ( dim_escenario[escenario], dim_escenario[orden], 1 ), REMOVEFILTERS ( dim_escenario ) )
+        HASONEVALUE ( escenario[escenario] ),
+        VALUES ( escenario[escenario] ),
+        CALCULATE ( MIN ( escenario[escenario] ), REMOVEFILTERS ( escenario ), escenario[orden] = 1 )
     )
 
-// Tabla: dim_escenario
-Nombre del escenario =
+// Tabla: escenario
+[Nombre del escenario] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( LOOKUPVALUE ( dim_escenario[nombre], dim_escenario[escenario], e ), REMOVEFILTERS ( dim_escenario ) )
+        LOOKUPVALUE ( escenario[nombre], escenario[escenario], e )
 
-// Tabla: dim_escenario
-Descripción del escenario =
+
+// ===== 2 · Conteos ===========================================================
+
+// Clientes que recibieron decisiones del motor con ofertas (el 90 %).
+// Tabla: indicadores · Formato: #,0
+[Clientes con ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( LOOKUPVALUE ( dim_escenario[descripcion], dim_escenario[escenario], e ), REMOVEFILTERS ( dim_escenario ) )
+        CALCULATE ( SUM ( indicadores[clientes_trat] ), indicadores[escenario] = e )
 
-
-// ===== 1 · Resultado del piloto ==============================================
-
-// Clientes con al menos una decisión del motor (oferta o control) en el piloto.
-// Tabla: piloto_clientes · Formato: #,0
-Clientes en el piloto =
+// El grupo de comparación: el motor decide pero no muestra (10 % por hash).
+// Tabla: indicadores · Formato: #,0
+[Clientes sin ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( COUNTROWS ( piloto_clientes ), dim_escenario[escenario] = e )
+        CALCULATE ( SUM ( indicadores[clientes_ctrl] ), indicadores[escenario] = e )
 
-// Compraron al menos un seguro desde su primera decisión (por la oferta o por su cuenta).
-// Tabla: piloto_clientes · Formato: #,0
-Clientes que compraron =
+// Tabla: indicadores · Formato: #,0
+[Compran con ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( COUNTROWS ( piloto_clientes ), dim_escenario[escenario] = e, piloto_clientes[compro] = 1 )
-
-// Tabla: piloto_clientes · Formato: 0.0 %
-Conversión por cliente =
-    DIVIDE ( [Clientes que compraron], [Clientes en el piloto] )
-
-// Tabla: piloto_clientes · Formato: #,0
-Clientes tratamiento =
-    CALCULATE ( [Clientes en el piloto], dim_cliente[grupo] = "tratamiento" )
-
-// El 10 % por hash: el motor decide pero no muestra la oferta.
-// Tabla: piloto_clientes · Formato: #,0
-Clientes control =
-    CALCULATE ( [Clientes en el piloto], dim_cliente[grupo] = "control" )
-
-// Tabla: piloto_clientes · Formato: #,0
-Compraron tratamiento =
-    CALCULATE ( [Clientes que compraron], dim_cliente[grupo] = "tratamiento" )
-
-// Tabla: piloto_clientes · Formato: #,0
-Compraron control =
-    CALCULATE ( [Clientes que compraron], dim_cliente[grupo] = "control" )
-
-// Tabla: piloto_clientes · Formato: 0.0 %
-Conversión tratamiento =
-    DIVIDE ( [Compraron tratamiento], [Clientes tratamiento] )
+        CALCULATE ( SUM ( indicadores[compran_trat] ), indicadores[escenario] = e )
 
 // Compran por su cuenta, sin ofertas.
-// Tabla: piloto_clientes · Formato: 0.0 %
-Conversión control =
-    DIVIDE ( [Compraron control], [Clientes control] )
-
-// Puntos porcentuales de clientes que compran de más con las ofertas: la cifra que dice si el motor vende.
-// Tabla: piloto_clientes · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
-Diferencia frente al control (pp) =
-    ( [Conversión tratamiento] - [Conversión control] ) * 100
-
-// Tabla: piloto_clientes · Formato: 0.0000
-Error estándar de la diferencia =
-    VAR pt = [Conversión tratamiento]
-    VAR pc = [Conversión control]
-    RETURN
-        SQRT ( DIVIDE ( pt * ( 1 - pt ), [Clientes tratamiento] ) + DIVIDE ( pc * ( 1 - pc ), [Clientes control] ) )
-
-// Tabla: piloto_clientes · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
-Diferencia IC 95 % bajo (pp) =
-    [Diferencia frente al control (pp)] - 1.96 * [Error estándar de la diferencia] * 100
-
-// Tabla: piloto_clientes · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
-Diferencia IC 95 % alto (pp) =
-    [Diferencia frente al control (pp)] + 1.96 * [Error estándar de la diferencia] * 100
-
-// Intervalo de 95 % de la diferencia frente al control.
-// Tabla: piloto_clientes
-Intervalo de la diferencia =
-    FORMAT ( [Diferencia IC 95 % bajo (pp)], "+0.0;-0.0" ) & " a " & FORMAT ( [Diferencia IC 95 % alto (pp)], "+0.0;-0.0" ) & " pp"
-
-// Prueba z de dos proporciones (dos colas).
-// Tabla: piloto_clientes · Formato: 0.0000
-Valor p =
-    VAR nt = [Clientes tratamiento]
-    VAR nc = [Clientes control]
-    VAR p = DIVIDE ( [Compraron tratamiento] + [Compraron control], nt + nc )
-    VAR se = SQRT ( p * ( 1 - p ) * ( DIVIDE ( 1, nt ) + DIVIDE ( 1, nc ) ) )
-    VAR z = DIVIDE ( [Conversión tratamiento] - [Conversión control], se )
-    RETURN
-        IF ( nt > 0 && nc > 0, 2 * ( 1 - NORM.S.DIST ( ABS ( z ), TRUE ) ) )
-
-// Clientes que compraron gracias a las ofertas: la diferencia frente al control por el tamaño del tratamiento.
-// Tabla: piloto_clientes · Formato: #,0
-Ventas incrementales =
-    ( [Conversión tratamiento] - [Conversión control] ) * [Clientes tratamiento]
-
-// Tabla: piloto_clientes · Formato: "$"#,0
-Comisión por cliente tratamiento =
+// Tabla: indicadores · Formato: #,0
+[Compran sin ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        DIVIDE ( CALCULATE ( SUM ( piloto_clientes[comision_12m_cop] ), dim_escenario[escenario] = e, dim_cliente[grupo] = "tratamiento" ), [Clientes tratamiento] )
+        CALCULATE ( SUM ( indicadores[compran_ctrl] ), indicadores[escenario] = e )
 
-// Tabla: piloto_clientes · Formato: "$"#,0
-Comisión por cliente control =
+// Comisión a 12 meses de lo que compraron los clientes con ofertas.
+// Tabla: indicadores · Formato: "$"#,0
+[Comisión con ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        DIVIDE ( CALCULATE ( SUM ( piloto_clientes[comision_12m_cop] ), dim_escenario[escenario] = e, dim_cliente[grupo] = "control" ), [Clientes control] )
+        CALCULATE ( SUM ( indicadores[comision_trat] ), indicadores[escenario] = e )
 
-// Comisión esperada a 12 meses (catálogo) que se gana de más con las ofertas.
-// Tabla: piloto_clientes · Formato: "$"#,0
-Comisión incremental 12 m =
-    ( [Comisión por cliente tratamiento] - [Comisión por cliente control] ) * [Clientes tratamiento]
-
-// Con estos tamaños, la menor diferencia que se detecta con 95 % de confianza y 80 % de potencia.
-// Tabla: piloto_clientes · Formato: 0.0 "pp"
-Efecto mínimo detectable (pp) =
-    VAR p = DIVIDE ( [Compraron tratamiento] + [Compraron control], [Clientes tratamiento] + [Clientes control] )
-    RETURN
-        ( 1.96 + 0.8416 ) * SQRT ( p * ( 1 - p ) * ( DIVIDE ( 1, [Clientes tratamiento] ) + DIVIDE ( 1, [Clientes control] ) ) ) * 100
-
-// Lectura del intervalo de 95 % de la diferencia frente al control.
-// Tabla: piloto_clientes
-Veredicto =
-    VAR nc = [Clientes control]
-    VAR nt = [Clientes tratamiento]
-    RETURN
-        SWITCH (
-            TRUE (),
-            nc = 0 || nt = 0, "Sin grupo de control no se puede saber si las ofertas venden",
-            [Diferencia IC 95 % bajo (pp)] > 0, "Sí: con las ofertas compran más clientes que sin ellas",
-            [Diferencia IC 95 % alto (pp)] < 0, "No: con las ofertas compran menos clientes que sin ellas",
-            "Todavía no se sabe: la diferencia cabe en el azar"
-        )
-
-// Tabla: piloto_clientes
-Lectura de la muestra =
-    VAR xt = [Compraron tratamiento]
-    VAR xc = [Compraron control]
-    VAR m = MIN ( MIN ( xt, [Clientes tratamiento] - xt ), MIN ( xc, [Clientes control] - xc ) )
-    RETURN
-        IF ( m < 5, "Muestra chica: con menos de 5 casos en un grupo la lectura es frágil. El piloto real necesita la base completa de Lulo (M6).", "Muestra suficiente para la prueba de dos proporciones." )
-
-
-// ===== 2 · Ofertas ===========================================================
-
-// Tabla: piloto_decisiones · Formato: #,0
-Decisiones =
+// Tabla: indicadores · Formato: "$"#,0
+[Comisión sin ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( COUNTROWS ( piloto_decisiones ), dim_escenario[escenario] = e )
+        CALCULATE ( SUM ( indicadores[comision_ctrl] ), indicadores[escenario] = e )
 
-// Push o banner al tratamiento.
-// Tabla: piloto_decisiones · Formato: #,0
-Ofertas mostradas =
-    CALCULATE ( [Decisiones], piloto_decisiones[canal] <> "ninguno" )
 
-// El cliente vio la oferta (aceptó o rechazó).
-// Tabla: piloto_decisiones · Formato: #,0
-Ofertas vistas =
-    CALCULATE ( [Decisiones], piloto_decisiones[resultado] IN { "aceptada", "rechazada" } )
+// ===== 3 · Impacto ===========================================================
 
-// Tabla: piloto_decisiones · Formato: #,0
-Ofertas aceptadas =
-    CALCULATE ( [Decisiones], piloto_decisiones[resultado] = "aceptada" )
+// Tabla: indicadores · Formato: 0.0 %
+[Conversión con ofertas] =
+    DIVIDE ( [Compran con ofertas], [Clientes con ofertas] )
 
-// Se mostró y no hubo respuesta.
-// Tabla: piloto_decisiones · Formato: #,0
-Ofertas ignoradas =
-    CALCULATE ( [Decisiones], piloto_decisiones[resultado] = "ignorada" )
+// Tabla: indicadores · Formato: 0.0 %
+[Conversión sin ofertas] =
+    DIVIDE ( [Compran sin ofertas], [Clientes sin ofertas] )
 
-// El motor decidió y no mostró: así se mide lo que pasa sin ofertas.
-// Tabla: piloto_decisiones · Formato: #,0
-Decisiones en control =
-    CALCULATE ( [Decisiones], piloto_decisiones[resultado] = "control" )
+// Diferencia en puntos porcentuales frente al grupo sin ofertas: la cifra que dice si las ofertas venden.
+// Tabla: indicadores · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
+[más clientes compran con las ofertas] =
+    ( [Conversión con ofertas] - [Conversión sin ofertas] ) * 100
 
-// Aceptadas sobre vistas: comparable con ventas / impactados de las campañas previas.
-// Tabla: piloto_decisiones · Formato: 0.0 %
-Conversión por oferta vista =
-    DIVIDE ( [Ofertas aceptadas], [Ofertas vistas] )
-
-// Vistas sobre mostradas.
-// Tabla: piloto_decisiones · Formato: 0.0 %
-Alcance =
-    DIVIDE ( [Ofertas vistas], [Ofertas mostradas] )
-
-// Lo que el motor esperaba de las ofertas vistas.
-// Tabla: piloto_decisiones · Formato: 0.0 %
-P(acepta) del motor =
-    VAR e = [Escenario elegido]
+// Tabla: indicadores · Formato: 0.0000
+[Error estándar de la diferencia] =
+    VAR ct = [Conversión con ofertas]
+    VAR cc = [Conversión sin ofertas]
     RETURN
-        CALCULATE ( AVERAGE ( piloto_decisiones[p_motor] ), dim_escenario[escenario] = e, piloto_decisiones[resultado] IN { "aceptada", "rechazada" } )
+        SQRT ( DIVIDE ( ct * ( 1 - ct ), [Clientes con ofertas] ) + DIVIDE ( cc * ( 1 - cc ), [Clientes sin ofertas] ) )
 
-// 1 = el motor está calibrado; más de 1 = subestima; menos de 1 = sobrestima.
-// Tabla: piloto_decisiones · Formato: 0.00
-Observado frente al motor =
-    DIVIDE ( [Conversión por oferta vista], [P(acepta) del motor] )
+// Tabla: indicadores · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
+[Diferencia IC 95 % bajo] =
+    [más clientes compran con las ofertas] - 1.96 * [Error estándar de la diferencia] * 100
 
-// Ventas / impactados de la campaña previa de cada ramo, ponderada por las ofertas vistas.
-// Tabla: piloto_decisiones · Formato: 0.0 %
-Conversión de la campaña previa =
-    DIVIDE (
-        SUMX ( VALUES ( dim_ramo[ramo] ), [Ofertas vistas] * CALCULATE ( MAX ( dim_ramo[conversion_previa] ) ) ),
-        [Ofertas vistas]
+// Tabla: indicadores · Formato: +0.0 "pp";-0.0 "pp";0.0 "pp"
+[Diferencia IC 95 % alto] =
+    [más clientes compran con las ofertas] + 1.96 * [Error estándar de la diferencia] * 100
+
+// Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar.
+// Tabla: indicadores
+[intervalo de 95 % de la diferencia] =
+    FORMAT ( [Diferencia IC 95 % bajo], "+0.0;-0.0" ) & " a " & FORMAT ( [Diferencia IC 95 % alto], "+0.0;-0.0" ) & " pp"
+
+// Lectura del intervalo de 95 %.
+// Tabla: indicadores
+[¿Las ofertas venden?] =
+    SWITCH (
+        TRUE (),
+        [Clientes sin ofertas] = 0, "Sin grupo sin ofertas no se puede saber",
+        [Diferencia IC 95 % bajo] > 0, "Sí: con ofertas compran más clientes",
+        [Diferencia IC 95 % alto] < 0, "No: con ofertas compran menos",
+        "Todavía no se sabe: cabe en el azar"
     )
 
-// Tabla: piloto_decisiones · Formato: +0 %;-0 %;0 %
-Frente a la campaña previa =
-    DIVIDE ( [Conversión por oferta vista], [Conversión de la campaña previa] ) - 1
+// Ventas incrementales: la diferencia frente al grupo sin ofertas por los clientes con ofertas.
+// Tabla: indicadores · Formato: #,0
+[clientes nuevos con seguro gracias a las ofertas] =
+    ( [Conversión con ofertas] - [Conversión sin ofertas] ) * [Clientes con ofertas]
 
-// Decisiones en las que el motor eligió el mismo ramo que la regla v1.3.
-// Tabla: piloto_decisiones · Formato: 0.0 %
-Coinciden con la regla =
-    DIVIDE ( CALCULATE ( [Decisiones], piloto_decisiones[coincide_regla] = 1 ), [Decisiones] )
+// Comisión a 12 meses que se gana de más por cada cliente que recibe ofertas.
+// Tabla: indicadores · Formato: "$"#,0
+[comisión por cliente contactado] =
+    DIVIDE ( [Comisión con ofertas], [Clientes con ofertas] ) - DIVIDE ( [Comisión sin ofertas], [Clientes sin ofertas] )
 
-// Solo existe en la simulación: con la verdad simulada.
-// Tabla: piloto_decisiones · Formato: "$"#,0
-Comisión esperada del motor (simulación) =
+// En millones de pesos, sobre los clientes de la base sintética que recibieron ofertas.
+// Tabla: indicadores · Formato: "$"#,0.0" M"
+[comisión adicional a 12 meses] =
+    [comisión por cliente contactado] * [Clientes con ofertas] / 1000000
+
+// Ilustrativo, no una meta: la comisión por cliente contactado × 1.000, en millones de pesos.
+// Tabla: indicadores · Formato: "$"#,0.0" M"
+[por cada 1.000 clientes contactados (proyección lineal)] =
+    [comisión por cliente contactado] * 1000 / 1000000
+
+
+// ===== 4 · Valor =============================================================
+
+// Tabla: indicadores · Formato: #,0
+[pólizas vendidas por las ofertas] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( SUMX ( piloto_decisiones, piloto_decisiones[p_verdad] * piloto_decisiones[comision_12m_cop] ), dim_escenario[escenario] = e )
+        CALCULATE ( SUM ( indicadores[ventas_oferta] ), indicadores[escenario] = e )
 
-// Lo mismo si se hubiera ofrecido lo que elegía la regla.
-// Tabla: piloto_decisiones · Formato: "$"#,0
-Comisión esperada de la regla (simulación) =
+// Incluye las compras por su cuenta de los dos grupos.
+// Tabla: indicadores · Formato: 0.0 %
+[de las ventas vino de una oferta] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( SUMX ( piloto_decisiones, piloto_decisiones[p_verdad_regla] * piloto_decisiones[comision_12m_regla_cop] ), dim_escenario[escenario] = e )
+        DIVIDE ( [pólizas vendidas por las ofertas], CALCULATE ( SUM ( indicadores[ventas] ), indicadores[escenario] = e ) )
 
-// Tabla: piloto_decisiones · Formato: +0.0 %;-0.0 %;0.0 %
-Motor frente a la regla (simulación) =
-    DIVIDE ( [Comisión esperada del motor (simulación)], [Comisión esperada de la regla (simulación)] ) - 1
-
-
-// ===== 3 · Ventas ============================================================
-
-// Tabla: piloto_ventas · Formato: #,0
-Ventas =
+// Aceptadas sobre vistas: comparable con ventas / impactados de las campañas previas.
+// Tabla: indicadores · Formato: 0.0 %
+[aceptan la oferta que ven] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( COUNTROWS ( piloto_ventas ), dim_escenario[escenario] = e )
+        DIVIDE (
+            CALCULATE ( SUM ( indicadores[ofertas_aceptadas] ), indicadores[escenario] = e ),
+            CALCULATE ( SUM ( indicadores[ofertas_vistas] ), indicadores[escenario] = e )
+        )
 
-// Tabla: piloto_ventas · Formato: #,0
-Ventas por oferta =
-    CALCULATE ( [Ventas], piloto_ventas[origen] = "oferta" )
-
-// Sin oferta, en los dos grupos.
-// Tabla: piloto_ventas · Formato: #,0
-Compras por su cuenta =
-    CALCULATE ( [Ventas], piloto_ventas[origen] = "por su cuenta" )
-
-// Tabla: piloto_ventas · Formato: "$"#,0
-Comisión 12 m de las ventas =
+// Clientes que ya compraron un seguro a esa semana, sobre los clientes de su grupo.
+// Tabla: curva · Formato: 0.0 %
+[Clientes que ya compraron] =
     VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( SUM ( piloto_ventas[comision_12m_cop] ), dim_escenario[escenario] = e )
+        CALCULATE ( SUM ( curva[conversion] ), curva[escenario] = e )
 
-// Clientes que ya compraron a esa fecha sobre los clientes del piloto, por grupo.
-// Tabla: piloto_ventas · Formato: 0.0 %
-Conversión acumulada =
+// Comisión a 12 meses de las pólizas vendidas por las ofertas, en millones.
+// Tabla: ramo · Formato: "$"#,0.0" M"
+[Comisión de las ofertas] =
     VAR e = [Escenario elegido]
-    VAR f = MAX ( dim_fecha[fecha] )
-    VAR inicio = CALCULATE ( MIN ( piloto_clientes[primera_decision] ), REMOVEFILTERS ( dim_cliente ), dim_escenario[escenario] = e )
-    VAR c = CALCULATE ( DISTINCTCOUNT ( piloto_ventas[cliente_id] ), REMOVEFILTERS ( dim_fecha ), dim_fecha[fecha] <= f, dim_escenario[escenario] = e )
     RETURN
-        IF ( f >= inicio, DIVIDE ( c, [Clientes en el piloto] ) )
+        CALCULATE ( SUM ( ramo[comision_oferta] ), ramo[escenario] = e ) / 1000000
 
-
-// ===== 4 · Plan del motor ====================================================
-
-// Tabla: motor_plan · Formato: #,0
-Clientes de la base =
-    COUNTROWS ( dim_cliente )
-
-// Ley 1581: sin autorización el motor no lee sus movimientos.
-// Tabla: motor_plan · Formato: #,0
-Autorizan ofertas =
-    CALCULATE ( COUNTROWS ( dim_cliente ), dim_cliente[autoriza_ofertas] = "Sí" )
-
-// Tabla: motor_plan · Formato: #,0
-Ofertas del plan =
-    CALCULATE ( COUNTROWS ( motor_plan ), motor_plan[resultado] IN { "shown", "banner" } )
-
-// Tabla: motor_plan · Formato: #,0
-Push del plan =
-    CALCULATE ( COUNTROWS ( motor_plan ), motor_plan[resultado] = "shown" )
-
-// Tabla: motor_plan · Formato: #,0
-Banner del plan =
-    CALCULATE ( COUNTROWS ( motor_plan ), motor_plan[resultado] = "banner" )
-
-// Tabla: motor_plan · Formato: #,0
-Control del plan =
-    CALCULATE ( COUNTROWS ( motor_plan ), motor_plan[resultado] = "control" )
-
-// Σ alcance × P(acepta) de las ofertas de hoy.
-// Tabla: motor_plan · Formato: #,0.0
-Ventas esperadas del plan =
-    SUM ( motor_plan[ventas_esperadas] )
-
-// Σ alcance × P(acepta) × comisión a 12 meses.
-// Tabla: motor_plan · Formato: "$"#,0
-Comisión esperada del plan =
-    SUM ( motor_plan[comision_esperada_cop] )
-
-// Tabla: motor_plan · Formato: 0.0 %
-P(acepta) media del plan =
-    CALCULATE ( AVERAGE ( motor_plan[p_motor] ), motor_plan[resultado] IN { "shown", "banner" } )
-
-// Tabla: motor_plan · Formato: 0.0 %
-Plan coincide con la regla =
-    DIVIDE ( CALCULATE ( COUNTROWS ( motor_plan ), motor_plan[coincide_regla] = 1 ), CALCULATE ( COUNTROWS ( motor_plan ), NOT ISBLANK ( motor_plan[ramo] ) ) )
-
-// Debe ser 0.
-// Tabla: motor_invariantes · Formato: #,0
-Violaciones =
-    SUM ( motor_invariantes[violaciones] )
-
-// Tabla: motor_backtest · Formato: #,0
-Push máximo en 30 días =
-    VALUE ( LOOKUPVALUE ( motor_backtest[valor], motor_backtest[metrica], "max_push_30d" ) )
-
-
-// ===== 5 · Base del reto =====================================================
-
-// Tabla: base_seguros_mensual · Formato: #,0
-Pólizas emitidas =
-    SUM ( base_seguros_mensual[polizas_emitidas] )
-
-// Tabla: base_seguros_mensual · Formato: #,0
-Renovaciones =
-    SUM ( base_seguros_mensual[renovaciones] )
-
-// Tabla: base_seguros_mensual · Formato: "$"#,0
-Primas emitidas =
-    SUMX ( base_seguros_mensual, base_seguros_mensual[polizas_emitidas] * base_seguros_mensual[prima_promedio_cop] )
-
-// Primera prima de cada póliza por la comisión.
-// Tabla: base_seguros_mensual · Formato: "$"#,0
-Comisión de las primas emitidas =
-    SUMX ( base_seguros_mensual, base_seguros_mensual[polizas_emitidas] * base_seguros_mensual[prima_promedio_cop] * base_seguros_mensual[comision_pct] )
-
-// Tabla: base_campanas · Formato: #,0
-Elegibles campañas =
-    SUM ( base_campanas[elegibles] )
-
-// Tabla: base_campanas · Formato: #,0
-Impactados campañas =
-    SUM ( base_campanas[impactados] )
-
-// Tabla: base_campanas · Formato: #,0
-Interesados campañas =
-    SUM ( base_campanas[interesados] )
-
-// Tabla: base_campanas · Formato: #,0
-Ventas campañas =
-    SUM ( base_campanas[ventas] )
-
-// Ventas / impactados.
-// Tabla: base_campanas · Formato: 0.0 %
-Conversión de las campañas =
-    DIVIDE ( [Ventas campañas], [Impactados campañas] )
-
-// Tabla: base_pagos_externos · Formato: #,0
-Compras a otras aseguradoras =
-    COUNTROWS ( base_pagos_externos )
-
-// Lo que estos clientes ya pagan por fuera: el mercado que Lulo puede capturar.
-// Tabla: base_pagos_externos · Formato: "$"#,0
-Pagado a otras aseguradoras =
-    SUM ( base_pagos_externos[monto_cop] )
-
-
-// ===== 6 · Laboratorio =======================================================
-
-// El de la segmentación; si no hay uno solo, «señal».
-// Tabla: dim_lab_escenario
-Escenario del laboratorio =
-    IF ( HASONEVALUE ( dim_lab_escenario[escenario] ), VALUES ( dim_lab_escenario[escenario] ), "señal" )
-
-// Tabla: dim_lab_escenario
-Descripción del escenario del laboratorio =
-    VAR e = [Escenario del laboratorio]
+// Tabla: segmento · Formato: 0.0 %
+[Aceptación por segmento] =
+    VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( LOOKUPVALUE ( dim_lab_escenario[descripcion], dim_lab_escenario[escenario], e ), REMOVEFILTERS ( dim_lab_escenario ) )
+        DIVIDE (
+            CALCULATE ( SUM ( segmento[aceptadas] ), segmento[escenario] = e ),
+            CALCULATE ( SUM ( segmento[vistas] ), segmento[escenario] = e )
+        )
 
-// Comisión esperada por oferta con la verdad simulada.
-// Tabla: lab_series · Formato: "$"#,0
-Comisión por oferta (lab) =
-    VAR e = [Escenario del laboratorio]
+// Tabla: origen · Formato: #,0
+[Pólizas] =
+    VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( AVERAGE ( lab_series[comision_por_oferta] ), dim_lab_escenario[escenario] = e )
+        CALCULATE ( SUM ( origen[ventas] ), origen[escenario] = e )
 
-// Tabla: lab_series · Formato: 0.0 %
-Aceptación (lab) =
-    VAR e = [Escenario del laboratorio]
+
+// ===== 5 · Control ===========================================================
+
+// Debe ser 0: backtest de todas las decisiones del motor sobre la base.
+// Tabla: reglas · Formato: #,0
+[violaciones de las reglas] =
+    SUM ( reglas[violaciones] ) + 0
+
+// Tabla: control · Formato: #,0
+[push máximo a un cliente en 30 días] =
+    LOOKUPVALUE ( control[valor], control[indicador], "push_max_30d" )
+
+// Ley 1581: sin autorización el motor no lee sus movimientos ni les ofrece nada.
+// Tabla: control · Formato: #,0
+[clientes sin autorización: nunca contactados] =
+    LOOKUPVALUE ( control[valor], control[indicador], "sin_autorizacion" )
+
+// Laboratorio: últimas 10 rondas, con verdad simulada.
+// Tabla: laboratorio_resumen · Formato: +0.0 %;-0.0 %;0.0 %
+[más comisión por oferta que la regla (laboratorio)] =
+    VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( AVERAGE ( lab_series[aceptacion] ), dim_lab_escenario[escenario] = e )
+        CALCULATE ( SUM ( laboratorio_resumen[motor_frente_a_regla] ), laboratorio_resumen[escenario] = e )
 
-// Distancia media entre la probabilidad estimada y la verdadera.
-// Tabla: lab_calibracion · Formato: 0.0000
-Error de calibración (lab) =
-    VAR e = [Escenario del laboratorio]
+// Tabla: laboratorio · Formato: "$"#,0
+[Comisión por oferta] =
+    VAR e = [Escenario elegido]
     RETURN
-        CALCULATE ( AVERAGE ( lab_calibracion[error_medio] ), dim_lab_escenario[escenario] = e )
-
-// Lo que el motor cree de cada efecto después de la última ronda (escala probit).
-// Tabla: lab_pesos · Formato: 0.000
-Peso aprendido al final (lab) =
-    VAR e = [Escenario del laboratorio]
-    VAR r = CALCULATE ( MAX ( lab_pesos[ronda] ), REMOVEFILTERS ( lab_pesos ) )
-    RETURN
-        CALCULATE ( AVERAGE ( lab_pesos[estimado] ), dim_lab_escenario[escenario] = e, lab_pesos[ronda] = r )
-
-// El efecto sembrado en la verdad simulada.
-// Tabla: lab_pesos · Formato: 0.000
-Peso verdadero (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_pesos[verdad] ), dim_lab_escenario[escenario] = e )
-
-// Comisión por oferta de las últimas 10 rondas.
-// Tabla: lab_resumen · Formato: +0.0 %;-0.0 %;0.0 %
-Motor frente a la regla (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_resumen[motor_frente_a_regla] ), dim_lab_escenario[escenario] = e )
-
-// 0 % = azar, 100 % = oráculo.
-// Tabla: lab_resumen · Formato: 0.0 %
-Camino al techo del motor (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_resumen[motor_del_techo] ), dim_lab_escenario[escenario] = e )
-
-// Tabla: lab_resumen · Formato: 0.0 %
-Camino al techo de la regla (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_resumen[regla_del_techo] ), dim_lab_escenario[escenario] = e )
-
-// Dispersión del apetito entre clientes estimada con Bayes empírico.
-// Tabla: lab_apetito · Formato: 0.00
-τ estimado por el motor (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_apetito[tau] ), dim_lab_escenario[escenario] = e, lab_apetito[politica] = "motor" )
-
-// Tabla: lab_apetito · Formato: 0.00
-τ verdadero (lab) =
-    VAR e = [Escenario del laboratorio]
-    RETURN
-        CALCULATE ( AVERAGE ( lab_apetito[verdad] ), dim_lab_escenario[escenario] = e )
-
-
-// ===== 7 · Casos =============================================================
-
-// Tabla: casos · Formato: #,0
-Casos =
-    COUNTROWS ( casos )
-
-// Tabla: casos · Formato: #,0
-Éxitos =
-    CALCULATE ( COUNTROWS ( casos ), casos[resultado] = "éxito" )
-
-// Tabla: casos · Formato: #,0
-Fracasos =
-    CALCULATE ( COUNTROWS ( casos ), casos[resultado] = "fracaso" )
-
-
-// ===== 8 · Avisos ============================================================
-
-// «Prototipo académico · datos simulados»: siempre a la vista.
-// Tabla: meta
-Etiqueta =
-    LOOKUPVALUE ( meta[valor], meta[clave], "etiqueta" )
-
-// Tabla: meta
-Aviso del piloto =
-    LOOKUPVALUE ( meta[valor], meta[clave], "aviso_piloto" )
-
-// Tabla: meta
-Aviso de la base =
-    LOOKUPVALUE ( meta[valor], meta[clave], "aviso_base" )
-
-// Tabla: meta
-Versiones =
-    "Reglas " & LOOKUPVALUE ( meta[valor], meta[clave], "reglas" ) & " · " & LOOKUPVALUE ( meta[valor], meta[clave], "motor" ) & " · base al " & LOOKUPVALUE ( meta[valor], meta[clave], "base_corte" )
+        CALCULATE ( AVERAGE ( laboratorio[comision_por_oferta] ), laboratorio[escenario] = e )
