@@ -66,6 +66,14 @@ def index(request: Request, cliente: str = DEFAULT_ID, fecha: str | None = None)
     return templates.TemplateResponse(request, "app.html", {"bootstrap": data, "version": VERSION})
 
 
+@app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
+def dashboard():
+    """Dashboard de impacto para el cliente: el mismo de Power BI (powerbi/Lulo_Impacto.pbip), con las mismas cifras.
+    La página la genera scripts/exportar_powerbi.py; aquí solo se sirve."""
+    return HTMLResponse((Path(__file__).parent / "templates" / "dashboard.html").read_text(encoding="utf-8"),
+                        headers={"X-Robots-Tag": "noindex, nofollow"})
+
+
 @app.get("/v2", response_class=HTMLResponse, include_in_schema=False)
 def index_v2(request: Request, cliente: str = DEFAULT_ID):
     """La versión que vio el cliente (2026-10-07), intacta."""

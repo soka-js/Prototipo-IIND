@@ -33,7 +33,8 @@ La rama B queda como referencia. Si Vercel pide iniciar sesión para verla, la p
 - **Impacto:** con ofertas compran +21,0 pp más clientes que sin ellas en el escenario optimista (intervalo de 95 %: +13,7 a +28,2) y +15,0 pp en el conservador (+7,9 a +22,1). Son 92 y 66 clientes nuevos con seguro, y $6,9 M y $4,9 M de comisión adicional a 12 meses.
 - **Límite de la muestra:** el grupo sin ofertas tiene 45 clientes y 2 compran, así que la lectura es frágil; por eso se muestran el intervalo y el rango entre los dos escenarios.
 - **Bajo control:** 0 violaciones de las reglas en el backtest y, en el laboratorio, +10,2 % de comisión por oferta frente a la regla (−1,0 % si la regla ya era la correcta).
-- **Cómo abrirlo:** `powerbi/Lulo_Impacto.pbip` en Power BI Desktop (los datos van dentro del modelo), o `powerbi/vista_previa.html` en el navegador (mismas cifras). La guía, con cómo defender cada cifra y los supuestos de la simulación, está en [`powerbi/GUIA.md`](powerbi/GUIA.md).
+- **Para el cliente, en un enlace:** https://prototipo-iind.vercel.app/dashboard. Es el mismo dashboard, con las mismas 3 páginas y cifras, como una página del prototipo: se abre en el navegador o el celular sin Power BI. El enlace puede abrir una página y un escenario: `/dashboard#pagina=valor&escenario=conservador`.
+- **En Power BI:** `powerbi/Lulo_Impacto.pbip` en Power BI Desktop (los datos van dentro del modelo), o `powerbi/vista_previa.html` en el navegador para comparar cifras. La guía, con cómo defender cada cifra y los supuestos de la simulación, está en [`powerbi/GUIA.md`](powerbi/GUIA.md).
 - **Casos reales:** 20 casos de empresas que usaron métodos como estos, con su fuente, en [`docs/CASOS.md`](docs/CASOS.md).
 
 ## Versión 3 (en `main` desde el 2026-10-14)
@@ -107,6 +108,7 @@ scripts/validar_datos.py     validación y manifiesto de otra base (datos reales
 scripts/exportar_powerbi.py  datos de detalle (base, motor, piloto simulado, laboratorio y casos) y el dashboard
 scripts/powerbi_modelo.py    tablas del dashboard, modelo con los datos adentro, medidas DAX, 3 páginas y tema
 scripts/powerbi_vista.py     vista previa web del dashboard (las mismas cifras que las medidas)
+scripts/powerbi_web.py       el dashboard en la web para el cliente (/dashboard → lulo_app/templates/dashboard.html)
 powerbi/                     Lulo_Impacto.pbip, datos/ (detalle), tablas/ (dashboard), medidas.dax,
                              tema-lulo-impacto.json, vista_previa.html, casos.csv y GUIA.md
 docs/CASOS.md                20 casos reales de éxito y fracaso con métodos como los del prototipo

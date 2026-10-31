@@ -195,3 +195,25 @@ def test_client_version_v2_still_loads(base, browser):
     page.goto(base + "v2", wait_until="networkidle")
     assert page.locator("#welcome").count() == 0 and not errors
     ctx.close()
+
+
+def test_dashboard_link_for_the_client(base, browser):
+    """/dashboard: el dashboard de impacto en un enlace, como el prototipo, en computador y en celular."""
+    for vp in ({"width": 1440, "height": 900}, {"width": 390, "height": 844}):
+        ctx, page, errors = _page(browser, viewport=vp)
+        page.goto(base + "dashboard", wait_until="networkidle")
+        assert "Prototipo académico" in page.inner_text("header")
+        assert page.inner_text(".k.hero .v") == "+21,0 pp"
+        assert page.locator("#c-curva svg path").count() == 2                     # con y sin ofertas
+        page.click(".seg button >> nth=1")                                        # conservador
+        assert page.inner_text(".k.hero .v") == "+15,0 pp"
+        assert "escenario=conservador" in page.evaluate("location.hash")
+        page.click('.pest [data-p="valor"]')
+        assert page.locator("#c-ramo svg").count() == 1 and page.inner_text(".k .v >> nth=0") == "70"
+        page.click('.pest [data-p="control"]')
+        assert page.locator("tbody tr").count() == 8 and page.inner_text(".k.hero .v") == "0"
+        assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        page.goto(base + "dashboard#pagina=valor&escenario=optimista", wait_until="networkidle")   # el enlace abre donde dice
+        assert page.inner_text(".k .v >> nth=0") == "99"
+        assert not errors
+        ctx.close()

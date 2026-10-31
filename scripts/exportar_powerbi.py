@@ -1,6 +1,7 @@
 """Dashboard de impacto en Power BI y sus datos: la base, lo que decide el motor, un piloto simulado y el laboratorio.
 
-    python scripts/exportar_powerbi.py            # escribe powerbi/: datos/, tablas/, Lulo_Impacto.pbip y la vista previa
+    python scripts/exportar_powerbi.py            # escribe powerbi/ (datos/, tablas/, Lulo_Impacto.pbip, vista previa)
+                                                  # y la página /dashboard (lulo_app/templates/dashboard.html)
     python scripts/exportar_powerbi.py --check    # falla si algo de powerbi/ no coincide con lo que se genera hoy
 
 Las tablas de detalle (powerbi/datos) son la fuente: de ellas salen las 10 tablas chicas del dashboard
@@ -47,6 +48,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import laboratorio as lab  # noqa: E402
 import powerbi_modelo  # noqa: E402
 import powerbi_vista  # noqa: E402
+import powerbi_web  # noqa: E402
 from lulo_app.core import backtest, experiment, rules  # noqa: E402
 from lulo_app.core.catalog import DATASET, campaign_ramo, product  # noqa: E402
 from lulo_app.core.engine import OUTCOME_LABEL, Context, OfferLog, evaluate  # noqa: E402
@@ -79,6 +81,8 @@ ESCENARIOS = {
 TRAMOS_P = ((0.06, "menos de 6 %"), (0.08, "6 a 8 %"), (0.10, "8 a 10 %"), (0.13, "10 a 13 %"), (9.0, "13 % o más"))
 # Lo que se escribe a mano en powerbi/: la guía y los casos reales con su fuente.
 MANUALES = {"GUIA.md", "casos.csv"}
+# El mismo dashboard en la web, para el cliente: prototipo-iind.vercel.app/dashboard (ruta /dashboard de lulo_app/main.py).
+WEB = "../lulo_app/templates/dashboard.html"
 ORDEN_POLITICA = ("motor", "regla", "oraculo", "azar", "motor_sin_explorar", "motor_sin_dato")
 LAB_ESCENARIOS = {   # scripts/laboratorio.py
     "señal": "La verdad tiene efectos que la regla no ve (rasgos, momento, señal media más débil).",
@@ -548,11 +552,11 @@ def build(verbose: bool = True) -> dict[str, str]:
 
 def archivos(verbose: bool = True) -> dict[str, str]:
     """Todo lo generado, por ruta relativa a powerbi/: las tablas de detalle (datos/), las 10 tablas chicas del
-    dashboard (tablas/), el proyecto de Power BI con esas tablas adentro y la vista previa web."""
+    dashboard (tablas/), el proyecto de Power BI con esas tablas adentro, la vista previa y la página web (WEB)."""
     tablas = build(verbose)
     chicas, notas = powerbi_modelo.agregar(tablas)
     return ({f"datos/{n}": t for n, t in tablas.items()} | powerbi_modelo.proyecto(chicas, notas)
-            | {"vista_previa.html": powerbi_vista.html(chicas, notas)})
+            | {"vista_previa.html": powerbi_vista.html(chicas, notas), WEB: powerbi_web.html(chicas, notas)})
 
 
 def en_disco() -> set[str]:

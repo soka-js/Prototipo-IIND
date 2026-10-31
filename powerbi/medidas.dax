@@ -94,10 +94,10 @@
 [Diferencia IC 95 % alto] =
     [más clientes compran con las ofertas] + 1.96 * [Error estándar de la diferencia] * 100
 
-// Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar.
+// Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar. USERCULTURE: el mismo separador decimal que el resto de las cifras del equipo donde se abre.
 // Tabla: indicadores
 [intervalo de 95 % de la diferencia] =
-    FORMAT ( [Diferencia IC 95 % bajo], "+0.0;-0.0" ) & " a " & FORMAT ( [Diferencia IC 95 % alto], "+0.0;-0.0" ) & " pp"
+    FORMAT ( [Diferencia IC 95 % bajo], "+0.0;-0.0", USERCULTURE () ) & " a " & FORMAT ( [Diferencia IC 95 % alto], "+0.0;-0.0", USERCULTURE () ) & " pp"
 
 // Lectura del intervalo de 95 %.
 // Tabla: indicadores
@@ -112,7 +112,7 @@
 
 // Ventas incrementales: la diferencia frente al grupo sin ofertas por los clientes con ofertas.
 // Tabla: indicadores · Formato: #,0
-[clientes nuevos con seguro gracias a las ofertas] =
+[clientes con seguro gracias a las ofertas] =
     ( [Conversión con ofertas] - [Conversión sin ofertas] ) * [Clientes con ofertas]
 
 // Comisión a 12 meses que se gana de más por cada cliente que recibe ofertas.
@@ -199,12 +199,12 @@
 
 // Ley 1581: sin autorización el motor no lee sus movimientos ni les ofrece nada.
 // Tabla: control · Formato: #,0
-[clientes sin autorización: nunca contactados] =
+[sin autorización: nunca contactados] =
     LOOKUPVALUE ( control[valor], control[indicador], "sin_autorizacion" )
 
 // Laboratorio: últimas 10 rondas, con verdad simulada.
 // Tabla: laboratorio_resumen · Formato: +0.0 %;-0.0 %;0.0 %
-[más comisión por oferta que la regla (laboratorio)] =
+[laboratorio: más comisión que la regla] =
     VAR e = [Escenario elegido]
     RETURN
         CALCULATE ( SUM ( laboratorio_resumen[motor_frente_a_regla] ), laboratorio_resumen[escenario] = e )
