@@ -231,7 +231,7 @@ def html(chicas: dict[str, str], notas: dict) -> str:
         return (tarjeta(x[0], 138, signo(e["dif"]) + " pp", "más clientes compran con las ofertas", "lima")
                 + tarjeta(x[1], 138, f"{signo(e['ic'][0])} a {signo(e['ic'][1])} pp", "intervalo de 95 % de la diferencia",
                           "chica")
-                + tarjeta(x[2], 138, num(e["nuevos"]), "clientes nuevos con seguro gracias a las ofertas")
+                + tarjeta(x[2], 138, num(e["nuevos"]), "clientes con seguro gracias a las ofertas")
                 + tarjeta(x[3], 138, millones(e["adicional"]), "comisión adicional a 12 meses")
                 + caja(24, 282, 800, 372, lineas(800, 340, e["curva"], [C["lima"], C["gris"]],
                                                  lambda v, fino=False: num(100 * v, 1) + " %", fecha,
@@ -257,8 +257,8 @@ def html(chicas: dict[str, str], notas: dict) -> str:
         lab = "—" if e["lab"] is None else signo(100 * e["lab"]) + " %"
         return (tarjeta(x[0], 138, num(e["violaciones"]), "violaciones de las reglas", "lima")
                 + tarjeta(x[1], 138, num(e["push"]), "push máximo a un cliente en 30 días")
-                + tarjeta(x[2], 138, num(e["sin_aut"]), "clientes sin autorización: nunca contactados")
-                + tarjeta(x[3], 138, lab, "más comisión por oferta que la regla (laboratorio)")
+                + tarjeta(x[2], 138, num(e["sin_aut"]), "sin autorización: nunca contactados")
+                + tarjeta(x[3], 138, lab, "laboratorio: más comisión que la regla")
                 + caja(24, 282, 520, 372, f'<div class="t">{_h.escape(tx["titulo_reglas"])}</div>{tabla(e["reglas"])}')
                 + caja(560, 282, 696, 372, lineas(696, 340, e["lab_series"], SERIES, lambda v, fino=False: pesos(v), str,
                                                   tx["titulo_lab"])))

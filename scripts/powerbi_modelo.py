@@ -236,16 +236,18 @@ MEDIDAS = [
      "[más clientes compran con las ofertas] + 1.96 * [Error estándar de la diferencia] * 100",
      '+0.0 "pp";-0.0 "pp";0.0 "pp"', "3 · Impacto", None),
     ("indicadores", "intervalo de 95 % de la diferencia",
-     'FORMAT ( [Diferencia IC 95 % bajo], "+0.0;-0.0" ) & " a " & FORMAT ( [Diferencia IC 95 % alto], "+0.0;-0.0" ) & " pp"',
+     'FORMAT ( [Diferencia IC 95 % bajo], "+0.0;-0.0", USERCULTURE () ) & " a " & '
+     'FORMAT ( [Diferencia IC 95 % alto], "+0.0;-0.0", USERCULTURE () ) & " pp"',
      None, "3 · Impacto",
-     "Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar."),
+     "Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar. "
+     "USERCULTURE: el mismo separador decimal que el resto de las cifras del equipo donde se abre."),
     ("indicadores", "¿Las ofertas venden?",
      "SWITCH (\n    TRUE (),\n    [Clientes sin ofertas] = 0, \"Sin grupo sin ofertas no se puede saber\",\n"
      "    [Diferencia IC 95 % bajo] > 0, \"Sí: con ofertas compran más clientes\",\n"
      "    [Diferencia IC 95 % alto] < 0, \"No: con ofertas compran menos\",\n"
      "    \"Todavía no se sabe: cabe en el azar\"\n)",
      None, "3 · Impacto", "Lectura del intervalo de 95 %."),
-    ("indicadores", "clientes nuevos con seguro gracias a las ofertas",
+    ("indicadores", "clientes con seguro gracias a las ofertas",
      "( [Conversión con ofertas] - [Conversión sin ofertas] ) * [Clientes con ofertas]", "#,0", "3 · Impacto",
      "Ventas incrementales: la diferencia frente al grupo sin ofertas por los clientes con ofertas."),
     ("indicadores", "comisión por cliente contactado",
@@ -279,10 +281,10 @@ MEDIDAS = [
      "Debe ser 0: backtest de todas las decisiones del motor sobre la base."),
     ("control", "push máximo a un cliente en 30 días",
      'LOOKUPVALUE ( control[valor], control[indicador], "push_max_30d" )', "#,0", "5 · Control", None),
-    ("control", "clientes sin autorización: nunca contactados",
+    ("control", "sin autorización: nunca contactados",
      'LOOKUPVALUE ( control[valor], control[indicador], "sin_autorizacion" )', "#,0", "5 · Control",
      "Ley 1581: sin autorización el motor no lee sus movimientos ni les ofrece nada."),
-    ("laboratorio_resumen", "más comisión por oferta que la regla (laboratorio)",
+    ("laboratorio_resumen", "laboratorio: más comisión que la regla",
      ESC + "CALCULATE ( SUM ( laboratorio_resumen[motor_frente_a_regla] ), laboratorio_resumen[escenario] = e )",
      "+0.0 %;-0.0 %;0.0 %", "5 · Control", "Laboratorio: últimas 10 rondas, con verdad simulada."),
     ("laboratorio", "Comisión por oferta",
@@ -446,7 +448,7 @@ def paginas(tx: dict[str, str]) -> list[tuple]:
             sel,
             ("tarjeta_lima", fila[0], tarjetas_y, 296, 128, None, ["indicadores.[más clientes compran con las ofertas]"]),
             ("tarjeta_chica", fila[1], tarjetas_y, 296, 128, None, ["indicadores.[intervalo de 95 % de la diferencia]"]),
-            ("tarjeta", fila[2], tarjetas_y, 296, 128, None, ["indicadores.[clientes nuevos con seguro gracias a las ofertas]"]),
+            ("tarjeta", fila[2], tarjetas_y, 296, 128, None, ["indicadores.[clientes con seguro gracias a las ofertas]"]),
             ("tarjeta", fila[3], tarjetas_y, 296, 128, None, ["indicadores.[comisión adicional a 12 meses]"]),
             ("lineas", 24, cuerpo_y, 800, cuerpo_h, "Clientes que ya compraron un seguro, semana a semana",
              ("curva[semana]", ["curva.[Clientes que ya compraron]"], "curva[grupo]")),
@@ -476,9 +478,9 @@ def paginas(tx: dict[str, str]) -> list[tuple]:
             sel,
             ("tarjeta_lima", fila[0], tarjetas_y, 296, 128, None, ["reglas.[violaciones de las reglas]"]),
             ("tarjeta", fila[1], tarjetas_y, 296, 128, None, ["control.[push máximo a un cliente en 30 días]"]),
-            ("tarjeta", fila[2], tarjetas_y, 296, 128, None, ["control.[clientes sin autorización: nunca contactados]"]),
+            ("tarjeta", fila[2], tarjetas_y, 296, 128, None, ["control.[sin autorización: nunca contactados]"]),
             ("tarjeta", fila[3], tarjetas_y, 296, 128, None,
-             ["laboratorio_resumen.[más comisión por oferta que la regla (laboratorio)]"]),
+             ["laboratorio_resumen.[laboratorio: más comisión que la regla]"]),
             ("tabla", 24, cuerpo_y, 520, cuerpo_h, tx["titulo_reglas"], ["reglas[regla]", "reglas[violaciones]"]),
             ("lineas", 560, cuerpo_y, 696, cuerpo_h, tx["titulo_lab"],
              ("laboratorio[ronda]", ["laboratorio.[Comisión por oferta]"], "laboratorio[politica]")),
@@ -550,6 +552,11 @@ def _visual(pag: int, i: int, v: tuple) -> dict:
               "prototypeQuery": {"Version": 2, "From": [{"Name": a, "Entity": t, "Type": 0} for t, a in alias.items()],
                                  "Select": [s for s, _ in sels]},
               "drillFilterOtherVisuals": True}
+        if tipo in ("barras", "columnas"):           # de mayor a menor, como en la vista previa
+            medida = sels[1][0]["Measure"]
+            sv["prototypeQuery"]["OrderBy"] = [{"Direction": 2, "Expression": {"Measure": medida}}]
+        if tipo == "segmentacion":                   # el mismo escenario en las 3 páginas
+            sv["syncGroup"] = {"groupName": "escenario", "fieldChanges": True, "filterChanges": True}
         o: dict = {}
         if tipo == "segmentacion":
             o = {"data": [{"properties": {"mode": _lit("Basic")}}],
@@ -564,15 +571,18 @@ def _visual(pag: int, i: int, v: tuple) -> dict:
                 "tarjeta_chica": (COLOR["tarjeta"], COLOR["lima"], COLOR["texto"], 22),
                 "tarjeta_texto": (COLOR["tarjeta"], COLOR["texto"], COLOR["texto_2"], 16),
                 "tarjeta_blanca": (COLOR["tarjeta"], COLOR["texto"], COLOR["texto_2"], 28)}[tipo]
-            o = {"labels": [{"properties": {"color": _color(cifra), "fontSize": _lit(tam)}}],
-                 "categoryLabels": [{"properties": {"show": _lit(True), "color": _color(etiqueta), "fontSize": _lit(12)}}]}
+            o = {"labels": [{"properties": {"color": _color(cifra), "fontSize": _lit(tam),
+                                            "labelDisplayUnits": _lit(1)}}],          # 1 = sin unidades (no «16K»)
+                 "categoryLabels": [{"properties": {"show": _lit(True), "color": _color(etiqueta), "fontSize": _lit(11)}}]}
             if tipo == "tarjeta_texto":
                 o["wordWrap"] = [{"properties": {"show": _lit(True)}}]
             vc["background"] = [{"properties": {"show": _lit(True), "color": _color(fondo), "transparency": _lit(0)}}]
         elif tipo in ("lineas", "barras", "columnas", "dona"):
-            o = {"legend": [{"properties": {"show": _lit(tipo in ("lineas", "dona")), "position": _lit("Top")}}],
+            o = {"legend": [{"properties": {"show": _lit(tipo in ("lineas", "dona")), "position": _lit("Top"),
+                                            "showTitle": _lit(False)}}],
                  "labels": [{"properties": {"show": _lit(tipo != "lineas"), "color": _color(COLOR["texto"]),
-                                            "fontSize": _lit(10)}}]}
+                                            "fontSize": _lit(10),
+                                            **({"labelStyle": _lit("Data, percent of total")} if tipo == "dona" else {})}}]}
             if tipo == "lineas":
                 o["lineStyles"] = [{"properties": {"strokeWidth": _lit(3)}}]
                 o["valueAxis"] = [{"properties": {"show": _lit(True), "gridlineShow": _lit(True)}}]

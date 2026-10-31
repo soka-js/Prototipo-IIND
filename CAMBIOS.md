@@ -17,6 +17,26 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-31 · Claude con SOKA · rama feat/claude-dashboard-impacto · commit de esta entrada · E13: ajustes tras abrirlo en Power BI Desktop
+- Qué cambió: se abrió `Lulo_Impacto.pbip` en Power BI Desktop (equipo de SOKA). Cargó las 3 páginas y las cifras coinciden con la vista previa, pero había cinco detalles que se corrigen en el generador:
+  1. El intervalo usaba el separador decimal del modelo (es-CO, «+13,7») y las tarjetas el del equipo («+21.0»). Ahora `FORMAT(…, USERCULTURE())`: el mismo en las dos, se abra donde se abra. Se probó la función en Power BI Desktop antes de cambiarla.
+  2. «$16K» en vez de $15.833: las tarjetas ahora muestran la cifra sin unidades automáticas (`labelDisplayUnits` = 1).
+  3. Tres etiquetas cortadas pasan a «clientes con seguro gracias a las ofertas», «sin autorización: nunca contactados» y «laboratorio: más comisión que la regla», en 11 pt.
+  4. El selector de escenario no se sincronizaba entre páginas: ahora tiene `syncGroup` y el escenario elegido se mantiene en las 3.
+  5. Las barras y columnas iban en el orden del catálogo: ahora de mayor a menor, como en la vista previa. Las leyendas ya no muestran el título de la columna («grupo», «origen», «politica»).
+- Por qué: SOKA pidió abrir el dashboard en su máquina antes de compartirlo con el cliente.
+- Archivos: `scripts/powerbi_modelo.py`, `scripts/powerbi_vista.py` (las tres etiquetas), `powerbi/` (regenerado), `powerbi/GUIA.md`, `CAMBIOS.md`.
+- Cómo se verificó: en Power BI Desktop, las 3 páginas en los dos escenarios después de «Actualizar» (la primera actualización dio un error pasajero de «referencia cíclica» en `origen` mientras el modelo se abría; la segunda cargó todo). Salida real:
+    ```
+    $ python -m pytest
+    122 passed, 1 warning in 122.63s (0:02:02)
+    $ python scripts/exportar_powerbi.py --check
+    powerbi/ coincide (40 archivos)
+    ```
+- Consultado con SOKA: sí, son correcciones del mismo pedido del 2026-10-30. No cambia ninguna cifra.
+- Cifras nuevas y su origen: ninguna.
+- Modelo de Claude usado: claude-opus-5-5
+
 ## 2026-10-30 · Claude con SOKA · rama feat/claude-dashboard-impacto · commit de esta entrada · E13: dashboard de impacto de 3 páginas
 - Qué cambió: el dashboard de Power BI de 8 páginas (E12) se reemplaza por el **dashboard de impacto de 3 páginas** que armó el equipo (`Lulo_Impacto_entrega.zip`): Impacto · Qué y a quién · Bajo control, con selector de escenario optimista / conservador.
   - **Igual que el del equipo:** las 3 páginas, sus visuales, colores y textos, y los datos dentro del modelo (no pide origen ni credenciales).
@@ -30,7 +50,7 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
     - La proyección con selector de 10.000 a 1.000.000 de clientes (100.000 por defecto): depende de un número supuesto. Queda «por cada 1.000 clientes contactados» ($15,8 M y $11,2 M), que es la comisión por cliente × 1.000.
     - La tabla `momento` (no la usaba ningún visual) y algunas filas de `control` que tampoco se usaban.
     - `datos_dashboard.xlsx`: las mismas tablas están en `powerbi/tablas` como CSV, que abren en Excel y sí se verifican byte a byte con `--check`.
-  - **Correcciones de texto:** la nota decía «Ley 2300 (4 en 30 días)», pero el 4 es el tope de contactos de la base (`max_contactos_mes`), no de la ley; ahora dice «Tope de contactos de la base: 4 en 30 días por cliente; el push cuenta como contacto (Ley 2300)». La pestaña «Qué, a quién y cuándo» pasa a «Qué y a quién», porque ningún visual muestra el cuándo. La tarjeta «84 · nunca se contacta a quien no autorizó» pasa a «clientes sin autorización: nunca contactados».
+  - **Correcciones de texto:** la nota decía «Ley 2300 (4 en 30 días)», pero el 4 es el tope de contactos de la base (`max_contactos_mes`), no de la ley; ahora dice «Tope de contactos de la base: 4 en 30 días por cliente; el push cuenta como contacto (Ley 2300)». La pestaña «Qué, a quién y cuándo» pasa a «Qué y a quién», porque ningún visual muestra el cuándo. La tarjeta «84 · nunca se contacta a quien no autorizó» pasa a «sin autorización: nunca contactados».
   - **Una sola vista previa** (`powerbi/vista_previa.html`) con el selector de escenario, en lugar de dos archivos. Se ajusta al ancho de la pantalla, también en el celular.
   - Las medidas DAX se reescribieron sin las variables repetidas que no se usaban: cada una lee los seis conteos del piloto y dice qué es.
 - Por qué: pedido de SOKA el 2026-10-30: «el que quedó en GitHub está muy complejo… solo cambia el dashboard; si ves que hay cosas que el otro tenga que estén mejor, déjalas así, pero la idea es encontrar un punto medio de nivel que sea comprensible para nosotros justificarlo».

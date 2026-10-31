@@ -14,7 +14,7 @@ Todas las páginas tienen arriba un selector con dos escenarios. El rango entre 
 
 1. En Power BI Desktop: Archivo → Abrir → `powerbi/Lulo_Impacto.pbip`.
    - Si no reconoce el formato: Archivo → Opciones → Características en versión preliminar → activar «Guardar como proyecto de Power BI (.pbip)» y reiniciar.
-2. Inicio → **Actualizar**.
+2. Inicio → **Actualizar**. Si la primera vez sale un error de «referencia cíclica», es porque el modelo todavía se estaba abriendo: cerrar el aviso y Actualizar otra vez.
 
 Los datos vienen **dentro del modelo**: no hay que configurar ningún origen ni dar credenciales, y funciona sin internet.
 
@@ -49,9 +49,9 @@ Todas llevan arriba el título, la etiqueta del prototipo y el selector `escenar
 
 | Página | Visuales (campos) |
 |---|---|
-| **Impacto** | Tarjetas: [más clientes compran con las ofertas], [intervalo de 95 % de la diferencia], [clientes nuevos con seguro gracias a las ofertas], [comisión adicional a 12 meses]. Líneas: eje `curva[semana]`, valor [Clientes que ya compraron], leyenda `curva[grupo]`. Tarjetas: [¿Las ofertas venden?], [comisión por cliente contactado], [por cada 1.000 clientes contactados (proyección lineal)]. |
+| **Impacto** | Tarjetas: [más clientes compran con las ofertas], [intervalo de 95 % de la diferencia], [clientes con seguro gracias a las ofertas], [comisión adicional a 12 meses]. Líneas: eje `curva[semana]`, valor [Clientes que ya compraron], leyenda `curva[grupo]`. Tarjetas: [¿Las ofertas venden?], [comisión por cliente contactado], [por cada 1.000 clientes contactados (proyección lineal)]. |
 | **Qué y a quién** | Tarjetas: [pólizas vendidas por las ofertas], [de las ventas vino de una oferta], [aceptan la oferta que ven], [comisión por cliente contactado]. Barras: `ramo[seguro]` × [Comisión de las ofertas]. Columnas: `segmento[segmento]` × [Aceptación por segmento]. Anillo: `origen[origen]` × [Pólizas]. |
-| **Bajo control** | Tarjetas: [violaciones de las reglas], [push máximo a un cliente en 30 días], [clientes sin autorización: nunca contactados], [más comisión por oferta que la regla (laboratorio)]. Tabla: `reglas[regla]`, `reglas[violaciones]`. Líneas: eje `laboratorio[ronda]`, valor [Comisión por oferta], leyenda `laboratorio[politica]`. |
+| **Bajo control** | Tarjetas: [violaciones de las reglas], [push máximo a un cliente en 30 días], [sin autorización: nunca contactados], [laboratorio: más comisión que la regla]. Tabla: `reglas[regla]`, `reglas[violaciones]`. Líneas: eje `laboratorio[ronda]`, valor [Comisión por oferta], leyenda `laboratorio[politica]`. |
 
 **Colores:** los de la app. Lima `#E8FF00` para el motor y lo que se quiere mirar; gris azulado `#647B9A` para la comparación (sin ofertas, la regla). Fondo `#0B1430`, tarjetas `#131E3D`.
 

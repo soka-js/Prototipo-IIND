@@ -398,10 +398,10 @@
           },
           {
             "name": "intervalo de 95 % de la diferencia",
-            "expression": "FORMAT ( [Diferencia IC 95 % bajo], \"+0.0;-0.0\" ) & \" a \" & FORMAT ( [Diferencia IC 95 % alto], \"+0.0;-0.0\" ) & \" pp\"",
+            "expression": "FORMAT ( [Diferencia IC 95 % bajo], \"+0.0;-0.0\", USERCULTURE () ) & \" a \" & FORMAT ( [Diferencia IC 95 % alto], \"+0.0;-0.0\", USERCULTURE () ) & \" pp\"",
             "lineageTag": "41f722ab-c162-58b6-9004-d436ced026c3",
             "displayFolder": "3 · Impacto",
-            "description": "Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar."
+            "description": "Con 95 % de confianza la diferencia real está en este rango. Si no toca el cero, no es azar. USERCULTURE: el mismo separador decimal que el resto de las cifras del equipo donde se abre."
           },
           {
             "name": "¿Las ofertas venden?",
@@ -419,9 +419,9 @@
             "description": "Lectura del intervalo de 95 %."
           },
           {
-            "name": "clientes nuevos con seguro gracias a las ofertas",
+            "name": "clientes con seguro gracias a las ofertas",
             "expression": "( [Conversión con ofertas] - [Conversión sin ofertas] ) * [Clientes con ofertas]",
-            "lineageTag": "8f1443a3-8168-5c82-8035-3c6f0a729fdb",
+            "lineageTag": "76204763-2614-54cf-adae-02f33279bd2a",
             "displayFolder": "3 · Impacto",
             "formatString": "#,0",
             "description": "Ventas incrementales: la diferencia frente al grupo sin ofertas por los clientes con ofertas."
@@ -1090,13 +1090,13 @@
         ],
         "measures": [
           {
-            "name": "más comisión por oferta que la regla (laboratorio)",
+            "name": "laboratorio: más comisión que la regla",
             "expression": [
               "VAR e = [Escenario elegido]",
               "RETURN",
               "    CALCULATE ( SUM ( laboratorio_resumen[motor_frente_a_regla] ), laboratorio_resumen[escenario] = e )"
             ],
-            "lineageTag": "8170a7c8-80c3-570a-917a-42538789c4a3",
+            "lineageTag": "848bb932-3611-5b8b-9076-0a8665d10d8b",
             "displayFolder": "5 · Control",
             "formatString": "+0.0 %;-0.0 %;0.0 %",
             "description": "Laboratorio: últimas 10 rondas, con verdad simulada."
@@ -1217,9 +1217,9 @@
             "formatString": "#,0"
           },
           {
-            "name": "clientes sin autorización: nunca contactados",
+            "name": "sin autorización: nunca contactados",
             "expression": "LOOKUPVALUE ( control[valor], control[indicador], \"sin_autorizacion\" )",
-            "lineageTag": "ef3ff0fe-aaf0-5e0a-9495-055e07c3659c",
+            "lineageTag": "29c7283e-54b4-57a9-84fa-ea892b2da71d",
             "displayFolder": "5 · Control",
             "formatString": "#,0",
             "description": "Ley 1581: sin autorización el motor no lee sus movimientos ni les ofrece nada."
