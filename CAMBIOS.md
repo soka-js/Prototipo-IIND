@@ -17,6 +17,31 @@ Todo cambio al repositorio se anota aquí, el más reciente arriba. Es obligator
 
 ---
 
+## 2026-10-31 · Claude con SOKA · rama feat/claude-dashboard-impacto · commit de esta entrada · E14: el dashboard en un enlace para el cliente (/dashboard)
+- Qué cambió: el dashboard de impacto queda también en **https://prototipo-iind.vercel.app/dashboard**, como una página del prototipo. El cliente lo abre como el prototipo, en el navegador o el celular, sin Power BI y sin cargar datos.
+  - Las mismas 3 páginas (Impacto · Qué y a quién · Bajo control), el mismo selector de escenario y las mismas cifras que el `.pbip`. Las cifras salen de `powerbi_vista.cifras()`, con las mismas definiciones que las medidas DAX; la página solo las dibuja.
+  - La tipografía (Sora), los colores y el logo son los del prototipo, con la etiqueta «Prototipo académico · base sintética · resultados simulados», `noindex` y un botón «Ver el prototipo».
+  - Interactivo: pestañas, escenario, detalle al pasar el mouse o tocar en cada gráfico. El enlace guarda la página y el escenario (`#pagina=valor&escenario=conservador`) para mandar uno concreto.
+  - Se adapta al celular (probado en 390 px).
+- Por qué: SOKA necesita compartir el prototipo y el dashboard con el cliente sin pedirle abrir Power BI. Se intentó publicarlo en Power BI en la web, pero Uniandes no permite iniciar sesión en Power BI con la cuenta de la universidad. SOKA eligió esta opción frente a Looker Studio o un PDF.
+- Archivos:
+  - `scripts/powerbi_web.py` (nuevo): genera la página.
+  - `scripts/exportar_powerbi.py`: la escribe en `lulo_app/templates/dashboard.html`, y `--check` la verifica con el resto.
+  - `lulo_app/main.py`: la ruta `/dashboard` sirve esa página, con `X-Robots-Tag: noindex`.
+  - Pruebas en `tests/test_powerbi.py`: mismas cifras que Power BI y la ruta. En `tests/test_e2e.py`: computador y celular, cambio de escenario y de página, enlace con página y escenario, sin errores ni desplazamiento horizontal.
+  - Documentación: `README.md`, `powerbi/GUIA.md`, `CLAUDE.md` y `CAMBIOS.md`.
+  - No cambian `vercel.json` ni `api/index.py`: la función ya incluye `lulo_app/**` y la regla de Vercel manda todo a FastAPI.
+- Cómo se verificó: Playwright en 1440 px y 390 px, en las 3 páginas y los 2 escenarios: sin errores de consola y sin desplazamiento horizontal. El detalle al pasar el mouse muestra la semana y las dos conversiones. Salida real:
+    ```
+    $ python -m pytest
+    125 passed, 1 warning in 122.77s (0:02:02)
+    $ python scripts/exportar_powerbi.py --check
+    powerbi/ coincide (41 archivos)
+    ```
+- Consultado con SOKA: sí. El 2026-10-31 eligió «Link en Vercel». Es un cambio grande (agrega una página al prototipo desplegado): queda en línea cuando apruebe el pull request.
+- Cifras nuevas y su origen: ninguna. Son las mismas del dashboard de Power BI. Los textos de apoyo, como «25,4 % con ofertas frente a 4,4 % sin ellas», salen de las mismas tablas (`indicadores`).
+- Modelo de Claude usado: claude-opus-5-5
+
 ## 2026-10-31 · Claude con SOKA · rama feat/claude-dashboard-impacto · commit de esta entrada · E13: ajustes tras abrirlo en Power BI Desktop
 - Qué cambió: se abrió `Lulo_Impacto.pbip` en Power BI Desktop (equipo de SOKA). Cargó las 3 páginas y las cifras coinciden con la vista previa, pero había cinco detalles que se corrigen en el generador:
   1. El intervalo usaba el separador decimal del modelo (es-CO, «+13,7») y las tarjetas el del equipo («+21.0»). Ahora `FORMAT(…, USERCULTURE())`: el mismo en las dos, se abra donde se abra. Se probó la función en Power BI Desktop antes de cambiarla.

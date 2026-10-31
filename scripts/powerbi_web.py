@@ -1,0 +1,478 @@
+"""Dashboard de impacto en la web (prototipo-iind.vercel.app/dashboard): el entregable para el cliente.
+
+Es el mismo dashboard de Power BI (powerbi/Lulo_Impacto.pbip), con las mismas 3 páginas y las mismas cifras, en una página
+del prototipo: el cliente abre un enlace, sin instalar Power BI ni cargar datos. Las cifras salen de
+powerbi_vista.cifras(), que usa las mismas definiciones que las medidas DAX; aquí solo se dibujan.
+
+Lo genera scripts/exportar_powerbi.py en lulo_app/templates/dashboard.html, y `--check` lo verifica como el resto.
+"""
+
+from __future__ import annotations
+
+import csv
+import io
+import json
+
+from powerbi_modelo import ETIQUETA, textos
+from powerbi_vista import cifras
+
+DESCRIPCION = {
+    "señal": "Hay efectos que la regla no capta (uso de la app, perfil, bolsillos, momento del evento) y el motor "
+             "los aprende.",
+    "regla correcta": "La aceptación es la de las campañas previas y el motor no tiene nada más que aprender. Es el "
+                      "piso: ¿cuánto se pierde si el motor no sabe más que la regla?",
+}
+CORTO = {"señal": "Optimista", "regla correcta": "Conservador"}
+EQUIPO = "Julián Ordoñez, Nicolás Ramírez, Sebastián Socarrás y Tomás Carrillo"
+
+
+def datos(chicas: dict[str, str], notas: dict) -> dict:
+    tx = textos(notas)
+    E = cifras(chicas)
+    curva = list(csv.DictReader(io.StringIO(chicas["curva"])))
+    seg = list(csv.DictReader(io.StringIO(chicas["segmento"])))
+    out = []
+    for e in E:
+        k = e["escenario"]
+        fechas = sorted({r["semana"] for r in curva if r["escenario"] == k})
+        out.append({
+            "id": k, "corto": CORTO.get(k, e["nombre"].split(":")[0]), "nombre": e["nombre"],
+            "descripcion": DESCRIPCION.get(k, ""),
+            "dif": round(e["dif"], 6), "ic": [round(e["ic"][0], 6), round(e["ic"][1], 6)], "veredicto": e["veredicto"],
+            "conv": [round(e["conv"][0], 6), round(e["conv"][1], 6)], "nuevos": round(e["nuevos"], 6),
+            "pc": round(e["pc"], 6), "adicional": round(e["adicional"], 2), "por_mil": round(e["por_mil"], 2),
+            "polizas": e["polizas"], "de_oferta": round(e["de_oferta"], 6), "aceptan": round(e["aceptan"], 6),
+            "curva": {"fechas": fechas, "series": [{"nombre": g, "valores": [v for _, v in e["curva"][g]]}
+                                                   for g in ("Con ofertas", "Sin ofertas")]},
+            "ramo": [{"nombre": n, "valor": v} for n, v in e["ramo"]],
+            "segmento": [{"nombre": r["segmento"], "vistas": int(r["vistas"]), "aceptadas": int(r["aceptadas"])}
+                         for r in sorted((r for r in seg if r["escenario"] == k),
+                                         key=lambda r: -int(r["aceptadas"]) / max(1, int(r["vistas"])))],
+            "origen": [{"nombre": n, "valor": v} for n, v in e["origen"]],
+            "lab": None if e["lab"] is None else round(e["lab"], 6),
+            "lab_series": [{"nombre": p, "valores": [v for _, v in s]} for p, s in e["lab_series"].items()],
+        })
+    e0 = E[0]
+    return {
+        "etiqueta": ETIQUETA, "escenarios": out,
+        "reglas": [{"regla": r, "violaciones": v} for r, v in e0["reglas"]],
+        "violaciones": e0["violaciones"], "push": e0["push"], "sin_aut": e0["sin_aut"],
+        "textos": tx, "clientes": notas["clientes"], "control_clientes": notas["control_clientes"],
+        "control_compran": notas["control_compran"],
+    }
+
+
+CSS = r"""
+@font-face{font-family:'Sora';font-weight:400;font-display:swap;src:url(/static/fonts/sora-400.woff2) format('woff2')}
+@font-face{font-family:'Sora';font-weight:600;font-display:swap;src:url(/static/fonts/sora-600.woff2) format('woff2')}
+@font-face{font-family:'Sora';font-weight:700;font-display:swap;src:url(/static/fonts/sora-700.woff2) format('woff2')}
+:root{
+  --fondo:#0B1430; --tarjeta:#131E3D; --linea:#1E2B50; --linea-2:#283764;
+  --lima:#E8FF00; --gris:#647B9A; --verde:#62E3A0; --azul:#3987E5;
+  --txt:#FFFFFF; --txt-2:#AFB8CC; --txt-3:#92A0BD; --tinta:#061232;
+  --font:'Sora','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--txt);font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.45}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--lima);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+header.top{padding:22px 0 14px;border-bottom:1px solid var(--linea)}
+.top .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.brand{width:52px;height:52px;border-radius:15px;overflow:hidden;flex:none;background:var(--lima)}
+.brand img{width:100%;height:100%;object-fit:cover;transform:scale(1.9)}
+.tt{flex:1;min-width:240px}
+.tt h1{margin:0;font-size:22px;line-height:1.2;font-weight:700;letter-spacing:-.4px}
+.tt p{margin:5px 0 0;font-size:12.5px;color:var(--txt-3)}
+.tag{display:inline-block;background:var(--lima);color:var(--tinta);font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;margin-right:8px;vertical-align:1px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--linea);color:var(--txt);text-decoration:none;font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:12px;border:1px solid var(--linea-2)}
+.cta:hover{background:var(--linea-2)}
+.barra{position:sticky;top:0;z-index:5;background:rgba(11,20,48,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.barra .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+.pest{display:flex;gap:4px;background:var(--tarjeta);padding:4px;border-radius:12px;overflow-x:auto;scrollbar-width:none}
+.pest::-webkit-scrollbar{display:none}
+.pest button{background:none;border:0;color:var(--txt-2);font-size:14px;font-weight:600;padding:9px 16px;border-radius:9px;white-space:nowrap}
+.pest button[aria-selected=true]{background:var(--linea-2);color:var(--txt)}
+.esc{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.esc .l{font-size:12px;color:var(--txt-3)}
+.seg{display:flex;background:var(--tarjeta);padding:4px;border-radius:12px}
+.seg button{background:none;border:0;color:var(--txt-2);font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:9px}
+.seg button[aria-checked=true]{background:var(--lima);color:var(--tinta)}
+.esc-desc{max-width:1240px;margin:0 auto;padding:12px 24px 0;font-size:12.5px;color:var(--txt-3)}
+.esc-desc b{color:var(--txt)}
+main{padding:14px 0 30px}
+.pag h2{margin:10px 0 2px;font-size:26px;letter-spacing:-.5px;line-height:1.2}
+.pag .sub{margin:0 0 18px;color:var(--txt-3);font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.k{background:var(--tarjeta);border-radius:16px;padding:18px 20px;min-height:128px;display:flex;flex-direction:column;justify-content:center}
+.k .v{font-size:36px;font-weight:700;letter-spacing:-.8px;line-height:1.1;color:var(--lima);font-variant-numeric:tabular-nums}
+.k .v.s{font-size:27px}
+.k .e{font-size:13.5px;margin-top:8px;color:var(--txt)}
+.k .d{font-size:12px;margin-top:4px;color:var(--txt-3)}
+.k.hero{background:var(--lima);color:var(--tinta)}
+.k.hero .v,.k.hero .e{color:var(--tinta)}
+.k.hero .d{color:#3B4A1A}
+.grid{display:grid;gap:14px;margin-top:14px}
+.g-imp{grid-template-columns:minmax(0,1.9fr) minmax(0,1fr)}
+.g-val{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr)}
+.g-ctl{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+.col{display:grid;gap:14px;align-content:start}
+.p{background:var(--tarjeta);border-radius:16px;padding:16px 18px;position:relative;min-width:0}
+.p h3{margin:0 0 4px;font-size:15px;font-weight:600}
+.p .n{margin:0 0 8px;font-size:12px;color:var(--txt-3)}
+.ley{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--txt-2);margin:2px 0 6px}
+.ley i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.ch{position:relative;width:100%}
+.ch svg{display:block;width:100%;overflow:visible}
+.ax{font-size:11px;fill:var(--txt-3)}
+.fin{font-size:12px;font-weight:600}
+.cat{font-size:12.5px;fill:var(--txt-2)}
+.val{font-size:12.5px;fill:var(--txt);font-weight:600}
+.tip{position:absolute;pointer-events:none;background:#0A1129;border:1px solid var(--linea-2);border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.5;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:3}
+.tip b{display:block;font-weight:600;color:var(--txt-2);margin-bottom:2px}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.ver{display:flex;gap:14px;align-items:center}
+.ver .ic{width:44px;height:44px;border-radius:50%;background:var(--verde);display:grid;place-items:center;flex:none}
+.ver .ic.no{background:#FFB547}
+.ver b{font-size:17px;line-height:1.3;display:block}
+.ver span{font-size:12.5px;color:var(--txt-3)}
+.big{font-size:30px;font-weight:700;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
+.p .e{font-size:13px;color:var(--txt-2);margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-weight:600;color:var(--txt-2);font-size:12px;padding:8px 10px;border-bottom:1px solid var(--linea-2)}
+td{padding:9px 10px;border-bottom:1px solid var(--linea)}
+td.n,th.n{text-align:right}
+.cero{display:inline-flex;align-items:center;gap:6px;color:var(--verde);font-weight:600;font-variant-numeric:tabular-nums}
+.pie{margin:16px 0 0;font-size:12px;color:var(--txt-3);max-width:980px}
+footer{border-top:1px solid var(--linea);padding:18px 0 28px;font-size:12px;color:var(--txt-3)}
+footer a{color:var(--txt-2)}
+@media (max-width:980px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-imp,.g-val,.g-ctl{grid-template-columns:1fr}
+  .g-val .p:first-child{grid-column:auto}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}.esc-desc{padding:12px 16px 0}
+  .tt h1{font-size:19px}
+  .k{padding:14px 15px;min-height:112px}.k .v{font-size:28px}.k .v.s{font-size:17px;letter-spacing:-.3px}.k .e{font-size:12.5px}
+  .pag h2{font-size:21px}
+  .barra .wrap{gap:10px}
+  .pest button{padding:8px 12px;font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+"""
+
+JS = r"""
+const D = JSON.parse(document.getElementById('datos').textContent);
+const C = {lima:'#E8FF00', gris:'#647B9A', verde:'#62E3A0', azul:'#3987E5', linea:'#1E2B50', tarjeta:'#131E3D'};
+const SERIE = [C.lima, C.gris, C.verde, C.azul];
+const nf = (d) => new Intl.NumberFormat('es-CO', {minimumFractionDigits: d, maximumFractionDigits: d});
+const num = (v, d = 0) => nf(d).format(v);
+const signo = (v, d = 1) => (v >= 0 ? '+' : '−') + num(Math.abs(v), d);
+const pct = (v, d = 1) => num(100 * v, d) + ' %';
+const pesos = (v) => '$' + num(v);
+const mill = (v) => '$' + num(v / 1e6, 1) + ' M';
+const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const fecha = (s) => { const [y, m, d] = s.split('-').map(Number); return d + ' ' + MES[m - 1]; };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NS = 'http://www.w3.org/2000/svg';
+
+let estado = {pagina: 'impacto', e: 0};
+const PAGINAS = ['impacto', 'valor', 'control'];
+
+function leerHash() {
+  const h = new URLSearchParams(location.hash.slice(1));
+  if (PAGINAS.includes(h.get('pagina'))) estado.pagina = h.get('pagina');
+  const e = D.escenarios.findIndex((x) => x.corto.toLowerCase() === (h.get('escenario') || '').toLowerCase());
+  if (e >= 0) estado.e = e;
+}
+function escribirHash() {
+  history.replaceState(null, '', '#pagina=' + estado.pagina + '&escenario=' + D.escenarios[estado.e].corto.toLowerCase());
+}
+
+/* ---------- gráficos ---------- */
+function svg(w, h, label) {
+  const s = document.createElementNS(NS, 'svg');
+  s.setAttribute('viewBox', `0 0 ${w} ${h}`); s.setAttribute('width', w); s.setAttribute('height', h);
+  s.setAttribute('role', 'img'); s.setAttribute('aria-label', label);
+  return s;
+}
+function add(p, tag, attrs, text) {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  p.appendChild(n); return n;
+}
+function tip(box) {
+  let t = box.querySelector('.tip');
+  if (!t) { t = document.createElement('div'); t.className = 'tip'; t.hidden = true; box.appendChild(t); }
+  return t;
+}
+function ponerTip(box, t, html, x, y) {
+  t.innerHTML = html; t.hidden = false;
+  const bw = box.clientWidth, tw = t.offsetWidth;
+  t.style.left = Math.max(0, Math.min(bw - tw, x + 14)) + 'px';
+  t.style.top = Math.max(0, y - t.offsetHeight - 10) + 'px';
+}
+function ticks(lo, hi, n) {
+  const paso = (hi - lo) / n, mag = Math.pow(10, Math.floor(Math.log10(paso)));
+  const f = [1, 2, 2.5, 5, 10].find((m) => m * mag >= paso) * mag;
+  const out = []; let v = Math.floor(lo / f) * f;
+  do { out.push(+v.toFixed(10)); v += f; } while (out[out.length - 1] < hi - 1e-9);   // el último tick cubre el máximo
+  return out;
+}
+
+function lineas(box, cfg) {
+  box.innerHTML = '';
+  const w = Math.max(280, box.clientWidth), h = cfg.alto || 300;
+  const m = {l: 54, r: 70, t: 12, b: 28};
+  const W = w - m.l - m.r, H = h - m.t - m.b;
+  const vals = cfg.series.flatMap((s) => s.valores);
+  let lo = cfg.desdeCero ? 0 : Math.min(...vals), hi = Math.max(...vals);
+  if (!cfg.desdeCero) { const pad = (hi - lo) * 0.15 || 1; lo -= pad; hi += pad; }
+  const tk = ticks(lo, hi * (cfg.desdeCero ? 1.08 : 1), 4); lo = tk[0]; hi = tk[tk.length - 1];
+  const n = cfg.x.length, X = (i) => m.l + (n === 1 ? W / 2 : i / (n - 1) * W), Y = (v) => m.t + H - (v - lo) / (hi - lo) * H;
+  const s = svg(w, h, cfg.aria);
+  tk.forEach((v) => {
+    add(s, 'line', {x1: m.l, x2: m.l + W, y1: Y(v), y2: Y(v), stroke: C.linea});
+    add(s, 'text', {x: m.l - 8, y: Y(v) + 4, 'text-anchor': 'end', class: 'ax'}, cfg.fy(v, false));
+  });
+  const nx = Math.min(n, w < 420 ? 3 : 5);
+  for (let j = 0; j < nx; j++) {
+    const i = Math.round(j * (n - 1) / Math.max(1, nx - 1));
+    add(s, 'text', {x: X(i), y: h - 6, 'text-anchor': j === 0 ? 'start' : j === nx - 1 ? 'end' : 'middle', class: 'ax'}, cfg.fx(cfg.x[i]));
+  }
+  const fin = [];
+  cfg.series.forEach((se, k) => {
+    const col = cfg.colores[k];
+    add(s, 'path', {d: se.valores.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join(''),
+                    fill: 'none', stroke: col, 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'});
+    const v = se.valores[n - 1];
+    add(s, 'circle', {cx: X(n - 1), cy: Y(v), r: 4, fill: col, stroke: C.tarjeta, 'stroke-width': 2});
+    fin.push({y: Y(v), txt: cfg.fy(v, true), col});
+  });
+  fin.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < fin.length; i++) if (fin[i].y - fin[i - 1].y < 15) fin[i].y = fin[i - 1].y + 15;
+  fin.forEach((f) => add(s, 'text', {x: m.l + W + 9, y: f.y + 4, class: 'fin', fill: f.col}, f.txt));
+  const guia = add(s, 'line', {y1: m.t, y2: m.t + H, stroke: '#AFB8CC', 'stroke-dasharray': '3 3', opacity: 0});
+  const puntos = cfg.series.map((se, k) => add(s, 'circle', {r: 4.5, fill: cfg.colores[k], stroke: C.tarjeta, 'stroke-width': 2, opacity: 0}));
+  const zona = add(s, 'rect', {x: m.l, y: m.t, width: W, height: H, fill: 'transparent'});
+  box.appendChild(s);
+  const t = tip(box);
+  const mover = (ev) => {
+    const r = s.getBoundingClientRect(), px = (ev.clientX - r.left) * (w / r.width);
+    const i = Math.max(0, Math.min(n - 1, Math.round((px - m.l) / W * (n - 1))));
+    guia.setAttribute('x1', X(i)); guia.setAttribute('x2', X(i)); guia.setAttribute('opacity', 1);
+    cfg.series.forEach((se, k) => { puntos[k].setAttribute('cx', X(i)); puntos[k].setAttribute('cy', Y(se.valores[i])); puntos[k].setAttribute('opacity', 1); });
+    ponerTip(box, t, `<b>${esc(cfg.fxl(cfg.x[i]))}</b>` + cfg.series.map((se, k) =>
+      `<div><i style="background:${cfg.colores[k]}"></i>${esc(se.nombre)}: <b style="display:inline;color:#fff">${esc(cfg.fy(se.valores[i], true))}</b></div>`).join(''),
+      X(i) * r.width / w, ev.clientY - box.getBoundingClientRect().top);
+  };
+  const salir = () => { t.hidden = true; guia.setAttribute('opacity', 0); puntos.forEach((p) => p.setAttribute('opacity', 0)); };
+  zona.addEventListener('pointermove', mover); zona.addEventListener('pointerdown', mover); zona.addEventListener('pointerleave', salir);
+}
+
+function barras(box, datos, fmt, aria) {
+  box.innerHTML = '';
+  const w = Math.max(260, box.clientWidth), fila = 38, h = datos.length * fila + 6;
+  const izq = Math.min(110, w * 0.3), der = 64, hi = Math.max(...datos.map((d) => d.valor)) || 1;
+  const s = svg(w, h, aria);
+  const t = tip(box);
+  datos.forEach((d, i) => {
+    const y = i * fila + 4, largo = Math.max(2, d.valor / hi * (w - izq - der)), bh = 20;
+    add(s, 'text', {x: 0, y: y + bh / 2 + 5, class: 'cat'}, d.nombre);
+    const r = add(s, 'path', {d: `M${izq},${y} h${largo - 4} a4,4 0 0 1 4,4 v${bh - 8} a4,4 0 0 1 -4,4 h${-(largo - 4)} z`, fill: C.lima});
+    add(s, 'text', {x: izq + largo + 8, y: y + bh / 2 + 5, class: 'val'}, fmt(d.valor));
+    const hov = add(s, 'rect', {x: 0, y: y - 6, width: w, height: fila, fill: 'transparent'});
+    hov.addEventListener('pointermove', (ev) => { r.setAttribute('opacity', .85);
+      ponerTip(box, t, `<b>${esc(d.nombre)}</b>${esc(fmt(d.valor))}`, ev.clientX - box.getBoundingClientRect().left, ev.clientY - box.getBoundingClientRect().top); });
+    hov.addEventListener('pointerleave', () => { r.setAttribute('opacity', 1); t.hidden = true; });
+  });
+  box.appendChild(s);
+}
+
+function columnas(box, datos, aria) {
+  box.innerHTML = '';
+  const w = Math.max(220, box.clientWidth), h = 250, arriba = 26, abajo = 44;
+  const hi = Math.max(...datos.map((d) => d.tasa)) || 1, ancho = w / datos.length;
+  const s = svg(w, h, aria), t = tip(box);
+  datos.forEach((d, i) => {
+    const bw = Math.min(64, ancho * 0.55), x = i * ancho + (ancho - bw) / 2;
+    const alto = Math.max(2, d.tasa / hi * (h - arriba - abajo)), y = h - abajo - alto;
+    const r = add(s, 'path', {d: `M${x},${h - abajo} v${-(alto - 4)} a4,4 0 0 1 4,-4 h${bw - 8} a4,4 0 0 1 4,4 v${alto - 4} z`, fill: C.lima});
+    add(s, 'text', {x: x + bw / 2, y: y - 8, 'text-anchor': 'middle', class: 'val'}, pct(d.tasa));
+    d.nombre.split(' ').reduce((acc, p) => { const u = acc[acc.length - 1]; if (u && (u + ' ' + p).length <= 12) acc[acc.length - 1] = u + ' ' + p; else acc.push(p); return acc; }, [])
+      .forEach((p, j) => add(s, 'text', {x: x + bw / 2, y: h - abajo + 18 + j * 15, 'text-anchor': 'middle', class: 'cat'}, p));
+    const hov = add(s, 'rect', {x: i * ancho, y: 0, width: ancho, height: h, fill: 'transparent'});
+    hov.addEventListener('pointermove', (ev) => { r.setAttribute('opacity', .85);
+      ponerTip(box, t, `<b>${esc(d.nombre)}</b>Aceptan ${esc(pct(d.tasa))}<br>${num(d.aceptadas)} de ${num(d.vistas)} ofertas vistas`,
+               ev.clientX - box.getBoundingClientRect().left, ev.clientY - box.getBoundingClientRect().top); });
+    hov.addEventListener('pointerleave', () => { r.setAttribute('opacity', 1); t.hidden = true; });
+  });
+  box.appendChild(s);
+}
+
+function dona(box, datos, aria) {
+  box.innerHTML = '';
+  const total = datos.reduce((a, d) => a + d.valor, 0) || 1, w = 200, h = 200, cx = 100, cy = 100, R = 88, r = 58;
+  const s = svg(w, h, aria); s.style.maxWidth = '200px'; s.style.margin = '6px auto 0';
+  let a0 = -Math.PI / 2;
+  const t = tip(box);
+  datos.forEach((d, k) => {
+    const a1 = a0 + 2 * Math.PI * d.valor / total, g = 0.02, b = a0 + g, e = a1 - g, big = e - b > Math.PI ? 1 : 0;
+    const P = (a, rr) => [cx + rr * Math.cos(a), cy + rr * Math.sin(a)];
+    const [x0, y0] = P(b, R), [x1, y1] = P(e, R), [x2, y2] = P(e, r), [x3, y3] = P(b, r);
+    const p = add(s, 'path', {d: `M${x0},${y0} A${R},${R} 0 ${big} 1 ${x1},${y1} L${x2},${y2} A${r},${r} 0 ${big} 0 ${x3},${y3} Z`, fill: SERIE[k]});
+    p.addEventListener('pointermove', (ev) => ponerTip(box, t, `<b>${esc(d.nombre)}</b>${num(d.valor)} pólizas (${pct(d.valor / total, 0)})`,
+      ev.clientX - box.getBoundingClientRect().left, ev.clientY - box.getBoundingClientRect().top));
+    p.addEventListener('pointerleave', () => { t.hidden = true; });
+    a0 = a1;
+  });
+  add(s, 'text', {x: cx, y: cy - 2, 'text-anchor': 'middle', style: 'font-size:28px;font-weight:700;fill:#fff'}, num(total));
+  add(s, 'text', {x: cx, y: cy + 18, 'text-anchor': 'middle', class: 'ax'}, 'pólizas');
+  box.appendChild(s);
+}
+
+/* ---------- páginas ---------- */
+const k = (v, e, d = '', cls = '', vcls = '') => `<div class="k ${cls}"><div class="v ${vcls}">${esc(v)}</div><div class="e">${esc(e)}</div>${d ? `<div class="d">${esc(d)}</div>` : ''}</div>`;
+const ley = (items) => `<div class="ley">${items.map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join('')}</div>`;
+const CHECK = '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#061232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const DUDA = '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v6M12 17h.01" fill="none" stroke="#061232" stroke-width="2.6" stroke-linecap="round"/></svg>';
+
+function pintar() {
+  const e = D.escenarios[estado.e], T = D.textos;
+  document.querySelectorAll('.pest button').forEach((b) => b.setAttribute('aria-selected', b.dataset.p === estado.pagina));
+  document.querySelectorAll('.seg button').forEach((b, i) => { b.setAttribute('aria-checked', i === estado.e); b.tabIndex = i === estado.e ? 0 : -1; });
+  document.getElementById('escDesc').innerHTML = `<b>${esc(e.nombre)}.</b> ${esc(e.descripcion)}`;
+  const main = document.getElementById('pagina');
+  const si = e.veredicto.startsWith('Sí');
+  if (estado.pagina === 'impacto') {
+    main.innerHTML = `<section class="pag" aria-labelledby="h-imp">
+      <h2 id="h-imp">Lo que el motor puede generar</h2><p class="sub">${esc(T.sub_impacto)}</p>
+      <div class="kpis">
+        ${k(signo(e.dif) + ' pp', 'más clientes compran con las ofertas', `${pct(e.conv[0])} con ofertas frente a ${pct(e.conv[1])} sin ellas`, 'hero')}
+        ${k(`${signo(e.ic[0])} a ${signo(e.ic[1])} pp`, 'intervalo de 95 % de la diferencia', e.ic[0] > 0 ? 'No toca el cero: no es azar' : 'Toca el cero: puede ser azar', '', 's')}
+        ${k(num(e.nuevos), 'clientes con seguro gracias a las ofertas', 'por encima de los que compran sin ofertas')}
+        ${k(mill(e.adicional), 'comisión adicional a 12 meses', 'sobre los clientes con ofertas de la base')}
+      </div>
+      <div class="grid g-imp">
+        <div class="p"><h3>Clientes que ya compraron un seguro, semana a semana</h3>
+          ${ley([['Con ofertas', C.lima], ['Sin ofertas (grupo de comparación)', C.gris]])}<div class="ch" id="c-curva"></div></div>
+        <div class="col">
+          <div class="p ver"><div class="ic ${si ? '' : 'no'}">${si ? CHECK : DUDA}</div><div><span>¿Las ofertas venden?</span><b>${esc(e.veredicto)}</b></div></div>
+          <div class="p"><div class="big">${esc(pesos(e.pc))}</div><div class="e">comisión por cliente contactado</div></div>
+          <div class="p"><div class="big">${esc(mill(e.por_mil))}</div><div class="e">por cada 1.000 clientes contactados (proyección lineal, no una meta)</div></div>
+        </div>
+      </div>
+      <p class="pie">${esc(T.pie_impacto)}</p></section>`;
+    lineas(document.getElementById('c-curva'), {x: e.curva.fechas, series: e.curva.series, colores: [C.lima, C.gris], desdeCero: true,
+      fy: (v, fino) => fino ? pct(v) : num(100 * v, 0) + ' %', fx: fecha, fxl: (s) => 'Semana del ' + fecha(s), alto: 300,
+      aria: `Clientes que ya compraron: con ofertas ${pct(e.conv[0])} y sin ofertas ${pct(e.conv[1])} al final`});
+  } else if (estado.pagina === 'valor') {
+    main.innerHTML = `<section class="pag" aria-labelledby="h-val">
+      <h2 id="h-val">Dónde está el valor</h2><p class="sub">Qué seguros venden, a qué clientes y cuánto viene de las ofertas</p>
+      <div class="kpis">
+        ${k(num(e.polizas), 'pólizas vendidas por las ofertas')}
+        ${k(pct(e.de_oferta), 'de las ventas vino de una oferta', 'el resto, compras por su cuenta')}
+        ${k(pct(e.aceptan), 'aceptan la oferta que ven')}
+        ${k(pesos(e.pc), 'comisión por cliente contactado')}
+      </div>
+      <div class="grid g-val">
+        <div class="p"><h3>Comisión a 12 meses de lo vendido por las ofertas</h3><p class="n">Por seguro</p><div class="ch" id="c-ramo"></div></div>
+        <div class="p"><h3>Aceptan la oferta</h3><p class="n">Por tipo de cliente</p><div class="ch" id="c-seg"></div></div>
+        <div class="p"><h3>Cómo se vendieron las pólizas</h3>
+          ${ley(e.origen.map((o, i) => [`${o.nombre}: ${num(o.valor)} (${pct(o.valor / e.origen.reduce((a, x) => a + x.valor, 0), 0)})`, SERIE[i]]))}
+          <div class="ch" id="c-origen"></div></div>
+      </div>
+      <p class="pie">${esc(T.pie_valor)}</p></section>`;
+    barras(document.getElementById('c-ramo'), e.ramo, mill, 'Comisión a 12 meses por seguro');
+    columnas(document.getElementById('c-seg'), e.segmento.map((d) => ({...d, tasa: d.vistas ? d.aceptadas / d.vistas : 0})), 'Aceptación por tipo de cliente');
+    dona(document.getElementById('c-origen'), e.origen, 'Pólizas por origen');
+  } else {
+    main.innerHTML = `<section class="pag" aria-labelledby="h-ctl">
+      <h2 id="h-ctl">Crece sin cansar al cliente ni romper reglas</h2><p class="sub">Lo que el motor nunca hace y por qué se puede confiar en que aprende</p>
+      <div class="kpis">
+        ${k(num(D.violaciones), 'violaciones de las reglas', T.titulo_reglas.replace(/^.*\((.*)\)$/, '$1'), 'hero')}
+        ${k(num(D.push), 'push máximo a un cliente en 30 días')}
+        ${k(num(D.sin_aut), 'sin autorización: nunca contactados', 'Ley 1581: sin autorización no se leen sus movimientos')}
+        ${k(e.lab == null ? '—' : signo(100 * e.lab) + ' %', 'laboratorio: más comisión por oferta que la regla')}
+      </div>
+      <div class="grid g-ctl">
+        <div class="p"><h3>${esc(T.titulo_reglas)}</h3>
+          <table><thead><tr><th>Regla</th><th class="n">Violaciones</th></tr></thead><tbody>
+          ${D.reglas.map((r) => `<tr><td>${esc(r.regla)}</td><td class="n"><span class="cero">${num(r.violaciones)}</span></td></tr>`).join('')}
+          </tbody></table></div>
+        <div class="p"><h3>${esc(T.titulo_lab)}</h3><p class="n">Comisión por oferta en cada ronda, con verdad simulada</p>
+          ${ley(e.lab_series.map((s, i) => [s.nombre, SERIE[i]]))}<div class="ch" id="c-lab"></div></div>
+      </div>
+      <p class="pie">${esc(T.pie_control)}</p></section>`;
+    lineas(document.getElementById('c-lab'), {x: e.lab_series[0].valores.map((_, i) => i + 1), series: e.lab_series, colores: SERIE, desdeCero: false,
+      fy: (v) => pesos(v), fx: (r) => 'Ronda ' + r, fxl: (r) => 'Ronda ' + r, alto: 300,
+      aria: 'Comisión por oferta del motor, la regla, el oráculo y al azar en cada ronda del laboratorio'});
+  }
+}
+
+leerHash();
+document.querySelectorAll('.pest button').forEach((b) => b.addEventListener('click', () => {
+  estado.pagina = b.dataset.p; escribirHash(); pintar(); window.scrollTo({top: 0}); }));
+const seg = document.querySelectorAll('.seg button');
+seg.forEach((b, i) => {
+  b.addEventListener('click', () => { estado.e = i; escribirHash(); pintar(); });
+  b.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+    estado.e = (estado.e + (ev.key === 'ArrowRight' ? 1 : -1) + seg.length) % seg.length;
+    escribirHash(); pintar(); seg[estado.e].focus();
+  });
+});
+let ancho = innerWidth;
+addEventListener('resize', () => { if (Math.abs(innerWidth - ancho) > 4) { ancho = innerWidth; pintar(); } });
+addEventListener('hashchange', () => { leerHash(); pintar(); });
+pintar();
+"""
+
+
+def html(chicas: dict[str, str], notas: dict) -> str:
+    D = datos(chicas, notas)
+    j = json.dumps(D, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    pest = "".join(f'<button type="button" role="tab" data-p="{p}">{n}</button>'
+                   for p, n in (("impacto", "Impacto"), ("valor", "Qué y a quién"), ("control", "Bajo control")))
+    seg = "".join(f'<button type="button" role="radio">{e["corto"]}</button>' for e in D["escenarios"])
+    return f"""<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard de impacto · Prototipo Lulo Bank · Grupo 14</title>
+<meta name="description" content="Prototipo académico con datos simulados: qué podría generar el motor que ofrece seguros en el momento correcto. Mismas cifras que el dashboard de Power BI.">
+<meta name="theme-color" content="#0B1430">
+<link rel="icon" type="image/png" href="/static/img/icon-192.png">
+<link rel="preload" href="/static/fonts/sora-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/static/fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>{CSS}</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><img src="/static/img/logo-lulo.png" alt="Lulo Bank"></div>
+  <div class="tt"><h1>Dashboard de impacto: el momento correcto para ofrecer un seguro</h1>
+    <p><span class="tag">{ETIQUETA}</span>Reto 19 · Grupo 14 · {EQUIPO}</p></div>
+  <a class="cta" href="/">Ver el prototipo <span aria-hidden="true">→</span></a>
+</div></header>
+<div class="barra"><div class="wrap">
+  <nav class="pest" role="tablist" aria-label="Páginas del dashboard">{pest}</nav>
+  <div class="esc"><span class="l" id="escL">Escenario</span><div class="seg" role="radiogroup" aria-labelledby="escL">{seg}</div></div>
+</div></div>
+<p class="esc-desc" id="escDesc"></p>
+<main><div class="wrap" id="pagina" role="tabpanel"></div></main>
+<footer><div class="wrap">Base 100 % sintética del reto ({D['clientes']} clientes): sus cifras no son métricas de Lulo Bank.
+  El piloto es simulado: el motor y sus decisiones son reales; las respuestas de los clientes se simulan con la verdad del
+  laboratorio. Las mismas cifras que el archivo de Power BI (<a href="https://github.com/soka-js/Prototipo-IIND/tree/main/powerbi">powerbi/Lulo_Impacto.pbip</a>).
+</div></footer>
+<script type="application/json" id="datos">{j}</script>
+<script>{JS}</script>
+</body>
+</html>
+"""

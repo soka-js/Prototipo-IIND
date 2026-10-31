@@ -12,6 +12,11 @@ Todas las páginas tienen arriba un selector con dos escenarios. El rango entre 
 
 ## 1. Abrirlo
 
+**Para el cliente: https://prototipo-iind.vercel.app/dashboard.** Es el mismo dashboard, con las mismas 3 páginas, el mismo selector de escenario y las mismas cifras, como una página del prototipo. Se abre en el navegador o el celular, sin Power BI y sin cargar datos. El enlace puede abrir una página y un escenario concretos, por ejemplo `/dashboard#pagina=valor&escenario=conservador`. Lo genera `scripts/powerbi_web.py` desde las mismas tablas que el `.pbip`, así que las dos versiones no se pueden separar.
+
+**En Power BI (para el equipo o quien tenga Power BI):**
+
+
 1. En Power BI Desktop: Archivo → Abrir → `powerbi/Lulo_Impacto.pbip`.
    - Si no reconoce el formato: Archivo → Opciones → Características en versión preliminar → activar «Guardar como proyecto de Power BI (.pbip)» y reiniciar.
 2. Inicio → **Actualizar**. Si la primera vez sale un error de «referencia cíclica», es porque el modelo todavía se estaba abriendo: cerrar el aviso y Actualizar otra vez.

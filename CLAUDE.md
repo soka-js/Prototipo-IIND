@@ -59,7 +59,8 @@ Todo cambio, por pequeño que sea, deja rastro:
 - **Es un prototipo**: queda visible la etiqueta «Prototipo académico · datos simulados», se mantiene `noindex`, no se usan datos de clientes reales ni números de cuenta reales, y la clave del ingreso nunca sale del navegador.
 - **La base es 100% sintética y académica**: sus cifras no se presentan como métricas de Lulo Bank.
 - **Dashboard reproducible y honesto** (`powerbi/`, `powerbi/GUIA.md`):
-  - `powerbi/` solo cambia con `scripts/exportar_powerbi.py`, y `--check` debe pasar. Esto cubre los CSV de detalle (`datos/`), las tablas del dashboard (`tablas/`), el proyecto `Lulo_Impacto.pbip` con los datos adentro, las medidas, el tema y la vista previa. A mano solo se escriben `GUIA.md` y `casos.csv`.
+  - `powerbi/` solo cambia con `scripts/exportar_powerbi.py`, y `--check` debe pasar. Esto cubre los CSV de detalle (`datos/`), las tablas del dashboard (`tablas/`), el proyecto `Lulo_Impacto.pbip` con los datos adentro, las medidas, el tema, la vista previa y la página `/dashboard` (`lulo_app/templates/dashboard.html`). A mano solo se escriben `GUIA.md` y `casos.csv`.
+  - El cliente ve el dashboard en https://prototipo-iind.vercel.app/dashboard: las mismas 3 páginas y cifras que el de Power BI, sin instalar nada. Las dos versiones salen de las mismas tablas y no se editan por separado.
   - Es el dashboard de impacto de 3 páginas (Impacto · Qué y a quién · Bajo control), en el nivel que el equipo puede justificar. Agregarle páginas, volver al de 8 páginas o cambiar sus cifras es un cambio grande.
   - El piloto es **simulado** y lo dice en cada página: el motor y sus decisiones son reales, las respuestas son inventadas con la verdad del laboratorio. Se muestra en dos escenarios (optimista y conservador), con el intervalo de 95 % de la diferencia frente al grupo sin ofertas.
   - No se muestran cifras que dependan de un número supuesto (por ejemplo, cuántos clientes tiene Lulo): la escala va «por cada 1.000 clientes contactados». Los textos con cifras se escriben con los datos.
@@ -83,6 +84,7 @@ Todo cambio, por pequeño que sea, deja rastro:
 | E11 Perfeccionar el prototipo: solo la app (sin panel de explicación), backtest sin traza, Bayes empírico del apetito (reglas v2.1), laboratorio «dato nuevo», descarga de respuestas, pruebas de punta a punta, resumen de una página y recorrido automático como video | Hecha el 2026-10-21 en `feat/claude-solo-app`. SOKA eligió esta versión (A) y pasó a `main` el mismo día. La alternativa con la consola de Lulo queda en `feat/claude-consola-lulo`, sin pasar a `main` |
 | E12 Dashboard de resultados en Power BI: base, plan y backtest del motor, piloto simulado con grupo de control en el formato de datos reales, laboratorio y 20 casos reales con fuente | Hecha el 2026-10-22 en `feat/claude-powerbi`. SOKA aprobó el plan y pasarla a `main` el mismo día |
 | E13 Dashboard de impacto de 3 páginas en lugar del de 8: el del equipo (`Lulo_Impacto`), generado desde los mismos datos, con el intervalo de 95 % y el veredicto del de E12 | Pedido por SOKA el 2026-10-30 en `feat/claude-dashboard-impacto`; pasa a `main` con su aprobación del pull request |
+| E14 El dashboard de impacto en un enlace para el cliente: `/dashboard` en el prototipo, con las mismas cifras que el de Power BI | Aprobado por SOKA el 2026-10-31 (Uniandes no deja publicar en Power BI en la web); en la misma rama que E13 |
 
 Desde E6, `main` es la versión completa y la base de trabajo del equipo. Lo que siga se propone como pull request hacia `main` y solo entra con la aprobación de SOKA.
 
@@ -129,6 +131,7 @@ Decisiones aprobadas por SOKA (no se reabren sin consultarle):
   - Reemplazar el dashboard de 8 páginas por el de impacto de 3 páginas del equipo, con las mismas cifras (se recontaron desde `powerbi/datos`: 0 diferencias).
   - Del de E12 se conservan: el exportador reproducible con `--check` y pruebas, el intervalo de 95 % y el veredicto, el aviso de muestra chica, la vista previa web y los datos de detalle.
   - Se quitan del dashboard «×5,7 veces» (2 compras en el grupo sin ofertas: demasiado frágil) y la proyección a 100.000 clientes (número supuesto); queda «por cada 1.000 clientes contactados».
+- E14 (2026-10-31, eligió «Link en Vercel» frente a Looker Studio o un PDF): el dashboard para el cliente es la página `/dashboard` del prototipo, generada por `scripts/powerbi_web.py` desde las mismas tablas que el `.pbip`. Uniandes no permite iniciar sesión en Power BI con la cuenta de la universidad, así que no se publica en Power BI en la web.
 
 Límites conocidos (cambiarlos es un cambio grande):
 - Ayuda, CDT, Lulo X, tarjeta de crédito y los ajustes de cuenta solo conservan la navegación.
@@ -175,7 +178,8 @@ scripts/train_models.py    entrena y valida los modelos M1 a M6 → lulo_app/ml/
 scripts/train_motor.py     entrena el motor bayesiano → lulo_app/ml/motor.json (Python puro)
 scripts/laboratorio.py     laboratorio con verdad simulada → lulo_app/ml/laboratorio.json
 scripts/validar_datos.py   valida otra base con el mismo esquema y escribe su manifiesto (datos reales)
-scripts/exportar_powerbi.py  datos de detalle y dashboard de impacto (con powerbi_modelo.py y powerbi_vista.py)
+scripts/exportar_powerbi.py  datos de detalle y dashboard de impacto (con powerbi_modelo.py, powerbi_vista.py y
+                           powerbi_web.py, que escribe la página /dashboard en lulo_app/templates/dashboard.html)
 powerbi/                   Lulo_Impacto.pbip, datos/ (detalle), tablas/ (dashboard), medidas.dax,
                            tema-lulo-impacto.json, vista_previa.html, casos.csv, GUIA.md
 lulo_app/ml/               M1 a M6 (vector, models) y motor bayesiano (bayes, rasgos, motor) en producción
@@ -187,7 +191,7 @@ docs/CASOS.md              20 casos reales de éxito y fracaso con métodos como
 lulo_app/core/             motor v3: schema, store, personas, catalog, rules, features, signals,
                            eligibility, contact, experiment, engine, year, view, backtest, CLI (__main__)
 lulo_app/api_v3.py         rutas /api/v3
-lulo_app/main.py           / (v3), /v2 (versión del cliente), API v2
+lulo_app/main.py           / (v3), /dashboard (dashboard de impacto), /v2 (versión del cliente), API v2
 lulo_app/templates/app.html   página v3   ·   index.html   página v2 (no tocar)
 public/static/v3/          app v3: app.js (estado, flujos, guía y escenarios), screens.js (pantallas),
                            content.js (lo nuevo), tour.js (recorrido paso a paso), film.js (recorrido

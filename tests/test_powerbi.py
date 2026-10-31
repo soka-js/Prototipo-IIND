@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import exportar_powerbi as ex  # noqa: E402
 import powerbi_modelo as pm  # noqa: E402
 import powerbi_vista as pv  # noqa: E402
+import powerbi_web as pw  # noqa: E402
 
 
 def tabla(nombre: str, carpeta: str = "datos") -> list[dict]:
@@ -271,3 +272,29 @@ def test_cases_have_a_source_and_a_known_result():
         assert c["url"].startswith("https://") and c["fuente"] and c["cifra"] and c["leccion"]
         assert c["resultado"] in ("éxito", "fracaso", "sin efecto", "mixto") and c["confianza"] in ("alta", "media")
     assert {c["resultado"] for c in casos} == {"éxito", "fracaso", "sin efecto", "mixto"}
+
+
+# --------------------------------------------------------------------------- en la web (/dashboard)
+def test_web_dashboard_has_the_same_figures_as_power_bi():
+    """La página para el cliente lleva las cifras de powerbi_vista.cifras(), las mismas definiciones que las medidas."""
+    html = (ROOT / "lulo_app" / "templates" / "dashboard.html").read_text(encoding="utf-8")
+    assert pm.ETIQUETA in html and 'name="robots" content="noindex' in html and 'href="/"' in html
+    d = json.loads(re.search(r'<script type="application/json" id="datos">(.*?)</script>', html, re.S).group(1))
+    tablas = {p.stem: p.read_text(encoding="utf-8") for p in (PBI / "tablas").glob("*.csv")}
+    for w, v in zip(d["escenarios"], pv.cifras(tablas)):
+        assert w["id"] == v["escenario"]
+        for k in ("dif", "nuevos", "pc", "de_oferta", "aceptan"):
+            assert abs(w[k] - v[k]) < 1e-5, (w["id"], k)
+        assert abs(w["ic"][0] - v["ic"][0]) < 1e-5 and abs(w["ic"][1] - v["ic"][1]) < 1e-5
+        assert w["polizas"] == v["polizas"] and w["veredicto"] == v["veredicto"]
+        assert [r["nombre"] for r in w["ramo"]] == [n for n, _ in v["ramo"]]
+    assert d["violaciones"] == 0 and len(d["reglas"]) == len(chica("reglas"))
+
+
+def test_dashboard_route_serves_the_generated_page():
+    from fastapi.testclient import TestClient
+
+    from lulo_app.main import app
+    r = TestClient(app).get("/dashboard")
+    assert r.status_code == 200 and "noindex" in r.headers["x-robots-tag"]
+    assert r.text == (ROOT / "lulo_app" / "templates" / "dashboard.html").read_text(encoding="utf-8")
